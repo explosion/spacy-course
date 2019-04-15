@@ -8,9 +8,9 @@
         "@jupyterlab/outputarea": "^0.19.1",
         "@jupyterlab/rendermime": "^0.19.1",
         "@phosphor/widgets": "^1.6.0",
-        "codemirror": "^5.43.0",
         "autoprefixer": "^9.4.7",
         "classnames": "^2.2.6",
+        "codemirror": "^5.43.0",
         "gatsby": "^2.1.4",
         "gatsby-image": "^2.0.29",
         "gatsby-plugin-manifest": "^2.0.17",
@@ -19,7 +19,6 @@
         "gatsby-plugin-sass": "^2.0.10",
         "gatsby-plugin-sharp": "^2.0.29",
         "gatsby-plugin-sitemap": "^2.0.5",
-        "gatsby-remark-autolink-headers": "^2.0.16",
         "gatsby-remark-copy-linked-files": "^2.0.9",
         "gatsby-remark-images": "^3.0.4",
         "gatsby-remark-prismjs": "^3.2.4",
@@ -35,7 +34,8 @@
         "react-dom": "^16.8.2",
         "react-helmet": "^5.2.0",
         "rehype-react": "^3.1.0",
-        "remark-react": "^5.0.1"
+        "remark-react": "^5.0.1",
+        "reveal.js": "^3.8.0"
     },
     "scripts": {
         "build": "gatsby build",

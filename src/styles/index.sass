@@ -1,0 +1,204 @@
+@import '../../theme'
+
+/* Reset */
+
+*, *:before, *:after
+    box-sizing: border-box
+    padding: 0
+    margin: 0
+    border: 0
+    outline: 0
+
+html
+    font-family: sans-serif
+    text-rendering: optimizeSpeed
+    -ms-text-size-adjust: 100%
+    -webkit-text-size-adjust: 100%
+
+body
+    margin: 0
+
+article, aside, details, figcaption, figure, footer, header, main, menu, nav,
+section, summary, progress
+    display: block
+
+a
+    background-color: transparent
+    color: inherit
+    text-decoration: none
+
+    &:active,
+    &:hover
+        outline: 0
+
+abbr[title]
+    border-bottom: none
+    text-decoration: underline
+    text-decoration: underline dotted
+
+b, strong
+    font-weight: inherit
+    font-weight: bolder
+
+small
+    font-size: 80%
+
+sub, sup
+    position: relative
+    font-size: 65%
+    line-height: 0
+    vertical-align: baseline
+
+sup
+    top: -0.5em
+
+sub
+    bottom: -0.15em
+
+img
+    border: 0
+    height: auto
+    max-width: 100%
+
+svg
+    max-width: 100%
+    color-interpolation-filters: sRGB
+    fill: currentColor
+
+    &:not(:root)
+        overflow: hidden
+
+hr
+    box-sizing: content-box
+    overflow: visible
+    height: 0
+
+pre
+    overflow: auto
+
+code, pre
+    font-family: monospace, monospace
+    font-size: 1em
+
+table
+    text-align: left
+    width: 100%
+    max-width: 100%
+    border-collapse: collapse
+
+    td, th
+        vertical-align: top
+
+input, button
+    appearance: none
+    background: transparent
+
+button
+    cursor: pointer
+
+progress
+    appearance: none
+
+/* Layout */
+
+html
+    font-size: 11px
+
+@media(max-width: 767px)
+    html
+        font-size: 10px
+
+body
+    font-family: var(--font-primary)
+    font-size: var(--font-size-md)
+    line-height: var(--line-height)
+    color: var(--color-front)
+    background: var(--color-back)
+
+p
+    margin-bottom: 3rem
+
+::selection
+    background: var(--color-theme)
+    color: var(--color-theme-contrast)
+
+/* Code */
+
+.gatsby-highlight pre
+    background: var(--color-back)
+    padding: 2rem
+    background: var(--color-subtle-light)
+    overflow-x: auto
+    margin-bottom: 4rem
+
+pre, code
+    font-family: var(--font-code)
+    font-weight: 500
+    font-size: 1.25rem
+    line-height: var(--line-height)
+
+/* Syntax highlighting */
+
+.CodeMirror.cm-s-default
+    font-family: var(--font-code)
+    font-size: var(--font-size-sm)
+    background: var(--syntax-background)
+    color: var(--syntax-text)
+
+    .CodeMirror-line
+        padding: 0
+
+    .CodeMirror-selected
+        background: var(--syntax-selected-background)
+
+    .CodeMirror-cursor
+        border-left-color: currentColor
+
+    .cm-variable-2
+        color: inherit
+        font-style: italic
+
+    .cm-comment
+        color: var(--syntax-comment)
+
+    .cm-keyword, .cm-builtin
+        color: var(--syntax-keyword)
+
+    .cm-operator
+        color: var(--syntax-operator)
+
+    .cm-string
+        color: var(--syntax-selector)
+
+    .cm-number
+        color: var(--syntax-number)
+
+    .cm-def
+        color: var(--syntax-function)
+
+.jp-RenderedText pre
+    .ansi-cyan-fg.ansi-cyan-fg
+        color: var(--ansi-cyan)
+
+    .ansi-green-fg.ansi-green-fg
+        color: var(--ansi-green)
+
+    .ansi-red-fg.ansi-red-fg
+        color: var(--ansi-red)
+
+/* Gatsby Images */
+
+.gatsby-resp-image-link
+    border: 0
+
+.gatsby-resp-image-figure
+    margin-bottom: 4rem
+
+.gatsby-resp-image-figcaption
+    font-size: var(--font-size-xs)
+    color: var(--color-front-light)
+    padding-top: 1rem
+    text-align: center
+
+    code
+        color: inherit

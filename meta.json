@@ -1,13 +1,16 @@
 {
-    "title": "spaCy course",
-    "description": "...",
+    "title": "Advanced NLP with spaCy",
+    "description": "If you're working with a lot of text, you'll eventually want to know more about it. For example, what's it about? What do the words mean in context? Who is doing what to whom? What companies and products are mentioned? Which texts are similar to each other? In this course, you'll learn how to use spaCy, a fast-growing industry standard library for NLP in Python, to build advanced natural language understanding systems, using both rule-based and machine learning approaches.",
     "siteUrl": "https://spacy-course.netlify.com",
     "twitter": "spacy_io",
     "github": "spaCy",
     "email": "ines@explosion.ai",
     "source": "ines/spacy-course",
+    "fonts": "IBM+Plex+Mono:500|IBM+Plex+Sans:700|Lato:400,400i,700,700i",
+    "testTemplate": "from wasabi import Printer\n___msg___ = Printer()\n___solution___ = \"\"\"${solution}\"\"\"\n\n${solution}\n\n${test}\n\ntest()",
     "juniper": {
         "repo": "ines/spacy-io-binder",
+        "branch": "live",
         "kernelType": "python3"
     },
     "theme": "#09a3d5"

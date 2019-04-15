@@ -62,7 +62,16 @@ const SEO = ({ title, description }) => (
                 },
             ]
 
-            return <Helmet htmlAttributes={{ lang }} title={pageTitle} meta={meta} />
+            return (
+                <Helmet htmlAttributes={{ lang }} title={pageTitle} meta={meta}>
+                    {siteMetadata.fonts && (
+                        <link
+                            href={`https://fonts.googleapis.com/css?family=${siteMetadata.fonts}`}
+                            rel="stylesheet"
+                        />
+                    )}
+                </Helmet>
+            )
         }}
     />
 )
@@ -77,6 +86,7 @@ const query = graphql`
                 description
                 siteUrl
                 twitter
+                fonts
             }
         }
     }

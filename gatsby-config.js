@@ -28,6 +28,13 @@ module.exports = {
         {
             resolve: `gatsby-source-filesystem`,
             options: {
+                name: `slides`,
+                path: `${__dirname}/slides`,
+            },
+        },
+        {
+            resolve: `gatsby-source-filesystem`,
+            options: {
                 name: `exercises`,
                 path: `${__dirname}/exercises`,
             },
@@ -44,12 +51,6 @@ module.exports = {
             options: {
                 plugins: [
                     `gatsby-remark-copy-linked-files`,
-                    {
-                        resolve: `gatsby-remark-autolink-headers`,
-                        options: {
-                            removeAccents: true,
-                        },
-                    },
                     {
                         resolve: `gatsby-remark-prismjs`,
                         options: {

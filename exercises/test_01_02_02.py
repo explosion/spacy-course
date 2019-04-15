@@ -1,8 +1,8 @@
 def test():
     import spacy.tokens
-    import spacy.lang.en
-    assert isinstance(nlp, spacy.lang.en.English), "The nlp object should be an instance of the English class."
+    import spacy.lang.de
+    assert isinstance(nlp, spacy.lang.de.German), "The nlp object should be an instance of the German class."
     assert isinstance(doc, spacy.tokens.Doc), "Did you process the text with the nlp object to create a doc?"
     assert "print(doc.text)" in ___solution___, "Did you print the doc.text?"
 
-    ___msg___.good("Well done!")
+    ___msg___.good("Sehr gut! :)")

@@ -31,10 +31,14 @@ class Juniper extends React.Component {
         })
         this.setState({ cm })
 
-        const runCode = () => this.execute(outputArea, cm.getValue())
+        const runCode = wrapper => {
+            const value = cm.getValue()
+            this.execute(outputArea, wrapper ? wrapper(value) : value)
+        }
+        const runCustom = value => this.execute(outputArea, value)
         cm.setOption('extraKeys', { 'Shift-Enter': runCode })
         Widget.attach(outputArea, this.outputRef)
-        this.setState({ runCode })
+        this.setState({ runCode, runCustom })
     }
 
     log(logFunction) {
@@ -44,8 +48,8 @@ class Juniper extends React.Component {
     }
 
     componentWillReceiveProps({ children }) {
-        if (children != this.state.content && this.state.cm) {
-            this.state.cm.setValue(children)
+        if (children !== this.state.content && this.state.cm) {
+            this.state.cm.setValue(children.trim())
         }
     }
 
@@ -223,6 +227,16 @@ class Juniper extends React.Component {
                 <button className={this.props.classNames.button} onClick={this.state.runCode}>
                     {this.props.msgButton}
                 </button>
+                {this.props.actions && this.props.actions({ runCode: this.state.runCode })}
+                {/* <button
+                    onClick={() => this.state.runCustom('print("hello!")')}
+                    className={classNames(
+                        this.props.classNames.button,
+                        this.props.classNames.buttonPrimary
+                    )}
+                >
+                    Submit
+                </button> */}
                 <div
                     ref={x => {
                         this.outputRef = x
@@ -281,6 +295,7 @@ Juniper.propTypes = {
         button: PropTypes.string,
         output: PropTypes.string,
     }),
+    actions: PropTypes.func,
 }
 
 export default Juniper

@@ -1,0 +1,72 @@
+.root
+    margin-left: -2rem
+    width: calc(100% + 4rem)
+    margin-bottom: 5rem
+
+.cell
+    background: var(--syntax-background)
+    border-top: 1px solid var(--color-subtle-medium)
+
+    & > div:first-child
+        padding: 1.5rem 3rem 1rem
+        position: relative
+
+        &:before
+            content: "Input"
+            display: inline-block
+            border-radius: var(--border-radius)
+            color: var(--syntax-background)
+            background: var(--syntax-text)
+            padding: 0 0.5rem
+            position: absolute
+            top: 1rem
+            right: 1.5rem
+            font-size: var(--font-size-xs)
+            font-weight: bold
+            text-transform: uppercase
+            z-index: 5
+
+.output
+    padding: 2rem 3rem
+    background: var(--syntax-text)
+    color: var(--syntax-background)
+    position: relative
+
+    &:before
+        content: "Output"
+        display: inline-block
+        border-radius: var(--border-radius)
+        background: var(--syntax-background)
+        color: var(--syntax-text)
+        padding: 0 0.5rem
+        position: absolute
+        top: 1rem
+        right: 1.5rem
+        font-size: var(--font-size-xs)
+        font-weight: bold
+        text-transform: uppercase
+
+
+.button
+    border: 0
+    appearance: none
+    background: var(--color-button-secondary)
+    color: var(--color-button-secondary-contrast)
+    padding: 1rem 1.5rem
+    font-family: var(--font-primary)
+    font-size: var(--font-size-md)
+    font-weight: bold
+    border-radius: var(--border-radius)
+    margin-top: 3rem
+    margin-bottom: 2rem
+    margin-left: 2rem
+    transition: opacity 0.2s ease
+    box-shadow: 0 0 3px var(--color-subtle-medium)
+
+    &:hover
+        opacity: 0.9
+        box-shadow: none
+
+.button-primary
+    background: var(--color-button-primary)
+    color: var(--color-button-primary-contrast)

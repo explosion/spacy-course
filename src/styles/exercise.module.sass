@@ -1,6 +1,67 @@
 .root
+    width: var(--width-container)
+    max-width: 100%
+    padding: 1rem 2rem
+    border: 1px solid var(--color-subtle-medium)
+    border-radius: var(--border-radius)
+    counter-increment: title
+    margin: 0 auto 2rem
+    position: relative
+
+.wide
+    width: 95%
+
+.expanded
+    box-shadow: 0 0 10px var(--color-subtle-medium)
 
 .title
-    counter-increment: title
+    cursor: pointer
+    user-select: none
+    font-size: var(--font-size-lg)
+    font-family: var(--font-display)
+
     &:before
         content: counter(title)
+        background: var(--color-theme)
+        color: var(--color-theme-contrast)
+        font-size: 0.8em
+        width: 1.75em
+        height: 1.75em
+        display: inline-flex
+        border-radius: 50%
+        justify-content: center
+        align-items: center
+        margin-right: 1rem
+
+.title-expanded
+    margin-bottom: 3rem
+
+.icon
+    float: right
+    vertical-align: middle
+    margin-right: 0.5rem
+
+.content
+    visibility: hidden
+    height: 0
+    opacity: 0
+    z-index: 0
+    overflow: hidden
+
+.footer
+    width: 100%
+    text-align: right
+    margin-top: 1rem
+    margin-bottom: 1rem
+
+.button
+    cursor: pointer
+    border: 0
+    appearance: none
+    background: var(--color-theme)
+    color: var(--color-theme-contrast)
+    padding: 0.75rem 1rem
+    font-family: var(--font-primary)
+    font-size: var(--font-size-sm)
+    font-weight: bold
+    border-radius: var(--border-radius)

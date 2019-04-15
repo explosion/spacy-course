@@ -25,8 +25,8 @@ async function onCreateNode({
         const content = await loadNodeContent(node)
         const contentDigest = createContentDigest(content)
         const id = createNodeId(`${node.id}-code`)
-        const internal = { type: 'Python', contentDigest }
-        const pythonNode = {
+        const internal = { type: 'Code', contentDigest }
+        const codeNode = {
             id,
             parent: node.id,
             children: [],
@@ -34,8 +34,8 @@ async function onCreateNode({
             name: node.name,
             internal,
         }
-        createNode(pythonNode)
-        createParentChildLink({ parent: node, child: pythonNode })
+        createNode(codeNode)
+        createParentChildLink({ parent: node, child: codeNode })
     }
 }
 
@@ -50,6 +50,7 @@ exports.createPages = ({ actions, graphql }) => {
                     node {
                         frontmatter {
                             title
+                            type
                         }
                         fields {
                             slug
@@ -62,7 +63,9 @@ exports.createPages = ({ actions, graphql }) => {
         if (result.errors) {
             return Promise.reject(result.errors)
         }
-        const posts = result.data.allMarkdownRemark.edges
+        const posts = result.data.allMarkdownRemark.edges.filter(
+            ({ node }) => node.frontmatter.type == 'chapter'
+        )
         posts.forEach(({ node }) => {
             createPage({
                 path: replacePath(node.fields.slug),
