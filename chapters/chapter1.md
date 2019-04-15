@@ -11,7 +11,8 @@ type: chapter
 
 <exercise id="1" title="Introduction to spaCy" type="slides">
 
-<slides source="chapter1_01_introduction-to-spacy"></slides>
+<slides source="chapter1_01_introduction-to-spacy">
+</slides>
 
 </exercise>
 
@@ -109,7 +110,8 @@ To get the token at a certain index, you can index into the `doc`. For example,
 
 <exercise id="5" title="Statistical models" type="slides">
 
-<slides source="chapter1_02_statistical-models"></slides>
+<slides source="chapter1_02_statistical-models">
+</slides>
 
 </exercise>
 
@@ -119,28 +121,36 @@ What's **not** included in a model package that you can load into spaCy?
 
 <!-- TODO -->
 
-`@possible_answers`
+<choice>
+<opt text="A meta file including the language, pipeline and license.">
 
-- A meta file including the language, pipeline and license.
-- Binary weights to make statistical predictions.
-- [The labelled data that the model was trained on.]
-- Strings of the model's vocabulary and their hashes.
+All models include a `meta.json` that defines the language to initialize, the
+pipeline component names to load as well as general meta information like the
+model name, version, license, data sources, author and accuracy figures (if
+available).
 
-`@feedback`
+</opt>
+<opt text="Binary weights to make statistical predictions.">
 
-- All models include a `meta.json` that defines the language to initialize, the
-  pipeline component names to load as well as general meta information like the
-  model name, version, license, data sources, author and accuracy figures (if
-  available).
-- To predict linguistic annotations like part-of-speech tags, dependency labels
-  or named entities, models include binary weights.
-- [That's correct! Statistical models allow you to generalize based on a set of
-  training examples. Once they're trained, they use binary weights to make
-  predictions. That's why it's not necessary to ship them with their training
-  data.]
-- Model packages include a `strings.json` that stores the entries in the model's
-  vocabulary and the mapping to hashes. This allows spaCy to only communicate in
-  hashes and look up the corresponding string if needed.
+To predict linguistic annotations like part-of-speech tags, dependency labels or
+named entities, models include binary weights.
+
+</opt>
+<opt correct="true" text="The labelled data that the model was trained on.">
+
+Statistical models allow you to generalize based on a set of training examples.
+Once they're trained, they use binary weights to make predictions. That's why
+it's not necessary to ship them with their training data.
+
+</opt>
+<opt text="Strings of the model's vocabulary and their hashes.">
+
+Model packages include a `strings.json` that stores the entries in the model's
+vocabulary and the mapping to hashes. This allows spaCy to only communicate in
+hashes and look up the corresponding string if needed.
+
+</opt>
+</choice>
 
 </exercise>
 
@@ -220,7 +230,8 @@ a look at an example.
 
 <exercise id="10" title="Rule-based matching" type="slides">
 
-<slides source="chapter1_03_rule-based-matching"></slides>
+<slides source="chapter1_03_rule-based-matching">
+</slides>
 
 </exercise>
 

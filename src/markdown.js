@@ -5,6 +5,7 @@ import Exercise from './components/exercise'
 import CodeBlock from './components/code'
 import Link from './components/link'
 import Slides from './components/slides'
+import Choice, { Option } from './components/choice'
 import { H3, Hr, Ul, Li, InlineCode } from './components/typography'
 
 export const renderAst = new rehypeReact({
@@ -13,6 +14,8 @@ export const renderAst = new rehypeReact({
         exercise: Exercise,
         slides: Slides,
         codeblock: CodeBlock,
+        choice: Choice,
+        opt: Option,
         a: Link,
         hr: Hr,
         h3: H3,

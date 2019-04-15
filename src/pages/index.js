@@ -21,7 +21,11 @@ export default ({ data }) => {
                             {title}
                         </Link>
                     </h2>
-                    <p className={classes.chapterDesc}>{description}</p>
+                    <p className={classes.chapterDesc}>
+                        <Link hidden to={slug}>
+                            {description}
+                        </Link>
+                    </p>
                 </section>
             ))}
         </Layout>
@@ -30,7 +34,10 @@ export default ({ data }) => {
 
 export const pageQuery = graphql`
     {
-        allMarkdownRemark(filter: { frontmatter: { type: { eq: "chapter" } } }) {
+        allMarkdownRemark(
+            sort: { fields: [frontmatter___title], order: ASC }
+            filter: { frontmatter: { type: { eq: "chapter" } } }
+        ) {
             edges {
                 node {
                     fields {

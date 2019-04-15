@@ -1,6 +1,7 @@
 import React, { useRef, useCallback, useContext, useEffect } from 'react'
 import classNames from 'classnames'
 
+import Button from './button'
 import { ChapterContext } from '../context'
 import iconSlides from '../images/icon_slides.svg'
 import classes from '../styles/exercise.module.sass'
@@ -31,15 +32,17 @@ const Exercise = ({ id, title, type, children }) => {
         <section ref={excRef} id={id} className={rootClassNames}>
             <h2 className={titleClassNames} onClick={handleExpand}>
                 {title}
-                {type === "slides" && <img alt="" width={28} height={28} className={classes.icon} src={iconSlides} />}
+                {type === 'slides' && (
+                    <img alt="" width={28} height={28} className={classes.icon} src={iconSlides} />
+                )}
             </h2>
             {isExpanded && (
                 <div>
                     {children}
                     <footer className={classes.footer}>
-                        <button className={classes.button} onClick={handleNext}>
+                        <Button onClick={handleNext} variant="secondary" small>
                             Next
-                        </button>
+                        </Button>
                     </footer>
                 </div>
             )}

@@ -224,19 +224,12 @@ class Juniper extends React.Component {
                         this.inputRef = x
                     }}
                 />
-                <button className={this.props.classNames.button} onClick={this.state.runCode}>
-                    {this.props.msgButton}
-                </button>
+                {this.props.msgButton && (
+                    <button className={this.props.classNames.button} onClick={this.state.runCode}>
+                        {this.props.msgButton}
+                    </button>
+                )}
                 {this.props.actions && this.props.actions({ runCode: this.state.runCode })}
-                {/* <button
-                    onClick={() => this.state.runCustom('print("hello!")')}
-                    className={classNames(
-                        this.props.classNames.button,
-                        this.props.classNames.buttonPrimary
-                    )}
-                >
-                    Submit
-                </button> */}
                 <div
                     ref={x => {
                         this.outputRef = x

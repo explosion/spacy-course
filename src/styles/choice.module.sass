@@ -1,0 +1,37 @@
+.input
+    display: none
+
+.label
+    cursor: pointer
+
+    &:before
+        content: ""
+        width: 20px
+        height: 20px
+        display: inline-block
+        border: 2px solid var(--color-theme)
+        border-radius: 50%
+        vertical-align: middle
+        margin-right: 1rem
+
+    input[type="radio"]:checked + &:before
+        border-width: 7px
+
+.answer
+    padding: 2rem
+    border-radius: var(--border-radius)
+    background: var(--color-incorrect-light)
+    margin-bottom: 2rem
+
+    p
+        margin-bottom: 0
+        display: inline
+
+.correct
+    background: var(--color-correct-light)
+
+.answer-label
+    color: var(--color-incorrect-dark)
+
+.answer-label-correct
+    color: var(--color-correct-dark)

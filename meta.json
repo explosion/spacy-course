@@ -7,7 +7,7 @@
     "email": "ines@explosion.ai",
     "source": "ines/spacy-course",
     "fonts": "IBM+Plex+Mono:500|IBM+Plex+Sans:700|Lato:400,400i,700,700i",
-    "testTemplate": "from wasabi import Printer\n___msg___ = Printer()\n___solution___ = \"\"\"${solution}\"\"\"\n\n${solution}\n\n${test}\n\ntest()",
+    "testTemplate": "from wasabi import Printer\n__msg__ = Printer()\n__solution__ = \"\"\"${solution}\"\"\"\n\n${solution}\n\n${test}\n\ntest()",
     "juniper": {
         "repo": "ines/spacy-io-binder",
         "branch": "live",

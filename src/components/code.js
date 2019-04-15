@@ -3,6 +3,7 @@ import { StaticQuery, graphql } from 'gatsby'
 import classNames from 'classnames'
 
 import Hint from './hint'
+import Button from './button'
 
 import classes from '../styles/code.module.sass'
 
@@ -16,9 +17,7 @@ function getFiles({ allCode }) {
 }
 
 function makeTest(template, testFile, solution) {
-    return template
-        .replace(/\${solution}/g, solution)
-        .replace(/\${test}/g, testFile)
+    return template.replace(/\${solution}/g, solution).replace(/\${test}/g, testFile)
 }
 
 class CodeBlock extends React.Component {
@@ -96,21 +95,25 @@ class CodeBlock extends React.Component {
                     return (
                         <div className={classes.root}>
                             <Juniper
-                                msgButton="Run code"
+                                msgButton={null}
                                 classNames={juniperClassNames}
                                 repo={repo}
                                 branch={branch}
                                 kernelType={kernelType}
                                 actions={({ runCode }) => (
-                                    <button
-                                        onClick={() => runCode(value => makeTest(testTemplate, testFile, value))}
-                                        className={classNames(
-                                            classes.button,
-                                            classes.buttonPrimary
-                                        )}
-                                    >
-                                        Submit
-                                    </button>
+                                    <>
+                                        <Button onClick={runCode}>Run Code</Button>
+                                        <Button
+                                            variant="primary"
+                                            onClick={() =>
+                                                runCode(value =>
+                                                    makeTest(testTemplate, testFile, value)
+                                                )
+                                            }
+                                        >
+                                            Submit
+                                        </Button>
+                                    </>
                                 )}
                             >
                                 {showSolution ? solutionFile : sourceFile}
