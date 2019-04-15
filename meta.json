@@ -1,0 +1,14 @@
+{
+    "title": "spaCy course",
+    "description": "...",
+    "siteUrl": "https://spacy-course.netlify.com",
+    "twitter": "spacy_io",
+    "github": "spaCy",
+    "email": "ines@explosion.ai",
+    "source": "ines/spacy-course",
+    "juniper": {
+        "repo": "ines/spacy-io-binder",
+        "kernelType": "python3"
+    },
+    "theme": "#09a3d5"
+}

@@ -1,0 +1,55 @@
+{
+    "name": "spacy-course",
+    "private": true,
+    "description": "spaCy course",
+    "version": "0.0.1",
+    "author": "Ines Montani <ines@explosion.ai>",
+    "dependencies": {
+        "@jupyterlab/outputarea": "^0.19.1",
+        "@jupyterlab/rendermime": "^0.19.1",
+        "@phosphor/widgets": "^1.6.0",
+        "codemirror": "^5.43.0",
+        "autoprefixer": "^9.4.7",
+        "classnames": "^2.2.6",
+        "gatsby": "^2.1.4",
+        "gatsby-image": "^2.0.29",
+        "gatsby-plugin-manifest": "^2.0.17",
+        "gatsby-plugin-offline": "^2.0.23",
+        "gatsby-plugin-react-helmet": "^3.0.6",
+        "gatsby-plugin-sass": "^2.0.10",
+        "gatsby-plugin-sharp": "^2.0.29",
+        "gatsby-plugin-sitemap": "^2.0.5",
+        "gatsby-remark-autolink-headers": "^2.0.16",
+        "gatsby-remark-copy-linked-files": "^2.0.9",
+        "gatsby-remark-images": "^3.0.4",
+        "gatsby-remark-prismjs": "^3.2.4",
+        "gatsby-remark-smartypants": "^2.0.8",
+        "gatsby-remark-unwrap-images": "^1.0.1",
+        "gatsby-source-filesystem": "^2.0.20",
+        "gatsby-transformer-remark": "^2.2.5",
+        "gatsby-transformer-sharp": "^2.1.17",
+        "juniper-js": "^0.1.0",
+        "node-sass": "^4.11.0",
+        "prismjs": "^1.15.0",
+        "react": "^16.8.2",
+        "react-dom": "^16.8.2",
+        "react-helmet": "^5.2.0",
+        "rehype-react": "^3.1.0",
+        "remark-react": "^5.0.1"
+    },
+    "scripts": {
+        "build": "gatsby build",
+        "dev": "gatsby develop",
+        "lint": "eslint **",
+        "clear": "rm -rf .cache",
+        "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
+    },
+    "devDependencies": {
+        "browser-monads": "^1.0.0",
+        "prettier": "^1.16.4"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ines/spacy-course"
+    }
+}
