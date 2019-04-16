@@ -6,9 +6,10 @@ The front-end is powered by [Gatsby](http://gatsbyjs.org/) and
 
 ## ✨ Features
 
-- Content is fully Markdown-based with custom elements.
+- Allows authoring content in 100% Markdown with custom elements.
 - Supports **slides**, **interactive code exercises** and **multiple-choice
   questions**.
+- Executes code live and validates user submissions with tests functions.
 - Uses the `localStorage` to keep track of which exercises were already (marked
   as) completed.
 
