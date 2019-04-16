@@ -9,19 +9,26 @@
     margin-top: 7rem
     margin-bottom: 7rem
 
-.ul
+.ul,
+.ol
     margin-bottom: 3rem
 
 .li
     margin-left: 2rem
 
 .code
-    background: var(--color-subtle-light)
+    background: var(--color-background-code)
     padding: 2px 5px
     border-radius: var(--border-radius)
 
-\:global
-    p code, li code
+    pre &
         background: var(--color-subtle-light)
+
+\:global
+    pre code
+        background: var(--color-subtle-light)
+
+    p code, li code
+        background: var(--color-background-code)
         padding: 2px 5px
         border-radius: var(--border-radius)

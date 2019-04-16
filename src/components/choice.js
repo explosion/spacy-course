@@ -35,7 +35,10 @@ const Choice = ({ children = [] }) => {
             {options.map(({ key, props }, i) => {
                 const isCorrect = !!props.correct
                 return answer === i ? (
-                    <div className={classNames(classes.answer, { [classes.correct]: isCorrect })}>
+                    <div
+                        key={key}
+                        className={classNames(classes.answer, { [classes.correct]: isCorrect })}
+                    >
                         <strong
                             className={classNames(classes.answerLabel, {
                                 [classes.answerLabelCorrect]: isCorrect,

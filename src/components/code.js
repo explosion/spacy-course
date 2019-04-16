@@ -94,7 +94,6 @@ class CodeBlock extends React.Component {
                     const { testTemplate } = data.site.siteMetadata
                     const { repo, branch, kernelType } = data.site.siteMetadata.juniper
                     const files = getFiles(data)
-                    // TODO: validation
                     const sourceFile = files[sourceId]
                     const solutionFile = files[solutionId]
                     const testFile = files[testId]
@@ -109,16 +108,18 @@ class CodeBlock extends React.Component {
                                 actions={({ runCode }) => (
                                     <>
                                         <Button onClick={() => runCode()}>Run Code</Button>
-                                        <Button
-                                            variant="primary"
-                                            onClick={() =>
-                                                runCode(value =>
-                                                    makeTest(testTemplate, testFile, value)
-                                                )
-                                            }
-                                        >
-                                            Submit
-                                        </Button>
+                                        {testFile && (
+                                            <Button
+                                                variant="primary"
+                                                onClick={() =>
+                                                    runCode(value =>
+                                                        makeTest(testTemplate, testFile, value)
+                                                    )
+                                                }
+                                            >
+                                                Submit
+                                            </Button>
+                                        )}
                                     </>
                                 )}
                             >
