@@ -4,7 +4,7 @@ import { StaticQuery, graphql } from 'gatsby'
 import SEO from './seo'
 import Link from './link'
 import { H3 } from './typography'
-import Logo from './logo'
+import Logo from '../../static/logo.svg'
 
 import '../styles/index.sass'
 import classes from '../styles/layout.module.sass'
@@ -36,7 +36,7 @@ const Layout = ({ isHome, title, description, children }) => {
                             {!isHome && (
                                 <h1 className={classes.logo}>
                                     <Link hidden to="/">
-                                        <Logo width={150} label={meta.title} />
+                                        <Logo width={150} height={54} aria-label={meta.title} />
                                     </Link>
                                 </h1>
                             )}

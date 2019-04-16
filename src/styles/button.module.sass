@@ -2,14 +2,14 @@
     border: 0
     background: var(--color-button-secondary)
     color: var(--color-button-secondary-contrast)
-    padding: 1rem 1.5rem
+    padding: 0.75rem 1rem
     font-family: var(--font-primary)
-    font-size: var(--font-size-md)
+    font-size: var(--font-size-sm)
     font-weight: bold
     border-radius: var(--border-radius)
     margin-top: 3rem
-    margin-bottom: 2rem
-    margin-left: 2rem
+    margin-bottom: 2.25rem
+    margin-left: 2.5rem
     transition: opacity 0.2s ease
     box-shadow: 0 0 3px var(--color-subtle-medium)
 
@@ -29,3 +29,36 @@
     padding: 0.75rem 1rem
     margin: 0
     font-size: var(--font-size-sm)
+
+    &:not(:last-child)
+        margin-right: 1rem
+
+.complete-icon
+    position: relative
+    top: 0.15rem
+    margin-right: 0.5rem
+
+.complete-inactive
+    &:hover
+        opacity: 1
+        background: var(--color-button-primary)
+        color: var(--color-button-primary-contrast)
+
+.complete-active
+    background: var(--color-button-primary)
+    color: var(--color-button-primary-contrast)
+
+    &:hover
+        opacity: 1
+        background: var(--color-button-danger)
+        color: var(--color-button-danger-contrast)
+
+.complete-label
+    .root:hover &
+        display: none
+
+.complete-label-hover
+    display: none
+
+    .root:hover &
+        display: inline

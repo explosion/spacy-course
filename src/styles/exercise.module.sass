@@ -4,7 +4,6 @@
     padding: 1rem 2rem
     border: 1px solid var(--color-subtle-medium)
     border-radius: var(--border-radius)
-    counter-increment: title
     margin: 0 auto 2rem
     position: relative
     background: var(--color-back)
@@ -15,24 +14,31 @@
 .expanded
     box-shadow: 0 0 10px var(--color-subtle-medium)
 
+.completed
+    color: var(--color-subtle-dark)
+    background: var(--color-subtle-light)
+
 .title
     cursor: pointer
     user-select: none
     font-size: var(--font-size-lg)
     font-family: var(--font-display)
 
-    &:before
-        content: counter(title)
-        background: var(--color-theme)
-        color: var(--color-theme-contrast)
-        font-size: 0.8em
-        width: 1.75em
-        height: 1.75em
-        display: inline-flex
-        border-radius: 50%
-        justify-content: center
-        align-items: center
-        margin-right: 1rem
+.id
+    background: var(--color-theme)
+    color: var(--color-theme-contrast)
+    font-size: 0.8em
+    width: 1.75em
+    height: 1.75em
+    display: inline-flex
+    border-radius: 50%
+    justify-content: center
+    align-items: center
+    margin-right: 1rem
+
+.id-completed
+    background: var(--color-button-primary)
+    color: var(--color-button-primary-contrast)
 
 .title-expanded
     margin-bottom: 3rem

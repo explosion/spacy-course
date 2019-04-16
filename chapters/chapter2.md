@@ -8,6 +8,7 @@ description:
 prev: /chapter1
 next: /chapter3
 type: chapter
+id: 2
 ---
 
 <exercise id="1" title="Data Structures (1)" type="slides">

@@ -7,6 +7,7 @@ description:
 prev: null
 next: /chapter2
 type: chapter
+id: 1
 ---
 
 <exercise id="1" title="Introduction to spaCy" type="slides">
