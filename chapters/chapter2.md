@@ -5,8 +5,8 @@ description:
   from large volumes of text. You''ll learn how to make the most of spaCy''s
   data structures, and how to effectively combine statistical and rule-based
   approaches for text analysis."
-prev: chapter-1
-next: chapter-3
+prev: /chapter1
+next: /chapter3
 type: chapter
 ---
 

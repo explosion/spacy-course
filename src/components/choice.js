@@ -8,7 +8,7 @@ const Choice = ({ children = [] }) => {
     const [selected, setSelected] = useState(null)
     const [answer, setAnswer] = useState(null)
     const handleAnswer = useCallback(() => setAnswer(selected), [selected])
-    const options = children.filter(child => child != '\n')
+    const options = children.filter(child => child !== '\n')
     return (
         <>
             {options.map(({ key, props }, i) => (

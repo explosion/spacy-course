@@ -3,17 +3,20 @@ import { graphql } from 'gatsby'
 
 import Layout from '../components/layout'
 import Link from '../components/link'
+import Logo from '../components/logo'
 
 import classes from '../styles/index.module.sass'
 
 export default ({ data }) => {
+    const siteMetadata = data.site.siteMetadata
     const chapters = data.allMarkdownRemark.edges.map(({ node }) => ({
         slug: node.fields.slug,
         title: node.frontmatter.title,
         description: node.frontmatter.description,
     }))
     return (
-        <Layout>
+        <Layout isHome>
+            <Logo className={classes.logo} label={siteMetadata.title} />
             {chapters.map(({ slug, title, description }) => (
                 <section key={slug} className={classes.chapter}>
                     <h2 className={classes.chapterTitle}>
@@ -34,6 +37,11 @@ export default ({ data }) => {
 
 export const pageQuery = graphql`
     {
+        site {
+            siteMetadata {
+                title
+            }
+        }
         allMarkdownRemark(
             sort: { fields: [frontmatter___title], order: ASC }
             filter: { frontmatter: { type: { eq: "chapter" } } }

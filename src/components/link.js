@@ -4,11 +4,12 @@ import classNames from 'classnames'
 
 import classes from '../styles/link.module.sass'
 
-const Link = ({ children, to, href, onClick, hidden, className, ...other }) => {
+const Link = ({ children, to, href, onClick, variant, hidden, className, ...other }) => {
     const dest = to || href
     const external = /(http(s?)):\/\//gi.test(dest)
     const linkClassNames = classNames(classes.root, className, {
         [classes.hidden]: hidden,
+        [classes.secondary]: variant === 'secondary',
     })
 
     if (!external) {

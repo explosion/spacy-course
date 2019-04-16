@@ -1,6 +1,5 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
-import classNames from 'classnames'
 
 import Hint from './hint'
 import Button from './button'

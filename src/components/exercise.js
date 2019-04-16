@@ -3,7 +3,7 @@ import classNames from 'classnames'
 
 import Button from './button'
 import { ChapterContext } from '../context'
-import iconSlides from '../images/icon_slides.svg'
+import iconSlides from '../icons/icon_slides.svg'
 import classes from '../styles/exercise.module.sass'
 
 const Exercise = ({ id, title, type, children }) => {

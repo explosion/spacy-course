@@ -1,30 +1,24 @@
 .root
     width: 100%
-    padding-top: 6rem
 
 .content
     margin-bottom: 4rem
-    padding: 1rem
+    padding: 6rem 1rem 1rem
 
-.topbar
-    background: var(--color-theme)
-    color: var(--color-theme-contrast)
+.logo
+    color: var(--color-theme)
     position: absolute
-    top: 0
-    left: 0
-    width: 100%
-    padding: 0.75rem 1rem
-    margin-bottom: 2rem
-    z-index: 10
+    top: 2rem
+    left: 2rem
 
-.page-title
-    font-size: var(--font-size-md)
-    font-family: var(--font-display)
+@media(min-width: 1200px)
+    .logo
+        position: fixed
 
 .header
     width: var(--width-container)
     max-width: 100%
-    margin: 0 auto 4.5rem
+    margin: 5rem auto
 
 .title
     font-size: var(--font-size-xl)
@@ -42,3 +36,39 @@
     width: var(--width-container)
     margin: 0 auto
     font-size: var(--font-size-sm)
+    justify-content: space-between
+    flex-flow: row wrap
+
+@media(min-width: 900px)
+    .footer-content
+        display: flex
+
+.footer-section
+    flex: 0 0 48%
+    padding: 0 2rem
+    margin-bottom: 1rem
+
+.footer-links
+    flex: 0 0 100%
+    padding-top: 2rem
+    font-size: var(--font-size-xs)
+    text-align: center
+    color: var(--color-subtle-dark)
+
+.footer-link
+    display: inline
+
+    &:not(:last-child)
+        margin-right: 1rem
+
+        &:after
+            content: "\b7"
+            margin-left: 1rem
+
+.profile
+    width: var(--size-profile-pic)
+    height: var(--size-profile-pic)
+    border-radius: 50%
+    float: right
+    margin: 0 0 1rem 1rem
+    shape-outside: circle()

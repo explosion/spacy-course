@@ -5,7 +5,7 @@ description:
   You'll learn about the data structures, how to work with statistical models,
   and how to use them to predict linguistic features in your text."
 prev: null
-next: chapter-2
+next: /chapter2
 type: chapter
 ---
 
