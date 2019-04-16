@@ -102,7 +102,7 @@ class CodeBlock extends React.Component {
                                 kernelType={kernelType}
                                 actions={({ runCode }) => (
                                     <>
-                                        <Button onClick={runCode}>Run Code</Button>
+                                        <Button onClick={() => runCode()}>Run Code</Button>
                                         <Button
                                             variant="primary"
                                             onClick={() =>

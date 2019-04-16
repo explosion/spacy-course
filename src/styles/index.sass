@@ -122,18 +122,18 @@ p
 
 /* Code */
 
-.gatsby-highlight pre
-    background: var(--color-back)
-    padding: 2rem
-    background: var(--color-subtle-light)
-    overflow-x: auto
-    margin-bottom: 4rem
-
 pre, code
     font-family: var(--font-code)
     font-weight: 500
     font-size: 1.25rem
     line-height: var(--line-height)
+
+pre
+    margin-bottom: 3rem
+
+pre code
+    display: block
+    padding: 2rem !important
 
 /* Syntax highlighting */
 
@@ -142,6 +142,7 @@ pre, code
     font-size: var(--font-size-sm)
     background: var(--syntax-background)
     color: var(--syntax-text)
+    word-wrap: break-word
 
     .CodeMirror-line
         padding: 0

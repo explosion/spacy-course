@@ -10,9 +10,9 @@ const Choice = ({ children = [] }) => {
     const handleAnswer = useCallback(() => setAnswer(selected), [selected])
     const options = children.filter(child => child != '\n')
     return (
-        <div className={classes.root}>
+        <>
             {options.map(({ key, props }, i) => (
-                <div key={key} className={classes.option}>
+                <p key={key} className={classes.option}>
                     <input
                         className={classes.input}
                         name="choice"
@@ -22,10 +22,12 @@ const Choice = ({ children = [] }) => {
                         checked={selected === i}
                         onChange={() => setSelected(i)}
                     />
-                    <label className={classes.label} htmlFor={`choice-${i}`}>
-                        {props.text}
-                    </label>
-                </div>
+                    <label
+                        className={classes.label}
+                        htmlFor={`choice-${i}`}
+                        dangerouslySetInnerHTML={{ __html: `<span>${props.text}</span>` }}
+                    />
+                </p>
             ))}
             <Button variant="primary" onClick={handleAnswer}>
                 Submit
@@ -45,7 +47,7 @@ const Choice = ({ children = [] }) => {
                     </div>
                 ) : null
             })}
-        </div>
+        </>
     )
 }
 

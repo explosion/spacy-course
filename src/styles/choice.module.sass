@@ -1,18 +1,25 @@
+.option
+    margin-bottom: 0.5rem
+    margin-left: 1rem
+
 .input
     display: none
 
 .label
     cursor: pointer
+    display: flex
+    align-items: flex-start
 
     &:before
         content: ""
+        flex: 0 0 20px
         width: 20px
         height: 20px
         display: inline-block
         border: 2px solid var(--color-theme)
         border-radius: 50%
-        vertical-align: middle
         margin-right: 1rem
+        margin-top: 0.5rem
 
     input[type="radio"]:checked + &:before
         border-width: 7px

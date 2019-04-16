@@ -119,8 +119,6 @@ To get the token at a certain index, you can index into the `doc`. For example,
 
 What's **not** included in a model package that you can load into spaCy?
 
-<!-- TODO -->
-
 <choice>
 <opt text="A meta file including the language, pipeline and license.">
 
