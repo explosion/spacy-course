@@ -1,8 +1,8 @@
 {
     "title": "Advanced NLP with spaCy",
-    "description": "If you're working with a lot of text, you'll eventually want to know more about it. For example, what's it about? What do the words mean in context? Who is doing what to whom? What companies and products are mentioned? Which texts are similar to each other? In this course, you'll learn how to use spaCy, a fast-growing industry standard library for NLP in Python, to build advanced natural language understanding systems, using both rule-based and machine learning approaches.",
-    "infoCourse": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac interdum elit. Quisque sagittis, orci vel iaculis egestas, turpis nisi ullamcorper eros, ut imperdiet erat turpis at nibh. In vulputate posuere urna, at euismod purus finibus nec. Sed sed augue ligula. Nulla nec aliquam nisi, nec tincidunt dolor. Nulla laoreet elit a lacinia sodales. Pellentesque rhoncus est nec consectetur pretium.",
-    "infoInstructor": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac interdum elit. Quisque sagittis, orci vel iaculis egestas, turpis nisi ullamcorper eros, ut imperdiet erat turpis at nibh. In vulputate posuere urna, at euismod purus finibus nec. Sed sed augue ligula. Nulla nec aliquam nisi, nec tincidunt dolor. Nulla laoreet elit a lacinia sodales. Pellentesque rhoncus est nec consectetur pretium.",
+    "slogan": "A free online course",
+    "description": "In this course, you'll learn how to use spaCy, a fast-growing industry standard library for NLP in Python, to build advanced natural language understanding systems, using both rule-based and machine learning approaches.",
+    "bio": "I'm Ines, and I'm one of the core developers of spaCy and the co-founder of Explosion. I specialise in applications and developer tools for AI, Machine Learning and Natural Language Processing technologies.",
     "siteUrl": "https://spacy-course.netlify.com",
     "twitter": "spacy_io",
     "fonts": "IBM+Plex+Mono:500|IBM+Plex+Sans:700|Lato:400,400i,700,700i",

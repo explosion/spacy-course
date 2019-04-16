@@ -8,9 +8,11 @@ const SEO = ({ title, description }) => (
         render={data => {
             const lang = 'en'
             const siteMetadata = data.site.siteMetadata
-            const pageTitle = title ? `${title} · ${siteMetadata.title}` : siteMetadata.title
+            const pageTitle = title
+                ? `${title} · ${siteMetadata.title}`
+                : `${siteMetadata.title} · ${siteMetadata.slogan}`
             const pageDesc = description || siteMetadata.description
-            const image = null // TODO: siteMetadata.siteUrl + socialImage
+            const image = `${siteMetadata.siteUrl}social.jpg`
             const meta = [
                 {
                     name: 'description',

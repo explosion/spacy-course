@@ -17,8 +17,8 @@ const Layout = ({ isHome, title, description, children }) => {
                     site {
                         siteMetadata {
                             title
-                            infoCourse
-                            infoInstructor
+                            description
+                            bio
                             footerLinks {
                                 text
                                 url
@@ -56,13 +56,13 @@ const Layout = ({ isHome, title, description, children }) => {
                                 <div className={classes.footerContent}>
                                     <section className={classes.footerSection}>
                                         <H3>About this course</H3>
-                                        <p>{meta.infoCourse}</p>
+                                        <p>{meta.description}</p>
                                     </section>
 
                                     <section className={classes.footerSection}>
                                         <H3>About me</H3>
                                         <img src="profile.jpg" alt="" className={classes.profile} />
-                                        <p>{meta.infoInstructor}</p>
+                                        <p>{meta.bio}</p>
                                     </section>
 
                                     {meta.footerLinks && (
