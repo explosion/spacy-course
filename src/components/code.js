@@ -20,10 +20,15 @@ function makeTest(template, testFile, solution) {
 }
 
 class CodeBlock extends React.Component {
-    state = { Juniper: null, showSolution: false }
+    state = { Juniper: null, showSolution: false, key: 0 }
 
     handleShowSolution() {
         this.setState({ showSolution: true })
+    }
+
+    handleReset() {
+        // Using the key as a hack to force component to rerender
+        this.setState({ showSolution: false, key: this.state.key + 1 })
     }
 
     updateJuniper() {
@@ -48,15 +53,17 @@ class CodeBlock extends React.Component {
         const sourceId = source || `exc_${id}`
         const solutionId = solution || `solution_${id}`
         const testId = test || `test_${id}`
-
         const juniperClassNames = {
             cell: classes.cell,
             input: classes.input,
             button: classes.button,
             output: classes.output,
         }
-        const hintActions = [{ text: 'Show solution', onClick: () => this.handleShowSolution() }]
-        // TODO: fix
+        const hintActions = [
+            { text: 'Show solution', onClick: () => this.handleShowSolution() },
+            { text: 'Reset code', onClick: () => this.handleReset() },
+        ]
+
         return !Juniper ? (
             'Loading Juniper...'
         ) : (
@@ -92,7 +99,7 @@ class CodeBlock extends React.Component {
                     const solutionFile = files[solutionId]
                     const testFile = files[testId]
                     return (
-                        <div className={classes.root}>
+                        <div className={classes.root} key={this.state.key}>
                             <Juniper
                                 msgButton={null}
                                 classNames={juniperClassNames}

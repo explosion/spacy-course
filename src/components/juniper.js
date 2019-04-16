@@ -35,10 +35,10 @@ class Juniper extends React.Component {
             const value = cm.getValue()
             this.execute(outputArea, wrapper ? wrapper(value) : value)
         }
-        const runCustom = value => this.execute(outputArea, value)
+        const setValue = value => cm.setValue(value)
         cm.setOption('extraKeys', { 'Shift-Enter': runCode })
         Widget.attach(outputArea, this.outputRef)
-        this.setState({ runCode, runCustom })
+        this.setState({ runCode, setValue })
     }
 
     log(logFunction) {
@@ -229,7 +229,7 @@ class Juniper extends React.Component {
                         {this.props.msgButton}
                     </button>
                 )}
-                {this.props.actions && this.props.actions({ runCode: this.state.runCode })}
+                {this.props.actions && this.props.actions(this.state)}
                 <div
                     ref={x => {
                         this.outputRef = x
