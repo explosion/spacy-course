@@ -44,9 +44,9 @@ of Docs, remember to call the list method around it.
 # Passing in context (1)
 
 - Setting `as_tuples=True` on `nlp.pipe` lets you pass in `(text, context)`
-  tuples{{1}}
-- Yields `(doc, context)` tuples{{2}}
-- Useful for associating metadata with the `doc`{{3}}
+  tuples
+- Yields `(doc, context)` tuples
+- Useful for associating metadata with the `doc`
 
 ```python
 data = [
@@ -141,7 +141,7 @@ text into a Doc before the pipeline components are called.
 
 # Disabling pipeline components
 
-- Use `nlp.disable_pipes` to temporarily disable one or more pipes{{1}}
+- Use `nlp.disable_pipes` to temporarily disable one or more pipes
 
 ```python
 # Disable tagger and parser

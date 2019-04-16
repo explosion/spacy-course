@@ -1,11 +1,11 @@
 ---
 title: 'Chapter 3: Processing Pipelines'
 description:
-  "This chapter will show you to everything you need to know about spaCy''s
-  processing pipeline. You''ll learn what goes on under the hood when you
-  process a text, how to write your own components and add them to the pipeline,
-  and how to use custom attributes to add your own meta data to the documents,
-  spans and tokens."
+  "This chapter will show you to everything you need to know about spaCy's
+  processing pipeline. You'll learn what goes on under the hood when you process
+  a text, how to write your own components and add them to the pipeline, and how
+  to use custom attributes to add your own meta data to the documents, spans and
+  tokens."
 prev: /chapter2
 next: /chapter4
 type: chapter
@@ -404,20 +404,29 @@ texts are quotes from famous books, and the contexts dictionaries with the keys
 <exercise id="16" title="Selective processing">
 
 In this exercise, you'll use the `nlp.make_doc` and `nlp.disable_pipes` methods
-to only run selected components when processing a text. The small English model
-is already loaded in as the `nlp` object.
+to only run selected components when processing a text.
+
+### Part 1
 
 - Rewrite the code to only tokenize the text using `nlp.make_doc`.
+
+<codeblock id="03_16_01">
+
+The `make_doc` method can be called on a text and returns a `Doc`, just like the
+`nlp` object.
+
+</codeblock>
+
+### Part 2
+
 - Disable the tagger and parser using the `nlp.disable_pipes` method.
 - Process the text and print all entities in the `doc`.
 
-<codeblock id="03_16">
+<codeblock id="03_16_02">
 
-- The `make_doc` method can be called on a text and returns a `Doc`, just like
-  the `nlp` object.
-- The `nlp.disable_pipes` method takes a variable number of arguments: the
-  string names of the pipeline components to disable. For example,
-  `nlp.disable_pipes('ner')` will disable the named entity recognizer.
+The `nlp.disable_pipes` method takes a variable number of arguments: the string
+names of the pipeline components to disable. For example,
+`nlp.disable_pipes('ner')` will disable the named entity recognizer.
 
 </codeblock>
 

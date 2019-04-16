@@ -11,7 +11,7 @@ const Hint = ({ expanded = false, actions = [], children }) => {
             <menu className={classes.actions}>
                 {children && (
                     <button className={classes.label} onClick={handleExpand}>
-                        {isExpanded ? 'Hide hint' : 'Show hint'}
+                        {isExpanded ? 'Hide hints' : 'Show hints'}
                     </button>
                 )}
                 {actions.map(({ text, onClick }, i) => (

@@ -121,7 +121,7 @@ Content goes here...
 | `source`     | string          | Name of the source file (without file extension). Defaults to `exc_${id}` if not set.        |
 | `solution`   | string          | Name of the solution file (without file extension). Defaults to `solution_${id}` if not set. |
 | `test`       | string          | Name of the test file (without file extension). Defaults to `test_${id}` if not set.         |
-| **children** | string          | Optional hints displayed when the user clicks "Show hint".                                   |
+| **children** | string          | Optional hints displayed when the user clicks "Show hints".                                  |
 
 ```markdown
 <codeblock id="02_03">
