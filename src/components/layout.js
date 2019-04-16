@@ -2,6 +2,7 @@ import React from 'react'
 
 import SEO from './seo'
 import Link from './link'
+import { H3 } from './typography'
 
 import '../styles/index.sass'
 import classes from '../styles/layout.module.sass'
@@ -27,6 +28,13 @@ const Layout = ({ pageTitle, title, description, children }) => {
                     </header>
                     {children}
                 </div>
+
+                <footer className={classes.footer}>
+                    <div className={classes.footerContent}>
+                        <H3>About this course</H3>
+                        Footer content
+                    </div>
+                </footer>
             </main>
         </>
     )
