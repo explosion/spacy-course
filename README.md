@@ -1,15 +1,18 @@
 # Advanced NLP with spaCy course
 
-The front-end is powered by [Gatsby](#) and [Reveal.js](#) and the back-end code
-execution uses [Binder](https://mybinder.org) 💖
+The front-end is powered by [Gatsby](http://gatsbyjs.org/) and
+[Reveal.js](https://revealjs.com) and the back-end code execution uses
+[Binder](https://mybinder.org) 💖
 
-## Features
+## ✨ Features
 
-- Supports slides, interactive code exercises and multiple-choice questions.
+- Content is fully Markdown-based with custom elements.
+- Supports **slides**, **interactive code exercises** and **multiple-choice
+  questions**.
 - Uses the `localStorage` to keep track of which exercises were already (marked
   as) completed.
 
-## How it works
+### How it works
 
 When building the site, Gatsby will look for `.py` files and make their contents
 available to query via GraphQL. This lets us use the raw code within the app.
@@ -26,7 +29,7 @@ be validated using `test_01_02_01.py` (if available). The user code and test are
 combined using a string template. At the moment, the `testTemplate` in the
 `meta.json` looks like this:
 
-```python
+```
 from wasabi import Printer
 __msg__ = Printer()
 __solution__ = """${solution}"""
@@ -65,7 +68,7 @@ there are too many options and we want to avoid false positives. Because the
 tests only raise `AssertionError`s, they can also potentially leak the correct
 answers in the traceback.
 
-## Usage & API
+## 🎛 Usage & API
 
 I mostly built this project for my own course, but it should be very easy to
 fork and adapt. I made sure to strictly separate the content and the app
@@ -226,7 +229,15 @@ Notes: This is a slide deck about processing pipelines.
 - Some bullet points here
 - And another bullet point
 
-<img src="image.jpg" alt="An image located in /static" />>
+<img src="image.jpg" alt="An image located in /static" />
 ```
 
-## Roadmap and todos
+## 🛣 Roadmap and todos
+
+- [ ] Add Python CI tests. Not 100% sure how this should be wired up yet – but
+      ideally, `pytest` could somehow assemble the tests just like the
+      `testTemplate` does and then run all solutions against the tests to make
+      sure there are no bugs.
+- [ ] Front-end tests. Also, if someone wants to port this over to TypeScript,
+      I'd accept the PR 😛
+- [ ] PDF slides. Since the app is using Reveal.js, this should be possible.
