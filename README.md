@@ -1,15 +1,17 @@
 # Advanced NLP with spaCy · A free online course
 
-This repo contains both an online course, as well as a modern web framework for
-building online courses with interactive code, slides and multiple-choice
-questions. In the course, you'll learn how to use [spaCy](https://spacy.io) to
-build advanced natural language understanding systems, using both rule-based and
-machine learning approaches. I originally developed the content for DataCamp,
+This repo contains both an **online course**, as well as a modern web framework
+for **building online courses** with interactive code, slides and
+multiple-choice questions. In the course, you'll learn how to use
+[spaCy](https://spacy.io) to build advanced natural language understanding
+systems, using both rule-based and machine learning approaches.
 
-one thing led to another, and I ended up putting together my own little app to
-present the exercises and content in a fun and interactive way. The front-end is
-powered by [Gatsby](http://gatsbyjs.org/) and [Reveal.js](https://revealjs.com)
-and the back-end code execution uses [Binder](https://mybinder.org) 💖
+I originally developed the content for DataCamp, but I wanted to make a free
+version so you don't have to sign up for their service. So as a little weekend
+project, I ended up putting together my own little app to present the exercises
+and content in a fun and interactive way. The front-end is powered by
+[Gatsby](http://gatsbyjs.org/) and [Reveal.js](https://revealjs.com) and the
+back-end code execution uses [Binder](https://mybinder.org) 💖
 
 _This course is mostly intended for **self-study**. Yes, you can cheat – the
 solutions are all in this repo, there's no penalty for clicking "Show hints" or
