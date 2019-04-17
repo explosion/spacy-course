@@ -1,4 +1,4 @@
-# Advanced NLP with spaCy · A free online course
+# Advanced NLP with spaCy: A free online course
 
 This repo contains both an **online course**, as well as a modern web framework
 for **building online courses** with interactive code, slides and
