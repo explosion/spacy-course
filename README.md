@@ -28,12 +28,13 @@ solutions are all in this repo, there's no penalty for clicking "Show hints" or
 **So should I not take your DataCamp course anymore?** Probably not, no.
 
 **Can I use this to build my own course?** Probably, yes! If you've been looking
-for a DIY way to publish I mostly built this framework for my course, but it
-strictly separates the content and customisations from the app source, so it
-shouldn't be difficult to fork this repo, edit the chapters, meta and theme and
-make it your own. In theory, it should also work for non-Python languages, as
-long as they're supported by Jupyter/Binder. See the "Usage & API" section below
-for more details.
+for a DIY way to publish your materials, I hope that my little framework can be
+useful. I mostly built it for my course, but it strictly separates the content
+and customisations from the app source, so it shouldn't be difficult to fork
+this repo, edit the chapters, meta and theme and make it your own. In theory, it
+should also work for non-Python languages, as long as they're supported by
+Jupyter/Binder. See the "[Usage & API](#-usage--api)" section below for more
+details.
 
 ## 🎛 Usage & API
 
@@ -43,7 +44,9 @@ functionality and source. So if you want to fork the repo and create your own
 course, you should only have to edit the chapters, exercises and `meta.json`,
 update the visual assets in `/static` and optionally adjust the theme colours.
 In theory, it should even work for languages other than Python – but I haven't
-tested this yet.
+tested this yet. You can then build your repo with
+[Binder](https://mybinder.org) and deploy it via something like
+[Netlify](https://netlify.com).
 
 ### How it works
 
@@ -53,7 +56,8 @@ Under the hood, the app uses [Binder](https://mybinder.org) to serve up an image
 with the packages dependencies, including the spaCy models. By calling into
 [JupyterLab](https://jupyterlab.readthedocs.io/en/stable/), we can then execute
 code using the active kernel. This lets you edit the code in the browser and see
-the live results.
+the live results. Also see my [`juniper`](https://github.com/ines/juniper) repo
+for more details on the implementation.
 
 To validate the code when the user hits "Submit", I'm currently using a slightly
 hacky trick. Since the Python code is sent back to the kernel as a string, we
@@ -124,15 +128,11 @@ once place. It also lets the exercises reference and load other files (e.g.
 JSON), which will be copied over into the Python environment.
 
 You can specify the binder settings like repo, branch and kernel type in the
-`"juniper"` section of the `meta.json`. Also see my
-[`juniper`](https://github.com/ines/juniper) repo for more details on the
-implementation.
-
-I'd recommend running the very first build via the interface on the
-[Binder website](https://mybinder.org), as this gives you a detailed build log
-and feedback on whether everything worked as expected. Enter your repository
-URL, click "launch" and wait for it to install the dependencies and build the
-image.
+`"juniper"` section of the `meta.json`. I'd recommend running the very first
+build via the interface on the [Binder website](https://mybinder.org), as this
+gives you a detailed build log and feedback on whether everything worked as
+expected. Enter your repository URL, click "launch" and wait for it to install
+the dependencies and build the image.
 
 ![Binder](https://user-images.githubusercontent.com/13643239/39412757-a518d416-4c21-11e8-9dad-8b4cc14737bc.png)
 

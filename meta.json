@@ -14,7 +14,8 @@
     },
     "footerLinks": [
         { "text": "spaCy Website", "url": "https://spacy.io" },
-        { "text": "Course Source", "url": "https://github.com/ines/spacy-course" },
+        { "text": "Course FAQ", "url": "https://github.com/ines/spacy-course#-faq" },
+        { "text": "Source", "url": "https://github.com/ines/spacy-course" },
         { "text": "Follow me on Twitter", "url": "https://twitter.com/_inesmontani" }
     ],
     "theme": "#09a3d5"
