@@ -1,7 +1,9 @@
 # Advanced NLP with spaCy · A free online course
 
-In this course, you'll learn how to use [spaCy](https://spacy.io) to build
-advanced natural language understanding systems, using both rule-based and
+This repo contains both an online course, as well as a modern web framework for
+building online courses with interactive code, slides and multiple-choice
+questions. In the course, you'll learn how to use [spaCy](https://spacy.io) to
+build advanced natural language understanding systems, using both rule-based and
 machine learning approaches. I originally developed it for DataCamp,
 
 one thing led to another, and I ended up putting together my own little app to
