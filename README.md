@@ -89,8 +89,30 @@ tested this yet.
 ├── src                  # Gatsby/React source, independent from content
 ├── static               # static assets like images, available in slides/chapters
 ├── meta.json            # course metadata
+├── requirements.txt     # Python dependency requirements for Binder
 └── theme.sass           # UI theme colors and settings
 ```
+
+### Setting up Binder
+
+The [`requirements.txt`](requirements.txt) at the root of the repository defines
+the packages that are installed when building it with Binder. For this course,
+I'm using the source repo as the Binder repo, as it allows to keep everything in
+once place. It also lets the exercises reference and load other files (e.g.
+JSON), which will be copied over into the Python environment.
+
+You can specify the binder settings like repo, branch and kernel type in the
+`"juniper"` section of the `meta.json`. Also see my
+[`juniper`](https://github.com/ines/juniper) repo for more details on the
+implementation.
+
+I'd recommend running the very first build via the interface on the
+[Binder website](https://mybinder.org), as this gives you a detailed build log
+and feedback on whether everything worked as expected. Enter your repository
+URL, click "launch" and wait for it to install the dependencies and build the
+image.
+
+![Binder](https://user-images.githubusercontent.com/13643239/39412757-a518d416-4c21-11e8-9dad-8b4cc14737bc.png)
 
 ### Custom Elements
 
