@@ -1,17 +1,49 @@
 # Advanced NLP with spaCy course
 
-The front-end is powered by [Gatsby](http://gatsbyjs.org/) and
-[Reveal.js](https://revealjs.com) and the back-end code execution uses
-[Binder](https://mybinder.org) 💖
+A free open-source [spaCy](https://spacy.io) course. I originally developed it
+for DataCamp,
+
+one thing led to another, and I ended up putting together my own little app to
+present the exercises and content in a fun and interactive way. The front-end is
+powered by [Gatsby](http://gatsbyjs.org/) and [Reveal.js](https://revealjs.com)
+and the back-end code execution uses [Binder](https://mybinder.org) 💖
+
+_This course is mostly intended for **self-study**. Yes, you can cheat – the
+solutions are all in this repo, there's no penalty for clicking "Show hints" or
+"Show solution", and you can mark an exercise as done when you think it's done._
 
 ## ✨ Features
 
-- Allows authoring content in 100% Markdown with custom elements.
 - Supports **slides**, **interactive code exercises** and **multiple-choice
-  questions**.
+  questions** pretty much out-of-the-box.
 - Executes code live and validates user submissions with tests functions.
+- Allows authoring content in 100% Markdown with custom elements.
 - Uses the `localStorage` to keep track of which exercises were already (marked
   as) completed.
+- Is open-source and published under the MIT license (code and framework) and CC
+  BY-NC (spaCy course materials).
+
+## 💁 FAQ
+
+**So should I not take your DataCamp course anymore?** Probably not, no.
+
+**Can I use this to build my own course?** Probably, yes! If you've been looking
+for a DIY way to publish I mostly built this framework for my course, but it
+strictly separates the content and customisations from the app source, so it
+shouldn't be difficult to fork this repo, edit the chapters, meta and theme and
+make it your own. In theory, it should also work for non-Python languages, as
+long as they're supported by Jupyter/Binder. See the "Usage & API" section below
+for more details.
+
+## 🎛 Usage & API
+
+I mostly built this project for my own course, but it should be very easy to
+fork and adapt. I made sure to strictly separate the content and the app
+functionality and source. So if you want to fork the repo and create your own
+course, you should only have to edit the chapters, exercises and `meta.json`,
+update the visual assets in `/static` and optionally adjust the theme colours.
+In theory, it should even work for languages other than Python – but I haven't
+tested this yet.
 
 ### How it works
 
@@ -69,16 +101,6 @@ there are too many options and we want to avoid false positives. Because the
 tests only raise `AssertionError`s, they can also potentially leak the correct
 answers in the traceback.
 
-## 🎛 Usage & API
-
-I mostly built this project for my own course, but it should be very easy to
-fork and adapt. I made sure to strictly separate the content and the app
-functionality and source. So if you want to fork the repo and create your own
-course, you should only have to edit the chapters, exercises and `meta.json`,
-update the visual assets in `/static` and optionally adjust the theme colours.
-In theory, it should even work for languages other than Python – but I haven't
-tested this yet.
-
 ### Directory Structure
 
 ```yaml
@@ -113,6 +135,78 @@ URL, click "launch" and wait for it to install the dependencies and build the
 image.
 
 ![Binder](https://user-images.githubusercontent.com/13643239/39412757-a518d416-4c21-11e8-9dad-8b4cc14737bc.png)
+
+### Running the app
+
+To start the local development server, install [Gatsby](https://gatsbyjs.org)
+and then all other dependencies.
+
+```bash
+npm install -g gatsby-cli  # Install Gatsby globally
+npm install                # Install dependencies
+npm run dev                # Run the development server
+```
+
+For hosting, I recommend [Netlify](https://netlify.com). It works with GitHub
+and Gatsby out-of-the-box.
+
+### File formats
+
+#### Chapters
+
+Chapters are placed in [`/chapters`](/chapters) and are Markdown files
+consisting of `<exercise>` components. They'll be turned into pages, e.g.
+`/chapter1`. In their frontmatter block at the top of the file, they need to
+specify `type: chapter`, as well as the following meta:
+
+```yaml
+---
+title: The chapter title
+description: The chapter description
+prev: /chapter1 # exact path to previous chapter or null to not show a link
+next: /chapter3 # exact path to next chapter or null to not show a link
+id: 2 # unique identifier for chapter
+type: chapter # important: this creates a standalone page from the chapter
+---
+
+```
+
+#### Slides
+
+Slides are placed in [`/slides`](/slides) and are markdown files consisting of
+slide content, separated by `---`. They need to specify the following
+frontmatter block at the top of the file:
+
+```yaml
+---
+type: slides
+---
+
+```
+
+The **first and last slide** use a special layout and will display the headline
+in the center of the slide. **Speaker notes** (in this case, the script) can be
+added at the end of a slide, prefixed by `Notes:`. They'll then be shown on the
+right next to the slides. Here's an example slides file:
+
+```markdown
+---
+type: slide
+---
+
+# Processing pipelines
+
+Notes: This is a slide deck about processing pipelines.
+
+---
+
+# Next slide
+
+- Some bullet points here
+- And another bullet point
+
+<img src="/image.jpg" alt="An image located in /static" />
+```
 
 ### Custom Elements
 
@@ -196,64 +290,6 @@ A multiple-choice option.
 | `text`       | string | The option text to be displayed. Supports inline HTML.                                         |
 | `correct`    | string | `"true"` if the option is the correct answer.                                                  |
 | **children** | string | The text to be displayed if the option is selected (explaining why it's correct or incorrect). |
-
-### File formats
-
-#### Chapters
-
-Chapters are placed in [`/chapters`](/chapters) and are Markdown files
-consisting of `<exercise>` components. They'll be turned into pages, e.g.
-`/chapter1`. In their frontmatter block at the top of the file, they need to
-specify `type: chapter`, as well as the following meta:
-
-```yaml
----
-title: The chapter title
-description: The chapter description
-prev: /chapter1 # exact path to previous chapter or null to not show a link
-next: /chapter3 # exact path to next chapter or null to not show a link
-id: 2 # unique identifier for chapter
-type: chapter # important: this creates a standalone page from the chapter
----
-
-```
-
-#### Slides
-
-Slides are placed in [`/slides`](/slides) and are markdown files consisting of
-slide content, separated by `---`. They need to specify the following
-frontmatter block at the top of the file:
-
-```yaml
----
-type: slides
----
-
-```
-
-The **first and last slide** use a special layout and will display the headline
-in the center of the slide. **Speaker notes** (in this case, the script) can be
-added at the end of a slide, prefixed by `Notes:`. They'll then be shown on the
-right next to the slides. Here's an example slides file:
-
-```markdown
----
-type: slide
----
-
-# Processing pipelines
-
-Notes: This is a slide deck about processing pipelines.
-
----
-
-# Next slide
-
-- Some bullet points here
-- And another bullet point
-
-<img src="/image.jpg" alt="An image located in /static" />
-```
 
 ## 🛣 Roadmap and todos
 
