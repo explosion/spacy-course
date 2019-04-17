@@ -1,11 +1,11 @@
 ---
 title: 'Chapter 4: Training a neural network model'
 description:
-  "This chapter will show you to everything you need to know about spaCy''s
-  processing pipeline. You''ll learn what goes on under the hood when you
-  process a text, how to write your own components and add them to the pipeline,
-  and how to use custom attributes to add your own meta data to the documents,
-  spans and tokens."
+  "In this chapter, you'll learn how to update spaCy's statistical models to
+  customize them for your use case – for example, to predict a new entity type
+  in online comments. You'll write your own training loop from scratch, and
+  understand the basics of how training works, along with tips and tricks that
+  can make your custom NLP projects more successful."
 prev: /chapter3
 next: null
 type: chapter
