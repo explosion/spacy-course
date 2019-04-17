@@ -1,8 +1,8 @@
 {
     "title": "Advanced NLP with spaCy",
     "slogan": "A free online course",
-    "description": "In this course, you'll learn how to use spaCy, a fast-growing industry standard library for NLP in Python, to build advanced natural language understanding systems, using both rule-based and machine learning approaches.",
-    "bio": "I'm Ines, and I'm one of the core developers of spaCy and the co-founder of Explosion. I specialise in applications and developer tools for AI, Machine Learning and Natural Language Processing technologies.",
+    "description": "In this course, you'll learn how to use spaCy to build advanced natural language understanding systems, using both rule-based and machine learning approaches. I originally developed the content for DataCamp, but I wanted to make a free version so you don't have to sign up for their service. As a weekend project, I ended up putting together my own little app to present the exercises and content in a fun and interactive way.",
+    "bio": "I'm Ines, and I'm one of the core developers of spaCy and the co-founder of Explosion. I specialise in applications and developer tools for AI, Machine Learning and Natural Language Processing technologies. I also really love building stuff for the web.",
     "siteUrl": "https://spacy-course.netlify.com",
     "twitter": "spacy_io",
     "fonts": "IBM+Plex+Mono:500|IBM+Plex+Sans:700|Lato:400,400i,700,700i",

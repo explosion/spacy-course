@@ -7,9 +7,9 @@ multiple-choice questions. In the course, you'll learn how to use
 systems, using both rule-based and machine learning approaches.
 
 I originally developed the content for DataCamp, but I wanted to make a free
-version so you don't have to sign up for their service. So as a little weekend
-project, I ended up putting together my own little app to present the exercises
-and content in a fun and interactive way. The front-end is powered by
+version so you don't have to sign up for their service. As a weekend project, I
+ended up putting together my own little app to present the exercises and content
+in a fun and interactive way. The front-end is powered by
 [Gatsby](http://gatsbyjs.org/) and [Reveal.js](https://revealjs.com) and the
 back-end code execution uses [Binder](https://mybinder.org) 💖
 
