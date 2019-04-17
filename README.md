@@ -17,6 +17,8 @@ _This course is mostly intended for **self-study**. Yes, you can cheat – the
 solutions are all in this repo, there's no penalty for clicking "Show hints" or
 "Show solution", and you can mark an exercise as done when you think it's done._
 
+![Netlify Status](https://api.netlify.com/api/v1/badges/2eae6a1a-d7a3-437e-a700-61e32d7d991b/deploy-status)
+
 ## ✨ Features
 
 - Supports **slides**, **interactive code exercises** and **multiple-choice
