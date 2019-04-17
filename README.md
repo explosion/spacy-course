@@ -18,6 +18,7 @@ solutions are all in this repo, there's no penalty for clicking "Show hints" or
 "Show solution", and you can mark an exercise as done when you think it's done._
 
 ![Netlify Status](https://api.netlify.com/api/v1/badges/2eae6a1a-d7a3-437e-a700-61e32d7d991b/deploy-status)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ines/spacy-course/master)
 
 ## ✨ Features
 
@@ -128,15 +129,16 @@ there are too many options and we want to avoid false positives.
 ### Directory Structure
 
 ```yaml
-├── chapters             # chapters, one Markdown file per chapter
-├── exercises            # code files, tests and assets for exercises
-├── public               # compiled site
-├── slides               # slides, one Markdown file per presentation
-├── src                  # Gatsby/React source, independent from content
-├── static               # static assets like images, available in slides/chapters
-├── meta.json            # course metadata
-├── requirements.txt     # Python dependency requirements for Binder
-└── theme.sass           # UI theme colors and settings
+├── binder
+|   └── requirements.txt  # Python dependency requirements for Binder
+├── chapters              # chapters, one Markdown file per chapter
+├── exercises             # code files, tests and assets for exercises
+├── public                # compiled site
+├── slides                # slides, one Markdown file per presentation
+├── src                   # Gatsby/React source, independent from content
+├── static                # static assets like images, available in slides/chapters
+├── meta.json             # course metadata
+└── theme.sass            # UI theme colors and settings
 ```
 
 ### Setting up Binder
