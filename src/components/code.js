@@ -32,7 +32,14 @@ class CodeBlock extends React.Component {
     }
 
     updateJuniper() {
+        // This type of stuff only really works in class components. I'm not
+        // sure why, but I've tried with function components and hooks lots of
+        // times and couldn't get it to work. So class component it is.
         if (!this.state.Juniper) {
+            // We need a dynamic import here for SSR. Juniper's dependencies
+            // include references to the global window object and I haven't
+            // managed to fix this using webpack yet. If we imported Juniper
+            // at the top level, Gatsby won't build.
             import('./juniper').then(Juniper => {
                 this.setState({ Juniper: Juniper.default })
             })
@@ -64,9 +71,7 @@ class CodeBlock extends React.Component {
             { text: 'Reset', onClick: () => this.handleReset() },
         ]
 
-        return !Juniper ? (
-            'Loading Juniper...'
-        ) : (
+        return (
             <StaticQuery
                 query={graphql`
                     {
@@ -99,32 +104,34 @@ class CodeBlock extends React.Component {
                     const testFile = files[testId]
                     return (
                         <div className={classes.root} key={this.state.key}>
-                            <Juniper
-                                msgButton={null}
-                                classNames={juniperClassNames}
-                                repo={repo}
-                                branch={branch}
-                                kernelType={kernelType}
-                                actions={({ runCode }) => (
-                                    <>
-                                        <Button onClick={() => runCode()}>Run Code</Button>
-                                        {testFile && (
-                                            <Button
-                                                variant="primary"
-                                                onClick={() =>
-                                                    runCode(value =>
-                                                        makeTest(testTemplate, testFile, value)
-                                                    )
-                                                }
-                                            >
-                                                Submit
-                                            </Button>
-                                        )}
-                                    </>
-                                )}
-                            >
-                                {showSolution ? solutionFile : sourceFile}
-                            </Juniper>
+                            {Juniper && (
+                                <Juniper
+                                    msgButton={null}
+                                    classNames={juniperClassNames}
+                                    repo={repo}
+                                    branch={branch}
+                                    kernelType={kernelType}
+                                    actions={({ runCode }) => (
+                                        <>
+                                            <Button onClick={() => runCode()}>Run Code</Button>
+                                            {testFile && (
+                                                <Button
+                                                    variant="primary"
+                                                    onClick={() =>
+                                                        runCode(value =>
+                                                            makeTest(testTemplate, testFile, value)
+                                                        )
+                                                    }
+                                                >
+                                                    Submit
+                                                </Button>
+                                            )}
+                                        </>
+                                    )}
+                                >
+                                    {showSolution ? solutionFile : sourceFile}
+                                </Juniper>
+                            )}
                             <Hint actions={hintActions}>{children}</Hint>
                         </div>
                     )

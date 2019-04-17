@@ -1,8 +1,3 @@
-import Juniper from './src/components/juniper'
-
-export const onInitialClientRender = () => {
-    // Importing Juniper in the component currently causes various problems
-    // because of the global window reference in its dependencies. So this
-    // is kinda hacky at the moment.
-    window.Juniper = Juniper
-}
+// This doesn't have to be here – but if we do import Juniper here, it's already
+// preloaded and cached when we dynamically import it in code.js.
+import Juniper from './src/components/juniper' // eslint-disable-line no-unused-vars

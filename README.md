@@ -21,6 +21,8 @@ solutions are all in this repo, there's no penalty for clicking "Show hints" or
 - Allows authoring content in 100% Markdown with custom elements.
 - Uses the `localStorage` to keep track of which exercises were already (marked
   as) completed.
+- Runs super fast thanks to Gatsby and uses all the hip and modern web stuff
+  like React Hooks, GraphQL and service workers under the hood.
 - Is open-source and published under the MIT license (code and framework) and CC
   BY-NC (spaCy course materials).
 
@@ -311,3 +313,7 @@ A multiple-choice option.
 - [ ] Front-end tests. Also, if someone wants to port this over to TypeScript,
       I'd accept the PR 😛
 - [ ] PDF slides. Since the app is using Reveal.js, this should be possible.
+- [ ] Testing it for other languages like R. I'd be really curious to see if it
+      works. We'd have to adjust the
+      [`node.extension` check here](gatsby-node.js) for other files to be
+      included via GraphQL.
