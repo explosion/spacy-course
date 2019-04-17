@@ -40,7 +40,7 @@ const SEO = ({ title, description }) => (
                 },
                 {
                     name: 'twitter:card',
-                    content: 'summary',
+                    content: 'summary_large_image',
                 },
                 {
                     name: 'twitter:image',
