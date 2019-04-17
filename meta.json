@@ -9,7 +9,7 @@
     "testTemplate": "from wasabi import Printer\n__msg__ = Printer()\n__solution__ = \"\"\"${solution}\"\"\"\n\n${solution}\n\n${test}\n\ntry:\n    test()\nexcept AssertionError as e:\n    __msg__.fail(e)",
     "juniper": {
         "repo": "ines/spacy-course",
-        "branch": "master",
+        "branch": "binder",
         "kernelType": "python3"
     },
     "footerLinks": [
