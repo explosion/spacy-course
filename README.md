@@ -37,6 +37,12 @@ should also work for non-Python languages, as long as they're supported by
 Jupyter/Binder. See the "[Usage & API](#-usage--api)" section below for more
 details.
 
+**Why the different licenses?** The source of the app, UI components and Gatsby
+framework for building interactive courses is licensed as MIT, like pretty much
+all of my open-source software. The course materials themselves (slides and
+chapters), are licensed under CC BY-NC. This means that you can use them freely
+– you just can't make money off them.
+
 ## 🎛 Usage & API
 
 I mostly built this project for my own course, but it should be very easy to
