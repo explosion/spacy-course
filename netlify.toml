@@ -1,0 +1,3 @@
+redirects = [
+    {from = "https://spacy-course.netlify.com/*", to="https://course.spacy.io/:splat", force = true }
+]
