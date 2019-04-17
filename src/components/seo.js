@@ -86,6 +86,7 @@ const query = graphql`
             siteMetadata {
                 title
                 description
+                slogan
                 siteUrl
                 twitter
                 fonts

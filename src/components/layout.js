@@ -61,7 +61,11 @@ const Layout = ({ isHome, title, description, children }) => {
 
                                     <section className={classes.footerSection}>
                                         <H3>About me</H3>
-                                        <img src="profile.jpg" alt="" className={classes.profile} />
+                                        <img
+                                            src="/profile.jpg"
+                                            alt=""
+                                            className={classes.profile}
+                                        />
                                         <p>{meta.bio}</p>
                                     </section>
 

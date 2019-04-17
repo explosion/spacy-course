@@ -68,7 +68,7 @@ over its tokens, or get a token by its index. But more on that later!
 
 # The Token object
 
-<img src="doc.png" alt="Illustration of a Doc object containing four tokens" width="50%" />
+<img src="/doc.png" alt="Illustration of a Doc object containing four tokens" width="50%" />
 
 ```python
 doc = nlp("Hello world!")
@@ -97,7 +97,7 @@ verbatim token text.
 
 # The Span object
 
-<img src="doc_span.png" width="50%" alt="Illustration of a Doc object containing four tokens and three of them wrapped in a Span" />
+<img src="/doc_span.png" width="50%" alt="Illustration of a Doc object containing four tokens and three of them wrapped in a Span" />
 
 ```python
 doc = nlp("Hello world!")
@@ -113,9 +113,12 @@ print(span.text)
 world!
 ```
 
-Notes: A Span object is a slice of the document consisting of one or more tokens. It's only a view of the Doc and doesn't contain any data itself.
+Notes: A Span object is a slice of the document consisting of one or more
+tokens. It's only a view of the Doc and doesn't contain any data itself.
 
-To create a Span, you can use Python's slice notation. For example, 1 colon 3 will create a slice starting from the token at position 1, up to – but not including! – the token at position 3.
+To create a Span, you can use Python's slice notation. For example, 1 colon 3
+will create a slice starting from the token at position 1, up to – but not
+including! – the token at position 3.
 
 ---
 
@@ -149,9 +152,13 @@ Notes: Here you can see some of the available token attributes:
 
 "text" returns the token text.
 
-"is alpha", "is punct" and "like num" return boolean values indicating whether the token consists of alphanumeric characters, whether it's punctuation or whether it *resembles* a number. For example, a token "10" – one, zero – or the word "ten" – T, E, N.
+"is alpha", "is punct" and "like num" return boolean values indicating whether
+the token consists of alphanumeric characters, whether it's punctuation or
+whether it _resembles_ a number. For example, a token "10" – one, zero – or the
+word "ten" – T, E, N.
 
-These attributes are also called lexical attributes: they refer to the entry in the vocabulary and don't depend on the token's context.
+These attributes are also called lexical attributes: they refer to the entry in
+the vocabulary and don't depend on the token's context.
 
 ---
 

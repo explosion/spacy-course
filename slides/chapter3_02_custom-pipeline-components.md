@@ -15,7 +15,7 @@ the Doc and add more data to it.
 
 # Why custom components?
 
-<img src="pipeline.png" alt="Illustration of the spaCy pipeline" width="90%" />
+<img src="/pipeline.png" alt="Illustration of the spaCy pipeline" width="90%" />
 
 - Make a function execute automatically when you call `nlp`
 - Add your own metadata to documents and tokens

@@ -103,8 +103,13 @@
         .reveal.show-notes
             max-width: 100%
 
-        .reveal .speaker-notes
+        .reveal.show-notes .speaker-notes
             width: 100%
             margin-left: 0
-            top: 125% !important
+            top: 125%
             overflow: auto
+
+    @media(max-width: 600px)
+        .reveal.show-notes .speaker-notes
+            height: auto
+            top: 100%

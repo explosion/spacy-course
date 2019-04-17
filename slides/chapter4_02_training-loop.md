@@ -41,7 +41,7 @@ We can then save the model to a directory and use it in spaCy.
 
 # Recap: How training works
 
-<img src="training.png" alt="Diagram of the training process" />
+<img src="/training.png" alt="Diagram of the training process" />
 
 - **Training data:** Examples and their annotations.
 - **Text:** The input text the model should predict a label for.

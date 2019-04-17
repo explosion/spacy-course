@@ -45,7 +45,7 @@ The Doc class takes three arguments: the shared vocab, the words and the spaces.
 
 # The Span object (1)
 
-<img src="span_indices.png" width="65%" alt="Illustration of a Span object within a Doc with token indices" />
+<img src="/span_indices.png" width="65%" alt="Illustration of a Span object within a Doc with token indices" />
 
 Notes: A Span is a slice of a Doc consisting of one or more tokens. The Span
 takes at least three arguments: the doc it refers to, and the start and end

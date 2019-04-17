@@ -252,7 +252,7 @@ Notes: This is a slide deck about processing pipelines.
 - Some bullet points here
 - And another bullet point
 
-<img src="image.jpg" alt="An image located in /static" />
+<img src="/image.jpg" alt="An image located in /static" />
 ```
 
 ## 🛣 Roadmap and todos

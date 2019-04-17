@@ -35,7 +35,7 @@ example, to perform better on your specific data.
 
 # Model Packages
 
-<img src="package.png" alt="A package with the label en_core_web_sm" width="30%" align="left" />
+<img src="/package.png" alt="A package with the label en_core_web_sm" width="30%" align="left" />
 
 ```python
 import spacy

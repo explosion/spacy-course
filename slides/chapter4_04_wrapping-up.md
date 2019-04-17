@@ -99,7 +99,7 @@ to train a statistical model.
 
 # See the website for more info and documentation!
 
-<img src="website.png" alt="Laptop showing the spacy.io website" width="50%" />
+<img src="/website.png" alt="Laptop showing the spacy.io website" width="50%" />
 
 👉 [spacy.io](https://spacy.io)
 

@@ -68,7 +68,7 @@ We continue calling nlp dot update for each batch of examples in the data.
 
 # How training works (2)
 
-<img src="training.png" alt="Diagram of the training process" />
+<img src="/training.png" alt="Diagram of the training process" />
 
 - **Training data:** Examples and their annotations.
 - **Text:** The input text the model should predict a label for.

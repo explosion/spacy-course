@@ -103,7 +103,7 @@ doc extensions with our context metadata.
 
 # Using only the tokenizer
 
-<img src="pipeline.png" width="90%" alt="Illustration of the spaCy pipeline">
+<img src="/pipeline.png" width="90%" alt="Illustration of the spaCy pipeline">
 
 - don't run the whole pipeline!
 

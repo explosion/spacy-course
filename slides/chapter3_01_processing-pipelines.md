@@ -12,7 +12,7 @@ In this video, you'll learn about the pipeline components provided by spaCy, and
 
 # What happens when you call nlp?
 
-<img src="pipeline.png" alt="Illustration of the spaCy pipeline transforming a text into a processed Doc" width="90%" />
+<img src="/pipeline.png" alt="Illustration of the spaCy pipeline transforming a text into a processed Doc" width="90%" />
 
 ```
 doc = nlp("This is a sentence.")

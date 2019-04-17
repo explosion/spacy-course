@@ -112,7 +112,7 @@ Lexemes don't have part-of-speech tags, dependencies or entity labels. Those dep
 
 # Vocab, hashes and lexemes
 
-<img src="vocab_stringstore.png" width="70%" alt="Illustration of the words 'I', 'love' and 'coffee' across the Doc, Vocab and StringStore" />
+<img src="/vocab_stringstore.png" width="70%" alt="Illustration of the words 'I', 'love' and 'coffee' across the Doc, Vocab and StringStore" />
 
 Notes: Here's an example.
 
