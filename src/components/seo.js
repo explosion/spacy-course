@@ -12,7 +12,7 @@ const SEO = ({ title, description }) => (
                 ? `${title} · ${siteMetadata.title}`
                 : `${siteMetadata.title} · ${siteMetadata.slogan}`
             const pageDesc = description || siteMetadata.description
-            const image = `${siteMetadata.siteUrl}social.jpg`
+            const image = `${siteMetadata.siteUrl}/social.jpg`
             const meta = [
                 {
                     name: 'description',
