@@ -16,7 +16,6 @@ function getFiles({ allMarkdownRemark }) {
 }
 
 function getSlideContent(data, source) {
-    // TODO: validate
     const files = getFiles(data)
     const file = files[source] || ''
     return file.split('\n---\n').map(f => f.trim())

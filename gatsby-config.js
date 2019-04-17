@@ -94,7 +94,6 @@ module.exports = {
                 icon: `static/icon.png`,
             },
         },
-        // TODO: uncomment
-        //`gatsby-plugin-offline`,
+        `gatsby-plugin-offline`,
     ],
 }
