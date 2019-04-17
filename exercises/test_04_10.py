@@ -1,7 +1,7 @@
 def test():
     assert len(TRAINING_DATA) == 4, "Training data doesn't match – expected 4 examples."
     assert all(
-        len(entry) == 2 and instanceof(entry[1], dict) for entry in TRAINING_DATA
+        len(entry) == 2 and isinstance(entry[1], dict) for entry in TRAINING_DATA
     ), "Incorrect training data format. Expected a list of tuples where the second element is a dict."
     assert all(
         entry[1].get("entities") for entry in TRAINING_DATA

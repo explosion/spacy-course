@@ -1,10 +1,11 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Link as GatsbyLink } from 'gatsby'
 import classNames from 'classnames'
 
 import classes from '../styles/link.module.sass'
 
-const Link = ({ children, to, href, onClick, variant, hidden, className, ...other }) => {
+export const Link = ({ children, to, href, onClick, variant, hidden, className, ...other }) => {
     const dest = to || href
     const external = /(http(s?)):\/\//gi.test(dest)
     const linkClassNames = classNames(classes.root, className, {
@@ -39,4 +40,12 @@ const Link = ({ children, to, href, onClick, variant, hidden, className, ...othe
     )
 }
 
-export default Link
+Link.propTypes = {
+    children: PropTypes.node.isRequired,
+    to: PropTypes.string,
+    href: PropTypes.string,
+    onClick: PropTypes.func,
+    variant: PropTypes.oneOf(['secondary', null]),
+    hidden: PropTypes.bool,
+    className: PropTypes.string,
+}

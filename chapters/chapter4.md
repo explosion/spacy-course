@@ -184,7 +184,7 @@ some of the results:
 | Samsung Galaxy is a series of mobile computing devices designed, manufactured and marketed by Samsung Electronics | `(Samsung Galaxy,)`    |
 
 Out of all the entities in the texts, **how many did the model get correct**?
-Keep in mind that incomplete entity spans count as mistakes, too! Top: Count the
+Keep in mind that incomplete entity spans count as mistakes, too! Tip: Count the
 number of entities that the model _should_ have predicted. Then count the number
 of entities it _actually_ predicted correctly and divide it by the number of
 total correct entities.
@@ -316,35 +316,47 @@ tool that integrates with spaCy.
 
 ### Part 1
 
-* Complete the entity offsets for the `WEBSITE` entities in the data. Feel free to use `len()` if you don't want to count the characters.
+- Complete the entity offsets for the `WEBSITE` entities in the data. Feel free
+  to use `len()` if you don't want to count the characters.
 
 <codeblock id="04_11_01">
 
-- The start and end offset of an entity span are the character offsets into the text. For example, if an entity starts at position 5, the start offset is `5`. Remember that the end offsets are *exclusive* – so `10` means *up to* character 10.
+- The start and end offset of an entity span are the character offsets into the
+  text. For example, if an entity starts at position 5, the start offset is `5`.
+  Remember that the end offsets are _exclusive_ – so `10` means _up to_
+  character 10.
 
 </codeblock>
 
 ### Part 2
 
-A model was trained with the data you just labelled, plus a few thousand similar examples. After training, it's doing great on `WEBSITE`, but doesn't recognize `PERSON` anymore. Why could this be happening?
+A model was trained with the data you just labelled, plus a few thousand similar
+examples. After training, it's doing great on `WEBSITE`, but doesn't recognize
+`PERSON` anymore. Why could this be happening?
 
 <choice>
 
 <opt text="It's very difficult for the model to learn about different categories like <code>PERSON</code> and <code>WEBSITE</code>.">
 
-It's definitely possible for a model to learn about very different categories. For example, spaCy's pre-trained English models can recognize persons, but also organizations or percentages.
+It's definitely possible for a model to learn about very different categories.
+For example, spaCy's pre-trained English models can recognize persons, but also
+organizations or percentages.
 
 </opt>
 
 <opt text="The training data included no examples of <code>PERSON</code>, so the model learned that this label is incorrect." correct="true">
 
-If `PERSON` entities occur in the training data but aren't labelled, the model will learn that they shouldn't be predicted. Similarly, if an existing entity type isn't present in the training data, the model may \"forget\" and stop predicting it.
+If `PERSON` entities occur in the training data but aren't labelled, the model
+will learn that they shouldn't be predicted. Similarly, if an existing entity
+type isn't present in the training data, the model may \"forget\" and stop
+predicting it.
 
 </opt>
 
 <opt text="The hyperparameters need to be retuned so that both entity types can be recognized.">
 
-While the hyperparameters can influence a model's accuracy, they're likely not the problem here.
+While the hyperparameters can influence a model's accuracy, they're likely not
+the problem here.
 
 </opt>
 
@@ -352,7 +364,8 @@ While the hyperparameters can influence a model's accuracy, they're likely not t
 
 ### Part 3
 
-* Update the training data to include annotations for the `PERSON` entities "PewDiePie" and "Alexis Ohanian".
+- Update the training data to include annotations for the `PERSON` entities
+  "PewDiePie" and "Alexis Ohanian".
 
 <codeblock id="04_11_02">
 

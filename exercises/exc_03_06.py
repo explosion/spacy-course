@@ -1,3 +1,5 @@
+import spacy
+
 # Define the custom component
 def length_component(doc):
     # Get the doc's length

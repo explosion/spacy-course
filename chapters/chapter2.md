@@ -70,7 +70,7 @@ print(nlp_de.vocab.strings[bowie_id])
 
 <choice>
 
-<opt correct="true" text="The string <code>'Bowie'</code> isn't present in the German vocab, so the hash can't be resolved in the string store.">
+<opt correct="true" text="The string <code>'Bowie'</code> isn't in the German vocab, so the hash can't be resolved in the string store.">
 
 Hashes can't be reversed. To prevent this problem, add the word to the new vocab
 by processing a text or looking up the string, or use the same vocab to resolve

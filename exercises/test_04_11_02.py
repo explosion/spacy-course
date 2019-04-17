@@ -3,7 +3,7 @@ def test():
         len(TRAINING_DATA) == 3
     ), "Looks like there's something wrong with the data. Expected 3 examples."
     assert all(
-        len(entry) == 2 and instanceof(entry[1], dict) for entry in TRAINING_DATA
+        len(entry) == 2 and isinstance(entry[1], dict) for entry in TRAINING_DATA
     ), "Incorrect training data format. Expected a list of tuples where the second element is a dict."
     ents = [entry[1].get("entities", []) for entry in TRAINING_DATA]
     assert all(len(e) == 2 for e in ents), "Expected all examples to have two entities"

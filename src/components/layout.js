@@ -2,7 +2,7 @@ import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 
 import SEO from './seo'
-import Link from './link'
+import { Link } from './link'
 import { H3 } from './typography'
 import Logo from '../../static/logo.svg'
 

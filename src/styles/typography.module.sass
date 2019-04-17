@@ -13,6 +13,19 @@
 .ol
     margin-bottom: 3rem
 
+.ol
+    list-style: none
+    counter-reset: ul
+
+    .li
+        margin-left: 0.5rem
+
+        &:before
+            margin-right: 1rem
+            font-weight: bold
+            counter-increment: ul
+            content: counter(ul) ". "
+
 .li
     margin-left: 2rem
 

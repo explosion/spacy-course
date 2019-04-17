@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react'
 
 import classes from '../styles/hint.module.sass'
 
-const Hint = ({ expanded = false, actions = [], children }) => {
+export const Hint = ({ expanded = false, actions = [], children }) => {
     const [isExpanded, setIsExpanded] = useState(expanded)
     const handleExpand = useCallback(() => setIsExpanded(!isExpanded), [isExpanded])
     return (
@@ -23,5 +23,3 @@ const Hint = ({ expanded = false, actions = [], children }) => {
         </aside>
     )
 }
-
-export default Hint

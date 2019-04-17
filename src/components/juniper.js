@@ -13,6 +13,56 @@ class Juniper extends React.Component {
     inputRef = null
     state = { content: null, cm: null, kernel: null, renderers: null, fromStorage: null }
 
+    static defaultProps = {
+        children: '',
+        branch: 'master',
+        url: 'https://mybinder.org',
+        serverSettings: {},
+        kernelType: 'python3',
+        lang: 'python',
+        theme: 'default',
+        isolateCells: true,
+        useBinder: true,
+        storageKey: 'juniper',
+        useStorage: true,
+        storageExpire: 60,
+        debug: false,
+        msgButton: 'run',
+        msgLoading: 'Loading...',
+        msgError: 'Connecting failed. Please reload and try again.',
+        classNames: {
+            cell: 'juniper-cell',
+            input: 'juniper-input',
+            button: 'juniper-button',
+            output: 'juniper-output',
+        },
+    }
+
+    static propTypes = {
+        children: PropTypes.string,
+        repo: PropTypes.string.isRequired,
+        branch: PropTypes.string,
+        url: PropTypes.string,
+        serverSettings: PropTypes.object,
+        kernelType: PropTypes.string,
+        lang: PropTypes.string,
+        theme: PropTypes.string,
+        isolateCells: PropTypes.bool,
+        useBinder: PropTypes.bool,
+        useStorage: PropTypes.bool,
+        storageExpire: PropTypes.number,
+        msgButton: PropTypes.string,
+        msgLoading: PropTypes.string,
+        msgError: PropTypes.string,
+        classNames: PropTypes.shape({
+            cell: PropTypes.string,
+            input: PropTypes.string,
+            button: PropTypes.string,
+            output: PropTypes.string,
+        }),
+        actions: PropTypes.func,
+    }
+
     componentDidMount() {
         this.setState({ content: this.props.children })
         const renderers = standardRendererFactories.filter(factory =>
@@ -239,56 +289,6 @@ class Juniper extends React.Component {
             </div>
         )
     }
-}
-
-Juniper.defaultProps = {
-    children: '',
-    branch: 'master',
-    url: 'https://mybinder.org',
-    serverSettings: {},
-    kernelType: 'python3',
-    lang: 'python',
-    theme: 'default',
-    isolateCells: true,
-    useBinder: true,
-    storageKey: 'juniper',
-    useStorage: true,
-    storageExpire: 60,
-    debug: false,
-    msgButton: 'run',
-    msgLoading: 'Loading...',
-    msgError: 'Connecting failed. Please reload and try again.',
-    classNames: {
-        cell: 'juniper-cell',
-        input: 'juniper-input',
-        button: 'juniper-button',
-        output: 'juniper-output',
-    },
-}
-
-Juniper.propTypes = {
-    children: PropTypes.string,
-    repo: PropTypes.string.isRequired,
-    branch: PropTypes.string,
-    url: PropTypes.string,
-    serverSettings: PropTypes.object,
-    kernelType: PropTypes.string,
-    lang: PropTypes.string,
-    theme: PropTypes.string,
-    isolateCells: PropTypes.bool,
-    useBinder: PropTypes.bool,
-    useStorage: PropTypes.bool,
-    storageExpire: PropTypes.number,
-    msgButton: PropTypes.string,
-    msgLoading: PropTypes.string,
-    msgError: PropTypes.string,
-    classNames: PropTypes.shape({
-        cell: PropTypes.string,
-        input: PropTypes.string,
-        button: PropTypes.string,
-        output: PropTypes.string,
-    }),
-    actions: PropTypes.func,
 }
 
 export default Juniper

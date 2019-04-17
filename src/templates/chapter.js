@@ -5,7 +5,7 @@ import useLocalStorage from '@illinois/react-use-local-storage'
 import { renderAst } from '../markdown'
 import { ChapterContext } from '../context'
 import Layout from '../components/layout'
-import Button from '../components/button'
+import { Button } from '../components/button'
 
 import classes from '../styles/chapter.module.sass'
 
@@ -16,6 +16,10 @@ const Template = ({ data }) => {
     const [activeExc, setActiveExc] = useState(null)
     const [completed, setCompleted] = useLocalStorage(`spacy-course-completed-${id}`, [])
     const html = renderAst(htmlAst)
+    const buttons = [
+        { slug: prev, text: '« Previous Chapter' },
+        { slug: next, text: 'Next Chapter »' },
+    ]
 
     return (
         <ChapterContext.Provider value={{ activeExc, setActiveExc, completed, setCompleted }}>
@@ -23,21 +27,15 @@ const Template = ({ data }) => {
                 {html}
 
                 <section className={classes.pagination}>
-                    <div>
-                        {prev && (
-                            <Button variant="secondary" small onClick={() => navigate(prev)}>
-                                &laquo; Previous Chapter
-                            </Button>
-                        )}
-                    </div>
-
-                    <div>
-                        {next && (
-                            <Button variant="secondary" small onClick={() => navigate(next)}>
-                                Next Chapter &raquo;
-                            </Button>
-                        )}
-                    </div>
+                    {buttons.map(({ slug, text }) => (
+                        <div key={slug}>
+                            {slug && (
+                                <Button variant="secondary" small onClick={() => navigate(slug)}>
+                                    {text}
+                                </Button>
+                            )}
+                        </div>
+                    ))}
                 </section>
             </Layout>
         </ChapterContext.Provider>

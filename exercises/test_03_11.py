@@ -5,7 +5,7 @@ def test():
     ext = Span.get_extension("wikipedia_url")
     assert ext[2] is not None, "Did you set the getter correctly?"
     assert (
-        "getter=wikipedia_url" in __solution__
+        "getter=get_wikipedia_url" in __solution__
     ), "Did you assign get_wikipedia_url as the getter?"
     assert (
         "(ent.text, ent._.wikipedia_url)" in __solution__

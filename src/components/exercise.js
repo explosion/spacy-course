@@ -1,7 +1,7 @@
 import React, { useRef, useCallback, useContext, useEffect } from 'react'
 import classNames from 'classnames'
 
-import Button, { CompleteButton } from './button'
+import { Button, CompleteButton } from './button'
 import { ChapterContext } from '../context'
 import IconSlides from '../../static/icon_slides.svg'
 import classes from '../styles/exercise.module.sass'

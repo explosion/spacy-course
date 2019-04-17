@@ -1,6 +1,7 @@
 import spacy
 
 nlp = spacy.load("en_core_web_sm")
+doc = nlp("I have a cat")
 
 # Look up the hash for the word "cat"
 cat_hash = ____.____.____[____]

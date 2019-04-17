@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react'
 import classNames from 'classnames'
 
-import Button from './button'
+import { Button } from './button'
 import classes from '../styles/choice.module.sass'
 
 const Choice = ({ children = [] }) => {

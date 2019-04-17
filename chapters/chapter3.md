@@ -91,10 +91,10 @@ full pipeline consisting of `(name, component)` tuples is available as
 Which of these problems can be solved by custom pipeline components? Choose all
 that apply!
 
-1. updating the pre-trained models and improving their predictions
-2. computing your own values based on tokens and their attributes
-3. adding named entities, for example based on a dictionary
-4. implementing support for an additional language
+1. Updating the pre-trained models and improving their predictions
+2. Computing your own values based on tokens and their attributes
+3. Adding named entities, for example based on a dictionary
+4. Implementing support for an additional language
 
 <choice>
 

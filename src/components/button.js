@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import IconCheck from '../../static/icon_check.svg'
 import classes from '../styles/button.module.sass'
 
-const Button = ({ Component = 'button', children, onClick, variant, small, className }) => {
+export const Button = ({ Component = 'button', children, onClick, variant, small, className }) => {
     const buttonClassNames = classNames(classes.root, className, {
         [classes.primary]: variant === 'primary',
         [classes.secondary]: variant === 'secondary',
@@ -16,8 +16,6 @@ const Button = ({ Component = 'button', children, onClick, variant, small, class
         </Component>
     )
 }
-
-export default Button
 
 export const CompleteButton = ({ completed, toggleComplete, small = true }) => {
     const buttonClassNames = classNames({

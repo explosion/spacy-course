@@ -1,7 +1,8 @@
-# Advanced NLP with spaCy course
+# Advanced NLP with spaCy · A free online course
 
-A free open-source [spaCy](https://spacy.io) course. I originally developed it
-for DataCamp,
+In this course, you'll learn how to use [spaCy](https://spacy.io) to build
+advanced natural language understanding systems, using both rule-based and
+machine learning approaches. I originally developed it for DataCamp,
 
 one thing led to another, and I ended up putting together my own little app to
 present the exercises and content in a fun and interactive way. The front-end is
@@ -73,16 +74,22 @@ __solution__ = """${solution}"""
 ${solution}
 
 ${test}
-test()
+try:
+    test()
+except AssertionError as e:
+    __msg__.fail(e)
 ```
 
 If present, `${solution}` will be replaced with the string value of the
 submitted user code. In this case, we're inserting it twice: once as a string so
 we can check whether the submission includes something, and once as the code, so
-we can actually run it and check the objects it creates. Finally, `${test}` is
-replaced by the contents of the test file. I'm also making
+we can actually run it and check the objects it creates. `${test}` is replaced
+by the contents of the test file. I'm also making
 [`wasabi`](https://github.com/ines/wasabi)'s printer available as `__msg__`, so
-we can easily print pretty messages.
+we can easily print pretty messages in the tests. Finally, the `try`/`accept`
+block checks if the test function raises an `AssertionError` and if so, displays
+the error message. This also hides the full error traceback (which can easily
+leak the correct answers).
 
 A test file could then look like this:
 
@@ -101,9 +108,7 @@ def test():
 ```
 
 With this approach, it's not _always_ possible to validate the input perfectly –
-there are too many options and we want to avoid false positives. Because the
-tests only raise `AssertionError`s, they can also potentially leak the correct
-answers in the traceback.
+there are too many options and we want to avoid false positives.
 
 ### Directory Structure
 

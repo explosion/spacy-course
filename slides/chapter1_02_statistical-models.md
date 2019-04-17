@@ -35,7 +35,7 @@ example, to perform better on your specific data.
 
 # Model Packages
 
-<img src="/package.png" alt="A package with the label en_core_web_sm" width="30%" align="left" />
+<img src="/package.png" alt="A package with the label en_core_web_sm" width="30%" align="right" />
 
 ```python
 import spacy
@@ -85,15 +85,18 @@ the DET
 pizza NOUN
 ```
 
-Notes: Let's take a look at the model's predictions. In this example, we're using spaCy to predict part-of-speech tags, the word types in context.
+Notes: Let's take a look at the model's predictions. In this example, we're
+using spaCy to predict part-of-speech tags, the word types in context.
 
 First, we load the small English model and receive an nlp object.
 
 Next, we're processing the text "She ate the pizza".
 
-For each token in the Doc, we can print the text and the "pos underscore" attribute, the predicted part-of-speech tag.
+For each token in the Doc, we can print the text and the "pos underscore"
+attribute, the predicted part-of-speech tag.
 
-In spaCy, attributes that return strings usually end with an underscore – attributes without the underscore return an ID.
+In spaCy, attributes that return strings usually end with an underscore –
+attributes without the underscore return an ID.
 
 Here, the model correctly predicted "ate" as a verb and "pizza" as a noun.
 
@@ -113,11 +116,14 @@ the DET det pizza
 pizza NOUN dobj ate
 ```
 
-Notes: In addition to the part-of-speech tags, we can also predict how the words are related. For example, whether a word is the subject of the sentence or an object.
+Notes: In addition to the part-of-speech tags, we can also predict how the words
+are related. For example, whether a word is the subject of the sentence or an
+object.
 
 The "dep underscore" attribute returns the predicted dependency label.
 
-The head attribute returns the syntactic head token. You can also think of it as the parent token this word is attached to.
+The head attribute returns the syntactic head token. You can also think of it as
+the parent token this word is attached to.
 
 ---
 
@@ -164,14 +170,17 @@ U.K. GPE
 $1 billion MONEY
 ```
 
-Notes: Named entities are "real world objects" that are assigned a name – for example, a person, an organization or a country.
+Notes: Named entities are "real world objects" that are assigned a name – for
+example, a person, an organization or a country.
 
-The doc dot ents property lets you access the named entities predicted by the model.
+The doc dot ents property lets you access the named entities predicted by the
+model.
 
-It returns an iterator of Span objects, so we can print the entity text and the entity label using the "label underscore" attribute.
+It returns an iterator of Span objects, so we can print the entity text and the
+entity label using the "label underscore" attribute.
 
-In this case, the model is correctly predicting "Apple" as an organization, "U.K." as a geopolitical entity and "$1 billion" as money.
-
+In this case, the model is correctly predicting "Apple" as an organization,
+"U.K." as a geopolitical entity and "\$1 billion" as money.
 
 ---
 
@@ -203,16 +212,17 @@ spacy.explain('dobj')
 'direct object'
 ```
 
-Notes: A quick tip: To get definitions for the most common tags and labels, you can use the spacy dot explain helper function.
+Notes: A quick tip: To get definitions for the most common tags and labels, you
+can use the spacy dot explain helper function.
 
-For example, "GPE" for geopolitical entity isn't exactly intuitive – but spacy dot explain can tell you that it refers to countries, cities and states.
+For example, "GPE" for geopolitical entity isn't exactly intuitive – but spacy
+dot explain can tell you that it refers to countries, cities and states.
 
 The same works for part-of-speech tags and dependency labels.
-
 
 ---
 
 # Let's practice!
 
-Notes: Now it's your turn. Let's take a look at spaCy's statistical models
-and their predictions.
+Notes: Now it's your turn. Let's take a look at spaCy's statistical models and
+their predictions.

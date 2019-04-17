@@ -6,7 +6,7 @@ def test():
         'next_token.text == "%"' in __solution__
     ), "Are you checking whether the next token's text is a percent sign?"
     assert (
-        next_token == "%"
+        next_token.text == "%"
     ), "Are you checking whether the next token's text is a percent sign?"
 
     __msg__.good(

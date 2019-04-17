@@ -1,8 +1,8 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 
-import Hint from './hint'
-import Button from './button'
+import { Hint } from './hint'
+import { Button } from './button'
 
 import classes from '../styles/code.module.sass'
 
@@ -61,7 +61,7 @@ class CodeBlock extends React.Component {
         }
         const hintActions = [
             { text: 'Show solution', onClick: () => this.handleShowSolution() },
-            { text: 'Reset code', onClick: () => this.handleReset() },
+            { text: 'Reset', onClick: () => this.handleReset() },
         ]
 
         return !Juniper ? (
