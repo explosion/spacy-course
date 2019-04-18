@@ -34,6 +34,12 @@ solutions are all in this repo, there's no penalty for clicking "Show hints" or
 - Is open-source and published under the MIT license (code and framework) and CC
   BY-NC (spaCy course materials).
 
+### Starter repos for your own course
+
+- 🐍 Python:
+  [`ines/course-starter-python`](https://github.com/ines/course-starter-python)
+- 🇷 R: _coming soon_
+
 ## 💁 FAQ
 
 **So should I not take your DataCamp course anymore?** Probably not, no.
