@@ -118,9 +118,9 @@ For example, a document and a token.
 Here, the similarity score is pretty low and the two objects are considered
 fairly dissimilar.
 
-Here's another example comparing a span – "pizza and burgers" – to a document.
+Here's another example comparing a span – "pizza and pasta" – to a document about McDonalds.
 
-The score returned here is 0.61, so it's determined kind of similar.
+The score returned here is 0.61, so it's determined to be kind of similar.
 
 ---
 
