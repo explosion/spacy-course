@@ -82,6 +82,7 @@ class CodeBlock extends React.Component {
                                     repo
                                     branch
                                     kernelType
+                                    debug
                                 }
                             }
                         }
@@ -97,7 +98,7 @@ class CodeBlock extends React.Component {
                 `}
                 render={data => {
                     const { testTemplate } = data.site.siteMetadata
-                    const { repo, branch, kernelType } = data.site.siteMetadata.juniper
+                    const { repo, branch, kernelType, debug } = data.site.siteMetadata.juniper
                     const files = getFiles(data)
                     const sourceFile = files[sourceId]
                     const solutionFile = files[solutionId]
@@ -111,6 +112,7 @@ class CodeBlock extends React.Component {
                                     repo={repo}
                                     branch={branch}
                                     kernelType={kernelType}
+                                    debug={debug}
                                     actions={({ runCode }) => (
                                         <>
                                             <Button onClick={() => runCode()}>Run Code</Button>

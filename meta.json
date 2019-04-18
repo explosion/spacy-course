@@ -10,7 +10,8 @@
     "juniper": {
         "repo": "ines/spacy-course",
         "branch": "binder",
-        "kernelType": "python3"
+        "kernelType": "python3",
+        "debug": false
     },
     "footerLinks": [
         { "text": "spaCy Website", "url": "https://spacy.io" },
