@@ -46,12 +46,8 @@ solutions are all in this repo, there's no penalty for clicking "Show hints" or
 
 **Can I use this to build my own course?** Probably, yes! If you've been looking
 for a DIY way to publish your materials, I hope that my little framework can be
-useful. I mostly built it for my course, but it strictly separates the content
-and customisations from the app source, so it shouldn't be difficult to fork
-this repo, edit the chapters, meta and theme and make it your own. In theory, it
-should also work for non-Python languages, as long as they're supported by
-Jupyter/Binder. See the "[Usage & API](#-usage--api)" section below for more
-details.
+useful. Because so many people expressed interest in this, I put together some
+[starter repos](#starter-repos-for-your-own-course) that you can fork and adapt.
 
 **Why the different licenses?** The source of the app, UI components and Gatsby
 framework for building interactive courses is licensed as MIT, like pretty much
