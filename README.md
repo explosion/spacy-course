@@ -39,7 +39,6 @@ solutions are all in this repo, there's no penalty for clicking "Show hints" or
 - 🐍 Python:
   [`ines/course-starter-python`](https://github.com/ines/course-starter-python)
 - 🇷 R: [`ines/course-starter-r`](https://github.com/ines/course-starter-r)
-  _(under construction)_
 
 ## 💁 FAQ
 
