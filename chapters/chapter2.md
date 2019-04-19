@@ -29,7 +29,7 @@ id: 2
 
 - You can use the string store in `nlp.vocab.strings` like a regular Python
   dictionary. For example, `nlp.vocab.strings['unicorn']` will return the hash,
-  and looking up the hash again will return the string `'unicorn`.
+  and looking up the hash again will return the string `'unicorn'`.
 
 </codeblock>
 
@@ -42,7 +42,7 @@ id: 2
 
 - You can use the string store in `nlp.vocab.strings` like a regular Python
   dictionary. For example, `nlp.vocab.strings['unicorn']` will return the hash,
-  and looking up the hash again will return the string `'unicorn`.
+  and looking up the hash again will return the string `'unicorn'`.
 
 </codeblock>
 
