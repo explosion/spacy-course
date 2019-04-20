@@ -6,7 +6,7 @@ type: slides
 
 Notes: Welcome back! This chapter is dedicated to processing pipelines: a series of functions applied to a Doc to add attributes like part-of-speech tags, dependency labels or named entities.
 
-In this video, you'll learn about the pipeline components provided by spaCy, and what happens behind the scenes when you call nlp on a string of text.
+In this lesson, you'll learn about the pipeline components provided by spaCy, and what happens behind the scenes when you call nlp on a string of text.
 
 ---
 

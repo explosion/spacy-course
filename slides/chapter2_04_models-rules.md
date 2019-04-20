@@ -7,7 +7,7 @@ type: slides
 Notes: Combining statistical models with rule-based systems is one of the most
 powerful tricks you should have in your NLP toolbox.
 
-In this video, we'll take a look at how to do it with spaCy.
+In this lesson, we'll take a look at how to do it with spaCy.
 
 ---
 

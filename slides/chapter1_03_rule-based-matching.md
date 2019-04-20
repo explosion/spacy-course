@@ -4,7 +4,7 @@ type: slides
 
 # Rule-based matching
 
-Notes: In this section, we'll take a look at spaCy's matcher, which lets you write
+Notes: In this lesson, we'll take a look at spaCy's matcher, which lets you write
 rules to find words and phrases in text.
 
 ---

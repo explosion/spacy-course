@@ -7,7 +7,7 @@ type: slides
 Notes: Welcome to the final chapter, which is about one of the most exciting
 aspects of modern NLP: training your own models!
 
-In this video, you'll learn about training and updating spaCy's neural network
+In this lesson, you'll learn about training and updating spaCy's neural network
 models and the data you need for it – focusing specifically on the named entity
 recognizer.
 

@@ -4,7 +4,7 @@ type: slides
 
 # Word vectors and semantic similarity
 
-Notes: In this video, you'll learn how to use spaCy to predict how similar
+Notes: In this lesson, you'll learn how to use spaCy to predict how similar
 documents, spans or tokens are to each other.
 
 You'll also learn about how to use word vectors and how to take advantage of
