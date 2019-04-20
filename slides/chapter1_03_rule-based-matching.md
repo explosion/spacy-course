@@ -35,7 +35,7 @@ For example, find the word "duck" only if it's a verb, not a noun.
 - Match exact token texts
 
 ```python
-[{'ORTH': 'iPhone'}, {'ORTH': 'X'}]
+[{'TEXT': 'iPhone'}, {'TEXT': 'X'}]
 ```
 
 - Match lexical attributes
@@ -80,7 +80,7 @@ nlp = spacy.load('en_core_web_sm')
 matcher = Matcher(nlp.vocab)
 
 # Add the pattern to the matcher
-pattern = [{'ORTH': 'iPhone'}, {'ORTH': 'X'}]
+pattern = [{'TEXT': 'iPhone'}, {'TEXT': 'X'}]
 matcher.add('IPHONE_PATTERN', None, pattern)
 
 # Process some text
