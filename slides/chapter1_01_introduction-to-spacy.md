@@ -7,7 +7,7 @@ type: slides
 Notes: Hi, I'm Ines! I'm one of the core developers of spaCy, a popular library
 for advanced Natural Language Processing in Python.
 
-In this video, we'll take a look at the most important concepts of spaCy and how
+In this lesson, we'll take a look at the most important concepts of spaCy and how
 to get started.
 
 ---

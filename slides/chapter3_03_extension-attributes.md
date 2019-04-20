@@ -4,7 +4,7 @@ type: slides
 
 # Extension attributes
 
-Notes: In this video, you'll learn how to add custom attributes to the Doc,
+Notes: In this lesson, you'll learn how to add custom attributes to the Doc,
 Token and Span objects to store custom data.
 
 ---

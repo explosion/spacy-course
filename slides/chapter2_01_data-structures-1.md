@@ -6,7 +6,7 @@ type: slides
 
 Notes: Welcome back! Now that you've had some real experience using spaCy's objects, it's time for you to learn more about what's actually going on under spaCy's hood.
 
-In this video, we'll take a look at the shared vocabulary and how spaCy deals with strings.
+In this lesson, we'll take a look at the shared vocabulary and how spaCy deals with strings.
 
 ---
 
