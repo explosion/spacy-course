@@ -295,9 +295,10 @@ Container to display slides interactively using Reveal.js and a Markdown file.
 
 Container for multiple-choice question.
 
-| Argument     | Type  | Description                              |
-| ------------ | ----- | ---------------------------------------- |
-| **children** | nodes | Only `<opt>` components for the options. |
+| Argument     | Type            | Description                                                                                  |
+| ------------ | --------------- | -------------------------------------------------------------------------------------------- |
+| `id`         | string / number | Optional unique ID. Can be used if more than one choice question is present in one exercise. |
+| **children** | nodes           | Only `<opt>` components for the options.                                                     |
 
 ```markdown
 <choice>
