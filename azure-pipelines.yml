@@ -1,0 +1,34 @@
+trigger:
+  batch: true
+  branches:
+    include:
+    - 'master'
+
+jobs:
+- job: 'Test'
+  strategy:
+    matrix:
+      Python37Linux:
+        imageName: 'ubuntu-16.04'
+        python.version: '3.7'
+      Python37Windows:
+        imageName: 'vs2017-win2016'
+        python.version: '3.7'
+      Python37Mac:
+        imageName: 'macos-10.13'
+        python.version: '3.7'
+    maxParallel: 4
+  pool:
+    vmImage: $(imageName)
+
+  steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '$(python.version)'
+      architecture: 'x64'
+
+  - script: pip install -r binder/requirements.txt
+    displayName: 'Install dependencies'
+
+  - script: python -m pytest __tests__
+    displayName: 'Run tests'
