@@ -128,6 +128,21 @@ def test():
 With this approach, it's not _always_ possible to validate the input perfectly –
 there are too many options and we want to avoid false positives.
 
+#### Running automated tests
+
+The automated tests make sure that the provided solution code is compatible with
+the test file that's used to validate submissions. The test suite is powered by
+the [`pytest`](https://docs.pytest.org/en/latest/) framework and runnable test
+files are generated automatically in a directory `__tests__` before the test
+session starts. See the [`conftest.py`](conftest.py) for implementation details.
+
+```bash
+# Install requirements
+pip install -r binder/requirements.txt
+# Run the tests (will generate the files automatically)
+python -m pytest __tests__
+```
+
 ### Directory Structure
 
 ```yaml
