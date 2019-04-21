@@ -5,7 +5,7 @@ def test():
     assert span1.text == "great restaurant", "Did you generate span1 correctly?"
     assert span2.text == "really nice bar", "Did you generate span2 correctly?"
     assert isinstance(
-        similarity, float
+        0 <= float(similarity) <= 1
     ), "The value of similarity needs to be a float. Did you calculate it correctly?"
     __msg__.good(
         "Well done! Feel free to experiment with comparing more objects, if "
