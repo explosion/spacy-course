@@ -1,4 +1,5 @@
 def test():
+    assert "token_texts" not in __solution__, "Did you remove the token_texts variable?"
     assert "pos_tags" not in __solution__, "Did you remove the pos_tags variable?"
     assert (
         "token.pos_ ==" in __solution__

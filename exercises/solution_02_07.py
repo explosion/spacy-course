@@ -9,4 +9,4 @@ for token in doc:
     if token.pos_ == "PROPN":
         # Check if the next token is a verb
         if doc[token.i + 1].pos_ == "VERB":
-            print("Found a verb after a proper noun!")
+            print("Found proper noun after a verb:", token.text)

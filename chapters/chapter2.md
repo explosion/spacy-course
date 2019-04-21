@@ -181,17 +181,16 @@ update the named entities – just like spaCy does behind the scenes. A shared
 <exercise id="7" title="Data structures best practices">
 
 The code in this example is trying to analyze a text and collect all proper
-nouns. If the token following the proper noun is a verb, it should also be
-extracted.
+nouns that are followed by a verb.
 
 ```python
 import spacy
 
 nlp = spacy.load("en_core_web_sm")
 doc = nlp("Berlin is a nice city")
-print(doc.text)
 
 # Get all tokens and part-of-speech tags
+token_texts = [token.text for token in doc]
 pos_tags = [token.pos_ for token in doc]
 
 for index, pos in enumerate(pos_tags):
@@ -199,8 +198,8 @@ for index, pos in enumerate(pos_tags):
     if pos == "PROPN":
         # Check if the next token is a verb
         if pos_tags[index + 1] == "VERB":
-            print("Found a verb after a proper noun!")
-
+            result = token_texts[index]
+            print("Found proper noun after a verb:", result)
 ```
 
 ### Part 1
@@ -209,7 +208,7 @@ Why is the code bad?
 
 <choice>
 
-<opt text="The tokens in the <code>result</code> should be converted back to <code>Token</code> objects. This will let you reuse them in spaCy.">
+<opt text="The <code>result</code> token should be converted back to a <code>Token</code> object. This will let you reuse it in spaCy.">
 
 It shouldn't be necessary to convert strings back to `Token` objects. Instead,
 try to avoid converting tokens to strings if you still need to access their
@@ -235,14 +234,16 @@ is the correct tag to check for proper nouns.
 
 ### Part 2
 
-- Rewrite the code to use the native token attributes instead of a list of
-  `pos_tags`.
+- Rewrite the code to use the native token attributes instead of lists of
+  `token_texts` and `pos_tags`.
 - Loop over each `token` in the `doc` and check the `token.pos_` attribute.
 - Use `doc[token.i + 1]` to check for the next token and its `.pos_` attribute.
+- If a proper noun after a verb is found, print the `token.text`.
 
 <codeblock id="02_07">
 
-- Remove the `pos_tags` – we don't need to compile a list of strings upfront!
+- Remove the `token_texts` and `pos_tags` – we don't need to compile lists of
+  strings upfront!
 - Instead of iterating over the `pos_tags`, loop over each `token` in the `doc`
   and check the `token.pos_` attribute.
 - To check if the next token is a verb, take a look at `doc[token.i + 1].pos_`.
