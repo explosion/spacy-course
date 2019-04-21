@@ -321,10 +321,6 @@ A multiple-choice option.
 
 ## 🛣 Roadmap and todos
 
-- [ ] Add Python CI tests. Not 100% sure how this should be wired up yet – but
-      ideally, `pytest` could somehow assemble the tests just like the
-      `testTemplate` does and then run all solutions against the tests to make
-      sure there are no bugs.
 - [ ] Front-end tests. Also, if someone wants to port this over to TypeScript,
       I'd accept the PR 😛
 - [ ] PDF slides. Since the app is using Reveal.js, this should be possible.
