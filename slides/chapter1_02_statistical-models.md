@@ -37,6 +37,10 @@ example, to perform better on your specific data.
 
 <img src="/package.png" alt="A package with the label en_core_web_sm" width="30%" align="right" />
 
+```bash
+$ python -m spacy download en_core_web_sm
+```
+
 ```python
 import spacy
 
@@ -47,9 +51,10 @@ nlp = spacy.load('en_core_web_sm')
 - Vocabulary
 - Meta information (language, pipeline)
 
-Notes: spaCy provides a number of pre-trained model packages you can download.
-For example, the "en_core_web_sm" package is a small English model that supports
-all core capabilities and is trained on web text.
+Notes: spaCy provides a number of pre-trained model packages you can download
+using the "spacy download" command. For example, the "en_core_web_sm" package is
+a small English model that supports all core capabilities and is trained on web
+text.
 
 The spacy dot load method loads a model package by name and returns an nlp
 object.
