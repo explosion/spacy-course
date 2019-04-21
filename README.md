@@ -17,6 +17,7 @@ _This course is mostly intended for **self-study**. Yes, you can cheat – the
 solutions are all in this repo, there's no penalty for clicking "Show hints" or
 "Show solution", and you can mark an exercise as done when you think it's done._
 
+[![Azure Pipelines](https://img.shields.io/azure-devops/build/explosion-ai/public/10/master.svg?logo=azure-devops&style=flat-square)](https://dev.azure.com/explosion-ai/public/_build?definitionId=10)
 ![Netlify Status](https://api.netlify.com/api/v1/badges/2eae6a1a-d7a3-437e-a700-61e32d7d991b/deploy-status)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ines/spacy-course/master)
 
