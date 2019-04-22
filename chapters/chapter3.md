@@ -244,7 +244,7 @@ extensions.
 ### Part 1
 
 - Complete the `has_number` function .
-- Use `Doc.set_extension` to register 'has_number' (getter `get_has_number`) and
+- Use `Doc.set_extension` to register `has_number` (getter `get_has_number`) and
   print its value.
 
 <codeblock id="03_10_01">
