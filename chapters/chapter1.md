@@ -59,8 +59,6 @@ its views `Token` and `Span`.
 - Import the `English` language class and create the `nlp` object.
 - Process the text and instantiate a `Doc` object in the variable `doc`.
 - Select the first token of the `Doc` and print its `text`.
-- Create a slice of the `Doc` for the tokens "tree kangaroos" and "tree
-  kangaroos and narwhals".
 
 <codeblock id="01_03_01">
 
