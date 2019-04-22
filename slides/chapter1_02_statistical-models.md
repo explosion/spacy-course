@@ -198,7 +198,7 @@ spacy.explain('GPE')
 ```
 
 ```out
-Countries, cities, states'
+'Countries, cities, states'
 ```
 
 ```python
