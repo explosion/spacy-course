@@ -44,7 +44,8 @@
         "dev": "gatsby develop",
         "lint": "eslint **",
         "clear": "rm -rf .cache",
-        "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
+        "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
+        "pytest": "python -m pytest __tests__"
     },
     "devDependencies": {
         "browser-monads": "^1.0.0",
