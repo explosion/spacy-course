@@ -199,7 +199,7 @@ for index, pos in enumerate(pos_tags):
         # Check if the next token is a verb
         if pos_tags[index + 1] == "VERB":
             result = token_texts[index]
-            print("Found proper noun after a verb:", result)
+            print("Found proper noun before a verb:", result)
 ```
 
 ### Part 1
