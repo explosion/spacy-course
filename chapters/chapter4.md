@@ -114,7 +114,7 @@ a set of training examples. A list of sentences is available as the variable
 <exercise id="6" title="Setting up the pipeline">
 
 In this exercise, you'll prepare a spaCy pipeline to train the entity recognizer
-to recognize `'GADGET'` entities in a text – for exampe, "iPhone X".
+to recognize `'GADGET'` entities in a text – for example, "iPhone X".
 
 - Create a blank `'en'` model, for example using the `spacy.blank` method.
 - Create a new entity recognizer using `nlp.create_pipe` and add it to the
@@ -161,7 +161,7 @@ as `TRAINING_DATA`. To see the examples, you can print them in your script.
 - To start the training and reset the weights call, the `nlp.begin_training()`
   method.
 - To divide the training data into batches, call the `spacy.util.minibatch`
-  function ot the list of training examples.
+  function on the list of training examples.
 
 </codeblock>
 
