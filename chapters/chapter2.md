@@ -238,7 +238,7 @@ is the correct tag to check for proper nouns.
   `token_texts` and `pos_tags`.
 - Loop over each `token` in the `doc` and check the `token.pos_` attribute.
 - Use `doc[token.i + 1]` to check for the next token and its `.pos_` attribute.
-- If a proper noun after a verb is found, print the `token.text`.
+- If a proper noun before a verb is found, print its `token.text`.
 
 <codeblock id="02_07">
 
