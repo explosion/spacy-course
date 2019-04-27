@@ -108,7 +108,7 @@ print(doc[3]._.is_color, '-', doc[3].text)
 ```
 
 ```out
-blue - True
+True - blue
 ```
 
 Notes: Property extensions work like properties in Python: they can define a
