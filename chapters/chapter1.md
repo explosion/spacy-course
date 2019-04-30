@@ -174,7 +174,7 @@ use the correct name.
 
 You'll now get to try one of spaCy's pre-trained model packages and see its
 predictions in action. Feel free to try it out on your own text! To find out
-what a tag or label means, you can call `spacy.explain` in the. For example:
+what a tag or label means, you can call `spacy.explain` in the loop. For example:
 `spacy.explain('PROPN')` or `spacy.explain('GPE')`.
 
 ### Part 1
