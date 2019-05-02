@@ -1,6 +1,6 @@
-# Computational, Interactive and Visualized K-12 Mathematics
+# Computational, Interactive and Visualized K-16 Mathematics
 
-This repo contains an experimental project developed by Rongpeng(Ron) Li inspired by his tutoring experience at [School On Wheels, Inc](schoolonwheels.org). The ultimate purpose of this project is to develop a full set of K-12 mathematics courses so every kid would have the access to interactive mathematics materials online for free.
+This repo contains an experimental project developed by Rongpeng(Ron) Li inspired by his tutoring experience at [School On Wheels, Inc](schoolonwheels.org). The ultimate purpose of this project is to develop a full set of [K-16](https://en.wikipedia.org/wiki/K%E2%80%9316) mathematics courses so every kid would have the access to interactive mathematics materials online for free.
 
 The framework for building this website is developed by [Ines Montani](https://github.com/ines). For more information about the technical sides of the framework, please refer to her original [repo](https://github.com/ines/spacy-course).
 
@@ -12,6 +12,7 @@ The framework for building this website is developed by [Ines Montani](https://g
 ## 🛣 Roadmap and todos
 
 - [ ] Port [Ines Montani](https://github.com/ines)'s repo and rebuilt the website.
+- [ ] Finish the deployment on Netlify and set up the CI/CD routines.
 - [ ] Get MathJax work.
 - [ ] Get Matplotlib work.
 - [ ] Develop two sample materials, one for introductory Python about how to use the website, one for graphing linear functions.
