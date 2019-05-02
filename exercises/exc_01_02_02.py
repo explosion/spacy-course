@@ -1,11 +1,8 @@
-# Import the German language class
-from spacy.lang.____ import ____
+# exercise 01_02_02
+print(1+1)
 
-# Create the nlp object
-nlp = ____
+print(20*3)
 
-# Process a text (this is German for: "Kind regards!")
-doc = nlp("Liebe Grüße!")
+# Now your turn. Can you change the following line to get the result of 123+321 for me?
 
-# Print the document text
-print(____.text)
+print(123+)

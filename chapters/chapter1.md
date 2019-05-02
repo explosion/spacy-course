@@ -1,54 +1,47 @@
 ---
-title: 'Chapter 1: Finding words, phrases, names and concepts'
+title: 'Chapter 1: How to use this website and Python basics'
 description:
-  "This chapter will introduce you to the basics of text processing with spaCy.
-  You'll learn about the data structures, how to work with statistical models,
-  and how to use them to predict linguistic features in your text."
+  "This chapter will teach you what a lesson looks like on this website. It will also teach you some basic knowledge about a programming language called Python. All you need to do is some occasional clicking."
 prev: null
 next: /chapter2
 type: chapter
 id: 1
 ---
 
-<exercise id="1" title="Introduction to spaCy" type="slides">
+<exercise id="1" title="Start here" type="slides">
 
-<slides source="chapter1_01_introduction-to-spacy">
+<slides source="chapter1_01_how_to_use_the_website">
 </slides>
 
 </exercise>
 
-<exercise id="2" title="Getting Started">
+<exercise id="2" title="Your first interactive lesson">
 
-Let's get started and try out spaCy! In this exercise, you'll be able to try out
-some of the 45+ [available languages](https://spacy.io/usage/models#languages).
+Welcome to lesson two. In this lesson, you will run two lines of Python code and get to know the interactive environment.
 
-### Part 1: English
+### Python is your most talkative friend. It replies you whenever you allow it to `print`.
 
-- Import the `English` class from `spacy.lang.en` and create the `nlp` object.
-- Create a `doc` and print its text.
+In this example, don't change anything, just click the `Run Code` button below to run the two lines of code. For the first time you run a code block, it will take some time to initialize the background services.
+
+You may also notice that there are three buttons `Show hints`, `Show solutions` and `Reset` below. They are useful in the future exercises.
+
+- Let Python say *Hello*.
 
 <codeblock id="01_02_01">
 </codeblock>
 
-### Part 2: German
+### Python is your calculator!
 
-- Import the `German` class from `spacy.lang.de` and create the `nlp` object.
-- Create a `doc` and print its text.
+- Let Python do some math for you.
+
+In this part, if you click `Run Code` directly, the program will complain. you need to edit the last line of the code to make it runnable. 
 
 <codeblock id="01_02_02">
 </codeblock>
 
-### Part 3: Spanish
-
-- Import the `Spanish` class from `spacy.lang.es` and create the `nlp` object.
-- Create a `doc` and print its text.
-
-<codeblock id="01_02_03">
-</codeblock>
-
 </exercise>
 
-<exercise id="3" title="Documents, spans and tokens">
+<exercise id="3" title="20-minute Python">
 
 When you call `nlp` on a string, spaCy first tokenizes the text and creates a
 document object. In this exercise, you'll learn more about the `Doc`, as well as

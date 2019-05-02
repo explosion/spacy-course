@@ -1,4 +1,4 @@
-# Computational, Interactive and Visual K-12 Math
+# Computational, Interactive and Visualized K-12 Mathematics
 
 This repo contains an experimental project developed by Rongpeng(Ron) Li inspired by his tutoring experience at [School On Wheels, Inc](schoolonwheels.org). The ultimate purpose of this project is to develop a full set of K-12 mathematics courses so every kid would have the access to interactive mathematics materials online for free.
 
@@ -11,10 +11,7 @@ The framework for building this website is developed by [Ines Montani](https://g
 
 ## 🛣 Roadmap and todos
 
-- [ ] Front-end tests. Also, if someone wants to port this over to TypeScript,
-      I'd accept the PR 😛
-- [ ] PDF slides. Since the app is using Reveal.js, this should be possible.
-- [ ] Testing it for other languages like R. I'd be really curious to see if it
-      works. We'd have to adjust the
-      [`node.extension` check here](gatsby-node.js) for other files to be
-      included via GraphQL.
+- [ ] Port [Ines Montani](https://github.com/ines)'s repo and rebuilt the website.
+- [ ] Get MathJax work.
+- [ ] Get Matplotlib work.
+- [ ] Develop two sample materials, one for introductory Python about how to use the website, one for graphing linear functions.

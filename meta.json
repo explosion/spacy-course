@@ -1,24 +1,24 @@
 {
-    "title": "Advanced NLP with spaCy",
-    "slogan": "A free online course",
-    "description": "In this course, you'll learn how to use spaCy to build advanced natural language understanding systems, using both rule-based and machine learning approaches. I originally developed the content for DataCamp, but I wanted to make a free version so you don't have to sign up for their service. As a weekend project, I ended up putting together my own little app to present the exercises and content in a fun and interactive way.",
-    "bio": "I'm Ines, and I'm one of the core developers of spaCy and the co-founder of Explosion. I specialise in applications and developer tools for AI, Machine Learning and Natural Language Processing technologies. I also really love building stuff for the web.",
-    "siteUrl": "https://course.spacy.io",
-    "twitter": "spacy_io",
+    "title": "Computational, Interactive and Visualized K-12 Mathematics",
+    "slogan": "computational thinking for everyone",
+    "description": "This is an ambitious project. I aim to develop a full set of courses for K-12 mathematics. I am a mentor for an non-profit organization called School on Wheels. It helps connect tutors and homeless students, to help them catch up with their course work. Math is always the most difficult one for students. I find it most helpful to let kids see pictures, watch animations and most importantly manipulate what they see in order to learn math effeciently. This is why I started this project. Beyond this motivation, I think there is a strong need to introduce computational thinking in K-12 education.",
+    "bio": "I'm Rongpeng(Ron). I am currently a ",
+    "siteUrl": "tobefilled",
+    "twitter": "rongpengli",
     "fonts": "IBM+Plex+Mono:500|IBM+Plex+Sans:700|Lato:400,400i,700,700i",
     "testTemplate": "from wasabi import Printer\n__msg__ = Printer()\n__solution__ = \"\"\"${solution}\"\"\"\n\n${solution}\n\n${test}\n\ntry:\n    test()\nexcept AssertionError as e:\n    __msg__.fail(e)",
     "pytestTemplate": "from wasabi import Printer\n__msg__ = Printer()\n__solution__ = \"\"\"${solution}\"\"\"\n\n${solution}\n\n${test}\ntest()",
     "juniper": {
-        "repo": "ines/spacy-course",
+        "repo": "rongpeng/spacy-course",
         "branch": "binder",
         "kernelType": "python3",
         "debug": false
     },
     "footerLinks": [
-        { "text": "spaCy Website", "url": "https://spacy.io" },
-        { "text": "Course FAQ", "url": "https://github.com/ines/spacy-course#-faq" },
-        { "text": "Source", "url": "https://github.com/ines/spacy-course" },
-        { "text": "Follow me on Twitter", "url": "https://twitter.com/_inesmontani" }
+        { "text": "spaCy Website", "url": "tobefilled" },
+        { "text": "Course FAQ", "url": "tobefilled" },
+        { "text": "Source", "url": "tobefilled" },
+        { "text": "Follow me on Twitter", "url": "https://twitter.com/rongpengli" }
     ],
     "theme": "#09a3d5"
 }

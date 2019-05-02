@@ -1,11 +1,8 @@
-# Import the German language class
-from spacy.lang.de import German
+# exercise 01_02_02
+print(1+1)
 
-# Create the nlp object
-nlp = German()
+print(20*3)
 
-# Process a text (this is German for: "Kind regards!")
-doc = nlp("Liebe Grüße!")
+# Here is the solution. Simple and intuitive, right?
 
-# Print the document text
-print(doc.text)
+print(123+321)
