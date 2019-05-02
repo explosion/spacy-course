@@ -1,13 +1,9 @@
-# Import the English language class and create the nlp object
-from spacy.lang.en import English
+# Calculate the amount of money for certain number of bananas
 
-nlp = English()
+bananaPrice = 1
 
-# Process the text
-doc = nlp("I like tree kangaroos and narwhals.")
+numberOfBanana = 3
 
-# Select the first token
-first_token = doc[0]
+cost = bananaPrice * numberOfBanana
 
-# Print the first token's text
-print(first_token.text)
+print(cost)

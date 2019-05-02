@@ -2,22 +2,22 @@
     "title": "Computational, Interactive and Visualized K-16 Mathematics",
     "slogan": "computational thinking for everyone",
     "description": "This is an ambitious project. I aim to develop a full set of courses for K-16 mathematics. I am a mentor for an non-profit organization called School on Wheels. It helps connect tutors and homeless students, to help them catch up with their course work. Math is always the most difficult one for students. I find it most helpful to let kids see pictures, watch animations and most importantly manipulate what they see in order to learn math effeciently. This is why I started this project. Beyond this motivation, I think there is a strong need to introduce computational thinking in16 education.",
-    "bio": "I'm Rongpeng(Ron). I am currently a ",
-    "siteUrl": "tobefilled",
+    "bio": "I'm Rongpeng(Ron). I am currently a physics PhD student at USC. I am also pursuing a master in electrical engineering and another master in computer science. I am very passionate about teaching and voluntary services. It helps me know and understand people and stuff.",
+    "siteUrl": "https://course.spacy.io",
     "twitter": "rongpengli",
     "fonts": "IBM+Plex+Mono:500|IBM+Plex+Sans:700|Lato:400,400i,700,700i",
     "testTemplate": "from wasabi import Printer\n__msg__ = Printer()\n__solution__ = \"\"\"${solution}\"\"\"\n\n${solution}\n\n${test}\n\ntry:\n    test()\nexcept AssertionError as e:\n    __msg__.fail(e)",
     "pytestTemplate": "from wasabi import Printer\n__msg__ = Printer()\n__solution__ = \"\"\"${solution}\"\"\"\n\n${solution}\n\n${test}\ntest()",
     "juniper": {
-        "repo": "rongpeng/spacy-course",
-        "branch": "binder",
+        "repo": "rongpenl/spacy-course",
+        "branch": "master",
         "kernelType": "python3",
-        "debug": false
+        "debug": true
     },
     "footerLinks": [
-        { "text": "spaCy Website", "url": "tobefilled" },
-        { "text": "Course FAQ", "url": "tobefilled" },
-        { "text": "Source", "url": "tobefilled" },
+        { "text": "Developer's personal website", "url": "rongpenl.github.io" },
+        { "text": "Developer's email", "url": "mailto:rongpenglee@gmail.com" },
+        { "text": "Developer's github", "url": "www.github.io/rongpenl/" },
         { "text": "Follow me on Twitter", "url": "https://twitter.com/rongpengli" }
     ],
     "theme": "#09a3d5"

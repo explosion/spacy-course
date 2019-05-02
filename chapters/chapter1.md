@@ -2,8 +2,8 @@
 title: 'Chapter 1: How to use this website and Python basics'
 description:
   "This chapter will teach you what a lesson looks like on this website. It will also teach you some basic knowledge about a programming language called Python. All you need to do is some occasional clicking."
-prev: null
-next: /chapter2
+prev: /chapter1
+next: /chapter1
 type: chapter
 id: 1
 ---
@@ -15,15 +15,15 @@ id: 1
 
 </exercise>
 
-<exercise id="2" title="Your first interactive lesson">
+<exercise id="2" title="Use Python in this website">
 
-Welcome to lesson two. In this lesson, you will run two lines of Python code and get to know the interactive environment.
+Welcome to lesson two. In this lesson, you will run two lines of Python code and learn to use the interactive environment.
 
-### Python is your most talkative friend. It replies you whenever you allow it to `print`.
+### Python is talkative. It replies you whenever you allow it to `print` something.
 
-In this example, don't change anything, just click the `Run Code` button below to run the two lines of code. For the first time you run a code block, it will take some time to initialize the background services.
+In this example, don't change anything, just click the `Run Code` button below to run the two lines of code. For the first time you run a code block, it will take some time to initialize the background services. Great thanks to `binder` to make such services possible and free.
 
-You may also notice that there are three buttons `Show hints`, `Show solutions` and `Reset` below. They are useful in the future exercises.
+You may also notice that there are three buttons `Show hints`, `Show solutions` and `Reset` below. If there are hints available, clicking `Show hints` will give you some hints. Clicking `Show solutions` will show you the solution while `Reset` will just remove all your editing.
 
 - Let Python say *Hello*.
 
@@ -41,32 +41,21 @@ In this part, if you click `Run Code` directly, the program will complain. you n
 
 </exercise>
 
-<exercise id="3" title="20-minute Python">
+<exercise id="3" title="20-minute Python, variables and operators">
 
-When you call `nlp` on a string, spaCy first tokenizes the text and creates a
-document object. In this exercise, you'll learn more about the `Doc`, as well as
-its views `Token` and `Span`.
+In Python, you can use variables to denote numbers so you can reuse those numbers again. For example, you have already seen that `greetings = "Hello!"` before. In this question, we are going to calculate the amount of money we need to pay for certain number of bananas.
 
-### Step 1
+### Bananas
 
-- Import the `English` language class and create the `nlp` object.
-- Process the text and instantiate a `Doc` object in the variable `doc`.
-- Select the first token of the `Doc` and print its `text`.
+- In this exercise, we buy 3 bananas for 1 dollar each. You need to replace the name `replaceMe` with something else to obtain the right answer.
 
 <codeblock id="01_03_01">
 
-You can index into a `Doc` the same way you index into a list in Python. For
-example, `doc[4]` will give you the token at index 4, which is the fifth token
-in the text. Remember that in Python the first index is 0, not 1.
-
 </codeblock>
 
-### Step 2
+### Other operators
 
-- Import the `English` language class and create the `nlp` object.
-- Process the text and instantiate a `Doc` object in the variable `doc`.
-- Create a slice of the `Doc` for the tokens "tree kangaroos" and "tree
-  kangaroos and narwhals".
+- In this example, let's exame some other operators. You will also see a new type called `boolean` variables.
 
 <codeblock id="01_03_02">
 
@@ -79,7 +68,7 @@ token 4.
 
 </exercise>
 
-<exercise id="4" title="Lexical attributes">
+<exercise id="4" title="20-minute Python, list, string and dictionary">
 
 In this example, you'll use spaCy's `Doc` and `Token` objects, and lexical
 attributes to find percentages in a text. You'll be looking for two subsequent
@@ -100,14 +89,14 @@ To get the token at a certain index, you can index into the `doc`. For example,
 
 </exercise>
 
-<exercise id="5" title="Statistical models" type="slides">
+<exercise id="5" title="20-minute Python, mini summary one" type="slides">
 
 <slides source="chapter1_02_statistical-models">
 </slides>
 
 </exercise>
 
-<exercise id="6" title="Model packages" type="choice">
+<exercise id="6" title="20-minute Python, mini test one" type="choice">
 
 What's **not** included in a model package that you can load into spaCy?
 
@@ -144,7 +133,7 @@ hashes and look up the corresponding string if needed.
 
 </exercise>
 
-<exercise id="7" title="Loading models">
+<exercise id="7" title="20-minute Python, if and else">
 
 The models we're using in this course are already pre-installed. For more
 details on spaCy's statistical models and how to install them on your machine,
@@ -163,7 +152,7 @@ use the correct name.
 
 </exercise>
 
-<exercise id="8" title="Predicting linguistic annotations">
+<exercise id="8" title="20-minute Python, loops">
 
 You'll now get to try one of spaCy's pre-trained model packages and see its
 predictions in action. Feel free to try it out on your own text! To find out
@@ -199,7 +188,7 @@ values.
 
 </exercise>
 
-<exercise id="9" title="Predicting named entities in context">
+<exercise id="9" title="20 minute Python, don't copy but write functions">
 
 Models are statistical and not _always_ right. Whether their predictions are
 correct depends on the training data and the text you're processing. Let's take
@@ -222,14 +211,14 @@ a look at an example.
 
 </exercise>
 
-<exercise id="10" title="Rule-based matching" type="slides">
+<exercise id="10" title="20-minute Python, mini summary two" type="slides">
 
 <slides source="chapter1_03_rule-based-matching">
 </slides>
 
 </exercise>
 
-<exercise id="11" title="Using the Matcher">
+<exercise id="11" title="20-minute Python, mini test two" type="choice">
 
 Let's try spaCy's rule-based `Matcher`. You'll be using the example from the
 previous exercise and write a pattern that can match the phrase "iPhone X" in
@@ -257,7 +246,7 @@ the text.
 
 </exercise>
 
-<exercise id="12" title="Writing match patterns">
+<exercise id="12" title="20-minute Python, a comprehensive summary">
 
 In this exercise, you'll practice writing more complex match patterns using
 different token attributes and operators.

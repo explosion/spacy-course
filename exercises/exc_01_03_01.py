@@ -1,13 +1,9 @@
-# Import the English language class and create the nlp object
-from ____ import ____
+# Calculate the amount of money for certain number of bananas
 
-nlp = ____
+bananaPrice = 1
 
-# Process the text
-doc = ____("I like tree kangaroos and narwhals.")
+numberOfBanana = 3
 
-# Select the first token
-first_token = doc[____]
+cost = bananaPrice * replaceMe
 
-# Print the first token's text
-print(first_token.____)
+print(cost)
