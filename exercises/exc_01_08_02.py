@@ -1,13 +1,24 @@
-import spacy
+# for loop exercise
 
-nlp = spacy.load("en_core_web_sm")
+# Let's print all the even numbers smaller than or equal to 10.
 
-text = "It’s official: Apple is the first U.S. public company to reach a $1 trillion market value"
+for num in range(10):
+    if num%2 == 0:
+        print(num, "is even.")
 
-# Process the text
-doc = ____
+# Weird. There is no `10` in the output. It is your turn to find out why.
 
-# Iterate over the predicted entities
-for ent in ____.____:
-    # Print the entity text and its label
-    print(ent.____, ____.____)
+# The range() function takes one argument as the cap of a range. It has some other usages and we will encounter it in the future.
+
+# How about iterate another `iterable`
+
+AGES = {"Amy":10, "Bob":11, "Chris":14}
+
+for age in AGES.keys():
+    print(age, ":", AGES[age])
+
+# A very common usage of `for` loop is to generate a list like this:
+
+ODDS = [odd for odd in range(1,10,2)]
+
+print(ODDS) # Can you figure out why this works?  Can you guess what the `2` does in the `range()` function?

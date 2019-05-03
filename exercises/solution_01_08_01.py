@@ -1,16 +1,12 @@
-import spacy
+# This short algorithm represents a famous mathematical conjecture: Collatz Conjecture
 
-nlp = spacy.load("en_core_web_sm")
+number = 1024
 
-text = "It’s official: Apple is the first U.S. public company to reach a $1 trillion market value"
+while number != 1:
+    if number % 2 == 0:
+        number = number // 2
+    elif number % 2 == 1:
+        number = number*3 + 1
+    print(number)
 
-# Process the text
-doc = nlp(text)
-
-for token in doc:
-    # Get the token text, part-of-speech tag and dependency label
-    token_text = token.text
-    token_pos = token.pos_
-    token_dep = token.dep_
-    # This is for formatting only
-    print("{:<12}{:<10}{:<10}".format(token_text, token_pos, token_dep))
+# https://en.wikipedia.org/wiki/Collatz_conjecture

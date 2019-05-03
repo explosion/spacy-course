@@ -1,16 +1,29 @@
-import spacy
+# while exercise
 
-nlp = spacy.load("en_core_web_sm")
+# Let's do a countdown
+counter = 10
 
-text = "It’s official: Apple is the first U.S. public company to reach a $1 trillion market value"
+while counter > 0:
+    print("Counting down: ", counter)
+    counter = counter - 1
 
-# Process the text
-doc = ____
+# If you double a number every round, when will you obtain a value larger than 1000?
 
-for token in doc:
-    # Get the token text, part-of-speech tag and dependency label
-    token_text = ____.____
-    token_pos = ____.____
-    token_dep = ____.____
-    # This is for formatting only
-    print("{:<12}{:<10}{:<10}".format(token_text, token_pos, token_dep))
+start = 1
+
+while start < 1000:
+    print(start)
+    start = start * 2
+
+print(start)
+
+# Now you try. Can you guess what the following code does? Change the value of number and examine  your discovery.
+
+number = 1024
+
+while number != 1:
+    if number % 2 == 0:
+        number = number // 2
+    elif number % 2 == 1:
+        number = number*3 + 1
+    print(number)

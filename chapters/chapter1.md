@@ -157,77 +157,61 @@ Right. A string in Python is immutable.
 
 <exercise id="7" title="20-minute Python, if and else">
 
-The models we're using in this course are already pre-installed. For more
-details on spaCy's statistical models and how to install them on your machine,
-see [the documentation](https://spacy.io/usage/models).
+In this lesson, we will examine an important structure in Python and almost any other programming languages. Sometimes we want to check a condition then decide what to do. The `if` and `else` clauses are designed for such jobs.
 
-- Use `spacy.load` to load the small English model `'en_core_web_sm'`.
-- Process the text and print the document text.
+Note Python uses the indentation mechanism to determine whether a part of code is a branch or secondary part of another part of code. This exercise will be the first time you see it. Don't worry. It is pretty intuitive.
 
 <codeblock id="01_07">
 
-To load a model, call `spacy.load` on its string name. Model names differ
-depending on the language and the data they were trained on – so make sure to
-use the correct name.
-
 </codeblock>
+
+Notice the following details:
+
+1. the `:` is after each condition assessment.
+2. the indentation is four space `    `.
+3. `in` is also a keyword in Python, it checks the membership of an element
+4. pay attention to the logical operators like `or` and `and`. Use brackets when neccessary.
+5. `%` is an interesting operator in Python. Can you guess what it does?
 
 </exercise>
 
 <exercise id="8" title="20-minute Python, loops">
 
-You'll now get to try one of spaCy's pre-trained model packages and see its
-predictions in action. Feel free to try it out on your own text! To find out
-what a tag or label means, you can call `spacy.explain` in the. For example:
-`spacy.explain('PROPN')` or `spacy.explain('GPE')`.
+Finally, we come to the loopy part! Loop is a very important concept in Python and almost all other programming languages. It enables the program to do things `repeatedly` or `iterate` over a `list` or any other `iterable` object. Things will become more clear when we dive into the code.
 
-### Part 1
-
-- Process the text with the `nlp` object and create a `doc`.
-- For each token, print the token text, the token's `.pos_` (part-of-speech tag)
-  and the token's `.dep_` (dependency label).
+### `while` loop
 
 <codeblock id="01_08_01">
 
-To create a `doc`, call the `nlp` object on a string of text. Remember that you
-need to use the token attribute names with an underscore to get the string
-values.
+Python checks a condition after the keyword `while`. If it is true, the block nested below it will run once then come back to check the condition agian.
 
 </codeblock>
 
-### Part 2
+In this part, you saw a new operator `//`. It is slightly different from `/`. `//` will return an integer for sure. It is called `floor division`. Check more [here](https://python-reference.readthedocs.io/en/latest/docs/operators/floor_division.html)
 
-- Process the text and create a `doc` object.
-- Iterate over the `doc.ents` and print the entity text and `label_` attribute.
+### `for` loop
 
+`for` loop is, in my opinion, more powerful and flexible than the `while` loop. It checks a limited `collection` of elements and perform operations.
 <codeblock id="01_08_02">
 
-To create a `doc`, call the `nlp` object on a string of text. Remember that you
-need to use the token attribute names with an underscore to get the string
-values.
+As you may notice, in Python, a variable doesn't need to be `initialized`. It can appear *suddenly* anywhere in the code. This creates great convenience for small project. In the future, you may find it not so good :)
+
+We saw something new in this piece of code.
+
+1. `range()` function. This is a builtin function in Python. It generates a list of numbers from a range, defualt starting value is `0`.
+
 
 </codeblock>
+
+
 
 </exercise>
 
 <exercise id="9" title="20 minute Python, don't copy but write functions">
 
-Models are statistical and not _always_ right. Whether their predictions are
-correct depends on the training data and the text you're processing. Let's take
-a look at an example.
-
-- Process the text with the `nlp` object.
-- Iterate over the entities and print the entity text and label.
-- Looks like the model didn't predict "iPhone X". Create a span for those tokens
-  manually.
 
 <codeblock id="01_09">
 
-- To create a `doc`, call the `nlp` object on the text. Named entities are
-  available as the `doc.ents` property.
-- The easiest way to create a `Span` object is to use the slice notation – for
-  example `doc[5:10]` for the token at position 5 _up to_ position 10. Remember
-  that the last token index is exclusive.
 
 </codeblock>
 
@@ -240,79 +224,34 @@ a look at an example.
 
 </exercise>
 
-<exercise id="11" title="20-minute Python, mini test two" type="choice">
+<exercise id="11" title="20-minute Python, mini test two">
 
-Let's try spaCy's rule-based `Matcher`. You'll be using the example from the
-previous exercise and write a pattern that can match the phrase "iPhone X" in
-the text.
-
-- Import the `Matcher` from `spacy.matcher`.
-- Initialize it with the `nlp` object's shared `vocab`.
-- Create a pattern that matches the `'TEXT'` values of two tokens: `"iPhone"`
-  and `"X"`.
-- Use the `matcher.add` method to add the pattern to the matcher.
-- Call the matcher on the `doc` and store the result in the variable `matches`.
-- Iterate over the matches and get the matched span from the `start` to the
-  `end` index.
 
 <codeblock id="01_11">
-
-- The shared vocabulary is available as the `nlp.vocab` attribute.
-- A pattern is a list of dictionaries keyed by the attribute names. For example,
-  `[{'TEXT': 'Hello'}]` will match one token whose exact text is "Hello".
-- The `start` and `end` values of each match describe the start and end index of
-  the matched span. To get the span, you can create a slice of the `doc` using
-  the given start and end.
 
 </codeblock>
 
 </exercise>
 
-<exercise id="12" title="20-minute Python, a comprehensive summary">
+<exercise id="12" title="20-minute Python, a mini project">
 
-In this exercise, you'll practice writing more complex match patterns using
-different token attributes and operators.
 
-### Part 1
-
-- Write **one** pattern that only matches mentions of the _full_ iOS versions:
-  "iOS 7", "iOS 11" and "iOS 10".
+### Days in a month
 
 <codeblock id="01_12_01">
 
-- To match a token with an exact text, you can use the `TEXT` attribute. For
-  example, `{'TEXT': 'Apple'}` will match tokens with the exact text "Apple".
-- To match a number token, you can use the `IS_DIGIT` attribute, which will only
-  return `True` for tokens consisting of only digits.
-
 </codeblock>
 
-### Part 2
-
-- Write **one** pattern that only matches forms of "download" (tokens with the
-  lemma "download"), followed by a token with the part-of-speech tag `'PROPN'`
-  (proper noun).
+### Query 
 
 <codeblock id="01_12_02">
 
-- To specify a lemma, you can use the `'LEMMA'` attribute in the token pattern.
-  For example, `{'LEMMA': 'be'}` will match tokens like "is", "was" or "being".
-- To find proper nouns, you want to match all tokens whose `POS` value equals
-  `'PROPN'`.
 
 </codeblock>
 
-### Part 3
-
-- Write **one** pattern that matches adjectives (`'ADJ'`) followed by one or two
-  `'NOUN'`s (one noun and one optional noun).
+### Put things in a function
 
 <codeblock id="01_12_03">
-
-- To find adjectives, look for tokens whose `'POS'` value equals `'ADJ'`. For
-  nouns, look for `'NOUN'`.
-- Operators can be added via the `'OP'` key. For example, `'OP': '?'` to match
-  zero or one time.
 
 </codeblock>
 
