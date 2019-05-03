@@ -102,7 +102,7 @@ nlp = spacy.load('en_core_web_sm')
 # Define a custom component
 def custom_component(doc):
     # Print the doc's length
-    print('Doc length:' len(doc))
+    print('Doc length:', len(doc))
     # Return the doc object
     return doc
 
@@ -149,7 +149,7 @@ nlp = spacy.load('en_core_web_sm')
 def custom_component(doc):
 
     # Print the doc's length
-    print('Doc length:' len(doc))
+    print('Doc length:', len(doc))
 
     # Return the doc object
     return doc
