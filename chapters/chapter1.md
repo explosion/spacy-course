@@ -27,6 +27,8 @@ You may also notice that there are three buttons `Show hints`, `Show solutions` 
 
 - Let Python say *Hello*.
 
+Note that everything you type beginning with a `#` will not have any effect in the input box. Feel free to comment what you do and make notes for yourself.
+
 <codeblock id="01_02_01">
 </codeblock>
 
@@ -55,14 +57,17 @@ In Python, you can use variables to denote numbers so you can reuse those number
 
 ### Other operators
 
-- In this example, let's exame some other operators. You will also see a new type called `boolean` variables.
+- In this example, let's learn some other operators. You will also see a new data type called `boolean`  .
 
 <codeblock id="01_03_02">
 
-Creating a slice of a `Doc` works just like creating a slice of a list in Python
-using the `:` notation. Remember that the last token index is _exclusive_ – for
-example, `0:4` describes the tokens 0 _up to_ token 4, but not including
-token 4.
+`+`, `-`, `*` and `/` are the four arithmetic operators. 
+
+You can use `()` to change the order of operations.
+
+the `True` and `False` value of a variable is called `boolean` as it represents whether something is true or not.
+
+In Python, at this stage, you can freely add, divide, multiply or subtract numbers without worrying too much about how accuracy your result is. In the future, we will look into this issue when it is necessary.
 
 </codeblock>
 
@@ -70,28 +75,37 @@ token 4.
 
 <exercise id="4" title="20-minute Python, list, string and dictionary">
 
-In this example, you'll use spaCy's `Doc` and `Token` objects, and lexical
-attributes to find percentages in a text. You'll be looking for two subsequent
-tokens: a number and a percent sign.
+Things become more and more interesting! Now, let's see how to organize a bunch of things together into one object. We are going to look at the data type called `list` first. You need to replace `replaceMe` to get the last line of code work.
 
-- Use the `like_num` token attribute to check whether a token in the `doc`
-  resembles a number.
-- Get the token _following_ the current token in the document. The index of the
-  next token in the `doc` is `token.i + 1`.
-- Check whether the next token's `text` attribute is a percent sign "%".
-
-<codeblock id="01_04">
-
-To get the token at a certain index, you can index into the `doc`. For example,
-`doc[5]` is the token at index 5.
+<codeblock id="01_04_01">
 
 </codeblock>
+
+Now, let's take a look at `string`. A string is simple what you see wrapped by double quote `"`. They can also be indexed and manipulated pretty freely.
+
+<codeblock id="01_04_02">
+
+
+</codeblock>
+
+Dictionary is also very useful. When you look up a word in a dictionary, you search the word and find its definition and sample sentences. The word itself is like a `key` for you to locate what you want to find and the corresponding contents are like the `values`.
+
+<codeblock id="01_04_03">
+
+
+</codeblock>
+
+A dictionary is different from list for several important reasons.
+
+1. It is not ordered. You can't access elements in a dictionary by indexing it.
+2. It is very fast to retrieve an element. This may not be clear now.
+3. A `dictionary` represents a `mapping` relationship between elements while a `list` usually doesn't.
 
 </exercise>
 
 <exercise id="5" title="20-minute Python, mini summary one" type="slides">
 
-<slides source="chapter1_02_statistical-models">
+<slides source="chapter1_02_mini_summary_one">
 </slides>
 
 </exercise>
