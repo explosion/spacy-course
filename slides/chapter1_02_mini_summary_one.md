@@ -12,7 +12,7 @@ Notes: Let's go over the summaries so you will be well equipped for the mini qui
 
 ## Python is a programming language. it runs on computer so you can tell the computer to do whatever you want it to do *exactly*. 
 ## As a `language`, Python has a set of syntax or rules that you must follow to correctly and efficiently tell what you want it to do.
-## As a `programming language`, it enables you to do many things much faster than human. For example, mathematical calculation and many other things.
+## As a `programming language`, it enables you to do many things much faster than human. For example, mathematical calculation.
 
 ---
 
@@ -46,7 +46,9 @@ ages = {"Amy": 7, "Bob": 10, "Claire": 9}
 print(ages["Amy"] > ages["Bob"]) # true or false?
 
 # Let's do a trick
-indexByName = {"Amy": 0, "Bob": 1, "Claire": 2} # this gives you the location/index of the information in another data structure, here a list called `agesByIndex`.
+
+indexByName = {"Amy": 0, "Bob": 1, "Claire": 2} 
+# this gives you the location/index of the information in another data structure, here a list called `agesByIndex`.
 
 agesByIndex = [7, 10, 9]
 
@@ -72,4 +74,4 @@ Notes: Now it's your turn!
 
 # Aha, you find this page!
 
-## There are some contents that we have already used but not discussed yet. For example, functions. `print()` and `len()` are essentially built-in functions and we already used them a lot in previous exercises. Hang on there. We will look into them soon!
+Notes: There are some contents that we have already used but not discussed yet. For example, functions. `print()` and `len()` are essentially built-in functions and we already used them a lot in previous exercises. Hang on there. We will look into them soon!

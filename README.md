@@ -14,5 +14,6 @@ The framework for building this website is developed by [Ines Montani](https://g
 - [ ] Port [Ines Montani](https://github.com/ines)'s repo and rebuilt the website.
 - [ ] Finish the deployment on Netlify and set up the CI/CD routines.
 - [ ] Get MathJax work.
+- [ ] Get the multiple choice session work for one exercise, multiple choice questions.
 - [ ] Get Matplotlib work.
 - [ ] Develop two sample materials, one for introductory Python about how to use the website, one for graphing linear functions.

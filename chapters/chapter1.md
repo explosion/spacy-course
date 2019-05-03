@@ -110,42 +110,50 @@ A dictionary is different from list for several important reasons.
 
 </exercise>
 
-<exercise id="6" title="20-minute Python, mini test one" type="choice">
+<exercise id="6" title="20-minute Python, mini test one, question one" type="choice">
 
-What's **not** included in a model package that you can load into spaCy?
+Can you index a string of length 6 like `"Hello!"`?
 
 <choice>
-<opt text="A meta file including the language, pipeline and license.">
+<opt correct="true" text="Yes">
 
-All models include a `meta.json` that defines the language to initialize, the
-pipeline component names to load as well as general meta information like the
-model name, version, license, data sources, author and accuracy figures (if
-available).
+Yes, we can.
 
 </opt>
-<opt text="Binary weights to make statistical predictions.">
+<opt  text="No">
 
-To predict linguistic annotations like part-of-speech tags, dependency labels or
-named entities, models include binary weights.
-
-</opt>
-<opt correct="true" text="The labelled data that the model was trained on.">
-
-Statistical models allow you to generalize based on a set of training examples.
-Once they're trained, they use binary weights to make predictions. That's why
-it's not necessary to ship them with their training data.
-
-</opt>
-<opt text="Strings of the model's vocabulary and their hashes.">
-
-Model packages include a `strings.json` that stores the entries in the model's
-vocabulary and the mapping to hashes. This allows spaCy to only communicate in
-hashes and look up the corresponding string if needed.
+Try again and try to index it :)
 
 </opt>
 </choice>
 
 </exercise>
+
+<!-- <exercise id="6-2" title="20-minute Python, mini test one, question two" type="choice">
+
+Can you change a character of a string of length 6 like `"Hello!"` by indexing? for example, does the following code work?
+
+```python
+
+stringA = "Hello!"
+stringA[0] = "S"
+```
+
+<choice>
+
+<opt text="Yes">
+
+Try it in an interactive session and see what error you get.
+
+</opt>
+<opt correct="true" text="No">
+
+Right. A string in Python is immutable.
+
+</opt>
+</choice>
+
+</exercise> -->
 
 <exercise id="7" title="20-minute Python, if and else">
 
