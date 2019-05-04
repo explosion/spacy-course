@@ -1,19 +1,33 @@
-import spacy
+# function exercise
 
-nlp = spacy.load("en_core_web_sm")
+# a simplest function looks like this
 
-text = "New iPhone X release date leaked as Apple reveals pre-orders by mistake"
+def sayHi():
+    print("Hi!")
 
-# Process the text
-doc = nlp(text)
+# What this function does is simply printing `Hi!`. Let's pass an argument to the function so it can print `Hi!` for many times.
 
-# Iterate over the entities
-for ent in doc.ents:
-    # Print the entity text and label
-    print(ent.text, ent.label_)
+def sayManyHis(number):
+    for time in range(number):
+        print("Hi!")
 
-# Get the span for "iPhone X"
-iphone_x = doc[1:3]
+# However, you can use a defined function in another function, too.
 
-# Print the span text
-print("Missing entity:", iphone_x.text)
+def sayManyHis2(number):
+    for time in range(number):
+        sayHi()
+
+# Now, these functions can be called.
+
+sayManyHis2(3)
+
+# Define another function which calculates the average of all the numerical values in a list.
+# We make use of the two functions you have already seen before: `sum()` and `len()`.
+
+def mean(L):
+    # L is a list
+    return sum(L)/len(L)
+
+listA = [2, 4, 6, 8]
+
+print(mean(listA))

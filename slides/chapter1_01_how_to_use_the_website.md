@@ -4,10 +4,10 @@ type: slides
 
 # How to use this website
 
-## Welcome to your first lesson of chapter 1. As you can see, the first lesson is a slide. Now you can
+## Welcome to your first lesson of chapter 1. 
 
-1. Click the forward and backward buttons on the **bottom right** to move between pages.
-2. On the right side of the screen, you will find some notes about the current page or slides. Feel free to read it or skip it.
+### Click the forward and backward buttons on the **bottom right** to move between pages.
+### On the right side of the screen, you will find some notes about the current page or slides. Feel free to read it or skip it.
 
 
 Notes: **Hi**, This is Rongpeng. I am the creator of this website. I am here to help you go through this slide. After finishing this very first lesson, you are all set to move on to any other chapters to learn what you need.

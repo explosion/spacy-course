@@ -6,8 +6,22 @@ The framework for building this website is developed by [Ines Montani](https://g
 
 ## 💁 FAQ
 
-**What's the difference between this project and Khan Academy?** Khan Academy is an amazing resource but I think I can do more. There are great benefits to teach with Python. All the course materials, if possible, are developed with Python code. Students can interact with the mathematical concepts and graphs with simple clicks. Beyond that, students will enhance their computational thinking which will benefit them greatly in their future study. 
+**What's the difference between this project and Khan Academy?** 
 
+Khan Academy is an amazing resource but I think I can do more. There are great benefits to teach with Python. All the course materials, if possible, are developed with Python code. Students can interact with the mathematical concepts and graphs with simple clicks. I believe there is a sweet spot between math and programming. Every kid can enjoy the excitement and joy.
+
+**How do I improve the project**
+
+1. If you have a technical improvement proposal or find errors like typo, please open an issue on github directly.
+2. If you have an content improvement proposal, please send an email to [rongpenl@usc.edu](mailto:rongpenl@usc.edu).
+
+**Are the resources free?** 
+
+Yes. Feel free to use them NON-COMMERCIALLY.
+
+**Why did I start this project?**
+
+I initially started this project to help my student at School on Wheels.
 
 ## 🛣 Roadmap and todos
 

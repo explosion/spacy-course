@@ -20,5 +20,11 @@ for age in AGES.keys():
 # A very common usage of `for` loop is to generate a list like this:
 
 ODDS = [odd for odd in range(1,10,2)]
+# Can you figure out how this works?  
+# Can you guess what the `2` does in the `range()` 
+print(ODDS) 
 
-print(ODDS) # Can you figure out why this works?  Can you guess what the `2` does in the `range()` function?
+# print the name and age pair
+
+for name, replaceMe in AGES.items():
+    print(name, " is ", age, " years old.")

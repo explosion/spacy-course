@@ -198,20 +198,30 @@ As you may notice, in Python, a variable doesn't need to be `initialized`. It ca
 
 We saw something new in this piece of code.
 
-1. `range()` function. This is a builtin function in Python. It generates a list of numbers from a range, defualt starting value is `0`.
-
+1. `range()` function. This is a builtin function in Python. It generates a list of numbers from a range, default starting value is `0`.
+2. a dictionary has a method called `items()`. `AGES.items()` gives you a list of pairs so you can use a pair of variables to catch it like `name, age` pair.
 
 </codeblock>
-
 
 
 </exercise>
 
 <exercise id="9" title="20 minute Python, don't copy but write functions">
 
-
+Great job so far! This is our last lesson before moving on to math. Let's write some functions!
 <codeblock id="01_09">
 
+In programming, we often do one operation repeatedly. A function will help you avoid writing or copy-pasting the same content again and again. 
+
+We will learn two functions in this lesson.
+
+1. `sayManyHis()`
+2. `mean()`. 
+
+ We see something new in this lesson:
+
+ 1. `def`, short for `define`
+ 2. `return`, return the value of a function's result.
 
 </codeblock>
 
@@ -219,39 +229,34 @@ We saw something new in this piece of code.
 
 <exercise id="10" title="20-minute Python, mini summary two" type="slides">
 
-<slides source="chapter1_03_rule-based-matching">
+<slides source="chapter1_03_mini_summary_two">
 </slides>
 
 </exercise>
 
-<exercise id="11" title="20-minute Python, mini test two">
 
+<exercise id="11" title="20-minute Python, a mini project">
 
-<codeblock id="01_11">
-
-</codeblock>
-
-</exercise>
-
-<exercise id="12" title="20-minute Python, a mini project">
-
+## Welcome to the 
 
 ### Days in a month
 
-<codeblock id="01_12_01">
+<codeblock id="01_11_01">
+In this part, build two dictionaries.
 
+The first dictionary has month as key and  number of days in that month as corresponding value. It has 12 elements. TLet's assume February has 28 days.
+
+The second dictionary has number of days as key and a `list` of months with that days as value. It has 3 elements.
 </codeblock>
 
 ### Query 
 
-<codeblock id="01_12_02">
+<codeblock id="01_11_02">
 
+In this part, write two functions to perform the query operation.
 
-</codeblock>
-
-### Put things in a function
-
-<codeblock id="01_12_03">
+1. `sameDays()`, take two month names as input, test whether two months have the same number of days.
+2. `otherMonths()`, take a month name as input, print all other months with the same number of days.
 
 </codeblock>
 
