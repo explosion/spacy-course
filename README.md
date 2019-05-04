@@ -25,8 +25,8 @@ I initially started this project to help my student at School on Wheels.
 
 ## 🛣 Roadmap and todos
 
-- [ ] Port [Ines Montani](https://github.com/ines)'s repo and rebuilt the website.
-- [ ] Finish the deployment on Netlify and set up the CI/CD routines.
+- [x] Port [Ines Montani](https://github.com/ines)'s repo and rebuilt the website.
+- [x] Finish the deployment on Netlify and set up the CI/CD routines.
 - [ ] Get MathJax work.
 - [ ] Get the multiple choice session work for one exercise, multiple choice questions.
 - [ ] Get Matplotlib work.

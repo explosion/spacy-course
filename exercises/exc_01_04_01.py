@@ -25,3 +25,7 @@ print("The length is ", len(ODDS))
 # How about the summation of those numbers?, the function you need is called `sum()`
 
 print("Sum of all the numbers is ", replaceMe)
+
+# Can a list contain different types of objects? Can you create a list like [1, "One"]?
+
+# Can you create an empty list []? What is the length of it?
