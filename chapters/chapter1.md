@@ -17,7 +17,7 @@ id: 1
 
 <exercise id="2" title="Use Python in this website">
 
-Welcome to lesson two. In this lesson, you will run two lines of Python code and learn to use the interactive environment.
+Welcome to lesson two. In this lesson, you will run two lines of Python code and learn to use the interactive environment. The first lesson is as simple as $1+1=2$!
 
 ### Python is talkative!
 

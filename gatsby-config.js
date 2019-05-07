@@ -1,9 +1,19 @@
 const meta = require('./meta.json')
 const autoprefixer = require('autoprefixer')
 
+
+
 module.exports = {
     siteMetadata: meta,
     plugins: [
+        {
+            resolve: `gatsby-transformer-remark`,
+            options: {
+              plugins: [
+                `gatsby-remark-mathjax`, // to render mathjax
+              ],
+            },
+          },
         {
             resolve: `gatsby-plugin-sass`,
             options: {

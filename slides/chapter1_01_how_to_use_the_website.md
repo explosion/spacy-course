@@ -19,9 +19,9 @@ Notes: **Hi**, This is Rongpeng. I am the creator of this website. I am here to 
 
 A slide usually contains some words, pictures and code blocks. Some lessons contain multiple-choice questions and coding exercises with solutions.
 
-Below is a a thumbnail from a Khan Academy Youtube video:
+Below is an equation:
 
-![a Khan Academy Youtube video](https://i1.ytimg.com/vi/4ZWbeESjv4M/sddefault.jpg)
+$$\frac{1}{2} = 0.5$$
 
 Below is a code block. It contains two lines of code.
 

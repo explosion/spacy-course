@@ -2,6 +2,22 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 
+// const MathJaxConfig = `
+// window.MathJax = {
+//   tex2jax: {
+//     inlineMath: [['$', '$'] ],
+//     displayMath: [['$$', '$$'] ],
+//     processEscapes: true,
+//     processEnvironments: true,
+//     skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+//     TeX: {
+//       equationNumbers: {autoNumber: 'AMS'},
+//       extensions: ['AMSmath.js', 'AMSsymbols.js', 'color.js'],
+//     },
+//   }
+// };
+// `;
+
 const SEO = ({ title, description }) => (
     <StaticQuery
         query={query}
@@ -72,6 +88,9 @@ const SEO = ({ title, description }) => (
                             rel="stylesheet"
                         />
                     )}
+                    <header>
+                        <script type="text/javascript" src="../../mathjax/MathJax.js"></script>
+                    </header>
                 </Helmet>
             )
         }}
@@ -82,15 +101,15 @@ export default SEO
 
 const query = graphql`
     query DefaultSEOQuery {
-        site {
-            siteMetadata {
-                title
+                        site {
+                    siteMetadata {
+                        title
                 description
-                slogan
-                siteUrl
-                twitter
-                fonts
+                    slogan
+                    siteUrl
+                    twitter
+                    fonts
+                }
             }
         }
-    }
-`
+    `
