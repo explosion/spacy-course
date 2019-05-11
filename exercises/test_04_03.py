@@ -24,7 +24,7 @@ def test():
     ), "The second token of pattern2 should have two attributes."
     assert any(
         pattern2[1].get(l) == True for l in ("IS_DIGIT", "is_digit")
-    ), "The second token of pattern1 should match a digit."
+    ), "The second token of pattern2 should match a digit."
     assert any(
         pattern2[1].get(l) == "?" for l in ("OP", "op")
     ), "Are you using the correct operator in the second token of pattern2?"
