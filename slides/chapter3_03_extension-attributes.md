@@ -177,6 +177,7 @@ from spacy.tokens import Doc
 # Define method with arguments
 def has_token(doc, token_text):
     in_doc = token_text in [token.text for token in doc]
+    return in_doc
 
 # Set extension on the Doc with method
 Doc.set_extension('has_token', method=has_token)
