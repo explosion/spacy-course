@@ -39,7 +39,7 @@ Notes: spaCy ships with the following built-in pipeline components.
 
 The part-of-speech tagger sets the token dot tag attribute.
 
-The depdendency parser adds the token dot dep and token dot head attributes and is also responsible for detecting sentences and base noun phrases, also known as noun chunks.
+The dependency parser adds the token dot dep and token dot head attributes and is also responsible for detecting sentences and base noun phrases, also known as noun chunks.
 
 The named entity recognizer adds the detected entities to the doc dot ents property. It also sets entity type attributes on the tokens that indicate if a token is part of an entity or not.
 
