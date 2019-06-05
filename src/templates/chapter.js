@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { graphql, navigate } from 'gatsby'
 import useLocalStorage from '@illinois/react-use-local-storage'
 
@@ -21,6 +21,10 @@ const Template = ({ data }) => {
         { slug: next, text: 'Next Chapter »' },
     ]
 
+    //  Render MathJax syntax
+    useEffect(() => {
+        window.MathJax && window.MathJax.Hub.Queue(['Typeset', window.MathJax.Hub])
+    })
     return (
         <ChapterContext.Provider value={{ activeExc, setActiveExc, completed, setCompleted }}>
             <Layout title={title} description={description}>

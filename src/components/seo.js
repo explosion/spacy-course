@@ -2,22 +2,6 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 
-// const MathJaxConfig = `
-// window.MathJax = {
-//   tex2jax: {
-//     inlineMath: [['$', '$'] ],
-//     displayMath: [['$$', '$$'] ],
-//     processEscapes: true,
-//     processEnvironments: true,
-//     skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-//     TeX: {
-//       equationNumbers: {autoNumber: 'AMS'},
-//       extensions: ['AMSmath.js', 'AMSsymbols.js', 'color.js'],
-//     },
-//   }
-// };
-// `;
-
 const SEO = ({ title, description }) => (
     <StaticQuery
         query={query}
@@ -79,9 +63,12 @@ const SEO = ({ title, description }) => (
                     content: pageDesc,
                 },
             ]
-
+            const script = [{
+                type: 'text/javascript',
+                src:'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML',
+            }]
             return (
-                <Helmet defer={false} htmlAttributes={{ lang }} title={pageTitle} meta={meta}>
+                <Helmet defer={false} htmlAttributes={{ lang }} title={pageTitle} meta={meta} script={script}>
                     {siteMetadata.fonts && (
                         <link
                             href={`https://fonts.googleapis.com/css?family=${siteMetadata.fonts}`}
