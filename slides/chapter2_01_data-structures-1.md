@@ -104,7 +104,7 @@ You can get a lexeme by looking up a string or a hash ID in the vocab.
 
 Lexemes expose attributes, just like tokens.
 
-They hold context-independent information about a word, like the text, or whether the the word consists of alphanumeric characters.
+They hold context-independent information about a word, like the text, or whether the word consists of alphanumeric characters.
 
 Lexemes don't have part-of-speech tags, dependencies or entity labels. Those depend on the context.
 
