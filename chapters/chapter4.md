@@ -58,7 +58,7 @@ only learn to reproduce examples, not guess new labels from raw text.
 
 spaCy's rule-based `Matcher` is a great way to quickly create training data for
 named entity models. A list of sentences is available as the variable `TEXTS`.
-You can print it the IPython shell to inspect it. We want to find all mentions
+You can print it in the IPython shell to inspect it. We want to find all mentions
 of different iPhone models, so we can create training data to teach a model to
 recognize them as `'GADGET'`.
 
