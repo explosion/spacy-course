@@ -1,7 +1,7 @@
 ---
 title: 'Chapter 3: Processing Pipelines'
 description:
-  "This chapter will show you to everything you need to know about spaCy's
+  "This chapter will show you everything you need to know about spaCy's
   processing pipeline. You'll learn what goes on under the hood when you process
   a text, how to write your own components and add them to the pipeline, and how
   to use custom attributes to add your own meta data to the documents, spans and
@@ -150,7 +150,7 @@ languages.
 
 <exercise id="6" title="Simple components">
 
-The example shows a custom component that prints the character length of a
+The example shows a custom component that prints the token length of a
 document. Can you complete it?
 
 - Complete the component function with the `doc`'s length.
