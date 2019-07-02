@@ -123,7 +123,7 @@ Because the entity recognizer predicts entities _in context_, it also needs to
 be trained on entities _and_ their surrounding context.
 
 The easiest way to do this is to show the model a text and a list of character
-offsets. For example, "iPhone X" is a gadget, starts at character 0 and ends at
+offsets. For example, "iPhone X" is coming, starts at character 0 and ends at
 character 8.
 
 It's also very important for the model to learn words that _aren't_ entities.
