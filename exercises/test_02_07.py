@@ -7,4 +7,9 @@ def test():
     assert (
         "token.i + 1" in __solution__ or "token.i+1" in __solution__
     ), "Are you using the token's index attribute to check the next token?"
-    __msg__.good("Great work!")
+    __msg__.good(
+        "Great work! While the solution here works fine for the given example, "
+        "there are still things that can be improved. If the doc ends with a "
+        "proper noun, doc[token.i + 1] will fail. To make sure the code "
+        "generalizes, you should first check if token.i + 1 < len(doc)."
+    )
