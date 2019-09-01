@@ -150,7 +150,7 @@ languages.
 
 <exercise id="6" title="Simple components">
 
-The example shows a custom component that prints the character length of a
+The example shows a custom component that prints the token length of a
 document. Can you complete it?
 
 - Complete the component function with the `doc`'s length.
