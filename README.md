@@ -35,6 +35,10 @@ solutions are all in this repo, there's no penalty for clicking "Show hints" or
 - Is open-source and published under the MIT license (code and framework) and CC
   BY-NC (spaCy course materials).
 
+### Related resources
+
+- 📚 **Prefer notebooks?** Check out [the Jupyter notebook version](https://github.com/cristianasp/spacy) of this course, put together by [@cristianasp](https://github.com/cristianasp).
+
 ### Starter repos for your own course
 
 - 🐍 Python:
