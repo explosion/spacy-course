@@ -153,7 +153,7 @@ Notes: Here you can see some of the available token attributes:
 "text" returns the token text.
 
 "is alpha", "is punct" and "like num" return boolean values indicating whether
-the token consists of alphanumeric characters, whether it's punctuation or
+the token consists of alphabetic characters, whether it's punctuation or
 whether it _resembles_ a number. For example, a token "10" – one, zero – or the
 word "ten" – T, E, N.
 
