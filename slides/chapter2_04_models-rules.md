@@ -63,6 +63,7 @@ matcher.add('LOVE_CATS', None, pattern)
 
 # Operators can specify how often a token should be matched
 pattern = [{'TEXT': 'very', 'OP': '+'}, {'TEXT': 'happy'}]
+matcher.add('VERY_HAPPY', None, pattern)
 
 # Calling matcher on doc returns list of (match_id, start, end) tuples
 doc = nlp("I love cats and I'm very very happy")
