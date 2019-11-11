@@ -78,10 +78,7 @@ doc.ents = [span_with_label]
 
 Notes: To create a Span manually, we can also import the class from spacy dot
 tokens. We can then instantiate it with the doc and the span's start and end
-index.
-
-To add an entity label to the span, we first need to look up the string in the
-string store. We can then provide it to the span as the label argument.
+index, and an optional label argument.
 
 The doc dot ents are writable, so we can add entities manually by overwriting it
 with a list of spans.
