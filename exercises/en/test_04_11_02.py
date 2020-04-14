@@ -15,7 +15,7 @@ def test():
     ), "Did you label the PERSON correctly?"
 
     __msg__.good(
-        "Good job! After including both examples of the next WEBSITE "
+        "Good job! After including both examples of the new WEBSITE "
         "entities, as well as existing entity types like PERSON, the model "
         "now performs much better."
     )
