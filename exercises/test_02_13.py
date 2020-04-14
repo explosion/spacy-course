@@ -35,10 +35,10 @@ def test():
     assert len(matcher(doc)) == 6, "Incorrect number of matches – expected 6."
 
     __msg__.good(
-        "Well done! For the token `-`, you can match on the attribute "
-        "`TEXT`, `LOWER` or even `SHAPE`. All of those are correct. As you "
+        "Well done! For the token '-', you can match on the attribute "
+        "'TEXT', 'LOWER' or even 'SHAPE'. All of those are correct. As you "
         "can see, paying close attention to the tokenization is very "
-        "important when working with the token-based `Matcher`. Sometimes "
+        "important when working with the token-based 'Matcher'. Sometimes "
         "it's much easier to just match exact strings instead and use the "
-        "`PhraseMatcher`, which we'll get to in the next exercise."
+        "'PhraseMatcher', which we'll get to in the next exercise."
     )

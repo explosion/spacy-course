@@ -58,9 +58,9 @@ only learn to reproduce examples, not guess new labels from raw text.
 
 spaCy's rule-based `Matcher` is a great way to quickly create training data for
 named entity models. A list of sentences is available as the variable `TEXTS`.
-You can print it the IPython shell to inspect it. We want to find all mentions
-of different iPhone models, so we can create training data to teach a model to
-recognize them as `'GADGET'`.
+You can print it to inspect it. We want to find all mentions of different iPhone
+models, so we can create training data to teach a model to recognize them as
+`'GADGET'`.
 
 - Write a pattern for two tokens whose lowercase forms match `'iphone'` and
   `'x'`.
@@ -71,7 +71,7 @@ recognize them as `'GADGET'`.
 
 - To match the lowercase form of a token, you can use the `'LOWER'` attribute.
   For example: `{'LOWER': 'apple'}`.
-- To find a digit token, you can use the `IS_DIGIT` flag. For example:
+- To find a digit token, you can use the `'IS_DIGIT'` flag. For example:
   `{'IS_DIGIT': True}`.
 - To make a token optional, you can use the operator `'?'`. For example:
   `{'OP': '?'}`.

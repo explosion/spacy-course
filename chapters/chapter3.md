@@ -46,8 +46,8 @@ every component in the pipeline on document, in order.
 
 <opt text="Connect to the spaCy server to compute the result and return it.">
 
-Incorrect. spaCy computes everything on the machine and doesn't need to connect
-to any server.
+spaCy computes everything on the machine and doesn't need to connect to any
+server.
 
 </opt>
 
@@ -150,8 +150,8 @@ languages.
 
 <exercise id="6" title="Simple components">
 
-The example shows a custom component that prints the token length of a
-document. Can you complete it?
+The example shows a custom component that prints the token length of a document.
+Can you complete it?
 
 - Complete the component function with the `doc`'s length.
 - Add the `length_component` to the existing pipeline as the **first**
@@ -211,12 +211,12 @@ Let's practice setting some extension attributes.
 
 ### Step 1
 
-- Use `Token.set_extension` to register `is_country` (default `False`).
+- Use `Token.set_extension` to register `'is_country'` (default `False`).
 - Update it for `"Spain"` and print it for all tokens.
 
 <codeblock id="03_09_01">
 
-Remember that extension attributes are available via the `._.` property. For
+Remember that extension attributes are available via the `._` property. For
 example, `doc._.has_color`.
 
 </codeblock>
@@ -229,7 +229,7 @@ example, `doc._.has_color`.
 
 <codeblock id="03_09_02">
 
-Remember that extension attributes are available via the `._.` property. For
+Remember that extension attributes are available via the `._` property. For
 example, `doc._.has_color`.
 
 </codeblock>
@@ -243,16 +243,17 @@ extensions.
 
 ### Part 1
 
-- Complete the `has_number` function .
-- Use `Doc.set_extension` to register `has_number` (getter `get_has_number`) and
-  print its value.
+- Complete the `get_has_number` function .
+- Use `Doc.set_extension` to register `'has_number'` (getter `get_has_number`)
+  and print its value.
 
 <codeblock id="03_10_01">
 
-- Remember that extension attributes are available via the `._.` property. For
+- Remember that extension attributes are available via the `._` property. For
   example, `doc._.has_color`.
-- The `has_number` function should return whether any of the tokens in the `doc`
-  return `True` for `token.like_num` (whether the token resembles a number).
+- The `get_has_number` function should return whether any of the tokens in the
+  `doc` return `True` for `token.like_num` (whether the token resembles a
+  number).
 
 </codeblock>
 
@@ -288,7 +289,7 @@ if the span is a person, organization, or location.
 
 - To get the string label of a span, use the `span.label_` attribute. This is
   the label predicted by the entity recognizer if the span is an entity span.
-- Remember that extension attributes are available via the `._.` property. For
+- Remember that extension attributes are available via the `._` property. For
   example, `doc._.has_color`.
 
 </codeblock>
@@ -318,8 +319,8 @@ variable `CAPITALS`.
 
 - The `Span` class takes four arguments: the `doc`, the `start` and `end` token
   index of the span and the `label`.
-- Calling the `Matcher` on a `doc` returns a list of `(match_id, start, end)`
-  tuples.
+- Calling the `PhraseMatcher` on a `doc` returns a list of
+  `(match_id, start, end)` tuples.
 - To register a new extension attribute, use the `set_extension` method on the
   global class, e.g. `Doc`, `Token` or `Span`. To define a getter, use the
   `getter` keyword argument.
@@ -360,16 +361,14 @@ popular American fast food chain are available as the variable `TEXTS`.
 - Rewrite the example to use `nlp.pipe`. Don't forget to call `list()` around
   the result to turn it into a list.
 
-<codeblock id="03_14_02">
-</codeblock>
+<codeblock id="03_14_02"></codeblock>
 
 ### Part 3
 
 - Rewrite the example to use `nlp.pipe`. Don't forget to call `list()` around
   the result to turn it into a list.
 
-<codeblock id="03_14_03">
-</codeblock>
+<codeblock id="03_14_03"></codeblock>
 
 </exercise>
 
@@ -391,7 +390,7 @@ texts are quotes from famous books, and the contexts dictionaries with the keys
 
 <codeblock id="03_15">
 
-- To `Doc.set_extension` method takes two arguments: the string name of the
+- The `Doc.set_extension` method takes two arguments: the string name of the
   attribute, and a keyword argument indicating the default, getter, setter or
   method. For example, `default=True`.
 - If `as_tuples` is set to `True`, the `nlp.pipe` method takes a list of
@@ -412,8 +411,8 @@ to only run selected components when processing a text.
 
 <codeblock id="03_16_01">
 
-The `make_doc` method can be called on a text and returns a `Doc`, just like the
-`nlp` object.
+The `nlp.make_doc` method can be called on a text and returns a `Doc`, just like
+the `nlp` object.
 
 </codeblock>
 

@@ -5,5 +5,5 @@ def test():
 
     __msg__.good(
         "Well done! Whenever you're unsure about the current pipeline, you "
-        "can inspect it by printing `nlp.pipe_names` or `nlp.pipeline`."
+        "can inspect it by printing nlp.pipe_names or nlp.pipeline."
     )

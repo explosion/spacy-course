@@ -132,7 +132,7 @@ improving the new category might hurt the other categories.
 
 # Setting up a new pipeline from scratch
 
-```{python}
+```python
 # Start with blank English model
 nlp = spacy.blank('en')
 # Create blank entity recognizer and add it to the pipeline

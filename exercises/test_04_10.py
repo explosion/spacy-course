@@ -21,7 +21,7 @@ def test():
     ], "Double-check the entities in the fourth example."
 
     __msg__.good(
-        "Great work! Once the model achieves good results on detecting `GPE` "
+        "Great work! Once the model achieves good results on detecting GPE "
         "entities in the traveler reviews, you could add a rule-based "
         "component to determine whether the entity is a tourist destination in "
         "this context. For example, you could resolve the entities types back "

@@ -142,8 +142,7 @@ space. If so, the spaces value should be `True`. If not, it should be `False`.
 <codeblock id="02_05_03">
 
 Pay attention to the individual tokens. To see how spaCy usually tokenizes that
-string, you can try it out in the IPython shell and print the tokens for
-`nlp("Oh, really?!")`.
+string, you can try it and print the tokens for `nlp("Oh, really?!")`.
 
 </codeblock>
 
@@ -168,9 +167,6 @@ update the named entities – just like spaCy does behind the scenes. A shared
   the word should be followed by a space.
 - The `Span` class takes four arguments: the reference `doc`, the start token
   index, the end token index and an optional label.
-- To get the ID for a string, you can look it up in the `nlp.vocab.strings`
-  dictionary. For example, `nlp.vocab.strings['unicorn']` will return the hash
-  ID for the string `'unicorn'`.
 - The `doc.ents` property is writable, so you can assign it any iterable
   consisting of `Span` objects.
 
@@ -263,9 +259,7 @@ is the correct tag to check for proper nouns.
 
 In this exercise, you'll use a larger
 [English model](https://spacy.io/models/en), which includes around 20.000 word
-vectors. Because vectors take a little longer to load, we're using a slightly
-compressed version of it than the one you can download with spaCy. The model is
-already pre-installed.
+vectors. The model is already pre-installed.
 
 - Load the medium `'en_core_web_md'` model with word vectors.
 - Print the vector for `"bananas"` using the `token.vector` attribute.
@@ -425,7 +419,6 @@ countries.
 <codeblock id="02_15">
 
 - Remember that the text is available as the variable `text`.
-- To get the hash ID for a label, you can look it up in the `nlp.vocab.strings`.
 - The span's root token is available as `span.root`. A token's head is available
   via the `token.head` attribute.
 

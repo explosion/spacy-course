@@ -26,7 +26,7 @@ def test():
     __msg__.good(
         "Well done! The same technique is useful for a variety of tasks. For "
         "example, you could pass in page or paragraph numbers to relate the "
-        "processed `Doc` back to the position in a larger document. Or you "
+        "processed Doc back to the position in a larger document. Or you "
         "could pass in other structured data like IDs referring to a "
         "knowledge base."
     )

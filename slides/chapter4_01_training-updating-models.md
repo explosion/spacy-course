@@ -99,13 +99,13 @@ application.
 - Each token can only be part of one entity
 - Examples need to come with context
 
-```{python}
+```python
 ("iPhone X is coming", {'entities': [(0, 8, 'GADGET')]})
 ```
 
 - Texts with no entities are also important
 
-```{python}
+```python
 ("I need a new phone! Any tips?", {'entities': []})
 ```
 
