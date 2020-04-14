@@ -3,21 +3,25 @@ import { StaticQuery, graphql } from 'gatsby'
 import Marked from 'reveal.js/plugin/markdown/marked.js'
 import classNames from 'classnames'
 
+import { ChapterContext } from '../context'
 import '../styles/reveal.css'
 import classes from '../styles/slides.module.sass'
 
-function getFiles({ allMarkdownRemark }) {
+function getFiles({ allMarkdownRemark }, lang) {
     return Object.assign(
         {},
-        ...allMarkdownRemark.edges.map(({ node }) => ({
-            [node.fields.slug.replace('/', '')]: node.rawMarkdownBody,
-        }))
+        ...allMarkdownRemark.edges
+            .filter(({ node }) => node.fields.lang === lang)
+            .map(({ node }) => ({
+                [node.fields.slug.replace('/', '')]: node.rawMarkdownBody,
+            }))
     )
 }
 
-function getSlideContent(data, source) {
-    const files = getFiles(data)
-    const file = files[source] || ''
+function getSlideContent(data, source, lang) {
+    const files = getFiles(data, lang)
+    const key = `${lang}/slides/${source}`
+    const file = files[key] || ''
     return file.split('\n---\n').map(f => f.trim())
 }
 
@@ -59,40 +63,48 @@ class Slides extends React.Component {
         return (
             <div className={classes.root}>
                 <div className={revealClassNames}>
-                    <StaticQuery
-                        query={graphql`
-                            {
-                                allMarkdownRemark(
-                                    filter: { frontmatter: { type: { eq: "slides" } } }
-                                ) {
-                                    edges {
-                                        node {
-                                            rawMarkdownBody
-                                            fields {
-                                                slug
+                    <ChapterContext.Consumer>
+                        {({ lang }) => (
+                            <StaticQuery
+                                query={graphql`
+                                    {
+                                        allMarkdownRemark(
+                                            filter: { frontmatter: { type: { eq: "slides" } } }
+                                        ) {
+                                            edges {
+                                                node {
+                                                    rawMarkdownBody
+                                                    fields {
+                                                        slug
+                                                        lang
+                                                    }
+                                                }
                                             }
                                         }
                                     }
-                                }
-                            }
-                        `}
-                        render={data => {
-                            const content = getSlideContent(data, source)
-                            return (
-                                <div className={slideClassNames}>
-                                    {content.map((markdown, i) => (
-                                        <section
-                                            key={i}
-                                            data-markdown=""
-                                            data-separator-notes="^Notes:"
-                                        >
-                                            <textarea data-template defaultValue={markdown} />
-                                        </section>
-                                    ))}
-                                </div>
-                            )
-                        }}
-                    />
+                                `}
+                                render={data => {
+                                    const content = getSlideContent(data, source, lang)
+                                    return (
+                                        <div className={slideClassNames}>
+                                            {content.map((markdown, i) => (
+                                                <section
+                                                    key={i}
+                                                    data-markdown=""
+                                                    data-separator-notes="^Notes:"
+                                                >
+                                                    <textarea
+                                                        data-template
+                                                        defaultValue={markdown}
+                                                    />
+                                                </section>
+                                            ))}
+                                        </div>
+                                    )
+                                }}
+                            />
+                        )}
+                    </ChapterContext.Consumer>
                 </div>
             </div>
         )

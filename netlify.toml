@@ -1,3 +1,9 @@
 redirects = [
-    {from = "https://spacy-course.netlify.com/*", to="https://course.spacy.io/:splat", force = true }
+    {from = "https://spacy-course.netlify.com/*", to="https://course.spacy.io/:splat", force = true },
+    # Default site
+    {from = "/", to="/en", force = true },
+    {from = "/chapter1", to="/en/chapter1", force = true },
+    {from = "/chapter2", to="/en/chapter2", force = true },
+    {from = "/chapter3", to="/en/chapter3", force = true },
+    {from = "/chapter4", to="/en/chapter4", force = true }
 ]

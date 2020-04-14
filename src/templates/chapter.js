@@ -1,42 +1,29 @@
 import React, { useState } from 'react'
-import { graphql, navigate } from 'gatsby'
+import { graphql } from 'gatsby'
 import useLocalStorage from '@illinois/react-use-local-storage'
 
 import { renderAst } from '../markdown'
 import { ChapterContext } from '../context'
 import Layout from '../components/layout'
-import { Button } from '../components/button'
+import { Pagination } from '../components/pagination'
 
 import classes from '../styles/chapter.module.sass'
 
 const Template = ({ data }) => {
     const { markdownRemark } = data
-    const { frontmatter, htmlAst } = markdownRemark
+    const { frontmatter, htmlAst, parent, fields } = markdownRemark
     const { title, description, prev, next, id } = frontmatter
+    const { lang } = fields
     const [activeExc, setActiveExc] = useState(null)
     const [completed, setCompleted] = useLocalStorage(`spacy-course-completed-${id}`, [])
     const html = renderAst(htmlAst)
-    const buttons = [
-        { slug: prev, text: '« Previous Chapter' },
-        { slug: next, text: 'Next Chapter »' },
-    ]
 
     return (
-        <ChapterContext.Provider value={{ activeExc, setActiveExc, completed, setCompleted }}>
-            <Layout title={title} description={description}>
+        <ChapterContext.Provider value={{ lang, activeExc, setActiveExc, completed, setCompleted }}>
+            <Layout lang={lang} title={title} description={description} pageName={parent.name}>
                 {html}
 
-                <section className={classes.pagination}>
-                    {buttons.map(({ slug, text }) => (
-                        <div key={slug}>
-                            {slug && (
-                                <Button variant="secondary" small onClick={() => navigate(slug)}>
-                                    {text}
-                                </Button>
-                            )}
-                        </div>
-                    ))}
-                </section>
+                <Pagination className={classes.pagination} prev={prev} next={next} lang={lang} />
             </Layout>
         </ChapterContext.Provider>
     )
@@ -54,6 +41,14 @@ export const pageQuery = graphql`
                 description
                 next
                 prev
+            }
+            fields {
+                lang
+            }
+            parent {
+                ... on File {
+                    name
+                }
             }
         }
     }

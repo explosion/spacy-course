@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import classNames from 'classnames'
 
+import { UiTextContext } from '../context'
 import IconCheck from '../../static/icon_check.svg'
 import classes from '../styles/button.module.sass'
 
@@ -18,6 +19,7 @@ export const Button = ({ Component = 'button', children, onClick, variant, small
 }
 
 export const CompleteButton = ({ completed, toggleComplete, small = true }) => {
+    const uiText = useContext(UiTextContext)
     const buttonClassNames = classNames({
         [classes.completeInactive]: !completed,
         [classes.completeActive]: completed,
@@ -25,12 +27,12 @@ export const CompleteButton = ({ completed, toggleComplete, small = true }) => {
     return (
         <Button small={small} onClick={toggleComplete} className={buttonClassNames}>
             {!completed ? (
-                'Mark as completed'
+                uiText.markAsCompleted
             ) : (
                 <>
                     <IconCheck width={14} height={14} className={classes.completeIcon} />{' '}
-                    <span className={classes.completeLabel}>Completed</span>{' '}
-                    <span className={classes.completeLabelHover}>Remove from completed</span>
+                    <span className={classes.completeLabel}>{uiText.completed}</span>{' '}
+                    <span className={classes.completeLabelHover}>{uiText.removeFromCompleted}</span>
                 </>
             )}
         </Button>

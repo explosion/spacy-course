@@ -28,13 +28,6 @@ module.exports = {
         {
             resolve: `gatsby-source-filesystem`,
             options: {
-                name: `slides`,
-                path: `${__dirname}/slides`,
-            },
-        },
-        {
-            resolve: `gatsby-source-filesystem`,
-            options: {
                 name: `exercises`,
                 path: `${__dirname}/exercises`,
             },

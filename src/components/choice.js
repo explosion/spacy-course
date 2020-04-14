@@ -1,10 +1,12 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useContext } from 'react'
 import classNames from 'classnames'
 
 import { Button } from './button'
+import { UiTextContext } from '../context'
 import classes from '../styles/choice.module.sass'
 
 const Choice = ({ id = '0', children = [] }) => {
+    const uiText = useContext(UiTextContext)
     const [selected, setSelected] = useState(null)
     const [answer, setAnswer] = useState(null)
     const handleAnswer = useCallback(() => setAnswer(selected), [selected])
@@ -30,7 +32,7 @@ const Choice = ({ id = '0', children = [] }) => {
                 </p>
             ))}
             <Button variant="primary" onClick={handleAnswer}>
-                Submit
+                {uiText.submit}
             </Button>
             {options.map(({ key, props }, i) => {
                 const isCorrect = !!props.correct
@@ -44,7 +46,7 @@ const Choice = ({ id = '0', children = [] }) => {
                                 [classes.answerLabelCorrect]: isCorrect,
                             })}
                         >
-                            {isCorrect ? "That's correct! " : 'Incorrect. '}
+                            {isCorrect ? `${uiText.correct} ` : `${uiText.incorrect} `}
                         </strong>
                         {props.children}
                     </div>

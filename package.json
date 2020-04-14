@@ -34,7 +34,7 @@
         "prismjs": "^1.15.0",
         "react": "^16.8.2",
         "react-dom": "^16.8.2",
-        "react-helmet": "^5.2.0",
+        "react-helmet": "^5.2.1",
         "rehype-react": "^3.1.0",
         "remark-react": "^5.0.1",
         "reveal.js": "^3.8.0"

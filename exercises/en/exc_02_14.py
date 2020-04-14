@@ -1,7 +1,7 @@
 import json
 from spacy.lang.en import English
 
-with open("exercises/countries.json") as f:
+with open("exercises/en/countries.json") as f:
     COUNTRIES = json.loads(f.read())
 
 nlp = English()
