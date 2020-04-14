@@ -1,4 +1,4 @@
-from spacy.lang.en import English
+import spacy
 from spacy.matcher import PhraseMatcher
 from spacy.tokens import Span
 import json
@@ -8,13 +8,14 @@ with open("exercises/en/countries.json") as f:
 with open("exercises/en/country_text.txt") as f:
     TEXT = f.read()
 
-nlp = English()
+nlp = spacy.load("en_core_web_sm")
 matcher = PhraseMatcher(nlp.vocab)
 patterns = list(nlp.pipe(COUNTRIES))
 matcher.add("COUNTRY", None, *patterns)
 
-# Create a doc and find matches in it
-doc = ____
+# Create a doc and reset existing entities
+doc = nlp(TEXT)
+doc.ents = []
 
 # Iterate over the matches
 for match_id, start, end in matcher(doc):
