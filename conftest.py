@@ -53,6 +53,8 @@ def pytest_sessionstart(session):
         test_root = test_dir / test_lang
         if not test_root.exists():
             test_root.mkdir()
+            init_path = test_root / "__init__.py"
+            init_path.touch()
         test_path = test_root / test_file.name
         with test_path.open("w", encoding="utf8") as f:
             f.write(full_code)
