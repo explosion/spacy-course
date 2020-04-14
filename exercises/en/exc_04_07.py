@@ -26,4 +26,4 @@ for itn in range(____):
 
         # Update the model
         ____.____(texts, annotations, losses=losses)
-        print(losses)
+    print(losses)

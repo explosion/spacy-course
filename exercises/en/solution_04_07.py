@@ -26,4 +26,4 @@ for itn in range(10):
 
         # Update the model
         nlp.update(texts, annotations, losses=losses)
-        print(losses)
+    print(losses)
