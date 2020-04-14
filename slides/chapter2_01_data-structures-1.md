@@ -39,7 +39,7 @@ Instead, spaCy uses a hash function to generate an ID and stores the string only
 
 It's a lookup table that works in both directions. You can look up a string and get its hash, and look up a hash to get its string value. Internally, spaCy only communicates in hash IDs.
 
-Hash IDs can't be reversed, though. If a word in not in the vocabulary, there's no way to get its string. That's why we always need to pass around the shared vocab.
+Hash IDs can't be reversed, though. If a word is not in the vocabulary, there's no way to get its string. That's why we always need to pass around the shared vocab.
 
 ---
 
