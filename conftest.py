@@ -3,11 +3,25 @@ import shutil
 from pathlib import Path
 from wasabi import msg
 import srsly
+import sys
+from spacy.tokens.underscore import Underscore
+
 
 TESTS_DIR = "__tests__"
 EXERCISES_DIR = "exercises"
 META_FILE = "meta.json"
 PYTEST_TEMPLATE = "pytestTemplate"
+LANG_CLI_ARG = "lang"
+
+
+@pytest.fixture(scope="module", autouse=True)
+def clean_underscore():
+    # reset the Underscore object after the test, to avoid having state copied across tests
+    yield
+    Underscore.doc_extensions = {}
+    Underscore.span_extensions = {}
+    Underscore.token_extensions = {}
+
 
 
 def format_test(name, template, test, solution):
@@ -17,12 +31,15 @@ def format_test(name, template, test, solution):
     return f"def test_{name}():\n{indented}"
 
 
-def get_source_files():
+def get_source_files(lang):
     exercises_path = Path(EXERCISES_DIR)
     if not exercises_path.exists():
         msg.fail(f"Can't find exercises directory: {EXERCISES_DIR}", exits=1)
     for lang_path in exercises_path.iterdir():
         if lang_path.is_dir():
+            lang_name = lang_path.stem
+            if lang and lang_name != lang:
+                continue
             for py_file in lang_path.iterdir():
                 if py_file.name.startswith("test_"):
                     solution_name = f"solution_{py_file.name.split('test_')[1]}"
@@ -30,10 +47,17 @@ def get_source_files():
                     if not solution_file.exists():
                         msg.warn(f"Didn't find solution for test: {py_file.stem} ({lang_path})")
                     else:
-                        yield (lang_path.stem, py_file, solution_file)
+                        yield (lang_name, py_file, solution_file)
+
+
+def pytest_addoption(parser):
+    parser.addoption(f"--{LANG_CLI_ARG}", action="store", dest=LANG_CLI_ARG)
 
 
 def pytest_sessionstart(session):
+    lang = session.config.getoption(LANG_CLI_ARG)
+    if lang:
+        msg.info(f"Running only tests for '{lang}'")
     test_dir = Path(TESTS_DIR)
     if test_dir.exists():
         shutil.rmtree(str(test_dir))
@@ -42,7 +66,7 @@ def pytest_sessionstart(session):
     msg.good(f"Created test directory {TESTS_DIR}")
     meta = srsly.read_json(META_FILE)
     n_files = 0
-    for test_lang, test_file, solution_file in get_source_files():
+    for test_lang, test_file, solution_file in get_source_files(lang):
         with test_file.open("r", encoding="utf8") as f:
             test_code = f.read()
         with solution_file.open("r", encoding="utf8") as f:
