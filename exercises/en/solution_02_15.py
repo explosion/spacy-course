@@ -5,7 +5,7 @@ import json
 
 with open("exercises/en/countries.json") as f:
     COUNTRIES = json.loads(f.read())
-with open("exercises/country_text.txt") as f:
+with open("exercises/en/country_text.txt") as f:
     TEXT = f.read()
 
 nlp = English()

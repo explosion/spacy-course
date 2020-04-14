@@ -37,7 +37,9 @@ solutions are all in this repo, there's no penalty for clicking "Show hints" or
 
 ### Related resources
 
-- 📚 **Prefer notebooks?** Check out [the Jupyter notebook version](https://github.com/cristianasp/spacy) of this course, put together by [@cristianasp](https://github.com/cristianasp).
+- 📚 **Prefer notebooks?** Check out
+  [the Jupyter notebook version](https://github.com/cristianasp/spacy) of this
+  course, put together by [@cristianasp](https://github.com/cristianasp).
 
 ### Starter repos for your own course
 
@@ -91,8 +93,8 @@ combined using a string template. At the moment, the `testTemplate` in the
 `meta.json` looks like this:
 
 ```
-from wasabi import Printer
-__msg__ = Printer()
+from wasabi import msg
+__msg__ = msg
 __solution__ = """${solution}"""
 ${solution}
 
@@ -153,12 +155,15 @@ python -m pytest __tests__
 ```yaml
 ├── binder
 |   └── requirements.txt  # Python dependency requirements for Binder
-├── chapters              # chapters, one Markdown file per chapter
+├── chapters              # chapters, grouped by language
+|   └── en                # English chapters, one Markdown file per language
+|       └── slides        # English slides, one Markdown file per presentation
 ├── exercises             # code files, tests and assets for exercises
+|   └── en                # English exercises, solutions and tests
 ├── public                # compiled site
-├── slides                # slides, one Markdown file per presentation
 ├── src                   # Gatsby/React source, independent from content
 ├── static                # static assets like images, available in slides/chapters
+├── locale.json           # translations of meta and UI text
 ├── meta.json             # course metadata
 └── theme.sass            # UI theme colors and settings
 ```

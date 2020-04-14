@@ -2,8 +2,8 @@
     "siteUrl": "https://course.spacy.io",
     "twitter": "spacy_io",
     "fonts": "IBM+Plex+Mono:500|IBM+Plex+Sans:700|Lato:400,400i,700,700i",
-    "testTemplate": "from wasabi import Printer\n__msg__ = Printer()\n__solution__ = \"\"\"${solution}\"\"\"\n\n${solution}\n\n${test}\n\ntry:\n    test()\nexcept AssertionError as e:\n    __msg__.fail(e)",
-    "pytestTemplate": "from wasabi import Printer\n__msg__ = Printer()\n__solution__ = \"\"\"${solution}\"\"\"\n\n${solution}\n\n${test}\ntest()",
+    "testTemplate": "from wasabi import msg\n__msg__ = msg\n__solution__ = \"\"\"${solution}\"\"\"\n\n${solution}\n\n${test}\n\ntry:\n    test()\nexcept AssertionError as e:\n    __msg__.fail(e)",
+    "pytestTemplate": "from wasabi import msg\n__msg__ = msg\n__solution__ = \"\"\"${solution}\"\"\"\n\n${solution}\n\n${test}\ntest()",
     "juniper": {
         "repo": "ines/spacy-course",
         "branch": "binder",
