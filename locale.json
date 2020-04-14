@@ -1,0 +1,37 @@
+{
+    "en": {
+        "langName": "English",
+        "title": "Advanced NLP with spaCy",
+        "slogan": "A free online course",
+        "description": "In this course, you'll learn how to use spaCy to build advanced natural language understanding systems, using both rule-based and machine learning approaches. I originally developed the content for DataCamp, but I wanted to make a free version so you don't have to sign up for their service. As a weekend project, I ended up putting together my own little app to present the exercises and content in a fun and interactive way.",
+        "bio": "I'm Ines, and I'm one of the core developers of spaCy and the co-founder of Explosion. I specialise in applications and developer tools for AI, Machine Learning and Natural Language Processing technologies. I also really love building stuff for the web.",
+        "footerLinks": [
+            { "text": "spaCy Website", "url": "https://spacy.io" },
+            { "text": "Course FAQ", "url": "https://github.com/ines/spacy-course#-faq" },
+            { "text": "Source", "url": "https://github.com/ines/spacy-course" },
+            { "text": "Follow me on Twitter", "url": "https://twitter.com/_inesmontani" }
+        ],
+        "uiText": {
+            "aboutMe": "About me",
+            "aboutCourse": "About this course",
+            "markAsCompleted": "Mark as completed",
+            "removeFromCompleted": "Remove from completed",
+            "completed": "Completed",
+            "submit": "Submit",
+            "correct": "That's correct!",
+            "incorrect": "Incorrect.",
+            "showSolution": "Show solution",
+            "reset": "Reset",
+            "runCode": "Run code",
+            "next": "Next",
+            "showHints": "Show hints",
+            "hideHints": "Hide hints",
+            "loading": "Loading...",
+            "connectingFailed": "Connecting failed. Please reload and try again.",
+            "launchingDocker": "Launching Docker container on",
+            "reconnectingDocker": "Reconnecting to Docker container on",
+            "prevChapter": "Previous Chapter",
+            "nextChapter": "Next Chapter"
+        }
+    }
+}

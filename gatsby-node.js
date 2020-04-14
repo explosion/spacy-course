@@ -17,8 +17,11 @@ async function onCreateNode({
 }) {
     const { createNodeField, createNode, createParentChildLink } = actions
     if (node.internal.type === 'MarkdownRemark') {
+        const parentDir = getNode(node.parent).relativeDirectory
+        const lang = parentDir.split('/')[0]
         const slug = createFilePath({ node, getNode, basePath: 'chapters', trailingSlash: false })
         createNodeField({ name: 'slug', node, value: slug })
+        createNodeField({ name: 'lang', node, value: lang })
     } else if (node.extension === 'py') {
         // Load the contents of the Python file and make it available via GraphQL
         // https://www.gatsbyjs.org/docs/creating-a-transformer-plugin/
@@ -31,6 +34,7 @@ async function onCreateNode({
             parent: node.id,
             children: [],
             code: content,
+            lang: node.relativeDirectory,
             name: node.name,
             internal,
         }
@@ -54,6 +58,7 @@ exports.createPages = ({ actions, graphql }) => {
                         }
                         fields {
                             slug
+                            lang
                         }
                     }
                 }
@@ -70,7 +75,7 @@ exports.createPages = ({ actions, graphql }) => {
             createPage({
                 path: replacePath(node.fields.slug),
                 component: chapterTemplate,
-                context: { slug: node.fields.slug },
+                context: { slug: node.fields.slug, lang: node.fields.lang },
             })
         })
     })

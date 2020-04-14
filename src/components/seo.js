@@ -2,17 +2,16 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 
-const SEO = ({ title, description }) => (
+const SEO = ({ title, description, lang, localeData }) => (
     <StaticQuery
         query={query}
         render={data => {
-            const lang = 'en'
-            const siteMetadata = data.site.siteMetadata
+            const { siteUrl, twitter, fonts } = data.site.siteMetadata
             const pageTitle = title
-                ? `${title} · ${siteMetadata.title}`
-                : `${siteMetadata.title} · ${siteMetadata.slogan}`
-            const pageDesc = description || siteMetadata.description
-            const image = `${siteMetadata.siteUrl}/social.jpg`
+                ? `${title} · ${localeData.title}`
+                : `${localeData.title} · ${localeData.slogan}`
+            const pageDesc = description || localeData.description
+            const image = `${siteUrl}/social.jpg`
             const meta = [
                 {
                     name: 'description',
@@ -32,7 +31,7 @@ const SEO = ({ title, description }) => (
                 },
                 {
                     property: 'og:site_name',
-                    content: siteMetadata.title,
+                    content: localeData.title,
                 },
                 {
                     property: 'og:image',
@@ -48,11 +47,11 @@ const SEO = ({ title, description }) => (
                 },
                 {
                     name: 'twitter:creator',
-                    content: `@${siteMetadata.twitter}`,
+                    content: `@${twitter}`,
                 },
                 {
                     name: 'twitter:site',
-                    content: `@${siteMetadata.twitter}`,
+                    content: `@${twitter}`,
                 },
                 {
                     name: 'twitter:title',
@@ -66,9 +65,9 @@ const SEO = ({ title, description }) => (
 
             return (
                 <Helmet defer={false} htmlAttributes={{ lang }} title={pageTitle} meta={meta}>
-                    {siteMetadata.fonts && (
+                    {fonts && (
                         <link
-                            href={`https://fonts.googleapis.com/css?family=${siteMetadata.fonts}`}
+                            href={`https://fonts.googleapis.com/css?family=${fonts}`}
                             rel="stylesheet"
                         />
                     )}
@@ -84,9 +83,6 @@ const query = graphql`
     query DefaultSEOQuery {
         site {
             siteMetadata {
-                title
-                description
-                slogan
                 siteUrl
                 twitter
                 fonts

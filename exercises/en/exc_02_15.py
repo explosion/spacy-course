@@ -3,9 +3,9 @@ from spacy.matcher import PhraseMatcher
 from spacy.tokens import Span
 import json
 
-with open("exercises/countries.json") as f:
+with open("exercises/en/countries.json") as f:
     COUNTRIES = json.loads(f.read())
-with open("exercises/country_text.txt") as f:
+with open("exercises/en/country_text.txt") as f:
     TEXT = f.read()
 
 nlp = English()
@@ -14,20 +14,20 @@ patterns = list(nlp.pipe(COUNTRIES))
 matcher.add("COUNTRY", None, *patterns)
 
 # Create a doc and find matches in it
-doc = nlp(TEXT)
+doc = ____
 
 # Iterate over the matches
 for match_id, start, end in matcher(doc):
     # Create a Span with the label for "GPE"
-    span = Span(doc, start, end, label="GPE")
+    span = ____(____, ____, ____, label=____)
 
     # Overwrite the doc.ents and add the span
-    doc.ents = list(doc.ents) + [span]
+    doc.ents = list(doc.ents) + [____]
 
     # Get the span's root head token
-    span_root_head = span.root.head
+    span_root_head = ____.____.____
     # Print the text of the span root's head token and the span text
-    print(span_root_head.text, "-->", span.text)
+    print(span_root_head.____, "-->", span.text)
 
 # Print the entities in the document
 print([(ent.text, ent.label_) for ent in doc.ents if ent.label_ == "GPE"])

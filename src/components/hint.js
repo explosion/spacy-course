@@ -1,8 +1,10 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useContext } from 'react'
 
+import { UiTextContext } from '../context'
 import classes from '../styles/hint.module.sass'
 
 export const Hint = ({ expanded = false, actions = [], children }) => {
+    const uiText = useContext(UiTextContext)
     const [isExpanded, setIsExpanded] = useState(expanded)
     const handleExpand = useCallback(() => setIsExpanded(!isExpanded), [isExpanded])
     return (
@@ -11,7 +13,7 @@ export const Hint = ({ expanded = false, actions = [], children }) => {
             <menu className={classes.actions}>
                 {children && (
                     <button className={classes.label} onClick={handleExpand}>
-                        {isExpanded ? 'Hide hints' : 'Show hints'}
+                        {isExpanded ? uiText.hideHints : uiText.showHints}
                     </button>
                 )}
                 {actions.map(({ text, onClick }, i) => (

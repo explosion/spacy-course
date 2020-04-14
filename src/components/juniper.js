@@ -30,6 +30,8 @@ class Juniper extends React.Component {
         msgButton: 'run',
         msgLoading: 'Loading...',
         msgError: 'Connecting failed. Please reload and try again.',
+        msgLaunchDocker: 'Launching to Docker container on',
+        msgReconnectDocker: 'Reconnecting to Docker container on',
         classNames: {
             cell: 'juniper-cell',
             input: 'juniper-input',
@@ -233,12 +235,14 @@ class Juniper extends React.Component {
         }
         this.log(() => console.info('requesting kernel'))
         const url = this.props.url.split('//')[1]
-        const action = !this.state.fromStorage ? 'Launching' : 'Reconnecting to'
+        const action = !this.state.fromStorage
+            ? this.props.msgLaunchDocker
+            : this.props.msgReconnectDocker
         outputArea.model.clear()
         outputArea.model.add({
             output_type: 'stream',
             name: 'stdout',
-            text: `${action} Docker container on ${url}...`,
+            text: `${action} ${url}...`,
         })
         new Promise((resolve, reject) =>
             this.getKernel()
