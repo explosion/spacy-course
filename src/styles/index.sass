@@ -181,6 +181,31 @@ pre code
     .cm-def
         color: var(--syntax-function)
 
+[class*="language-"] .token
+    &.comment, &.prolog, &.doctype, &.cdata, &.punctuation
+        color: var(--syntax-comment)
+
+    &.property, &.tag, &.constant, &.symbol
+        color: var(--syntax-tag)
+
+    &.boolean, &.number
+        color: var(--syntax-number)
+
+    &.selector, &.attr-name, &.string, &.char, &.builtin
+        color: var(--syntax-selector)
+
+    &.operator, &.entity, &.url, &.variable
+        color: var(--syntax-operator)
+
+    &.atrule, &.attr-value, &.function
+        color: var(--syntax-function)
+
+    &.regex, &.important
+        color: var(--syntax-regex)
+
+    &.keyword
+        color: var(--syntax-keyword)
+
 .jp-RenderedText pre
     .ansi-cyan-fg.ansi-cyan-fg
         color: var(--ansi-cyan)
