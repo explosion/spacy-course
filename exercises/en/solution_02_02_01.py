@@ -1,6 +1,6 @@
-import spacy
+from spacy.lang.en import English
 
-nlp = spacy.load("en_core_web_sm")
+nlp = English()
 doc = nlp("I have a cat")
 
 # Look up the hash for the word "cat"
