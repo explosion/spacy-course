@@ -65,7 +65,7 @@ models, so we can create training data to teach a model to recognize them as
 - Write a pattern for two tokens whose lowercase forms match `'iphone'` and
   `'x'`.
 - Write a pattern for two tokens: one token whose lowercase form matches
-  `'iphone'` and an _optional_ digit using the `'?'` operator.
+  `'iphone'` and a digit using the `'?'` operator.
 
 <codeblock id="04_03">
 
@@ -73,8 +73,6 @@ models, so we can create training data to teach a model to recognize them as
   For example: `{'LOWER': 'apple'}`.
 - To find a digit token, you can use the `'IS_DIGIT'` flag. For example:
   `{'IS_DIGIT': True}`.
-- To make a token optional, you can use the operator `'?'`. For example:
-  `{'OP': '?'}`.
 
 </codeblock>
 
@@ -267,7 +265,7 @@ types back to a knowledge base or look them up in a travel wiki.
 
 </opt>
 
-<opt text="Paris and Arkansas should also be labelled as tourist destinations for consistency. Otherwise, the model will be confused.">
+<opt text="Paris should also be labelled as tourist destinations for consistency. Otherwise, the model will be confused.">
 
 While it's possible that Paris, AK is also a tourist attraction, this only
 highlights how subjective the label scheme is and how difficult it will be to

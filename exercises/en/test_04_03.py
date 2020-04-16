@@ -20,14 +20,11 @@ def test():
         pattern2[0].get(l) == "iphone" for l in ("LOWER", "lower")
     ), "The first token of pattern2 should match lowercase 'iphone'."
     assert (
-        len(pattern2[1]) == 2
-    ), "The second token of pattern2 should have two attributes."
+        len(pattern2[1]) == 1
+    ), "The second token of pattern2 should have one attribute."
     assert any(
         pattern2[1].get(l) == True for l in ("IS_DIGIT", "is_digit")
     ), "The second token of pattern2 should match a digit."
-    assert any(
-        pattern2[1].get(l) == "?" for l in ("OP", "op")
-    ), "Are you using the correct operator in the second token of pattern2?"
 
     __msg__.good(
         "Nice! Now let's use those patterns to quickly bootstrap some training "
