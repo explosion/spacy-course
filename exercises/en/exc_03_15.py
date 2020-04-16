@@ -19,4 +19,4 @@ for doc, ____ in ____(____, ____):
     doc._.author = ____
 
     # Print the text and custom attribute data
-    print(doc.text, "\n", "— '{}' by {}".format(doc._.book, doc._.author), "\n")
+    print(f"{doc.text}\n — '{doc._.book}' by {doc._.author}\n")

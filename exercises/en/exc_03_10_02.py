@@ -6,7 +6,7 @@ nlp = English()
 # Define the method
 def to_html(span, tag):
     # Wrap the span text in a HTML tag and return it
-    return "<{tag}>{text}</{tag}>".format(tag=tag, text=span.text)
+    return f"<{tag}>{span.text}</{tag}>"
 
 
 # Register the Span property extension 'to_html' with the method to_html

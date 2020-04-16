@@ -157,11 +157,11 @@ The determiner "the", also known as an article, is attached to the noun "pizza".
 
 # Predicting Named Entities
 
-<img src="ner_example.png" alt="Visualization of the named entities in 'Apple is looking at buying U.K. startup for $1 billion'" width="80%" />
+<img src="/ner_example.png" alt="Visualization of the named entities in 'Apple is looking at buying U.K. startup for $1 billion'" width="80%" />
 
 ```python
 # Process a text
-doc = nlp(u"Apple is looking at buying U.K. startup for $1 billion")
+doc = nlp("Apple is looking at buying U.K. startup for $1 billion")
 
 # Iterate over the predicted entities
 for ent in doc.ents:

@@ -19,4 +19,4 @@ for doc, context in nlp.pipe(DATA, as_tuples=True):
     doc._.author = context["author"]
 
     # Print the text and custom attribute data
-    print(doc.text, "\n", "— '{}' by {}".format(doc._.book, doc._.author), "\n")
+    print(f"{doc.text}\n — '{doc._.book}' by {doc._.author}\n")

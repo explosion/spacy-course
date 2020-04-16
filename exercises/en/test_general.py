@@ -5,6 +5,7 @@
 import spacy
 import pytest
 
+
 @pytest.fixture
 def nlp():
     return spacy.load("en_core_web_sm")
