@@ -1,0 +1,26 @@
+[
+    [
+        "Als Gregor Samsa eines Morgens aus unruhigen Träumen erwachte, fand er sich in seinem Bett zu einem ungeheueren Ungeziefer verwandelt.",
+        { "autor": "Franz Kafka", "buch": "Die Verwandlung" }
+    ],
+    [
+        "Der Mensch ist ein geldgieriges Tier, und diese Eigenschaft kommt allzu oft seiner Güte in die Quere.",
+        { "autor": "Herman Melville", "buch": "Moby-Dick; oder: Der Wal" }
+    ],
+    [
+        "Es war die beste Zeit, es war die schlimmste Zeit.",
+        { "autor": "Charles Dickens", "buch": "Eine Geschichte aus zwei Städten" }
+    ],
+    [
+        "Die einzigen Menschen, die mich interessieren, sind die Verrückten, die verrückt leben, verrückt reden und alles auf einmal wollen, die nie gähnen oder Phrasen dreschen, sondern wie römische Lichter die ganze Nacht lang brennen, brennen, brennen.",
+        { "autor": "Jack Kerouac", "buch": "Unterwegs" }
+    ],
+    [
+        "Es war ein strahlend-kalter Apriltag, und die Uhren schlugen dreizehn.",
+        { "autor": "George Orwell", "buch": "1984" }
+    ],
+    [
+        "Heutzutage kennen die Leute von allem den Preis und von nichts den Wert.",
+        { "autor": "Oscar Wilde", "buch": "Das Bildnis des Dorian Gray" }
+    ]
+]
