@@ -1,6 +1,6 @@
-import spacy
+from spacy.lang.en import English
 
-nlp = spacy.load("en_core_web_sm")
+nlp = English()
 
 # Import the Doc class
 from spacy.tokens import Doc
