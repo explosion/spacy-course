@@ -14,7 +14,7 @@ def test():
             and isinstance(entry[0], str)
             and isinstance(entry[1], dict)
             and "entities" in entry[1]
-        ), f"Looks like examples have the wrong format. It should be a tuple with a text and a dict with the key 'entities'."
+        ), "Looks like examples have the wrong format. It should be a tuple with a text and a dict with the key 'entities'."
     assert TRAINING_DATA[0][1]["entities"] == [
         (20, 28, "GADGET")
     ], "Double-check the entities in example 1."
