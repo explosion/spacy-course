@@ -50,12 +50,12 @@ of Docs, remember to call the list method around it.
 
 ```python
 data = [
-    ('This is a text', {'id': 1, 'page_number': 15}),
-    ('And another text', {'id': 2, 'page_number': 16}),
+    ("This is a text", {"id": 1, "page_number": 15}),
+    ("And another text", {"id": 2, "page_number": 16}),
 ]
 
 for doc, context in nlp.pipe(data, as_tuples=True):
-    print(doc.text, context['page_number'])
+    print(doc.text, context["page_number"])
 ```
 
 ```out
@@ -78,17 +78,17 @@ the text, or a page number.
 ```python
 from spacy.tokens import Doc
 
-Doc.set_extension('id', default=None)
-Doc.set_extension('page_number', default=None)
+Doc.set_extension("id", default=None)
+Doc.set_extension("page_number", default=None)
 
 data = [
-    ('This is a text', {'id': 1, 'page_number': 15}),
-    ('And another text', {'id': 2, 'page_number': 16}),
+    ("This is a text", {"id": 1, "page_number": 15}),
+    ("And another text", {"id": 2, "page_number": 16}),
 ]
 
 for doc, context in nlp.pipe(data, as_tuples=True):
-    doc._.id = context['id']
-    doc._.page_number = context['page_number']
+    doc._.id = context["id"]
+    doc._.page_number = context["page_number"]
 ```
 
 Notes: You can even add the context meta data to custom attributes.
@@ -145,7 +145,7 @@ text into a Doc before the pipeline components are called.
 
 ```python
 # Disable tagger and parser
-with nlp.disable_pipes('tagger', 'parser'):
+with nlp.disable_pipes("tagger", "parser"):
     # Process the text and print the entities
     doc = nlp(text)
     print(doc.ents)

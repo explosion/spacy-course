@@ -42,7 +42,7 @@ can find more details on this in the models documentation.
 
 ```python
 # Load a larger model with vectors
-nlp = spacy.load('en_core_web_md')
+nlp = spacy.load("en_core_web_md")
 
 # Compare two documents
 doc1 = nlp("I like fast food")
@@ -160,7 +160,7 @@ irrelevant words.
 
 ```python
 # Load a larger model with vectors
-nlp = spacy.load('en_core_web_md')
+nlp = spacy.load("en_core_web_md")
 
 doc = nlp("I have a banana")
 # Access the vector via the token.vector attribute

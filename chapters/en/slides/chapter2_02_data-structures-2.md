@@ -21,7 +21,7 @@ nlp = English()
 from spacy.tokens import Doc
 
 # The words and spaces to create the doc from
-words = ['Hello', 'world', '!']
+words = ["Hello", "world", "!"]
 spaces = [True, False, False]
 
 # Create a doc manually
@@ -60,7 +60,7 @@ index of the span. Remember that the end index is exclusive!
 from spacy.tokens import Doc, Span
 
 # The words and spaces to create the doc from
-words = ['Hello', 'world', '!']
+words = ["Hello", "world", "!"]
 spaces = [True, False, False]
 
 # Create a doc manually

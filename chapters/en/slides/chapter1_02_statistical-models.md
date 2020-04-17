@@ -44,7 +44,7 @@ $ python -m spacy download en_core_web_sm
 ```python
 import spacy
 
-nlp = spacy.load('en_core_web_sm')
+nlp = spacy.load("en_core_web_sm")
 ```
 
 - Binary weights
@@ -72,7 +72,7 @@ language class to use and how to configure the processing pipeline.
 import spacy
 
 # Load the small English model
-nlp = spacy.load('en_core_web_sm')
+nlp = spacy.load("en_core_web_sm")
 
 # Process a text
 doc = nlp("She ate the pizza")
@@ -194,7 +194,7 @@ In this case, the model is correctly predicting "Apple" as an organization,
 Get quick definitions of the most common tags and labels.
 
 ```python
-spacy.explain('GPE')
+spacy.explain("GPE")
 ```
 
 ```out
@@ -202,7 +202,7 @@ spacy.explain('GPE')
 ```
 
 ```python
-spacy.explain('NNP')
+spacy.explain("NNP")
 ```
 
 ```out
@@ -210,7 +210,7 @@ spacy.explain('NNP')
 ```
 
 ```python
-spacy.explain('dobj')
+spacy.explain("dobj")
 ```
 
 ```out

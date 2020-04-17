@@ -67,7 +67,7 @@ computed when we compare the predicted label to the true label.
 
 ```python
 TRAINING_DATA = [
-    ("How to preorder the iPhone X", {'entities': [(20, 28, 'GADGET')]})
+    ("How to preorder the iPhone X", {"entities": [(20, 28, "GADGET")]})
     # And many more examples...
 ]
 ```
@@ -112,7 +112,7 @@ directory.
 # Updating an existing model
 
 - Improve the predictions on new data
-- Especially useful to improve existing categories, like `PERSON`
+- Especially useful to improve existing categories, like `"PERSON"`
 - Also possible to add new categories
 - Be careful and make sure the model doesn't "forget" the old ones
 
@@ -134,12 +134,12 @@ improving the new category might hurt the other categories.
 
 ```python
 # Start with blank English model
-nlp = spacy.blank('en')
+nlp = spacy.blank("en")
 # Create blank entity recognizer and add it to the pipeline
-ner = nlp.create_pipe('ner')
+ner = nlp.create_pipe("ner")
 nlp.add_pipe(ner)
 # Add a new label
-ner.add_label('GADGET')
+ner.add_label("GADGET")
 
 # Start the training
 nlp.begin_training()

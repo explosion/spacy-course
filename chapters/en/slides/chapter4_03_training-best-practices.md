@@ -20,7 +20,7 @@ Let's take a look at some of the problems you may come across.
 # Problem 1: Models can "forget" things
 
 - Existing model can overfit on new data
-  - e.g.: if you only update it with `WEBSITE`, it can "unlearn" what a `PERSON`
+  - e.g.: if you only update it with `"WEBSITE"`, it can "unlearn" what a `"PERSON"`
     is
 - Also known as "catastrophic forgetting" problem
 
@@ -39,14 +39,14 @@ This is also known as the catastrophic forgetting problem.
 
 # Solution 1: Mix in previously correct predictions
 
-- For example, if you're training `WEBSITE`, also include examples of `PERSON`
+- For example, if you're training `"WEBSITE"`, also include examples of `"PERSON"`
 - Run existing spaCy model over data and extract all other relevant entities
 
 **BAD:**
 
 ```python
 TRAINING_DATA = [
-    ('Reddit is a website', {'entities': [(0, 6, 'WEBSITE')]})
+    ("Reddit is a website", {"entities": [(0, 6, "WEBSITE")]})
 ]
 ```
 
@@ -54,8 +54,8 @@ TRAINING_DATA = [
 
 ```python
 TRAINING_DATA = [
-    ('Reddit is a website', {'entities': [(0, 6, 'WEBSITE')]}),
-    ('Obama is a person', {'entities': [(0, 5, 'PERSON')]})
+    ("Reddit is a website", {"entities": [(0, 6, "WEBSITE")]}),
+    ("Obama is a person", {"entities": [(0, 5, "PERSON")]})
 ]
 ```
 
@@ -78,8 +78,8 @@ with annotations of all labels.
 - spaCy's models make predictions based on **local context**
 - Model can struggle to learn if decision is difficult to make based on context
 - Label scheme needs to be consistent and not too specific
-  - For example: `CLOTHING` is better than `ADULT_CLOTHING` and
-    `CHILDRENS_CLOTHING`
+  - For example: `"CLOTHING"` is better than `"ADULT_CLOTHING"` and
+    `"CHILDRENS_CLOTHING"`
 
 Notes: Another common problem is that your model just won't learn what you want
 it to.
@@ -107,13 +107,13 @@ However, just predicting the label "clothing" may work better.
 **BAD:**
 
 ```python
-LABELS = ['ADULT_SHOES', 'CHILDRENS_SHOES', 'BANDS_I_LIKE']
+LABELS = ["ADULT_SHOES", "CHILDRENS_SHOES", "BANDS_I_LIKE"]
 ```
 
 **GOOD:**
 
 ```python
-LABELS = ['CLOTHING', 'BAND']
+LABELS = ["CLOTHING", "BAND"]
 ```
 
 Notes: Before you start training and updating models, it's worth taking a step

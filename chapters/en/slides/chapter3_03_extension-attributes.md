@@ -15,7 +15,7 @@ Token and Span objects to store custom data.
 - Accessible via the `._` property
 
 ```python
-doc._.title = 'My document'
+doc._.title = "My document"
 token._.is_color = True
 span._.has_color = False
 ```
@@ -28,9 +28,9 @@ span._.has_color = False
 from spacy.tokens import Doc, Token, Span
 
 # Set extensions on the Doc, Token and Span
-Doc.set_extension('title', default=None)
-Token.set_extension('is_color', default=False)
-Span.set_extension('has_color', default=False)
+Doc.set_extension("title", default=None)
+Token.set_extension("is_color", default=False)
+Span.set_extension("has_color", default=False)
 ```
 
 Notes: Custom attributes let you add any meta data to Docs, Tokens and Spans.
@@ -70,7 +70,7 @@ extensions and method extensions.
 from spacy.tokens import Token
 
 # Set extension on the Token with default value
-Token.set_extension('is_color', default=False)
+Token.set_extension("is_color", default=False)
 
 doc = nlp("The sky is blue.")
 
@@ -97,14 +97,14 @@ from spacy.tokens import Token
 
 # Define getter function
 def get_is_color(token):
-    colors = ['red', 'yellow', 'blue']
+    colors = ["red", "yellow", "blue"]
     return token.text in colors
 
 # Set extension on the Token with getter
-Token.set_extension('is_color', getter=get_is_color)
+Token.set_extension("is_color", getter=get_is_color)
 
 doc = nlp("The sky is blue.")
-print(doc[3]._.is_color, '-', doc[3].text)
+print(doc[3]._.is_color, "-", doc[3].text)
 ```
 
 ```out
@@ -137,15 +137,15 @@ from spacy.tokens import Span
 
 # Define getter function
 def get_has_color(span):
-    colors = ['red', 'yellow', 'blue']
+    colors = ["red", "yellow", "blue"]
     return any(token.text in colors for token in span)
 
 # Set extension on the Span with getter
-Span.set_extension('has_color', getter=get_has_color)
+Span.set_extension("has_color", getter=get_has_color)
 
 doc = nlp("The sky is blue.")
-print(doc[1:4]._.has_color, '-', doc[1:4].text)
-print(doc[0:2]._.has_color, '-', doc[0:2].text)
+print(doc[1:4]._.has_color, "-", doc[1:4].text)
+print(doc[0:2]._.has_color, "-", doc[0:2].text)
 ```
 
 ```out
@@ -180,11 +180,11 @@ def has_token(doc, token_text):
     return in_doc
 
 # Set extension on the Doc with method
-Doc.set_extension('has_token', method=has_token)
+Doc.set_extension("has_token", method=has_token)
 
 doc = nlp("The sky is blue.")
-print(doc._.has_token('blue'), '- blue')
-print(doc._.has_token('cloud'), '- cloud')
+print(doc._.has_token("blue"), "- blue")
+print(doc._.has_token("cloud"), "- cloud")
 ```
 
 ```out

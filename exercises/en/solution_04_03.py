@@ -8,10 +8,10 @@ with open("exercises/en/iphone.json") as f:
 nlp = English()
 matcher = Matcher(nlp.vocab)
 
-# Two tokens whose lowercase forms match 'iphone' and 'x'
+# Two tokens whose lowercase forms match "iphone" and "x"
 pattern1 = [{"LOWER": "iphone"}, {"LOWER": "x"}]
 
-# Token whose lowercase form matches 'iphone' and a digit
+# Token whose lowercase form matches "iphone" and a digit
 pattern2 = [{"LOWER": "iphone"}, {"IS_DIGIT": True}]
 
 # Add patterns to the matcher and check the result

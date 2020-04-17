@@ -35,19 +35,19 @@ For example, find the word "duck" only if it's a verb, not a noun.
 - Match exact token texts
 
 ```python
-[{'TEXT': 'iPhone'}, {'TEXT': 'X'}]
+[{"TEXT": "iPhone"}, {"TEXT": "X"}]
 ```
 
 - Match lexical attributes
 
 ```python
-[{'LOWER': 'iphone'}, {'LOWER': 'x'}]
+[{"LOWER": "iphone"}, {"LOWER": "x"}]
 ```
 
 - Match any token attributes
 
 ```python
-[{'LEMMA': 'buy'}, {'POS': 'NOUN'}]
+[{"LEMMA": "buy"}, {"POS": "NOUN"}]
 ```
 
 Notes: Match patterns are lists of dictionaries. Each dictionary describes one
@@ -74,14 +74,14 @@ import spacy
 from spacy.matcher import Matcher
 
 # Load a model and create the nlp object
-nlp = spacy.load('en_core_web_sm')
+nlp = spacy.load("en_core_web_sm")
 
 # Initialize the matcher with the shared vocab
 matcher = Matcher(nlp.vocab)
 
 # Add the pattern to the matcher
-pattern = [{'TEXT': 'iPhone'}, {'TEXT': 'X'}]
-matcher.add('IPHONE_PATTERN', None, pattern)
+pattern = [{"TEXT": "iPhone"}, {"TEXT": "X"}]
+matcher.add("IPHONE_PATTERN", None, pattern)
 
 # Process some text
 doc = nlp("New iPhone X release date leaked")
@@ -144,11 +144,11 @@ the doc at the start and end index.
 
 ```python
 pattern = [
-    {'IS_DIGIT': True},
-    {'LOWER': 'fifa'},
-    {'LOWER': 'world'},
-    {'LOWER': 'cup'},
-    {'IS_PUNCT': True}
+    {"IS_DIGIT": True},
+    {"LOWER": "fifa"},
+    {"LOWER": "world"},
+    {"LOWER": "cup"},
+    {"IS_PUNCT": True}
 ]
 ```
 
@@ -178,8 +178,8 @@ The pattern matches the tokens "2018 FIFA World Cup:".
 
 ```python
 pattern = [
-    {'LEMMA': 'love', 'POS': 'VERB'},
-    {'POS': 'NOUN'}
+    {"LEMMA": "love", "POS": "VERB"},
+    {"POS": "NOUN"}
 ]
 ```
 
@@ -204,9 +204,9 @@ This pattern will match "loved dogs" and "love cats".
 
 ```python
 pattern = [
-    {'LEMMA': 'buy'},
-    {'POS': 'DET', 'OP': '?'},  # optional: match 0 or 1 times
-    {'POS': 'NOUN'}
+    {"LEMMA": "buy"},
+    {"POS": "DET", "OP": "?"},  # optional: match 0 or 1 times
+    {"POS": "NOUN"}
 ]
 ```
 
@@ -231,10 +231,10 @@ token with the lemma "buy", an optional article and a noun.
 
 | Example       | Description                  |
 | ------------- | ---------------------------- |
-| `{'OP': '!'}` | Negation: match 0 times      |
-| `{'OP': '?'}` | Optional: match 0 or 1 times |
-| `{'OP': '+'}` | Match 1 or more times        |
-| `{'OP': '*'}` | Match 0 or more times        |
+| `{"OP": "!"}` | Negation: match 0 times      |
+| `{"OP": "?"}` | Optional: match 0 or 1 times |
+| `{"OP": "+"}` | Match 1 or more times        |
+| `{"OP": "*"}` | Match 0 or more times        |
 
 Notes: "OP" can have one of four values:
 

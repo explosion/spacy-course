@@ -7,10 +7,10 @@ with open("exercises/en/bookquotes.json") as f:
 
 nlp = English()
 
-# Register the Doc extension 'author' (default None)
+# Register the Doc extension "author" (default None)
 ____
 
-# Register the Doc extension 'book' (default None)
+# Register the Doc extension "book" (default None)
 ____
 
 for doc, ____ in ____(____, ____):

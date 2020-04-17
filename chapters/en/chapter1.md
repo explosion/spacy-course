@@ -157,7 +157,7 @@ The models we're using in this course are already pre-installed. For more
 details on spaCy's statistical models and how to install them on your machine,
 see [the documentation](https://spacy.io/usage/models).
 
-- Use `spacy.load` to load the small English model `'en_core_web_sm'`.
+- Use `spacy.load` to load the small English model `"en_core_web_sm"`.
 - Process the text and print the document text.
 
 <codeblock id="01_07">
@@ -175,7 +175,7 @@ use the correct name.
 You'll now get to try one of spaCy's pre-trained model packages and see its
 predictions in action. Feel free to try it out on your own text! To find out
 what a tag or label means, you can call `spacy.explain` in the loop. For example:
-`spacy.explain('PROPN')` or `spacy.explain('GPE')`.
+`spacy.explain("PROPN")` or `spacy.explain("GPE")`.
 
 ### Part 1
 
@@ -244,7 +244,7 @@ the text.
 
 - Import the `Matcher` from `spacy.matcher`.
 - Initialize it with the `nlp` object's shared `vocab`.
-- Create a pattern that matches the `'TEXT'` values of two tokens: `"iPhone"`
+- Create a pattern that matches the `"TEXT"` values of two tokens: `"iPhone"`
   and `"X"`.
 - Use the `matcher.add` method to add the pattern to the matcher.
 - Call the matcher on the `doc` and store the result in the variable `matches`.
@@ -255,7 +255,7 @@ the text.
 
 - The shared vocabulary is available as the `nlp.vocab` attribute.
 - A pattern is a list of dictionaries keyed by the attribute names. For example,
-  `[{'TEXT': 'Hello'}]` will match one token whose exact text is "Hello".
+  `[{"TEXT": "Hello"}]` will match one token whose exact text is "Hello".
 - The `start` and `end` values of each match describe the start and end index of
   the matched span. To get the span, you can create a slice of the `doc` using
   the given start and end.
@@ -277,8 +277,8 @@ different token attributes and operators.
 <codeblock id="01_12_01">
 
 - To match a token with an exact text, you can use the `TEXT` attribute. For
-  example, `{'TEXT': 'Apple'}` will match tokens with the exact text "Apple".
-- To match a number token, you can use the `IS_DIGIT` attribute, which will only
+  example, `{"TEXT": "Apple"}` will match tokens with the exact text "Apple".
+- To match a number token, you can use the `"IS_DIGIT"` attribute, which will only
   return `True` for tokens consisting of only digits.
 
 </codeblock>
@@ -286,28 +286,28 @@ different token attributes and operators.
 ### Part 2
 
 - Write **one** pattern that only matches forms of "download" (tokens with the
-  lemma "download"), followed by a token with the part-of-speech tag `'PROPN'`
+  lemma "download"), followed by a token with the part-of-speech tag `"PROPN"`
   (proper noun).
 
 <codeblock id="01_12_02">
 
-- To specify a lemma, you can use the `'LEMMA'` attribute in the token pattern.
-  For example, `{'LEMMA': 'be'}` will match tokens like "is", "was" or "being".
-- To find proper nouns, you want to match all tokens whose `POS` value equals
-  `'PROPN'`.
+- To specify a lemma, you can use the `"LEMMA"` attribute in the token pattern.
+  For example, `{"LEMMA": "be"}` will match tokens like "is", "was" or "being".
+- To find proper nouns, you want to match all tokens whose `"POS"` value equals
+  `"PROPN"`.
 
 </codeblock>
 
 ### Part 3
 
-- Write **one** pattern that matches adjectives (`'ADJ'`) followed by one or two
-  `'NOUN'`s (one noun and one optional noun).
+- Write **one** pattern that matches adjectives (`"ADJ"`) followed by one or two
+  `"NOUN"`s (one noun and one optional noun).
 
 <codeblock id="01_12_03">
 
-- To find adjectives, look for tokens whose `'POS'` value equals `'ADJ'`. For
-  nouns, look for `'NOUN'`.
-- Operators can be added via the `'OP'` key. For example, `'OP': '?'` to match
+- To find adjectives, look for tokens whose `"POS"` value equals `"ADJ"`. For
+  nouns, look for `"NOUN"`.
+- Operators can be added via the `"OP"` key. For example, `"OP": "?"` to match
   zero or one time.
 
 </codeblock>

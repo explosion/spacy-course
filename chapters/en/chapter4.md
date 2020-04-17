@@ -60,19 +60,19 @@ spaCy's rule-based `Matcher` is a great way to quickly create training data for
 named entity models. A list of sentences is available as the variable `TEXTS`.
 You can print it to inspect it. We want to find all mentions of different iPhone
 models, so we can create training data to teach a model to recognize them as
-`'GADGET'`.
+`"GADGET"`.
 
-- Write a pattern for two tokens whose lowercase forms match `'iphone'` and
-  `'x'`.
+- Write a pattern for two tokens whose lowercase forms match `"iphone"` and
+  `"x"`.
 - Write a pattern for two tokens: one token whose lowercase form matches
-  `'iphone'` and a digit using the `'?'` operator.
+  `"iphone"` and a digit using the `"?"` operator.
 
 <codeblock id="04_03">
 
-- To match the lowercase form of a token, you can use the `'LOWER'` attribute.
-  For example: `{'LOWER': 'apple'}`.
-- To find a digit token, you can use the `'IS_DIGIT'` flag. For example:
-  `{'IS_DIGIT': True}`.
+- To match the lowercase form of a token, you can use the `"LOWER"` attribute.
+  For example: `{"LOWER": "apple"}`.
+- To find a digit token, you can use the `"IS_DIGIT"` flag. For example:
+  `{"IS_DIGIT": True}`.
 
 </codeblock>
 
@@ -87,7 +87,7 @@ a set of training examples. A list of sentences is available as the variable
 - Create a doc object for each text using `nlp.pipe`.
 - Match on the `doc` and create a list of matched spans.
 - Get `(start character, end character, label)` tuples of matched spans.
-- Format each example as a tuple of the text and a dict, mapping `'entities'` to
+- Format each example as a tuple of the text and a dict, mapping `"entities"` to
   the entity tuples.
 - Append the example to `TRAINING_DATA` and inspect the printed data.
 
@@ -112,23 +112,23 @@ a set of training examples. A list of sentences is available as the variable
 <exercise id="6" title="Setting up the pipeline">
 
 In this exercise, you'll prepare a spaCy pipeline to train the entity recognizer
-to recognize `'GADGET'` entities in a text – for example, "iPhone X".
+to recognize `"GADGET"` entities in a text – for example, "iPhone X".
 
-- Create a blank `'en'` model, for example using the `spacy.blank` method.
+- Create a blank `"en"` model, for example using the `spacy.blank` method.
 - Create a new entity recognizer using `nlp.create_pipe` and add it to the
   pipeline.
-- Add the new label `'GADGET'` to the entity recognizer using the `add_label`
+- Add the new label `"GADGET"` to the entity recognizer using the `add_label`
   method on the pipeline component.
 
 <codeblock id="04_06">
 
 - To create a blank entity recognizer, you can call `nlp.create_pipe` with the
-  string `'ner'`.
+  string `"ner"`.
 - To add the component to the pipeline, use the `nlp.add_pipe` method.
 - The `add_label` method is a method of the entity recognizer pipeline
   component, which you've stored in the variable `ner`. To add a label to it,
   you can call `ner.add_label` with the string name of the label, for example
-  `ner.add_label('SOME_LABEL')`.
+  `ner.add_label("SOME_LABEL")`.
 
 </codeblock>
 
@@ -140,7 +140,7 @@ Let's write a simple training loop from scratch!
 
 The pipeline you've created in the previous exercise is available as the `nlp`
 object. It already contains the entity recognizer with the added label
-`'GADGET'`.
+`"GADGET"`.
 
 The small set of labelled examples that you've created previously is available
 as `TRAINING_DATA`. To see the examples, you can print them in your script.
@@ -168,7 +168,7 @@ as `TRAINING_DATA`. To see the examples, you can print them in your script.
 <exercise id="8" title="Exploring the model">
 
 Let's see how the model performs on unseen data! To speed things up a little, we
-already ran a trained model for the label `'GADGET'` over some text. Here are
+already ran a trained model for the label `"GADGET"` over some text. Here are
 some of the results:
 
 | Text                                                                                                              | Entities               |
@@ -258,8 +258,8 @@ Why is this data and label scheme problematic?
 
 <opt text="Whether a place is a tourist destination is a subjective judgement and not a definitive category. It will be very difficult for the entity recognizer to learn." correct="true">
 
-A much better approach would be to only label `GPE` (geopolitical entity) or
-`LOCATION` and then use a rule-based system to determine whether the entity is a
+A much better approach would be to only label `"GPE"` (geopolitical entity) or
+`"LOCATION"` and then use a rule-based system to determine whether the entity is a
 tourist destination in this context. For example, you could resolve the entities
 types back to a knowledge base or look them up in a travel wiki.
 
@@ -286,15 +286,15 @@ of the big advantages of statistical named entity recognition.
 
 ### Part 2
 
-- Rewrite the `TRAINING_DATA` to only use the label `GPE` (cities, states,
-  countries) instead of `TOURIST_DESTINATION`.
-- Don't forget to add tuples for the `GPE` entities that weren't labeled in the
+- Rewrite the `TRAINING_DATA` to only use the label `"GPE"` (cities, states,
+  countries) instead of `"TOURIST_DESTINATION"`.
+- Don't forget to add tuples for the `"GPE"` entities that weren't labeled in the
   old data.
 
 <codeblock id="04_10">
 
 - For the spans that are already labelled, you'll only need to change the label
-  name from `TOURIST_DESTINATION` to `GPE`.
+  name from `"TOURIST_DESTINATION"` to `"GPE"`.
 - One text includes a city and a state that aren't labeled yet. To add the
   entity spans, count the characters to find out where the entity span starts
   and where it ends. Then add `(start, end, label)` tuples to the entities.
@@ -305,7 +305,7 @@ of the big advantages of statistical named entity recognition.
 
 <exercise id="11" title="Training multiple labels">
 
-Here's a small sample of a dataset created to train a new entity type `WEBSITE`.
+Here's a small sample of a dataset created to train a new entity type `"WEBSITE"`.
 The original dataset contains a few thousand sentences. In this exercise, you'll
 be doing the labeling by hand. In real life, you probably want to automate this
 and use an annotation tool – for example, [Brat](http://brat.nlplab.org/), a
@@ -314,7 +314,7 @@ tool that integrates with spaCy.
 
 ### Part 1
 
-- Complete the entity offsets for the `WEBSITE` entities in the data. Feel free
+- Complete the entity offsets for the `"WEBSITE"` entities in the data. Feel free
   to use `len()` if you don't want to count the characters.
 
 <codeblock id="04_11_01">
@@ -329,12 +329,12 @@ tool that integrates with spaCy.
 ### Part 2
 
 A model was trained with the data you just labelled, plus a few thousand similar
-examples. After training, it's doing great on `WEBSITE`, but doesn't recognize
-`PERSON` anymore. Why could this be happening?
+examples. After training, it's doing great on `"WEBSITE"`, but doesn't recognize
+`"PERSON"` anymore. Why could this be happening?
 
 <choice>
 
-<opt text="It's very difficult for the model to learn about different categories like <code>PERSON</code> and <code>WEBSITE</code>.">
+<opt text='It’s very difficult for the model to learn about different categories like <code>"PERSON"</code> and <code>"WEBSITE"</code>.'>
 
 It's definitely possible for a model to learn about very different categories.
 For example, spaCy's pre-trained English models can recognize persons, but also
@@ -342,9 +342,9 @@ organizations or percentages.
 
 </opt>
 
-<opt text="The training data included no examples of <code>PERSON</code>, so the model learned that this label is incorrect." correct="true">
+<opt text='The training data included no examples of <code>"PERSON"</code>, so the model learned that this label is incorrect.' correct="true">
 
-If `PERSON` entities occur in the training data but aren't labelled, the model
+If `"PERSON"` entities occur in the training data but aren't labelled, the model
 will learn that they shouldn't be predicted. Similarly, if an existing entity
 type isn't present in the training data, the model may \"forget\" and stop
 predicting it.
@@ -362,7 +362,7 @@ the problem here.
 
 ### Part 3
 
-- Update the training data to include annotations for the `PERSON` entities
+- Update the training data to include annotations for the `"PERSON"` entities
   "PewDiePie" and "Alexis Ohanian".
 
 <codeblock id="04_11_02">

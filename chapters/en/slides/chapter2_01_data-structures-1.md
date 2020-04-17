@@ -21,7 +21,7 @@ with strings.
 - String store: **lookup table** in both directions
 
 ```python
-coffee_hash = nlp.vocab.strings['coffee']
+coffee_hash = nlp.vocab.strings["coffee"]
 coffee_string = nlp.vocab.strings[coffee_hash]
 ```
 
@@ -59,8 +59,8 @@ vocab.
 
 ```python
 doc = nlp("I love coffee")
-print('hash value:', nlp.vocab.strings['coffee'])
-print('string value:', nlp.vocab.strings[3197928453018144401])
+print("hash value:", nlp.vocab.strings["coffee"])
+print("string value:", nlp.vocab.strings[3197928453018144401])
 ```
 
 ```out
@@ -72,7 +72,7 @@ string value: coffee
 
 ```python
 doc = nlp("I love coffee")
-print('hash value:', doc.vocab.strings['coffee'])
+print("hash value:", doc.vocab.strings["coffee"])
 ```
 
 ```out
@@ -94,7 +94,7 @@ A Doc object also exposes its vocab and strings.
 
 ```python
 doc = nlp("I love coffee")
-lexeme = nlp.vocab['coffee']
+lexeme = nlp.vocab["coffee"]
 
 # Print the lexical attributes
 print(lexeme.text, lexeme.orth, lexeme.is_alpha)

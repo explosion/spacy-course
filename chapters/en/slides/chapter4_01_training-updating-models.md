@@ -100,13 +100,13 @@ application.
 - Examples need to come with context
 
 ```python
-("iPhone X is coming", {'entities': [(0, 8, 'GADGET')]})
+("iPhone X is coming", {"entities": [(0, 8, "GADGET")]})
 ```
 
 - Texts with no entities are also important
 
 ```python
-("I need a new phone! Any tips?", {'entities': []})
+("I need a new phone! Any tips?", {"entities": []})
 ```
 
 - **Goal:** teach the model to generalize

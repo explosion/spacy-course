@@ -72,8 +72,8 @@ nlp.add_pipe(custom_component)
 | -------- | -------------------- | ----------------------------------------- |
 | `last`   | If `True`, add last  | `nlp.add_pipe(component, last=True)`      |
 | `first`  | If `True`, add first | `nlp.add_pipe(component, first=True)`     |
-| `before` | Add before component | `nlp.add_pipe(component, before='ner')`   |
-| `after`  | Add after component  | `nlp.add_pipe(component, after='tagger')` |
+| `before` | Add before component | `nlp.add_pipe(component, before="ner")`   |
+| `after`  | Add after component  | `nlp.add_pipe(component, after="tagger")` |
 
 Notes: To specify _where_ to add the component in the pipeline, you can use the
 following keyword arguments:
@@ -97,12 +97,12 @@ though – otherwise, spaCy will raise an error.
 
 ```python
 # Create the nlp object
-nlp = spacy.load('en_core_web_sm')
+nlp = spacy.load("en_core_web_sm")
 
 # Define a custom component
 def custom_component(doc):
     # Print the doc's length
-    print('Doc length:', len(doc))
+    print("Doc length:", len(doc))
     # Return the doc object
     return doc
 
@@ -110,7 +110,7 @@ def custom_component(doc):
 nlp.add_pipe(custom_component, first=True)
 
 # Print the pipeline component names
-print('Pipeline:', nlp.pipe_names)
+print("Pipeline:", nlp.pipe_names)
 ```
 
 ```out
@@ -143,13 +143,13 @@ the start. This means it will be applied first when we process a Doc.
 
 ```python
 # Create the nlp object
-nlp = spacy.load('en_core_web_sm')
+nlp = spacy.load("en_core_web_sm")
 
 # Define a custom component
 def custom_component(doc):
 
     # Print the doc's length
-    print('Doc length:', len(doc))
+    print("Doc length:", len(doc))
 
     # Return the doc object
     return doc
