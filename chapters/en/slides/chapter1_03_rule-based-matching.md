@@ -84,7 +84,7 @@ pattern = [{"TEXT": "iPhone"}, {"TEXT": "X"}]
 matcher.add("IPHONE_PATTERN", None, pattern)
 
 # Process some text
-doc = nlp("New iPhone X release date leaked")
+doc = nlp("Upcoming iPhone X release date leaked")
 
 # Call the matcher on the doc
 matches = matcher(doc)
@@ -112,7 +112,7 @@ This will return the matches.
 
 ```python
 # Call the matcher on the doc
-doc = nlp("New iPhone X release date leaked")
+doc = nlp("Upcoming iPhone X release date leaked")
 matches = matcher(doc)
 
 # Iterate over the matches
