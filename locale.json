@@ -11,6 +11,7 @@
             { "text": "Source", "url": "https://github.com/ines/spacy-course" },
             { "text": "Follow me on Twitter", "url": "https://twitter.com/_inesmontani" }
         ],
+        "socialImage": "social.jpg",
         "uiText": {
             "aboutMe": "About me",
             "aboutCourse": "About this course",
