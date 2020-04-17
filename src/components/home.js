@@ -3,7 +3,7 @@ import { graphql, StaticQuery } from 'gatsby'
 
 import Layout from './layout'
 import { Link } from './link'
-import Logo from '../../static/logo.svg'
+import { Logo } from './logo'
 
 import classes from '../styles/index.module.sass'
 
@@ -21,7 +21,7 @@ export default ({ lang = 'en' }) => {
                     }))
                 return (
                     <Layout isHome lang={lang}>
-                        <Logo className={classes.logo} />
+                        <Logo lang={lang} className={classes.logo} />
                         {chapters.map(({ slug, title, description }) => (
                             <section key={slug} className={classes.chapter}>
                                 <h2 className={classes.chapterTitle}>

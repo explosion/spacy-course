@@ -4,8 +4,8 @@ import { navigate } from 'gatsby'
 import SEO from './seo'
 import { Link } from './link'
 import { H3 } from './typography'
+import { Logo } from './logo'
 import { UiTextContext } from '../context'
-import Logo from '../../static/logo.svg'
 
 import '../styles/index.sass'
 import classes from '../styles/layout.module.sass'
@@ -26,7 +26,7 @@ const Layout = ({ isHome, title, description, lang, pageName, children }) => {
     return (
         <>
             <SEO title={title} description={description} lang={lang} localeData={localeData} />
-            <UiTextContext.Provider value={localeData.uiText}>
+            <UiTextContext.Provider value={{ ...localeData.uiText, courseTitle: localeData.title }}>
                 <main className={classes.root}>
                     {langs.length > 1 && (
                         <select
@@ -45,7 +45,7 @@ const Layout = ({ isHome, title, description, lang, pageName, children }) => {
                     {!isHome && (
                         <h1 className={classes.logo}>
                             <Link hidden to={`/${lang}`}>
-                                <Logo width={150} height={54} aria-label={localeData.title} />
+                                <Logo lang={lang} width={150} height={54} />
                             </Link>
                         </h1>
                     )}
