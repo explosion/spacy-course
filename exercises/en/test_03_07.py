@@ -1,6 +1,6 @@
 def test():
     assert (
-        "after='ner'" in __solution__ or 'after="ner"' in __solution__
+        'after="ner"' in __solution__
     ), "Are you adding the component explicitly after the entity recognizer?"
     assert (
         nlp.pipe_names[-1] == "animal_component"
