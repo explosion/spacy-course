@@ -117,7 +117,7 @@ bunch of predictions from the model that you don't need.
 
 # Using only the tokenizer (2)
 
-- Use `nlp.make_doc` to turn a text in to a `Doc` object
+- Use `nlp.make_doc` to turn a text into a `Doc` object
 
 **BAD:**
 
