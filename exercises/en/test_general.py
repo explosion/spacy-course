@@ -23,7 +23,7 @@ def test_01_08_02_predictions(nlp):
 
 
 def test_01_09_predictions(nlp):
-    text = "iPhone X release date leaked as Apple reveals pre-orders by mistake"
+    text = "Upcoming iPhone X release date leaked as Apple reveals pre-orders"
     doc = nlp(text)
     ents = [(ent.text, ent.label_) for ent in doc.ents]
     assert len(ents) == 1
