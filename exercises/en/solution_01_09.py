@@ -2,7 +2,7 @@ import spacy
 
 nlp = spacy.load("en_core_web_sm")
 
-text = "iPhone X release date leaked as Apple reveals pre-orders by mistake"
+text = "New iPhone X release date leaked as Apple reveals pre-orders by mistake"
 
 # Process the text
 doc = nlp(text)
