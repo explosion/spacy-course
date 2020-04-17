@@ -1,229 +1,191 @@
 ---
-title: 'Chapter 1: Finding words, phrases, names and concepts'
+title: 'Capítulo 1: Encontrando palabras, frases, nombres y conceptos'
 description:
-  "This chapter will introduce you to the basics of text processing with spaCy.
-  You'll learn about the data structures, how to work with statistical models,
-  and how to use them to predict linguistic features in your text."
+  'Este capítulo te introducirá en lo básico del procesamiento de texto con spaCy.
+  Aprenderás sobre las estructuras de datos, cómo trabajar con modelos estadísticos
+  y cómo usarlos para predecir características lingüísticas en tu texto.'
+
 prev: null
 next: /chapter2
 type: chapter
 id: 1
 ---
 
-<exercise id="1" title="Introduction to spaCy" type="slides">
+<exercise id="1" title="Introducción a spaCy" type="slides">
 
 <slides source="chapter1_01_introduction-to-spacy">
 </slides>
 
 </exercise>
 
-<exercise id="2" title="Getting Started">
+<exercise id="2" title="Empezando">
 
-Let's get started and try out spaCy! In this exercise, you'll be able to try out
-some of the 45+ [available languages](https://spacy.io/usage/models#languages).
+¡Empecemos y probemos spaCy! En este ejercicio vas a poder probar algunos de los 45+ [lenguajes disponibles](https://spacy.io/usage/models#languages).
 
-### Part 1: English
+### Parte 1: Inglés
 
-- Import the `English` class from `spacy.lang.en` and create the `nlp` object.
-- Create a `doc` and print its text.
+- Importa la clase `English` de `spacy.lang.en` y crea el objeto `nlp`.
+- Crea un `doc` e imprime en pantalla su texto.
 
 <codeblock id="01_02_01">
 </codeblock>
 
-### Part 2: German
+### Parte 2: Alemán
 
-- Import the `German` class from `spacy.lang.de` and create the `nlp` object.
-- Create a `doc` and print its text.
+- Importa la clase `German` de `spacy.lang.de` y crea el objeto `nlp`.
+- Crea un `doc` e imprime en pantalla su texto.
 
 <codeblock id="01_02_02">
 </codeblock>
 
-### Part 3: Spanish
+### Parte 3: Español
 
-- Import the `Spanish` class from `spacy.lang.es` and create the `nlp` object.
-- Create a `doc` and print its text.
+- Importa la clase `Spanish` de `spacy.lang.es` y crea el objeto `nlp`.
+- Crea un `doc` e imprime en pantalla su texto.
 
 <codeblock id="01_02_03">
 </codeblock>
 
 </exercise>
 
-<exercise id="3" title="Documents, spans and tokens">
+<exercise id="3" title="Documentos, spans y tokens">
 
-When you call `nlp` on a string, spaCy first tokenizes the text and creates a
-document object. In this exercise, you'll learn more about the `Doc`, as well as
-its views `Token` and `Span`.
+Cuando llamas `nlp` sobre un string, spaCy primero generas tokens del texto y crea un objeto de documento. En este ejercicio aprenderás más sobre el `Doc`, así como de sus <abbr title="en español representaciones">views</abbr> `Token` y `Span`.
 
-### Step 1
+### Paso 1
 
-- Import the `English` language class and create the `nlp` object.
-- Process the text and instantiate a `Doc` object in the variable `doc`.
-- Select the first token of the `Doc` and print its `text`.
+- Importa la clase de lenguaje `English` y crea el objeto `nlp`.
+- Procesa el texto y genera un <abbr title="en español ejemplar, a veces referido incorrectamente como instancia">instance</abbr> de un objeto `Doc` en la variable `doc`.
+- Selecciona el primer token de `Doc` e imprime en pantalla su `text`.
 
 <codeblock id="01_03_01">
 
-You can index into a `Doc` the same way you index into a list in Python. For
-example, `doc[4]` will give you the token at index 4, which is the fifth token
-in the text. Remember that in Python the first index is 0, not 1.
+Puedes indexar a `Doc` de la misma manera en la que indexas en una lista de Python. Por ejemplo, `doc[4]` dará como resultado el token en el índice 4, que es el quinto token en el texto. Recuerda que en Python el primer índice es 0 y no 1.
 
 </codeblock>
 
-### Step 2
+### Paso 2
 
-- Import the `English` language class and create the `nlp` object.
-- Process the text and instantiate a `Doc` object in the variable `doc`.
-- Create a slice of the `Doc` for the tokens "tree kangaroos" and "tree
+- Importa la clase de lenguaje `English` y crea el objeto `nlp`.
+- Procesa el texto y genera un <abbr title="en español ejemplar, a veces referido incorrectamente como instancia">instance</abbr> de un objeto `Doc` en la variable `doc`.
+- Crea un slice de `Doc` para los tokens "tree kangaroos" y "tree
   kangaroos and narwhals".
 
 <codeblock id="01_03_02">
 
-Creating a slice of a `Doc` works just like creating a slice of a list in Python
-using the `:` notation. Remember that the last token index is _exclusive_ – for
-example, `0:4` describes the tokens 0 _up to_ token 4, but not including
-token 4.
+Crear un slice de `Doc` funciona exactamente como creando un slice de una lista de Python usando la notación `:`. Recuerda que el último token del índice es _excluyente_ - por ejemplo, `0:4` describe los tokens 0 _hasta_ el token 4, pero no incluye el token 4.
 
 </codeblock>
 
 </exercise>
 
-<exercise id="4" title="Lexical attributes">
+<exercise id="4" title="Atributos Léxicos">
 
-In this example, you'll use spaCy's `Doc` and `Token` objects, and lexical
-attributes to find percentages in a text. You'll be looking for two subsequent
-tokens: a number and a percent sign.
+En este ejemplo usarás los objetos `Doc` y `Token` de spaCy y los atributos léxicos para encontrar porcentajes en el texto. Estarás buscando por dos tokens subsecuentes: un número y un símbolo de porcentaje.
 
-- Use the `like_num` token attribute to check whether a token in the `doc`
-  resembles a number.
-- Get the token _following_ the current token in the document. The index of the
-  next token in the `doc` is `token.i + 1`.
-- Check whether the next token's `text` attribute is a percent sign "%".
+- Usa el atributo `like_num` del token para revisar si un token en el `doc` parece un número.
+- Toma el token que sigue al token actual en el documento. El índice del siguiente token en el `doc` es `token.i + 1`.
+- Revisa si el atributo `text` del siguiente token es un símbolo de porcentaje "%".
 
 <codeblock id="01_04">
 
-To get the token at a certain index, you can index into the `doc`. For example,
-`doc[5]` is the token at index 5.
+Para obtener el token en un índice específico, puedes indexar el `doc`. Por ejemplo, `doc[5]` es el token en el índice 5.
 
 </codeblock>
 
 </exercise>
 
-<exercise id="5" title="Statistical models" type="slides">
+<exercise id="5" title="Modelos Estadísticos" type="slides">
 
 <slides source="chapter1_02_statistical-models">
 </slides>
 
 </exercise>
 
-<exercise id="6" title="Model packages" type="choice">
+<exercise id="6" title="Paquetes de modelos" type="choice">
 
-What's **not** included in a model package that you can load into spaCy?
+¿Qué **no** está incluido en un paquete con un modelo que puedes cargar a spaCy?
 
 <choice>
-<opt text="A meta file including the language, pipeline and license.">
+<opt text="Un archivo de metadatos incluyendo el lenguaje, el pipeline y la licencia.">
 
-All models include a `meta.json` that defines the language to initialize, the
-pipeline component names to load as well as general meta information like the
-model name, version, license, data sources, author and accuracy figures (if
-available).
+Todos los modelos incluyen un `meta.json` que define el lenguaje que será inicializado, los nombres de los componentes del pipeline que serán cargados, así como metadatos como el nombre del modelo, versión, licencia, fuentes de los datos, autor y cifras sobre la precisión del modelo (si están disponibles).
 
 </opt>
-<opt text="Binary weights to make statistical predictions.">
+<opt text="Parámetros, en inglés conocidos como weights, binarios para hacer predicciones estadísticas.">
 
-To predict linguistic annotations like part-of-speech tags, dependency labels or
-named entities, models include binary weights.
-
-</opt>
-<opt correct="true" text="The labelled data that the model was trained on.">
-
-Statistical models allow you to generalize based on a set of training examples.
-Once they're trained, they use binary weights to make predictions. That's why
-it's not necessary to ship them with their training data.
+Los modelos incluyen parámetros binarios para poder predecir las anotaciones lingüísticas como part-of-speech tags, dependency labels o entidades nombradas.
 
 </opt>
-<opt text="Strings of the model's vocabulary and their hashes.">
+<opt correct="true" text="Los datos anotados con los que el modelo fue entrenado.">
 
-Model packages include a `strings.json` that stores the entries in the model's
-vocabulary and the mapping to hashes. This allows spaCy to only communicate in
-hashes and look up the corresponding string if needed.
+Los modelos estadísticos te permiten generalizar basándote en un set de ejemplos de entrenamiento. Una vez están entrenados, usan los parámetros binarios para hacer predicciones. Es por esto que no es necesario incluirlos con los datos de entrenamiento.
+
+</opt>
+<opt text="Strings del vocabulario del modelo y sus hashes.">
+
+Los paquetes de modelo incluye un `strings.json` que guarda las entradas en el vocabulario del modelo y el mapping a los hashes. Esto le permite a spaCy comunicarse únicamente en hashes y buscar el string correspondiente si es necesario.
 
 </opt>
 </choice>
 
 </exercise>
 
-<exercise id="7" title="Loading models">
+<exercise id="7" title="Cargando modelos">
 
-The models we're using in this course are already pre-installed. For more
-details on spaCy's statistical models and how to install them on your machine,
-see [the documentation](https://spacy.io/usage/models).
+Los modelos que estamos usando en este curso ya están pre-instalados. Para obtener más detalles sobre los modelos estadísticos de spaCy y cómo instalarlos en tu máquina revisa [la documentación](https://spacy.io/usage/models).
 
-- Use `spacy.load` to load the small English model `'en_core_web_sm'`.
-- Process the text and print the document text.
+- Usa `spacy.load` para cargar el modelo pequeño de inglés `'en_core_web_sm'`.
+- Procesa el texto e imprime en pantalla el texto del documento.
 
 <codeblock id="01_07">
 
-To load a model, call `spacy.load` on its string name. Model names differ
-depending on the language and the data they were trained on – so make sure to
-use the correct name.
+Para cargar el modelo, llama a `spacy.load` usando su nombre en string. Los nombres de los modelos se diferencian dependiendo del lenguaje y los datos con los que fueron entrenados. Así que asegúrate que estés usando el nombre correcto.
 
 </codeblock>
 
 </exercise>
 
-<exercise id="8" title="Predicting linguistic annotations">
+<exercise id="8" title="Prediciendo anotaciones lingüísticas">
 
-You'll now get to try one of spaCy's pre-trained model packages and see its
-predictions in action. Feel free to try it out on your own text! To find out
-what a tag or label means, you can call `spacy.explain` in the loop. For example:
-`spacy.explain('PROPN')` or `spacy.explain('GPE')`.
+Ahora puedes probar uno de los paquetes de modelos pre-entrenados de spaCy y ver sus predicciones en acción. ¡También puedes intentarlo con tu propio texto! Para averiguar lo que cada tag o label significa puedes llamar a `spacy.explain` en el loop. Por ejemplo, `spacy.explain('PROPN')` o `spacy.explain('GPE')`.
 
-### Part 1
+### Parte 1
 
-- Process the text with the `nlp` object and create a `doc`.
-- For each token, print the token text, the token's `.pos_` (part-of-speech tag)
-  and the token's `.dep_` (dependency label).
+- Procesa el texto del objeto `nlp` y crea un `doc`.
+- Para cada token imprime en pantalla su texto, su `.pos_` (part-of-speech tag) y su `.dep_` (dependency label).
 
 <codeblock id="01_08_01">
 
-To create a `doc`, call the `nlp` object on a string of text. Remember that you
-need to use the token attribute names with an underscore to get the string
-values.
+Para crear un `doc` llama el objeto `nlp` en un string de texto. Recuerda que necesitas usar los nombres de los atributos de los tokens con un guion bajo (`_`) para obtener el valor del string.
 
 </codeblock>
 
-### Part 2
+### Parte 2
 
-- Process the text and create a `doc` object.
-- Iterate over the `doc.ents` and print the entity text and `label_` attribute.
+- Procesa el texto y crea un objeto `doc`.
+- Itera sobre los `doc.ents` e imprime en pantalla el texto de la entidad y el atributo `label_`.
 
 <codeblock id="01_08_02">
 
-To create a `doc`, call the `nlp` object on a string of text. Remember that you
-need to use the token attribute names with an underscore to get the string
-values.
+Para crear un `doc` llama el objeto `nlp` en un string de texto. Recuerda que necesitas usar los nombres de los atributos de los tokens con un guion bajo (`_`) para obtener el valor del string.
 
 </codeblock>
 
 </exercise>
 
-<exercise id="9" title="Predicting named entities in context">
+<exercise id="9" title="Prediciendo entidades nombradas en contexto">
 
-Models are statistical and not _always_ right. Whether their predictions are
-correct depends on the training data and the text you're processing. Let's take
-a look at an example.
+Los modelos son estadísticos y no son _siempre_ correctos. La corrección de sus predicciones depende de los datos de entrenamiento y del texto que estás procesando. Veamos un ejemplo.
 
-- Process the text with the `nlp` object.
-- Iterate over the entities and print the entity text and label.
-- Looks like the model didn't predict "iPhone X". Create a span for those tokens
-  manually.
+- Procesa el texto con el objeto `doc`.
+- Itera sobre las entidades e imprime en pantalla el texto de la entidad y el label.
+- Parece ser que el modelo no predijo "iPhone X". Crea un span para esos tokens manualmente.
 
 <codeblock id="01_09">
 
-- To create a `doc`, call the `nlp` object on the text. Named entities are
-  available as the `doc.ents` property.
-- The easiest way to create a `Span` object is to use the slice notation – for
-  example `doc[5:10]` for the token at position 5 _up to_ position 10. Remember
-  that the last token index is exclusive.
+- Para crear un `doc` llama el objeto `nlp` en un string de texto. Las entidades nombradas están disponibles como la propiedad `doc.ents`.
+- La forma más fácil de crear un objeto `Span` es usar la notación de slice - por ejemplo `doc[5:10]` para el token en la posición 5 _hasta_ la posición 10. Recuerda que el último índice del token es excluyente.
 
 </codeblock>
 
