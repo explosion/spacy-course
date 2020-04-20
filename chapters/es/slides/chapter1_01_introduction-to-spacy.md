@@ -2,51 +2,44 @@
 type: slides
 ---
 
-# Introduction to spaCy
+# Introducción a spaCy
 
-Notes: Hi, I'm Ines! I'm one of the core developers of spaCy, a popular library
-for advanced Natural Language Processing in Python.
+Notes: Hola, soy Ines! Soy una de las programadoras principales de spaCy, un paquete popular para hacer Procesamiento de Lenguaje Natural en Python.
 
-In this lesson, we'll take a look at the most important concepts of spaCy and how
-to get started.
+En esta lección vamos a ver los conceptos más importantes de spaCy y cómo comenzar a usarlo.
 
 ---
 
-# The nlp object
+# El objeto nlp
 
 ```python
-# Import the English language class
+# Importa la clase de lenguaje "English"
 from spacy.lang.en import English
 
-# Create the nlp object
+# Crea el objeto nlp
 nlp = English()
 ```
 
-- contains the processing pipeline
-- includes language-specific rules for tokenization etc.
+- contiene el pipeline de procesamiento
+- incluye las reglas específicas de su lenguaje para hacer la tokenización, etc.
 
-Notes: At the center of spaCy is the object containing the processing pipeline.
-We usually call this variable "nlp".
+Notes: En el centro de spaCy está el objeto que contiene el <abbr title="Un pipeline es una serie de acciones que se ejecutan en secuencia. Cada paso depende del anterior usando su resultado.">pipeline</abbr> de procesamiento. Normalmente llamamos esta variable "nlp".
 
-For example, to create an English nlp object, you can import the English
-language class from spacy dot lang dot en and instantiate it. You can use the
-nlp object like a function to analyze text.
+Por ejemplo, para crear un objeto nlp de inglés puedes importar la clase de lenguaje "English" de `spacy.lang.en` y creas un <abbr title="Es un ejemplar de una clase, a veces referido incorrectamente como instancia">instance</abbr>. Puedes usar el objeto nlp como una función para analizar el texto.
 
-It contains all the different components in the pipeline.
+Contiene todos los componentes diferentes de un pipeline.
 
-It also includes language-specific rules used for tokenizing the text into words
-and punctuation. spaCy supports a variety of languages that are available in
-spacy dot lang.
+También incluye las reglas específicas de su lenguaje usadas para convertir el texto en tokens con palabras y puntuación. spaCy ofrece soporte para varios lenguajes que están disponibles en `spacy.lang`.
 
 ---
 
-# The Doc object
+# El objeto Doc
 
 ```python
-# Created by processing a string of text with the nlp object
+# Creado procesando un string de texto con el objeto nlp
 doc = nlp("Hello world!")
 
-# Iterate over tokens in a Doc
+# Itera sobre los tokens en un Doc
 for token in doc:
     print(token.text)
 ```
@@ -57,26 +50,23 @@ world
 !
 ```
 
-Notes: When you process a text with the nlp object, spaCy creates a Doc object –
-short for "document". The Doc lets you access information about the text in a
-structured way, and no information is lost.
+Notes: Cuando procesas un texto con el objeto nlp, spaCy crea un objeto Doc - de "Documento". El Doc te permite acceder a la información sobre el texto en una forma estructurada y sin perder información.
 
-The Doc behaves like a normal Python sequence by the way and lets you iterate
-over its tokens, or get a token by its index. But more on that later!
+El Doc se comporta como una secuencia normal de Python y te permite iterar sobre sus tokens u obtener un token con su índice. Más adelante hablaremos más de ello.
 
 ---
 
-# The Token object
+# El objeto Token
 
 <img src="/doc.png" alt="Illustration of a Doc object containing four tokens" width="50%" />
 
 ```python
 doc = nlp("Hello world!")
 
-# Index into the Doc to get a single Token
+# Usa el índice del Doc para obtener un solo Token
 token = doc[1]
 
-# Get the token text via the .text attribute
+# Obtén el texto del token a través del atributo .text
 print(token.text)
 ```
 
@@ -84,28 +74,25 @@ print(token.text)
 world
 ```
 
-Notes: Token objects represent the tokens in a document – for example, a word or
-a punctuation character.
+Notes: Los objetos Token representan a los tokens en un documento. Por ejemplo, una palabra o un signo de puntuación.
 
-To get a token at a specific position, you can index into the Doc.
+Para obtener el token en una posición específica puedes usar el índice del Doc.
 
-Token objects also provide various attributes that let you access more
-information about the tokens. For example, the dot text attribute returns the
-verbatim token text.
+Los objetos Token también proveen varios atributos que te permiten acceder a más información sobre los tokens. Por ejemplo, el atributo `.text` devuelve exactamente el texto del token.
 
 ---
 
-# The Span object
+# El objeto Span
 
 <img src="/doc_span.png" width="50%" alt="Illustration of a Doc object containing four tokens and three of them wrapped in a Span" />
 
 ```python
 doc = nlp("Hello world!")
 
-# A slice from the Doc is a Span object
+# Un slice de un Doc en un objeto Span
 span = doc[1:4]
 
-# Get the span text via the .text attribute
+# Obtén el texto del span a través del atributo .text
 print(span.text)
 ```
 
@@ -113,16 +100,13 @@ print(span.text)
 world!
 ```
 
-Notes: A Span object is a slice of the document consisting of one or more
-tokens. It's only a view of the Doc and doesn't contain any data itself.
+Notes: Un objeto Span es un <abbr title="Un slice es un subconjunto de elementos dentro de una secuencia de datos, como una lista o un objeto Doc">slice</abbr> de un documento que consiste de uno o más tokens. Es solo un <abbr title="en español, representaciones">view</abbr> de un Doc y no contiene los datos mismos.
 
-To create a Span, you can use Python's slice notation. For example, 1 colon 3
-will create a slice starting from the token at position 1, up to – but not
-including! – the token at position 3.
+Para crear un Span puedes usar la notación de slice de Python. Por ejemplo, `1:3` crea un slice que comienza en el token en posición 1 hasta - pero no incluyendo! - el token en la posición 3.
 
 ---
 
-# Lexical Attributes
+# Atributos Léxicos
 
 ```python
 doc = nlp("It costs $5.")
@@ -146,22 +130,18 @@ is_punct: [False, False, False, False, True]
 like_num: [False, False, False, True, False]
 ```
 
-Notes: Here you can see some of the available token attributes:
+Notes: Aquí puedes ver algunos de los atributos disponibles de los tokens :
 
-"i" is the index of the token within the parent document.
+"i" es el índice del token dentro del documento padre (superordinado).
 
-"text" returns the token text.
+"text" devuelve el texto del token.
 
-"is alpha", "is punct" and "like num" return boolean values indicating whether
-the token consists of alphabetic characters, whether it's punctuation or
-whether it _resembles_ a number. For example, a token "10" – one, zero – or the
-word "ten" – T, E, N.
+"is alpha", "is punct" y "like num" devuelven valores booleanos que indican si un token está compuesto por caractéres alfabéticos, si es puntuación, o si _parece_ un número. Por ejemplo, el token "10" - uno, cero - o la palabra "diez" - D, I, E, Z.
 
-These attributes are also called lexical attributes: they refer to the entry in
-the vocabulary and don't depend on the token's context.
+Estos atributos también se llaman atributos léxicos: se refieren a una entrada en el vocabulario y no dependen del contexto del token.
 
 ---
 
-# Let's practice!
+# ¡Practiquemos!
 
-Notes: Let's see this in action and process your first text with spaCy.
+Notes: Veámos todo esto en acción y procesemos tu primer texto con spaCy.

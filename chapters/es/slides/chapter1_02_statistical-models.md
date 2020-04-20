@@ -2,38 +2,34 @@
 type: slides
 ---
 
-# Statistical models
+# Modelos Estadísticos
 
-Notes: Let's add some more power to the nlp object!
+Notes: ¡Ahora vamos a añadir más poder al objeto nlp!
 
-In this lesson, you'll learn about spaCy's statistical models.
+En esta lección aprenderás sobre los modelos estadísticos de spaCy.
 
 ---
 
-# What are statistical models?
+# Qué son los modelos estadísticos?
 
-- Enable spaCy to predict linguistic attributes _in context_
+- Le permiten a spaCy predecir atributos lingüísticos _en contexto_
   - Part-of-speech tags
-  - Syntactic dependencies
-  - Named entities
-- Trained on labeled example texts
-- Can be updated with more examples to fine-tune predictions
+  - Dependencias sintácticas
+  - Entidades nombradas
+- Entrenados con textos de ejemplo anotados
+- Pueden ser actualizados con más ejemplos para afinar las predicciones
 
-Notes: Some of the most interesting things you can analyze are context-specific:
-for example, whether a word is a verb or whether a span of text is a person
-name.
+Notes: Algunas de las cosas más interesantes que puedes analizar son específicas al contexto: por ejemplo, si una palabra es un verbo o si un span de texto es el nombre de una persona.
 
-Statistical models enable spaCy to make predictions in context. This usually
-includes part-of speech tags, syntactic dependencies and named entities.
+Los modelos estadísticos le permiten a spaCy hacer predicciones dentro del contexto. Esto normalmente incluye las part-of speech tags, dependencias sintácticas y entidades nombradas.
 
-Models are trained on large datasets of labeled example texts.
+Los modelos son entrenados con datasets de textos de ejemplo anotados.
 
-They can be updated with more examples to fine-tune their predictions – for
-example, to perform better on your specific data.
+Los modelos pueden ser actualizados con más ejemplos para afinar sus predicciones - por ejemplo, para que se desempeñe mejor con tus datos específicos.
 
 ---
 
-# Model Packages
+# Paquetes de modelos
 
 <img src="/package.png" alt="A package with the label en_core_web_sm" width="30%" align="right" />
 
@@ -47,39 +43,34 @@ import spacy
 nlp = spacy.load('en_core_web_sm')
 ```
 
-- Binary weights
-- Vocabulary
-- Meta information (language, pipeline)
+- Parámetros binarios Binary weights
+- Vocabulario
+- Metadata (lenguaje, pipeline)
 
-Notes: spaCy provides a number of pre-trained model packages you can download
-using the "spacy download" command. For example, the "en_core_web_sm" package is
-a small English model that supports all core capabilities and is trained on web
-text.
+Notes: spaCy provee varios paquetes de modelos pre-entrenados que puedes descargar usando el comando "spacy download". Por ejemplo, el paquete "en_core_web_sm" es un modelo pequeño de inglés que provee soporte para todas las capacidades centrales y está entrenado usando texto de la web.
 
-The spacy dot load method loads a model package by name and returns an nlp
-object.
+El método "spacy dot load (`spacy.load`)" carga el paquete de modelo por su nombre y devuelve un objeto nlp.
 
-The package provides the binary weights that enable spaCy to make predictions.
+El paquete provee los <abbr title="en inglés, en un contexto de Machine Leraning, conocidos como binary weights">parámetros binarios</abbr> que le permiten a spaCy hacer predicciones.
 
-It also includes the vocabulary, and meta information to tell spaCy which
-language class to use and how to configure the processing pipeline.
+También incluye el vocabulario y la metadata para que spaCy sepa cuál clase de lenguaje usar y cómo configurar el pipeline de procesamiento.
 
 ---
 
-# Predicting Part-of-speech Tags
+# Prediciendo Part-of-speech Tags
 
 ```python
 import spacy
 
-# Load the small English model
+# Carga el modelo pequeño de inglés
 nlp = spacy.load('en_core_web_sm')
 
-# Process a text
+# Procesa un texto
 doc = nlp("She ate the pizza")
 
-# Iterate over the tokens
+# Itera sobre los tokens
 for token in doc:
-    # Print the text and the predicted part-of-speech tag
+    # Imprime en pantalla texto y el part-of-speech tag predicho
     print(token.text, token.pos_)
 ```
 
@@ -90,24 +81,21 @@ the DET
 pizza NOUN
 ```
 
-Notes: Let's take a look at the model's predictions. In this example, we're
-using spaCy to predict part-of-speech tags, the word types in context.
+Notes: Revisemos las predicciones del modelo. En este ejemplo estamos usando spaCy para predecir part-of-speech tags, los tipos de palabras en el contexto.
 
-First, we load the small English model and receive an nlp object.
+Primero, cargamos el modelo pequeño de inglés y recibimos un objeto nlp.
 
-Next, we're processing the text "She ate the pizza".
+Siguiente, procesamos el texto "She ate the pizza".
 
-For each token in the Doc, we can print the text and the "pos underscore"
-attribute, the predicted part-of-speech tag.
+Para cada token en el Doc podemos imprimir en pantalla el texto y el part-of-speech tag predicho usando el atributo `"pos_"`.
 
-In spaCy, attributes that return strings usually end with an underscore –
-attributes without the underscore return an ID.
+En spaCy, los atributos que devuelven un string usualmente terminan con un guión bajo (`_`). mientras que atributos sin un guión bajo devuelven un ID.
 
-Here, the model correctly predicted "ate" as a verb and "pizza" as a noun.
+Aquí el modelo predijo correctamente "ate" como el verbo y "pizza" como el sustantivo.
 
 ---
 
-# Predicting Syntactic Dependencies
+# Prediciendo dependencias sintácticas
 
 ```python
 for token in doc:
@@ -121,51 +109,45 @@ the DET det pizza
 pizza NOUN dobj ate
 ```
 
-Notes: In addition to the part-of-speech tags, we can also predict how the words
-are related. For example, whether a word is the subject of the sentence or an
-object.
+Notes: Además de los part-of-speech tags, también podemos predecir las relaciones entre las palabras. Por ejemplo, si una palabra es el sujeto o el objeto de una oración.
 
-The "dep underscore" attribute returns the predicted dependency label.
+El atributo "dep guión bajo (`dep_`)" devuelve el dependency label predicho.
 
-The head attribute returns the syntactic head token. You can also think of it as
-the parent token this word is attached to.
+El atributo "head dot (`head.`)" devuelve el token <abbr title="en inglés head">cabeza</abbr> sintáctico. Otra forma de pensarlo es como el token padre (superordinado) al que esta palabra está atada.
 
 ---
 
-# Dependency label scheme
+# Esquema de Dependency label
 
-<img src="dep_example.png" alt="Visualization of the dependency graph for 'She ate the pizza'" />
+<img src="/dep_example.png" alt="Visualization of the dependency graph for 'She ate the pizza'" />
 
-| Label     | Description          | Example |
-| --------- | -------------------- | ------- |
-| **nsubj** | nominal subject      | She     |
-| **dobj**  | direct object        | pizza   |
-| **det**   | determiner (article) | the     |
+| Label     | Descripción             | Ejemplo |
+| --------- | ----------------------- | ------- |
+| **nsubj** | sujeto nominal          | She     |
+| **dobj**  | objeto directo          | pizza   |
+| **det**   | determinante (artículo) | the     |
 
-Notes: To describe syntactic dependencies, spaCy uses a standardized label
-scheme. Here's an example of some common labels:
+Notes: spaCy usa un esquema de labels estándar para describir dependencias sintácticas. Aquí verás un ejemplo de algunas <abbr title="en español se conocen como etiquetas, pero para mantener la diferenciación entre label y tag, las usamos en inglés">labels</abbr> comúnes:
 
-The pronoun "She" is a nominal subject attached to the verb – in this case, to
-"ate".
+El pronombre "She" es un sujeto nominal unido al verbo - en este caso, a "ate".
 
-The noun "pizza" is a direct object attached to the verb "ate". It is eaten by
-the subject, "she".
+El sustantivo "pizza" es un objeto directo unido al verbo "ate". Está siendo comido ("eaten") por el sujeto "she".
 
-The determiner "the", also known as an article, is attached to the noun "pizza".
+El determinante "the", también conocido como artículo, está unido al sustantivo "pizza".
 
 ---
 
-# Predicting Named Entities
+# Prediciendo entidades nombradas
 
-<img src="ner_example.png" alt="Visualization of the named entities in 'Apple is looking at buying U.K. startup for $1 billion'" width="80%" />
+<img src="/ner_example.png" alt="Visualization of the named entities in 'Apple is looking at buying U.K. startup for $1 billion'" width="80%" />
 
 ```python
-# Process a text
+# Procesa un texto
 doc = nlp(u"Apple is looking at buying U.K. startup for $1 billion")
 
-# Iterate over the predicted entities
+# Itera sobre las entidades predichas
 for ent in doc.ents:
-    # Print the entity text and its label
+    # Imprime en pantalla el texto y el label del la entidad
     print(ent.text, ent.label_)
 ```
 
@@ -175,23 +157,19 @@ U.K. GPE
 $1 billion MONEY
 ```
 
-Notes: Named entities are "real world objects" that are assigned a name – for
-example, a person, an organization or a country.
+Notes: Las entidades nombradas son "objetos de la vida real" que tienen un nombre asignado. Por ejemplo, una persona, una organización o un país.
 
-The doc dot ents property lets you access the named entities predicted by the
-model.
+La propiedad "doc dot ents (`doc.ents`)" te permite acceder a las entidades nombradas predichas por el modelo.
 
-It returns an iterator of Span objects, so we can print the entity text and the
-entity label using the "label underscore" attribute.
+Devuelve un iterador de objetos Span, así que podemos imprimir en pantalla el texto y el label de la entidad usando el atributo "label underscore (`label_`)".
 
-In this case, the model is correctly predicting "Apple" as an organization,
-"U.K." as a geopolitical entity and "\$1 billion" as money.
+En este caso, el modelo predijo correctamente "Apple" como una organización, "U.K." como una entidad geopolítica y "\$1 billion" como dinero.
 
 ---
 
-# Tip: the explain method
+# Tip: el método explain
 
-Get quick definitions of the most common tags and labels.
+Obtén definiciones rápidas de los tags y labels más comunes.
 
 ```python
 spacy.explain('GPE')
@@ -217,17 +195,14 @@ spacy.explain('dobj')
 'direct object'
 ```
 
-Notes: A quick tip: To get definitions for the most common tags and labels, you
-can use the spacy dot explain helper function.
+Notes: Un tip rápido: Para obtener definiciones de los tags y labels más comunes puedes usar la función asistente "spacy dot explain (`spacy.explain`)".
 
-For example, "GPE" for geopolitical entity isn't exactly intuitive – but spacy
-dot explain can tell you that it refers to countries, cities and states.
+Por ejemplo, "GPE" para entidad geopolítica no es necesariamente intuitivo, pero "spacy dot explain (`spacy.explain`)" puede decirte que se refiere a países, ciudades y estados.
 
-The same works for part-of-speech tags and dependency labels.
+Lo mismo funciona para part-of-speech tags y dependency labels.
 
 ---
 
-# Let's practice!
+# ¡Practiquemos!
 
-Notes: Now it's your turn. Let's take a look at spaCy's statistical models and
-their predictions.
+Notes: Ahora es tu turno. Exploremos los modelos estadísticos de spaCy y sus predicciones.

@@ -112,7 +112,7 @@ Para obtener el token en un índice específico, puedes indexar el `doc`. Por ej
 Todos los modelos incluyen un `meta.json` que define el lenguaje que será inicializado, los nombres de los componentes del pipeline que serán cargados, así como metadatos como el nombre del modelo, versión, licencia, fuentes de los datos, autor y cifras sobre la precisión del modelo (si están disponibles).
 
 </opt>
-<opt text="Parámetros, en inglés conocidos como weights, binarios para hacer predicciones estadísticas.">
+<opt text="Parámetros binarios para hacer predicciones estadísticas.">
 
 Los modelos incluyen parámetros binarios para poder predecir las anotaciones lingüísticas como part-of-speech tags, dependency labels o entidades nombradas.
 
@@ -191,86 +191,68 @@ Los modelos son estadísticos y no son _siempre_ correctos. La corrección de su
 
 </exercise>
 
-<exercise id="10" title="Rule-based matching" type="slides">
+<exercise id="10" title="Encontrando patrones basados en reglas" type="slides">
 
 <slides source="chapter1_03_rule-based-matching">
 </slides>
 
 </exercise>
 
-<exercise id="11" title="Using the Matcher">
+<exercise id="11" title="Usando el Matcher">
 
-Let's try spaCy's rule-based `Matcher`. You'll be using the example from the
-previous exercise and write a pattern that can match the phrase "iPhone X" in
-the text.
+Probemos el `Matcher` basado en reglas de spaCy. Vas a usar un ejemplo del ejercicio anterior y escribirás un patrón que encuentre la frase "iPhone X" en el texto.
 
-- Import the `Matcher` from `spacy.matcher`.
-- Initialize it with the `nlp` object's shared `vocab`.
-- Create a pattern that matches the `'TEXT'` values of two tokens: `"iPhone"`
-  and `"X"`.
-- Use the `matcher.add` method to add the pattern to the matcher.
-- Call the matcher on the `doc` and store the result in the variable `matches`.
-- Iterate over the matches and get the matched span from the `start` to the
-  `end` index.
+- Importa el `Matcher` desde `spacy.matcher`.
+- Inicialízalo con el `vocab` compartido del objeto `nlp`.
+- Crea un patrón que encuentre los valores `"TEXT"` de dos tokens: `"iPhone"` y `"X"`.
+- Usa el método `matcher.add` para añadir el patrón al matcher.
+- Llama al matcher en el `doc` y guarda el resultado en la variable `matches`.
+- Itera sobre los resultados y obtén el span resultante desde el índice `start` hasta el índice `end`.
 
 <codeblock id="01_11">
 
-- The shared vocabulary is available as the `nlp.vocab` attribute.
-- A pattern is a list of dictionaries keyed by the attribute names. For example,
-  `[{'TEXT': 'Hello'}]` will match one token whose exact text is "Hello".
-- The `start` and `end` values of each match describe the start and end index of
-  the matched span. To get the span, you can create a slice of the `doc` using
-  the given start and end.
+- El vocabulario compartido está disponible como el atributo `nlp.vocab`.
+- El patrón es una lista de diccionarios que utiliza los nombres de los atributos como keys. Por ejemplo, `[{"TEXT": "Hello"}]` encontrará un token cuyo texto exacto sea "Hello".
+- Los valores `start` y `end` de cada resultado describen el índice de inicio y el índice final de un span resultante. Para obtener el span puedes crear un slice del `doc` usando su inicio y final.
 
 </codeblock>
 
 </exercise>
 
-<exercise id="12" title="Writing match patterns">
+<exercise id="12" title="Escribiendo patrones">
 
-In this exercise, you'll practice writing more complex match patterns using
-different token attributes and operators.
+En este ejercicio practicarás escribiendo patrones más complejos usando diferentes atributos de los tokens y operadores.
 
-### Part 1
+### Parte 1
 
-- Write **one** pattern that only matches mentions of the _full_ iOS versions:
-  "iOS 7", "iOS 11" and "iOS 10".
+- Escribe **un** patrón que únicamente encuentre menciones de las versiones _enteras_ de iOS: "iOS 7", "iOS 11" and "iOS 10".
 
 <codeblock id="01_12_01">
 
-- To match a token with an exact text, you can use the `TEXT` attribute. For
-  example, `{'TEXT': 'Apple'}` will match tokens with the exact text "Apple".
-- To match a number token, you can use the `IS_DIGIT` attribute, which will only
-  return `True` for tokens consisting of only digits.
+- Para encontrar el token con el texto exacto puedes usar el atributo `TEXT`. Por ejemplo, `{"TEXT": "Apple"}` encontrará tokens que tengan el texto exacto "Apple".
+- Para encontrar un token de número puedes usar el atributo `"IS_DIGIT"` que únicamente devolverá `True` para los tokens que solo tienen dígitos.
 
 </codeblock>
 
-### Part 2
+### Parte 2
 
-- Write **one** pattern that only matches forms of "download" (tokens with the
-  lemma "download"), followed by a token with the part-of-speech tag `'PROPN'`
-  (proper noun).
+- Escribe **un** patrón que únicamente encuentre formas de "download" (tokens con el lemma "download") seguido por un token que tenga el part-of-speech tag `"PROPN"` (<abbr title="en español: nombre propio"> proper noun</abbr>).
 
 <codeblock id="01_12_02">
 
-- To specify a lemma, you can use the `'LEMMA'` attribute in the token pattern.
-  For example, `{'LEMMA': 'be'}` will match tokens like "is", "was" or "being".
-- To find proper nouns, you want to match all tokens whose `POS` value equals
-  `'PROPN'`.
+- Para especificar un lemma puedes usar el atributo `"LEMMA"` en el patrón de tokens. Por ejemplo, `{"LEMMA": "be"}` va a encontrar los tokens como "is", "was" o "being".
+- Para encontrar nombres propios puedes encontrar todos los tokens que tengan `"PROPN"` como el valor del `"POS"`.
 
 </codeblock>
 
-### Part 3
+### Parte 3
 
-- Write **one** pattern that matches adjectives (`'ADJ'`) followed by one or two
-  `'NOUN'`s (one noun and one optional noun).
+- Escribe **un** patrón que encuentre adjetivos (`"ADJ"`) seguidos de uno o dos sustantivos `"NOUN"` (un sustantivo y un sustantivo opcional).
 
 <codeblock id="01_12_03">
 
-- To find adjectives, look for tokens whose `'POS'` value equals `'ADJ'`. For
-  nouns, look for `'NOUN'`.
-- Operators can be added via the `'OP'` key. For example, `'OP': '?'` to match
-  zero or one time.
+- Para encontrar adjetivos busca los tokens que tengan como valor `"ADJ"` en su `"POS"`. Para sustantivos busca `"NOUN"`.
+- Los operadores pueden ser añadidos a través del key `"OP"`. Por ejemplo, `"OP": "?"` para encontrar cero o una vez.
 
 </codeblock>
 
