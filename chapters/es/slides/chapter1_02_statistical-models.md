@@ -70,7 +70,7 @@ doc = nlp("She ate the pizza")
 
 # Itera sobre los tokens
 for token in doc:
-    # Imprime en pantalla texto y el part-of-speech tag predicho
+    # Imprime en pantalla el texto y el part-of-speech tag predicho
     print(token.text, token.pos_)
 ```
 

@@ -4,16 +4,16 @@ nlp = spacy.load("en_core_web_sm")
 
 text = "New iPhone X release date leaked as Apple reveals pre-orders by mistake"
 
-# Process the text
+# Procesa el texto
 doc = ____
 
-# Iterate over the entities
+# Itera sobre las entidades
 for ____ in ____.____:
-    # Print the entity text and label
+    # Imprime en pantalla el texto de la entidad y su label
     print(____.____, ____.____)
 
-# Get the span for "iPhone X"
+# Obtén el span para "iPhone X"
 iphone_x = ____
 
-# Print the span text
+# Imprime en pantalla el texto del span
 print("Missing entity:", iphone_x.text)

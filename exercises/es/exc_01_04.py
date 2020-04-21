@@ -2,18 +2,18 @@ from spacy.lang.en import English
 
 nlp = English()
 
-# Process the text
+# Procesa el texto
 doc = nlp(
     "In 1990, more than 60% of people in East Asia were in extreme poverty. "
     "Now less than 4% are."
 )
 
-# Iterate over the tokens in the doc
+# Itera sobre los tokens en el doc
 for token in doc:
-    # Check if the token resembles a number
+    # Revisa si el token parece un número
     if ____.____:
-        # Get the next token in the document
+        # Obtén el próximo token en el documento
         next_token = ____[____]
-        # Check if the next token's text equals '%'
+        # Revisa si el texto del siguiente token es igual a '%'
         if next_token.____ == "%":
             print("Percentage found:", token.text)

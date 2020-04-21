@@ -1,20 +1,20 @@
 import spacy
 
-# Import the Matcher
+# Importa el Matcher
 from spacy.____ import ____
 
 nlp = spacy.load("en_core_web_sm")
 doc = nlp("New iPhone X release date leaked as Apple reveals pre-orders by mistake")
 
-# Initialize the Matcher with the shared vocabulary
+# Inicializa el matcher con el vocabulario compartido
 matcher = ____(____.____)
 
-# Create a pattern matching two tokens: "iPhone" and "X"
+# Crea un patrpon que encuentre dos tokens: "iPhone" y "X"
 pattern = [____]
 
-# Add the pattern to the matcher
+# Añade el patrón al matcher
 ____.____("IPHONE_X_PATTERN", None, ____)
 
-# Use the matcher on the doc
+# Usa al matcher sobre el doc
 matches = ____
 print("Matches:", [doc[start:end].text for match_id, start, end in matches])

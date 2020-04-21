@@ -11,14 +11,14 @@ doc = nlp(
     "some tweaks once you delve a little deeper."
 )
 
-# Write a pattern for full iOS versions ("iOS 7", "iOS 11", "iOS 10")
+# Escribe un patrón para las versiones de iOS enteras ("iOS 7", "iOS 11", "iOS 10")
 pattern = [{"TEXT": ____}, {"IS_DIGIT": ____}]
 
-# Add the pattern to the matcher and apply the matcher to the doc
+# Añade el patrón al matcher y usa el matcher sobre el documento
 matcher.add("IOS_VERSION_PATTERN", None, pattern)
 matches = matcher(doc)
 print("Total matches found:", len(matches))
 
-# Iterate over the matches and print the span text
+# Itera sobre los resultados e imprime el texto del span
 for match_id, start, end in matches:
     print("Match found:", doc[start:end].text)
