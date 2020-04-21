@@ -251,7 +251,7 @@ Ein "!" negiert den Token und findet ihn 0 Mal.
 
 Ein "?" macht den Token optional und findet ihn 0 oder 1 Mal.
 
-Ein "+" fundet den Token 1 Mal oder öfter.
+Ein "+" findet den Token 1 Mal oder öfter.
 
 Und ein "\*" findet den Token 0 Mal oder öfter.
 
