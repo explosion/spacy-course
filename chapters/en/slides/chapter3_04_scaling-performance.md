@@ -93,8 +93,8 @@ for doc, context in nlp.pipe(data, as_tuples=True):
 
 Notes: You can even add the context meta data to custom attributes.
 
-In this example, we're registering two extensions, "id" and "page number", which
-default to None.
+In this example, we're registering two extensions, `id` and `page number`, which
+default to `None`.
 
 After processing the text and passing through the context, we can overwrite the
 doc extensions with our context metadata.
