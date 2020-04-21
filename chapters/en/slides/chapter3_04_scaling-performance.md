@@ -162,10 +162,10 @@ components to disable. For example, if you only want to use the entity
 recognizer to process a document, you can temporarily disable the tagger and
 parser.
 
-After the with block, the disabled pipeline components are automatically
+After the `with` block, the disabled pipeline components are automatically
 restored.
 
-In the with block, spaCy will only run the remaining components.
+In the `with` block, spaCy will only run the remaining components.
 
 ---
 
