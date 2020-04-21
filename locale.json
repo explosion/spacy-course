@@ -71,7 +71,7 @@
         }
     },
     "es": {
-        "langName": "Spanish",
+        "langName": "Español",
         "title": "NLP avanzado con spaCy",
         "slogan": " Un curso en línea gratis",
         "description": "spaCy es un paquete moderno de Python para hacer Procesamiento de Lenguaje Natural de potencia industrial. En este curso en línea, interactivo y gratuito, aprenderás a usar spaCy para construir sistemas avanzados de comprensión de lenguaje natural usando enfoques basados en reglas y en machine learning.",
@@ -81,6 +81,7 @@
             { "text": "Código fuente", "url": "https://github.com/ines/spacy-course" },
             { "text": "Sígueme en Twitter", "url": "https://twitter.com/_inesmontani" }
         ],
+        "socialImage": "social_es.jpg",
         "uiText": {
             "aboutMe": "Sobre mi",
             "aboutCourse": "Sobre este curso",
