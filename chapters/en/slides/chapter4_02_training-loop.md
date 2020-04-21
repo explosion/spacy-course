@@ -94,17 +94,17 @@ Notes: Here's an example.
 Let's imagine we have a list of training examples consisting of texts and entity
 annotations.
 
-We want to loop for 10 iterations, so we're iterating over a range of 10.
+We want to loop for 10 iterations, so we're iterating over a `range` of 10.
 
-Next, we use the random module to randomly shuffle the training data.
+Next, we use the `random` module to randomly shuffle the training data.
 
-We then use spaCy's minibatch utility function to divide the examples into
+We then use spaCy's `minibatch` utility function to divide the examples into
 batches.
 
-For each batch, we get the texts and annotations and call the nlp dot update
+For each batch, we get the texts and annotations and call the `nlp.update`
 method to update the model.
 
-Finally, we call the nlp dot to disk method to save the trained model to a
+Finally, we call the `nlp.to_disk` method to save the trained model to a
 directory.
 
 ---
@@ -154,21 +154,21 @@ for itn in range(10):
         nlp.update(texts, annotations)
 ```
 
-Notes: In this example, we start off with a blank English model using the spacy
-dot blank method. The blank model doesn't have any pipeline components, only the
-language data and tokenization rules.
+Notes: In this example, we start off with a blank English model using the
+`spacy.blank` method. The blank model doesn't have any pipeline components, only
+the language data and tokenization rules.
 
 We then create a blank entity recognizer and add it to the pipeline.
 
-Using the "add label" method, we can add new string labels to the model.
+Using the `add_label` method, we can add new string labels to the model.
 
-We can now call nlp dot begin training to initialize the model with random
+We can now call `nlp.begin_training` to initialize the model with random
 weights.
 
 To get better accuracy, we want to loop over the examples more than once and
 randomly shuffle the data on each iteration.
 
-On each iteration, we divide the examples into batches using spaCy's minibatch
+On each iteration, we divide the examples into batches using spaCy's `minibatch`
 utility function. Each example consists of a text and its annotations.
 
 Finally, we update the model with the texts and annotations and continue the

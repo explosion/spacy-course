@@ -16,7 +16,7 @@ write rules to find words and phrases in text.
 - Use the model's predictions
 - Example: "duck" (verb) vs. "duck" (noun)
 
-Notes: Compared to regular expressions, the matcher works with Doc and Token
+Notes: Compared to regular expressions, the matcher works with `Doc` and `Token`
 objects instead of only strings.
 
 It's also more flexible: you can search for texts but also other lexical
@@ -90,17 +90,17 @@ doc = nlp("Upcoming iPhone X release date leaked")
 matches = matcher(doc)
 ```
 
-Notes: To use a pattern, we first import the matcher from spacy dot matcher.
+Notes: To use a pattern, we first import the matcher from `spacy.matcher`.
 
-We also load a model and create the nlp object.
+We also load a model and create the `nlp` object.
 
-The matcher is initialized with the shared vocabulary, nlp dot vocab. You'll
-learn more about this later – for now, just remember to always pass it in.
+The matcher is initialized with the shared vocabulary, `nlp.vocab`. You'll learn
+more about this later – for now, just remember to always pass it in.
 
-The matcher dot add method lets you add a pattern. The first argument is a
-unique ID to identify which pattern was matched. The second argument is an
-optional callback. We don't need one here, so we set it to None. The third
-argument is the pattern.
+The `matcher.add` method lets you add a pattern. The first argument is a unique
+ID to identify which pattern was matched. The second argument is an optional
+callback. We don't need one here, so we set it to `None`. The third argument is
+the pattern.
 
 To match the pattern on a text, we can call the matcher on any doc.
 
@@ -135,8 +135,8 @@ Notes: When you call the matcher on a doc, it returns a list of tuples.
 Each tuple consists of three values: the match ID, the start index and the end
 index of the matched span.
 
-This means we can iterate over the matches and create a Span object: a slice of
-the doc at the start and end index.
+This means we can iterate over the matches and create a `Span` object: a slice
+of the doc at the start and end index.
 
 ---
 

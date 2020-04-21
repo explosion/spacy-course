@@ -53,8 +53,8 @@ new models.
 If we're not starting with a pre-trained model, we first initialize the weights
 randomly.
 
-Next, we call nlp dot update, which predicts a batch of examples with the
-current weights.
+Next, we call `nlp.update`, which predicts a batch of examples with the current
+weights.
 
 The model then checks the predictions against the correct answers, and decides
 how to change the weights to achieve better predictions next time.
@@ -62,7 +62,7 @@ how to change the weights to achieve better predictions next time.
 Finally, we make a small correction to the current weights and move on to the
 next batch of examples.
 
-We continue calling nlp dot update for each batch of examples in the data.
+We continue calling `nlp.update` for each batch of examples in the data.
 
 ---
 
@@ -159,7 +159,7 @@ labelled with part-of-speech tags, dependencies and named entities.
 Training data is usually created by humans who assign labels to texts.
 
 This is a lot of work, but can be semi-automated – for example, using spaCy's
-Matcher.
+`Matcher`.
 
 ---
 

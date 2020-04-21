@@ -4,8 +4,8 @@ type: slides
 
 # Extension attributes
 
-Notes: In this lesson, you'll learn how to add custom attributes to the Doc,
-Token and Span objects to store custom data.
+Notes: In this lesson, you'll learn how to add custom attributes to the `Doc`,
+`Token` and `Span` objects to store custom data.
 
 ---
 
@@ -33,17 +33,17 @@ Token.set_extension("is_color", default=False)
 Span.set_extension("has_color", default=False)
 ```
 
-Notes: Custom attributes let you add any meta data to Docs, Tokens and Spans.
+Notes: Custom attributes let you add any meta data to docs, tokens and spans.
 The data can be added once, or it can be computed dynamically.
 
-Custom attributes are available via the dot-underscore property. This makes it
-clear that they were added by the user, and not built into spaCy, like token dot
-text.
+Custom attributes are available via the `._` (dot underscore) property. This
+makes it clear that they were added by the user, and not built into spaCy, like
+`token.text`.
 
-Attributes need to be registered on the global Doc, Token and Span classes you
-can import from spacy dot tokens. You've already worked with those in the
-previous chapters. To register a custom attribute on the Doc, Token or Span, you
-can use the set extension method.
+Attributes need to be registered on the global `Doc`, `Token` and `Span` classes
+you can import from `spacy.tokens`. You've already worked with those in the
+previous chapters. To register a custom attribute on the `Doc`, `Token` and
+`Span`, you can use the `set_extension` method.
 
 The first argument is the attribute name. Keyword arguments let you define how
 the value should be computed. In this case, it has a default value and can be
@@ -80,7 +80,8 @@ doc[3]._.is_color = True
 
 Notes: Attribute extensions set a default value that can be overwritten.
 
-For example, a custom "is color" attribute on the token that defaults to False.
+For example, a custom `is_color` attribute on the token that defaults to
+`False`.
 
 On individual tokens, its value can be changed by overwriting it – in this case,
 True for the token "blue".
@@ -121,10 +122,10 @@ account.
 Getter functions take one argument: the object, in this case, the token. In this
 example, the function returns whether the token text is in our list of colors.
 
-We can then provide the function via the getter keyword argument when we
+We can then provide the function via the `getter` keyword argument when we
 register the extension.
 
-The token "blue" now returns True for "is color".
+The token "blue" now returns `True` for `._.is_color`.
 
 ---
 
@@ -153,16 +154,16 @@ True - sky is blue
 False - The sky
 ```
 
-Notes: If you want to set extension attributes on a Span, you almost always want
+Notes: If you want to set extension attributes on a span, you almost always want
 to use a property extension with a getter. Otherwise, you'd have to update
 _every possible span ever_ by hand to set all the values.
 
-In this example, the "get has color" function takes the span and returns whether
+In this example, the `get_has_color` function takes the span and returns whether
 the text of any of the tokens is in the list of colors.
 
 After we've processed the doc, we can check different slices of the doc and the
-custom "has color" property returns whether the span contains a color token or
-not.
+custom `._.has_color` property returns whether the span contains a color token
+or not.
 
 ---
 
@@ -199,12 +200,12 @@ dynamically – for example, based on a certain argument or setting.
 
 In this example, the method function checks whether the doc contains a token
 with a given text. The first argument of the method is always the object itself
-– in this case, the Doc. It's passed in automatically when the method is called.
+– in this case, the doc. It's passed in automatically when the method is called.
 All other function arguments will be arguments on the method extension. In this
-case, "token text".
+case, `token_text`.
 
-Here, the custom "has token" method returns True for the word "blue" and False
-for the word "cloud".
+Here, the custom `._.has_token` method returns `True` for the word "blue" and
+`False` for the word "cloud".
 
 ---
 

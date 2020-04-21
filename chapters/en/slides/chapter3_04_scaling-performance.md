@@ -28,16 +28,16 @@ docs = [nlp(text) for text in LOTS_OF_TEXTS]
 docs = list(nlp.pipe(LOTS_OF_TEXTS))
 ```
 
-Notes: If you need to process a lot of texts and create a lot of Doc objects in
-a row, the nlp dot pipe method can speed this up significantly.
+Notes: If you need to process a lot of texts and create a lot of `Doc` objects
+in a row, the `nlp.pipe` method can speed this up significantly.
 
-It processes the texts as a stream and yields Doc objects.
+It processes the texts as a stream and yields `Doc` objects.
 
 It is much faster than just calling nlp on each text, because it batches up the
 texts.
 
-nlp dot pipe is a generator that yields Doc objects, so in order to get a list
-of Docs, remember to call the list method around it.
+`nlp.pipe` is a generator that yields `Doc` objects, so in order to get a list
+of docs, remember to call the `list` method around it.
 
 ---
 
@@ -63,8 +63,8 @@ This is a text 15
 And another text 16
 ```
 
-Notes: nlp dot pipe also supports passing in tuples of text / context if you set
-"as tuples" to True.
+Notes: `nlp.pipe` also supports passing in tuples of text / context if you set
+`as_tuples` to `True`.
 
 The method will then yield doc / context tuples.
 
@@ -131,11 +131,11 @@ doc = nlp("Hello world")
 doc = nlp.make_doc("Hello world!")
 ```
 
-Notes: If you only need a tokenized Doc object, you can use the nlp dot make doc
-method instead, which takes a text and returns a Doc.
+Notes: If you only need a tokenized `Doc` object, you can use the `nlp.make_doc`
+method instead, which takes a text and returns a doc.
 
-This is also how spaCy does it behind the scenes: nlp dot make doc turns the
-text into a Doc before the pipeline components are called.
+This is also how spaCy does it behind the scenes: `nlp.make_doc` turns the text
+into a doc before the pipeline components are called.
 
 ---
 
@@ -155,7 +155,7 @@ with nlp.disable_pipes("tagger", "parser"):
 - Only runs the remaining components
 
 Notes: spaCy also allows you to temporarily disable pipeline components using
-the nlp dot disable pipes context manager.
+the `nlp.disable_pipes` context manager.
 
 It takes a variable number of arguments, the string names of the pipeline
 components to disable. For example, if you only want to use the entity
