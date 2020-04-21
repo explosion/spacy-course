@@ -8,7 +8,7 @@ def get_reversed(token):
     return token.text[::-1]
 
 
-# Register the Token property extension 'reversed' with the getter get_reversed
+# Register the Token property extension "reversed" with the getter get_reversed
 Token.set_extension("reversed", getter=get_reversed)
 
 # Process the text and print the reversed attribute for each token

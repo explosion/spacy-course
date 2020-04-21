@@ -28,16 +28,16 @@ docs = [nlp(text) for text in LOTS_OF_TEXTS]
 docs = list(nlp.pipe(LOTS_OF_TEXTS))
 ```
 
-Notes: If you need to process a lot of texts and create a lot of Doc objects in
-a row, the nlp dot pipe method can speed this up significantly.
+Notes: If you need to process a lot of texts and create a lot of `Doc` objects
+in a row, the `nlp.pipe` method can speed this up significantly.
 
-It processes the texts as a stream and yields Doc objects.
+It processes the texts as a stream and yields `Doc` objects.
 
 It is much faster than just calling nlp on each text, because it batches up the
 texts.
 
-nlp dot pipe is a generator that yields Doc objects, so in order to get a list
-of Docs, remember to call the list method around it.
+`nlp.pipe` is a generator that yields `Doc` objects, so in order to get a list
+of docs, remember to call the `list` method around it.
 
 ---
 
@@ -50,12 +50,12 @@ of Docs, remember to call the list method around it.
 
 ```python
 data = [
-    ('This is a text', {'id': 1, 'page_number': 15}),
-    ('And another text', {'id': 2, 'page_number': 16}),
+    ("This is a text", {"id": 1, "page_number": 15}),
+    ("And another text", {"id": 2, "page_number": 16}),
 ]
 
 for doc, context in nlp.pipe(data, as_tuples=True):
-    print(doc.text, context['page_number'])
+    print(doc.text, context["page_number"])
 ```
 
 ```out
@@ -63,8 +63,8 @@ This is a text 15
 And another text 16
 ```
 
-Notes: nlp dot pipe also supports passing in tuples of text / context if you set
-"as tuples" to True.
+Notes: `nlp.pipe` also supports passing in tuples of text / context if you set
+`as_tuples` to `True`.
 
 The method will then yield doc / context tuples.
 
@@ -78,23 +78,23 @@ the text, or a page number.
 ```python
 from spacy.tokens import Doc
 
-Doc.set_extension('id', default=None)
-Doc.set_extension('page_number', default=None)
+Doc.set_extension("id", default=None)
+Doc.set_extension("page_number", default=None)
 
 data = [
-    ('This is a text', {'id': 1, 'page_number': 15}),
-    ('And another text', {'id': 2, 'page_number': 16}),
+    ("This is a text", {"id": 1, "page_number": 15}),
+    ("And another text", {"id": 2, "page_number": 16}),
 ]
 
 for doc, context in nlp.pipe(data, as_tuples=True):
-    doc._.id = context['id']
-    doc._.page_number = context['page_number']
+    doc._.id = context["id"]
+    doc._.page_number = context["page_number"]
 ```
 
 Notes: You can even add the context meta data to custom attributes.
 
-In this example, we're registering two extensions, "id" and "page number", which
-default to None.
+In this example, we're registering two extensions, `id` and `page number`, which
+default to `None`.
 
 After processing the text and passing through the context, we can overwrite the
 doc extensions with our context metadata.
@@ -117,7 +117,7 @@ bunch of predictions from the model that you don't need.
 
 # Using only the tokenizer (2)
 
-- Use `nlp.make_doc` to turn a text in to a `Doc` object
+- Use `nlp.make_doc` to turn a text into a `Doc` object
 
 **BAD:**
 
@@ -131,11 +131,11 @@ doc = nlp("Hello world")
 doc = nlp.make_doc("Hello world!")
 ```
 
-Notes: If you only need a tokenized Doc object, you can use the nlp dot make doc
-method instead, which takes a text and returns a Doc.
+Notes: If you only need a tokenized `Doc` object, you can use the `nlp.make_doc`
+method instead, which takes a text and returns a doc.
 
-This is also how spaCy does it behind the scenes: nlp dot make doc turns the
-text into a Doc before the pipeline components are called.
+This is also how spaCy does it behind the scenes: `nlp.make_doc` turns the text
+into a doc before the pipeline components are called.
 
 ---
 
@@ -145,7 +145,7 @@ text into a Doc before the pipeline components are called.
 
 ```python
 # Disable tagger and parser
-with nlp.disable_pipes('tagger', 'parser'):
+with nlp.disable_pipes("tagger", "parser"):
     # Process the text and print the entities
     doc = nlp(text)
     print(doc.ents)
@@ -155,17 +155,17 @@ with nlp.disable_pipes('tagger', 'parser'):
 - Only runs the remaining components
 
 Notes: spaCy also allows you to temporarily disable pipeline components using
-the nlp dot disable pipes context manager.
+the `nlp.disable_pipes` context manager.
 
 It takes a variable number of arguments, the string names of the pipeline
 components to disable. For example, if you only want to use the entity
 recognizer to process a document, you can temporarily disable the tagger and
 parser.
 
-After the with block, the disabled pipeline components are automatically
+After the `with` block, the disabled pipeline components are automatically
 restored.
 
-In the with block, spaCy will only run the remaining components.
+In the `with` block, spaCy will only run the remaining components.
 
 ---
 

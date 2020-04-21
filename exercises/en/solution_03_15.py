@@ -7,10 +7,10 @@ with open("exercises/en/bookquotes.json") as f:
 
 nlp = English()
 
-# Register the Doc extension 'author' (default None)
+# Register the Doc extension "author" (default None)
 Doc.set_extension("author", default=None)
 
-# Register the Doc extension 'book' (default None)
+# Register the Doc extension "book" (default None)
 Doc.set_extension("book", default=None)
 
 for doc, context in nlp.pipe(DATA, as_tuples=True):

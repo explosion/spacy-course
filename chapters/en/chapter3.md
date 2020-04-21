@@ -1,7 +1,7 @@
 ---
 title: 'Chapter 3: Processing Pipelines'
 description:
-  "This chapter will show you to everything you need to know about spaCy's
+  "This chapter will show you everything you need to know about spaCy's
   processing pipeline. You'll learn what goes on under the hood when you process
   a text, how to write your own components and add them to the pipeline, and how
   to use custom attributes to add your own meta data to the documents, spans and
@@ -180,9 +180,9 @@ to the `doc.ents`. A `PhraseMatcher` with the animal patterns has already been
 created as the variable `matcher`.
 
 - Define the custom component and apply the `matcher` to the `doc`.
-- Create a `Span` for each match, assign the label ID for `'ANIMAL'` and
+- Create a `Span` for each match, assign the label ID for `"ANIMAL"` and
   overwrite the `doc.ents` with the new spans.
-- Add the new component to the pipeline _after_ the `'ner'` component.
+- Add the new component to the pipeline _after_ the `"ner"` component.
 - Process the text and print the entity text and entity label for the entities
   in `doc.ents`.
 
@@ -211,7 +211,7 @@ Let's practice setting some extension attributes.
 
 ### Step 1
 
-- Use `Token.set_extension` to register `'is_country'` (default `False`).
+- Use `Token.set_extension` to register `"is_country"` (default `False`).
 - Update it for `"Spain"` and print it for all tokens.
 
 <codeblock id="03_09_01">
@@ -223,7 +223,7 @@ example, `doc._.has_color`.
 
 ### Step 2
 
-- Use `Token.set_extension` to register `'reversed'` (getter function
+- Use `Token.set_extension` to register `"reversed"` (getter function
   `get_reversed`).
 - Print its value for each token.
 
@@ -244,7 +244,7 @@ extensions.
 ### Part 1
 
 - Complete the `get_has_number` function .
-- Use `Doc.set_extension` to register `'has_number'` (getter `get_has_number`)
+- Use `Doc.set_extension` to register `"has_number"` (getter `get_has_number`)
   and print its value.
 
 <codeblock id="03_10_01">
@@ -259,13 +259,13 @@ extensions.
 
 ### Part 2
 
-- Use `Span.set_extension` to register `'to_html'` (method `to_html`).
-- Call it on `doc[0:2]` with the tag `'strong'`.
+- Use `Span.set_extension` to register `"to_html"` (method `to_html`).
+- Call it on `doc[0:2]` with the tag `"strong"`.
 
 <codeblock id="03_10_02">
 
 - Method extensions can take one or more arguments. For example:
-  `doc._.some_method('argument')`.
+  `doc._.some_method("argument")`.
 - The first argument passed to the method is always the `Doc`, `Token` or `Span`
   object the method was called on.
 
@@ -281,7 +281,7 @@ if the span is a person, organization, or location.
 
 - Complete the `get_wikipedia_url` getter so it only returns the URL if the
   span's label is in the list of labels.
-- Set the `Span` extension `'wikipedia_url'` using the getter
+- Set the `Span` extension `"wikipedia_url"` using the getter
   `get_wikipedia_url`.
 - Iterate over the entities in the `doc` and output their Wikipedia URL.
 
@@ -307,10 +307,10 @@ A phrase matcher with all countries is available as the variable `matcher`. A
 dictionary of countries mapped to their capital cities is available as the
 variable `CAPITALS`.
 
-- Complete the `countries_component` and create a `Span` with the label `'GPE'`
+- Complete the `countries_component` and create a `Span` with the label `"GPE"`
   (geopolitical entity) for all matches.
 - Add the component to the pipeline.
-- Register the Span extension attribute `'capital'` with the getter
+- Register the Span extension attribute `"capital"` with the getter
   `get_capital`.
 - Process the text and print the entity text, entity label and entity capital
   for each entity span in `doc.ents`.
@@ -379,10 +379,10 @@ information to quotes.
 
 A list of `[text, context]` examples is available as the variable `DATA`. The
 texts are quotes from famous books, and the contexts dictionaries with the keys
-`'author'` and `'book'`.
+`"author"` and `"book"`.
 
-- Use the `set_extension` method to register the custom attributes `'author'`
-  and `'book'` on the `Doc`, which default to `None`.
+- Use the `set_extension` method to register the custom attributes `"author"`
+  and `"book"` on the `Doc`, which default to `None`.
 - Process the `[text, context]` pairs in `DATA` using `nlp.pipe` with
   `as_tuples=True`.
 - Overwrite the `doc._.book` and `doc._.author` with the respective info passed
@@ -425,7 +425,7 @@ the `nlp` object.
 
 The `nlp.disable_pipes` method takes a variable number of arguments: the string
 names of the pipeline components to disable. For example,
-`nlp.disable_pipes('ner')` will disable the named entity recognizer.
+`nlp.disable_pipes("ner")` will disable the named entity recognizer.
 
 </codeblock>
 

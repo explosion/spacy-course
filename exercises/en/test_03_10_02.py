@@ -5,7 +5,6 @@ def test():
     assert "method=to_html" in __solution__, "Did you assign to_html as the method?"
     assert (
         'span._.to_html("strong")' in __solution__
-        or "span._.to_html('strong')" in __solution__
     ), "Are you accessing the custom attribute?"
     assert (
         span._.to_html("strong") == "<strong>Hello world</strong>"

@@ -25,16 +25,17 @@ them in your NLP application.
 Notes: spaCy can compare two objects and predict how similar they are – for
 example, documents, spans or single tokens.
 
-The Doc, Token and Span objects have a dot similarity method that takes another
-object and returns a floating point number between 0 and 1, indicating how
-similar they are.
+The `Doc`, `Token` and `Span` objects have a `.similarity` method that takes
+another object and returns a floating point number between 0 and 1, indicating
+how similar they are.
 
 One thing that's very important: In order to use similarity, you need a larger
 spaCy model that has word vectors included.
 
 For example, the medium or large English model – but _not_ the small one. So if
 you want to use vectors, always go with a model that ends in "md" or "lg". You
-can find more details on this in the models documentation.
+can find more details on this in the
+[models documentation](https://spacy.io/models).
 
 ---
 
@@ -42,7 +43,7 @@ can find more details on this in the models documentation.
 
 ```python
 # Load a larger model with vectors
-nlp = spacy.load('en_core_web_md')
+nlp = spacy.load("en_core_web_md")
 
 # Compare two documents
 doc1 = nlp("I like fast food")
@@ -71,8 +72,8 @@ are similar.
 
 First, we load the medium English model, "en_core_web_md".
 
-We can then create two doc objects and use the first doc's similarity method to
-compare it to the second.
+We can then create two doc objects and use the first doc's `similarity` method
+to compare it to the second.
 
 Here, a fairly high similarity score of 0.86 is predicted for "I like fast food"
 and "I like pizza".
@@ -110,7 +111,7 @@ print(span.similarity(doc))
 0.619909235817623
 ```
 
-Notes: You can also use the similarity methods to compare different types of
+Notes: You can also use the `similarity` methods to compare different types of
 objects.
 
 For example, a document and a token.
@@ -118,7 +119,8 @@ For example, a document and a token.
 Here, the similarity score is pretty low and the two objects are considered
 fairly dissimilar.
 
-Here's another example comparing a span – "pizza and pasta" – to a document about McDonalds.
+Here's another example comparing a span – "pizza and pasta" – to a document
+about McDonalds.
 
 The score returned here is 0.61, so it's determined to be kind of similar.
 
@@ -148,8 +150,8 @@ Vectors can be added to spaCy's statistical models.
 By default, the similarity returned by spaCy is the cosine similarity between
 two vectors – but this can be adjusted if necessary.
 
-Vectors for objects consisting of several tokens, like the Doc and Span, default
-to the average of their token vectors.
+Vectors for objects consisting of several tokens, like the `Doc` and `Span`,
+default to the average of their token vectors.
 
 That's also why you usually get more value out of shorter phrases with fewer
 irrelevant words.
@@ -160,7 +162,7 @@ irrelevant words.
 
 ```python
 # Load a larger model with vectors
-nlp = spacy.load('en_core_web_md')
+nlp = spacy.load("en_core_web_md")
 
 doc = nlp("I have a banana")
 # Access the vector via the token.vector attribute
@@ -186,7 +188,7 @@ Notes: To give you an idea of what those vectors look like, here's an example.
 
 First, we load the medium model again, which ships with word vectors.
 
-Next, we can process a text and look up a token's vector using the dot vector
+Next, we can process a text and look up a token's vector using the `.vector`
 attribute.
 
 The result is a 300-dimensional vector of the word "banana".

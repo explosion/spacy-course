@@ -4,7 +4,7 @@ type: slides
 
 # Statistical models
 
-Notes: Let's add some more power to the nlp object!
+Notes: Let's add some more power to the `nlp` object!
 
 In this lesson, you'll learn about spaCy's statistical models.
 
@@ -44,7 +44,7 @@ $ python -m spacy download en_core_web_sm
 ```python
 import spacy
 
-nlp = spacy.load('en_core_web_sm')
+nlp = spacy.load("en_core_web_sm")
 ```
 
 - Binary weights
@@ -52,11 +52,11 @@ nlp = spacy.load('en_core_web_sm')
 - Meta information (language, pipeline)
 
 Notes: spaCy provides a number of pre-trained model packages you can download
-using the "spacy download" command. For example, the "en_core_web_sm" package is
+using the `spacy download` command. For example, the "en_core_web_sm" package is
 a small English model that supports all core capabilities and is trained on web
 text.
 
-The spacy dot load method loads a model package by name and returns an nlp
+The `spacy.load` method loads a model package by name and returns an `nlp`
 object.
 
 The package provides the binary weights that enable spaCy to make predictions.
@@ -72,7 +72,7 @@ language class to use and how to configure the processing pipeline.
 import spacy
 
 # Load the small English model
-nlp = spacy.load('en_core_web_sm')
+nlp = spacy.load("en_core_web_sm")
 
 # Process a text
 doc = nlp("She ate the pizza")
@@ -93,12 +93,12 @@ pizza NOUN
 Notes: Let's take a look at the model's predictions. In this example, we're
 using spaCy to predict part-of-speech tags, the word types in context.
 
-First, we load the small English model and receive an nlp object.
+First, we load the small English model and receive an `nlp` object.
 
 Next, we're processing the text "She ate the pizza".
 
-For each token in the Doc, we can print the text and the "pos underscore"
-attribute, the predicted part-of-speech tag.
+For each token in the doc, we can print the text and the `.pos_` attribute, the
+predicted part-of-speech tag.
 
 In spaCy, attributes that return strings usually end with an underscore –
 attributes without the underscore return an ID.
@@ -125,16 +125,16 @@ Notes: In addition to the part-of-speech tags, we can also predict how the words
 are related. For example, whether a word is the subject of the sentence or an
 object.
 
-The "dep underscore" attribute returns the predicted dependency label.
+The `.dep_` attribute returns the predicted dependency label.
 
-The head attribute returns the syntactic head token. You can also think of it as
-the parent token this word is attached to.
+The `.head` attribute returns the syntactic head token. You can also think of it
+as the parent token this word is attached to.
 
 ---
 
 # Dependency label scheme
 
-<img src="dep_example.png" alt="Visualization of the dependency graph for 'She ate the pizza'" />
+<img src="/dep_example.png" alt="Visualization of the dependency graph for 'She ate the pizza'" />
 
 | Label     | Description          | Example |
 | --------- | -------------------- | ------- |
@@ -178,11 +178,11 @@ $1 billion MONEY
 Notes: Named entities are "real world objects" that are assigned a name – for
 example, a person, an organization or a country.
 
-The doc dot ents property lets you access the named entities predicted by the
+The `doc.ents` property lets you access the named entities predicted by the
 model.
 
-It returns an iterator of Span objects, so we can print the entity text and the
-entity label using the "label underscore" attribute.
+It returns an iterator of `Span` objects, so we can print the entity text and
+the entity label using the `.label_` attribute.
 
 In this case, the model is correctly predicting "Apple" as an organization,
 "U.K." as a geopolitical entity and "\$1 billion" as money.
@@ -194,7 +194,7 @@ In this case, the model is correctly predicting "Apple" as an organization,
 Get quick definitions of the most common tags and labels.
 
 ```python
-spacy.explain('GPE')
+spacy.explain("GPE")
 ```
 
 ```out
@@ -202,7 +202,7 @@ spacy.explain('GPE')
 ```
 
 ```python
-spacy.explain('NNP')
+spacy.explain("NNP")
 ```
 
 ```out
@@ -210,7 +210,7 @@ spacy.explain('NNP')
 ```
 
 ```python
-spacy.explain('dobj')
+spacy.explain("dobj")
 ```
 
 ```out
@@ -218,10 +218,10 @@ spacy.explain('dobj')
 ```
 
 Notes: A quick tip: To get definitions for the most common tags and labels, you
-can use the spacy dot explain helper function.
+can use the `spacy.explain` helper function.
 
-For example, "GPE" for geopolitical entity isn't exactly intuitive – but spacy
-dot explain can tell you that it refers to countries, cities and states.
+For example, "GPE" for geopolitical entity isn't exactly intuitive – but
+`spacy.explain` can tell you that it refers to countries, cities and states.
 
 The same works for part-of-speech tags and dependency labels.
 

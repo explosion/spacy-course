@@ -4,7 +4,7 @@ import spacy
 from spacy.____ import ____
 
 nlp = spacy.load("en_core_web_sm")
-doc = nlp("New iPhone X release date leaked as Apple reveals pre-orders by mistake")
+doc = nlp("Upcoming iPhone X release date leaked as Apple reveals pre-orders")
 
 # Initialize the Matcher with the shared vocabulary
 matcher = ____(____.____)

@@ -45,3 +45,19 @@
         background: var(--color-background-code)
         padding: 2px 5px
         border-radius: var(--border-radius)
+
+    abbr[title]
+        cursor: help
+        border-bottom: 2px dotted var(--color-theme)
+        text-decoration: none
+        position: relative
+
+@media(max-width: 767px)
+    \:global abbr[title]
+        border-bottom: none
+        cursor: initial
+
+        &:after
+            content: " (" attr(title) ")"
+            color: var(--color-subtle-dark)
+            font-style: italic

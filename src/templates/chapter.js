@@ -1,13 +1,39 @@
-import React, { useState } from 'react'
-import { graphql } from 'gatsby'
+import React, { useState, useContext } from 'react'
+import { graphql, navigate } from 'gatsby'
 import useLocalStorage from '@illinois/react-use-local-storage'
 
 import { renderAst } from '../markdown'
-import { ChapterContext } from '../context'
+import { ChapterContext, UiTextContext } from '../context'
 import Layout from '../components/layout'
-import { Pagination } from '../components/pagination'
+import { Button } from '../components/button'
 
 import classes from '../styles/chapter.module.sass'
+
+const Pagination = ({ prev, next, lang }) => {
+    const uiText = useContext(UiTextContext)
+    const buttons = [
+        { slug: prev, text: `« ${uiText.prevChapter}` },
+        { slug: next, text: `${uiText.nextChapter} »` },
+    ]
+
+    return (
+        <section className={classes.pagination}>
+            {buttons.map(({ slug, text }) => (
+                <div key={slug}>
+                    {slug && (
+                        <Button
+                            variant="secondary"
+                            small
+                            onClick={() => navigate(`${lang}/${slug}`)}
+                        >
+                            {text}
+                        </Button>
+                    )}
+                </div>
+            ))}
+        </section>
+    )
+}
 
 const Template = ({ data }) => {
     const { markdownRemark } = data
@@ -23,7 +49,7 @@ const Template = ({ data }) => {
             <Layout lang={lang} title={title} description={description} pageName={parent.name}>
                 {html}
 
-                <Pagination className={classes.pagination} prev={prev} next={next} lang={lang} />
+                <Pagination prev={prev} next={next} lang={lang} />
             </Layout>
         </ChapterContext.Provider>
     )

@@ -7,11 +7,12 @@ const SEO = ({ title, description, lang, localeData }) => (
         query={query}
         render={data => {
             const { siteUrl, twitter, fonts } = data.site.siteMetadata
+            const socialImage = localeData.socialImage || 'social.jpg'
             const pageTitle = title
                 ? `${title} · ${localeData.title}`
                 : `${localeData.title} · ${localeData.slogan}`
             const pageDesc = description || localeData.description
-            const image = `${siteUrl}/social.jpg`
+            const image = `${siteUrl}/${socialImage}`
             const meta = [
                 {
                     name: 'description',

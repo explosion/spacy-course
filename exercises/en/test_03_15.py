@@ -16,11 +16,9 @@ def test():
     ), "Did you use nlp.pipe with as_tuples=True?"
     assert (
         'doc._.book = context["book"]' in __solution__
-        or "doc._.book = context['book']" in __solution__
     ), "Did you overwrite the doc._.book extension with the context value of 'book'?"
     assert (
         'doc._.author = context["author"]' in __solution__
-        or "doc._.author = context['author']" in __solution__
     ), "Did you overwrite the doc._.author extension with the context value of 'author'?"
 
     __msg__.good(

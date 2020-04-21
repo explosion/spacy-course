@@ -58,12 +58,12 @@ from spacy.matcher import Matcher
 matcher = Matcher(nlp.vocab)
 
 # Patterns are lists of dictionaries describing the tokens
-pattern = [{'LEMMA': 'love', 'POS': 'VERB'}, {'LOWER': 'cats'}]
-matcher.add('LOVE_CATS', None, pattern)
+pattern = [{"LEMMA": "love", "POS": "VERB"}, {"LOWER": "cats"}]
+matcher.add("LOVE_CATS", None, pattern)
 
 # Operators can specify how often a token should be matched
-pattern = [{'TEXT': 'very', 'OP': '+'}, {'TEXT': 'happy'}]
-matcher.add('VERY_HAPPY', None, pattern)
+pattern = [{"TEXT": "very", "OP": "+"}, {"TEXT": "happy"}]
+matcher.add("VERY_HAPPY", None, pattern)
 
 # Calling matcher on doc returns list of (match_id, start, end) tuples
 doc = nlp("I love cats and I'm very very happy")
@@ -73,10 +73,10 @@ matches = matcher(doc)
 Notes: In the last chapter, you learned how to use spaCy's rule-based matcher to
 find complex patterns in your texts. Here's a quick recap.
 
-The matcher is initialized with the shared vocabulary – usually nlp dot vocab.
+The matcher is initialized with the shared vocabulary – usually `nlp.vocab`.
 
 Patterns are lists of dictionaries, and each dictionary describes one token and
-its attributes. Patterns can be added to the matcher using the matcher dot add
+its attributes. Patterns can be added to the matcher using the `matcher.add`
 method.
 
 Operators let you specify how often to match a token. For example, "+" will
@@ -92,17 +92,17 @@ document.
 
 ```python
 matcher = Matcher(nlp.vocab)
-matcher.add('DOG', None, [{'LOWER': 'golden'}, {'LOWER': 'retriever'}])
+matcher.add("DOG", None, [{"LOWER": "golden"}, {"LOWER": "retriever"}])
 doc = nlp("I have a Golden Retriever")
 
 for match_id, start, end in matcher(doc):
     span = doc[start:end]
-    print('Matched span:', span.text)
+    print("Matched span:", span.text)
     # Get the span's root token and root head token
-    print('Root token:', span.root.text)
-    print('Root head token:', span.root.head.text)
+    print("Root token:", span.root.text)
+    print("Root head token:", span.root.head.text)
     # Get the previous token and its POS tag
-    print('Previous token:', doc[start - 1].text, doc[start - 1].pos_)
+    print("Previous token:", doc[start - 1].text, doc[start - 1].pos_)
 ```
 
 ```out
@@ -116,7 +116,7 @@ Notes: Here's an example of a matcher rule for "golden retriever".
 
 If we iterate over the matches returned by the matcher, we can get the match ID
 and the start and end index of the matched span. We can then find out more about
-it. Span objects give us access to the original document and all other token
+it. `Span` objects give us access to the original document and all other token
 attributes and linguistic features predicted by the model.
 
 For example, we can get the span's root token. If the span consists of more than
@@ -144,7 +144,7 @@ your data.
 It performs a keyword search on the document, but instead of only finding
 strings, it gives you direct access to the tokens in context.
 
-It takes Doc objects as patterns.
+It takes `Doc` objects as patterns.
 
 It's also really fast.
 
@@ -161,14 +161,14 @@ from spacy.matcher import PhraseMatcher
 matcher = PhraseMatcher(nlp.vocab)
 
 pattern = nlp("Golden Retriever")
-matcher.add('DOG', None, pattern)
+matcher.add("DOG", None, pattern)
 doc = nlp("I have a Golden Retriever")
 
 # Iterate over the matches
 for match_id, start, end in matcher(doc):
     # Get the matched span
     span = doc[start:end]
-    print('Matched span:', span.text)
+    print("Matched span:", span.text)
 ```
 
 ```out
@@ -177,13 +177,13 @@ Matched span: Golden Retriever
 
 Notes: Here's an example.
 
-The phrase matcher can be imported from spacy dot matcher and follows the same
-API as the regular matcher.
+The phrase matcher can be imported from `spacy.matcher` and follows the same API
+as the regular matcher.
 
-Instead of a list of dictionaries, we pass in a Doc object as the pattern.
+Instead of a list of dictionaries, we pass in a `Doc` object as the pattern.
 
 We can then iterate over the matches in the text, which gives us the match ID,
-and the start and end of the match. This lets us create a Span object for the
+and the start and end of the match. This lets us create a `Span` object for the
 matched tokens "Golden Retriever" to analyze it in context.
 
 ---

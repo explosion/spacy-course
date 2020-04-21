@@ -16,7 +16,7 @@ write rules to find words and phrases in text.
 - Use the model's predictions
 - Example: "duck" (verb) vs. "duck" (noun)
 
-Notes: Compared to regular expressions, the matcher works with Doc and Token
+Notes: Compared to regular expressions, the matcher works with `Doc` and `Token`
 objects instead of only strings.
 
 It's also more flexible: you can search for texts but also other lexical
@@ -35,19 +35,19 @@ For example, find the word "duck" only if it's a verb, not a noun.
 - Match exact token texts
 
 ```python
-[{'TEXT': 'iPhone'}, {'TEXT': 'X'}]
+[{"TEXT": "iPhone"}, {"TEXT": "X"}]
 ```
 
 - Match lexical attributes
 
 ```python
-[{'LOWER': 'iphone'}, {'LOWER': 'x'}]
+[{"LOWER": "iphone"}, {"LOWER": "x"}]
 ```
 
 - Match any token attributes
 
 ```python
-[{'LEMMA': 'buy'}, {'POS': 'NOUN'}]
+[{"LEMMA": "buy"}, {"POS": "NOUN"}]
 ```
 
 Notes: Match patterns are lists of dictionaries. Each dictionary describes one
@@ -74,33 +74,33 @@ import spacy
 from spacy.matcher import Matcher
 
 # Load a model and create the nlp object
-nlp = spacy.load('en_core_web_sm')
+nlp = spacy.load("en_core_web_sm")
 
 # Initialize the matcher with the shared vocab
 matcher = Matcher(nlp.vocab)
 
 # Add the pattern to the matcher
-pattern = [{'TEXT': 'iPhone'}, {'TEXT': 'X'}]
-matcher.add('IPHONE_PATTERN', None, pattern)
+pattern = [{"TEXT": "iPhone"}, {"TEXT": "X"}]
+matcher.add("IPHONE_PATTERN", None, pattern)
 
 # Process some text
-doc = nlp("New iPhone X release date leaked")
+doc = nlp("Upcoming iPhone X release date leaked")
 
 # Call the matcher on the doc
 matches = matcher(doc)
 ```
 
-Notes: To use a pattern, we first import the matcher from spacy dot matcher.
+Notes: To use a pattern, we first import the matcher from `spacy.matcher`.
 
-We also load a model and create the nlp object.
+We also load a model and create the `nlp` object.
 
-The matcher is initialized with the shared vocabulary, nlp dot vocab. You'll
-learn more about this later – for now, just remember to always pass it in.
+The matcher is initialized with the shared vocabulary, `nlp.vocab`. You'll learn
+more about this later – for now, just remember to always pass it in.
 
-The matcher dot add method lets you add a pattern. The first argument is a
-unique ID to identify which pattern was matched. The second argument is an
-optional callback. We don't need one here, so we set it to None. The third
-argument is the pattern.
+The `matcher.add` method lets you add a pattern. The first argument is a unique
+ID to identify which pattern was matched. The second argument is an optional
+callback. We don't need one here, so we set it to `None`. The third argument is
+the pattern.
 
 To match the pattern on a text, we can call the matcher on any doc.
 
@@ -112,7 +112,7 @@ This will return the matches.
 
 ```python
 # Call the matcher on the doc
-doc = nlp("New iPhone X release date leaked")
+doc = nlp("Upcoming iPhone X release date leaked")
 matches = matcher(doc)
 
 # Iterate over the matches
@@ -135,8 +135,8 @@ Notes: When you call the matcher on a doc, it returns a list of tuples.
 Each tuple consists of three values: the match ID, the start index and the end
 index of the matched span.
 
-This means we can iterate over the matches and create a Span object: a slice of
-the doc at the start and end index.
+This means we can iterate over the matches and create a `Span` object: a slice
+of the doc at the start and end index.
 
 ---
 
@@ -144,11 +144,11 @@ the doc at the start and end index.
 
 ```python
 pattern = [
-    {'IS_DIGIT': True},
-    {'LOWER': 'fifa'},
-    {'LOWER': 'world'},
-    {'LOWER': 'cup'},
-    {'IS_PUNCT': True}
+    {"IS_DIGIT": True},
+    {"LOWER": "fifa"},
+    {"LOWER": "world"},
+    {"LOWER": "cup"},
+    {"IS_PUNCT": True}
 ]
 ```
 
@@ -178,8 +178,8 @@ The pattern matches the tokens "2018 FIFA World Cup:".
 
 ```python
 pattern = [
-    {'LEMMA': 'love', 'POS': 'VERB'},
-    {'POS': 'NOUN'}
+    {"LEMMA": "love", "POS": "VERB"},
+    {"POS": "NOUN"}
 ]
 ```
 
@@ -204,9 +204,9 @@ This pattern will match "loved dogs" and "love cats".
 
 ```python
 pattern = [
-    {'LEMMA': 'buy'},
-    {'POS': 'DET', 'OP': '?'},  # optional: match 0 or 1 times
-    {'POS': 'NOUN'}
+    {"LEMMA": "buy"},
+    {"POS": "DET", "OP": "?"},  # optional: match 0 or 1 times
+    {"POS": "NOUN"}
 ]
 ```
 
@@ -231,10 +231,10 @@ token with the lemma "buy", an optional article and a noun.
 
 | Example       | Description                  |
 | ------------- | ---------------------------- |
-| `{'OP': '!'}` | Negation: match 0 times      |
-| `{'OP': '?'}` | Optional: match 0 or 1 times |
-| `{'OP': '+'}` | Match 1 or more times        |
-| `{'OP': '*'}` | Match 0 or more times        |
+| `{"OP": "!"}` | Negation: match 0 times      |
+| `{"OP": "?"}` | Optional: match 0 or 1 times |
+| `{"OP": "+"}` | Match 1 or more times        |
+| `{"OP": "*"}` | Match 0 or more times        |
 
 Notes: "OP" can have one of four values:
 

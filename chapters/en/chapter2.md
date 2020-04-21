@@ -28,8 +28,8 @@ id: 2
 <codeblock id="02_02_01">
 
 - You can use the string store in `nlp.vocab.strings` like a regular Python
-  dictionary. For example, `nlp.vocab.strings['unicorn']` will return the hash,
-  and looking up the hash again will return the string `'unicorn'`.
+  dictionary. For example, `nlp.vocab.strings["unicorn"]` will return the hash,
+  and looking up the hash again will return the string `"unicorn"`.
 
 </codeblock>
 
@@ -41,8 +41,8 @@ id: 2
 <codeblock id="02_02_02">
 
 - You can use the string store in `nlp.vocab.strings` like a regular Python
-  dictionary. For example, `nlp.vocab.strings['unicorn']` will return the hash,
-  and looking up the hash again will return the string `'unicorn'`.
+  dictionary. For example, `nlp.vocab.strings["unicorn"]` will return the hash,
+  and looking up the hash again will return the string `"unicorn"`.
 
 </codeblock>
 
@@ -61,16 +61,16 @@ nlp = English()
 nlp_de = German()
 
 # Get the ID for the string 'Bowie'
-bowie_id = nlp.vocab.strings['Bowie']
+bowie_id = nlp.vocab.strings["Bowie"]
 print(bowie_id)
 
-# Look up the ID for 'Bowie' in the vocab
+# Look up the ID for "Bowie" in the vocab
 print(nlp_de.vocab.strings[bowie_id])
 ```
 
 <choice>
 
-<opt correct="true" text="The string <code>'Bowie'</code> isn't in the German vocab, so the hash can't be resolved in the string store.">
+<opt correct="true" text='The string <code>"Bowie"</code> isn’t in the German vocab, so the hash can’t be resolved in the string store.'>
 
 Hashes can't be reversed. To prevent this problem, add the word to the new vocab
 by processing a text or looking up the string, or use the same vocab to resolve
@@ -78,7 +78,7 @@ the hash back to a string.
 
 </opt>
 
-<opt text="<code>'Bowie'</code> is not a regular word in the English or German dictionary, so it can't be hashed.">
+<opt text='<code>"Bowie"</code> is not a regular word in the English or German dictionary, so it can’t be hashed.'>
 
 Any string can be converted to a hash.
 
@@ -219,10 +219,10 @@ token attributes to keep things consistent.
 
 </opt>
 
-<opt text="<code>pos_</code> is the wrong attribute to use for extracting proper nouns. You should use <code>tag_</code> and the <code>'NNP'</code> and <code>'NNS'</code> labels instead.">
+<opt text='<code>pos_</code> is the wrong attribute to use for extracting proper nouns. You should use <code>tag_</code> and the <code>"NNP"</code> and <code>"NNS"</code> labels instead.'>
 
-The `.pos_` attribute returns the coarse-grained part-of-speech tag and `PROPN`
-is the correct tag to check for proper nouns.
+The `.pos_` attribute returns the coarse-grained part-of-speech tag and
+`"PROPN"` is the correct tag to check for proper nouns.
 
 </opt>
 
@@ -261,7 +261,7 @@ In this exercise, you'll use a larger
 [English model](https://spacy.io/models/en), which includes around 20.000 word
 vectors. The model is already pre-installed.
 
-- Load the medium `'en_core_web_md'` model with word vectors.
+- Load the medium `"en_core_web_md"` model with word vectors.
 - Print the vector for `"bananas"` using the `token.vector` attribute.
 
 <codeblock id="02_09">
@@ -333,22 +333,22 @@ doc = nlp("Can Silicon Valley workers rein in big tech from within?")
 
 <choice>
 
-<opt text="The tokens 'Silicon' and 'Valley' are not lowercase, so the <code>'LOWER'</code> attribute won't match.">
+<opt text='The tokens "Silicon" and "Valley" are not lowercase, so the <code>"LOWER"</code> attribute won’t match.'>
 
-The `LOWER` attribute in the pattern describes tokens whose _lowercase form_
-matches a given value. So `{'LOWER': 'valley'}` will match tokens like "Valley",
+The `"LOWER"` attribute in the pattern describes tokens whose _lowercase form_
+matches a given value. So `{"LOWER": "valley"}` will match tokens like "Valley",
 "VALLEY", "valley" etc.
 
 </opt>
 
-<opt correct="true" text="The tokenizer doesn't create tokens for single spaces, so there's no token with the value <code>' '</code> in between.">
+<opt correct="true" text='The tokenizer doesn’t create tokens for single spaces, so there’s no token with the value <code>" "</code> in between.'>
 
 The tokenizer already takes care of splitting off whitespace and each dictionary
 in the pattern describes one token.
 
 </opt>
 
-<opt text="The tokens are missing an operator <code>'OP'</code> to indicate that they should be matched exactly once.">
+<opt text='The tokens are missing an operator <code>"OP"</code> to indicate that they should be matched exactly once.'>
 
 By default, all tokens described by a pattern will be matched exactly once.
 Operators are only needed to change this behavior – for example, to match zero

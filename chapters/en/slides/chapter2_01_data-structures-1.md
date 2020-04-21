@@ -21,7 +21,7 @@ with strings.
 - String store: **lookup table** in both directions
 
 ```python
-coffee_hash = nlp.vocab.strings['coffee']
+coffee_hash = nlp.vocab.strings["coffee"]
 coffee_string = nlp.vocab.strings[coffee_hash]
 ```
 
@@ -40,8 +40,7 @@ To save memory, all strings are encoded to hash IDs. If a word occurs more than
 once, we don't need to save it every time.
 
 Instead, spaCy uses a hash function to generate an ID and stores the string only
-once in the string store. The string store is available as nlp dot vocab dot
-strings.
+once in the string store. The string store is available as `nlp.vocab.strings`.
 
 It's a lookup table that works in both directions. You can look up a string and
 get its hash, and look up a hash to get its string value. Internally, spaCy only
@@ -59,8 +58,8 @@ vocab.
 
 ```python
 doc = nlp("I love coffee")
-print('hash value:', nlp.vocab.strings['coffee'])
-print('string value:', nlp.vocab.strings[3197928453018144401])
+print("hash value:", nlp.vocab.strings["coffee"])
+print("string value:", nlp.vocab.strings[3197928453018144401])
 ```
 
 ```out
@@ -72,19 +71,18 @@ string value: coffee
 
 ```python
 doc = nlp("I love coffee")
-print('hash value:', doc.vocab.strings['coffee'])
+print("hash value:", doc.vocab.strings["coffee"])
 ```
 
 ```out
 hash value: 3197928453018144401
 ```
 
-Notes: To get the hash for a string, we can look it up in nlp dot vocab dot
-strings.
+Notes: To get the hash for a string, we can look it up in `nlp.vocab.strings`.
 
 To get the string representation of a hash, we can look up the hash.
 
-A Doc object also exposes its vocab and strings.
+A `Doc` object also exposes its vocab and strings.
 
 ---
 
@@ -94,7 +92,7 @@ A Doc object also exposes its vocab and strings.
 
 ```python
 doc = nlp("I love coffee")
-lexeme = nlp.vocab['coffee']
+lexeme = nlp.vocab["coffee"]
 
 # Print the lexical attributes
 print(lexeme.text, lexeme.orth, lexeme.is_alpha)
@@ -116,7 +114,7 @@ You can get a lexeme by looking up a string or a hash ID in the vocab.
 Lexemes expose attributes, just like tokens.
 
 They hold context-independent information about a word, like the text, or
-whether the the word consists of alphabetic characters.
+whether the word consists of alphabetic characters.
 
 Lexemes don't have part-of-speech tags, dependencies or entity labels. Those
 depend on the context.
@@ -129,7 +127,7 @@ depend on the context.
 
 Notes: Here's an example.
 
-The Doc contains words in context – in this case, the tokens "I", "love" and
+The `Doc` contains words in context – in this case, the tokens "I", "love" and
 "coffee" with their part-of-speech tags and dependencies.
 
 Each token refers to a lexeme, which knows the word's hash ID. To get the string

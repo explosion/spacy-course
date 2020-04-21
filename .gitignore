@@ -1,6 +1,7 @@
 __tests__
 .vscode
 __pycache__
+tmp
 
 # Logs
 logs

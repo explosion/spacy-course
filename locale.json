@@ -11,6 +11,7 @@
             { "text": "Source", "url": "https://github.com/ines/spacy-course" },
             { "text": "Follow me on Twitter", "url": "https://twitter.com/_inesmontani" }
         ],
+        "socialImage": "social.jpg",
         "uiText": {
             "aboutMe": "About me",
             "aboutCourse": "About this course",
@@ -32,6 +33,41 @@
             "reconnectingDocker": "Reconnecting to Docker container on",
             "prevChapter": "Previous Chapter",
             "nextChapter": "Next Chapter"
+        }
+    },
+    "de": {
+        "langName": "Deutsch",
+        "title": "Modernes NLP mit spaCy",
+        "slogan": "Ein Gratis-Onlinekurs",
+        "description": "spaCy ist eine moderne Python-Bibliothek für industriestarkes Natural Language Processing. In diesem kostenlosen und interaktiven Onlinekurs lernst du, mithilfe von spaCy fortgeschrittene Systeme für die Analyse natürlicher Sprache zu entwickeln und dabei sowohl regelbasierte Verfahren, als auch moderne Machine-Learning-Technologie einzusetzen.",
+        "bio": "Ich bin Ines, eine Hauptentwicklerin von spaCy und Gründerin von Explosion. Mein Spezialgebiet sind moderne Entwicklertools für KI, Machine Learning und NLP. Ich baue außerdem supergern Dinge fürs Web.",
+        "footerLinks": [
+            { "text": "spaCy Website", "url": "https://spacy.io" },
+            { "text": "Quellcode", "url": "https://github.com/ines/spacy-course" },
+            { "text": "Folge mir auf Twitter", "url": "https://twitter.com/_inesmontani" }
+        ],
+        "socialImage": "social_de.jpg",
+        "uiText": {
+            "aboutMe": "Über mich",
+            "aboutCourse": "Über diesen Kurs",
+            "markAsCompleted": "Als gelöst markieren",
+            "removeFromCompleted": "Als ungelöst markieren",
+            "completed": "Gelöst",
+            "submit": "Antworten",
+            "correct": "Korrekt!",
+            "incorrect": "Leider falsch.",
+            "showSolution": "Lösung zeigen",
+            "reset": "Zurücksetzen",
+            "runCode": "Code testen",
+            "next": "Weiter",
+            "showHints": "Tipps zeigen",
+            "hideHints": "Tipps verstecken",
+            "loading": "Lade...",
+            "connectingFailed": "Verbindung fehlgeschlagen. Bitte lade die Seite neu und versuche es nochmal.",
+            "launchingDocker": "Starte Docker-Container auf",
+            "reconnectingDocker": "Verbinde mit Docker-Container auf",
+            "prevChapter": "Vorheriges Kapitel",
+            "nextChapter": "Nächstes Kapitel"
         }
     }
 }
