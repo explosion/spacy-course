@@ -82,9 +82,9 @@ there are two different ways to get involved:
    no-strings-attached way. You can fork the repo, copy-paste the English
    version, change the language code, start translating and invite others to
    contribute (if you like). If you're looking for contributors, feel free to
-   open an issue here or tag [@spacy_io](https://github.com/spacy_io) on Twitter
-   so we can help get the word out. We're also happy to answer your questions on
-   the issue tracker.
+   open an issue here or tag [@spacy_io](https://twitter.com/spacy_io) on
+   Twitter so we can help get the word out. We're also happy to answer your
+   questions on the issue tracker.
 
 2. Make us an offer. We're open to commissioning translations for different
    languages, so if you're interested, email us at
