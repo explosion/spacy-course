@@ -32,7 +32,7 @@ You also learned to write powerful match patterns to extract words and phrases
 using spaCy's matcher and phrase matcher.
 
 Chapter 2 was all about information extraction, and you learned how to work with
-the data structures, the `Doc`, `Token` and `Span`, as well as the vocab and
+the data structures, the `Doc`, `Token` and `Span`, as well as the `Vocab` and
 lexical entries.
 
 You also used spaCy to predict semantic similarities using word vectors.

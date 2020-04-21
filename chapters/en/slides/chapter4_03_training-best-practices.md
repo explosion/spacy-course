@@ -63,7 +63,8 @@ TRAINING_DATA = [
 Note: To prevent this, make sure to always mix in examples of what the model
 previously got correct.
 
-If you're training a new category `WEBSITE`, also include examples of `PERSON`.
+If you're training a new category `"WEBSITE"`, also include examples of
+`"PERSON"`.
 
 spaCy can help you with this. You can create those additional examples by
 running the existing model over data and extracting the entity spans you care
