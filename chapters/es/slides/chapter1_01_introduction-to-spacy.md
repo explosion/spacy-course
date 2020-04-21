@@ -25,11 +25,11 @@ nlp = English()
 
 Notes: En el centro de spaCy está el objeto que contiene el <abbr title="Un pipeline es una serie de acciones que se ejecutan en secuencia. Cada paso depende del anterior usando su resultado.">pipeline</abbr> de procesamiento. Normalmente llamamos esta variable "nlp".
 
-Por ejemplo, para crear un objeto nlp de inglés puedes importar la clase de lenguaje "English" de `spacy.lang.en` y creas un <abbr title="Es un ejemplar de una clase, a veces referido incorrectamente como instancia">instance</abbr>. Puedes usar el objeto nlp como una función para analizar el texto.
+Por ejemplo, para crear un objeto nlp de inglés puedes importar la clase de lenguaje "English" de "spacy.lang.en" y creas un <abbr title="Es un ejemplar de una clase, a veces referido incorrectamente como instancia">instance</abbr>. Puedes usar el objeto nlp como una función para analizar el texto.
 
 Contiene todos los componentes diferentes de un pipeline.
 
-También incluye las reglas específicas de su lenguaje usadas para convertir el texto en tokens con palabras y puntuación. spaCy ofrece soporte para varios lenguajes que están disponibles en `spacy.lang`.
+También incluye las reglas específicas de su lenguaje usadas para convertir el texto en tokens con palabras y puntuación. spaCy ofrece soporte para varios lenguajes que están disponibles en "spacy.lang".
 
 ---
 
@@ -78,7 +78,7 @@ Notes: Los objetos Token representan a los tokens en un documento. Por ejemplo, 
 
 Para obtener el token en una posición específica puedes usar el índice del Doc.
 
-Los objetos Token también proveen varios atributos que te permiten acceder a más información sobre los tokens. Por ejemplo, el atributo `.text` devuelve exactamente el texto del token.
+Los objetos Token también proveen varios atributos que te permiten acceder a más información sobre los tokens. Por ejemplo, el atributo ".text" devuelve exactamente el texto del token.
 
 ---
 
@@ -102,7 +102,7 @@ world!
 
 Notes: Un objeto Span es un <abbr title="Un slice es un subconjunto de elementos dentro de una secuencia de datos, como una lista o un objeto Doc">slice</abbr> de un documento que consiste de uno o más tokens. Es solo un <abbr title="en español, representaciones">view</abbr> de un Doc y no contiene los datos mismos.
 
-Para crear un Span puedes usar la notación de slice de Python. Por ejemplo, `1:3` crea un slice que comienza en el token en posición 1 hasta - pero no incluyendo! - el token en la posición 3.
+Para crear un Span puedes usar la notación de slice de Python. Por ejemplo, "1:3" crea un slice que comienza en el token en posición 1 hasta - pero no incluyendo! - el token en la posición 3.
 
 ---
 
@@ -136,7 +136,7 @@ Notes: Aquí puedes ver algunos de los atributos disponibles de los tokens :
 
 "text" devuelve el texto del token.
 
-"is alpha", "is punct" y "like num" devuelven valores booleanos que indican si un token está compuesto por caractéres alfabéticos, si es puntuación, o si _parece_ un número. Por ejemplo, el token "10" - uno, cero - o la palabra "diez" - D, I, E, Z.
+"is_alpha", "is_punct" y "like_num" devuelven valores booleanos que indican si un token está compuesto por caractéres alfabéticos, si es puntuación, o si _parece_ un número. Por ejemplo, el token "10" - uno, cero - o la palabra "diez" - D, I, E, Z.
 
 Estos atributos también se llaman atributos léxicos: se refieren a una entrada en el vocabulario y no dependen del contexto del token.
 

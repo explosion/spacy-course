@@ -49,7 +49,7 @@ nlp = spacy.load('en_core_web_sm')
 
 Notes: spaCy provee varios paquetes de modelos pre-entrenados que puedes descargar usando el comando "spacy download". Por ejemplo, el paquete "en_core_web_sm" es un modelo pequeño de inglés que provee soporte para todas las capacidades centrales y está entrenado usando texto de la web.
 
-El método "spacy dot load (`spacy.load`)" carga el paquete de modelo por su nombre y devuelve un objeto nlp.
+El método "spacy.load" carga el paquete de modelo por su nombre y devuelve un objeto nlp.
 
 El paquete provee los <abbr title="en inglés, en un contexto de Machine Leraning, conocidos como binary weights">parámetros binarios</abbr> que le permiten a spaCy hacer predicciones.
 
@@ -87,9 +87,9 @@ Primero, cargamos el modelo pequeño de inglés y recibimos un objeto nlp.
 
 Siguiente, procesamos el texto "She ate the pizza".
 
-Para cada token en el Doc podemos imprimir en pantalla el texto y el part-of-speech tag predicho usando el atributo `"pos_"`.
+Para cada token en el Doc podemos imprimir en pantalla el texto y el part-of-speech tag predicho usando el atributo "pos_".
 
-En spaCy, los atributos que devuelven un string usualmente terminan con un guión bajo (`_`). mientras que atributos sin un guión bajo devuelven un ID.
+En spaCy, los atributos que devuelven un string usualmente terminan con un guión bajo (_). mientras que atributos sin un guión bajo devuelven un ID.
 
 Aquí el modelo predijo correctamente "ate" como el verbo y "pizza" como el sustantivo.
 
@@ -111,9 +111,9 @@ pizza NOUN dobj ate
 
 Notes: Además de los part-of-speech tags, también podemos predecir las relaciones entre las palabras. Por ejemplo, si una palabra es el sujeto o el objeto de una oración.
 
-El atributo "dep guión bajo (`dep_`)" devuelve el dependency label predicho.
+El atributo "dep_" devuelve el dependency label predicho.
 
-El atributo "head dot (`head.`)" devuelve el token <abbr title="en inglés head">cabeza</abbr> sintáctico. Otra forma de pensarlo es como el token padre (superordinado) al que esta palabra está atada.
+El atributo "head." devuelve el token <abbr title="en inglés head">cabeza</abbr> sintáctico. Otra forma de pensarlo es como el token padre (superordinado) al que esta palabra está atada.
 
 ---
 
@@ -159,9 +159,9 @@ $1 billion MONEY
 
 Notes: Las entidades nombradas son "objetos de la vida real" que tienen un nombre asignado. Por ejemplo, una persona, una organización o un país.
 
-La propiedad "doc dot ents (`doc.ents`)" te permite acceder a las entidades nombradas predichas por el modelo.
+La propiedad "doc.ents" te permite acceder a las entidades nombradas predichas por el modelo.
 
-Devuelve un iterador de objetos Span, así que podemos imprimir en pantalla el texto y el label de la entidad usando el atributo "label underscore (`label_`)".
+Devuelve un iterador de objetos Span, así que podemos imprimir en pantalla el texto y el label de la entidad usando el atributo "label_".
 
 En este caso, el modelo predijo correctamente "Apple" como una organización, "U.K." como una entidad geopolítica y "\$1 billion" como dinero.
 
@@ -195,9 +195,9 @@ spacy.explain('dobj')
 'direct object'
 ```
 
-Notes: Un tip rápido: Para obtener definiciones de los tags y labels más comunes puedes usar la función asistente "spacy dot explain (`spacy.explain`)".
+Notes: Un tip rápido: Para obtener definiciones de los tags y labels más comunes puedes usar la función asistente "spacy.explain".
 
-Por ejemplo, "GPE" para entidad geopolítica no es necesariamente intuitivo, pero "spacy dot explain (`spacy.explain`)" puede decirte que se refiere a países, ciudades y estados.
+Por ejemplo, "GPE" para entidad geopolítica no es necesariamente intuitivo, pero "spacy.explain" puede decirte que se refiere a países, ciudades y estados.
 
 Lo mismo funciona para part-of-speech tags y dependency labels.
 

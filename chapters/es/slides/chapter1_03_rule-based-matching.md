@@ -13,7 +13,7 @@ Notes: En esta lección veremos el matcher de spaCy, que te permite escribir reg
 - Matching en objetos `Doc`, no solamente en strings
 - Matching en tokens y atributos de tokens
 - Usa las predicciones del modelo
-- Ejemplo: "duck" (verbo) vs. "duck" (sustantivo)
+- Ejemplo: "araña" (verbo) vs. "araña" (sustantivo)
 
 Notes: Comparándolo con las expresiones regulares, el matcher funciona con objetos Doc y Token, en vez de únicamente strings.
 
@@ -21,7 +21,7 @@ También es más flexible: puedes buscar textos, pero también otros atributos l
 
 Inclusive puedes escribir reglas que usen las predicciones del modelo.
 
-Por ejemplo, encontrar la palabra "duck" únicamente si es un verbo y no un sustantivo.
+Por ejemplo, encontrar la palabra "araña" únicamente si es un verbo y no un sustantivo.
 
 ---
 
@@ -82,13 +82,13 @@ doc = nlp("New iPhone X release date leaked")
 matches = matcher(doc)
 ```
 
-Notes: Para usar el patrón primero importamos el matcher desde "spacy dot matcher (`spacy.matcher`)".
+Notes: Para usar el patrón primero importamos el matcher desde "spacy.matcher".
 
 También cargamos el modelo y creamos un objeto nlp.
 
-El matcher es inicializado con el vocabulario compartido, "nlp dot vocab (`nlp.vocab`)". Aprenderás más sobre esto más adelante - por ahora solo recuerda pasarlo.
+El matcher es inicializado con el vocabulario compartido, "nlp.vocab". Aprenderás más sobre esto más adelante - por ahora solo recuerda pasarlo.
 
-El método "matcher dot add (`matcher.add`) te permite añadir un patrón. El primer argumento es un ID único para identificar el patrón que fue buscado. El segundo argumento en un callback opcional, no necesitamos uno aquí, así que lo ponemos como None. El tercer argumento es el patrón.
+El método "matcher.add" te permite añadir un patrón. El primer argumento es un ID único para identificar el patrón que fue buscado. El segundo argumento en un callback opcional, no necesitamos uno aquí, así que lo ponemos como None. El tercer argumento es el patrón.
 
 Para encontrar el patrón en un texto, podemos llamar el matcher sobre cualquier doc.
 
@@ -228,7 +228,7 @@ Un "?" hace que el token sea opcional y es encontrado 0 o 1 veces.
 
 Un "+" encuentra el token 1 o más veces.
 
-Finalmente, un "\*"encuentra 0 o más veces.
+Finalmente, un "\*" encuentra 0 o más veces.
 
 Los operadores pueden hacer que tus patrones sean mucho más poderosos, pero también pueden añadir más complejidad, así que úsalos sabiamente.
 
