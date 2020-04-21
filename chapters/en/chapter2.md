@@ -61,10 +61,10 @@ nlp = English()
 nlp_de = German()
 
 # Get the ID for the string 'Bowie'
-bowie_id = nlp.vocab.strings['Bowie']
+bowie_id = nlp.vocab.strings["Bowie"]
 print(bowie_id)
 
-# Look up the ID for 'Bowie' in the vocab
+# Look up the ID for "Bowie" in the vocab
 print(nlp_de.vocab.strings[bowie_id])
 ```
 
@@ -221,8 +221,8 @@ token attributes to keep things consistent.
 
 <opt text='<code>pos_</code> is the wrong attribute to use for extracting proper nouns. You should use <code>tag_</code> and the <code>"NNP"</code> and <code>"NNS"</code> labels instead.'>
 
-The `.pos_` attribute returns the coarse-grained part-of-speech tag and `"PROPN"`
-is the correct tag to check for proper nouns.
+The `.pos_` attribute returns the coarse-grained part-of-speech tag and
+`"PROPN"` is the correct tag to check for proper nouns.
 
 </opt>
 
