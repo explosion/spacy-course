@@ -174,8 +174,8 @@ use the correct name.
 
 You'll now get to try one of spaCy's pre-trained model packages and see its
 predictions in action. Feel free to try it out on your own text! To find out
-what a tag or label means, you can call `spacy.explain` in the loop. For example:
-`spacy.explain("PROPN")` or `spacy.explain("GPE")`.
+what a tag or label means, you can call `spacy.explain` in the loop. For
+example: `spacy.explain("PROPN")` or `spacy.explain("GPE")`.
 
 ### Part 1
 
@@ -278,8 +278,8 @@ different token attributes and operators.
 
 - To match a token with an exact text, you can use the `TEXT` attribute. For
   example, `{"TEXT": "Apple"}` will match tokens with the exact text "Apple".
-- To match a number token, you can use the `"IS_DIGIT"` attribute, which will only
-  return `True` for tokens consisting of only digits.
+- To match a number token, you can use the `"IS_DIGIT"` attribute, which will
+  only return `True` for tokens consisting of only digits.
 
 </codeblock>
 
