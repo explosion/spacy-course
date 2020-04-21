@@ -64,11 +64,11 @@ from spacy.lang.de import German
 nlp = English()
 nlp_de = German()
 
-# Schlage die ID für den String 'Bowie' nach
+# Schlage die ID für den String "Bowie" nach
 bowie_id = nlp.vocab.strings["Bowie"]
 print(bowie_id)
 
-# Schlage die ID für 'Bowie' im Vokabular nach
+# Schlage die ID für "Bowie" im Vokabular nach
 print(nlp_de.vocab.strings[bowie_id])
 ```
 
