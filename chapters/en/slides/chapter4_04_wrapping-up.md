@@ -77,7 +77,7 @@ models, but you can add it to an existing model and train it on your own data.
 - [Customizing the tokenizer](https://spacy.io/usage/linguistic-features#tokenization)
   - Adding rules and exceptions to split text differently
 - [Adding or improving support for other languages](https://spacy.io/usage/adding-languages)
-  - 45+ languages currently
+  - 55+ languages currently
   - Lots of room for improvement and more languages
   - Allows training models for other languages
 

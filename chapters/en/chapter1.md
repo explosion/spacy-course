@@ -20,7 +20,7 @@ id: 1
 <exercise id="2" title="Getting Started">
 
 Let's get started and try out spaCy! In this exercise, you'll be able to try out
-some of the 45+ [available languages](https://spacy.io/usage/models#languages).
+some of the 55+ [available languages](https://spacy.io/usage/models#languages).
 
 ### Part 1: English
 
