@@ -1,16 +1,7 @@
 def test():
-    variations = [
-        'with nlp.disable_pipes("tagger", "parser")',
-        'with nlp.disable_pipes("tagger","parser")',
-        'with nlp.disable_pipes("parser", "tagger")',
-        'with nlp.disable_pipes("parser","tagger")',
-        "with nlp.disable_pipes('tagger', 'parser')",
-        "with nlp.disable_pipes('tagger','parser')",
-        "with nlp.disable_pipes('parser', 'tagger')"
-        "with nlp.disable_pipes('parser','tagger')",
-    ]
-    assert any(
-        v in __solution__ for v in variations
+    assert (
+        'with nlp.disable_pipes("tagger", "parser")' in __solution__
+        or 'with nlp.disable_pipes("parser", "tagger")' in __solution__
     ), "Verwendest du nlp.disable_pipes mit den korrekten Komponenten?"
 
     __msg__.good(

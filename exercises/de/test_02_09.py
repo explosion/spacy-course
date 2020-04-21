@@ -1,7 +1,6 @@
 def test():
     assert (
-        "spacy.load('en_core_web_md')" in __solution__
-        or 'spacy.load("en_core_web_md")' in __solution__
+        'spacy.load("en_core_web_md")' in __solution__
     ), "Lädst du das mittelgroße Modell?"
     assert "doc[1].vector" in __solution__, "Greifst du auf den richtigen Vector zu?"
     __msg__.good(

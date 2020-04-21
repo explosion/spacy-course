@@ -9,7 +9,6 @@ def test():
     ), "Hast du die Funktion to_html als Methode angegeben?"
     assert (
         'span._.to_html("strong")' in __solution__
-        or "span._.to_html('strong')" in __solution__
     ), "Greifst du auf das richtige Attribut zu?"
     assert (
         span._.to_html("strong") == "<strong>Hallo Welt</strong>"

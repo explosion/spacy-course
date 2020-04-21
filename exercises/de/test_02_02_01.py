@@ -4,7 +4,6 @@ def test():
     ), "Hast du den korrekten String nachgeschlagen, um den Hash zu erhalten?"
     assert (
         'nlp.vocab.strings["Katze"]' in __solution__
-        or "nlp.vocab.strings['Katze']" in __solution__
     ), "Hast du den korrekten String nachgeschlagen, um den Hash zu erhalten?"
     assert (
         katze_string == "Katze"
