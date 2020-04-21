@@ -1,17 +1,13 @@
 # Advanced NLP with spaCy: A free online course
 
 This repo contains both an [**online course**](https://course.spacy.io), as well
-as a modern web framework for **building online courses** with interactive code,
-slides and multiple-choice questions. In the course, you'll learn how to use
+as its modern open-source web framework. In the course, you'll learn how to use
 [spaCy](https://spacy.io) to build advanced natural language understanding
-systems, using both rule-based and machine learning approaches.
-
-I originally developed the content for DataCamp, but I wanted to make a free
-version so you don't have to sign up for their service. As a weekend project, I
-ended up putting together my own little app to present the exercises and content
-in a fun and interactive way. The front-end is powered by
-[Gatsby](http://gatsbyjs.org/) and [Reveal.js](https://revealjs.com) and the
-back-end code execution uses [Binder](https://mybinder.org) 💖
+systems, using both rule-based and machine learning approaches. The front-end is
+powered by [Gatsby](http://gatsbyjs.org/) and [Reveal.js](https://revealjs.com)
+and the back-end code execution uses [Binder](https://mybinder.org) 💖 It's all
+open-source and published under the MIT license (code and framework) and CC
+BY-NC (spaCy course materials).
 
 _This course is mostly intended for **self-study**. Yes, you can cheat – the
 solutions are all in this repo, there's no penalty for clicking "Show hints" or
@@ -21,19 +17,20 @@ solutions are all in this repo, there's no penalty for clicking "Show hints" or
 ![Netlify Status](https://api.netlify.com/api/v1/badges/2eae6a1a-d7a3-437e-a700-61e32d7d991b/deploy-status)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ines/spacy-course/master)
 
-## ✨ Features
+## 💬 Languages and Translations
 
-- Supports **slides**, **interactive code exercises** and **multiple-choice
-  questions** pretty much out-of-the-box.
-- Executes code live and validates user submissions with tests functions using
-  Jupyter kernels via Binder.
-- Allows authoring content in 100% Markdown with custom elements.
-- Uses the `localStorage` to keep track of which exercises were already (marked
-  as) completed.
-- Runs super fast thanks to Gatsby and uses all the hip and modern web stuff
-  like React Hooks, GraphQL and service workers under the hood.
-- Is open-source and published under the MIT license (code and framework) and CC
-  BY-NC (spaCy course materials).
+| Language                                  | Text Examples<sup>1</sup> | Source                                                       | Authors                          |
+| ----------------------------------------- | ------------------------- | ------------------------------------------------------------ | -------------------------------- |
+| **[English](https://course.spacy.io/en)** | English                   | [`chapters/en`](chapters/en), [`exercises/en`](exercises/en) | [@ines](https://github.com/ines) |
+| **[German](https://course.spacy.io/de)**  | German                    | [`chapters/de`](chapters/de), [`exercises/de`](exercises/de) | [@ines](https://github.com/ines) |
+
+If you spot a mistake, I always appreciate
+[pull requests](https://github.com/ines/spacy-course/pulls)!
+
+**1.** This is the language used for the text examples and resources used in the
+exercises. For example, the German version of the course also uses German text
+examples and models. It's not always possible to translate all code examples, so
+some translations may still use and analyze English text as part of the course.
 
 ### Related resources
 
@@ -41,38 +38,71 @@ solutions are all in this repo, there's no penalty for clicking "Show hints" or
   [the Jupyter notebook version](https://github.com/cristianasp/spacy) of this
   course, put together by [@cristianasp](https://github.com/cristianasp).
 
-### Starter repos for your own course
+## 💁 FAQ
+
+#### Is this related to the spaCy course on DataCamp?
+
+I originally developed the content for DataCamp, but I wanted to make a free
+version to make it available to more people, and so you don't have to sign up
+for their service. As a weekend project, I ended up putting together my own
+little app to present the exercises and content in a fun and interactive way.
+
+#### Can I use this to build my own course?
+
+Probably, yes! If you've been looking for a DIY way to publish your materials, I
+hope that my little framework can be useful. Because so many people expressed
+interest in this, I put together some starter repos hat you can fork and adapt:
 
 - 🐍 Python:
   [`ines/course-starter-python`](https://github.com/ines/course-starter-python)
 - 🇷 R: [`ines/course-starter-r`](https://github.com/ines/course-starter-r)
 
-## 💁 FAQ
+#### Why the different licenses?
 
-**So should I not take your DataCamp course anymore?** Probably not, no.
+The source of the app, UI components and Gatsby framework for building
+interactive courses is licensed as MIT, like pretty much all of my open-source
+software. The course materials themselves (slides and chapters), are licensed
+under CC BY-NC. This means that you can use them freely – you just can't make
+money off them.
 
-**Can I use this to build my own course?** Probably, yes! If you've been looking
-for a DIY way to publish your materials, I hope that my little framework can be
-useful. Because so many people expressed interest in this, I put together some
-[starter repos](#starter-repos-for-your-own-course) that you can fork and adapt.
+#### I want to help translate this course into my language. How can I contribute?
 
-**Why the different licenses?** The source of the app, UI components and Gatsby
-framework for building interactive courses is licensed as MIT, like pretty much
-all of my open-source software. The course materials themselves (slides and
-chapters), are licensed under CC BY-NC. This means that you can use them freely
-– you just can't make money off them.
+First, thanks so much, this is really cool and valuable to the community 🙌 I've
+tried to set up the course structure so it's easy to add different languages:
+language-specific files are organized into directories in
+[`exercises`](exercises) and [`chapters`](chapters), and other language specific
+texts are available in [`locale.json`](locale.json). If you want to contribute,
+there are two different ways to get involved:
+
+1. Start a community translation project. This is the easiest,
+   no-strings-attached way. You can fork the repo, copy-paste the English
+   version, change the language code, start translating and invite others to
+   contribute (if you like). If you're looking for contributors, feel free to
+   open an issue here or tag [@spacy_io](https://twitter.com/spacy_io) on
+   Twitter so we can help get the word out. We're also happy to answer your
+   questions on the issue tracker.
+
+2. Make us an offer. We're open to commissioning translations for different
+   languages, so if you're interested, email us at
+   [contact@explosion.ai](mailto:contact@explosion.ai) and include your offer,
+   estimated time schedule and a bit about you and your background (and any
+   technical writing or translation work you've done in the past, if available).
+   It doesn't matter where you're based, but you should be able to issue
+   invoices as a freelancer or similar, depending on your country.
 
 ## 🎛 Usage & API
 
-I mostly built this project for my own course, but it should be very easy to
-fork and adapt. I made sure to strictly separate the content and the app
-functionality and source. So if you want to fork the repo and create your own
-course, you should only have to edit the chapters, exercises and `meta.json`,
-update the visual assets in `/static` and optionally adjust the theme colours.
-In theory, it should even work for languages other than Python – but I haven't
-tested this yet. You can then build your repo with
-[Binder](https://mybinder.org) and deploy it via something like
-[Netlify](https://netlify.com).
+### Running the app
+
+To start the local development server, install [Gatsby](https://gatsbyjs.org)
+and then all other dependencies, then use `npm run dev` to start the development
+server. Make sure you have at least Node 10.15 installed.
+
+```bash
+npm install -g gatsby-cli  # Install Gatsby globally
+npm install                # Install dependencies
+npm run dev                # Run the development server
+```
 
 ### How it works
 
@@ -156,10 +186,12 @@ python -m pytest __tests__
 ├── binder
 |   └── requirements.txt  # Python dependency requirements for Binder
 ├── chapters              # chapters, grouped by language
-|   └── en                # English chapters, one Markdown file per language
-|       └── slides        # English slides, one Markdown file per presentation
+|   ├── en                # English chapters, one Markdown file per language
+|   |   └── slides        # English slides, one Markdown file per presentation
+|   └── ...               # other languages
 ├── exercises             # code files, tests and assets for exercises
-|   └── en                # English exercises, solutions and tests
+|   ├── en                # English exercises, solutions, tests and data
+|   └── ...               # other languages
 ├── public                # compiled site
 ├── src                   # Gatsby/React source, independent from content
 ├── static                # static assets like images, available in slides/chapters
@@ -187,20 +219,6 @@ expected. Enter your repository URL, click "launch" and wait for it to install
 the dependencies and build the image.
 
 ![Binder](https://user-images.githubusercontent.com/13643239/39412757-a518d416-4c21-11e8-9dad-8b4cc14737bc.png)
-
-### Running the app
-
-To start the local development server, install [Gatsby](https://gatsbyjs.org)
-and then all other dependencies.
-
-```bash
-npm install -g gatsby-cli  # Install Gatsby globally
-npm install                # Install dependencies
-npm run dev                # Run the development server
-```
-
-For hosting, I recommend [Netlify](https://netlify.com). It works with GitHub
-and Gatsby out-of-the-box.
 
 ### File formats
 
@@ -343,13 +361,3 @@ A multiple-choice option.
 | `text`       | string | The option text to be displayed. Supports inline HTML.                                         |
 | `correct`    | string | `"true"` if the option is the correct answer.                                                  |
 | **children** | string | The text to be displayed if the option is selected (explaining why it's correct or incorrect). |
-
-## 🛣 Roadmap and todos
-
-- [ ] Front-end tests. Also, if someone wants to port this over to TypeScript,
-      I'd accept the PR 😛
-- [ ] PDF slides. Since the app is using Reveal.js, this should be possible.
-- [ ] Testing it for other languages like R. I'd be really curious to see if it
-      works. We'd have to adjust the
-      [`node.extension` check here](gatsby-node.js) for other files to be
-      included via GraphQL.
