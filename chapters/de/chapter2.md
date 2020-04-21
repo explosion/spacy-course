@@ -4,7 +4,7 @@ description:
   'In diesem Kapitel verwendest du deine neuen Skills, um konkrete Informationen
   aus großen Textmengen zu extrahieren. Du lernst außerdem, spaCys
   Datenstrukturen optimal zu nutzen und statistische und regelbasierte
-  Strategien für Textanalyse zu effektiv zu kombinieren.'
+  Strategien für Textanalyse effektiv zu kombinieren.'
 prev: /chapter1
 next: /chapter3
 type: chapter
