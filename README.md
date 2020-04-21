@@ -1,13 +1,13 @@
 # Advanced NLP with spaCy: A free online course
 
 This repo contains both an [**online course**](https://course.spacy.io), as well
-as the modern open-source web framework to make it happen. In the course, you'll
-learn how to use [spaCy](https://spacy.io) to build advanced natural language
-understanding systems, using both rule-based and machine learning approaches.
-The front-end is powered by [Gatsby](http://gatsbyjs.org/) and
-[Reveal.js](https://revealjs.com) and the back-end code execution uses
-[Binder](https://mybinder.org) 💖 It's all open-source and published under the
-MIT license (code and framework) and CC BY-NC (spaCy course materials).
+as its modern open-source web framework. In the course, you'll learn how to use
+[spaCy](https://spacy.io) to build advanced natural language understanding
+systems, using both rule-based and machine learning approaches. The front-end is
+powered by [Gatsby](http://gatsbyjs.org/) and [Reveal.js](https://revealjs.com)
+and the back-end code execution uses [Binder](https://mybinder.org) 💖 It's all
+open-source and published under the MIT license (code and framework) and CC
+BY-NC (spaCy course materials).
 
 _This course is mostly intended for **self-study**. Yes, you can cheat – the
 solutions are all in this repo, there's no penalty for clicking "Show hints" or
@@ -27,14 +27,10 @@ solutions are all in this repo, there's no penalty for clicking "Show hints" or
 If you spot a mistake, I always appreciate
 [pull requests](https://github.com/ines/spacy-course/pulls)!
 
-<small>
-
 **1.** This is the language used for the text examples and resources used in the
 exercises. For example, the German version of the course also uses German text
 examples and models. It's not always possible to translate all code examples, so
 some translations may still use and analyze English text as part of the course.
-
-</small>
 
 ### Related resources
 
