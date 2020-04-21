@@ -17,4 +17,4 @@ matcher.add("IPHONE_X_PATTERN", None, pattern)
 
 # Wende den Matcher auf das Doc an
 matches = matcher(doc)
-print("Matches:", [doc[start:end].text for match_id, start, end in matches])
+print("Resultat:", [doc[start:end].text for match_id, start, end in matches])
