@@ -9,7 +9,7 @@ doc = nlp("New iPhone X release date leaked as Apple reveals pre-orders by mista
 # Inicializa el matcher con el vocabulario compartido
 matcher = ____(____.____)
 
-# Crea un patrpon que encuentre dos tokens: "iPhone" y "X"
+# Crea un patrón que encuentre dos tokens: "iPhone" y "X"
 pattern = [____]
 
 # Añade el patrón al matcher

@@ -1,13 +1,13 @@
-# Import the English language class and create the nlp object
+# Importa la clase de lenguaje "English" y crea el objeto nlp
 from spacy.lang.en import English
 
 nlp = English()
 
-# Process the text
+# Procesa el texto
 doc = nlp("I like tree kangaroos and narwhals.")
 
-# Select the first token
+# Selecciona el primer token
 first_token = doc[0]
 
-# Print the first token's text
+# Imprime en pantalla el texto del token
 print(first_token.text)
