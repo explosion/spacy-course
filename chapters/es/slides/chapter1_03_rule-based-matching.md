@@ -15,7 +15,7 @@ Notes: En esta lección veremos el matcher de spaCy, que te permite escribir reg
 - Usa las predicciones del modelo
 - Ejemplo: "araña" (verbo) vs. "araña" (sustantivo)
 
-Notes: Comparándolo con las expresiones regulares, el matcher funciona con objetos Doc y Token, en vez de únicamente strings.
+Notes: Comparándolo con las expresiones regulares, el matcher funciona con objetos `Doc` y `Token`, en vez de únicamente strings.
 
 También es más flexible: puedes buscar textos, pero también otros atributos léxicos.
 
@@ -82,13 +82,13 @@ doc = nlp("New iPhone X release date leaked")
 matches = matcher(doc)
 ```
 
-Notes: Para usar el patrón primero importamos el matcher desde "spacy.matcher".
+Notes: Para usar el patrón primero importamos el matcher desde `spacy.matcher`.
 
-También cargamos el modelo y creamos un objeto nlp.
+También cargamos el modelo y creamos un objeto `nlp`.
 
-El matcher es inicializado con el vocabulario compartido, "nlp.vocab". Aprenderás más sobre esto más adelante - por ahora solo recuerda pasarlo.
+El matcher es inicializado con el vocabulario compartido, `nlp.vocab`. Aprenderás más sobre esto más adelante - por ahora solo recuerda pasarlo.
 
-El método "matcher.add" te permite añadir un patrón. El primer argumento es un ID único para identificar el patrón que fue buscado. El segundo argumento en un callback opcional, no necesitamos uno aquí, así que lo ponemos como None. El tercer argumento es el patrón.
+El método `matcher.add` te permite añadir un patrón. El primer argumento es un ID único para identificar el patrón que fue buscado. El segundo argumento en un callback opcional, no necesitamos uno aquí, así que lo ponemos como `None`. El tercer argumento es el patrón.
 
 Para encontrar el patrón en un texto, podemos llamar el matcher sobre cualquier doc.
 
@@ -122,7 +122,7 @@ Notes: Cuando llamas el matcher sobre un doc, este devuelve una lista de tuples.
 
 Cada tuple consiste de tres valores: el ID del resultado, el índice de inicio y el índice del final del span resultante.
 
-Esto significa que podemos iterar sobre los resultados y crear un objeto Span: un slice del doc que comienza en el índice de inicio y termina en el índice del final.
+Esto significa que podemos iterar sobre los resultados y crear un objeto `Span`: un slice del doc que comienza en el índice de inicio y termina en el índice del final.
 
 ---
 

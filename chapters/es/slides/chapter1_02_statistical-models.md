@@ -4,7 +4,7 @@ type: slides
 
 # Modelos Estadísticos
 
-Notes: ¡Ahora vamos a añadir más poder al objeto nlp!
+Notes: ¡Ahora vamos a añadir más poder al objeto `nlp`!
 
 En esta lección aprenderás sobre los modelos estadísticos de spaCy.
 
@@ -23,7 +23,7 @@ Notes: Algunas de las cosas más interesantes que puedes analizar son específic
 
 Los modelos estadísticos le permiten a spaCy hacer predicciones dentro del contexto. Esto normalmente incluye las part-of speech tags, dependencias sintácticas y entidades nombradas.
 
-Los modelos son entrenados con datasets de textos de ejemplo anotados.
+Los modelos son entrenados con <abbr title="también conocido como conjunto de datos"> datasets </abbr> de textos de ejemplo anotados.
 
 Los modelos pueden ser actualizados con más ejemplos para afinar sus predicciones - por ejemplo, para que se desempeñe mejor con tus datos específicos.
 
@@ -43,13 +43,13 @@ import spacy
 nlp = spacy.load('en_core_web_sm')
 ```
 
-- Parámetros binarios Binary weights
+- Parámetros binarios
 - Vocabulario
 - Metadata (lenguaje, pipeline)
 
-Notes: spaCy provee varios paquetes de modelos pre-entrenados que puedes descargar usando el comando "spacy download". Por ejemplo, el paquete "en_core_web_sm" es un modelo pequeño de inglés que provee soporte para todas las capacidades centrales y está entrenado usando texto de la web.
+Notes: spaCy provee varios paquetes de modelos pre-entrenados que puedes descargar usando el comando `spacy download`. Por ejemplo, el paquete "en_core_web_sm" es un modelo pequeño de inglés que provee soporte para todas las capacidades centrales y está entrenado usando texto de la web.
 
-El método "spacy.load" carga el paquete de modelo por su nombre y devuelve un objeto nlp.
+El método `spacy.load` carga el paquete de modelo por su nombre y devuelve un objeto `nlp`.
 
 El paquete provee los <abbr title="en inglés, en un contexto de Machine Leraning, conocidos como binary weights">parámetros binarios</abbr> que le permiten a spaCy hacer predicciones.
 
@@ -83,13 +83,13 @@ pizza NOUN
 
 Notes: Revisemos las predicciones del modelo. En este ejemplo estamos usando spaCy para predecir part-of-speech tags, los tipos de palabras en el contexto.
 
-Primero, cargamos el modelo pequeño de inglés y recibimos un objeto nlp.
+Primero, cargamos el modelo pequeño de inglés y recibimos un objeto `nlp`.
 
 Siguiente, procesamos el texto "She ate the pizza".
 
-Para cada token en el Doc podemos imprimir en pantalla el texto y el part-of-speech tag predicho usando el atributo "pos_".
+Para cada token en el Doc podemos imprimir en pantalla el texto y el part-of-speech tag predicho usando el atributo `.pos_`.
 
-En spaCy, los atributos que devuelven un string usualmente terminan con un guión bajo (_). mientras que atributos sin un guión bajo devuelven un ID.
+En spaCy, los atributos que devuelven un string usualmente terminan con un guión bajo (`_`). mientras que atributos sin un guión bajo devuelven un ID.
 
 Aquí el modelo predijo correctamente "ate" como el verbo y "pizza" como el sustantivo.
 
@@ -111,9 +111,9 @@ pizza NOUN dobj ate
 
 Notes: Además de los part-of-speech tags, también podemos predecir las relaciones entre las palabras. Por ejemplo, si una palabra es el sujeto o el objeto de una oración.
 
-El atributo "dep_" devuelve el dependency label predicho.
+El atributo `.dep_` devuelve el dependency label predicho.
 
-El atributo "head." devuelve el token <abbr title="en inglés head">cabeza</abbr> sintáctico. Otra forma de pensarlo es como el token padre (superordinado) al que esta palabra está atada.
+El atributo `.head` devuelve el token <abbr title="en inglés head">cabeza</abbr> sintáctico. Otra forma de pensarlo es como el token padre (superordinado) al que esta palabra está atada.
 
 ---
 
@@ -143,7 +143,7 @@ El determinante "the", también conocido como artículo, está unido al sustanti
 
 ```python
 # Procesa un texto
-doc = nlp(u"Apple is looking at buying U.K. startup for $1 billion")
+doc = nlp("Apple is looking at buying U.K. startup for $1 billion")
 
 # Itera sobre las entidades predichas
 for ent in doc.ents:
@@ -159,9 +159,9 @@ $1 billion MONEY
 
 Notes: Las entidades nombradas son "objetos de la vida real" que tienen un nombre asignado. Por ejemplo, una persona, una organización o un país.
 
-La propiedad "doc.ents" te permite acceder a las entidades nombradas predichas por el modelo.
+La propiedad `doc.ents` te permite acceder a las entidades nombradas predichas por el modelo.
 
-Devuelve un iterador de objetos Span, así que podemos imprimir en pantalla el texto y el label de la entidad usando el atributo "label_".
+Devuelve un iterador de objetos `Span`, así que podemos imprimir en pantalla el texto y el label de la entidad usando el atributo `.label_`.
 
 En este caso, el modelo predijo correctamente "Apple" como una organización, "U.K." como una entidad geopolítica y "\$1 billion" como dinero.
 
@@ -195,9 +195,9 @@ spacy.explain('dobj')
 'direct object'
 ```
 
-Notes: Un tip rápido: Para obtener definiciones de los tags y labels más comunes puedes usar la función asistente "spacy.explain".
+Notes: Un tip rápido: Para obtener definiciones de los tags y labels más comunes puedes usar la función asistente `spacy.explain`.
 
-Por ejemplo, "GPE" para entidad geopolítica no es necesariamente intuitivo, pero "spacy.explain" puede decirte que se refiere a países, ciudades y estados.
+Por ejemplo, "GPE" para entidad geopolítica no es necesariamente intuitivo, pero `spacy.explain` puede decirte que se refiere a países, ciudades y estados.
 
 Lo mismo funciona para part-of-speech tags y dependency labels.
 
