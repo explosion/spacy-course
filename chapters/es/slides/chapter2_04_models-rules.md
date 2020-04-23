@@ -2,93 +2,77 @@
 type: slides
 ---
 
-# Combining models and rules
+# Combinando modelos y reglas
 
-Notes: Combining statistical models with rule-based systems is one of the most
-powerful tricks you should have in your NLP toolbox.
+Notes: Combinar modelos estadísticos con sistemas basados en reglas es uno de los trucos más poderosos que tienes en tu caja de herramientas de NLP.
 
-In this lesson, we'll take a look at how to do it with spaCy.
-
----
-
-# Statistical predictions vs. rules
-
-|                         | **Statistical models**                                      | **Rule-based systems**            |
-| ----------------------- | ----------------------------------------------------------- | --------------------------------- |
-| **Use cases**           | application needs to _generalize_ based on examples         | ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀ |
-| **Real-world examples** | product names, person names, subject/object relationships   |                                   |
-| **spaCy features**      | entity recognizer, dependency parser, part-of-speech tagger |                                   |
-
-Notes: Statistical models are useful if your application needs to be able to
-generalize based on a few examples.
-
-For instance, detecting product or person names usually benefits from a
-statistical model. Instead of providing a list of all person names ever, your
-application will be able to predict whether a span of tokens is a person name.
-Similarly, you can predict dependency labels to find subject/object
-relationships.
-
-To do this, you would use spaCy's entity recognizer, dependency parser or
-part-of-speech tagger.
+En esta lección veremos cómo hacerlo con spaCy.
 
 ---
 
-# Statistical predictions vs. rules
+# Predicciones estadísticas vs. reglas
 
-|                         | **Statistical models**                                      | **Rule-based systems**                                 |
-| ----------------------- | ----------------------------------------------------------- | ------------------------------------------------------ |
-| **Use cases**           | application needs to _generalize_ based on examples         | dictionary with finite number of examples              |
-| **Real-world examples** | product names, person names, subject/object relationships   | countries of the world, cities, drug names, dog breeds |
-| **spaCy features**      | entity recognizer, dependency parser, part-of-speech tagger | tokenizer, `Matcher`, `PhraseMatcher`                  |
+|                              | **Modelos estadísticos**                                                 | **Sistemas basados en reglas**   |
+| ---------------------------- | ------------------------------------------------------------------------ | -------------------------------- |
+| **Casos**                    | la aplicación necesita _generalizar_ basada en ejemplos                  |                                  |
+| **Ejemplos de la vida real** | nombres de productos, nombres de personas, relaciones de sujeto/objeto   |                                  |
+| **Características de spaCy** | entity recognizer, dependency parser, part-of-speech tagger              |                                  |
 
-Notes: Rule-based approaches on the other hand come in handy if there's a more
-or less finite number of instances you want to find. For example, all countries
-or cities of the world, drug names or even dog breeds.
+Notes: Los modelos estadísticos son útiles si tu aplicación necesita poder generalizar basada en pocos ejemplos.
 
-In spaCy, you can achieve this with custom tokenization rules, as well as the
-matcher and phrase matcher.
+Por ejemplo, detectar nombres de productos o personas normalmente se beneficia de un modelo estadístico. En vez de proveer una lista de todos los nombres de personas, tu aplicación debería poder predecir si un span de tokens es un nombre de persona. Del mismo modo, puedes predecir dependency labels para encontrar relaciones de sujeto/objeto.
+
+Para hacer esto, usarías el entity recognizer, el dependency parser o el part-of-speech tagger de spaCy.
 
 ---
 
-# Recap: Rule-based Matching
+# Predicciones estadísticas vs. reglas
+
+|                              | **Modelos estadísticos**                                                 | **Sistemas basados en reglas**   |
+| ---------------------------- | ------------------------------------------------------------------------ | -------------------------------- |
+| **Casos**                    | la aplicación necesita _generalizar_ basada en ejemplos                  | diccionario con número infinito de casos                              |
+| **Ejemplos de la vida real** | nombres de productos, nombres de personas, relaciones de sujeto/objeto   | países del mundo, ciudades, nombres de drogas, razas de perros                                 |
+| **Características de spaCy** | entity recognizer, dependency parser, part-of-speech tagger              | tokenizer `Matcher`, `PhraseMatcher`                                |
+
+Notes: Los enfoques basados en reglas son muy útiles si hay un número más o menos finito de casos que quieres encontrar. Por ejemplo, todos los países o ciudades del mundo, nombres de drogas o inclusive razas de perros.
+
+En spaCy puedes lograr esto con una regla de tokenización a la medida, así como el matcher y el <abbr title="El matcher de frases. Para revisar qué es el matcher, vuelve a la lección anterior.">phrase matcher</abbr>.
+
+---
+
+# Resumen: Encontrando patrones basados en reglas
 
 ```python
-# Initialize with the shared vocab
+# Inicializa con el vocabulario compartido
 from spacy.matcher import Matcher
 matcher = Matcher(nlp.vocab)
 
-# Patterns are lists of dictionaries describing the tokens
+# Los patrones son listas de diccionarios que describen los tokens
 pattern = [{'LEMMA': 'love', 'POS': 'VERB'}, {'LOWER': 'cats'}]
 matcher.add('LOVE_CATS', None, pattern)
 
-# Operators can specify how often a token should be matched
+# Los operadores pueden especificar que tan seguido puede ser buscado un token
 pattern = [{'TEXT': 'very', 'OP': '+'}, {'TEXT': 'happy'}]
 matcher.add('VERY_HAPPY', None, pattern)
 
-# Calling matcher on doc returns list of (match_id, start, end) tuples
+# Llamar al matcher sobre un doc devuelve una lista de tuples con (match_id, inicio, final)
 doc = nlp("I love cats and I'm very very happy")
 matches = matcher(doc)
 ```
 
-Notes: In the last chapter, you learned how to use spaCy's rule-based matcher to
-find complex patterns in your texts. Here's a quick recap.
+Notes: En el capítulo anterior aprendiste a usar el matcher basado en reglas de spaCy para encontrar patrones complejos en tus textos. Aquí está un resumen corto.
 
-The matcher is initialized with the shared vocabulary – usually nlp dot vocab.
+El matcher se inicializa con el vocabulario compartido - usualmente `nlp.vocab`.
 
-Patterns are lists of dictionaries, and each dictionary describes one token and
-its attributes. Patterns can be added to the matcher using the matcher dot add
-method.
+Los patrones son listad de diccionarios y cada diccionario describe un token y sus atributos. Los patrones pueden ser añadidos usando el método `matcher.add`.
 
-Operators let you specify how often to match a token. For example, "+" will
-match one or more times.
+Los operadores te permiten especificar que tan a menudo buscar un token. Por ejemplo, "+" te deja buscar una o más veces.
 
-Calling the matcher on a doc object will return a list of the matches. Each
-match is a tuple consisting of an ID, and the start and end token index in the
-document.
+Llamando a un matcher sobre el objeto doc devolverá una lista de los resultados. Cada resultado es un tuple que contiene un ID y el índice de inicio y final del token en el documento.
 
 ---
 
-# Adding statistical predictions
+# Añadiendo predicciones estadísticas
 
 ```python
 matcher = Matcher(nlp.vocab)
@@ -98,10 +82,10 @@ doc = nlp("I have a Golden Retriever")
 for match_id, start, end in matcher(doc):
     span = doc[start:end]
     print('Matched span:', span.text)
-    # Get the span's root token and root head token
+    # Obtén el token raíz del span y el token raíz central (head)
     print('Root token:', span.root.text)
     print('Root head token:', span.root.head.text)
-    # Get the previous token and its POS tag
+    # Obtén el token anterior y su POS tag
     print('Previous token:', doc[start - 1].text, doc[start - 1].pos_)
 ```
 
@@ -112,48 +96,36 @@ Root head token: have
 Previous token: a DET
 ```
 
-Notes: Here's an example of a matcher rule for "golden retriever".
+Notes: Aquí tenemos un ejemplo de una regla para el matcher que encuentra "golden retriever.
 
-If we iterate over the matches returned by the matcher, we can get the match ID
-and the start and end index of the matched span. We can then find out more about
-it. Span objects give us access to the original document and all other token
-attributes and linguistic features predicted by the model.
+Si iteramos sobre los resultados devueltos por el matcher podemos obtener el match ID y el índice de inicio y final del span encontrado. Entonces podemos averiguar más sobre él. Los objetos `Span` nos dan acceso al documento original y a todos los otros atributos del token y características lingüísticas predichas por el modelo.
 
-For example, we can get the span's root token. If the span consists of more than
-one token, this will be the token that decides the category of the phrase. For
-example, the root of "Golden Retriever" is "Retriever". We can also find the
-head token of the root. This is the syntactic "parent" that governs the phrase –
-in this case, the verb "have".
+Por ejemplo, podemos obtener el token raíz del span. Si el span contiene más de un token, este token será el que determina la categoría de la frase. Por ejemplo, la raíz de "Golden Retriever" es "Retriever". También podemos encontrar el token cabeza de la raíz. Esto es el "padre" sintáctico que gobierna la frase - en este caso, el verbo "have".
 
-Finally, we can look at the previous token and its attributes. In this case,
-it's a determiner, the article "a".
+Finalmente, podemos obtener el token anterior y sus atributos. En este caso, es el determinante, el artículo "a".
 
 ---
 
-# Efficient phrase matching (1)
+# Encontrando frases eficientemente "phrase matching" (1)
 
-- `PhraseMatcher` like regular expressions or keyword search – but with access
-  to the tokens!
-- Takes `Doc` object as patterns
-- More efficient and faster than the `Matcher`
-- Great for matching large word lists
+- `PhraseMatcher` como las expresiones regulares o una búsqueda de palabras claves - pero con acceso a los tokens!
+- Toma al objeto `Doc` como patrones
+- Mucho más eficiente y rápido que el `Matcher`
+- Excelente para encontrar listas largas de palabras
 
-Notes: The phrase matcher is another helpful tool to find sequences of words in
-your data.
+Notes: El phrase matcher es otra herramienta útil para encontrar secuencias de palabras en tus datos.
 
-It performs a keyword search on the document, but instead of only finding
-strings, it gives you direct access to the tokens in context.
+Hace una búsqueda de <abbr title=" en español palabras clave">keyword</abbr> en el documento pero en vez de encontrar únicamente strings, te da acceso directo a los tokens en contexto.
 
-It takes Doc objects as patterns.
+Toma los objetos `Doc` como patrones.
 
-It's also really fast.
+También es muy rápido.
 
-This makes it very useful for matching large dictionaries and word lists on
-large volumes of text.
+Esto hace que sea muy útil para encontrar diccionarios grandes y listas de palabras en grandes volúmenes de texto.
 
 ---
 
-# Efficient phrase matching (2)
+# Encontrando frases eficientemente "phrase matching" (2)
 
 ```python
 from spacy.matcher import PhraseMatcher
@@ -164,9 +136,9 @@ pattern = nlp("Golden Retriever")
 matcher.add('DOG', None, pattern)
 doc = nlp("I have a Golden Retriever")
 
-# Iterate over the matches
+# Itera sobre los resultados
 for match_id, start, end in matcher(doc):
-    # Get the matched span
+    # Obtén el span resultante
     span = doc[start:end]
     print('Matched span:', span.text)
 ```
@@ -175,20 +147,16 @@ for match_id, start, end in matcher(doc):
 Matched span: Golden Retriever
 ```
 
-Notes: Here's an example.
+Notes: Aquí tenemos un ejemplo.
 
-The phrase matcher can be imported from spacy dot matcher and follows the same
-API as the regular matcher.
+El phrase matcher puede ser importado desde `spacy.matcher` y sigue a la misma API que el matcher normal.
 
-Instead of a list of dictionaries, we pass in a Doc object as the pattern.
+En vez de pasarle una lista de diccionarios, le pasamos un objeto `Doc` como el patrón que debe encontrar.
 
-We can then iterate over the matches in the text, which gives us the match ID,
-and the start and end of the match. This lets us create a Span object for the
-matched tokens "Golden Retriever" to analyze it in context.
+Entonces podemos iterar sobre los resultados en el texto, lo que nos da un match ID y el inicio y final del resultado. Esto nos permite crear un objeto `Span` para los tokens resultantes "Golden Retriever" para analizarlos en su contexto.
 
 ---
 
-# Let's practice!
+# ¡Practiquemos!
 
-Notes: Let's try out some of the new techniques for combining rules with
-statistical models.
+Notes: Probemos algunas de las nuevas técnicas para combinar reglas con modelos estadísticos.
