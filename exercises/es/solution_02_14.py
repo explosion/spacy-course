@@ -7,16 +7,16 @@ with open("exercises/en/countries.json") as f:
 nlp = English()
 doc = nlp("Czech Republic may help Slovakia protect its airspace")
 
-# Import the PhraseMatcher and initialize it
+# Importa el PhraseMatcher e inicialízalo
 from spacy.matcher import PhraseMatcher
 
 matcher = PhraseMatcher(nlp.vocab)
 
-# Create pattern Doc objects and add them to the matcher
-# This is the faster version of: [nlp(country) for country in COUNTRIES]
+# Crea objetos Doc patrón y añádelos al matcher
+# Esta es una versión más rápida de: [nlp(country) for country in COUNTRIES]
 patterns = list(nlp.pipe(COUNTRIES))
 matcher.add("COUNTRY", None, *patterns)
 
-# Call the matcher on the test document and print the result
+# Llama al matcher sobre el documento de prueba e imprime el resultado en pantalla
 matches = matcher(doc)
 print([doc[start:end] for match_id, start, end in matches])

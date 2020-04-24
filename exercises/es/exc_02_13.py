@@ -13,16 +13,16 @@ doc = nlp(
     "monthly subscriptions will have access to ad-free viewing until October 15."
 )
 
-# Create the match patterns
+# Crea los patrones
 pattern1 = [{"LOWER": "Amazon"}, {"IS_TITLE": True, "POS": "PROPN"}]
 pattern2 = [{"LOWER": "ad-free"}, {"POS": "NOUN"}]
 
-# Initialize the Matcher and add the patterns
+# Inicializa el Matcher y añade los patrones
 matcher = Matcher(nlp.vocab)
 matcher.add("PATTERN1", None, pattern1)
 matcher.add("PATTERN2", None, pattern2)
 
-# Iterate over the matches
+# Itera sobre los resultados
 for match_id, start, end in matcher(doc):
-    # Print pattern string name and text of matched span
+    # Imprime en pantalla el nombre en string del patrón y el texto del span encontrado
     print(doc.vocab.strings[match_id], doc[start:end].text)

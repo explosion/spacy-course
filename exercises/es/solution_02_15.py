@@ -13,22 +13,22 @@ matcher = PhraseMatcher(nlp.vocab)
 patterns = list(nlp.pipe(COUNTRIES))
 matcher.add("COUNTRY", None, *patterns)
 
-# Create a doc and reset existing entities
+# Crea un doc y restablece las entidades existentes
 doc = nlp(TEXT)
 doc.ents = []
 
-# Iterate over the matches
+# Itera sobre los resultados
 for match_id, start, end in matcher(doc):
-    # Create a Span with the label for "GPE"
+    # Crea un Span con el label para "GPE"
     span = Span(doc, start, end, label="GPE")
 
-    # Overwrite the doc.ents and add the span
+    # Sobrescribe el doc.ents y añade el span
     doc.ents = list(doc.ents) + [span]
 
-    # Get the span's root head token
+    # Obtén el token central de la raíz del span
     span_root_head = span.root.head
-    # Print the text of the span root's head token and the span text
+    # Imprime en pantalla el texto del token central de la raíz del span y el texto del span
     print(span_root_head.text, "-->", span.text)
 
-# Print the entities in the document
+# Imprime en pantalla las entidades del documento
 print([(ent.text, ent.label_) for ent in doc.ents if ent.label_ == "GPE"])

@@ -2,13 +2,13 @@ import spacy
 
 nlp = spacy.load("en_core_web_sm")
 
-# Import the Doc class
+# Importa la clase Doc
 from ____ import ____
 
-# Desired text: "spaCy is cool!"
+# El texto deseado: "spaCy is cool!"
 words = ["spaCy", "is", "cool", "!"]
 spaces = [True, True, False, False]
 
-# Create a Doc from the words and spaces
+# Crea un Doc a partir de las palabras y los espacios
 doc = ____(____, words=words, spaces=spaces)
 print(doc.text)
