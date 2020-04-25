@@ -7,10 +7,10 @@ with open("exercises/en/bookquotes.json") as f:
 
 nlp = English()
 
-# Register the Doc extension 'author' (default None)
+# Register the Doc extension "author" (default None)
 ____
 
-# Register the Doc extension 'book' (default None)
+# Register the Doc extension "book" (default None)
 ____
 
 for doc, ____ in ____(____, ____):
@@ -19,4 +19,4 @@ for doc, ____ in ____(____, ____):
     doc._.author = ____
 
     # Print the text and custom attribute data
-    print(doc.text, "\n", "— '{}' by {}".format(doc._.book, doc._.author), "\n")
+    print(f"{doc.text}\n — '{doc._.book}' by {doc._.author}\n")

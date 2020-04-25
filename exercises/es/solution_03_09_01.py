@@ -3,7 +3,7 @@ from spacy.tokens import Token
 
 nlp = English()
 
-# Register the Token extension attribute 'is_country' with the default value False
+# Register the Token extension attribute "is_country" with the default value False
 Token.set_extension("is_country", default=False)
 
 # Process the text and set the is_country attribute to True for the token "Spain"

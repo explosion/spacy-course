@@ -40,7 +40,7 @@ $ python -m spacy download en_core_web_sm
 ```python
 import spacy
 
-nlp = spacy.load('en_core_web_sm')
+nlp = spacy.load("en_core_web_sm")
 ```
 
 - Parámetros binarios
@@ -63,7 +63,7 @@ También incluye el vocabulario y la metadata para que spaCy sepa cuál clase de
 import spacy
 
 # Carga el modelo pequeño de inglés
-nlp = spacy.load('en_core_web_sm')
+nlp = spacy.load("en_core_web_sm")
 
 # Procesa un texto
 doc = nlp("She ate the pizza")
@@ -172,7 +172,7 @@ En este caso, el modelo predijo correctamente "Apple" como una organización, "U
 Obtén definiciones rápidas de los tags y labels más comunes.
 
 ```python
-spacy.explain('GPE')
+spacy.explain("GPE")
 ```
 
 ```out
@@ -180,7 +180,7 @@ spacy.explain('GPE')
 ```
 
 ```python
-spacy.explain('NNP')
+spacy.explain("NNP")
 ```
 
 ```out
@@ -188,7 +188,7 @@ spacy.explain('NNP')
 ```
 
 ```python
-spacy.explain('dobj')
+spacy.explain("dobj")
 ```
 
 ```out

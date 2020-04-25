@@ -90,7 +90,7 @@ Los objetos `Token` también proveen varios atributos que te permiten acceder a 
 doc = nlp("Hello world!")
 
 # Un slice de un Doc en un objeto Span
-span = doc[1:4]
+span = doc[1:3]
 
 # Obtén el texto del span a través del atributo .text
 print(span.text)
@@ -114,7 +114,7 @@ doc = nlp("It costs $5.")
 
 ```python
 print("Index:   ", [token.i for token in doc])
-print('Text:    ', [token.text for token in doc])
+print("Text:    ", [token.text for token in doc])
 
 print("is_alpha:", [token.is_alpha for token in doc])
 print("is_punct:", [token.is_punct for token in doc])
