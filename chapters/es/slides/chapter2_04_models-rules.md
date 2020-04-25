@@ -100,7 +100,7 @@ Notes: Aquí tenemos un ejemplo de una regla para el matcher que encuentra "gold
 
 Si iteramos sobre los resultados devueltos por el matcher podemos obtener el match ID y el índice de inicio y final del span encontrado. Entonces podemos averiguar más sobre él. Los objetos `Span` nos dan acceso al documento original y a todos los otros atributos del token y características lingüísticas predichas por el modelo.
 
-Por ejemplo, podemos obtener el token raíz del span. Si el span contiene más de un token, este token será el que determina la categoría de la frase. Por ejemplo, la raíz de "Golden Retriever" es "Retriever". También podemos encontrar el token cabeza de la raíz. Esto es el "padre" sintáctico que gobierna la frase - en este caso, el verbo "have".
+Por ejemplo, podemos obtener el token raíz del span. Si el span contiene más de un token, este token será el que determina la categoría de la frase. Por ejemplo, la raíz de "Golden Retriever" es "Retriever". También podemos encontrar el <abbr title="en inglés conoce como head. En este caso, root head token">token raíz central</abbr>. Esto es el "padre" sintáctico que gobierna la frase - en este caso, el verbo "have".
 
 Finalmente, podemos obtener el token anterior y sus atributos. En este caso, es el determinante, el artículo "a".
 
