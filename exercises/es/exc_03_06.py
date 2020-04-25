@@ -4,7 +4,7 @@ import spacy
 def length_component(doc):
     # Get the doc's length
     doc_length = ____
-    print("This document is {} tokens long.".format(doc_length))
+    print(f"This document is {doc_length} tokens long.")
     # Return the doc
     ____
 

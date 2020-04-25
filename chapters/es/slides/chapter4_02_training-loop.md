@@ -67,7 +67,7 @@ computed when we compare the predicted label to the true label.
 
 ```python
 TRAINING_DATA = [
-    ("How to preorder the iPhone X", {'entities': [(20, 28, 'GADGET')]})
+    ("How to preorder the iPhone X", {"entities": [(20, 28, "GADGET")]})
     # And many more examples...
 ]
 ```
@@ -94,17 +94,17 @@ Notes: Here's an example.
 Let's imagine we have a list of training examples consisting of texts and entity
 annotations.
 
-We want to loop for 10 iterations, so we're iterating over a range of 10.
+We want to loop for 10 iterations, so we're iterating over a `range` of 10.
 
-Next, we use the random module to randomly shuffle the training data.
+Next, we use the `random` module to randomly shuffle the training data.
 
-We then use spaCy's minibatch utility function to divide the examples into
+We then use spaCy's `minibatch` utility function to divide the examples into
 batches.
 
-For each batch, we get the texts and annotations and call the nlp dot update
+For each batch, we get the texts and annotations and call the `nlp.update`
 method to update the model.
 
-Finally, we call the nlp dot to disk method to save the trained model to a
+Finally, we call the `nlp.to_disk` method to save the trained model to a
 directory.
 
 ---
@@ -112,7 +112,7 @@ directory.
 # Updating an existing model
 
 - Improve the predictions on new data
-- Especially useful to improve existing categories, like `PERSON`
+- Especially useful to improve existing categories, like `"PERSON"`
 - Also possible to add new categories
 - Be careful and make sure the model doesn't "forget" the old ones
 
@@ -134,12 +134,12 @@ improving the new category might hurt the other categories.
 
 ```python
 # Start with blank English model
-nlp = spacy.blank('en')
+nlp = spacy.blank("en")
 # Create blank entity recognizer and add it to the pipeline
-ner = nlp.create_pipe('ner')
+ner = nlp.create_pipe("ner")
 nlp.add_pipe(ner)
 # Add a new label
-ner.add_label('GADGET')
+ner.add_label("GADGET")
 
 # Start the training
 nlp.begin_training()
@@ -154,21 +154,21 @@ for itn in range(10):
         nlp.update(texts, annotations)
 ```
 
-Notes: In this example, we start off with a blank English model using the spacy
-dot blank method. The blank model doesn't have any pipeline components, only the
-language data and tokenization rules.
+Notes: In this example, we start off with a blank English model using the
+`spacy.blank` method. The blank model doesn't have any pipeline components, only
+the language data and tokenization rules.
 
 We then create a blank entity recognizer and add it to the pipeline.
 
-Using the "add label" method, we can add new string labels to the model.
+Using the `add_label` method, we can add new string labels to the model.
 
-We can now call nlp dot begin training to initialize the model with random
+We can now call `nlp.begin_training` to initialize the model with random
 weights.
 
 To get better accuracy, we want to loop over the examples more than once and
 randomly shuffle the data on each iteration.
 
-On each iteration, we divide the examples into batches using spaCy's minibatch
+On each iteration, we divide the examples into batches using spaCy's `minibatch`
 utility function. Each example consists of a text and its annotations.
 
 Finally, we update the model with the texts and annotations and continue the

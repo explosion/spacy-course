@@ -32,16 +32,16 @@ You also learned to write powerful match patterns to extract words and phrases
 using spaCy's matcher and phrase matcher.
 
 Chapter 2 was all about information extraction, and you learned how to work with
-the data structures, the Doc, Token and Span, as well as the vocab and lexical
-entries.
+the data structures, the `Doc`, `Token` and `Span`, as well as the `Vocab` and
+lexical entries.
 
 You also used spaCy to predict semantic similarities using word vectors.
 
 In chapter 3, you got some more insights into spaCy's pipeline, and learned to
-write your own custom pipeline components that modify the Doc.
+write your own custom pipeline components that modify the doc.
 
-You also created your own custom extension attributes for Docs, Tokens and
-Spans, and learned about processing streams and making your pipeline faster.
+You also created your own custom extension attributes for docs, tokens and
+spans, and learned about processing streams and making your pipeline faster.
 
 Finally, in chapter 4, you learned about training and updating spaCy's
 statistical models, specifically the entity recognizer.
@@ -77,7 +77,7 @@ models, but you can add it to an existing model and train it on your own data.
 - [Customizing the tokenizer](https://spacy.io/usage/linguistic-features#tokenization)
   - Adding rules and exceptions to split text differently
 - [Adding or improving support for other languages](https://spacy.io/usage/adding-languages)
-  - 45+ languages currently
+  - 55+ languages currently
   - Lots of room for improvement and more languages
   - Allows training models for other languages
 
