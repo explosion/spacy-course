@@ -9,98 +9,93 @@ type: chapter
 id: 1
 ---
 
-<exercise id="1" title="spaCyはじめの一歩" type="slides">
+<exercise id="1" title="はじめに" type="slides">
 
 <slides source="chapter1_01_introduction-to-spacy">
 </slides>
 
 </exercise>
 
-<exercise id="2" title="Getting Started">
+<exercise id="2" title="spaCyを使ってみる">
 
-Let's get started and try out spaCy! In this exercise, you'll be able to try out
-some of the 55+ [available languages](https://spacy.io/usage/models#languages).
+ではさっそく、spaCyを試していきましょう！ この演習では、[spaCyが対応している55以上の言語](https://spacy.io/usage/models#languages)のうちのいくつかをことができます。
 
-### Part 1: English
+### Part 1: 英語
 
-- Import the `English` class from `spacy.lang.en` and create the `nlp` object.
-- Create a `doc` and print its text.
+- `English`クラスを`spacy.lang.en`からインポートし、`nlp`オブジェクトを作ってください。
+- `doc`オブジェクトを作り、文字列をプリントしてください。
 
 <codeblock id="01_02_01">
 </codeblock>
 
-### Part 2: German
+### Part 2: ドイツ語
 
-- Import the `German` class from `spacy.lang.de` and create the `nlp` object.
-- Create a `doc` and print its text.
+- `German`クラスを`spacy.lang.de`からインポートし、`nlp`オブジェクトを作ってください。
+- `doc`オブジェクトを作り、文字列をプリントしてください。
 
 <codeblock id="01_02_02">
 </codeblock>
 
-### Part 3: Spanish
+### Part 3: スペイン語
 
-- Import the `Spanish` class from `spacy.lang.es` and create the `nlp` object.
-- Create a `doc` and print its text.
+- `Spanish`クラスを`spacy.lang.es`からインポートし、`nlp`オブジェクトを作ってください。
+- `doc`オブジェクトを作り、文字列をプリントしてください。
 
 <codeblock id="01_02_03">
 </codeblock>
 
 </exercise>
 
-<exercise id="3" title="Documents, spans and tokens">
+<exercise id="3" title="ドキュメントとスパンとトークン">
 
-When you call `nlp` on a string, spaCy first tokenizes the text and creates a
-document object. In this exercise, you'll learn more about the `Doc`, as well as
-its views `Token` and `Span`.
+`nlp`を文字列に適用すると、spaCyはまず文字列を分割し、`Doc`オブジェクトを作ります。
+この演習では、`Doc`やそのビューである`Token`と`Span`について詳しく学んでいきます。
 
 ### Step 1
 
-- Import the `English` language class and create the `nlp` object.
-- Process the text and instantiate a `Doc` object in the variable `doc`.
-- Select the first token of the `Doc` and print its `text`.
+- `English`クラスをインポートし、`nlp`オブジェクトを作ってください。
+- テキストを処理し、`Doc`オブジェクトである`doc`を作ってください。
+- `doc`の最初のトークンを選び、`text`をプリントしてください。
 
 <codeblock id="01_03_01">
 
-You can index into a `Doc` the same way you index into a list in Python. For
-example, `doc[4]` will give you the token at index 4, which is the fifth token
-in the text. Remember that in Python the first index is 0, not 1.
+Pythonのリストの要素をインデックスを使って取得するのと同じ方法を`Doc`に対して用いることができます。
+例えば、`doc[4]`は位置4のトークン、つまりテキストの前から5番目のトークンを表します。
+他の多くの言語と同様、Pythonではインデックスは1ではなく0から始まることに注意してください。
 
 </codeblock>
 
 ### Step 2
 
-- Import the `English` language class and create the `nlp` object.
-- Process the text and instantiate a `Doc` object in the variable `doc`.
-- Create a slice of the `Doc` for the tokens "tree kangaroos" and "tree
-  kangaroos and narwhals".
+- `English`クラスをインポートし、`nlp`オブジェクトを作ってください。
+- テキストを処理し、`Doc`オブジェクトである`doc`を作ってください。
+- "tree kangaroos"と"tree kangaroos and narwhals"のトークンに対応するスライスを`Doc`から作成してください。
 
 <codeblock id="01_03_02">
 
-Creating a slice of a `Doc` works just like creating a slice of a list in Python
-using the `:` notation. Remember that the last token index is _exclusive_ – for
-example, `0:4` describes the tokens 0 _up to_ token 4, but not including
-token 4.
+`Doc`からスライスを作るには、Pythonのリストと同様、`:`記法を使います。
+スライスの右端のインデックスのトークンは、スライスに _含まれない_ ことに注意してください。
+つまり、`0:4`は、位置0,1,2,3のトークンを表し、位置4のトークンは含まれません。
 
 </codeblock>
 
 </exercise>
 
-<exercise id="4" title="Lexical attributes">
+<exercise id="4" title="語彙の属性">
 
-In this example, you'll use spaCy's `Doc` and `Token` objects, and lexical
-attributes to find percentages in a text. You'll be looking for two subsequent
-tokens: a number and a percent sign.
+spaCyの`Doc`と`Token`オブジェクトと、その語彙属性（lexical attributes）を使って、
+文字列の中からパーセンテージを表す部分を抜き出す方法をみていきます。
+つまり、数字とパーセント記号からなる連続した二つのトークンを探す方法をみていきます。
 
-- Use the `like_num` token attribute to check whether a token in the `doc`
-  resembles a number.
-- Get the token _following_ the current token in the document. The index of the
-  next token in the `doc` is `token.i + 1`.
-- Check whether the next token's `text` attribute is a percent sign "%".
+- `Token`オブジェクトの`like_num`を使って、`doc`に含まれるトークンが数字っぽいかどうかを判定してください。
+- `Doc`のうち、数字のトークンの次のトークンを取得してみてください。あるトークン`token`の次のトークンのインデックスは
+  `token.i + 1`です。
+- 次のトークンの文字列がパーセント記号（%）かどうかをチェックしてください。
 
 <codeblock id="01_04">
 
-To get the token at a certain index, you can index into the `doc`. For example,
-`doc[5]` is the token at index 5.
+トークンは、`doc`からインデックスを使って取得できます。
+例えば、`doc[5]`は位置5のトークンを表します。
 
 </codeblock>
 
