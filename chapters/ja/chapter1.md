@@ -101,7 +101,7 @@ spaCyの`Doc`と`Token`オブジェクトと、その語彙属性（lexical attr
 
 </exercise>
 
-<exercise id="5" title="Statistical models" type="slides">
+<exercise id="5" title="機械学習モデル" type="slides">
 
 <slides source="chapter1_02_statistical-models">
 </slides>

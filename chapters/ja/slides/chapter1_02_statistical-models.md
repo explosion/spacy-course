@@ -2,38 +2,37 @@
 type: slides
 ---
 
-# Statistical models
+# 機械学習モデル
 
-Notes: Let's add some more power to the `nlp` object!
+Notes: それでは、`nlp`オブジェクトを強化していきましょう！
 
-In this lesson, you'll learn about spaCy's statistical models.
-
----
-
-# What are statistical models?
-
-- Enable spaCy to predict linguistic attributes _in context_
-  - Part-of-speech tags
-  - Syntactic dependencies
-  - Named entities
-- Trained on labeled example texts
-- Can be updated with more examples to fine-tune predictions
-
-Notes: Some of the most interesting things you can analyze are context-specific:
-for example, whether a word is a verb or whether a span of text is a person
-name.
-
-Statistical models enable spaCy to make predictions in context. This usually
-includes part-of speech tags, syntactic dependencies and named entities.
-
-Models are trained on large datasets of labeled example texts.
-
-They can be updated with more examples to fine-tune their predictions – for
-example, to perform better on your specific data.
+この章では、spaCyの機械学習モデルの使い方をみていきます。
 
 ---
 
-# Model Packages
+# 機械学習モデルとは？
+
+- _文脈をもとに_ 言語の特徴を抽出するための手法です
+    - 品詞タグ付け
+    - 依存構造解析
+    - 固有表現抽出
+- ラベル付けされたデータを用いて訓練します
+- さらにデータを用意することで、予測結果の調整をすることができます
+
+Notes: 言語解析したい対象が文脈に依存することはよくあります。
+例えば、ある単語が動詞かどうかの判別や、テキストのある区間が人の名前を示すかどうかの判別などです。
+
+spaCyは機械学習モデルによって、文脈依存の特徴量を抽出することができます。
+品詞のタグ付けや依存構造解析、固有表現抽出などがそれに当たります。
+
+機械学習モデルは、大量のラベル付きデータによって訓練されます。
+
+さらにデータを用意することで、予測結果の修正をすることができます。
+例えば、特定の分野のデータを用いることで、その分野でのパフォーマンスをあげることができます。
+
+---
+
+# モデルパッケージ
 
 <img src="/package.png" alt="A package with the label en_core_web_sm" width="30%" align="right" />
 
@@ -47,39 +46,36 @@ import spacy
 nlp = spacy.load("en_core_web_sm")
 ```
 
-- Binary weights
-- Vocabulary
-- Meta information (language, pipeline)
+- バイナリ化されたモデルパラメータ
+- 語彙データ
+- メタデータ（言語、パイプライン）
 
-Notes: spaCy provides a number of pre-trained model packages you can download
-using the `spacy download` command. For example, the "en_core_web_sm" package is
-a small English model that supports all core capabilities and is trained on web
-text.
+Notes: spaCyには、`spacy download`コマンドを使ってダウンロードできる学習済みモデルがたくさんあります。
+例えば、"en_core_web_sm"パッケージは、spaCyの中心的な機能が全て詰まった、Web文章で訓練された小さなサイズの英語用モデルです。
 
-The `spacy.load` method loads a model package by name and returns an `nlp`
-object.
+`spacy.load`は、モデルパッケジをロードし、`nlp`オブジェクトを返す関数です。
 
-The package provides the binary weights that enable spaCy to make predictions.
+パッケージにはモデルのパラメータが含まれており、spaCyはこれを用いて予測を行います。
 
-It also includes the vocabulary, and meta information to tell spaCy which
-language class to use and how to configure the processing pipeline.
+モデルパッケージにはこれらの他にも、語彙データやメタデータが含まれています。
+メタデータは、spaCyにどの言語クラスを使うかを伝えたり、処理パイプラインの設定方法が記載されています。
 
 ---
 
-# Predicting Part-of-speech Tags
+# 品詞タグの予測
 
 ```python
 import spacy
 
-# Load the small English model
+# 英語のモデル（小サイズ）をロード
 nlp = spacy.load("en_core_web_sm")
 
-# Process a text
+# テキストを処理
 doc = nlp("She ate the pizza")
 
-# Iterate over the tokens
+# tokenを順に処理
 for token in doc:
-    # Print the text and the predicted part-of-speech tag
+    # テキストと、品詞タグの予測結果をプリント
     print(token.text, token.pos_)
 ```
 
@@ -90,20 +86,19 @@ the DET
 pizza NOUN
 ```
 
-Notes: Let's take a look at the model's predictions. In this example, we're
-using spaCy to predict part-of-speech tags, the word types in context.
+Notes: それでは、モデルの予測結果をみていきましょう。
+この例では、spaCyを使って品詞タグ（文脈に依存した単語のタイプ）を予測しています。
 
-First, we load the small English model and receive an `nlp` object.
+まずはじめに、小サイズの英語モデルをロードし、`nlp`変数に格納します。
 
-Next, we're processing the text "She ate the pizza".
+次に、"She ate the pizza"というテキストを解析します。
 
-For each token in the doc, we can print the text and the `.pos_` attribute, the
-predicted part-of-speech tag.
+最後に`doc`内のそれぞれの`token`に対して、テキストと、予測結果の品詞タグが格納されている`.pos_`属性をプリントします。
 
-In spaCy, attributes that return strings usually end with an underscore –
-attributes without the underscore return an ID.
+spaCyでは、文字列が格納されている属性の名前は通常、アンダースコア　_ で終わり、
+アンダースコアの無い属性はIDを返します。
 
-Here, the model correctly predicted "ate" as a verb and "pizza" as a noun.
+この例では、モデルは正しく"ate"を動詞、"pizza"を名詞と判断できています。
 
 ---
 
