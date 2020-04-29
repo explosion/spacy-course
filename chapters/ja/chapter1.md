@@ -1,16 +1,15 @@
 ---
-title: 'Chapter 1: Finding words, phrases, names and concepts'
+title: '第1章: 単語やフレーズ、名前、概念の検索'
 description:
-  "This chapter will introduce you to the basics of text processing with spaCy.
-  You'll learn about the data structures, how to work with statistical models,
-  and how to use them to predict linguistic features in your text."
+  "この章では、spaCyの基本的なテキスト処理の方法を紹介します。
+  データ構造や機械学習モデルの扱い方や、これらを用いてテキストの言語的特徴を抽出する方法を学んでいきます。"
 prev: null
 next: /chapter2
 type: chapter
 id: 1
 ---
 
-<exercise id="1" title="Introduction to spaCy" type="slides">
+<exercise id="1" title="spaCyはじめの一歩" type="slides">
 
 <slides source="chapter1_01_introduction-to-spacy">
 </slides>

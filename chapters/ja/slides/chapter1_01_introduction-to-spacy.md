@@ -2,51 +2,46 @@
 type: slides
 ---
 
-# Introduction to spaCy
+# spaCyはじめの一歩
 
-Notes: Hi, I'm Ines! I'm one of the core developers of spaCy, a popular library
-for advanced Natural Language Processing in Python.
+Notes: こんにちは、私はInesです！spaCyはPythonの先進的な自然言語処理ライブラリで、私はそのコアデベロッパーの一人です。
 
-In this lesson, we'll take a look at the most important concepts of spaCy and
-how to get started.
+このレッスンでは、spaCyのもっとも重要なコンセプトや、spaCyの使い方を紹介していきます。
 
 ---
 
-# The nlp object
+# nlpオブジェクト
 
 ```python
-# Import the English language class
+# 英語の言語クラスをインポート
 from spacy.lang.en import English
 
-# Create the nlp object
+# nlpオブジェクトを作成
 nlp = English()
 ```
 
-- contains the processing pipeline
-- includes language-specific rules for tokenization etc.
+- 言語処理パイプラインを管理
+- 単語分割等、言語依存のルールを管理
 
-Notes: At the center of spaCy is the object containing the processing pipeline.
-We usually call this variable "nlp".
+Notes: `nlp`はspaCyの中心的なオブジェクトで、言語処理のパイプラインを管理します。
 
-For example, to create an English `nlp` object, you can import the `English`
-language class from `spacy.lang.en` and instantiate it. You can use the nlp
-object like a function to analyze text.
+例えば、英語の`nlp`オブジェクトを作成するには、`spacy.lang.en`から`English`クラスをインポートし、
+インスタンス化します。インスタンス化した「nlp」は普通の関数のように使ってテキストを解析できます。
 
-It contains all the different components in the pipeline.
+`nlp`は全ての言語処理コンポーネントをパイプライン上に保持しています。
 
-It also includes language-specific rules used for tokenizing the text into words
-and punctuation. spaCy supports a variety of languages that are available in
-`spacy.lang`.
+また、`nlp`は単語分割のルールや句読点等、言語依存のデータも持っています。英語以外にも、日本語やドイツ語等、
+様々な言語クラスが`spacy.lang`に実装されています。
 
 ---
 
-# The Doc object
+# Docオブジェクト
 
 ```python
-# Created by processing a string of text with the nlp object
+# nlpを用いて、テキストを処理することで作成
 doc = nlp("Hello world!")
 
-# Iterate over tokens in a Doc
+# Docからtokenを取り出す
 for token in doc:
     print(token.text)
 ```
@@ -57,26 +52,26 @@ world
 !
 ```
 
-Notes: When you process a text with the `nlp` object, spaCy creates a `Doc`
-object – short for "document". The Doc lets you access information about the
-text in a structured way, and no information is lost.
+Notes: `nlp`を用いてテキストを処理すると、`Doc`オブジェクトが作成されます。
+（Docは「document」の略です。）
+この`Doc`は非破壊的に作成され、入力テキストに関する構造化された情報を持っています。
 
-The Doc behaves like a normal Python sequence by the way and lets you iterate
-over its tokens, or get a token by its index. But more on that later!
+`Doc`はリストのようなPythonのシーケンスのように扱うことができるので、トークンをイテレートしたり、
+インデックスでトークンを取得できます。これについては、後でもう少し詳しくみていきます！
 
 ---
 
-# The Token object
+# Tokenオブジェクト
 
 <img src="/doc.png" alt="Illustration of a Doc object containing four tokens" width="50%" />
 
 ```python
 doc = nlp("Hello world!")
 
-# Index into the Doc to get a single Token
+# インデックスでトークンを取得
 token = doc[1]
 
-# Get the token text via the .text attribute
+# トークンの文字列を .text属性を使って取得
 print(token.text)
 ```
 
@@ -84,28 +79,26 @@ print(token.text)
 world
 ```
 
-Notes: `Token` objects represent the tokens in a document – for example, a word
-or a punctuation character.
+Notes: `Token`オブジェクトは、単語や句読点等、テキストのトークンの情報を持っています。
 
-To get a token at a specific position, you can index into the doc.
+インデックスを用いて、特定の場所のトークンを`Doc`から取得できます。
 
-`Token` objects also provide various attributes that let you access more
-information about the tokens. For example, the `.text` attribute returns the
-verbatim token text.
+`Token`の属性を使うことで、`Token`に関する様々な情報を得られます
+例えば、`.text`属性を使うことで、トークンの生文字列を取得できます。
 
 ---
 
-# The Span object
+# Spanオブジェクト
 
 <img src="/doc_span.png" width="50%" alt="Illustration of a Doc object containing four tokens and three of them wrapped in a Span" />
 
 ```python
 doc = nlp("Hello world!")
 
-# A slice from the Doc is a Span object
+# `Doc`オブジェクトからスライスで`Span`オブジェクトを取得
 span = doc[1:3]
 
-# Get the span text via the .text attribute
+# スパンの文字列を .text属性で得る
 print(span.text)
 ```
 
@@ -113,16 +106,16 @@ print(span.text)
 world!
 ```
 
-Notes: A `Span` object is a slice of the document consisting of one or more
-tokens. It's only a view of the `Doc` and doesn't contain any data itself.
+Notes: `Span`オブジェクトは`Doc`オブジェクトのスライスで、複数の`Token`からなります。
+`Span`は単なるビューであり、それ自体は何のデータも持っていません。
 
-To create a span, you can use Python's slice notation. For example, `1:3` will
-create a slice starting from the token at position 1, up to – but not including!
-– the token at position 3.
+`Span`オブジェクトを作成するには、Pythonのスライス記法を使います。
+例えば、`1:4`は位置1から位置3のトークンからなる`Span`オブジェクトを作ります。
+（位置4のトークンは含まれないことに注意してください）
 
 ---
 
-# Lexical Attributes
+# 語彙の属性
 
 ```python
 doc = nlp("It costs $5.")
@@ -146,22 +139,18 @@ is_punct: [False, False, False, False, True]
 like_num: [False, False, False, True, False]
 ```
 
-Notes: Here you can see some of the available token attributes:
+Notes: ここでは、いくつかのトークンの属性を紹介します。
 
-`i` is the index of the token within the parent document.
+`i` は`Token`が含まれる`Doc`オブジェクトにおけるインデックスを表します。
 
-`text` returns the token text.
+`text`はトークンの文字列です。
 
-`is_alpha`, `is_punct` and `like_num` return boolean values indicating whether
-the token consists of alphabetic characters, whether it's punctuation or whether
-it _resembles_ a number. For example, a token "10" – one, zero – or the word
-"ten" – T, E, N.
+`is_alpha`はトークンの文字列がアルファベットからなるかどうか、`is_punct`は句読点かどうか、`like_num`は数字に似ているか（例えば"10"や"ten"）、を表すブール値です。
 
-These attributes are also called lexical attributes: they refer to the entry in
-the vocabulary and don't depend on the token's context.
+これらの属性は、語彙のエントリを参照しており、文脈に依存しないため、語彙属性（lexical attributes）と呼ばれます。
 
 ---
 
 # Let's practice!
 
-Notes: Let's see this in action and process your first text with spaCy.
+Notes: 今までのレッスンを元に、実際にspaCyを使ってテキストを処理してみましょう！
