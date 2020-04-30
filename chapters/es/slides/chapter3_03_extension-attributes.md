@@ -2,17 +2,17 @@
 type: slides
 ---
 
-# Extension attributes
+# Extensión de atributos
 
-Notes: In this lesson, you'll learn how to add custom attributes to the `Doc`,
-`Token` and `Span` objects to store custom data.
+Notes: En esta lección aprenderás cómo añadir atributos a la medida para los objetos `Doc`,
+`Token` y `Span` para guardar datos específicos a tus necesidades.
 
 ---
 
-# Setting custom attributes
+# Añadiendo atributos a la medida
 
-- Add custom metadata to documents, tokens and spans
-- Accessible via the `._` property
+- Añade metadatos personalizados a documentos, tokens y spans
+- Accesible a través de la propiedad `._`
 
 ```python
 doc._.title = "My document"
@@ -20,88 +20,76 @@ token._.is_color = True
 span._.has_color = False
 ```
 
-- Registered on the global `Doc`, `Token` or `Span` using the `set_extension`
-  method
+- Se registran en los `Doc`, `Token` o `Span` globales usando el método `set_extension`
 
 ```python
-# Import global classes
+# Importa las clases globales
 from spacy.tokens import Doc, Token, Span
 
-# Set extensions on the Doc, Token and Span
+# Añade extensiones para el Doc, Token y Span
 Doc.set_extension("title", default=None)
 Token.set_extension("is_color", default=False)
 Span.set_extension("has_color", default=False)
 ```
 
-Notes: Custom attributes let you add any meta data to docs, tokens and spans.
-The data can be added once, or it can be computed dynamically.
+Notes: Los atributos a la medida te permiten añadir metadatos a los docs, tokens y spans. Los datos pueden ser añadidos una vez, o calculados dinámicamente.
 
-Custom attributes are available via the `._` (dot underscore) property. This
-makes it clear that they were added by the user, and not built into spaCy, like
-`token.text`.
+Los atributos a la medida están disponibles a través de la propiedad `._` (punto y guión bajo). Esta notación hace que sea claro que fueron agregados por el usuario y no están integrados con spaCy como `token.text`.
 
-Attributes need to be registered on the global `Doc`, `Token` and `Span` classes
-you can import from `spacy.tokens`. You've already worked with those in the
-previous chapters. To register a custom attribute on the `Doc`, `Token` and
-`Span`, you can use the `set_extension` method.
+Los atributos tienen que ser registrados en las clases `Doc`, `Token` y `Span` globales que puedes importar desde `spacy.tokens`. Ya trabajaste con ellas en los capítulos anteriores. Para registrar un atributo personalizado en los `Doc`, `Token` y `Span`, puedes usar el método `set_extension`.
 
-The first argument is the attribute name. Keyword arguments let you define how
-the value should be computed. In this case, it has a default value and can be
-overwritten.
+El primer argumento es el nombre del atributo. Los argumentos keyword te permiten definir como debe ser calculado el valor. En este caso, tiene un valor por defecto y puede ser sobrescrito.
 
 ---
 
-# Extension attribute types
+# Tipos de extensiones
 
-1. Attribute extensions
-2. Property extensions
-3. Method extensions
+1. Extensión de atributos
+2. Extensión de propiedades
+3. Extensión de métodos
 
-Notes: There are three types of extensions: attribute extensions, property
-extensions and method extensions.
+Notes: Hay tres tipos de extensión: extensión de atributos, extensión de propiedades y extensión de métodos.
 
 ---
 
-# Attribute extensions
+# Extensión de atributos
 
-- Set a default value that can be overwritten
+- Añadir un valor por defecto que puede ser sobrescrito
 
 ```python
 from spacy.tokens import Token
 
-# Set extension on the Token with default value
+# Añade una extensión en el Token con un valor por defecto
 Token.set_extension("is_color", default=False)
 
 doc = nlp("The sky is blue.")
 
-# Overwrite extension attribute value
+# Sobrescribe el valor de la extensión de atributo
 doc[3]._.is_color = True
 ```
 
-Notes: Attribute extensions set a default value that can be overwritten.
+Notes: Las extensiones de atributo añaden un valor por defecto que puede ser sobrescrito.
 
-For example, a custom `is_color` attribute on the token that defaults to
-`False`.
+Por ejemplo, un atributo a la medida en el token, llamado `is_color`, que tiene por defecto el valor `False`.
 
-On individual tokens, its value can be changed by overwriting it – in this case,
-True for the token "blue".
+En tokens individuales su valor puede ser cambiado cuando se sobrescribe - en este caso, `True` para el token "blue".
 
 ---
 
-# Property extensions (1)
+# Extensión de propiedades (1)
 
-- Define a getter and an optional setter function
-- Getter only called when you _retrieve_ the attribute value
+- Define una función getter y una función setter opcional
+- La función getter solo es llamada cuando _se consulta_ el valor del atributo
 
 ```python
 from spacy.tokens import Token
 
-# Define getter function
+# Define la función getter
 def get_is_color(token):
     colors = ["red", "yellow", "blue"]
     return token.text in colors
 
-# Set extension on the Token with getter
+# Añade una extensión en el Token con getter
 Token.set_extension("is_color", getter=get_is_color)
 
 doc = nlp("The sky is blue.")
@@ -112,36 +100,31 @@ print(doc[3]._.is_color, "-", doc[3].text)
 True - blue
 ```
 
-Notes: Property extensions work like properties in Python: they can define a
-getter function and an optional setter.
+Notes: Las extensiones de propiedades funcionan como las propiedades de Python: pueden definir una función getter y una función setter opcional.
 
-The getter function is only called when you retrieve the attribute. This lets
-you compute the value dynamically, and even take other custom attributes into
-account.
+La función getter solo es llamada cuando consultas el atributo. Esto te permite calcular el valor dinámicamente, e inclusive puede tener en cuenta otros atributos a la medida.
 
-Getter functions take one argument: the object, in this case, the token. In this
-example, the function returns whether the token text is in our list of colors.
+Las funciones getter toman un argumento: el objeto, en este caso el token. En este ejemplo, la función devuelve si el texto de un token se puede encontrar en nuestra lista de colores.
 
-We can then provide the function via the `getter` keyword argument when we
-register the extension.
+Podemos proveer la función mediante el argumento keyword `getter` cuando registramos la extensión.
 
-The token "blue" now returns `True` for `._.is_color`.
+El token "blue" ahora devuelve `True` para `._.is_color`.
 
 ---
 
-# Property extensions (2)
+# Extensión de propiedades (2)
 
-- `Span` extensions should almost always use a getter
+- Las extensiones de `Span` casi siempre deberían usar un getter
 
 ```python
 from spacy.tokens import Span
 
-# Define getter function
+# Define la función getter
 def get_has_color(span):
     colors = ["red", "yellow", "blue"]
     return any(token.text in colors for token in span)
 
-# Set extension on the Span with getter
+# Añade una extensión en el Span con getter
 Span.set_extension("has_color", getter=get_has_color)
 
 doc = nlp("The sky is blue.")
@@ -154,33 +137,28 @@ True - sky is blue
 False - The sky
 ```
 
-Notes: If you want to set extension attributes on a span, you almost always want
-to use a property extension with a getter. Otherwise, you'd have to update
-_every possible span ever_ by hand to set all the values.
+Notes: Si quieres añadir extensiones de atributos en un span, casi siempre debes usar una extensión de propiedades con un getter. De otra manera, tendrías que actualizar a mano _cada uno de los spans posibles_ para añadir todos los valores.
 
-In this example, the `get_has_color` function takes the span and returns whether
-the text of any of the tokens is in the list of colors.
+En este ejemplo, la función `get_has_color` toma el span y devuelve si el texto de alguno de los tokens está en la lista de colores.
 
-After we've processed the doc, we can check different slices of the doc and the
-custom `._.has_color` property returns whether the span contains a color token
-or not.
+Después de haber procesado el doc, podemos revisar los diferentes slices del doc y la propiedad a la medida `._.has_color` nos devolverá un resultado sobre si el span contiene un token de color o no.
 
 ---
 
-# Method extensions
+# Extensión de métodos
 
-- Assign a **function** that becomes available as an object method
-- Lets you pass **arguments** to the extension function
+- Asigna una **función** que se está disponible como un método de un objeto
+- Te permite pasar **argumentos** a la función de extensión
 
 ```python
 from spacy.tokens import Doc
 
-# Define method with arguments
+# Define un método con argumentos
 def has_token(doc, token_text):
     in_doc = token_text in [token.text for token in doc]
     return in_doc
 
-# Set extension on the Doc with method
+# Añade una extensión en el Doc con el método
 Doc.set_extension("has_token", method=has_token)
 
 doc = nlp("The sky is blue.")
@@ -193,22 +171,17 @@ True - blue
 False - cloud
 ```
 
-Notes: Method extensions make the extension attribute a callable method.
+Notes: La extensión de métodos hacen que la extensión del atributo sea un método que puede ser llamado.
 
-You can then pass one or more arguments to it, and compute attribute values
-dynamically – for example, based on a certain argument or setting.
+Puedes pasarle uno o más argumentos y calcular los valores del atributo de manera dinámica - por ejemplo, basados en cierto argumento o configuración.
 
-In this example, the method function checks whether the doc contains a token
-with a given text. The first argument of the method is always the object itself
-– in this case, the doc. It's passed in automatically when the method is called.
-All other function arguments will be arguments on the method extension. In this
-case, `token_text`.
+En este ejemplo, la función del método revisa si el doc contiene un token con un texto dado. El primer argumento del método es siempre el objeto en sí - en este caso, el doc. Se pasa automáticamente cuando se llama al método.
+Todos los demás argumentos de la función serán argumentos en la extensión del método. En este caso, `token_text`.
 
-Here, the custom `._.has_token` method returns `True` for the word "blue" and
-`False` for the word "cloud".
+Aquí el método a la medida, `._.has_token`, devuelve `True` para la palabra "blue" y `False` para la palabra "cloud".
 
 ---
 
-# Let's practice!
+# ¡Practiquemos!
 
-Notes: Now it's your turn. Let's add some custom extensions!
+Notes: Ahora es tu turno. ¡Vamos a añadir extensiones a la medida!
