@@ -41,7 +41,7 @@ Notes: spaCy viene con los siguientes componentes incluidos en su pipeline.
 
 El part-of-speech tagger añade los atributos `token.tag` y `token.pos`.
 
-El dependency parser añade los atributos `token.dep` y `token.head` y es responsable de detectar frases y los <abbr title="En español, sintagmas nominales">base noun phrases</abbr>, también conocidos como "noun chunks".
+El dependency parser añade los atributos `token.dep` y `token.head` y es responsable de detectar frases y los <abbr title="En español, frases nominales">base noun phrases</abbr>, también conocidos como "noun chunks".
 
 El named entity recognizer añade las entidades detectadas a la propiedad `doc.ents`. También escribe los atributos del tipo de entidad en los tokens, lo que indica si un token es parte de una entidad o no.
 
