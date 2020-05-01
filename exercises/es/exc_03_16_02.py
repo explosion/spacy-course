@@ -6,9 +6,9 @@ text = (
     "the city of College Park, Georgia, specializing in chicken sandwiches."
 )
 
-# Disable the tagger and parser
+# Deshabilita el tagger y el parser
 with ____.____(____):
-    # Process the text
+    # Procesa el texto
     doc = ____
-    # Print the entities in the doc
+    # Imprime las entidades del doc en pantalla
     print(____)

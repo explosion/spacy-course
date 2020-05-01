@@ -5,13 +5,13 @@ nlp = spacy.load("en_core_web_sm")
 
 
 def get_wikipedia_url(span):
-    # Get a Wikipedia URL if the span has one of the labels
+    # Obtén la URL de Wikipedia si el span tiene uno de los siguientes labels
     if span.label_ in ("PERSON", "ORG", "GPE", "LOCATION"):
         entity_text = span.text.replace(" ", "_")
         return "https://en.wikipedia.org/w/index.php?search=" + entity_text
 
 
-# Set the Span extension wikipedia_url using get getter get_wikipedia_url
+# Añade la extensión del Span, wikipedia_url, usando el getter get_wikipedia_url
 Span.set_extension("wikipedia_url", getter=get_wikipedia_url)
 
 doc = nlp(
@@ -19,5 +19,5 @@ doc = nlp(
     "last album, David Bowie was at the vanguard of contemporary culture."
 )
 for ent in doc.ents:
-    # Print the text and Wikipedia URL of the entity
+    # Imprime en pantalla el texto y la URL de Wikipedia de la entidad
     print(ent.text, ent._.wikipedia_url)

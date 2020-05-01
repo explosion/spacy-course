@@ -6,9 +6,9 @@ text = (
     "the city of College Park, Georgia, specializing in chicken sandwiches."
 )
 
-# Disable the tagger and parser
+# Deshabilita el tagger y el parser
 with nlp.disable_pipes("tagger", "parser"):
-    # Process the text
+    # Procesa el texto
     doc = nlp(text)
-    # Print the entities in the doc
+    # Imprime las entidades del doc en pantalla
     print(doc.ents)

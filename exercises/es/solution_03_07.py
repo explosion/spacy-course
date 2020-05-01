@@ -9,21 +9,21 @@ print("animal_patterns:", animal_patterns)
 matcher = PhraseMatcher(nlp.vocab)
 matcher.add("ANIMAL", None, *animal_patterns)
 
-# Define the custom component
+# Define el componente personalizado
 def animal_component(doc):
-    # Apply the matcher to the doc
+    # Aplica el matcher al doc
     matches = matcher(doc)
-    # Create a Span for each match and assign the label "ANIMAL"
+    # Crea un Span para cada resultado y asignales el label "ANIMAL"
     spans = [Span(doc, start, end, label="ANIMAL") for match_id, start, end in matches]
-    # Overwrite the doc.ents with the matched spans
+    # Sobrescribe los doc.ents con los spans resultantes
     doc.ents = spans
     return doc
 
 
-# Add the component to the pipeline after the "ner" component
+# Añade el componente al pipeline después del componente "ner"
 nlp.add_pipe(animal_component, after="ner")
 print(nlp.pipe_names)
 
-# Process the text and print the text and label for the doc.ents
+# Procesa el texto e imprime en pantalla el texto y el label de los doc.ents
 doc = nlp("I have a cat and a Golden Retriever")
 print([(ent.text, ent.label_) for ent in doc.ents])

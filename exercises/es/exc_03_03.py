@@ -1,10 +1,10 @@
 import spacy
 
-# Load the en_core_web_sm model
+# Carga el modelo en_core_web_sm
 nlp = ____
 
-# Print the names of the pipeline components
+# Imprime en pantalla los nombres de los componentes del pipeline 
 print(____.____)
 
-# Print the full pipeline of (name, component) tuples
+# Imprime en pantalla el pipeline entero de tuples (nombre, componente)
 print(____.____)
