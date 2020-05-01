@@ -28,9 +28,9 @@ docs = list(nlp.pipe(LOTS_OF_TEXTS))
 
 Notes: Si necesitas procesar una gran cantidad de textos y crear muchos objetos `Doc` seguidos, el método `nlp.pipe` puede acelerar este proceso de manera significativa.
 
-Procesa los textos como un stream y usa `yield` para devolver objetos `Doc`.
+Procesa los textos como un <abbr title="en español, un flujo, en este caso de datos. Se refiere a que no genera una lista desde el principio, sino cada elemento individualmente.">stream</abbr> y usa `yield` para devolver objetos `Doc`.
 
-Es mucho más rápido que solo llamar al objeto `nlp` sobre cada texto porque procesa en batches los textos.
+Es mucho más rápido que solo llamar al objeto `nlp` sobre cada texto, porque procesa en <abbr title="en español, grupos.">batches</abbr> los textos.
 
 `nlp.pipe` es un generador que usa `yield` para devolver objetos `Doc`, así que para obtener una lista de `Doc`, recuerda llamar al método `list` alrededor de él.
 
@@ -84,7 +84,7 @@ for doc, context in nlp.pipe(data, as_tuples=True):
     doc._.page_number = context["page_number"]
 ```
 
-Notes: Inclusive puedes pasarle metadatos a los atributos a la medida.
+Notes: Inclusive puedes pasarle metadatos a los atributos personalizados.
 
 En este ejemplo, estamos registrando dos extensiones, `id` and `page number`, que tienen por defecto `None`.
 

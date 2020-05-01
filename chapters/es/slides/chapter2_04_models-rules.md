@@ -45,7 +45,7 @@ Notes: Los enfoques basados en reglas son muy útiles si hay un número más o
 menos finito de casos que quieres encontrar. Por ejemplo, todos los países o
 ciudades del mundo, nombres de drogas o inclusive razas de perros.
 
-En spaCy puedes lograr esto con una regla de tokenización a la medida, así como
+En spaCy puedes lograr esto con una regla de tokenización personalizada, así como
 el matcher y el
 <abbr title="El matcher de frases. Para revisar qué es el matcher, vuelve a la lección anterior.">phrase
 matcher</abbr>.

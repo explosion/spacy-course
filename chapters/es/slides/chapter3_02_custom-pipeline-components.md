@@ -2,15 +2,15 @@
 type: slides
 ---
 
-# Componentes de pipeline a la medida
+# Componentes de pipeline personalizados
 
-Notes: Ahora que sabes cómo funciona el pipeline de spaCy exploremos otra característica muy poderosa: los componentes a la medida para el pipeline.
+Notes: Ahora que sabes cómo funciona el pipeline de spaCy exploremos otra característica muy poderosa: los componentes personalizados para el pipeline.
 
-Los componentes a la medida del pipeline te permiten añadir tu propia función al pipeline de spaCy que se ejecuta cuando llamas al objeto `nlp` sobre un texto - por ejemplo, para modificar el doc y añadirle más datos.
+Los componentes personalizados del pipeline te permiten añadir tu propia función al pipeline de spaCy que se ejecuta cuando llamas al objeto `nlp` sobre un texto - por ejemplo, para modificar el doc y añadirle más datos.
 
 ---
 
-# ¿Porqué tener componentes a la medida?
+# ¿Porqué tener componentes personalizados?
 
 <img src="/pipeline.png" alt="Illustration of the spaCy pipeline" width="90%" />
 
@@ -20,7 +20,7 @@ Los componentes a la medida del pipeline te permiten añadir tu propia función 
 
 Notes: Después que el texto es convertido en tokens y un objeto `Doc` ha sido creado los componentes del pipeline se aplican en orden. spaCy ofrece soporte para un rango de componentes incluidos, pero también te permite definir los tuyos.
 
-Los componentes a la medida se ejecutan automáticamente cuando llamas al objeto `nlp` sobre un texto.
+Los componentes personalizados se ejecutan automáticamente cuando llamas al objeto `nlp` sobre un texto.
 
 Son especialmente útiles para añadir tus propios metadatos a los documentos y a los tokens.
 
@@ -82,7 +82,7 @@ Sin embargo, el otro componente al que se le añadirá un nuevo componente antes
 # Crea el objeto nlp
 nlp = spacy.load("en_core_web_sm")
 
-# Define un componente a la medida
+# Define un componente personalizado
 def custom_component(doc):
     # Imprime la longitud del doc en pantalla
     print("Doc length:", len(doc))
@@ -122,7 +122,7 @@ Cuando imprimimos en pantalla los nombres de los componentes el nuevo aparece al
 # Crea el objeto nlp
 nlp = spacy.load("en_core_web_sm")
 
-# Define un componente a la medida
+# Define un componente personalizado
 def custom_component(doc):
 
     # Imprime la longitud del doc en pantalla
@@ -142,7 +142,7 @@ doc = nlp("Hello world!")
 Doc length: 3
 ```
 
-Notes: Ahora cuando procesamos un texto usando el objeto `nlp`, el componente a la medida será aplicado al doc y la longitud del documento será impresa en pantalla.
+Notes: Ahora cuando procesamos un texto usando el objeto `nlp`, el componente personalizado será aplicado al doc y la longitud del documento será impresa en pantalla.
 
 ---
 
