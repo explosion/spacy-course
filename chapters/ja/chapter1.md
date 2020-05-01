@@ -110,91 +110,85 @@ spaCyの`Doc`と`Token`オブジェクトと、その語彙属性（lexical attr
 
 <exercise id="6" title="Model packages" type="choice">
 
-What's **not** included in a model package that you can load into spaCy?
+次のうち、spaCyのモデルパッケージに含まれて**いない**ものはどれでしょう？
 
 <choice>
-<opt text="A meta file including the language, pipeline and license.">
+<opt text="言語、パイプライン、ライセンスが記載されているメタファイル">
 
-All models include a `meta.json` that defines the language to initialize, the
-pipeline component names to load as well as general meta information like the
-model name, version, license, data sources, author and accuracy figures (if
-available).
-
-</opt>
-<opt text="Binary weights to make statistical predictions.">
-
-To predict linguistic annotations like part-of-speech tags, dependency labels or
-named entities, models include binary weights.
+全てのモデルには`meta.json`というメタファイルが含まれています。
+これには、使用言語、ロードすべきパイプライン要素の名前のほか、モデル名、バージョン、ライセンス、データソース、作者、制度の数値（もしあれば）
+等が記載されています。
 
 </opt>
-<opt correct="true" text="The labelled data that the model was trained on.">
+<opt text="機械学習モデルの重み">
 
-Statistical models allow you to generalize based on a set of training examples.
-Once they're trained, they use binary weights to make predictions. That's why
-it's not necessary to ship them with their training data.
+品詞タグや依存関係ラベル、固有表現等の言語特徴量の抽出をするため、機械学習モデルの重みが含まれています。
 
 </opt>
-<opt text="Strings of the model's vocabulary and their hashes.">
+<opt correct="true" text="機械学習モデル作成につかったラベル付きデータ">
 
-Model packages include a `strings.json` that stores the entries in the model's
-vocabulary and the mapping to hashes. This allows spaCy to only communicate in
-hashes and look up the corresponding string if needed.
+機械学習モデルは、データをもとに学習を行い、モデルの重みを更新し、その重みを用いて
+汎化した予測を行います。
+つまり、予測には学習データが不必要なので、モデルパッケージには含まれていません。
+
+</opt>
+<opt text="モデルの語彙データの文字列と、そのハッシュ値">
+
+モデルパッケージには、語彙データの要素とそのハッシュ値のマッピングが保存されている`strings.json`という
+ファイルが含まれています。
+ハッシュ値を用いることで、spaCyは内部で効率的にデータをやり取りしており、文字列は必要な場面でのみ参照されます。
 
 </opt>
 </choice>
 
 </exercise>
 
-<exercise id="7" title="Loading models">
+<exercise id="7" title="モデルのロード">
 
-The models we're using in this course are already pre-installed. For more
-details on spaCy's statistical models and how to install them on your machine,
-see [the documentation](https://spacy.io/usage/models).
+このコースで使うモデルは、事前にインストールされているものです。
+spaCyの機械学習モデルの詳細やインストール方法については、[公式ドキュメント](https://spacy.io/usage/models)をみてください。
 
-- Use `spacy.load` to load the small English model `"en_core_web_sm"`.
-- Process the text and print the document text.
+- `spacy.load`を使って、小サイズの英語モデル`"en_core_web_sm"`をロードしてください。
+- テキストを処理し、文字列を出力してください。
 
 <codeblock id="01_07">
 
-To load a model, call `spacy.load` on its string name. Model names differ
-depending on the language and the data they were trained on – so make sure to
-use the correct name.
+モデルをロードするには、`spacy.load`関数にモデル名を渡してください。
+モデル名は、言語や使用されたトレーニングデータによって異なるので、適切なものを選んで使ってください。
 
 </codeblock>
 
 </exercise>
 
-<exercise id="8" title="Predicting linguistic annotations">
+<exercise id="8" title="言語特徴量の解析">
 
-You'll now get to try one of spaCy's pre-trained model packages and see its
-predictions in action. Feel free to try it out on your own text! To find out
-what a tag or label means, you can call `spacy.explain` in the loop. For
-example: `spacy.explain("PROPN")` or `spacy.explain("GPE")`.
+さて、では実際にspaCyの学習済みモデルを用いて、解析結果をみてみましょう。
+お気軽にご自分の文章で試してみてください！
+タグやラベルの意味を知るには、`spacy.explain`を使ってください。
+例えば、`spacy.explain("PROPN")` or `spacy.explain("GPE")`とすることで意味を出力することができます。
 
-### Part 1
+### パート1
 
-- Process the text with the `nlp` object and create a `doc`.
-- For each token, print the token text, the token's `.pos_` (part-of-speech tag)
-  and the token's `.dep_` (dependency label).
+- `nlp`オブジェクトでテキストを処理し、`doc`を作ってください
+- それぞれのトークンについて、文字列、`.pos_`（品詞タグ）、`.dep_`（依存関係ラベル）をプリントしてください。
 
 <codeblock id="01_08_01">
 
-To create a `doc`, call the `nlp` object on a string of text. Remember that you
-need to use the token attribute names with an underscore to get the string
-values.
+`doc`オブジェクトを作るには、`nlp`オブジェクトを文字列に対して呼び出します。
+トークンの属性の文字列を出力するには、属性名にアンダースコアをつけることを忘れないで下さい。
 
 </codeblock>
 
-### Part 2
+### パート2
 
-- Process the text and create a `doc` object.
-- Iterate over the `doc.ents` and print the entity text and `label_` attribute.
+- テキストを処理し、`doc`オブジェクトを作ってください。
+- `doc.ents`をイテレートし、固有表現の文字列とラベルを出力してください。
+- Iterate ove the `doc.ents` and print the entity text and `label_` attribute.
 
 <codeblock id="01_08_02">
 
-To create a `doc`, call the `nlp` object on a string of text. Remember that you
-need to use the token attribute names with an underscore to get the string
-values.
+`doc`オブジェクトを作るには、`nlp`オブジェクトを文字列に対して呼び出します。
+トークンの属性の文字列を出力するには、属性名にアンダースコアをつけることを忘れないで下さい。
 
 </codeblock>
 
@@ -202,28 +196,26 @@ values.
 
 <exercise id="9" title="Predicting named entities in context">
 
-Models are statistical and not _always_ right. Whether their predictions are
-correct depends on the training data and the text you're processing. Let's take
-a look at an example.
+機械学習モデルの出力は常に正しいとは限りません。
+出力は、学習データや入力データに依存します。
+一つ例をみてみましょう。
 
-- Process the text with the `nlp` object.
-- Iterate over the entities and print the entity text and label.
-- Looks like the model didn't predict "iPhone X". Create a span for those tokens
-  manually.
+- `nlp`オブジェクトでテキストを処理してください。
+- 固有表現をイテレートし、文字列とラベルを出力してください。
+- モデルは「iPhone X」を正しく抽出できないようです。手動でスパンを作ってみてください。
 
 <codeblock id="01_09">
 
-- To create a `doc`, call the `nlp` object on the text. Named entities are
-  available as the `doc.ents` property.
-- The easiest way to create a `Span` object is to use the slice notation – for
-  example `doc[5:10]` for the token at position 5 _up to_ position 10. Remember
-  that the last token index is exclusive.
+- `doc`オブジェクトを作るには、文に対して`nlp`オブジェクトを呼び出してください。固有表現は
+  `doc.ents`プロパティから取得することができます。
+- `Span`オブジェクトを作る最も簡単な方法は、スライス記法を使うことです。例えば、`doc[5:10]`は位置5から位置9までのトークンを示します。
+  右端は含まれないことに注意してください。
 
 </codeblock>
 
 </exercise>
 
-<exercise id="10" title="Rule-based matching" type="slides">
+<exercise id="10" title="ルールベースマッチ" type="slides">
 
 <slides source="chapter1_03_rule-based-matching">
 </slides>

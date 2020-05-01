@@ -2,66 +2,64 @@
 type: slides
 ---
 
-# Rule-based matching
+# ルールベースマッチ
 
-Notes: In this lesson, we'll take a look at spaCy's matcher, which lets you
-write rules to find words and phrases in text.
-
----
-
-# Why not just regular expressions?
-
-- Match on `Doc` objects, not just strings
-- Match on tokens and token attributes
-- Use the model's predictions
-- Example: "duck" (verb) vs. "duck" (noun)
-
-Notes: Compared to regular expressions, the matcher works with `Doc` and `Token`
-objects instead of only strings.
-
-It's also more flexible: you can search for texts but also other lexical
-attributes.
-
-You can even write rules that use the model's predictions.
-
-For example, find the word "duck" only if it's a verb, not a noun.
+Notes: この演習では、spaCyのmatcherをみていきましょう。
+matcherを使えば、ルールベースで単語やフレーズを見つける処理を書くことができます。
 
 ---
 
-# Match patterns
+# 正規表現じゃだめなの？
 
-- Lists of dictionaries, one per token
+- 単なる文字列ではなく、`Doc`オブジェクトにマッチします
+- トークンや、その属性にマッチします
+- モデルの予測結果も使えます
+- 例："duck"（動詞） vs. "duck"（名詞）
 
-- Match exact token texts
+Notes: 正規表現と異なり、単なる文字列ではなく`Doc`や`Token`にマッチします。
+
+そして正規表現よりも柔軟です。文字列のみならず、語彙属性をベースに検索することができます。
+
+さらに、モデルの予測結果をもとにしたルールを書くこともできます。
+
+例えば、「duck」という単語が名詞ではなく動詞の時のみマッチする、というルールがかけます。
+
+---
+
+# マッチのパターン
+
+- トークンごとの辞書のリスト
+
+- トークン文字列に完全一致するもののみマッチ　
 
 ```python
 [{"TEXT": "iPhone"}, {"TEXT": "X"}]
 ```
 
-- Match lexical attributes
+- 語彙属性にマッチ
 
 ```python
 [{"LOWER": "iphone"}, {"LOWER": "x"}]
 ```
 
-- Match any token attributes
+- 色々な属性をもとにマッチ
 
 ```python
 [{"LEMMA": "buy"}, {"POS": "NOUN"}]
 ```
 
-Notes: Match patterns are lists of dictionaries. Each dictionary describes one
-token. The keys are the names of token attributes, mapped to their expected
-values.
+Notes: マッチのパターンは辞書のリストで表します。
+それぞれの辞書は、各トークンを表します。
+辞書のキーはトークンの属性を、辞書の値はマッチする値を表します。
 
-In this example, we're looking for two tokens with the text "iPhone" and "X".
+この例では、「iPhone」と「X」の二つのトークンからなるトークン列を探しています。
 
-We can also match on other token attributes. Here, we're looking for two tokens
-whose lowercase forms equal "iphone" and "x".
+文字列以外の属性にマッチさせることもできます。
+ここでは、小文字化した場合に「iphone」と「x」からなるトークン列を探しています。
 
-We can even write patterns using attributes predicted by the model. Here, we're
-matching a token with the lemma "buy", plus a noun. The lemma is the base form,
-so this pattern would match phrases like "buying milk" or "bought flowers".
+さらに、モデルの予測結果をもとにマッチさせることもできます。
+ここでは、原形（lemma）が「buy」、名詞のトークンの組を探しています。
+つまり、「buying milk」や「bought flowers」等にマッチします。
 
 ---
 
@@ -70,52 +68,53 @@ so this pattern would match phrases like "buying milk" or "bought flowers".
 ```python
 import spacy
 
-# Import the Matcher
+# Matcherをインポート
 from spacy.matcher import Matcher
 
-# Load a model and create the nlp object
+# モデルをロードし、nlpオブジェクトを作成
 nlp = spacy.load("en_core_web_sm")
 
-# Initialize the matcher with the shared vocab
+# matcherを共有語彙データを用いて初期化
 matcher = Matcher(nlp.vocab)
 
-# Add the pattern to the matcher
+# パターンをmatcherに追加
 pattern = [{"TEXT": "iPhone"}, {"TEXT": "X"}]
 matcher.add("IPHONE_PATTERN", None, pattern)
 
-# Process some text
+# テキストを処理
 doc = nlp("Upcoming iPhone X release date leaked")
 
-# Call the matcher on the doc
+# matcherをdocに対して呼び出し
 matches = matcher(doc)
 ```
 
-Notes: To use a pattern, we first import the matcher from `spacy.matcher`.
+Notes: パターンを使うには、まず最初に`spacy.matcher`からmatcherをインポートします。
 
-We also load a model and create the `nlp` object.
+そして、モデルをロードし`nlp`オブジェクトを作成します。
 
-The matcher is initialized with the shared vocabulary, `nlp.vocab`. You'll learn
-more about this later – for now, just remember to always pass it in.
+matcherは共有語彙データ`nlp.vocab`を用いて初期化します。
+これについては後ほど詳しくみていきます。とりあえず、このようにして初期化する必要があると覚えておいてください。
 
-The `matcher.add` method lets you add a pattern. The first argument is a unique
-ID to identify which pattern was matched. The second argument is an optional
-callback. We don't need one here, so we set it to `None`. The third argument is
-the pattern.
+パターンは、`matcher.add`メソッドを用いて登録します。
+第一引数は、それぞれのパターンを識別するためのユニークIDです。
+第二引数は、オプショナルなコールバック関数です。
+今は必要ないので、`None`を与えておきます。
+第三引数はパターンです。
 
-To match the pattern on a text, we can call the matcher on any doc.
+パターンをマッチさせるには、docオブジェクトに対してmatcherを呼び出します。
 
-This will return the matches.
+matcherを呼び出すと、マッチの結果がかえってきます。
 
 ---
 
-# Using the Matcher (2)
+# Matcherをつかう（2）
 
 ```python
-# Call the matcher on the doc
+# matcherをdocに対して呼びだす
 doc = nlp("Upcoming iPhone X release date leaked")
 matches = matcher(doc)
 
-# Iterate over the matches
+# 結果をイテレートする
 for match_id, start, end in matches:
     # Get the matched span
     matched_span = doc[start:end]
@@ -126,21 +125,19 @@ for match_id, start, end in matches:
 iPhone X
 ```
 
-- `match_id`: hash value of the pattern name
-- `start`: start index of matched span
-- `end`: end index of matched span
+- `match_id`: パターン名のハッシュ値
+- `start`: マッチしたスパンの開始インデックス
+- `end`: マッチしたスパンの終了インデックス
 
-Notes: When you call the matcher on a doc, it returns a list of tuples.
+Notes: matcherをdocオブジェクトに対して呼び出すと、タプルのリストがかえってきます。
 
-Each tuple consists of three values: the match ID, the start index and the end
-index of the matched span.
+それぞれのタプルは、マッチID、マッチしたスパンの開始インデックス、終了インデックスの3つの要素からなります。
 
-This means we can iterate over the matches and create a `Span` object: a slice
-of the doc at the start and end index.
+この返り値をイテレートし、開始インデックスと終了インデックスで`doc`をスライスすることで、`Span`オブジェクトを作ることができます。
 
 ---
 
-# Matching lexical attributes
+# 語彙属性のマッチ
 
 ```python
 pattern = [
@@ -160,21 +157,21 @@ doc = nlp("2018 FIFA World Cup: France won!")
 2018 FIFA World Cup:
 ```
 
-Notes: Here's an example of a more complex pattern using lexical attributes.
+Notes: これは、語彙属性を用いたより複雑なマッチの例です。
 
-We're looking for five tokens:
+次の5つからなるトークン列を探索しています：
 
-A token consisting of only digits.
+数字からなるトークン
 
-Three case-insensitive tokens for "fifa", "world" and "cup".
+3つのトークン「fifa」、「world」、「cup」（ただし大文字小文字を区別しない）
 
-And a token that consists of punctuation.
+句読点記号
 
-The pattern matches the tokens "2018 FIFA World Cup:".
+このパターンは、「2018 FIFA World Cup:」というトークンにマッチします。
 
 ---
 
-# Matching other token attributes
+# その他のトークン属性のマッチ
 
 ```python
 pattern = [
@@ -192,20 +189,20 @@ loved dogs
 love cats
 ```
 
-Note: In this example, we're looking for two tokens:
+Note: この例では、次の2つのトークンからなる列を探索しています：
 
-A verb with the lemma "love", followed by a noun.
+原型が「love」+名詞
 
-This pattern will match "loved dogs" and "love cats".
+このパターンは「loved dogs」と「love cats」にマッチします。
 
 ---
 
-# Using operators and quantifiers (1)
+# 演算子と量指定子を使う(1)
 
 ```python
 pattern = [
     {"LEMMA": "buy"},
-    {"POS": "DET", "OP": "?"},  # optional: match 0 or 1 times
+    {"POS": "DET", "OP": "?"},  # Optional: 0個か1個にマッチ
     {"POS": "NOUN"}
 ]
 ```
@@ -219,39 +216,40 @@ bought a smartphone
 buying apps
 ```
 
-Notes: Operators and quantifiers let you define how often a token should be
-matched. They can be added using the "OP" key.
+Notes: 演算子と量指定子を使うと、マッチするトークンの量を指定することができます。
+これらは、「OP」キーによって指定します。
 
-Here, the "?" operator makes the determiner token optional, so it will match a
-token with the lemma "buy", an optional article and a noun.
+ここで、「?」演算子はトークンのマッチをオプショナルにしています。
+つまりこのパターンは、
+原型の「buy」+冠詞0個か1個+名詞、
+にマッチします。
 
 ---
 
-# Using operators and quantifiers (2)
+# 演算子と量指定子を使う(2)
 
 | Example       | Description                  |
 | ------------- | ---------------------------- |
-| `{"OP": "!"}` | Negation: match 0 times      |
-| `{"OP": "?"}` | Optional: match 0 or 1 times |
-| `{"OP": "+"}` | Match 1 or more times        |
-| `{"OP": "*"}` | Match 0 or more times        |
+| `{"OP": "!"}` | 否定：0個にマッチ |
+| `{"OP": "?"}` | Optional: 0個か1個にマッチ |
+| `{"OP": "+"}` | 1個以上にマッチ |
+| `{"OP": "*"}` | 0個以上にマッチ |
 
-Notes: "OP" can have one of four values:
+Notes: 「OP」には以下のいずれかを指定することができます：
 
-An "!" negates the token, so it's matched 0 times.
+「!」トークンの否定。0個にマッチします。
 
-A "?" makes the token optional, and matches it 0 or 1 times.
+「?」Optional。0個か1個にマッチします。
 
-A "+" matches a token 1 or more times.
+「+」1個以上にマッチします。
 
-And finally, an "\*" matches 0 or more times.
+「\*」0個以上にマッチします。
 
-Operators can make your patterns a lot more powerful, but they also add more
-complexity – so use them wisely.
+演算子を使えばより強力なパターンを作ることができますが、より複雑になってしまいます。うまく使いましょう。
 
 ---
 
 # Let's practice!
 
-Notes: Token-based matching opens up a lot of new possibilities for information
-extraction. So let's try it out and write some patterns!
+Notes: トークンベースのマッチングは、情報抽出の可能性を大きく広げてくれます。
+それでは、実際にいくつかのパターンを書いて試してみましょう。
