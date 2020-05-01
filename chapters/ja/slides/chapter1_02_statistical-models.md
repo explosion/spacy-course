@@ -14,7 +14,7 @@ Notes: それでは、`nlp`オブジェクトを強化していきましょう�
 
 - _文脈をもとに_ 言語の特徴を抽出するための手法です
     - 品詞タグ付け
-    - 依存構造解析
+    - 統語的依存関係解析
     - 固有表現抽出
 - ラベル付けされたデータを用いて訓練します
 - さらにデータを用意することで、予測結果の調整をすることができます
@@ -23,7 +23,7 @@ Notes: 言語解析したい対象が文脈に依存することはよくあり�
 例えば、ある単語が動詞かどうかの判別や、テキストのある区間が人の名前を示すかどうかの判別などです。
 
 spaCyは機械学習モデルによって、文脈依存の特徴量を抽出することができます。
-品詞のタグ付けや依存構造解析、固有表現抽出などがそれに当たります。
+品詞のタグ付けや係り受け解析、固有表現抽出などがそれに当たります。
 
 機械学習モデルは、大量のラベル付きデータによって訓練されます。
 
@@ -102,7 +102,7 @@ spaCyでは、文字列が格納されている属性の名前は通常、アン
 
 ---
 
-# Predicting Syntactic Dependencies
+# 依存関係の解析
 
 ```python
 for token in doc:
@@ -116,51 +116,47 @@ the DET det pizza
 pizza NOUN dobj ate
 ```
 
-Notes: In addition to the part-of-speech tags, we can also predict how the words
-are related. For example, whether a word is the subject of the sentence or an
-object.
+Notes: 品詞タグづけに加えて、単語間の依存関係の解析もできます。
+例えば、文章中のある単語が主語か目的語かなどを予測することができます。
 
-The `.dep_` attribute returns the predicted dependency label.
+依存関係ラベルの予測結果は、`.dep_`属性で取得することができます。
 
-The `.head` attribute returns the syntactic head token. You can also think of it
-as the parent token this word is attached to.
+`.head`属性は、係り先のトークン、つまり構文木における親のトークンを表しています。
 
 ---
 
-# Dependency label scheme
+# 依存関係ラベルの定義
 
-<img src="/dep_example.png" alt="Visualization of the dependency graph for 'She ate the pizza'" />
+<img src="/dep_example.png" alt="'She ate the pizza'という文の構文木のグラフ" />
 
 | Label     | Description          | Example |
 | --------- | -------------------- | ------- |
-| **nsubj** | nominal subject      | She     |
-| **dobj**  | direct object        | pizza   |
-| **det**   | determiner (article) | the     |
+| **nsubj** | 名詞句主語 | She     |
+| **dobj**  | 目的語 | pizza   |
+| **det**   | 限定詞（冠詞） | the     |
 
-Notes: To describe syntactic dependencies, spaCy uses a standardized label
-scheme. Here's an example of some common labels:
+Notes: 依存関係解析の結果は、標準化されたラベルで表現されます。
+ここに記載されているのは、よく使われるラベルのうちいくつかの例です。
 
-The pronoun "She" is a nominal subject attached to the verb – in this case, to
-"ate".
+「She」という代名詞は、動詞「ate」に係る名詞句主語です。
 
-The noun "pizza" is a direct object attached to the verb "ate". It is eaten by
-the subject, "she".
+「pizza」は動詞「ate」に係る目的語です。「pizza」は、主語である「She」によって食べれられます。
 
-The determiner "the", also known as an article, is attached to the noun "pizza".
+限定詞もしくは冠詞「the」は、名詞「pizza」に係ります。
 
 ---
 
-# Predicting Named Entities
+# 固有表現抽出
 
-<img src="/ner_example.png" alt="Visualization of the named entities in 'Apple is looking at buying U.K. startup for $1 billion'" width="80%" />
+<img src="/ner_example.png" alt="'Apple is looking at buying U.K. startup for $1 billion'という文の固有表現抽出結果" width="80%" />
 
 ```python
-# Process a text
+# テキストを処理
 doc = nlp("Apple is looking at buying U.K. startup for $1 billion")
 
-# Iterate over the predicted entities
+# 抽出された固有表現をイテレート
 for ent in doc.ents:
-    # Print the entity text and its label
+    # 固有表現のテキストとラベルをプリント
     print(ent.text, ent.label_)
 ```
 
@@ -170,23 +166,20 @@ U.K. GPE
 $1 billion MONEY
 ```
 
-Notes: Named entities are "real world objects" that are assigned a name – for
-example, a person, an organization or a country.
+Notes: 固有表現とは、例えば人、国、組織のような、名前のついた実世界の実体のことです。
 
-The `doc.ents` property lets you access the named entities predicted by the
-model.
+固有表現抽出の解析結果は、`doc.ents`プロパティから取得できます。
 
-It returns an iterator of `Span` objects, so we can print the entity text and
-the entity label using the `.label_` attribute.
+`doc.ents`プロパティは`Span`オブジェクトのイテレータを返します。
+そしてそれぞれの`Span`に対して、`.text`でテキストを、`.label_`で固有表現のラベルを取得できます。
 
-In this case, the model is correctly predicting "Apple" as an organization,
-"U.K." as a geopolitical entity and "\$1 billion" as money.
+このケースでは、「Apple」を組織、「U.K.」を地理名称、「\$1 billion」を金額、というように正しく解析されています。
 
 ---
 
-# Tip: the explain method
+# Tip：explain関数
 
-Get quick definitions of the most common tags and labels.
+よく使われるタグやラベルの定義を確認してみましょう。
 
 ```python
 spacy.explain("GPE")
@@ -212,17 +205,17 @@ spacy.explain("dobj")
 'direct object'
 ```
 
-Notes: A quick tip: To get definitions for the most common tags and labels, you
-can use the `spacy.explain` helper function.
+Notes: よく使われるタグやラベルの定義を確認したいときは、`spacy.explain`ヘルパー関数が便利です。
 
-For example, "GPE" for geopolitical entity isn't exactly intuitive – but
-`spacy.explain` can tell you that it refers to countries, cities and states.
+例えば、「GPE」は地理的な実体を示しますが、ちょっとわかりづらいです。
+そこで、`spacy.explain`を使えば、国や町を意味していることをすぐに確認できます。
 
-The same works for part-of-speech tags and dependency labels.
+この関数は品詞タグや依存関係ラベルにも使えます。
 
 ---
 
 # Let's practice!
 
-Notes: Now it's your turn. Let's take a look at spaCy's statistical models and
-their predictions.
+Notes: さて、ここからは手を動かしていきましょう。
+spaCyの機械学習モデルと、解析結果を実際にみていきます。
+```
