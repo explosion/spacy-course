@@ -250,7 +250,7 @@ TRAINING_DATA = [
 ]
 ```
 
-### Part 1
+### パート1
 
 Why is this data and label scheme problematic?
 
@@ -284,7 +284,7 @@ of the big advantages of statistical named entity recognition.
 
 </choice>
 
-### Part 2
+### パート2
 
 - Rewrite the `TRAINING_DATA` to only use the label `"GPE"` (cities, states,
   countries) instead of `"TOURIST_DESTINATION"`.
@@ -312,7 +312,7 @@ and use an annotation tool – for example, [Brat](http://brat.nlplab.org/), a
 popular open-source solution, or [Prodigy](https://prodi.gy), our own annotation
 tool that integrates with spaCy.
 
-### Part 1
+### パート1
 
 - Complete the entity offsets for the `"WEBSITE"` entities in the data. Feel free
   to use `len()` if you don't want to count the characters.
@@ -326,7 +326,7 @@ tool that integrates with spaCy.
 
 </codeblock>
 
-### Part 2
+### パート2
 
 A model was trained with the data you just labelled, plus a few thousand similar
 examples. After training, it's doing great on `"WEBSITE"`, but doesn't recognize
@@ -360,7 +360,7 @@ the problem here.
 
 </choice>
 
-### Part 3
+### パート3
 
 - Update the training data to include annotations for the `"PERSON"` entities
   "PewDiePie" and "Alexis Ohanian".

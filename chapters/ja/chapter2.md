@@ -20,7 +20,7 @@ id: 2
 
 <exercise id="2" title="Strings to hashes">
 
-### Part 1
+### パート1
 
 - Look up the string "cat" in `nlp.vocab.strings` to get the hash.
 - Look up the hash to get back the string.
@@ -33,7 +33,7 @@ id: 2
 
 </codeblock>
 
-### Part 2
+### パート2
 
 - Look up the string label "PERSON" in `nlp.vocab.strings` to get the hash.
 - Look up the hash to get back the string.
@@ -107,7 +107,7 @@ the vocab.
 
 Let's create some `Doc` objects from scratch!
 
-### Part 1
+### パート1
 
 - Import the `Doc` from `spacy.tokens`.
 - Create a `Doc` from the `words` and `spaces`. Don't forget to pass in the
@@ -121,7 +121,7 @@ word is followed by a space or not.
 
 </codeblock>
 
-### Part 2
+### パート2
 
 - Import the `Doc` from `spacy.tokens`.
 - Create a `Doc` from the words and spaces. Don't forget to pass in the vocab!
@@ -133,7 +133,7 @@ space. If so, the spaces value should be `True`. If not, it should be `False`.
 
 </codeblock>
 
-### Part 3
+### パート3
 
 - Import the `Doc` from `spacy.tokens`.
 - Complete the `words` and `spaces` to match the desired text and create a
@@ -198,7 +198,7 @@ for index, pos in enumerate(pos_tags):
             print("Found proper noun before a verb:", result)
 ```
 
-### Part 1
+### パート1
 
 Why is the code bad?
 
@@ -228,7 +228,7 @@ The `.pos_` attribute returns the coarse-grained part-of-speech tag and
 
 </choice>
 
-### Part 2
+### パート2
 
 - Rewrite the code to use the native token attributes instead of lists of
   `token_texts` and `pos_tags`.
@@ -278,7 +278,7 @@ vectors. The model is already pre-installed.
 In this exercise, you'll be using spaCy's `similarity` methods to compare `Doc`,
 `Token` and `Span` objects and get similarity scores.
 
-### Part 1
+### パート1
 
 - Use the `doc.similarity` method to compare `doc1` to `doc2` and print the
   result.
@@ -290,7 +290,7 @@ current object to.
 
 </codeblock>
 
-### Part 2
+### パート2
 
 - Use the `token.similarity` method to compare `token1` to `token2` and print
   the result.
@@ -302,7 +302,7 @@ current object to.
 
 </codeblock>
 
-### Part 3
+### パート3
 
 - Create spans for "great restaurant"/"really nice bar".
 - Use `span.similarity` to compare them and print the result.

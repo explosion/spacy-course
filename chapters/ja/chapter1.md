@@ -20,7 +20,7 @@ id: 1
 
 ではさっそく、spaCyを試していきましょう！ この演習では、[spaCyが対応している55以上の言語](https://spacy.io/usage/models#languages)のうちのいくつかをことができます。
 
-### Part 1: 英語
+### パート1: 英語
 
 - `English`クラスを`spacy.lang.en`からインポートし、`nlp`オブジェクトを作ってください。
 - `doc`オブジェクトを作り、文字列をプリントしてください。
@@ -28,7 +28,7 @@ id: 1
 <codeblock id="01_02_01">
 </codeblock>
 
-### Part 2: ドイツ語
+### パート2: ドイツ語
 
 - `German`クラスを`spacy.lang.de`からインポートし、`nlp`オブジェクトを作ってください。
 - `doc`オブジェクトを作り、文字列をプリントしてください。
@@ -36,7 +36,7 @@ id: 1
 <codeblock id="01_02_02">
 </codeblock>
 
-### Part 3: スペイン語
+### パート3: スペイン語
 
 - `Spanish`クラスを`spacy.lang.es`からインポートし、`nlp`オブジェクトを作ってください。
 - `doc`オブジェクトを作り、文字列をプリントしてください。
@@ -222,79 +222,68 @@ spaCyの機械学習モデルの詳細やインストール方法については
 
 </exercise>
 
-<exercise id="11" title="Using the Matcher">
+<exercise id="11" title="Matcherを使う">
 
-Let's try spaCy's rule-based `Matcher`. You'll be using the example from the
-previous exercise and write a pattern that can match the phrase "iPhone X" in
-the text.
+さて、spaCyのルールベース機能である`Matcher`を使っていきましょう。
+以前演習で用いた例を使って、「iPhone X」にマッチするパターンを書いていきます。
 
-- Import the `Matcher` from `spacy.matcher`.
-- Initialize it with the `nlp` object's shared `vocab`.
-- Create a pattern that matches the `"TEXT"` values of two tokens: `"iPhone"`
-  and `"X"`.
-- Use the `matcher.add` method to add the pattern to the matcher.
-- Call the matcher on the `doc` and store the result in the variable `matches`.
-- Iterate over the matches and get the matched span from the `start` to the
-  `end` index.
+- `Matcher`を`spacy.matcher`からインポートしてください。
+- `nlp`が持つ共有語彙データ`vocab`を用いて初期化してください。
+- 「iPhone」と「X」二つのトークンの文字列（`"TEXT"`）にマッチするパターンを書いてください。
+- `matcher.add`メソッドを使って、パターンをmatcherに追加してください。
+- matcherを`doc`に対して呼び出し、返り値を`matches`変数に入れてください。
+- `matches`をイテレートし、マッチしたスパンを`start`と`end`インデックスから取得してください。
 
 <codeblock id="01_11">
 
-- The shared vocabulary is available as the `nlp.vocab` attribute.
-- A pattern is a list of dictionaries keyed by the attribute names. For example,
-  `[{"TEXT": "Hello"}]` will match one token whose exact text is "Hello".
-- The `start` and `end` values of each match describe the start and end index of
-  the matched span. To get the span, you can create a slice of the `doc` using
-  the given start and end.
+- 共有語彙データは`nlp.vocab`から取得できます。
+- パターンは、属性名をキーとする辞書からなるリストです。例えば、`[{"TEXT": "Hello"}]`は
+  文字列が「Hello」に正確に一致するトークンにマッチします。
+- それぞれのマッチの`start`と`end`は、マッチしたスパンの開始インデックスと終了インデックスを表しています。
+  実際のスパンを取得するには、`doc`オブジェクトからスライスしてください。
 
 </codeblock>
 
 </exercise>
 
-<exercise id="12" title="Writing match patterns">
+<exercise id="12" title="パターンを書く">
 
-In this exercise, you'll practice writing more complex match patterns using
-different token attributes and operators.
+この演習では、トークンの属性や演算子を用いてより複雑なパターンを書いていきます。
 
-### Part 1
+### パート1
 
-- Write **one** pattern that only matches mentions of the _full_ iOS versions:
-  "iOS 7", "iOS 11" and "iOS 10".
+- iOSの完全なバージョン（「iOS 7」「iOS 11」「iOS 10」等）にのみマッチするパターンを**1つ**書いてください。
 
 <codeblock id="01_12_01">
 
-- To match a token with an exact text, you can use the `TEXT` attribute. For
-  example, `{"TEXT": "Apple"}` will match tokens with the exact text "Apple".
-- To match a number token, you can use the `"IS_DIGIT"` attribute, which will
-  only return `True` for tokens consisting of only digits.
+- トークンの文字列に完全一致させたいときは、`TEXT`属性を使いましょう。例えば、`{"TEXT": "Apple"}`
+  は「Apple」という文字列を持つトークンにマッチします。
+- 数字のトークンにマッチさせたいときは、`"IS_DIGIT"`属性を使いましょう。これは
+  トークンが数字だけからなるときのみ`True`となります。
 
 </codeblock>
 
-### Part 2
+### パート2
 
-- Write **one** pattern that only matches forms of "download" (tokens with the
-  lemma "download"), followed by a token with the part-of-speech tag `"PROPN"`
-  (proper noun).
+- 見出し語が「download」のトークンと、品詞が`"PROPN"`（固有名詞）からなるトークンの組み合わせからなる
+  トークンにマッチするパターンを**1つ**書いてください。
 
 <codeblock id="01_12_02">
 
-- To specify a lemma, you can use the `"LEMMA"` attribute in the token pattern.
-  For example, `{"LEMMA": "be"}` will match tokens like "is", "was" or "being".
-- To find proper nouns, you want to match all tokens whose `"POS"` value equals
-  `"PROPN"`.
+- 見出し語を指定するには、`"LEMMA"`属性をトークンのパターンに使います。
+  例えば、`{"LEMMA": "be"}`は「is」「was」「being」等にマッチします。
+- 固有名詞を探すには`"POS"`属性が`"PROPN"`であるようなトークンを探します。
 
 </codeblock>
 
-### Part 3
+### パート3
 
-- Write **one** pattern that matches adjectives (`"ADJ"`) followed by one or two
-  `"NOUN"`s (one noun and one optional noun).
+- 形容詞`"ADJ"`と、一つか二つの名詞`"NOUN"`（つまり、一つの名詞と一つのオプショナルな名詞）からなるトークンの組にマッチするパターンを**1つ**書いてください。
 
 <codeblock id="01_12_03">
 
-- To find adjectives, look for tokens whose `"POS"` value equals `"ADJ"`. For
-  nouns, look for `"NOUN"`.
-- Operators can be added via the `"OP"` key. For example, `"OP": "?"` to match
-  zero or one time.
+- 形容詞を探すには、`"POS"`属性が`"ADJ"`であるようなトークンを探してください。名詞は`"NOUN"`です。
+- 演算子は`"OP"`キーに追加します。例えば、`"OP": "?"`は0個もしくは1個にマッチします。
 
 </codeblock>
 

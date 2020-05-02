@@ -241,7 +241,7 @@ example, `doc._.has_color`.
 Let's try setting some more complex attributes using getters and method
 extensions.
 
-### Part 1
+### パート1
 
 - Complete the `get_has_number` function .
 - Use `Doc.set_extension` to register `"has_number"` (getter `get_has_number`)
@@ -257,7 +257,7 @@ extensions.
 
 </codeblock>
 
-### Part 2
+### パート2
 
 - Use `Span.set_extension` to register `"to_html"` (method `to_html`).
 - Call it on `doc[0:2]` with the tag `"strong"`.
@@ -344,7 +344,7 @@ In this exercise, you'll be using `nlp.pipe` for more efficient text processing.
 The `nlp` object has already been created for you. A list of tweets about a
 popular American fast food chain are available as the variable `TEXTS`.
 
-### Part 1
+### パート1
 
 - Rewrite the example to use `nlp.pipe`. Instead of iterating over the texts and
   processing them, iterate over the `doc` objects yielded by `nlp.pipe`.
@@ -356,14 +356,14 @@ popular American fast food chain are available as the variable `TEXTS`.
 
 </codeblock>
 
-### Part 2
+### パート2
 
 - Rewrite the example to use `nlp.pipe`. Don't forget to call `list()` around
   the result to turn it into a list.
 
 <codeblock id="03_14_02"></codeblock>
 
-### Part 3
+### パート3
 
 - Rewrite the example to use `nlp.pipe`. Don't forget to call `list()` around
   the result to turn it into a list.
@@ -405,7 +405,7 @@ texts are quotes from famous books, and the contexts dictionaries with the keys
 In this exercise, you'll use the `nlp.make_doc` and `nlp.disable_pipes` methods
 to only run selected components when processing a text.
 
-### Part 1
+### パート1
 
 - Rewrite the code to only tokenize the text using `nlp.make_doc`.
 
@@ -416,7 +416,7 @@ the `nlp` object.
 
 </codeblock>
 
-### Part 2
+### パート2
 
 - Disable the tagger and parser using the `nlp.disable_pipes` method.
 - Process the text and print all entities in the `doc`.

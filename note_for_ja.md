@@ -7,3 +7,5 @@ ch1-02 statistical model: 日本語の単語の品詞はあまり文脈に依存
 UDの用語の参考: https://www.jstage.jst.go.jp/article/jnlp/26/1/26_3/_pdf/-char/ja
 
 ""は「」に
+
+lemma -> 見出し語
