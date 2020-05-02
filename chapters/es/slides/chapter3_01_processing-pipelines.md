@@ -10,7 +10,7 @@ En esta lección aprenderás sobre los componentes del pipeline proveído por sp
 
 ---
 
-# ¿Qué sucede cuando llamas nlp?
+# ¿Qué sucede cuando llamas al objeto nlp?
 
 <img src="/pipeline.png" alt="Illustration of the spaCy pipeline transforming a text into a processed Doc" width="90%" />
 

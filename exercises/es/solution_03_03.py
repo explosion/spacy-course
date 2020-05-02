@@ -6,5 +6,5 @@ nlp = spacy.load("en_core_web_sm")
 # Imprime en pantalla los nombres de los componentes del pipeline
 print(nlp.pipe_names)
 
-# Imprime en pantalla el pipeline entero de tuples (nombre, componente)
+# Imprime en pantalla el pipeline entero de tuples (name, component)
 print(nlp.pipeline)

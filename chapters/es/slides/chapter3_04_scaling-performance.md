@@ -2,7 +2,7 @@
 type: slides
 ---
 
-# Aumentando la escala y desempeño
+# Aumentando la escala y el desempeño
 
 Notes: En esta lección te mostraré algunos trucos y consejos para hacer que tu pipeline de spaCy corra lo más rápido posible y procese grandes volúmenes de texto de manera eficiente.
 

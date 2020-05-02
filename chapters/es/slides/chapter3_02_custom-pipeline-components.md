@@ -2,7 +2,7 @@
 type: slides
 ---
 
-# Componentes de pipeline personalizados
+# Componentes personalizados del pipeline
 
 Notes: Ahora que sabes cómo funciona el pipeline de spaCy exploremos otra característica muy poderosa: los componentes personalizados para el pipeline.
 
