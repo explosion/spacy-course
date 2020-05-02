@@ -1,5 +1,5 @@
 ---
-title: 'Chapter 2: spaCyによる大量データの解析'
+title: '第2章: spaCyによる大量データの解析'
 description:
   "この章では、大量のテキストから特定の情報を抽出する方法をみていきます。
   spaCyのデータ構造の作成方法と、テキスト解析のために機械学習モデルとルールベースモデルを効率的に組み合わせる方法を学びます。"
@@ -68,7 +68,7 @@ print(nlp_de.vocab.strings[bowie_id])
 
 <choice>
 
-<opt correct="true" text='文字列<code>"Bowie"</code>はドイツ語の語彙データに存在しないため、文字列データベースから取得することができないから。'>
+<opt correct="true" text='文字列<code>"Bowie"</code>はドイツ語の語彙データに存在しないため、文字列ストアから取得することができないから。'>
 
 ハッシュ値は復号できません。そのため、テキストを処理したり、文字列をルックアップしたり、同じvocabオブジェクトを使ってハッシュ値から文字列を取得します。
 
@@ -163,10 +163,9 @@ spaCyが普段どのように文字列をトークン化しているかを見る
 
 </exercise>
 
-<exercise id="7" title="Data structures best practices">
+<exercise id="7" title="データ構造のベストプラクティス">
 
-The code in this example is trying to analyze a text and collect all proper
-nouns that are followed by a verb.
+この例では、テキストを解析し、動詞が続く固有名詞を全て抽出しようとしています。
 
 ```python
 import spacy
@@ -174,14 +173,14 @@ import spacy
 nlp = spacy.load("en_core_web_sm")
 doc = nlp("Berlin is a nice city")
 
-# Get all tokens and part-of-speech tags
+# 全てのトークンと品詞タグを取得
 token_texts = [token.text for token in doc]
 pos_tags = [token.pos_ for token in doc]
 
 for index, pos in enumerate(pos_tags):
-    # Check if the current token is a proper noun
+    # 現在のトークンが固有名詞かどうかをチェックする
     if pos == "PROPN":
-        # Check if the next token is a verb
+        # 次のトークンが動詞かどうかを調べる
         if pos_tags[index + 1] == "VERB":
             result = token_texts[index]
             print("Found proper noun before a verb:", result)
@@ -189,29 +188,26 @@ for index, pos in enumerate(pos_tags):
 
 ### パート1
 
-Why is the code bad?
+このコードはなぜよくないでしょうか？
 
 <choice>
 
-<opt text="The <code>result</code> token should be converted back to a <code>Token</code> object. This will let you reuse it in spaCy.">
+<opt text="<code>result</code>トークンを<code>Token</code>オブジェクトに再変換すべきであるから。そうすれば、spaCyで再利用できるようになります。">
 
-It shouldn't be necessary to convert strings back to `Token` objects. Instead,
-try to avoid converting tokens to strings if you still need to access their
-attributes and relationships.
-
-</opt>
-
-<opt correct="true" text="It only uses lists of strings instead of native token attributes. This is often less efficient, and can't express complex relationships.">
-
-Always convert the results to strings as late as possible, and try to use native
-token attributes to keep things consistent.
+文字列を`Token`オブジェクトに変換し直す必要はありません。ただ、これ以降も文字列以外の情報を使う必要があるのならば、
+トークンを文字列に避けるのは賢明でしょう。
 
 </opt>
 
-<opt text='<code>pos_</code> is the wrong attribute to use for extracting proper nouns. You should use <code>tag_</code> and the <code>"NNP"</code> and <code>"NNS"</code> labels instead.'>
+<opt correct="true" text="ネイティブなトークン属性ではなく、文字列のリストを使っているから。大抵の場合このやり方は効率が悪く、複雑な関係を表現できません。">
 
-The `.pos_` attribute returns the coarse-grained part-of-speech tag and
-`"PROPN"` is the correct tag to check for proper nouns.
+結果を文字列として出力するのはなるべく後にし、一貫性を保つためにネイティブなトークン属性を使うのが良いです。
+
+</opt>
+
+<opt text='<code>pos_</code>は固有表現を抽出するため属性ではないから。代わりに、<code>tag_</code>属性と、<code>"NNP"</code>と<code>"NNS"</code>ラベルを使うべきです。'>
+
+`.pos_`属性は粗視化された品詞タグを返し、`"PROPN"`は固有名詞をチェックするための正しいタグです。
 
 </opt>
 
@@ -219,25 +215,22 @@ The `.pos_` attribute returns the coarse-grained part-of-speech tag and
 
 ### パート2
 
-- Rewrite the code to use the native token attributes instead of lists of
-  `token_texts` and `pos_tags`.
-- Loop over each `token` in the `doc` and check the `token.pos_` attribute.
-- Use `doc[token.i + 1]` to check for the next token and its `.pos_` attribute.
-- If a proper noun before a verb is found, print its `token.text`.
+- 2つのリスト`token_texts`と`pos_tags`を使う代わりに、トークンのネイティブ属性を使ってコードを書き直してください。
+- `doc`に入っているそれぞれの`token`についてループし、`token.pos_`属性をチェックしてください。
+- `doc[token.i+1]`を使って次のトークンを取得し、その`.pos_`属性をチェックしてください。
+- 動詞の前に固有名詞が見つかったら、その`token.text`をプリントしてください。
 
 <codeblock id="02_07">
 
-- Remove the `token_texts` and `pos_tags` – we don't need to compile lists of
-  strings upfront!
-- Instead of iterating over the `pos_tags`, loop over each `token` in the `doc`
-  and check the `token.pos_` attribute.
-- To check if the next token is a verb, take a look at `doc[token.i + 1].pos_`.
+- 事前に文字列を取得する必要はないので、`token_texts`と`pos_tags`を削除してください。
+- `pos_tags`をイテレートする代わりに、`doc`に入っている各`token`をループし、`token.pos_`属性を取得してください。
+- 次のトークンが同志かどうかをチェックするために、`doc[token.i + 1].pos_`を確認してください。
 
 </codeblock>
 
 </exercise>
 
-<exercise id="8" title="Word vectors and semantic similarities" type="slides">
+<exercise id="8" title="単語ベクトルと意味的類似度" type="slides">
 
 <slides source="chapter2_03_word-vectors-similarity">
 </slides>

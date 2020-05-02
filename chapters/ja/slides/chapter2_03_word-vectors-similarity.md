@@ -2,7 +2,8 @@
 type: slides
 ---
 
-# Word vectors and semantic similarity
+# 単語ベクトルと意味的類似度
+Word vectors and semantic similarity
 
 Notes: In this lesson, you'll learn how to use spaCy to predict how similar
 documents, spans or tokens are to each other.

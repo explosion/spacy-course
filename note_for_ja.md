@@ -9,3 +9,5 @@ UDの用語の参考: https://www.jstage.jst.go.jp/article/jnlp/26/1/26_3/_pdf/-
 ""は「」に
 
 lemma -> 見出し語
+
+lexeme -> 語彙素

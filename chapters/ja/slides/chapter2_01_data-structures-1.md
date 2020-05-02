@@ -2,59 +2,53 @@
 type: slides
 ---
 
-# Data Structures (1): Vocab, Lexemes and StringStore
+# データ構造(1): VocabとLexemesとStringStore
 
-Notes: Welcome back! Now that you've had some real experience using spaCy's
-objects, it's time for you to learn more about what's actually going on under
-spaCy's hood.
-
-In this lesson, we'll take a look at the shared vocabulary and how spaCy deals
-with strings.
+Notes: お帰りなさい！さて、いくつかのspaCyのオブジェクトを扱ってみたので、
+そろそろspaCyが実際に裏側で何をしているかを学んでいきましょう。
 
 ---
 
-# Shared vocab and string store (1)
+# 共有語彙データと文字列ストア (1)
 
-- `Vocab`: stores data shared across multiple documents
-- To save memory, spaCy encodes all strings to **hash values**
-- Strings are only stored once in the `StringStore` via `nlp.vocab.strings`
-- String store: **lookup table** in both directions
+- `Vocab`: 複数のdocに共有されるデータを保存
+- メモリを節約するために、spaCyは全ての文字列を**ハッシュ値**に変換しています
+- 文字列は一度だけ、`nlp.vocab.strings`を通して`StringStore`に保存されます
+- String store: 双方向ルックアップテーブル
 
 ```python
 coffee_hash = nlp.vocab.strings["coffee"]
 coffee_string = nlp.vocab.strings[coffee_hash]
 ```
 
-- Hashes can't be reversed – that's why we need to provide the shared vocab
+- ハッシュ値は復号できません。これが、共有語彙データクラスを実装している理由です。
 
 ```python
-# Raises an error if we haven't seen the string before
+# 対応する文字列をみたことがない場合、エラーとなります
 string = nlp.vocab.strings[3197928453018144401]
 ```
 
-Notes: spaCy stores all shared data in a vocabulary, the Vocab.
+Notes: spaCyは全てのデータをVocabという語彙データベースに保存しています。
 
-This includes words, but also the labels schemes for tags and entities.
+これには単語や、タグや固有表現に使われるラベルが含まれます。
 
-To save memory, all strings are encoded to hash IDs. If a word occurs more than
-once, we don't need to save it every time.
+メモリを節約するために、全ての文字列はハッシュIDにエンコードされます。
+単語が複数回現れた時でも、毎回は保存しません。
 
-Instead, spaCy uses a hash function to generate an ID and stores the string only
-once in the string store. The string store is available as `nlp.vocab.strings`.
+代わりに、spaCyはハッシュ関数を使用してIDを生成し、文字列を一度だけ文字列ストアに保存します。
+文字列ストアは`nlp.vocab.strings`から使うことができます。
 
-It's a lookup table that works in both directions. You can look up a string and
-get its hash, and look up a hash to get its string value. Internally, spaCy only
-communicates in hash IDs.
+これは双方向のルックアップテーブルです。文字列からハッシュ値を得ることも、その逆も可能です。
+内部的には、spaCyはハッシュIDのみを用いてデータのやり取りをしています。
 
-Hash IDs can't be reversed, though. If a word is not in the vocabulary, there's
-no way to get its string. That's why we always need to pass around the shared
-vocab.
+しかし、Hash IDは復号できません。もし単語が語彙データに含まれていなければ、文字列を復元できません。
+ですから、共有語彙データが必要なのです。
 
 ---
 
 # Shared vocab and string store (2)
 
-- Look up the string and hash in `nlp.vocab.strings`
+- `nlp.vocab.strings`で文字列をハッシュをルックアップしてみます
 
 ```python
 doc = nlp("I love coffee")
@@ -67,7 +61,7 @@ hash value: 3197928453018144401
 string value: coffee
 ```
 
-- The `doc` also exposes the vocab and strings
+- `doc`からも語彙データと文字列ストアにアクセスできます
 
 ```python
 doc = nlp("I love coffee")
@@ -78,23 +72,23 @@ print("hash value:", doc.vocab.strings["coffee"])
 hash value: 3197928453018144401
 ```
 
-Notes: To get the hash for a string, we can look it up in `nlp.vocab.strings`.
+Notes: 文字列のハッシュを得るためには、`nlp.vocab.strings`をルックアップします。
 
-To get the string representation of a hash, we can look up the hash.
+ハッシュから文字列を得る際は、ハッシュ値をルックアップします。
 
-A `Doc` object also exposes its vocab and strings.
+`Doc`オブジェクトからも語彙データと文字列ストアにアクセスできます
 
 ---
 
-# Lexemes: entries in the vocabulary
+# Lexemes: 語彙素
 
-- A `Lexeme` object is an entry in the vocabulary
+- `Lexeme`オブジェクトは語彙データの要素（語彙素）
 
 ```python
 doc = nlp("I love coffee")
 lexeme = nlp.vocab["coffee"]
 
-# Print the lexical attributes
+# 語彙属性をプリント
 print(lexeme.text, lexeme.orth, lexeme.is_alpha)
 ```
 
@@ -102,40 +96,37 @@ print(lexeme.text, lexeme.orth, lexeme.is_alpha)
 coffee 3197928453018144401 True
 ```
 
-- Contains the **context-independent** information about a word
-  - Word text: `lexeme.text` and `lexeme.orth` (the hash)
-  - Lexical attributes like `lexeme.is_alpha`
-  - **Not** context-dependent part-of-speech tags, dependencies or entity labels
+- 単語についての**文脈に依存しない**情報を保存
+  - 単語の文字列: `lexeme.text`と`lexeme.orth`(ハッシュ値)
+  - `lexeme.is_alpha`等の語彙属性
+  - 文脈に依存する品詞タグ、依存関係ラベル、固有表現ラベルは**保持していない**
 
-Notes: Lexemes are context-independent entries in the vocabulary.
+Notes: Lexemeは文脈に依存しない語彙データベースの要素（語彙素）です。
 
-You can get a lexeme by looking up a string or a hash ID in the vocab.
+語彙素は、vocabオブジェクトから文字列やハッシュIDで取得できます。
 
-Lexemes expose attributes, just like tokens.
+語彙素もトークンのように、いくつかの属性を提供しています。
 
-They hold context-independent information about a word, like the text, or
-whether the word consists of alphabetic characters.
+語彙素は、単語に関する文脈に依存しない情報を持っています。
+たとえば、単語の文字列や、それらがアルファベットのみで構成されているかどうか、などです。
 
-Lexemes don't have part-of-speech tags, dependencies or entity labels. Those
-depend on the context.
+語彙素は、品詞タグや、依存関係や固有表現のラベル等、文脈に依存するデータは保持していません。
 
 ---
 
-# Vocab, hashes and lexemes
+# Vocabとハッシュ値と語彙素
 
-<img src="/vocab_stringstore.png" width="70%" alt="Illustration of the words 'I', 'love' and 'coffee' across the Doc, Vocab and StringStore" />
+<img src="/vocab_stringstore.png" width="70%" alt="Doc、Vocab、StringStoreにおける'I'と'love'と'coffee'の図解" />
 
-Notes: Here's an example.
+Notes: 一例を示します。
 
-The `Doc` contains words in context – in this case, the tokens "I", "love" and
-"coffee" with their part-of-speech tags and dependencies.
+`Doc`は文脈とともに単語を持っています。ここでは、「I」と「love」と「coffee」を品詞タグと依存関係ラベルとともに持っています。
 
-Each token refers to a lexeme, which knows the word's hash ID. To get the string
-representation of the word, spaCy looks up the hash in the string store.
+それぞれのトークンは、単語のハッシュ値を持つ語彙素を参照しています。
+ハッシュ値から文字列を得るために、spaCyは文字列ストアを用います。
 
 ---
 
 # Let's practice!
 
-Notes: This all sounds a bit abstract – so let's take a look at the vocabulary
-and string store in practice.
+Notes: ここで紹介したことはどれも抽象的かもしれません。なので、実際に語彙データと文字列ストアを演習でみていきましょう。
