@@ -1,94 +1,88 @@
 ---
-title: 'Chapter 2: Large-scale data analysis with spaCy'
+title: 'Chapter 2: spaCyによる大量データの解析'
 description:
-  "In this chapter, you'll use your new skills to extract specific information
-  from large volumes of text. You''ll learn how to make the most of spaCy's data
-  structures, and how to effectively combine statistical and rule-based
-  approaches for text analysis."
+  "この章では、大量のテキストから特定の情報を抽出する方法をみていきます。
+  spaCyのデータ構造の作成方法と、テキスト解析のために機械学習モデルとルールベースモデルを効率的に組み合わせる方法を学びます。"
 prev: /chapter1
 next: /chapter3
 type: chapter
 id: 2
 ---
 
-<exercise id="1" title="Data Structures (1)" type="slides">
+<exercise id="1" title="データ構造(1)" type="slides">
 
 <slides source="chapter2_01_data-structures-1">
 </slides>
 
 </exercise>
 
-<exercise id="2" title="Strings to hashes">
+<exercise id="2" title="文字列からハッシュへ">
 
 ### パート1
 
-- Look up the string "cat" in `nlp.vocab.strings` to get the hash.
-- Look up the hash to get back the string.
+- `nlp.vocab.strings`から「cat」のハッシュ値を取得してください。
+- 逆に、ハッシュ値から文字列を取得してください。
 
 <codeblock id="02_02_01">
 
-- You can use the string store in `nlp.vocab.strings` like a regular Python
-  dictionary. For example, `nlp.vocab.strings["unicorn"]` will return the hash,
-  and looking up the hash again will return the string `"unicorn"`.
+- 文字列のデータベース`nlp.vocab.strings`は、Pythonの辞書のように使うことができます。
+  例えば、`nlp.vocab.strings["unicorn"]`とすればハッシュ値を取得でき、逆にハッシュ値を使うと
+  `"unicorn"`を再取得することができます。
 
 </codeblock>
 
 ### パート2
 
-- Look up the string label "PERSON" in `nlp.vocab.strings` to get the hash.
-- Look up the hash to get back the string.
+- `nlp.vocab.strings`から「PERSON」ラベルのハッシュ値を取得してください。
+- ハッシュ値から文字列を取得してください。
 
 <codeblock id="02_02_02">
 
-- You can use the string store in `nlp.vocab.strings` like a regular Python
-  dictionary. For example, `nlp.vocab.strings["unicorn"]` will return the hash,
-  and looking up the hash again will return the string `"unicorn"`.
+- 文字列のデータベース`nlp.vocab.strings`は、Pythonの辞書のように使うことができます。
+  例えば、`nlp.vocab.strings["unicorn"]`とすればハッシュ値を取得でき、逆にハッシュ値を使うと
+  `"unicorn"`を再取得することができます。
 
 </codeblock>
 
 </exercise>
 
-<exercise id="3" title="Vocab, hashes and lexemes">
+<exercise id="3" title="Vocabとハッシュと語彙素">
 
-Why does this code throw an error?
+さて、なぜこのコードはエラーとなるでしょうか？
 
 ```python
 from spacy.lang.en import English
 from spacy.lang.de import German
 
-# Create an English and German nlp object
+# 英語とドイツ語のnlpオブジェクトを作る
 nlp = English()
 nlp_de = German()
 
-# Get the ID for the string 'Bowie'
+# 「Bowie」のIDを取得
 bowie_id = nlp.vocab.strings["Bowie"]
 print(bowie_id)
 
-# Look up the ID for "Bowie" in the vocab
+# vocabから、IDを用いて「Bowie」を取得
 print(nlp_de.vocab.strings[bowie_id])
 ```
 
 <choice>
 
-<opt correct="true" text='The string <code>"Bowie"</code> isn’t in the German vocab, so the hash can’t be resolved in the string store.'>
+<opt correct="true" text='文字列<code>"Bowie"</code>はドイツ語の語彙データに存在しないため、文字列データベースから取得することができないから。'>
 
-Hashes can't be reversed. To prevent this problem, add the word to the new vocab
-by processing a text or looking up the string, or use the same vocab to resolve
-the hash back to a string.
+ハッシュ値は復号できません。そのため、テキストを処理したり、文字列をルックアップしたり、同じvocabオブジェクトを使ってハッシュ値から文字列を取得します。
 
 </opt>
 
-<opt text='<code>"Bowie"</code> is not a regular word in the English or German dictionary, so it can’t be hashed.'>
+<opt text='<code>"Bowie"</code>は英語とドイツ語の語彙ではなく、ハッシュ化できないから。'>
 
-Any string can be converted to a hash.
+いかなる文字列もハッシュ化できます。
 
 </opt>
 
-<opt text="<code>nlp_de</code> is not a valid name. The vocab can only be shared if the <code>nlp</code> objects have the same name.">
+<opt text="<code>nlp_de</code>は変数名として不正であるから。vocabは<code>nlp</code>という名前の変数でしか共有されない。">
 
-The variable name `nlp` is only a convention. If the code used the variable name
-`nlp` instead of `nlp_de`, it'd overwrite the existing `nlp` object, including
-the vocab.
+`nlp`という名前はただの慣習です。コード中で`nlp`の代わりに`nlp_de`を用いると、vocabオブジェクトも含めて`nlp`が上書きされてしまいます。
 
 </opt>
 
@@ -96,79 +90,74 @@ the vocab.
 
 </exercise>
 
-<exercise id="4" title="Data Structures (2)" type="slides">
+<exercise id="4" title="データ構造(2)" type="slides">
 
 <slides source="chapter2_02_data-structures-2">
 </slides>
 
 </exercise>
 
-<exercise id="5" title="Creating a Doc">
+<exercise id="5" title="Docオブジェクトを作る">
 
-Let's create some `Doc` objects from scratch!
+では、`Doc`オブジェクトをゼロから作ってみましょう。
 
 ### パート1
 
-- Import the `Doc` from `spacy.tokens`.
-- Create a `Doc` from the `words` and `spaces`. Don't forget to pass in the
-  vocab!
+- `Doc`クラスを`spacy.tokens`からインポートして下さい。
+- `Doc`オブジェクトを`words`と`spaces`から作成します。vocabオブジェクトを渡すのを忘れないでください！
 
 <codeblock id="02_05_01">
 
-The `Doc` class takes 3 arguments: the shared vocabulary, usually `nlp.vocab`, a
-list of `words` and a list of `spaces`, boolean values, indicating whether the
-word is followed by a space or not.
+`Doc`クラスは3つの引数をとります。1つめは通常`nlp.vocab`で表される共有語彙データ、
+2つめは`words`のリスト、3つめは単語間のスペースの有無をブール値で表した`spaces`のリストです。
 
 </codeblock>
 
 ### パート2
 
-- Import the `Doc` from `spacy.tokens`.
-- Create a `Doc` from the words and spaces. Don't forget to pass in the vocab!
+- `Doc`クラスを`spacy.tokens`からインポートして下さい。
+- `Doc`オブジェクトを`words`と`spaces`から作成します。vocabオブジェクトを渡すのを忘れないでください！
 
 <codeblock id="02_05_02">
 
-Look at each word in the desired text output and check if it's followed by a
-space. If so, the spaces value should be `True`. If not, it should be `False`.
+
+出力したいテキストの各単語を見て、それがスペースに続いているかどうかを確認します。
+もしそうならば`spaces`に`True`を、そうでないならば`False`を追加してください。
 
 </codeblock>
 
 ### パート3
 
-- Import the `Doc` from `spacy.tokens`.
-- Complete the `words` and `spaces` to match the desired text and create a
-  `doc`.
+- `Doc`クラスを`spacy.tokens`からインポートして下さい。
+- `Doc`オブジェクトを`words`と`spaces`から作成してください。
 
 <codeblock id="02_05_03">
 
-Pay attention to the individual tokens. To see how spaCy usually tokenizes that
-string, you can try it and print the tokens for `nlp("Oh, really?!")`.
+
+各トークンを注意深くみてください。
+spaCyが普段どのように文字列をトークン化しているかを見るには、試しに `nlp("Oh, really?!")` のトークンをプリントしてみましょう。
 
 </codeblock>
 
 </exercise>
 
-<exercise id="6" title="Docs, spans and entities from scratch">
+<exercise id="6" title="Doc、スパン、固有表現をゼロから作る">
 
-In this exercise, you'll create the `Doc` and `Span` objects manually, and
-update the named entities – just like spaCy does behind the scenes. A shared
-`nlp` object has already been created.
+この演習では、`Doc`と`Span`を手動で作り、固有表現を登録してみましょう。
+これはspaCyが普段裏側でやっていることです。
+共有`nlp`オブジェクトはすでに作られています。
 
-- Import the `Doc` and `Span` classes from `spacy.tokens`.
-- Use the `Doc` class directly to create a `doc` from the words and spaces.
-- Create a `Span` for "David Bowie" from the `doc` and assign it the label
-  `"PERSON"`.
-- Overwrite the `doc.ents` with a list of one entity, the "David Bowie" `span`.
+- `Doc`と`Span`クラスを`spacy.tokens`からインポートしてください。
+- `Doc`クラスから直接、単語とスペースリストを用いて`doc`オブジェクトを作ってください。
+- 「David Bowie」の`Span`オブジェクトを`doc`から作り、`"PERSON"`ラベルをつけてください。
+- `doc.ents`を「David Bowie」の`span`からなる固有表現のリストで上書きしてください。
 
 <codeblock id="02_06">
 
-- The `Doc` is initialized with three arguments: the shared vocab, e.g.
-  `nlp.vocab`, a list of words and a list of boolean values indicating whether
-  the word should be followed by a space.
-- The `Span` class takes four arguments: the reference `doc`, the start token
-  index, the end token index and an optional label.
-- The `doc.ents` property is writable, so you can assign it any iterable
-  consisting of `Span` objects.
+- `Doc`クラスは3つの引数で初期化します。1つめは例えば`nlp.vocab`で表される共有語彙データ、
+  2つめは`words`のリスト、3つめは単語間のスペースの有無をブール値で表した`spaces`のリストです。
+- `Span`クラスは4つの引数をとります。1つめは`doc`への参照、2つめは開始トークンのインデックス、3つめは終了トークンのインデックス、4つめはオプショナルで、固有表現ラベルです。
+- `doc.ents`プロパティは、任意の`Span`からなるイテレート可能タイプ（iterable）を書き込むことができます。
 
 </codeblock>
 
