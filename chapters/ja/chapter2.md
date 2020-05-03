@@ -295,9 +295,9 @@ for index, pos in enumerate(pos_tags):
 
 </exercise>
 
-<exercise id="12" title="Debugging patterns (1)">
+<exercise id="12" title="パターンのデバッグ(1)">
 
-Why does this pattern not match the tokens "Silicon Valley" in the `doc`?
+なぜこのパターンは`doc`中の「Silicon Valley」にマッチしないでしょうか？
 
 ```python
 pattern = [{'LOWER': 'silicon'}, {'TEXT': ' '}, {'LOWER': 'valley'}]
@@ -309,26 +309,23 @@ doc = nlp("Can Silicon Valley workers rein in big tech from within?")
 
 <choice>
 
-<opt text='The tokens "Silicon" and "Valley" are not lowercase, so the <code>"LOWER"</code> attribute won’t match.'>
+<opt text='「Silicon」と「Valley」は小文字ではないので、<code>"LOWER"</code>はマッチしないから'>
 
-The `"LOWER"` attribute in the pattern describes tokens whose _lowercase form_
-matches a given value. So `{"LOWER": "valley"}` will match tokens like "Valley",
-"VALLEY", "valley" etc.
-
-</opt>
-
-<opt correct="true" text='The tokenizer doesn’t create tokens for single spaces, so there’s no token with the value <code>" "</code> in between.'>
-
-The tokenizer already takes care of splitting off whitespace and each dictionary
-in the pattern describes one token.
+パターン中の`"LOWER"`属性は、トークンを小文字化したらその値にマッチする、ということを示しています。
+つまり、`{"LOWER": "valley"}`は「Valley」や「VALLEY」、「valley」等にマッチします。
 
 </opt>
 
-<opt text='The tokens are missing an operator <code>"OP"</code> to indicate that they should be matched exactly once.'>
+<opt correct="true" text='トークナイザは単一のスペースについてトークンを作らないので、<code>" "</code>というトークンがないから'>
 
-By default, all tokens described by a pattern will be matched exactly once.
-Operators are only needed to change this behavior – for example, to match zero
-or more times.
+トークナイザは既にスペースを区切っており、それぞれの辞書はトークンについて表しています。
+
+</opt>
+
+<opt text='各トークンが一度だけマッチすることを示す<code>"OP"</code>属性がかけているから'>
+
+パターン中のトークンは、デフォルトで一度だけマッチします。
+演算子は、この挙動を変えたいときだけ用います。例えば、0回以上マッチさせたいときなどです。
 
 </opt>
 
@@ -336,67 +333,56 @@ or more times.
 
 </exercise>
 
-<exercise id="13" title="Debugging patterns (2)">
+<exercise id="13" title="パターンのデバッグ(2)">
 
-Both patterns in this exercise contain mistakes and won't match as expected. Can
-you fix them? If you get stuck, try printing the tokens in the `doc` to see how
-the text will be split and adjust the pattern so that each dictionary represents
-one token.
+この演習中のパターンは両方とも誤っており、期待した通りには動きません。
+ただしく修正できますか？
+もしつまづいてしまったら、`doc`のトークンを全てプリントしてみて、トークンがどのように分割されているかを確認し、
+パターン中の各辞書が1つのトークンに対応するように調整してみましょう。
 
-- Edit `pattern1` so that it correctly matches all case-insensitive mentions of
-  `"Amazon"` plus a title-cased proper noun.
-- Edit `pattern2` so that it correctly matches all case-insensitive mentions of
-  `"ad-free"`, plus the following noun.
+- `pattern1`を修正し、大文字小文字によらず`"Amazon"`にマッチし、また、タイトルケースの固有名詞にマッチするようにしてください。
+- `pattern2`を修正し、大文字小文字によらない`"ad-free"`と、名詞の組にマッチするようにしてください。
 
 <codeblock id="02_13">
 
-- Try processing the strings that should be matched with the `nlp` object – for
-  example `[token.text for token in nlp("ad-free viewing")]`.
-- Inspect the tokens and make sure each dictionary in the pattern correctly
-  describes one token.
+- `nlp`オブジェクトにマッチする文字列を処理してみてください。例えば、`[token.text for token in nlp("ad-free viewing")]`のように。
+- トークンを検査し、パターン内の各辞書が1つのトークンを正しく記述していることを確認してください。
 
 </codeblock>
 
 </exercise>
 
-<exercise id="14" title="Efficient phrase matching">
+<exercise id="14" title="効率的なフレーズマッチング">
 
-Sometimes it's more efficient to match exact strings instead of writing patterns
-describing the individual tokens. This is especially true for finite categories
-of things – like all countries of the world. We already have a list of
-countries, so let's use this as the basis of our information extraction script.
-A list of string names is available as the variable `COUNTRIES`.
+個々のトークンを記述するパターンを書くよりも、正確な文字列をマッチさせた方が効率的な場合もあります。これは特に、世界のすべての国のような数に限りのある場合に当てはまります。
+すでに国のリストがあるので、これをつかって情報抽出スクリプトを作りましょう。
+国名のリストは、`COUNTRIES`変数に入っています。
 
-- Import the `PhraseMatcher` and initialize it with the shared `vocab` as the
-  variable `matcher`.
-- Add the phrase patterns and call the matcher on the `doc`.
+- `PhraseMatcher`をインポートし、共有の`vocab`で初期化し、`matcher`変数に格納してください。
+- フレーズのパターンを追加し、matcherを`doc`に対して呼び出してください。
 
 <codeblock id="02_14">
 
-The shared `vocab` is available as `nlp.vocab`.
+共有の`vocab`は、`nlp.vocab`にあります。
 
 </codeblock>
 
 </exercise>
 
-<exercise id="15" title="Extracting countries and relationships">
+<exercise id="15" title="国名と関係の抽出">
 
-In the previous exercise, you wrote a script using spaCy's `PhraseMatcher` to
-find country names in text. Let's use that country matcher on a longer text,
-analyze the syntax and update the document's entities with the matched
-countries.
+前の演習では、`PhraseMatcher`を使って国名を抽出するスクリプトを作りました。
+長いテキストで国別マッチツールを使用し、構文を分析して、一致した国でdocのエンティティを更新してみましょう。
 
-- Iterate over the matches and create a `Span` with the label `"GPE"`
-  (geopolitical entity).
-- Overwrite the entities in `doc.ents` and add the matched span.
-- Get the matched span's root head token.
-- Print the text of the head token and the span.
+- マッチの結果をイテレートし、ラベル `"GPE"` (地理的実体) を持つ `Span` を作成します。
+- `doc.ents` を上書きし、マッチしたスパンを追加します。
+- マッチしたスパンのルートのヘッドトークンを取得します。
+- そのヘッドトークンとスパンのテキストをプリントします。
 
 <codeblock id="02_15">
 
-- Remember that the text is available as the variable `text`.
-- The span's root token is available as `span.root`. A token's head is available
-  via the `token.head` attribute.
+- テキストは変数 `text` として利用できます。
+- スパンのルートトークンは `span.root` で取得できます。トークンのヘッドは `token.head` 属性で取得できます。
 
 </codeblock>
 
