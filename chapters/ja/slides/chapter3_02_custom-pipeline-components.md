@@ -2,114 +2,98 @@
 type: slides
 ---
 
-# Custom pipeline components
+# カスタムのパイプラインコンポーネント
 
-Notes: Now that you know how spaCy's pipeline works, let's take a look at
-another very powerful feature: custom pipeline components.
+Notes: さて、spaCyのパイプラインがどのように動いているかをみてきました。それでは、新しい強力な機能である、カスタムのパイプラインコンポーネント作成法をみていきましょう。
 
-Custom pipeline components let you add your own function to the spaCy pipeline
-that is executed when you call the `nlp` object on a text – for example, to
-modify the doc and add more data to it.
+カスタムパイプラインコンポーネントとは、テキストに対して`nlp`オブジェクトを呼び出したときに実行されるspaCyパイプラインに追加できる、独自の機能のことです。
 
 ---
 
-# Why custom components?
+# なぜカスタムコンポーネントが必要？
 
-<img src="/pipeline.png" alt="Illustration of the spaCy pipeline" width="90%" />
+<img src="/pipeline.png" alt="spaCyのパイプラインの図解" width="90%" />
 
-- Make a function execute automatically when you call `nlp`
-- Add your own metadata to documents and tokens
-- Updating built-in attributes like `doc.ents`
+- `nlp`を呼び出したときに関数が自動的に実行されるようにする
+- Docやトークンに独自のメタデータを追加する
+- `doc.ents`のような備え付けの属性を更新する
 
-Notes: After the text is tokenized and a `Doc` object has been created, pipeline
-components are applied in order. spaCy supports a range of built-in components,
-but also lets you define your own.
+Notes: テキストがトークン化されて`Doc`オブジェクトが作成された後、パイプラインコンポーネントが順番に適用されます。
 
-Custom components are executed automatically when you call the `nlp` object on a
-text.
+カスタムコンポーネントは、テキストに対して`nlp`オブジェクトを呼び出すと自動的に実行されます。
 
-They're especially useful for adding your own custom metadata to documents and
-tokens.
+これらは、Docやトークンに独自のカスタムメタデータを追加するのに特に便利です。
 
-You can also use them to update built-in attributes, like the named entity
-spans.
+また、固有表現スパンのような備え付けの属性を更新するのにも使えます。
 
 ---
 
-# Anatomy of a component (1)
+# コンポーネントを解剖する(1)
 
-- Function that takes a `doc`, modifies it and returns it
-- Can be added using the `nlp.add_pipe` method
+- `doc`を受け取り、それを更新して返す関数
+- `nlp.add_pipe`メソッドを使って追加することができます
 
 ```python
 def custom_component(doc):
-    # Do something to the doc here
+    # ここでdocに対して何か処理をする
     return doc
 
 nlp.add_pipe(custom_component)
 ```
 
-Notes: Fundamentally, a pipeline component is a function or callable that takes
-a doc, modifies it and returns it, so it can be processed by the next component
-in the pipeline.
+Notes: 基本的にパイプラインコンポーネントとは、docを受け取り、それを更新して返し、パイプライン内の次のコンポーネントで処理できるようにする関数または呼び出し可能なオブジェクトです。
 
-Components can be added to the pipeline using the `nlp.add_pipe`. The method
-takes at least one argument: the component function.
+コンポーネントは`nlp.add_pipe`を用いてパイプラインに追加することができます。このメソッドは少なくとも1つの引数を取ります: コンポーネント関数です。
 
 ---
 
-# Anatomy of a component (2)
+# コンポーネントを解剖する(2)
 
 ```python
 def custom_component(doc):
-    # Do something to the doc here
+    # ここでdocに対して何か処理をする
     return doc
 
 nlp.add_pipe(custom_component)
 ```
 
-| Argument | Description          | Example                                   |
+| 引数 | 説明 | 例 |
 | -------- | -------------------- | ----------------------------------------- |
-| `last`   | If `True`, add last  | `nlp.add_pipe(component, last=True)`      |
-| `first`  | If `True`, add first | `nlp.add_pipe(component, first=True)`     |
-| `before` | Add before component | `nlp.add_pipe(component, before="ner")`   |
-| `after`  | Add after component  | `nlp.add_pipe(component, after="tagger")` |
+| `last`   | `True`の場合、最後に追加  | `nlp.add_pipe(component, last=True)`      |
+| `first`  | `True`の場合、最初に追加 | `nlp.add_pipe(component, first=True)`     |
+| `before` | 特定のコンポーネントの前に追加 | `nlp.add_pipe(component, before="ner")`   |
+| `after`  | 特定のコンポーネントのあとに追加 | `nlp.add_pipe(component, after="tagger")` |
 
-Notes: To specify _where_ to add the component in the pipeline, you can use the
-following keyword arguments:
+Notes: コンポーネントをパイプラインに追加する**場所**を指定するには、以下のキーワード引数を使用します。
 
-Setting `last` to `True` will add the component last in the pipeline. This is
-the default behavior.
+`last`を`True`に設定すると、パイプラインの最後にコンポーネントが追加されます。これがデフォルトの動作です。
 
-Setting `first` to `True` will add the component first in the pipeline, right
-after the tokenizer.
+`first`を`True`に設定すると、パイプラインの最初、つまりトークナイザの直後に追加されます。
 
-The `before` and `after` arguments let you define the name of an existing
-component to add the new component before or after. For example, `before="ner"`
-will add it before the named entity recognizer.
+`before`および`after`引数に既存のコンポーネントの名前を指定すると、その前または後に追加されます。
+例えば、`before="ner"` とすると、固有表現抽出器の前に追加されます。
 
-The other component to add the new component before or after needs to exist,
-though – otherwise, spaCy will raise an error.
+ただし、前または後にそのコンポーネントが存在する必要があります。そうでない場合はspaCyがエラーを発生させます。
 
 ---
 
-# Example: a simple component (1)
+# 例: 簡単なコンポーネント(1)
 
 ```python
-# Create the nlp object
+# nlpオブジェクトを作成
 nlp = spacy.load("en_core_web_sm")
 
-# Define a custom component
+# カスタムコンポーネントを定義
 def custom_component(doc):
-    # Print the doc's length
+    # docの長さをプリント
     print("Doc length:", len(doc))
-    # Return the doc object
+    # docオブジェクトを返す
     return doc
 
-# Add the component first in the pipeline
+# パイプラインの最初にコンポーネントを追加
 nlp.add_pipe(custom_component, first=True)
 
-# Print the pipeline component names
+# パイプラインのコンポーネント名をプリント
 print("Pipeline:", nlp.pipe_names)
 ```
 
@@ -117,47 +101,42 @@ print("Pipeline:", nlp.pipe_names)
 Pipeline: ['custom_component', 'tagger', 'parser', 'ner']
 ```
 
-Notes: Here's an example of a simple pipeline component.
+Notes: 簡単なコンポーネントの例をみていきます。
 
-We start off with the small English model.
+まずは小サイズの英語モデルから始めます。
 
-We then define the component – a function that takes a `Doc` object and returns
-it.
+次にコンポーネントを定義します。`Doc`オブジェクトを受け取り、それを返す関数を書きます。
 
-Let's do something simple and print the length of the doc that passes through
-the pipeline.
+簡単に、パイプラインを通過するdocの長さを表示してみましょう。
 
-Don't forget to return the doc so it can be processed by the next component in
-the pipeline! The doc created by the tokenizer is passed through all components,
-so it's important that they all return the modified doc.
+パイプラインの次のコンポーネントで処理する必要があるので、docを返すことを忘れないでください。
+トークン化によって作成されたdocはすべてのコンポーネントに渡されるので、すべてのコンポーネントが更新されたdocを返すことが重要です。
 
-We can now add the component to the pipeline. Let's add it to the very beginning
-right after the tokenizer by setting `first=True`.
+これで、パイプラインにコンポーネントを追加することができるようになりました。`first=True`を設定して、トークナイザの直後に追加してみましょう。
 
-When we print the pipeline component names, the custom component now shows up at
-the start. This means it will be applied first when we process a doc.
+パイプラインのコンポーネント名を表示すると、カスタムコンポーネントが最初に表示されます。これは、docを処理するときに最初に適用されることを意味します。
 
 ---
 
 ## Example: a simple component (2)
 
 ```python
-# Create the nlp object
+# nlpオブジェクトを作成
 nlp = spacy.load("en_core_web_sm")
 
-# Define a custom component
+# カスタムコンポーネントを定義
 def custom_component(doc):
 
-    # Print the doc's length
+    # docの長さをプリント
     print("Doc length:", len(doc))
 
-    # Return the doc object
+    # docオブジェクトを返す
     return doc
 
-# Add the component first in the pipeline
+# コンポーネントをパイプラインの先頭に追加
 nlp.add_pipe(custom_component, first=True)
 
-# Process a text
+# テキストを処理
 doc = nlp("Hello world!")
 ```
 
@@ -165,11 +144,10 @@ doc = nlp("Hello world!")
 Doc length: 3
 ```
 
-Notes: Now when we process a text using the `nlp` object, the custom component
-will be applied to the doc and the length of the document will be printed.
+Notes: これで、テキストを`nlp`オブジェクトで処理すると、カスタムコンポーネントが適用され、docの長さがプリントされます。
 
 ---
 
 # Let's practice!
 
-Notes: Time to put this into practice and write your first pipeline component!
+Notes: ここで学んだことを実践し、最初のパイプラインコンポーネントを書く時間です！

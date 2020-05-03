@@ -1,27 +1,23 @@
 ---
-title: 'Chapter 3: Processing Pipelines'
+title: '第3章: パイプライン処理'
 description:
-  "This chapter will show you everything you need to know about spaCy's
-  processing pipeline. You'll learn what goes on under the hood when you process
-  a text, how to write your own components and add them to the pipeline, and how
-  to use custom attributes to add your own meta data to the documents, spans and
-  tokens."
+  "この章では spaCy の処理パイプラインについて知っておくべきことをすべて紹介します。テキストを処理するときに裏側で起こっていること、自分でコンポーネントを書いてパイプラインに追加する方法, カスタム属性を使用してdocやスパン、トークンに独自のメタデータを追加する方法, などを学びます。"
 prev: /chapter2
 next: /chapter4
 type: chapter
 id: 3
 ---
 
-<exercise id="1" title="Processing pipelines" type="slides">
+<exercise id="1" title="処理パイプライン" type="slides">
 
 <slides source="chapter3_01_processing-pipelines">
 </slides>
 
 </exercise>
 
-<exercise id="2" title="What happens when you call nlp?">
+<exercise id="2" title="nlpを呼び出すとき、何が起こっているか？">
 
-What does spaCy do when you call `nlp` on a string of text?
+`nlp`をテキストに対して呼び出すとき、spaCyは何をしているでしょうか？
 
 ```python
 doc = nlp("This is a sentence.")
@@ -29,33 +25,30 @@ doc = nlp("This is a sentence.")
 
 <choice>
 
-<opt text="Run the tagger, parser and entity recognizer and then the tokenizer.">
+<opt text="タグづけ、依存関係解析、固有表現抽出を行い、トークナイズしている">
 
-The tokenizer is always run _before_ all other pipeline components, because it
-transforms a string of text into a `Doc` object. The pipeline also doesn't have
-to consist of the tagger, parser and entity recognizer.
-
-</opt>
-
-<opt text="Tokenize the text and apply each pipeline component in order." correct="true">
-
-The tokenizer turns a string of text into a `Doc` object. spaCy then applies
-every component in the pipeline on document, in order.
+トークナイザはテキストを`Doc`オブジェクトに変換するため、常に全てのパイプラインの前に適用されます。
+そして、パイプラインには、タガー、パーサー、固有表現抽出器は必ずしも必要ありません。
 
 </opt>
 
-<opt text="Connect to the spaCy server to compute the result and return it.">
+<opt text="テキストをトークナイズし、パイプラインのそれぞれのコンポーネントを順番に適用している">
 
-spaCy computes everything on the machine and doesn't need to connect to any
-server.
+トークナイザはテキストを`Doc`オブジェクトに変換します。
+spaCyはパイプライン内のすべてのコンポーネントを順に`Doc`に適用します。
 
 </opt>
 
-<opt text="Initialize the language, add the pipeline and load in the binary model weights.">
+<opt text="spaCyのサーバに接続し、結果を計算して返している">
 
-When you call `spacy.load()` to load a model, spaCy will initialize the
-language, add the pipeline and load in the binary model weights. When you _call_
-the `nlp` object on a text, the model is already loaded.
+spaCyはマシン上で全てを計算するので、サーバに接続する必要はありません。
+
+</opt>
+
+<opt text="言語を初期化し、パイプラインを追加し、モデルの重みをロードしています">
+
+`spacy.load()` を呼び出してモデルをロードすると、言語の初期化、パイプラインの追加モデルの重みのロードを行います。
+テキストに対して`nlp` オブジェクトを呼び出すとき、モデルは既にロードされています。
 
 </opt>
 
@@ -63,23 +56,22 @@ the `nlp` object on a text, the model is already loaded.
 
 <exercise id="3" title="Inspecting the pipeline">
 
-Let's inspect the small English model's pipeline!
+英語の小サイズのモデルのパイプラインの中身を見てみましょう！
 
-- Load the `en_core_web_sm` model and create the `nlp` object.
-- Print the names of the pipeline components using `nlp.pipe_names`.
-- Print the full pipeline of `(name, component)` tuples using `nlp.pipeline`.
+- `en_core_web_sm`モデルを読み込み、`nlp` オブジェクトを作成します。
+- `nlp.pipe_names`を用いてパイプラインのコンポーネント名を表示します。
+- `nlp.pipeline`を用いて`(name, component)`タプルからなる全てのパイプラインを表示します。
 
 <codeblock id="03_03">
 
-The list of component names is available as the `nlp.pipe_names` attribute. The
-full pipeline consisting of `(name, component)` tuples is available as
-`nlp.pipeline`.
+コンポーネント名のリストは`nlp.pipe_names`属性で入手できます。
+`(name, component)`タプルからなるパイプラインのリストは`nlp.pipeline`から取得できます。
 
 </codeblock>
 
 </exercise>
 
-<exercise id="4" title="Custom pipeline components" type="slides">
+<exercise id="4" title="カスタムのパイプラインコンポーネント" type="slides">
 
 <slides source="chapter3_02_custom-pipeline-components">
 </slides>
