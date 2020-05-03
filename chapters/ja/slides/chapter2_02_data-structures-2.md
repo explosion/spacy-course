@@ -2,9 +2,11 @@
 type: slides
 ---
 
-# Data Structures (2): Doc, Span and Token
+# データ構造(2): DocとSpanとToken
 
-Notes: Now that you know all about the vocabulary and string store, we can take
+Notes: さて、語彙データと文字列ストアについて紹介し終えたので、次は最も重要なデータ構造をみていきましょう。
+`Doc`と、そのビューである`Token`と`Span`です。
+Now that you know all about the vocabulary and string store, we can take
 a look at the most important data structure: the `Doc`, and its views `Token`
 and `Span`.
 
@@ -13,76 +15,72 @@ and `Span`.
 # The Doc object
 
 ```python
-# Create an nlp object
+# nlpオブジェクトを作成
 from spacy.lang.en import English
 nlp = English()
 
-# Import the Doc class
+# Docクラスをインポート
 from spacy.tokens import Doc
 
-# The words and spaces to create the doc from
+# Docクラスのもととなるwordsとspacesを作成
 words = ["Hello", "world", "!"]
 spaces = [True, False, False]
 
-# Create a doc manually
+# docを手動で作る
 doc = Doc(nlp.vocab, words=words, spaces=spaces)
 ```
 
-Notes: The `Doc` is one of the central data structures in spaCy. It's created
-automatically when you process a text with the `nlp` object. But you can also
-instantiate the class manually.
+Notes: `Doc`はspaCyにおける中心的なデータ構造の一つです。
+これは`nlp`オブジェクトでテキストを処理すれば、自動で作られます。
+しかし、`Doc`クラスから手動でインスタンス化することもできます。
 
-After creating the `nlp` object, we can import the `Doc` class from
-`spacy.tokens`.
+`nlp`オブジェクトを作った後は、`spacy.tokens`から`Doc`クラスをインポートしましょう。
 
-Here we're creating a doc from three words. The spaces are a list of boolean
-values indicating whether the word is followed by a space. Every token includes
-that information – even the last one!
+ここでは、docを3つの単語から作成しています。spacesはブール値のリストで、各単語の後に
+スペースが続くかどうかを示しています。最後尾のトークンを含めて、全てのトークンがスペースに関する
+情報を持っています。
 
-The `Doc` class takes three arguments: the shared vocab, the words and the
-spaces.
+`Doc`クラスは3つの引数をとります。共有語彙データ、単語リスト、スペースリストです。
 
 ---
 
-# The Span object (1)
+# Spanオブジェクト (1)
 
-<img src="/span_indices.png" width="65%" alt="Illustration of a Span object within a Doc with token indices" />
+<img src="/span_indices.png" width="65%" alt="トークンインデックスを持つDoc内のSpanオブジェクトのイラスト" />
 
-Notes: A `Span` is a slice of a doc consisting of one or more tokens. The `Span`
-takes at least three arguments: the doc it refers to, and the start and end
-index of the span. Remember that the end index is exclusive!
+Notes: `Span`は0個以上のトークンからなる、docのスライスです。
+`Span`は少なくとも3つの引数をとります。1つめは参照先のdoc、2つめは開始インデックス、
+3つめは終了インデックスです。`Span`は終了インデックスのトークンを含まない（exclusive）ことを覚えておいてください！
 
 ---
 
-# The Span object (2)
+# Spanオブジェクト (2)
 
 ```python
-# Import the Doc and Span classes
+# DocとSpanクラスをインポート
 from spacy.tokens import Doc, Span
 
-# The words and spaces to create the doc from
+# Docクラスのもととなるwordsとspacesを作成
 words = ["Hello", "world", "!"]
 spaces = [True, False, False]
 
-# Create a doc manually
+# docを手動で作成
 doc = Doc(nlp.vocab, words=words, spaces=spaces)
 
-# Create a span manually
+# spanを手動で作成
 span = Span(doc, 0, 2)
 
-# Create a span with a label
+# ラベルがついたスパンを作成
 span_with_label = Span(doc, 0, 2, label="GREETING")
 
-# Add span to the doc.ents
+# spanをdoc.entsに加える
 doc.ents = [span_with_label]
 ```
 
-Notes: To create a `Span` manually, we can also import the class from
-`spacy.tokens`. We can then instantiate it with the doc and the span's start and
-end index, and an optional label argument.
+Notes: `Span`オブジェクトを手動で作るために、`spacy.tokens`から`Span`クラスをインポートします。
+それから、docと開始インデックス、終了インデックス、ラベル（オプショナル）を用いてクラスをインスタンス化します。
 
-The `doc.ents` are writable, so we can add entities manually by overwriting it
-with a list of spans.
+`doc.ents`は書き込み可能なので、spanオブジェクトのリストを用いて上書きし、固有表現を追加しましょう。
 
 ---
 

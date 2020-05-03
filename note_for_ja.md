@@ -11,3 +11,5 @@ UDの用語の参考: https://www.jstage.jst.go.jp/article/jnlp/26/1/26_3/_pdf/-
 lemma -> 見出し語
 
 lexeme -> 語彙素
+
+exclusive なんて訳そうか
