@@ -73,66 +73,55 @@ spaCyはマシン上で全てを計算するので、サーバに接続する必
 
 <exercise id="4" title="カスタムのパイプラインコンポーネント" type="slides">
 
-<slides source="chapter3_02_custom-pipeline-components">
+<slides source="chapter3_02_custom-pipelie-components">
 </slides>
 
 </exercise>
 
-<exercise id="5" title="Use cases for custom components">
+<exercise id="5" title="カスタムコンポーネントのユースケース">
 
-Which of these problems can be solved by custom pipeline components? Choose all
-that apply!
+これらの問題のうち、カスタムコンポーネントによって解決できるものはどれですか？該当するものをすべて選択してください。
 
-1. Updating the pre-trained models and improving their predictions
-2. Computing your own values based on tokens and their attributes
-3. Adding named entities, for example based on a dictionary
-4. Implementing support for an additional language
+1. 事前に訓練されたモデルを更新し、その予測を改善する
+2. トークンとその属性に基づいてオリジナルの値を計算する
+3. 辞書に基づいた名前付きエンティティの追加などを行う
+4. 追加言語のサポートの実装
 
 <choice>
 
-<opt text="1 and 2.">
+<opt text="1と2">
 
-Custom components can only modify the `Doc` and can't be used to update weights
-of other components directly.
-
-</opt>
-
-<opt text="1 and 3.">
-
-Custom components can only modify the `Doc` and can't be used to update weights
-of other components directly.
+カスタムコンポーネントは`Doc`を変更するだけで、他のコンポーネントの重みを直接更新することはできません。
 
 </opt>
 
-<opt text="1 and 4.">
+<opt text="1と3">
 
-Custom components can only modify the `Doc` and can't be used to update weights
-of other components directly. They're also added to the pipeline after the
-language class is already initialized and after tokenization, so they're not
-suitable to add new languages.
+カスタムコンポーネントは`Doc`を変更するだけで、他のコンポーネントの重みを直接更新することはできません。
 
 </opt>
 
-<opt text="2 and 3." correct="true">
+<opt text="1と4">
 
-Custom components are great for adding custom values to documents, tokens and
-spans, and customizing the `doc.ents`.
-
-</opt>
-
-<opt text="2 and 4.">
-
-Custom components are added to the pipeline after the language class is already
-initialized and after tokenization, so they're not suitable to add new
-languages.
+カスタムコンポーネントは`Doc`を変更するだけで、他のコンポーネントの重みを直接更新することはできません。また、言語クラスがすでに初期化され、テキストがトークン化された後にパイプラインに追加されるので、新しい言語を追加するのには適していません。
 
 </opt>
 
-<opt text="3 and 4.">
+<opt text="2と3" correct="true">
 
-Custom components are added to the pipeline after the language class is already
-initialized and after tokenization, so they're not suitable to add new
-languages.
+カスタムコンポーネントは、Doc、トークン、スパンにカスタム値を追加したり、`doc.ents`をカスタマイズしたりするのに最適です。
+
+</opt>
+
+<opt text="2と4">
+
+カスタムコンポーネントは、言語クラスがすでに初期化され、テキストがトークン化された後にパイプラインに追加されるので、新しい言語を追加するのには適していません。
+
+</opt>
+
+<opt text="3と4">
+
+カスタムコンポーネントは`Doc`を変更するだけで、他のコンポーネントの重みを直接更新することはできません。また、言語クラスがすでに初期化され、テキストがトークン化された後にパイプラインに追加されるので、新しい言語を追加するのには適していません。
 
 </opt>
 
@@ -140,51 +129,42 @@ languages.
 
 </exercise>
 
-<exercise id="6" title="Simple components">
+<exercise id="6" title="シンプルなコンポーネント">
 
-The example shows a custom component that prints the token length of a document.
-Can you complete it?
+この例では、Docのトークンの長さを表示するカスタムコンポーネントを紹介しています。
+足りないぶぶんを埋め、完成させてください。
 
-- Complete the component function with the `doc`'s length.
-- Add the `length_component` to the existing pipeline as the **first**
-  component.
-- Try out the new pipeline and process any text with the `nlp` object – for
-  example "This is a sentence.".
+- コンポーネントの関数を`doc`の長さを用いて完成させます。
+- 既存のパイプラインの先頭に`length_component`を追加します。
+- 新しいパイプラインを試してみて、`nlp` オブジェクトを使ってテキストを処理してみてください。
+  例文：「これは文章です。」
 
 <codeblock id="03_06">
 
-- To get the length of a `Doc` object, you can call Python's built-in `len()`
-  method on it.
-- Use the `nlp.add_pipe` method to add the component to the pipeline. Remember
-  to set the `first` keyword argument to `True` to make sure it's added before
-  all other components.
-- To process a text, call the `nlp` object on it.
+- `Doc`オブジェクトの長さを取得するには、Pythonの組み込みの`len()`メソッドが使えます。
+- コンポーネントをパイプラインに追加するには`nlp.add_pipe`メソッドを使います。
+  キーワード引数`first`に`True`を指定すると、他のすべてのコンポーネントよりも前に追加されることを忘れないでください。
+- テキストを処理するには、`nlp`オブジェクトを呼び出します。
 
 </codeblock>
 
 </exercise>
 
-<exercise id="7" title="Complex components">
+<exercise id="7" title="複雑なコンポーネント">
 
-In this exercise, you'll be writing a custom component that uses the
-`PhraseMatcher` to find animal names in the document and adds the matched spans
-to the `doc.ents`. A `PhraseMatcher` with the animal patterns has already been
-created as the variable `matcher`.
+この演習では、`PhraseMatcher`を使ってドキュメント内の動物の名前を見つけ、一致したスパンを`doc.ents`に追加するカスタムコンポーネントを書いてみましょう。
+動物のパターンを持つ `PhraseMatcher` はすでに変数 `matcher` として作成されています。
 
-- Define the custom component and apply the `matcher` to the `doc`.
-- Create a `Span` for each match, assign the label ID for `"ANIMAL"` and
-  overwrite the `doc.ents` with the new spans.
-- Add the new component to the pipeline _after_ the `"ner"` component.
-- Process the text and print the entity text and entity label for the entities
-  in `doc.ents`.
+- カスタムコンポーネントを定義し、`doc`に `matcher` を適用します。
+- 各マッチに対して `Span` を作成し、`"ANIMAL"` にラベルIDを割り当て、`doc.ents` を新しいスパンで上書きします。
+- 新しいコンポーネントを `"ner"` コンポーネントの後にパイプラインに追加します。
+- テキストを処理し、`doc.ents`内のエンティティのエンティティテキストとエンティティラベルをプリントします。
 
 <codeblock id="03_07">
 
-- Remember that the matches are a list of `(match_id, start, end)` tuples.
-- The `Span` class takes 4 arguments: the parent `doc`, the start index, the end
-  index and the label.
-- To add a component after another, use the `after` keyword argument on
-  `nlp.add_pipe`.
+- マッチは `(match_id, start, end)` タプルのリストであることを思い出してください。
+- `Span`クラスは4つの引数を取ります：親の`doc`、開始インデックス、終了インデックス、ラベルです。
+- コンポーネントを別のコンポーネントの後ろから追加するには、`nlp.add_pipe`の`after` キーワード引数を用います。
 
 </codeblock>
 
