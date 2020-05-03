@@ -3,50 +3,43 @@ type: slides
 ---
 
 # 単語ベクトルと意味的類似度
-Word vectors and semantic similarity
 
-Notes: In this lesson, you'll learn how to use spaCy to predict how similar
-documents, spans or tokens are to each other.
+Notes: この演習では、spaCyを使って、文章やスパン、トークン間の類似度を予測する方法を学んでいきます。
 
-You'll also learn about how to use word vectors and how to take advantage of
-them in your NLP application.
+そして、単語ベクトルとは何か、それをどのようにNLPアプリケーションに使っていくかも学んでいきます。
 
 ---
 
-# Comparing semantic similarity
+# 意味的類似度を比較する
 
-- `spaCy` can compare two objects and predict similarity
-- `Doc.similarity()`, `Span.similarity()` and `Token.similarity()`
-- Take another object and return a similarity score (`0` to `1`)
+- `spaCy`を使うと、2つのオブジェクトを比較、類似度を予測することができます
+- `Doc.similarity()`、`Span.similarity()`、`Token.similarity()`
+- 他のオブジェクトに対して、類似度（0~1）を返します
+- **重要：**単語ベクトルが含まれているモデルが必要です。例：
 - **Important:** needs a model that has word vectors included, for example:
-  - ✅ `en_core_web_md` (medium model)
-  - ✅ `en_core_web_lg` (large model)
-  - 🚫 **NOT** `en_core_web_sm` (small model)
+  - ✅ `en_core_web_md` （中サイズモデル）
+  - ✅ `en_core_web_lg` （大サイズモデル）
+  - 🚫 `en_core_web_sm`は非対応（小サイズモデル）
 
-Notes: spaCy can compare two objects and predict how similar they are – for
-example, documents, spans or single tokens.
+Notes: spaCyを使うと、2つのオブジェクトを比較し、類似度を予測できます。例えば、doc、span、tokenなどです。
 
-The `Doc`, `Token` and `Span` objects have a `.similarity` method that takes
-another object and returns a floating point number between 0 and 1, indicating
-how similar they are.
+`Doc`と`Token`と`Span`の`.similarity`メソッドは、他のオブジェクトを引数にとり、類似度を示す0以上1以下の小数点数を返します。
 
-One thing that's very important: In order to use similarity, you need a larger
-spaCy model that has word vectors included.
+重要：類似度を取得するには、単語ベクトルが入っている大きなモデルを使用する必要があります。
 
-For example, the medium or large English model – but _not_ the small one. So if
-you want to use vectors, always go with a model that ends in "md" or "lg". You
-can find more details on this in the
-[models documentation](https://spacy.io/models).
+例えば、中もしくは大サイズの英語モデルです。小サイズのものは対応していません。
+なので、もし単語ベクトルを使いたいときは、名前が「md」もしくは「lg」で終わっているモデルを使ってください。
+詳細はこちらをご覧ください：[models documentation](https://spacy.io/models)。
 
 ---
 
-# Similarity examples (1)
+# 類似度の例(1)
 
 ```python
-# Load a larger model with vectors
+# 単語ベクトルが含まれる大きなモデルをロード
 nlp = spacy.load("en_core_web_md")
 
-# Compare two documents
+# 2つのdocを比較
 doc1 = nlp("I like fast food")
 doc2 = nlp("I like pizza")
 print(doc1.similarity(doc2))
@@ -57,7 +50,7 @@ print(doc1.similarity(doc2))
 ```
 
 ```python
-# Compare two tokens
+# 2つのトークンを比較
 doc = nlp("I like pizza and pasta")
 token1 = doc[2]
 token2 = doc[4]
@@ -68,28 +61,26 @@ print(token1.similarity(token2))
 0.7369546
 ```
 
-Notes: Here's an example. Let's say we want to find out whether two documents
-are similar.
+Notes: これは一つの例です。2つのdocが似ているかどうかを調べたいとしましょう。
 
-First, we load the medium English model, "en_core_web_md".
+まずはじめに、中サイズの英語モデル「en_core_web_md」をロードしましょう。
 
-We can then create two doc objects and use the first doc's `similarity` method
-to compare it to the second.
+次に、2つのdocオブジェクトを作れば、1つめのdocオブジェクトの`similarity`メソッドを2つめのdocオブジェクトに適用し、
+類似度を算出することができます。
 
-Here, a fairly high similarity score of 0.86 is predicted for "I like fast food"
-and "I like pizza".
 
-The same works for tokens.
+ここでは、「ファーストフードが好き」と「ピザが好き」の類似度スコアが0.86となり、かなり高いことが予測されています。
 
-According to the word vectors, the tokens "pizza" and "pasta" are kind of
-similar, and receive a score of 0.7.
+同じ方法をトークンにも用いることができます。
+
+単語ベクトルによると、「ピザ」と「パスタ」のトークンは似たようなもので、スコアは0.7点となっています。
 
 ---
 
-# Similarity examples (2)
+# 類似度の例(2)
 
 ```python
-# Compare a document with a token
+# docとtokenを比較
 doc = nlp("I like pizza")
 token = nlp("soap")[0]
 
@@ -101,7 +92,7 @@ print(doc.similarity(token))
 ```
 
 ```python
-# Compare a span with a document
+# spanとdocを比較
 span = nlp("I like pizza and pasta")[2:5]
 doc = nlp("McDonalds sells burgers")
 
@@ -112,61 +103,53 @@ print(span.similarity(doc))
 0.619909235817623
 ```
 
-Notes: You can also use the `similarity` methods to compare different types of
-objects.
+Notes: `similarity`メソッドは、異なるオブジェクトに対しても用いることができます。
 
-For example, a document and a token.
+例えば、docとtokenに対して使えます。
 
-Here, the similarity score is pretty low and the two objects are considered
-fairly dissimilar.
+ここでは、類似度はかなり低く、2つのオブジェクトはあまり似ていないと考えられます。
 
-Here's another example comparing a span – "pizza and pasta" – to a document
-about McDonalds.
+この例は、「pizza and pasta」というスパンと、マクドナルドに関するdocを比較しています。
 
-The score returned here is 0.61, so it's determined to be kind of similar.
+類似度は0.61となっており、似たようなものであると考えられます。
 
 ---
 
-# How does spaCy predict similarity?
+# 類似度の算出法
 
-- Similarity is determined using **word vectors**
-- Multi-dimensional meaning representations of words
-- Generated using an algorithm like
-  [Word2Vec](https://en.wikipedia.org/wiki/Word2vec) and lots of text
-- Can be added to spaCy's statistical models
-- Default: cosine similarity, but can be adjusted
-- `Doc` and `Span` vectors default to average of token vectors
-- Short phrases are better than long documents with many irrelevant words
+- 類似度は**単語ベクトル**を用いて決められています
+- 単語の表現を多次元で表しています
+- [Word2Vec](https://en.wikipedia.org/wiki/Word2vec)のようなアルゴリズムと、
+  大量のテキストを用いて生成されます
+- spaCyの機械学習モデルに組み込むことができます
+- デフォルトでコサイン類似度が用いられますが、変更可能です
+- `Doc`と`Span`ベクトルは、デフォルトではトークンのベクトルの平均です
+- 長くて無関係の単語がたくさん含まれている文章よりも、短いフレーズの方が有効です
 
-Notes: But how does spaCy do this under the hood?
+Notes: さて、spaCyは裏側で何をしているのでしょうか？
 
-Similarity is determined using word vectors, multi-dimensional representations
-of meanings of words.
+類似度は、単語の意味を表現する多次元の単語ベクトルを用いて決定されます。
 
-You might have heard of Word2Vec, which is an algorithm that's often used to
-train word vectors from raw text.
+Word2Vecというアルゴリズムを聞いたことがあるかもしれませんが、これは生のテキストから単語ベクトルを学習するのによく使われるアルゴリズムです。
 
-Vectors can be added to spaCy's statistical models.
+単語ベクトルはspaCyの機械学習モデルに組み込むことができます。
 
-By default, the similarity returned by spaCy is the cosine similarity between
-two vectors – but this can be adjusted if necessary.
+デフォルトでは、類似度は2つのベクトルのコサイン類似度を用いて計算されますが、必要に応じて変更可能です。
 
-Vectors for objects consisting of several tokens, like the `Doc` and `Span`,
-default to the average of their token vectors.
+Doc` や `Span` のように複数のトークンからなるオブジェクトのベクトルは、それらのトークンベクトルの平均値がデフォルトとなります。
 
-That's also why you usually get more value out of shorter phrases with fewer
-irrelevant words.
+なので通常、無関係な単語が少ない短いフレーズの方が有用です。
 
 ---
 
-# Word vectors in spaCy
+# spaCyの単語ベクトル
 
 ```python
-# Load a larger model with vectors
+# 単語ベクトルの入っている大きなモデルをロード
 nlp = spacy.load("en_core_web_md")
 
 doc = nlp("I have a banana")
-# Access the vector via the token.vector attribute
+# token.vector属性によって単語ベクトルを取得
 print(doc[3].vector)
 ```
 
@@ -185,22 +168,21 @@ print(doc[3].vector)
   ...
 ```
 
-Notes: To give you an idea of what those vectors look like, here's an example.
+Notes: これらのベクトルがどのようなものであるかのイメージを掴むための例を示しています。
 
-First, we load the medium model again, which ships with word vectors.
+最初に、単語ベクトルが入っている中サイズのモデルをロードします。
 
-Next, we can process a text and look up a token's vector using the `.vector`
-attribute.
+次に、テキストを処理し、`.vector`属性によってトークンのベクトルを取得します。
 
-The result is a 300-dimensional vector of the word "banana".
+結果として、「banana」を表す300次元のベクトルが出力されます。
 
 ---
 
-# Similarity depends on the application context
+# 類似度はアプリケーションに依存
 
-- Useful for many applications: recommendation systems, flagging duplicates etc.
-- There's no objective definition of "similarity"
-- Depends on the context and what application needs to do
+- 推薦システム、重複検出等、様々なアプリケーションに用いることができます
+- 「類似度」の客観的な定義はありません
+- アプリケーションのコンテキストや、目的に依存します
 
 ```python
 doc1 = nlp("I like cats")
@@ -213,23 +195,19 @@ print(doc1.similarity(doc2))
 0.9501447503553421
 ```
 
-Notes: Predicting similarity can be useful for many types of applications. For
-example, to recommend a user similar texts based on the ones they have read. It
-can also be helpful to flag duplicate content, like posts on an online platform.
+Notes: 類似度の予測は、多くのアプリケーションに用いることができます。
+例えば、ユーザに対して、今まで読んだ文章をもとに似た文章を推薦するシステムなどです。
+また、オンラインプラットフォーム上の投稿のように、重複するコンテンツの検出にも役立ちます。
 
-However, it's important to keep in mind that there's no objective definition of
-what's similar and what isn't. It always depends on the context and what your
-application needs to do.
+しかし、何が似ていて何が似ていないかという客観的な定義は存在しないことを心に留めておいてください。
+これはコンテキストと、アプリケーションの目的に依存します。
 
-Here's an example: spaCy's default word vectors assign a very high similarity
-score to "I like cats" and "I hate cats". This makes sense, because both texts
-express sentiment about cats. But in a different application context, you might
-want to consider the phrases as very _dissimilar_, because they talk about
-opposite sentiments.
+これが一例です。spaCyのデフォルトの単語ベクトルは、「I like cats」の「I hate cats」類似度が非常に高いと予測します。
+これらの文は両方とも、猫に関する感情について表しているので、結果は理にかなっています。
+しかし、これらの文は正反対の感情を述べているので、別のアプリケーションで用いる際は「全く似ていない」という予測結果が欲しくなるかもしれません。
 
 ---
 
 # Let's practice!
 
-Notes: Now it's your turn. Let's try out some of spaCy's word vectors and use
-them to predict similarities.
+Notes: それでは、手を動かしていきましょう。実際にspaCyの単語ベクトルを使ってみて、類似度の予測をしてみましょう。
