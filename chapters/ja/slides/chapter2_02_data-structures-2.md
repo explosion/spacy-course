@@ -84,31 +84,28 @@ Notes: `Span`オブジェクトを手動で作るために、`spacy.tokens`か�
 
 ---
 
-# Best practices
+# ベストプラクティス
 
-- `Doc` and `Span` are very powerful and hold references and relationships of
-  words and sentences
-  - **Convert result to strings as late as possible**
-  - **Use token attributes if available** – for example, `token.i` for the token
-    index
-- Don't forget to pass in the shared `vocab`
+- `Doc`と`Span`はとても強力で、単語間や文間の参照や関係性を持っています。
+  - **結果を文字列として出力するのは、なるべく後の方にしましょう**
+  - **トークン属性を使える場合は、それを使いましょう。**例えば、`token.i`をトークンのインデックスとして使いましょう。
+- 忘れずに共有の`vocab`を渡すようにしましょう。
 
-Notes: A few tips and tricks before we get started:
+Notes: 演習を始める前に、いくつかの小技を紹介します。
 
-The `Doc` and `Span` are very powerful and optimized for performance. They give
-you access to all references and relationships of the words and sentences.
+`Doc`と`Span`はとても強力で、パフォーマンス面でも優れています。
+これらは、単語間や文間の関係性、参照を提供します。
 
-If your application needs to output strings, make sure to convert the doc as
-late as possible. If you do it too early, you'll lose all relationships between
-the tokens.
+もし作成したアプリケーションで文字列の出力が必要な場合、docを文字列に変換するのは出来るだけ後の方にしましょう。
+文字列に変換してしまうと、トークン間の関係性の情報を失ってしまいます。
 
-To keep things consistent, try to use built-in token attributes wherever
-possible. For example, `token.i` for the token index.
+一貫性を保つために、出来るだけ`Token`オブジェクトにすでに実装されている属性を用いましょう。
+例えば、`token.i`を使ってトークンのインデックスを参照してください。
 
-Also, don't forget to always pass in the shared vocab!
+そして、共有の語彙データを渡すことを常に忘れないでください。
 
 ---
 
 # Let's practice!
 
-Notes: Now let's try this out and create some docs and spans from scratch.
+Notes: では、ここで学んだことを試してみて、一からdocやspanを作ってみましょう。
