@@ -237,64 +237,58 @@ for index, pos in enumerate(pos_tags):
 
 </exercise>
 
-<exercise id="9" title="Inspecting word vectors">
+<exercise id="9" title="単語ベクトルの検査">
 
-In this exercise, you'll use a larger
-[English model](https://spacy.io/models/en), which includes around 20.000 word
-vectors. The model is already pre-installed.
+この演習では、20,000個の単語ベクトルが含まれている大サイズの[English model](https://spacy.io/models/en)を使います。
+このモデルは既にインストールされています。
 
-- Load the medium `"en_core_web_md"` model with word vectors.
-- Print the vector for `"bananas"` using the `token.vector` attribute.
+- 単語ベクトルの入っている中サイズモデル`"en_core_web_md"`をロードしてください。
+- `token.vector`属性を使って、`"bananas"`の単語ベクトルをプリントしてください。
 
 <codeblock id="02_09">
 
-- To load a statistical model, call `spacy.load` with its string name.
-- To access a token in a doc, you can index into it. For example, `doc[4]`.
+- `spacy.load`関数を呼びだし、機械学習モデルをロードしてください。
+- docに含まれるトークンを取得するには、インデックスを使ってください。例えば、`doc[4]`とします。
 
 </codeblock>
 
 </exercise>
 
-<exercise id="10" title="Comparing similarities">
+<exercise id="10" title="類似度の比較">
 
-In this exercise, you'll be using spaCy's `similarity` methods to compare `Doc`,
-`Token` and `Span` objects and get similarity scores.
+この演習では、spaCyの`similarity`メソッドを使って、`Doc`と`Token`と`Span`オブジェクトの比較をし、類似度を算出していきます。
 
 ### パート1
 
-- Use the `doc.similarity` method to compare `doc1` to `doc2` and print the
-  result.
+- `doc.similarity`メソッドを使って、`doc1`と`doc2`を比較し、結果をプリントしてください。
 
 <codeblock id="02_10_01">
 
-The `doc.similarity` method takes one argument: the other object to compare the
-current object to.
+`doc.similarity`メソッドは引数を1つとります。比較対象のオブジェクトです。
 
 </codeblock>
 
 ### パート2
 
-- Use the `token.similarity` method to compare `token1` to `token2` and print
-  the result.
+- `token.similarity`メソッドを使って、`token1`と`token2`を比較し、結果を出力してください。
 
 <codeblock id="02_10_02">
 
-- The `token.similarity` method takes one argument: the other object to compare
-  the current object to.
+- `token.similarity`メソッドは引数を1つとります。比較対象のオブジェクトです。
 
 </codeblock>
 
 ### パート3
 
-- Create spans for "great restaurant"/"really nice bar".
-- Use `span.similarity` to compare them and print the result.
+- 「great restaurant」と「really nice bar」のスパンを作ってください。
+- `span.similarity`を使ってこれらを比較し、結果をプリントしてください。
 
 <codeblock id="02_10_03">
 </codeblock>
 
 </exercise>
 
-<exercise id="11" title="Combining models and rules" type="slides">
+<exercise id="11" title="モデルとルールの組み合わせ" type="slides">
 
 <slides source="chapter2_04_models-rules">
 </slides>
