@@ -29,8 +29,7 @@ shuffle the data for each iteration. This is a very common strategy when doing
 stochastic gradient descent.
 
 Next, we divide the training data into batches of several examples, also known
-as minibatching. This makes it easier to make a more accurate estimate of the
-gradient.
+as minibatching. This increases the reliability of the gradient estimates.
 
 Finally, we update the model for each batch, and start the loop again until
 we've reached the last iteration.

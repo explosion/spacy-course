@@ -30,8 +30,8 @@ mischen wir die Daten zufällig in jeder Iteration. Dies ist eine sehr
 verbreitete Strategie für Stochastic Gradient Descent.
 
 Als nächstes teilen wir die Trainingsdaten in Batches von mehreren Beispielen
-auf, auch "Minibatching" genannt. Dies macht es einfacher, den Gradient
-zutreffende zu berechnen.
+auf, auch "Minibatching" genannt. Dies erhöht die Zuverlässigkeit der
+prognostizierten Gradients.
 
 Zuletzt aktualisieren wir das Modell für jeden Batch, und beginnen die Schleife
 erneut, bis wir die letzte Iteration erreicht haben.
