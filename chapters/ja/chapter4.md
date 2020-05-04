@@ -188,10 +188,10 @@ iPhoneのモデルが言及されている箇所を見つけるため、それ�
 
 </exercise>
 
-<exercise id="10" title="Good data vs. bad data">
+<exercise id="10" title="良いデータ vs. 悪いデータ">
 
-Here's an excerpt from a training set that labels the entity type
-`TOURIST_DESTINATION` in traveler reviews.
+Here's an excerpt from a training set that labels the entity type `TOURIST_DESTINATION` in traveler reviews.
+旅行者のレビューについて、固有表現タイプ`TOURIST_DESTINATION` のラベルをつけるトレーニングセットからの抜粋です。
 
 ```python
 TRAINING_DATA = [
@@ -213,33 +213,28 @@ TRAINING_DATA = [
 
 ### パート1
 
-Why is this data and label scheme problematic?
+なぜこのデータとラベル定義には問題があるでしょうか？
 
 <choice>
 
-<opt text="Whether a place is a tourist destination is a subjective judgement and not a definitive category. It will be very difficult for the entity recognizer to learn." correct="true">
+<opt text="場所が観光地かどうかは主観的な判断であり、確定的なカテゴリーではないので、固有表現抽出器が学習するのは非常に難しいから" correct="true">
 
-A much better approach would be to only label `"GPE"` (geopolitical entity) or
-`"LOCATION"` and then use a rule-based system to determine whether the entity is a
-tourist destination in this context. For example, you could resolve the entities
-types back to a knowledge base or look them up in a travel wiki.
+より良いアプローチは、`"GPE"`(地政学的実体)または`"LOCATION"`というラベルだけを付け、ルールベースのシステムを使って、その実体が観光地であるかどうかを判断することです。
+例えば、知識ベースを用いたり、トラベルウィキで調べたりすることができます。
 
 </opt>
 
-<opt text="Paris should also be labelled as tourist destinations for consistency. Otherwise, the model will be confused.">
+<opt text="パリは一貫性を保つためにも観光地と表記すべきであるから。そうしないとモデルが混乱してしまいます。">
 
-While it's possible that Paris, AK is also a tourist attraction, this only
-highlights how subjective the label scheme is and how difficult it will be to
-decide whether the label applies or not. As a result, this distinction will also
-be very difficult to learn for the entity recognizer.
+パリ、AKは観光地である可能性もありますが、これはラベルスキームがいかに主観的であり、ラベルが適用されるかどうかを判断することがいかに難しいかを浮き彫りにするだけです。
+結果として、この区別を固有表現抽出器が学習するのは非常に困難になります。
 
 </opt>
 
-<opt text="Rare out-of-vocabulary words like the misspelled 'amsterdem' shouldn't be labelled as entities.">
+<opt text="誤字脱字の「amsterdem」のような珍しい単語を固有表現としてラベル付けすべきでないから">
 
-Even very uncommon words or misspellings can be labelled as entities. In fact,
-being able to predict categories in misspelled text based on the context is one
-of the big advantages of statistical named entity recognition.
+非常に珍しい単語やスペルミスであっても、固有表現としてラベル付けすることができます。
+実際、文脈に基づいてスペルミスのあるテキストのカテゴリを予測できることは、機械学習ベースの固有表現抽出器の強みの一つです。
 
 </opt>
 
@@ -247,75 +242,60 @@ of the big advantages of statistical named entity recognition.
 
 ### パート2
 
-- Rewrite the `TRAINING_DATA` to only use the label `"GPE"` (cities, states,
-  countries) instead of `"TOURIST_DESTINATION"`.
-- Don't forget to add tuples for the `"GPE"` entities that weren't labeled in the
-  old data.
+- `TRAINING_DATA`を書き換えて、`"TOURIST_DESTINATION"`ではなく、`"GPE"`(都市、州、国)というラベルだけを使うようにしてください。
+- もとのデータではラベルが付いていなかった `"GPE"` 固有表現のタプルを追加することを忘れないようにしてください。
 
 <codeblock id="04_10">
 
-- For the spans that are already labelled, you'll only need to change the label
-  name from `"TOURIST_DESTINATION"` to `"GPE"`.
-- One text includes a city and a state that aren't labeled yet. To add the
-  entity spans, count the characters to find out where the entity span starts
-  and where it ends. Then add `(start, end, label)` tuples to the entities.
+- 既にラベル付けされているスパンについては、ラベル名を `"TOURIST_DESTINATION"` から `"GPE"` に変更するだけです。
+- 1つのテキストには、まだラベル付けされていない都市と州が含まれています。固有表現スパンを追加するには、文字数を数えて、スパンがどこから始まり、どこで終わるかを調べます。そして、`(start, end, label)`タプルをエンティティに追加します。
 
 </codeblock>
 
 </exercise>
 
-<exercise id="11" title="Training multiple labels">
+<exercise id="11" title="複数ラベルでのトレーニング">
 
-Here's a small sample of a dataset created to train a new entity type `"WEBSITE"`.
-The original dataset contains a few thousand sentences. In this exercise, you'll
-be doing the labeling by hand. In real life, you probably want to automate this
-and use an annotation tool – for example, [Brat](http://brat.nlplab.org/), a
-popular open-source solution, or [Prodigy](https://prodi.gy), our own annotation
-tool that integrates with spaCy.
+ここに、新しい固有表現タイプを学習するために作成されたデータセットの一部があります。元のデータセットには数千文が含まれています。
+この演習では、ラベル付けを手作業で行います。
+実際には、おそらくこれを自動化してアノテーションツールを使用したいと思うでしょう。
+例えば、[Brat](http://brat.nlplab.org/)という人気のあるオープンソースのソリューションや、[Prodigy](https://prodi.gy)というspaCyと統合された我々自身のアノテーションツールなどです。
 
 ### パート1
 
-- Complete the entity offsets for the `"WEBSITE"` entities in the data. Feel free
-  to use `len()` if you don't want to count the characters.
+- データにある`"WEBSITE"`の固有表現のオフセットを計算してください。
+  手動で文字数をカウントしたくないときは、`len()`を使ってください。
 
 <codeblock id="04_11_01">
 
-- The start and end offset of an entity span are the character offsets into the
-  text. For example, if an entity starts at position 5, the start offset is `5`.
-  Remember that the end offsets are _exclusive_ – so `10` means _up to_
-  character 10.
+- 固有表現スパンの開始オフセットと終了オフセットは、テキストへの文字オフセットです。
+  例えば、あるエンティティが5の位置から始まる場合、開始オフセットは `5` となります。末尾オフセットは、その位置の文字を含まないことに注意してください。
 
 </codeblock>
 
 ### パート2
 
-A model was trained with the data you just labelled, plus a few thousand similar
-examples. After training, it's doing great on `"WEBSITE"`, but doesn't recognize
-`"PERSON"` anymore. Why could this be happening?
+先ほどラベルを付けたデータに加えて、数千の類似した例を加えてモデルを学習しました。
+学習後、`"WEBSITE"`ではうまくいっていますが、`"PERSON"`を抽出しなくなってしまいました。なぜこのようなことが起こるのでしょうか?
 
 <choice>
 
-<opt text='It’s very difficult for the model to learn about different categories like <code>"PERSON"</code> and <code>"WEBSITE"</code>.'>
+<opt text='モデルにとって、<code>"PERSON"</code>と<code>"WEBSITE"</code>のように異なるカテゴリを学習するのは難しいから'>
 
-It's definitely possible for a model to learn about very different categories.
-For example, spaCy's pre-trained English models can recognize persons, but also
-organizations or percentages.
-
-</opt>
-
-<opt text='The training data included no examples of <code>"PERSON"</code>, so the model learned that this label is incorrect.' correct="true">
-
-If `"PERSON"` entities occur in the training data but aren't labelled, the model
-will learn that they shouldn't be predicted. Similarly, if an existing entity
-type isn't present in the training data, the model may \"forget\" and stop
-predicting it.
+モデルがかなり異なる複数のカテゴリを学習することは可能です。
+たとえば、spaCyの事前学習の英語モデルは、人と組織とパーセンテージを認識することができます。
 
 </opt>
 
-<opt text="The hyperparameters need to be retuned so that both entity types can be recognized.">
+<opt text='学習データには<code>"PERSON"</code>の例が含まれていなかったため、モデルはこのラベルが正しくないと学習したから' correct="true">
 
-While the hyperparameters can influence a model's accuracy, they're likely not
-the problem here.
+もし`"PERSON"`固有表現がトレーニングに含まれているにも関わらずラベル付けされていなかったら、モデルはこのスパンを出力すべきでないというように学習してしまいます。
+同様に、今まであったラベルがトレーニングデータに含まれていない場合、モデルはそのラベルのことを忘れてしまい、予測しなくなってしまうことがあります。
+</opt>
+
+<opt text="両方のエンティティタイプを認識できるように、ハイパーパラメータを再調整する必要があるから">
+
+ハイパーパラメータはモデルの精度に影響を与える可能性がありますが、ここでは問題ではないでしょう。
 
 </opt>
 
@@ -323,18 +303,17 @@ the problem here.
 
 ### パート3
 
-- Update the training data to include annotations for the `"PERSON"` entities
-  "PewDiePie" and "Alexis Ohanian".
+- `"PERSON"`の固有表現「PewDiePie」と「Alexis Ohanian」のアノテーションを含むように学習データを更新します。
 
 <codeblock id="04_11_02">
 
-- To add more entities, append another `(start, end, label)` tuple to the list.
+- もっと固有表現を追加するには、さらに`(start, end, label)`のタプルをリストに追加します。
 
 </codeblock>
 
 </exercise>
 
-<exercise id="12" title="Wrapping up" type="slides">
+<exercise id="12" title="ラッピング" type="slides">
 
 <slides source="chapter4_04_wrapping-up">
 </slides>

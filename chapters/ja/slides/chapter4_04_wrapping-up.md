@@ -2,113 +2,93 @@
 type: slides
 ---
 
-# Wrapping up
+# ラッピング
 
-Notes: Congratulations – you've made it to the end of the course!
-
----
-
-# Your new spaCy skills
-
-- Extract **linguistic features**: part-of-speech tags, dependencies, named
-  entities
-- Work with pre-trained **statistical models**
-- Find words and phrases using `Matcher` and `PhraseMatcher` **match rules**
-- Best practices for working with **data structures** `Doc`, `Token` `Span`,
-  `Vocab`, `Lexeme`
-- Find **semantic similarities** using **word vectors**
-- Write custom **pipeline components** with **extension attributes**
-- **Scale up** your spaCy pipelines and make them fast
-- Create **training data** for spaCy' statistical models
-- **Train and update** spaCy's neural network models with new data
-
-Notes: Here's an overview of all the new skills you learned so far:
-
-In the first chapter, you learned how to extract linguistic features like
-part-of-speech tags, syntactic dependencies and named entities, and how to work
-with pre-trained statistical models.
-
-You also learned to write powerful match patterns to extract words and phrases
-using spaCy's matcher and phrase matcher.
-
-Chapter 2 was all about information extraction, and you learned how to work with
-the data structures, the `Doc`, `Token` and `Span`, as well as the `Vocab` and
-lexical entries.
-
-You also used spaCy to predict semantic similarities using word vectors.
-
-In chapter 3, you got some more insights into spaCy's pipeline, and learned to
-write your own custom pipeline components that modify the doc.
-
-You also created your own custom extension attributes for docs, tokens and
-spans, and learned about processing streams and making your pipeline faster.
-
-Finally, in chapter 4, you learned about training and updating spaCy's
-statistical models, specifically the entity recognizer.
-
-You learned some useful tricks for how to create training data, and how to
-design your label scheme to get the best results.
+Notes: おめでとうございます！コースの最後までやり遂げましたね！
 
 ---
 
-# More things to do with spaCy (1)
+# あなたが学んだ新しいspaCyのスキル
 
-- [Training and updating](https://spacy.io/usage/training) other pipeline
-  components
-  - Part-of-speech tagger
-  - Dependency parser
-  - Text classifier
+- **言語的特徴**の抽出：品詞タグ、依存関係、固有表現
+- 事前に訓練された**機械学習モデル**を使用した作業
+- Matcherと`PhraseMatcher`による**ルールベースマッチ**を使った単語やフレーズの検索
+- `Doc`、`Token`、`Span`、`Vocab`、`Lexeme` **データ構造**を扱うためのベストプラクティス
+- **単語ベクトル**を使った**類似度**の計算
+- **拡張属性**を使ったカスタム**パイプラインコンポーネント**の作成
+- spaCyパイプラインの**スケールアップ**と高速化
+- spaCyの機械学習モデルのための**トレーニングデータ**の作成
+- 新しいデータを使用したspaCyのニューラルネットワークモデルの**トレーニングとアップデート**
 
-Notes: Of course, there's a lot more that spaCy can do that we didn't get to
-cover in this course.
+Notes: 
 
-While we focused mostly on training the entity recognizer, you can also train
-and update the other statistical pipeline components like the part-of-speech
-tagger and dependency parser.
+ここでは、これまでに学んだ新しいスキルをおさらいします。
 
-Another useful pipeline component is the text classifier, which can learn to
-predict labels that apply to the whole text. It's not part of the pre-trained
-models, but you can add it to an existing model and train it on your own data.
+最初の章では、品詞タグ、依存関係、固有表現などの言語的特徴を抽出する方法と、事前学習の機械学習モデルを使用する方法を学びました。
 
----
+また、spaCyのMatcherとPhraseMatcherを使用して、単語やフレーズを抽出するための強力なマッチパターンを書くことも学びました。
 
-# More things to do with spaCy (2)
+第2章では、情報抽出について学び、データ構造である`Doc`、`Token`、`Span`、`Vocab`や語彙エントリの扱い方を学びました。
 
-- [Customizing the tokenizer](https://spacy.io/usage/linguistic-features#tokenization)
-  - Adding rules and exceptions to split text differently
-- [Adding or improving support for other languages](https://spacy.io/usage/adding-languages)
-  - 55+ languages currently
-  - Lots of room for improvement and more languages
-  - Allows training models for other languages
+また，単語ベクトルを用いて意味的類似度を予測する方法を学びました。
 
-Notes: In this course, we basically accepted the default tokenization as it is.
-But you don't have to!
+第3章では、spapCyのパイプラインについてさらに詳しく学び、docを変更する独自のカスタムパイプラインコンポーネントを書くことを学びました。
 
-spaCy lets you customize the rules used to determine where and how to split the
-text.
+また、Doc、Token、Spanの独自のカスタム拡張属性の作成法と、パイプラインを高速化する処理ストリームについても学びました。
 
-You can also add and improve the support for other languages.
+最後に第4章で、固有表現抽出器を使い、spaCyの機械学習モデルのトレーニングとアップデートの方法を学びました。
 
-While spaCy already supports tokenization for many different languages, there's
-still a lot of room for improvement.
-
-Supporting tokenization for a new language is the first step towards being able
-to train a statistical model.
+また、トレーニングデータを作成する方法のためのいくつかの有用なトリックや、よりよい結果を得るためのラベルスキームの設計法も学びました。
 
 ---
 
-# See the website for more info and documentation!
+# spaCyができるその他のこと(1)
 
-<img src="/website.png" alt="Laptop showing the spacy.io website" width="50%" />
+- その他のパイプラインコンポーネントの[トレーニングとアップデート](https://spacy.io/usage/training) other pipeline components
+  - 品詞タグ付け器
+  - 依存関係解析器
+  - 文書分類器
+
+Notes: もちろん、spaCyができることは、このコースで紹介したこと以外にもたくさんあります。
+
+これまでは主に固有表現抽出器に焦点を当てていましたが、品詞タグ付けと依存関係解析のような他の機械学習パイプラインコンポーネントを訓練して更新することができます。
+
+もう一つ、テキスト分類器という、テキスト全体に適用されるラベルを予測するための有用なパイプラインコンポーネントがあります。
+これは事前学習モデルには含まれていませんが、既存のモデルに追加して、用意したデータで訓練することができます。
+
+---
+
+# spaCyができるその他のこと(2)
+
+- [トークナイザーのカスタマイズ](https://spacy.io/usage/linguistic-features#tokenization)
+  - テキストを分割するためのルールや例外を追加する
+- [その他の言語を追加したり、改善したりする](https://spacy.io/usage/adding-languages)
+  - 現在は55以上の言語をサポート
+  - まだまだ改善の余地があります
+  - 他の言語でトレーニングすることができます
+
+Notes: この講座では、基本的にデフォルトのトークナイザーそのまま使いました。しかし、必ずしもそうしなくてもよいです！
+
+spaCyでは、テキストをどこでどのように分割するかを決定するために使用されるルールをカスタマイズすることができます。
+
+また、他の言語のサポートを追加したり、改善したりすることもできます。
+
+spaCyはすでに多くの言語のトークナイザーをサポートしていますが、改善の余地がまだたくさんあります。
+
+新しい言語のトークナイザーをサポートすることは、機械学習モデルをトレーニングできるようになるための第一歩です。
+
+---
+
+# より詳しい情報や、ドキュメントはウェブサイトを見てください！
+
+<img src="/website.png" alt="spacy.io のウェブサイト" width="50%" />
 
 👉 [spacy.io](https://spacy.io)
 
-Notes: For more examples, tutorials and in-depth API documentation, check out
-the spaCy website.
+Notes: より多くの例、チュートリアルおよび詳細なAPIドキュメントについては、spaCyのウェブサイトを御覧ください。
 
 ---
 
 # Thanks and see you soon! 👋
 
-Notes: Thanks so much for taking this course! I hope you had fun, and I'm
-excited to hear about the cool things you end up building with spaCy.
+Notes: このコースを受講してくださり、本当にありがとうございます！楽しんでいただけたでしょうか？spaCyでクールなものを作りあげる日を楽しみにしています！
