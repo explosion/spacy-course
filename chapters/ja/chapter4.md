@@ -16,34 +16,30 @@ id: 4
 
 </exercise>
 
-<exercise id="2" title="Purpose of training">
+<exercise id="2" title="トレーニングの目的">
 
-While spaCy comes with a range of pre-trained models to predict linguistic
-annotations, you almost _always_ want to fine-tune them with more examples. You
-can do this by training them with more labelled data.
+spaCyは、言語特徴量を予測するための事前に訓練された様々なモデルが付属していますが、殆どの場合、より多くのデータでそれらを微調整したいと思うでしょう。より多くのラベル付けされたデータを用いてトレーニングをすれば可能です。
 
-What does training **not** help with?
+トレーニングはどの場面では役に立たないでしょうか？
 
 <choice>
 
-<opt text="Improve model accuracy on your data.">
+<opt text="用意したデータで精度を上げる">
 
-If a pre-trained model doesn't perform well on your data, training it with more
-examples is often a good solution.
-
-</opt>
-
-<opt text="Learn new classification schemes.">
-
-You can use training to teach the model new labels, entity types or other
-classification schemes.
+事前に訓練されたモデルがあるデータ上でうまく機能しない場合は、新たなデータを使って訓練することが良い解決策になることがよくあります。
 
 </opt>
 
-<opt text="Discover patterns in unlabelled data." correct="true">
+<opt text="新たな分類スキームを学習する">
 
-spaCy's components are supervised models for text annotations, meaning they can
-only learn to reproduce examples, not guess new labels from raw text.
+トレーニングをすると、新しいラベル、固有表現タイプ、その他の分類スキームなどをモデルに教えることができます。
+
+</opt>
+
+<opt text="ラベルなしデータからパターンを探す" correct="true">
+
+spaCyのコンポーネントは、テキストアノテーションが必要な教師学習モデルです。
+つまり、新たなラベルを生のデータから推測することはできず、データを再現するために学習させる必要がある、ということです。
 
 </opt>
 
@@ -51,112 +47,86 @@ only learn to reproduce examples, not guess new labels from raw text.
 
 </exercise>
 
-<exercise id="3" title="Creating training data (1)">
+<exercise id="3" title="学習データを作る(1)">
 
-spaCy's rule-based `Matcher` is a great way to quickly create training data for
-named entity models. A list of sentences is available as the variable `TEXTS`.
-You can print it to inspect it. We want to find all mentions of different iPhone
-models, so we can create training data to teach a model to recognize them as
-`"GADGET"`.
+spaCyのルールベースの `Matcher` は，固有表現抽出の学習データを素早く作成するのに最適な方法です。
+文章のリストが変数 `TEXTS` として用意されており、プリントすると、中身を見ることができます。
+iPhoneのモデルが言及されている箇所を見つけるため、それらを `"GADGET"` として認識するようにモデルに教えるための学習データを作成することができます。
 
-- Write a pattern for two tokens whose lowercase forms match `"iphone"` and
-  `"x"`.
-- Write a pattern for two tokens: one token whose lowercase form matches
-  `"iphone"` and a digit using the `"?"` operator.
+- 小文字が `"iphone"` と `"x"` に一致する2つのトークンのパターンを書きます。
+- 小文字が `"iphone"` にマッチするトークンと、`"?"` 演算子を使った数字の2つのトークンのパターンを書きます。
 
 <codeblock id="04_03">
 
-- To match the lowercase form of a token, you can use the `"LOWER"` attribute.
-  For example: `{"LOWER": "apple"}`.
-- To find a digit token, you can use the `"IS_DIGIT"` flag. For example:
-  `{"IS_DIGIT": True}`.
+- トークンの小文字を一致させるには、`"LOWER"`属性を使用します。例えば、`{"LOWER". "apple"}`のようにします。
+- 数字のトークンを見つけるには、`"IS_DIGIT"` フラグを用います。例えば、 `{"IS_DIGIT". True}`のようになります。
 
 </codeblock>
 
 </exercise>
 
-<exercise id="4" title="Creating training data (2)">
+<exercise id="4" title="学習データを作る(2)">
 
-Let's use the match patterns we've created in the previous exercise to bootstrap
-a set of training examples. A list of sentences is available as the variable
-`TEXTS`.
+前の演習で作成したマッチパターンを使って、学習例のセットをブートストラップしてみましょう。文章のリストは変数 `texts` として用意されています。
 
-- Create a doc object for each text using `nlp.pipe`.
-- Match on the `doc` and create a list of matched spans.
-- Get `(start character, end character, label)` tuples of matched spans.
-- Format each example as a tuple of the text and a dict, mapping `"entities"` to
-  the entity tuples.
-- Append the example to `TRAINING_DATA` and inspect the printed data.
+- `nlp.pipe`を使って各テキストに対応するdocオブジェクトを作成します。
+- `doc`にmatcherを適用し、マッチしたスパンのリストを作成する。
+- マッチしたスパンのタプル `(start character, end character, label)` を取得します。
+- 各サンプルをテキストと辞書のタプルとして整形し、`"entities"` を固有表現タプルにマッピングします。
+- データを `TRAINING_DATA` に追加し、プリントして検査します。
 
 <codeblock id="04_04">
 
-- To find matches, call the `matcher` on a `doc`.
-- The returned matches are `(match_id, start, end)` tuples.
-- To add an example to the list of training examples, you can use
-  `TRAINING_DATA.append()`.
+- 一致するものを見つけるには、`doc` に対して `matcher` を呼び出します。
+- 結果は `(match_id, start, end)` のタプルです。
+- 学習データのリストにデータを追加するには、`TRAINING_DATA.append()`を使ってください。
 
 </codeblock>
 
 </exercise>
 
-<exercise id="5" title="The training loop" type="slides">
+<exercise id="5" title="トレーニングループ" type="slides">
 
 <slides source="chapter4_02_training-loop">
 </slides>
 
 </exercise>
 
-<exercise id="6" title="Setting up the pipeline">
+<exercise id="6" title="パイプラインの設定">
 
-In this exercise, you'll prepare a spaCy pipeline to train the entity recognizer
-to recognize `"GADGET"` entities in a text – for example, "iPhone X".
+この演習では、テキスト中の `"GADGET"` 固有表現を認識するための固有表現抽出器を訓練するためのspaCyパイプラインを準備します。
 
-- Create a blank `"en"` model, for example using the `spacy.blank` method.
-- Create a new entity recognizer using `nlp.create_pipe` and add it to the
-  pipeline.
-- Add the new label `"GADGET"` to the entity recognizer using the `add_label`
-  method on the pipeline component.
+- `spacy.blank` メソッドを用いて、何も入っていない`"en"`モデルを作成します。
+- `nlp.create_pipe` を使って新しい固有表現抽出器を作成し、パイプラインに追加します。
+- パイプラインコンポーネントの `add_label` メソッドを使って新しいラベル `"GADGET"` を固有表現抽出器に追加します。
 
 <codeblock id="04_06">
 
-- To create a blank entity recognizer, you can call `nlp.create_pipe` with the
-  string `"ner"`.
-- To add the component to the pipeline, use the `nlp.add_pipe` method.
-- The `add_label` method is a method of the entity recognizer pipeline
-  component, which you've stored in the variable `ner`. To add a label to it,
-  you can call `ner.add_label` with the string name of the label, for example
-  `ner.add_label("SOME_LABEL")`.
+- 新しい固有表現抽出器を作成するには、文字列 `"ner"` を指定して `nlp.create_pipe` を呼び出します。
+- コンポーネントをパイプラインに追加するには、`nlp.add_pipe`メソッドを用います。
+- `add_label` メソッドは固有表現抽出器のメソッドで、変数 `ner` からアクセスできます。ラベルを追加するには、`ner.add_label` にラベル名を指定して `ner.add_label("SOME_LABEL")` というふうに呼び出します。
 
 </codeblock>
 
 </exercise>
 
-<exercise id="7" title="Building a training loop">
+<exercise id="7" title="トレーニングループを作る">
 
-Let's write a simple training loop from scratch!
+シンプルなトレーニングループをゼロから作ってみましょう！
 
-The pipeline you've created in the previous exercise is available as the `nlp`
-object. It already contains the entity recognizer with the added label
-`"GADGET"`.
+前の演習で作成したパイプラインは `nlp` オブジェクトとして利用可能です。これには既に `"GADGET"` というラベルが追加された固有表現抽出器が含まれています。
 
-The small set of labelled examples that you've created previously is available
-as `TRAINING_DATA`. To see the examples, you can print them in your script.
+先ほど作成したラベル付きのデータが `TRAINING_DATA` 変数に入っています。データを見るには、スクリプトの中でコピーしてください。
 
-- Call `nlp.begin_training`, create a training loop for 10 iterations and
-  shuffle the training data.
-- Create batches of training data using `spacy.util.minibatch` and iterate over
-  the batches.
-- Convert the `(text, annotations)` tuples in the batch to lists of `texts` and
-  `annotations`.
-- For each batch, use `nlp.update` to update the model with the texts and
-  annotations.
+- `nlp.begin_training`を呼び出し、10回の訓練ループを作成し、訓練データをシャッフルします。
+- `spacy.util.minibatch` を用いて学習データのバッチを作成し、反復処理します。
+- バッチ内の `(text, annotations)` タプルを `texts` と `annotations` のリストに変換します。
+- バッチごとに、`nlp.update` を使ってモデルを更新します。
 
 <codeblock id="04_07">
 
-- To start the training and reset the weights call, the `nlp.begin_training()`
-  method.
-- To divide the training data into batches, call the `spacy.util.minibatch`
-  function on the list of training examples.
+- 学習を開始して重みをリセットするには `nlp.begin_training()` メソッドを呼び出します。
+- 学習データをバッチに分割するには、`spacy.util.minibatch` 関数を呼び出します。
 
 </codeblock>
 
@@ -164,9 +134,8 @@ as `TRAINING_DATA`. To see the examples, you can print them in your script.
 
 <exercise id="8" title="Exploring the model">
 
-Let's see how the model performs on unseen data! To speed things up a little, we
-already ran a trained model for the label `"GADGET"` over some text. Here are
-some of the results:
+見たことのないデータに対してモデルがどのように動作するか見てみましょう! 
+少しスピードを上げるために、訓練モデルをすでにいくつかのテキストに対して実行しています。以下に結果の一部を示します。
 
 | Text                                                                                                              | Entities               |
 | ----------------------------------------------------------------------------------------------------------------- | ---------------------- |
@@ -178,38 +147,33 @@ some of the results:
 | what is the cheapest ipad, especially ipad pro???                                                                 | `(ipad, ipad)`         |
 | Samsung Galaxy is a series of mobile computing devices designed, manufactured and marketed by Samsung Electronics | `(Samsung Galaxy,)`    |
 
-Out of all the entities in the texts, **how many did the model get correct**?
-Keep in mind that incomplete entity spans count as mistakes, too! Tip: Count the
-number of entities that the model _should_ have predicted. Then count the number
-of entities it _actually_ predicted correctly and divide it by the number of
-total correct entities.
+文章中のすべての固有表現の中で、**モデルの予測の正解数はいくつでしょう**？
+スパンの間違いも、誤りとしてカウントとします！
+ヒント：モデルが予測すべき固有表現の数をカウントします。そして、実際にモデルが正しく予測できた数を求め、それを先程のカウントで割ります。
 
 <choice>
 
 <opt text="45%">
 
-Try counting the number of correctly predicted entities and divide it by the
-number of total correct entities the model _should_ have predicted.
+モデルが正しく予測した固有表現の数を数え、それをモデルが正しく予測すべきだった固有表現の数で割ってください。
 
 </opt>
 
 <opt text="60%">
 
-Try counting the number of correctly predicted entities and divide it by the
-number of total correct entities the model _should_ have predicted.
+モデルが正しく予測した固有表現の数を数え、それをモデルが正しく予測すべきだった固有表現の数で割ってください。
 
 </opt>
 
 <opt text="70%" correct="true">
 
-On our test data, the model achieved an accuracy of 70%.
+テストデータに対し、モデルの精度は70%でした。
 
 </opt>
 
 <opt text="90%">
 
-Try counting the number of correctly predicted entities and divide it by the
-number of total correct entities the model _should_ have predicted.
+モデルが正しく予測した固有表現の数を数え、それをモデルが正しく予測すべきだった固有表現の数で割ってください。
 
 </opt>
 
@@ -217,7 +181,7 @@ number of total correct entities the model _should_ have predicted.
 
 </exercise>
 
-<exercise id="9" title="Training best practices" type="slides">
+<exercise id="9" title="学習のベストプラクティス" type="slides">
 
 <slides source="chapter4_03_training-best-practices">
 </slides>
