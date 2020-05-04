@@ -2,48 +2,40 @@
 type: slides
 ---
 
-# Best practices for training spaCy models
+# spaCyモデルのトレーニングのベストプラクティス
 
-Notes: When you start running your own experiments, you might find that a lot of
-things just don't work the way you want them to. And that's okay.
+Notes: 実験を始めると、多くのことが自分の思い通りにいかないことに気づくかもしれません。しかし、それでいいのです。
 
-Training models is an iterative process, and you have to try different things
-until you find out what works best.
+モデルのトレーニングは反復的なプロセスであり、何が一番うまくいくのかを見つけるまで、さまざまなことを試していく必要があります。
 
-In this lesson, I'll be sharing some best practices and things to keep in mind
-when training your own models.
+このレッスンでは、モデルをトレーニングする際のベストプラクティスと留意点をいくつか紹介します。
 
-Let's take a look at some of the problems you may come across.
+あなたが遭遇するかもしれない問題のいくつかを見てみましょう。
 
 ---
 
-# Problem 1: Models can "forget" things
+# 問題点1: モデルは忘れ得る
 
-- Existing model can overfit on new data
-  - e.g.: if you only update it with `"WEBSITE"`, it can "unlearn" what a
-    `"PERSON"` is
-- Also known as "catastrophic forgetting" problem
+- 既存のモデルは新しいデータにオーバーフィット可能です
+  - 例：`"WEBSITE"`を学習し、`"PERSON"`が何であるかを「忘れてしまう」ことができます。
+- 別名「壊滅的な物忘れ（catastrophic forgetting）」問題
 
-Notes: Statistical models can learn lots of things – but it doesn't mean that
-they won't unlearn them.
+Notes: 機械学習モデルは多くのことを学習することができますが、それは忘れないということではありません。
 
-If you're updating an existing model with new data, especially new labels, it
-can overfit and adjust _too much_ to the new examples.
+既存のモデルを新しいデータ、特に新しいラベルで更新している場合、モデルはオーバーフィットして、新しい例に対して適応しすぎることがあります。
 
-For instance, if you're only updating it with examples of "website", it may
-"forget" other labels it previously predicted correctly – like "person".
+例えば、「ウェブサイト」のデータだけで更新している場合、以前に正しく予測していた他のラベル（例えば「人」のラベル）を「忘れる」ことがあります。
 
-This is also known as the catastrophic forgetting problem.
+これは壊滅的な忘却問題としても知られています。
 
 ---
 
-# Solution 1: Mix in previously correct predictions
+# 解決策1: 以前の正解データを混ぜる
 
-- For example, if you're training `"WEBSITE"`, also include examples of
-  `"PERSON"`
-- Run existing spaCy model over data and extract all other relevant entities
+- 例えば、`"WEBSITE"`を学習する場合は、`"PERSON"`の例も含めます。
+- 既存のspaCyモデルをデータ上で実行し、他のすべての関連する固有表現を抽出します。
 
-**BAD:**
+**悪い例:**
 
 ```python
 TRAINING_DATA = [
@@ -51,7 +43,7 @@ TRAINING_DATA = [
 ]
 ```
 
-**GOOD:**
+**良い例:**
 
 ```python
 TRAINING_DATA = [
@@ -60,22 +52,19 @@ TRAINING_DATA = [
 ]
 ```
 
-Note: To prevent this, make sure to always mix in examples of what the model
-previously got correct.
+Note: 忘却を防ぐためには、モデルが以前に正しいと判断した例を常に混ぜるようにしてください。
 
-If you're training a new category `"WEBSITE"`, also include examples of
-`"PERSON"`.
+新しいカテゴリ `"WEBSITE"` を学習する場合は，`"PERSON"` の例も含めてください．
 
-spaCy can help you with this. You can create those additional examples by
-running the existing model over data and extracting the entity spans you care
-about.
+spaCyはこれをサポートしてくれます。
+既存のモデルをデータ上で実行し，注目すべき固有表現スパンを抽出することで，
+これらの追加のデータを作成することができます．
 
-You can then mix those examples in with your existing data and update the model
-with annotations of all labels.
+そして、それらの例を既存のデータと混ぜて、すべてのラベルのアノテーションでモデルを更新することができます。
 
 ---
 
-# Problem 2: Models can't learn everything
+# 問題2: モデルはすべてを学習できるわけではありません
 
 - spaCy's models make predictions based on **local context**
 - Model can struggle to learn if decision is difficult to make based on context

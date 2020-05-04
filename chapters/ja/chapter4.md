@@ -181,7 +181,7 @@ iPhoneのモデルが言及されている箇所を見つけるため、それ�
 
 </exercise>
 
-<exercise id="9" title="学習のベストプラクティス" type="slides">
+<exercise id="9" title="トレーニングのベストプラクティス" type="slides">
 
 <slides source="chapter4_03_training-best-practices">
 </slides>
