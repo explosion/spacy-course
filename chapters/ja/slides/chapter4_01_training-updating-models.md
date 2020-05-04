@@ -2,168 +2,142 @@
 type: slides
 ---
 
-# Training and updating models
+# モデルのトレーニングと更新
 
-Notes: Welcome to the final chapter, which is about one of the most exciting
-aspects of modern NLP: training your own models!
-
-In this lesson, you'll learn about training and updating spaCy's neural network
-models and the data you need for it – focusing specifically on the named entity
-recognizer.
+Notes: 
+この最終章では、最新のNLPの素晴らしい側面の1つである、モデルのトレーニングについて紹介します！
+このレッスンでは、固有表現抽出器にフォーカスし、spaCyのニューラルネットワークモデルのトレーニングと、必要なデータについて学んでいきます。
 
 ---
 
-# Why updating the model?
+# なぜモデルをアップデートするか？
 
-- Better results on your specific domain
-- Learn classification schemes specifically for your problem
-- Essential for text classification
-- Very useful for named entity recognition
-- Less critical for part-of-speech tagging and dependency parsing
+- 特定のドメインでより良い結果が得られます
+- 問題に特化した分類スキームを学習できます
+- テキストの分類に必須です
+- 固有表現抽出に非常に便利です
+- 品詞タグ付けや依存性解析については重要性が低いです
 
-Notes: Before we get starting with explaining _how_, it's worth taking a second
-to ask ourselves: Why would we want to update the model with our own examples?
-Why can't we just rely on pre-trained models?
+Notes: やり方の説明を始める前に、自問自答してみる価値はあります。なぜ私たちは自分の例でモデルを更新したいのでしょうか？なぜ事前に訓練されたモデルを使うだけではダメなのでしょうか？
 
-Statistical models make predictions based on the examples they were trained on.
+統計モデルは、訓練された例に基づいて予測を行います。
 
-You can usually make the model more accurate by showing it examples from your
-domain.
+通常、適用するドメインの例を示すことで、モデルの予測をより正確にできます。
 
-You often also want to predict categories specific to your problem, so the model
-needs to learn about them.
+また、問題に固有のカテゴリを予測したい場合がよくあり、モデルはその新しいカテゴリについて学習する必要があります。
 
-This is essential for text classification, very useful for entity recognition
-and a little less critical for tagging and parsing.
+モデルのアップデートはテキスト分類には必須で、固有表現抽出には非常に有用ですが、タグ付けや構文解析にはそれほど重要ではありません。
 
 ---
 
-# How training works (1)
+# トレーニングはどのように行われるか(1)
 
-1. **Initialize** the model weights randomly with `nlp.begin_training`
-2. **Predict** a few examples with the current weights by calling `nlp.update`
-3. **Compare** prediction with true labels
-4. **Calculate** how to change weights to improve predictions
-5. **Update** weights slightly
-6. Go back to 2.
+1. モデルの重みをランダムに `nlp.begin_training` で**初期化**します。
+2. `nlp.update` を呼び出して、現在の重みでいくつかの例を**予測**します。
+3. 予測値と真のラベルを**比較**します。
+4. 予測を改善するため、重みの変更方法を**計算**します。
+5. 重みを少し**更新**します。
+6. 2に戻ります。
 
-Notes: spaCy supports updating existing models with more examples, and training
-new models.
+Notes: spaCyは，新たなデータによる既存のモデル更新や，新しいモデルの学習をサポートしています。
 
-If we're not starting with a pre-trained model, we first initialize the weights
-randomly.
+事前に学習されたモデルを使わない場合は、まずランダムに重みを初期化します．
 
-Next, we call `nlp.update`, which predicts a batch of examples with the current
-weights.
+次に, `nlp.update` を呼び出します。これは現在の重みでバッチデータを予測します.
 
-The model then checks the predictions against the correct answers, and decides
-how to change the weights to achieve better predictions next time.
+次に、予測結果を正解と照合し、より良い予測ができるような重みの変更方法を計算します。
 
-Finally, we make a small correction to the current weights and move on to the
-next batch of examples.
+最後に、現在の重みを少し更新して、次のバッチデータにうつります。
 
-We continue calling `nlp.update` for each batch of examples in the data.
+データの各バッチに対して `nlp.update` を呼び出し続けます。
 
 ---
 
-# How training works (2)
+# トレーニングはどのように行われるか(2)
 
-<img src="/training.png" alt="Diagram of the training process" />
+<img src="/training.png" alt="トレーニングプロセスのダイアグラム" />
 
-- **Training data:** Examples and their annotations.
-- **Text:** The input text the model should predict a label for.
-- **Label:** The label the model should predict.
-- **Gradient:** How to change the weights.
+- **学習データ:** データとそのアノテーション
+- **テキスト:** モデルがラベルを予測する入力データ
+- **ラベル:** モデルが予測するラベル
+- **勾配:** 重みの変更方法
 
-Notes: Here's an illustration showing the process.
+Notes: ここに、処理の図を示します。
 
-The training data are the examples we want to update the model with.
+学習データは、モデルを更新するもととなるデータです。
 
-The text should be a sentence, paragraph or longer document. For the best
-results, it should be similar to what the model will see at runtime.
+テキストは、文章、段落、またはより長い文章です。良い結果を得るためには、モデルを実際に適用するデータと似たものを用いる必要があります。
 
-The label is what we want the model to predict. This can be a text category, or
-an entity span and its type.
+ラベルはモデルに予測させものです。テキストのカテゴリ、または固有表現のスパンとそのタイプなどが当てはまります。
 
-The gradient is how we should change the model to reduce the current error. It's
-computed when we compare the predicted label to the true label.
+勾配は、予測と正解の誤差を減らすための、モデルの変更方法を示します。予測ラベルと正解ラベルを比較するときに計算されます。
 
-After training, we can then save out an updated model and use it in our
-application.
+学習後、更新されたモデルを保存して、アプリケーションで使用することができます。
 
 ---
 
-# Example: Training the entity recognizer
+# 例: 固有表現抽出器の更新
 
-- The entity recognizer tags words and phrases in context
-- Each token can only be part of one entity
-- Examples need to come with context
+- 固有表現抽出器は、文脈に応じて単語やフレーズをタグ付けします。
+- 各トークンは1つの固有表現の一部にしかなり得ません。
+- 例は文脈に沿ったものである必要があります。
 
 ```python
 ("iPhone X is coming", {"entities": [(0, 8, "GADGET")]})
 ```
 
-- Texts with no entities are also important
+- 固有表現のないテキストも重要です。
 
 ```python
 ("I need a new phone! Any tips?", {"entities": []})
 ```
 
-- **Goal:** teach the model to generalize
+- **Goal:** モデルを汎化させる
 
-Notes: Let's look at an example for a specific component: the entity recognizer.
+Notes: ここでは、固有表現抽出器の例を見てみましょう。
 
-The entity recognizer takes a document and predicts phrases and their labels.
-This means that the training data needs to include texts, the entities they
-contain, and the entity labels.
+固有表現抽出器は、Docを受け取り、フレーズとそのラベルを予測します。
+つまり訓練データには、テキスト、それらに含まれる固有表現、そのラベルが含まれている必要があります。
 
-Entities can't overlap, so each token can only be part of one entity.
+固有表現は重複することができないため、各トークンは1つの固有表現の一部にしかなりません。
 
-Because the entity recognizer predicts entities _in context_, it also needs to
-be trained on entities _and_ their surrounding context.
+固有表現抽出器は文脈を見て固有表現を予測するため、固有表現とその周囲の文脈についても訓練する必要があります。
 
-The easiest way to do this is to show the model a text and a list of character
-offsets. For example, "iPhone X" is a gadget, starts at character 0 and ends at
-character 8.
+最も簡単な方法は、モデルにテキストと文字オフセットのリストを渡すことです。
+例えば、「iPhone X」はガジェットで、0文字目で始まり8文字目で終わります。
 
-It's also very important for the model to learn words that _aren't_ entities.
+固有表現ではない単語を学習することも非常に重要です。
 
-In this case, the list of span annotations will be empty.
+この場合、アノテーションのリストは空になります。
 
-Our goal is to teach the model to recognize new entities in similar contexts,
-even if they weren't in the training data.
+私たちの目標は、たとえ学習データになかったとしても、似たような文脈で新しい固有表現を抽出するようにモデルを学習させることです。
 
 ---
 
-# The training data
+# 学習データ
 
-- Examples of what we want the model to predict in context
-- Update an **existing model**: a few hundred to a few thousand examples
-- Train a **new category**: a few thousand to a million examples
-  - spaCy's English models: 2 million words
-- Usually created manually by human annotators
-- Can be semi-automated – for example, using spaCy's `Matcher`!
+- モデルが文脈を見て予測してほしいことの例
+- **既存モデル**の更新：数百から数千の例
+- **新しいカテゴリ**のトレーニング：数千から数百万の例
+  - spaCyの英語モデル：200万語
+- 通常は人間のアノテータが手動で作成
+- 半自動化することができます。例えば、spaCyの `Matcher` を使用してください！
 
-Notes: The training data tells the model what we want it to predict. This could
-be texts and named entities we want to recognize, or tokens and their correct
-part-of-speech tags.
+Notes: 学習データを用いて、モデルに予測させたいことを伝えます。これには、認識したいテキストや固有表現、あるいはトークンとその正しい品詞タグなどがあります。
 
-To update an existing model, we can start with a few hundred to a few thousand
-examples.
+既存のモデルを更新するには、数百から数千のデータが必要です。
 
-To train a new category we may need up to a million.
+新しいカテゴリを訓練するには、数百万程度非通用なこともあります。
 
-spaCy's pre-trained English models for instance were trained on 2 million words
-labelled with part-of-speech tags, dependencies and named entities.
+spaCyの事前に訓練された英語のモデルは、品詞タグと依存関係と固有固有表現のついた200万語のデータで訓練されています。
 
-Training data is usually created by humans who assign labels to texts.
+訓練データは通常、人間によって作成されます.
 
-This is a lot of work, but can be semi-automated – for example, using spaCy's
-`Matcher`.
+これは大変な作業です。しかし、半自動化することができます。
+例えば、spaCyの `Matcher`を使用します。
 
 ---
 
 # Let's practice!
 
-Notes: Now it's time to get started and prepare the training data. Let's look at
-some examples and create a small dataset for a new entity type.
+Notes: さて、いよいよ学習データの準備に取り掛かりましょう。いくつかの例を見て、新しい固有表現タイプの小さなデータセットを作成してみましょう。
