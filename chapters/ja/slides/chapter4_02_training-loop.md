@@ -2,64 +2,54 @@
 type: slides
 ---
 
-# The training loop
+# トレーニングループ
 
-Notes: While some other libraries give you one method that takes care of
-training a model, spaCy gives you full control over the training loop.
-
----
-
-# The steps of a training loop
-
-1. **Loop** for a number of times.
-2. **Shuffle** the training data.
-3. **Divide** the data into batches.
-4. **Update** the model for each batch.
-5. **Save** the updated model.
-
-Notes: The training loop is a series of steps that's performed to train or
-update a model.
-
-We usually need to perform it several times, for multiple iterations, so that
-the model can learn from it effectively. If we want to train for 10 iterations,
-we need to loop 10 times.
-
-To prevent the model from getting stuck in a suboptimal solution, we randomly
-shuffle the data for each iteration. This is a very common strategy when doing
-stochastic gradient descent.
-
-Next, we divide the training data into batches of several examples, also known
-as minibatching. This makes it easier to make a more accurate estimate of the
-gradient.
-
-Finally, we update the model for each batch, and start the loop again until
-we've reached the last iteration.
-
-We can then save the model to a directory and use it in spaCy.
+Notes: 他のライブラリではモデルのトレーニングを行うメソッドを1つだけ提供しているかもしれませんが、 spaCyではトレーニングループを完全に制御することができます。
 
 ---
 
-# Recap: How training works
+# トレーニングループのステップ
 
-<img src="/training.png" alt="Diagram of the training process" />
+1. 何回も**ループ**します
+2. トレーニングデータを**シャッフル**します
+3. データをバッチに**分割**します
+4. それぞれのバッチに対してモデルを**更新**します
+5. 更新されたモデルを**保存**します
 
-- **Training data:** Examples and their annotations.
-- **Text:** The input text the model should predict a label for.
-- **Label:** The label the model should predict.
-- **Gradient:** How to change the weights.
+Notes: トレーニングループは、モデルを訓練または更新するために実行される一連のステップです。
 
-Notes: To recap:
+通常、モデルが効果的に学習できるように複数回反復するので、何回か実行する必要があります。
+10回の反復訓練をしたい場合、10回ループする必要があります。
 
-The training data are the examples we want to update the model with.
+モデルが局所最適解から抜け出せなくなるのを防ぐために、反復ごとにランダムにデータをシャッフルします。
+これは確率的勾配降下を行うときによく使われる手法です。
 
-The text should be a sentence, paragraph or longer document. For the best
-results, it should be similar to what the model will see at runtime.
+次に、学習データをいくつかの例のバッチに分割（ミニバッチ）します。これにより、勾配のより正確な推定ができます。
 
-The label is what we want the model to predict. This can be a text category, or
-an entity span and its type.
+最後に、各バッチごとにモデルを更新し、反復が終わるまでループを回します。
 
-The gradient is how we should change the model to reduce the current error. It's
-computed when we compare the predicted label to the true label.
+そして、モデルをディレクトリに保存して、spaCyで使用できるようにします。
+
+---
+
+# 要約：トレーニングの仕組み
+
+<img src="/training.png" alt="トレーニングプロセスのダイアグラム" />
+
+- **トレーニングデータ:** データ例とアノテーション
+- **テキスト:** モデルがラベルを予測すべき入力データ
+- **ラベル:** モデルが予測するラベル
+- **勾配:** モデルの重みの変更方法
+
+Notes: 要約:
+
+学習データは、モデルを更新するもととなるデータです。
+
+テキストは、文章、段落、またはより長い文章です。良い結果を得るためには、モデルを実際に適用するデータと似たものを用いる必要があります。
+
+ラベルはモデルに予測させものです。テキストのカテゴリ、または固有表現のスパンとそのタイプなどが当てはまります。
+
+勾配は、予測と正解の誤差を減らすための、モデルの変更方法を示します。予測ラベルと正解ラベルを比較するときに計算されます。
 
 ---
 
@@ -68,115 +58,101 @@ computed when we compare the predicted label to the true label.
 ```python
 TRAINING_DATA = [
     ("How to preorder the iPhone X", {"entities": [(20, 28, "GADGET")]})
-    # And many more examples...
+    # たくさんのデータ、、、
 ]
 ```
 
 ```python
-# Loop for 10 iterations
+# 10回ループする
 for i in range(10):
-    # Shuffle the training data
+    # トレーニングデータをシャッフルする
     random.shuffle(TRAINING_DATA)
-    # Create batches and iterate over them
+    # バッチを作成し、反復処理する
     for batch in spacy.util.minibatch(TRAINING_DATA):
-        # Split the batch in texts and annotations
+        # テキストとアノテーションのバッチを分割する
         texts = [text for text, annotation in batch]
         annotations = [annotation for text, annotation in batch]
-        # Update the model
+        # モデルを更新する
         nlp.update(texts, annotations)
 
-# Save the model
+# モデルを保存する
 nlp.to_disk(path_to_model)
 ```
 
-Notes: Here's an example.
+Notes: ここに例を示します。
 
-Let's imagine we have a list of training examples consisting of texts and entity
-annotations.
+テキストと固有表現アノテーションからなる学習例のリストがあるとします。
 
-We want to loop for 10 iterations, so we're iterating over a `range` of 10.
+10回の反復処理を行いたいので、`range(10)`で反復処理を行います。
 
-Next, we use the `random` module to randomly shuffle the training data.
+次に、学習データをランダムにシャッフルするために `random` パッケージを用います。
 
-We then use spaCy's `minibatch` utility function to divide the examples into
-batches.
+次に、spaCyの `minibatch` ユーティリティ関数を用いてデータをバッチに分割します。
 
-For each batch, we get the texts and annotations and call the `nlp.update`
-method to update the model.
+各バッチについては、テキストとアノテーションを取得し、モデルを更新するために `nlp.update` メソッドを呼び出します。
 
-Finally, we call the `nlp.to_disk` method to save the trained model to a
-directory.
+最後に、学習したモデルをディレクトリに保存するために `nlp.to_disk` メソッドを呼び出します。
 
 ---
 
 # Updating an existing model
 
-- Improve the predictions on new data
-- Especially useful to improve existing categories, like `"PERSON"`
-- Also possible to add new categories
-- Be careful and make sure the model doesn't "forget" the old ones
+- 新しいデータで予測を改善します
+- 特に、`"PERSON"`のような既存のカテゴリを改善するのに便利です
+- 新しいカテゴリの追加も可能です
+- モデルが古いものを「忘れてしまう」ことがないように気をつけましょう
 
-Notes: spaCy lets you update an existing pre-trained model with more data – for
-example, to improve its predictions on different texts.
+Notes: spaCyを使用すると、より多くのデータで既存の事前学習済みモデルを更新することができます。例えば、異なるテキスト上での予測を改善するために便利です。
 
-This is especially useful if you want to improve categories the model already
-knows, like "person" or "organization".
+これは、モデルがすでに知っているカテゴリを改善したい場合に特に便利です．
 
-You can also update a model to add new categories.
+また、モデルを更新して新しいカテゴリを追加することもできます。
 
-Just make sure to always update it with examples of the new category _and_
-examples of the other categories it previously predicted correctly. Otherwise
-improving the new category might hurt the other categories.
+ただ、常に新しいカテゴリの例と、以前に正しく予測した他のカテゴリの例で更新してください。
+そうしないと、新しいカテゴリを追加したせいで、既存のカテゴリの性能が落ちる場合があります。
 
 ---
 
-# Setting up a new pipeline from scratch
+# 新しいパイプラインをゼロから作る
 
 ```python
-# Start with blank English model
+# 空の英語モデルを作る
 nlp = spacy.blank("en")
-# Create blank entity recognizer and add it to the pipeline
+# 新しい固有表現抽出器を作り、パイプライに追加する
 ner = nlp.create_pipe("ner")
 nlp.add_pipe(ner)
-# Add a new label
+# 新しいラベルを追加する
 ner.add_label("GADGET")
 
-# Start the training
+# トレーニング開始
 nlp.begin_training()
-# Train for 10 iterations
+# 10回反復する
 for itn in range(10):
     random.shuffle(examples)
-    # Divide examples into batches
+    # データをバッチに分割する
     for batch in spacy.util.minibatch(examples, size=2):
         texts = [text for text, annotation in batch]
         annotations = [annotation for text, annotation in batch]
-        # Update the model
+        # モデルを更新する
         nlp.update(texts, annotations)
 ```
 
-Notes: In this example, we start off with a blank English model using the
-`spacy.blank` method. The blank model doesn't have any pipeline components, only
-the language data and tokenization rules.
+Notes: この例ではまず `spacy.blank` メソッドを使用して空の英語モデルを作成します。空のモデルにはパイプラインコンポーネントはなく、言語データとトークン化ルールだけ入っています。
 
-We then create a blank entity recognizer and add it to the pipeline.
+次に、新しい固有表現抽出器を作成してパイプラインに追加します。
 
-Using the `add_label` method, we can add new string labels to the model.
+`add_label`メソッドを使って、新しいラベルをモデルに追加することができます。
 
-We can now call `nlp.begin_training` to initialize the model with random
-weights.
+その後、`nlp.begin_training` を呼び出して、ランダムな重みでモデルを初期化することができます。
 
-To get better accuracy, we want to loop over the examples more than once and
-randomly shuffle the data on each iteration.
+より良い精度を得るために、データを複数回ループさせ、各ループでランダムにデータをシャッフルするようにします。
 
-On each iteration, we divide the examples into batches using spaCy's `minibatch`
-utility function. Each example consists of a text and its annotations.
+各ループでは、spaCyの `minibatch` ユーティリティ関数を用いてデータをバッチに分割します。各データはテキストとその注釈で構成されています．
 
-Finally, we update the model with the texts and annotations and continue the
-loop.
+最後に，テキストとアノテーションでモデルを更新し，ループを続けます。
 
 ---
 
 # Let's practice!
 
-Notes: Time to practice! Now that you've seen the training loop, let's use the
-data created in the previous exercise to update a model.
+Notes: 練習の時間です！トレーニングループの実装方法を見たので、前回の練習で作成したデータを使ってモデルを更新してみましょう。
