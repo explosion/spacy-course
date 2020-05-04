@@ -2,17 +2,16 @@
 type: slides
 ---
 
-# Extension attributes
+# 拡張属性
 
-Notes: In this lesson, you'll learn how to add custom attributes to the `Doc`,
-`Token` and `Span` objects to store custom data.
+Notes: このレッスンでは、カスタムデータを保存するために`Doc`、`Token`、`Span`オブジェクトにカスタム属性を追加する方法を学びます。
 
 ---
 
-# Setting custom attributes
+# カスタム属性のセッティング
 
-- Add custom metadata to documents, tokens and spans
-- Accessible via the `._` property
+- カスタムのメタデータをdoc、トークン、spanに追加
+- `._`プロパティから 取得
 
 ```python
 doc._.title = "My document"
@@ -20,88 +19,80 @@ token._.is_color = True
 span._.has_color = False
 ```
 
-- Registered on the global `Doc`, `Token` or `Span` using the `set_extension`
-  method
+- グローバルな`Doc`、`Token`、`Span`に`set_extension`メソッドを使って登録
 
 ```python
-# Import global classes
+# グローバルなクラスをインポート
 from spacy.tokens import Doc, Token, Span
 
-# Set extensions on the Doc, Token and Span
+# Doc, Token, Spanに拡張をセット
 Doc.set_extension("title", default=None)
 Token.set_extension("is_color", default=False)
 Span.set_extension("has_color", default=False)
 ```
 
-Notes: Custom attributes let you add any meta data to docs, tokens and spans.
-The data can be added once, or it can be computed dynamically.
+Notes: カスタム属性を使用すると、任意のメタデータをDoc、トークン、スパンに追加することができます。
+データは手動で追加したり、動的に計算したりできます。
 
-Custom attributes are available via the `._` (dot underscore) property. This
-makes it clear that they were added by the user, and not built into spaCy, like
-`token.text`.
+カスタム属性は`._`(ドットアンダースコア) プロパティで使用できます。これにより、それらがユーザによって追加されたものであり、`token.text`のようにspaCyのビルトインのものではないことが明確になります。
 
-Attributes need to be registered on the global `Doc`, `Token` and `Span` classes
-you can import from `spacy.tokens`. You've already worked with those in the
-previous chapters. To register a custom attribute on the `Doc`, `Token` and
-`Span`, you can use the `set_extension` method.
+属性は`spacy.tokens`からインポートできるグローバルな`Doc`、`Token`、`Span`クラスに登録する必要があります。
+これらのクラスについては、前の章で説明した通りです。
+カスタム属性を`Doc`、`Token`、`Span`に登録するには、`set_extension`メソッドを使ってください。
 
-The first argument is the attribute name. Keyword arguments let you define how
-the value should be computed. In this case, it has a default value and can be
-overwritten.
+最初の引数は属性名です。キーワード引数は、値の計算方法を定義することができます。
+この場合、デフォルト値を持ち、上書きすることができる、という意味です。
 
 ---
 
-# Extension attribute types
+# 拡張属性のタイプ
 
-1. Attribute extensions
-2. Property extensions
-3. Method extensions
+1. 属性拡張
+2. プロパティ拡張
+3. メソッド拡張
 
-Notes: There are three types of extensions: attribute extensions, property
-extensions and method extensions.
+Notes: 拡張には3つのタイプがあります。属性拡張、プロパティ拡張、メソッド拡張です。
 
 ---
 
-# Attribute extensions
+# 属性拡張
 
-- Set a default value that can be overwritten
+- 上書き可能なデフォルト値をセット
 
 ```python
 from spacy.tokens import Token
 
-# Set extension on the Token with default value
+# Tokenに拡張をセットし、デフォルト値を与える
 Token.set_extension("is_color", default=False)
 
 doc = nlp("The sky is blue.")
 
-# Overwrite extension attribute value
+# 拡張属性の値を上書き
 doc[3]._.is_color = True
 ```
 
-Notes: Attribute extensions set a default value that can be overwritten.
+Notes: 属性拡張を使うには、上書き可能なデフォルト値をセットします。
 
-For example, a custom `is_color` attribute on the token that defaults to
-`False`.
+例えば、トークンにカスタムの`is_color`属性を設定し、デフォルトは`False`とします。
 
-On individual tokens, its value can be changed by overwriting it – in this case,
-True for the token "blue".
+個々のトークンについては、その値を上書きできます。この場合、トークン「blue」はTrueとなります。
 
 ---
 
-# Property extensions (1)
+# プロパティ拡張(1)
 
-- Define a getter and an optional setter function
-- Getter only called when you _retrieve_ the attribute value
+- ゲッターと、必要ならばセッターを定義
+- ゲッターは、属性値を取得したときにのみ呼び出されます。
 
 ```python
 from spacy.tokens import Token
 
-# Define getter function
+# ゲッターを定義
 def get_is_color(token):
     colors = ["red", "yellow", "blue"]
     return token.text in colors
 
-# Set extension on the Token with getter
+# ゲッターをTokenの拡張にセット
 Token.set_extension("is_color", getter=get_is_color)
 
 doc = nlp("The sky is blue.")
@@ -112,36 +103,32 @@ print(doc[3]._.is_color, "-", doc[3].text)
 True - blue
 ```
 
-Notes: Property extensions work like properties in Python: they can define a
-getter function and an optional setter.
+Notes: プロパティ拡張機能はPythonのプロパティと似ています。ゲッターと、オプショナルなセッターを定義できます。
 
-The getter function is only called when you retrieve the attribute. This lets
-you compute the value dynamically, and even take other custom attributes into
-account.
+ゲッターは、属性を取得したときに呼び出されます。
+これにより、値を動的に計算したり、他のカスタム属性を用いることができます。
 
-Getter functions take one argument: the object, in this case, the token. In this
-example, the function returns whether the token text is in our list of colors.
+ゲッターは1つの引数を取ります。この例では、ゲッターはトークンのテキストが色のリストに含まれているかどうかを返します。
 
-We can then provide the function via the `getter` keyword argument when we
-register the extension.
+拡張を登録する際に、`getter`キーワード引数でゲッターを登録します。
 
-The token "blue" now returns `True` for `._.is_color`.
+トークン「blue」の`._.is_color`プロパティは`True`を返すようになりました。
 
 ---
 
-# Property extensions (2)
+# プロパティ拡張(2)
 
-- `Span` extensions should almost always use a getter
+- `Span`拡張はほぼ全ての場合でゲッターを用いるべきです
 
 ```python
 from spacy.tokens import Span
 
-# Define getter function
+# ゲッターを定義
 def get_has_color(span):
     colors = ["red", "yellow", "blue"]
     return any(token.text in colors for token in span)
 
-# Set extension on the Span with getter
+# Spanにゲッターを登録
 Span.set_extension("has_color", getter=get_has_color)
 
 doc = nlp("The sky is blue.")
@@ -154,33 +141,29 @@ True - sky is blue
 False - The sky
 ```
 
-Notes: If you want to set extension attributes on a span, you almost always want
-to use a property extension with a getter. Otherwise, you'd have to update
-_every possible span ever_ by hand to set all the values.
+Notes: スパンに拡張を登録する際は、ほとんどの場合ゲッターによるプロパティ属性を使うべきです。
+もしこれ以外を使うならば、とりうる全てのスパンを手作業で更新しなければなりません。
 
-In this example, the `get_has_color` function takes the span and returns whether
-the text of any of the tokens is in the list of colors.
+この例では、関数`get_has_color`はスパンを受け取り、トークンのいずれかのテキストがカラーリストに含まれているかどうかを返します。
 
-After we've processed the doc, we can check different slices of the doc and the
-custom `._.has_color` property returns whether the span contains a color token
-or not.
+docの処理した後、docのスライスをチェックすると、カスタムの`._.has_color`プロパティはスパンに色を示すトークンが含まれているかどうかを返すようになります。
 
 ---
 
-# Method extensions
+# メソッド拡張
 
-- Assign a **function** that becomes available as an object method
-- Lets you pass **arguments** to the extension function
+- 関数をアサインすると、オブジェクトのメソッドとして使えるようになります
+- 拡張メソッドには、**引数**を渡すことができます
 
 ```python
 from spacy.tokens import Doc
 
-# Define method with arguments
+# 引数をとるメソッドを定義
 def has_token(doc, token_text):
     in_doc = token_text in [token.text for token in doc]
     return in_doc
 
-# Set extension on the Doc with method
+# メソッドを拡張にセット
 Doc.set_extension("has_token", method=has_token)
 
 doc = nlp("The sky is blue.")
@@ -193,22 +176,18 @@ True - blue
 False - cloud
 ```
 
-Notes: Method extensions make the extension attribute a callable method.
+Notes: メソッド拡張を使うと、拡張属性を呼び出し可能なメソッドにすることができます。
 
-You can then pass one or more arguments to it, and compute attribute values
-dynamically – for example, based on a certain argument or setting.
+拡張属性に1つ以上の引数を渡して、属性値を動的に計算することができます。
 
-In this example, the method function checks whether the doc contains a token
-with a given text. The first argument of the method is always the object itself
-– in this case, the doc. It's passed in automatically when the method is called.
-All other function arguments will be arguments on the method extension. In this
-case, `token_text`.
+この例では、メソッドはdocに指定されたテキストを含むトークンが含まれているかどうかをチェックします。
+メソッドの最初の引数は常にオブジェクトで、この場合はdocです。
+これは、メソッドが呼び出されたときに自動的に渡されます。他のすべての関数の引数は拡張メソッドの引数になります。この場合は `token_text` です。
 
-Here, the custom `._.has_token` method returns `True` for the word "blue" and
-`False` for the word "cloud".
+ここでは、`._.has_token`メソッドは「blue」に対して`True`を返し、「cloud」に対しては`False`を返します。
 
 ---
 
 # Let's practice!
 
-Notes: Now it's your turn. Let's add some custom extensions!
+Notes: それでは、演習に入りましょう。カスタム拡張を追加してみましょう！

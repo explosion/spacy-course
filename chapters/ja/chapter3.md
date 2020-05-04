@@ -170,147 +170,119 @@ spaCyはマシン上で全てを計算するので、サーバに接続する必
 
 </exercise>
 
-<exercise id="8" title="Extension attributes" type="slides">
+<exercise id="8" title="拡張属性" type="slides">
 
 <slides source="chapter3_03_extension-attributes">
 </slides>
 
 </exercise>
 
-<exercise id="9" title="Setting extension attributes (1)">
+<exercise id="9" title="拡張属性の設定(1)">
 
-Let's practice setting some extension attributes.
+拡張属性の設定を試してみましょう。
 
-### Step 1
+### ステップ1
 
-- Use `Token.set_extension` to register `"is_country"` (default `False`).
-- Update it for `"Spain"` and print it for all tokens.
+- `Token.set_extension` を用いて `"is_country"` (デフォルトは `False`) を登録します。
+- `"スペイン"`について更新し、すべてのトークンをプリントします。
 
 <codeblock id="03_09_01">
 
-Remember that extension attributes are available via the `._` property. For
-example, `doc._.has_color`.
+拡張属性は`._`からアクセスできることを思い出してください。例えば、`doc._.has_color`のようにします。
 
 </codeblock>
 
-### Step 2
+### ステップ3
 
-- Use `Token.set_extension` to register `"reversed"` (getter function
-  `get_reversed`).
-- Print its value for each token.
+- `Token.set_extension`を使って`"reversed"`を登録してください（getter `get_reversed`）
+- それぞれのトークンについて、プリントしてください。
 
 <codeblock id="03_09_02">
 
-Remember that extension attributes are available via the `._` property. For
-example, `doc._.has_color`.
+拡張属性は`._`からアクセスできることを思い出してください。例えば、`doc._.has_color`のようにします。
 
 </codeblock>
 
 </exercise>
 
-<exercise id="10" title="Setting extension attributes (2)">
+<exercise id="10" title="拡張属性の設定(2)">
 
-Let's try setting some more complex attributes using getters and method
-extensions.
+ゲッターとメソッド属性を用いたより複雑な属性の設定をしていきましょう。
 
 ### パート1
 
-- Complete the `get_has_number` function .
-- Use `Doc.set_extension` to register `"has_number"` (getter `get_has_number`)
-  and print its value.
+- 関数`get_has_number`を完成させます。
+- `Doc.set_extension`を用いて`"has_number"`(getter `get_has_number`)を登録し、その値を表示します。
 
 <codeblock id="03_10_01">
 
-- Remember that extension attributes are available via the `._` property. For
-  example, `doc._.has_color`.
-- The `get_has_number` function should return whether any of the tokens in the
-  `doc` return `True` for `token.like_num` (whether the token resembles a
-  number).
+- 拡張属性は`._`からアクセスできることを思い出してください。例えば、`doc._.has_color`のようにします。
+- 関数 `get_has_number` は、`doc` に含まれるトークンが `token.like_num` に対して `True` を返すかどうか（トークンが数字に似ているかどうか）を返す必要があります。
 
 </codeblock>
 
 ### パート2
 
-- Use `Span.set_extension` to register `"to_html"` (method `to_html`).
-- Call it on `doc[0:2]` with the tag `"strong"`.
+- `Span.set_extension`を使って`"to_html"`を登録します。（method `to_html`）
+- `doc[0:2]`に対して、`"strong"`を使って呼び出します。
 
 <codeblock id="03_10_02">
 
-- Method extensions can take one or more arguments. For example:
-  `doc._.some_method("argument")`.
-- The first argument passed to the method is always the `Doc`, `Token` or `Span`
-  object the method was called on.
+- メソッドの拡張子は1つ以上の引数を取ることができます。例えば、`doc._.some_method("argument")`のようになります。
+- メソッドに渡される最初の引数は、呼び出されたメソッドの親である `Doc`, `Token`, `Span` オブジェクトです。
 
 </codeblock>
 
 </exercise>
 
-<exercise id="11" title="Entities and extensions">
+<exercise id="11" title="固有表現と拡張属性">
 
-In this exercise, you'll combine custom extension attributes with the model's
-predictions and create an attribute getter that returns a Wikipedia search URL
-if the span is a person, organization, or location.
+この演習では、カスタム拡張属性とモデルの予測を組み合わせて、スパンが人、組織、または場所の場合にウィキペディアの検索URLを返すゲッター属性を作成します。
 
-- Complete the `get_wikipedia_url` getter so it only returns the URL if the
-  span's label is in the list of labels.
-- Set the `Span` extension `"wikipedia_url"` using the getter
-  `get_wikipedia_url`.
-- Iterate over the entities in the `doc` and output their Wikipedia URL.
+- ゲッター `get_wikipedia_url` を完成させ、ラベルのリストにスパンのラベルが含まれている場合にのみURLを返すようにします。
+- ゲッター `get_wikipedia_url` を用いて`Span`の拡張子 `"wikipedia_url"` を設定します。
+- `doc`内のエンティティをイテレートし、WikipediaのURLを出力します。
 
 <codeblock id="03_11">
 
-- To get the string label of a span, use the `span.label_` attribute. This is
-  the label predicted by the entity recognizer if the span is an entity span.
-- Remember that extension attributes are available via the `._` property. For
-  example, `doc._.has_color`.
+- スパンの文字列ラベルを取得するには、`span.label_` 属性を使用します。これは、スパンが固有表現である場合に固有表現抽出器が予測するラベルです。
+- 拡張属性は`._`プロパティで利用できることを覚えておいてください。例えば、`doc._.has_color`とします。
 
 </codeblock>
 
 </exercise>
 
-<exercise id="12" title="Components with extensions">
+<exercise id="12" title="拡張属性とコンポーネント">
 
-Extension attributes are especially powerful if they're combined with custom
-pipeline components. In this exercise, you'll write a pipeline component that
-finds country names and a custom extension attribute that returns a country's
-capital, if available.
+拡張属性は、カスタムパイプラインコンポーネントと組み合わせて使用すると特に強力です。この演習では、国の名前を検索するパイプラインコンポーネントと、国の首都を返すカスタム拡張属性を書いてみましょう。
 
-A phrase matcher with all countries is available as the variable `matcher`. A
-dictionary of countries mapped to their capital cities is available as the
-variable `CAPITALS`.
+変数 `matcher` に、すべての国を含むフレーズマッチャがはいっています。
+国と首都の関係の辞書が変数 `CAPITALS` として利用できる。
 
-- Complete the `countries_component` and create a `Span` with the label `"GPE"`
-  (geopolitical entity) for all matches.
-- Add the component to the pipeline.
-- Register the Span extension attribute `"capital"` with the getter
-  `get_capital`.
-- Process the text and print the entity text, entity label and entity capital
-  for each entity span in `doc.ents`.
+- `countries_component`を完成させ、すべてのマッチに対して `"GPE"` (地政学的実体) のラベルを持つ `Span` を作成します。
+- コンポーネントをパイプラインに追加します。
+- ゲッター `get_capital` にスパンの拡張属性 `"capital"` を登録します。
+- テキストを処理し、`doc.ents`に入っている各固有表現スパンのテキスト、ラベル、キャピタルをプリントします。
 
 <codeblock id="03_12">
 
-- The `Span` class takes four arguments: the `doc`, the `start` and `end` token
-  index of the span and the `label`.
-- Calling the `PhraseMatcher` on a `doc` returns a list of
-  `(match_id, start, end)` tuples.
-- To register a new extension attribute, use the `set_extension` method on the
-  global class, e.g. `Doc`, `Token` or `Span`. To define a getter, use the
-  `getter` keyword argument.
-- Remember that extension attributes are available via the `._.` property. For
-  example, `doc._.has_color`.
+- `Span` クラスは、`doc`、トークンインデックス `start` と `end`、そして `label` の 4 つの引数をとります。
+- `doc` に対して `PhraseMatcher` を呼び出すと、`(match_id, start, end)` タプルのリストを返します。
+- 新しい拡張属性を登録するには、グローバルクラスの `set_extension` メソッドを利用します。ゲッターを登録するには、`getter` キーワード引数を使用します。
+- 拡張属性は、`._.`プロパティで利用できます。例えば、`doc._.has_color` のようにします。
 
 </codeblock>
 
 </exercise>
 
-<exercise id="13" title="Scaling and performance" type="slides">
+<exercise id="13" title="スケーリングとパフォーマンス" type="slides">
 
 <slides source="chapter3_04_scaling-performance">
 </slides>
 
 </exercise>
 
-<exercise id="14" title="Processing streams">
+<exercise id="14" title="ストリームの処理">
 
 In this exercise, you'll be using `nlp.pipe` for more efficient text processing.
 The `nlp` object has already been created for you. A list of tweets about a

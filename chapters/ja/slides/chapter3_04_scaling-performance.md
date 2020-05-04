@@ -2,51 +2,45 @@
 type: slides
 ---
 
-# Scaling and performance
+# スケーリングとパフォーマンス
 
-Notes: In this lesson, I'll show you a few tips and tricks to make your spaCy
-pipelines run as fast as possible, and process large volumes of text
-efficiently.
+Notes: このレッスンでは、spaCyのパイプラインをなるべく速く実行し、大量のテキストを効率的に処理する裏技をご紹介します。
 
 ---
 
-# Processing large volumes of text
+# 大量のテキストの処理
 
-- Use `nlp.pipe` method
-- Processes texts as a stream, yields `Doc` objects
-- Much faster than calling `nlp` on each text
+- `nlp.pipe`メソッドを使います。
+- テキストをストリームとして処理し、`Doc` オブジェクトを生成します。
+- テキストごとに `nlp` を呼び出すよりもはるかに速いです。
 
-**BAD:**
+**悪い例:**
 
 ```python
 docs = [nlp(text) for text in LOTS_OF_TEXTS]
 ```
 
-**GOOD:**
+**いい例:**
 
 ```python
 docs = list(nlp.pipe(LOTS_OF_TEXTS))
 ```
 
-Notes: If you need to process a lot of texts and create a lot of `Doc` objects
-in a row, the `nlp.pipe` method can speed this up significantly.
+Notes: 大量のテキストを処理して大量の `Doc` オブジェクトを作成する必要がある場合、`nlp.pipe` メソッドを使うと大幅に高速化することができます。
 
-It processes the texts as a stream and yields `Doc` objects.
+このメソッドは、テキストをストリームとして処理し、`Doc` オブジェクトを生成します。
 
-It is much faster than just calling nlp on each text, because it batches up the
-texts.
+テキストをバッチ化するので、各テキストに対して単にnlpを呼び出すよりもはるかに高速です。
 
-`nlp.pipe` is a generator that yields `Doc` objects, so in order to get a list
-of docs, remember to call the `list` method around it.
+`nlp.pipe` は `Doc` オブジェクトを生成するジェネレータなので、ドキュメントのリストを取得するには、`list`を呼び出すことを忘れないようにしてください。
 
 ---
 
-# Passing in context (1)
+# コンテキストを使う(1)
 
-- Setting `as_tuples=True` on `nlp.pipe` lets you pass in `(text, context)`
-  tuples
-- Yields `(doc, context)` tuples
-- Useful for associating metadata with the `doc`
+- `nlp.pipe` で `as_tuples=True` を設定すると、`(text, context)` タプルを渡すことができます。
+- 戻り値は`(doc, context)`タプルです。
+- メタデータを `doc` に関連付けるのに便利です。
 
 ```python
 data = [
@@ -63,17 +57,15 @@ This is a text 15
 And another text 16
 ```
 
-Notes: `nlp.pipe` also supports passing in tuples of text / context if you set
-`as_tuples` to `True`.
+Notes: `nlp.pipe` は、`as_tuples` を `True` に設定した場合、テキストとコンテキストのタプルを渡すことができます。
 
-The method will then yield doc / context tuples.
+このメソッドはdocとコンテキストのタプルを返します。
 
-This is useful for passing in additional metadata, like an ID associated with
-the text, or a page number.
+これは、テキストに関連付けられたIDやページ番号のような追加のメタデータを渡すのに便利です。
 
 ---
 
-# Passing in context (2)
+# コンテキストを使う(2)
 
 ```python
 from spacy.tokens import Doc
@@ -91,85 +83,77 @@ for doc, context in nlp.pipe(data, as_tuples=True):
     doc._.page_number = context["page_number"]
 ```
 
-Notes: You can even add the context meta data to custom attributes.
+Notes: コンテキストのメタデータをカスタム属性に追加することもできます。
 
-In this example, we're registering two extensions, `id` and `page number`, which
-default to `None`.
+この例では、`id` と `page number` という2つの拡張子を登録しており、デフォルトは `None` です。
 
-After processing the text and passing through the context, we can overwrite the
-doc extensions with our context metadata.
+テキストを処理した後、コンテキストのメタデータでdocの拡張属性を上書きすることができます。
 
 ---
 
-# Using only the tokenizer (1)
+# トークナイザのみを使う(1)
 
-<img src="/pipeline.png" width="90%" alt="Illustration of the spaCy pipeline">
+<img src="/pipeline.png" width="90%" alt="spaCyパイプラインの図解">
 
-- don't run the whole pipeline!
+- 全てのパイプラインを実行しないでください！
 
-Notes: Another common scenario: Sometimes you already have a model loaded to do
-other processing, but you only need the tokenizer for one particular text.
+Notes: もう一つの一般的なシナリオをみていきます。他の処理を行うために既にモデルがロードされていますが、テキストのトークン化機能だけが必要な場合です。
 
-Running the whole pipeline is unnecessarily slow, because you'll be getting a
-bunch of predictions from the model that you don't need.
+不要な解析を大量に行ってしまうので、パイプライン全体を実行するのは不必要に時間がかかります。
 
 ---
 
-# Using only the tokenizer (2)
+# トークナイザのみを使う(2)
 
-- Use `nlp.make_doc` to turn a text into a `Doc` object
+- `nlp.make_doc`を使ってテキストから`Doc`オブジェクトを作る
 
-**BAD:**
+**悪い例:**
 
 ```python
 doc = nlp("Hello world")
 ```
 
-**GOOD:**
+**いい例:**
 
 ```python
 doc = nlp.make_doc("Hello world!")
 ```
 
-Notes: If you only need a tokenized `Doc` object, you can use the `nlp.make_doc`
-method instead, which takes a text and returns a doc.
+Notes: 
+トークン化された `Doc` オブジェクトだけが必要な場合は、代わりに `nlp.make_doc` メソッドを使うことができます。
 
-This is also how spaCy does it behind the scenes: `nlp.make_doc` turns the text
-into a doc before the pipeline components are called.
+これは、spaCyが裏側でどのようにトークン化を行うかを示しています。
+`nlp.make_doc`は、パイプラインコンポーネントを呼び出す前に、テキストをdocに変換しています。
 
 ---
 
-# Disabling pipeline components
+# パイプラインコンポーネントを無効化する
 
-- Use `nlp.disable_pipes` to temporarily disable one or more pipes
+- パイプを一時的に無効にするには `nlp.disable_pipes` を使います。
 
 ```python
-# Disable tagger and parser
+# タガーとパーサーを無効化
 with nlp.disable_pipes("tagger", "parser"):
-    # Process the text and print the entities
+    # テキストを処理し、固有表現をプリントする
     doc = nlp(text)
     print(doc.ents)
 ```
 
-- Restores them after the `with` block
-- Only runs the remaining components
+- `with`ブロックのあとに復元できます
+- 残りのコンポーネントのみ実行します
 
-Notes: spaCy also allows you to temporarily disable pipeline components using
-the `nlp.disable_pipes` context manager.
+Notes: 
+spaCy では、`nlp.disable_pipes` コンテキストマネージャを使用してパイプラインコンポーネントを一時的に無効にすることもできます。
 
-It takes a variable number of arguments, the string names of the pipeline
-components to disable. For example, if you only want to use the entity
-recognizer to process a document, you can temporarily disable the tagger and
-parser.
+これは無効にするパイプラインコンポーネントの文字列名を1つ以上指定します。
+例えば、固有表現抽出機能だけを使ってDocを処理したい場合は、一時的にタガーとパーサを無効にします。
 
-After the `with` block, the disabled pipeline components are automatically
-restored.
+`with` ブロックの後、無効化されたパイプラインコンポーネントは自動的に復元されます。
 
-In the `with` block, spaCy will only run the remaining components.
+`with` ブロックでは、 spaCy は残りのコンポーネントのみを実行します。
 
 ---
 
 # Let's practice!
 
-Notes: Now it's your turn. Let's try out the new methods and optimize some code
-to be faster and more efficient.
+Notes: それでは、演習の時間です。新しいメソッドを試して、より速く、より効率的になるようにコードを最適化してみましょう。
