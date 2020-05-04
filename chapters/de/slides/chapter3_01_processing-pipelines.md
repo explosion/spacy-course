@@ -68,7 +68,7 @@ verwenden, um deine eignen Systeme zu trainieren.
 
 # Hinter den Kulissen
 
-<img src="package_meta_de.png" alt="Ein Paket mit dem Label de_core_news_sm mit Ordner und meta.json" />
+<img src="/package_meta_de.png" alt="Ein Paket mit dem Label de_core_news_sm mit Ordner und meta.json" />
 
 - Pipeline definiert in der `meta.json` des Modells in der entsprechenden
   Reihenfolge
