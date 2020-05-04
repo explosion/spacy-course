@@ -66,60 +66,54 @@ spaCyはこれをサポートしてくれます。
 
 # 問題2: モデルはすべてを学習できるわけではありません
 
-- spaCy's models make predictions based on **local context**
-- Model can struggle to learn if decision is difficult to make based on context
-- Label scheme needs to be consistent and not too specific
-  - For example: `"CLOTHING"` is better than `"ADULT_CLOTHING"` and
-    `"CHILDRENS_CLOTHING"`
+- spaCyのモデルは、**ローカルな文脈**に基づいて予測を行います
+- 文脈に基づいた決定が困難な場合、モデルは学習に苦労することができます。
+- ラベルスキームは一貫している必要があります。
+  - 例えば`"CLOTHING"` は `"ADULT_CLOTHING"` や `"CHILDRENS_CLOTHING"` よりも良いです。
 
-Notes: Another common problem is that your model just won't learn what you want
-it to.
+Notes: もう一つのよくある問題は、モデルはあなたの望むとおりに学習するわけではない、ということです。
 
-spaCy's models make predictions based on the local context – for example, for
-named entities, the surrounding words are most important.
+spaCyのモデルは、ローカルコンテキストに基づいて予測を行います。
+例えば固有表現の場合、周囲の単語が最も重要です。
 
-If the decision is difficult to make based on the context, the model can
-struggle to learn it.
+文脈に基づいた判断が難しい場合, モデルはそれを学習するのに苦労することがあります。
 
-The label scheme also needs to be consistent and not too specific.
+また、ラベルスキームは一貫性があり、細かくしすぎないことも重要です。
 
-For example, it may be very difficult to teach a model to predict whether
-something is adult clothing or children's clothing based on the context.
-However, just predicting the label "clothing" may work better.
+例えば、大人の服なのか、子供の服なのかを文脈に基づいて予測することをモデルに教えるのは非常に難しいかもしれません。
+しかし「服」というラベルを予測するだけなら、もっとうまくいくかもしれません。
 
 ---
 
-# Solution 2: Plan your label scheme carefully
+# 解決策2: 慎重なラベル定義を
 
-- Pick categories that are reflected in local context
-- More generic is better than too specific
-- Use rules to go from generic labels to specific categories
+- ローカルな文脈を反映したカテゴリを選びます
+- 細かすぎるものよりも、一般的なものがよいです
+- 一般的なラベルから、細かいラベルを得るためにはルールを使います
 
-**BAD:**
+**悪い例:**
 
 ```python
 LABELS = ["ADULT_SHOES", "CHILDRENS_SHOES", "BANDS_I_LIKE"]
 ```
 
-**GOOD:**
+**いい例:**
 
 ```python
 LABELS = ["CLOTHING", "BAND"]
 ```
 
-Notes: Before you start training and updating models, it's worth taking a step
-back and planning your label scheme.
+Notes: 
+モデルのトレーニングや更新を始める前に、一旦冷静になってラベルスキームを定義してみましょう。
 
-Try to pick categories that are reflected in the local context and make them
-more generic if possible.
+ローカルコンテキストに反映されるカテゴリを選び、可能であればより汎用的なものを選んでさい。
 
-You can always add a rule-based system later to go from generic to specific.
+後からルールベースのシステムを追加して、汎用的なものから細かいものにすることもできます。
 
-Generic categories like "clothing" or "band" are both easier to label and easier
-to learn.
+「洋服」や「バンド」のような一般的なカテゴリーは、ラベル付けが簡単で学習しやすいです。
 
 ---
 
 # Let's practice!
 
-Notes: Let's look at some of these problems in context and fix them!
+Notes: では、ここで述べた問題のうちいくつかを見ていき、修正してみましょう！
