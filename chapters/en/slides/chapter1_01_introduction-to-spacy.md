@@ -103,7 +103,7 @@ verbatim token text.
 doc = nlp("Hello world!")
 
 # A slice from the Doc is a Span object
-span = doc[1:4]
+span = doc[1:3]
 
 # Get the span text via the .text attribute
 print(span.text)

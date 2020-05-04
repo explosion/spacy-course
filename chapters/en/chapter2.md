@@ -124,7 +124,8 @@ word is followed by a space or not.
 ### Part 2
 
 - Import the `Doc` from `spacy.tokens`.
-- Create a `Doc` from the words and spaces. Don't forget to pass in the vocab!
+- Create a `Doc` from the `words` and `spaces`. Don't forget to pass in the
+  vocab!
 
 <codeblock id="02_05_02">
 
