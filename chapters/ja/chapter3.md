@@ -284,92 +284,78 @@ spaCyはマシン上で全てを計算するので、サーバに接続する必
 
 <exercise id="14" title="ストリームの処理">
 
-In this exercise, you'll be using `nlp.pipe` for more efficient text processing.
-The `nlp` object has already been created for you. A list of tweets about a
-popular American fast food chain are available as the variable `TEXTS`.
+この演習では、より効率的なテキスト処理のために `nlp.pipe` を使います。
+`nlp` オブジェクトはすでに作成されています。アメリカの人気ファストフードチェーンに関するツイートのリストが変数 `TEXTS` に入っています。
 
 ### パート1
 
-- Rewrite the example to use `nlp.pipe`. Instead of iterating over the texts and
-  processing them, iterate over the `doc` objects yielded by `nlp.pipe`.
+- 例題を書き換えて `nlp.pipe` を使うようにしてください。テキストを繰り返し処理するのではなく、`nlp.pipe`によって生成された `doc` オブジェクトを繰り返し処理するようにしてください。
 
 <codeblock id="03_14_01">
 
-- Using `nlp.pipe` lets you merge the first two lines of code into one.
-- `nlp.pipe` takes the `TEXTS` and yields `doc` objects that you can loop over.
+- `nlp.pipe` を使うと、最初の2行のコードを1つにまとめることができます。
+- `nlp.pipe` は `TEXTS` を受け取り、イテレートできる `doc` オブジェクトを生成します。
 
 </codeblock>
 
 ### パート2
 
-- Rewrite the example to use `nlp.pipe`. Don't forget to call `list()` around
-  the result to turn it into a list.
+- 例を書き換えて `nlp.pipe` を使ってください。
+  結果をリストにするために、`list()` を呼び出すことを忘れないでください。
 
 <codeblock id="03_14_02"></codeblock>
 
 ### パート3
 
-- Rewrite the example to use `nlp.pipe`. Don't forget to call `list()` around
-  the result to turn it into a list.
+- 例を書き換えて `nlp.pipe` を使ってください。
+  結果をリストにするために、`list()` を呼び出すことを忘れないでください。
 
 <codeblock id="03_14_03"></codeblock>
 
 </exercise>
 
-<exercise id="15" title="Processing data with context">
+<exercise id="15" title="データをコンテキストで処理する">
 
-In this exercise, you'll be using custom attributes to add author and book meta
-information to quotes.
+この演習では、カスタム属性を使用して、著者と書籍のメタ情報を追加します。
 
-A list of `[text, context]` examples is available as the variable `DATA`. The
-texts are quotes from famous books, and the contexts dictionaries with the keys
-`"author"` and `"book"`.
+変数 `DATA` には `[text, context]` の例のリストが入っています。
+テキストは有名な書籍からの引用であり、コンテキストはキー `"author"`と `"book"` を持つ辞書です。
 
-- Use the `set_extension` method to register the custom attributes `"author"`
-  and `"book"` on the `Doc`, which default to `None`.
-- Process the `[text, context]` pairs in `DATA` using `nlp.pipe` with
-  `as_tuples=True`.
-- Overwrite the `doc._.book` and `doc._.author` with the respective info passed
-  in as the context.
+- `set_extension`メソッドを用いて `Doc` にカスタム属性 `"author"`と `"book"`を登録します。
+- `nlp.pipe` を用いて `as_tuples=True` として `DATA` の `[text, context]` ペアを処理します。
+- `doc._.book` と `doc._.author` を、コンテキストとして渡された情報を用いて上書きします。
 
 <codeblock id="03_15">
 
-- The `Doc.set_extension` method takes two arguments: the string name of the
-  attribute, and a keyword argument indicating the default, getter, setter or
-  method. For example, `default=True`.
-- If `as_tuples` is set to `True`, the `nlp.pipe` method takes a list of
-  `(text, context)` tuples and yields `(doc, context)` tuples.
+- `Doc.set_extension`メソッドは2つの引数を取ります。属性の文字列名と、デフォルト、ゲッター、セッター、メソッドを示すキーワード引数です。例えば、`default=True` のようにします。
+- `as_tuples` が `True` に設定されている場合、`nlp.pipe` メソッドは `(text, context)` タプルのリストを受け取り、`(doc, context)` タプルを生成します。
 
 </codeblock>
 
 </exercise>
 
-<exercise id="16" title="Selective processing">
+<exercise id="16" title="処理対象の選択">
 
-In this exercise, you'll use the `nlp.make_doc` and `nlp.disable_pipes` methods
-to only run selected components when processing a text.
+この演習では、`nlp.make_doc` と `nlp.disable_pipes` メソッドを使用して、テキストを処理する際に実行するコンポーネントを選択します。
 
 ### パート1
 
-- Rewrite the code to only tokenize the text using `nlp.make_doc`.
+- `nlp.make_doc`を使ってテキストのトークン化のみを実行するようにコードを書き換えます。
 
 <codeblock id="03_16_01">
 
-The `nlp.make_doc` method can be called on a text and returns a `Doc`, just like
-the `nlp` object.
+`nlp.make_doc`メソッドはテキストに対して呼び出すことができ、 `nlp` オブジェクトと同様に `Doc` を返します。
 
 </codeblock>
 
 ### パート2
 
-- Disable the tagger and parser using the `nlp.disable_pipes` method.
-- Process the text and print all entities in the `doc`.
+- `nlp.disable_pipes` メソッドを使ってタガーとパーサを無効にします。
+- テキストを処理して `doc` 内のすべての固有表現をプリントします。
 
 <codeblock id="03_16_02">
 
-The `nlp.disable_pipes` method takes a variable number of arguments: the string
-names of the pipeline components to disable. For example,
-`nlp.disable_pipes("ner")` will disable the named entity recognizer.
+`nlp.disable_pipes` メソッドは可変数の引数をとります。例えば、`nlp.disable_pipes("ner")` は固有表現抽出器を無効にします。
 
 </codeblock>
 
