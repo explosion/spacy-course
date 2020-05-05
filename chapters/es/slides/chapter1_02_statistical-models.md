@@ -89,7 +89,7 @@ Siguiente, procesamos el texto "She ate the pizza".
 
 Para cada token en el Doc podemos imprimir en pantalla el texto y el part-of-speech tag predicho usando el atributo `.pos_`.
 
-En spaCy, los atributos que devuelven un string usualmente terminan con un guión bajo (`_`). mientras que atributos sin un guión bajo devuelven un ID.
+En spaCy, los atributos que devuelven un string usualmente terminan con un guión bajo (`_`). mientras que atributos sin un guión bajo devuelven un valor ID de tipo integer.
 
 Aquí el modelo predijo correctamente "ate" como el verbo y "pizza" como el sustantivo.
 
@@ -167,7 +167,7 @@ En este caso, el modelo predijo correctamente "Apple" como una organización, "U
 
 ---
 
-# Tip: el método explain
+# Tip: el método spacy.explain
 
 Obtén definiciones rápidas de los tags y labels más comunes.
 

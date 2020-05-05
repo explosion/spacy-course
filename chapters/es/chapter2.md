@@ -125,7 +125,7 @@ booleanos que indican si una palabra está seguida de un espacio o no.
 ### Parte 2
 
 - Importa el `Doc` desde `spacy.tokens`.
-- Crea un `Doc` a partir de palabras y espacios. ¡No te olvides de pasar el
+- Crea un `Doc` a partir de `words` y `spaces`. ¡No te olvides de pasar el
   vocabulario!
 
 <codeblock id="02_05_02">
