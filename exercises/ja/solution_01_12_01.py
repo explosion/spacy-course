@@ -11,14 +11,14 @@ doc = nlp(
     "some tweaks once you delve a little deeper."
 )
 
-# Write a pattern for full iOS versions ("iOS 7", "iOS 11", "iOS 10")
+# iOSバージョンのパターンを書いてください（例："iOS 7", "iOS 11", "iOS 10"）
 pattern = [{"TEXT": "iOS"}, {"IS_DIGIT": True}]
 
-# Add the pattern to the matcher and apply the matcher to the doc
+# パターンをmatcherに追加し、docにmatcherを適用してください
 matcher.add("IOS_VERSION_PATTERN", None, pattern)
 matches = matcher(doc)
 print("Total matches found:", len(matches))
 
-# Iterate over the matches and print the span text
+# 結果をイテレートし、スパンの文字列をプリントしてください。
 for match_id, start, end in matches:
     print("Match found:", doc[start:end].text)

@@ -1,11 +1,11 @@
-# Import the English language class
+# 英語の言語クラスをインポート
 from spacy.lang.en import English
 
-# Create the nlp object
+# nlpオブジェクトを作成
 nlp = English()
 
-# Process a text
+# テキストを処理
 doc = nlp("This is a sentence.")
 
-# Print the document text
+# docのテキストをプリント
 print(doc.text)

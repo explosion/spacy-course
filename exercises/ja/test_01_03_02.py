@@ -1,11 +1,7 @@
 def test():
-    assert (
-        doc.text == "I like tree kangaroos and narwhals."
-    ), "Are you sure you processed the text correctly?"
-    assert (
-        tree_kangaroos == doc[2:4]
-    ), "Are you sure you selected the right span for tree_kangaroos?"
+    assert doc.text == "I like tree kangaroos and narwhals.", "テキストをちゃんと処理しましたか？"
+    assert tree_kangaroos == doc[2:4], "tree_kangaroosのスパンを選択しましたか？"
     assert (
         tree_kangaroos_and_narwhals == doc[2:6]
-    ), "Are you sure you selected the right span for tree_kangaroos_and_narwhals?"
+    ), "tree_kangaroos_and_narwhalsのスパンをせんたくしましたか？"
     __msg__.good("Good job!")

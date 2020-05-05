@@ -1,11 +1,11 @@
-# Import the Spanish language class
+# スペイン語の言語クラスをインポート
 from spacy.lang.es import Spanish
 
-# Create the nlp object
+# nlpオブジェクトを作成
 nlp = Spanish()
 
-# Process a text (this is Spanish for: "How are you?")
+# テキストを処理（スペイン語で「おげんきですか？」の意味）
 doc = nlp("¿Cómo estás?")
 
-# Print the document text
+# docのテキストをプリント
 print(doc.text)

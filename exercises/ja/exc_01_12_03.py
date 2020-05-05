@@ -9,14 +9,14 @@ doc = nlp(
     "labels and optional voice responses."
 )
 
-# Write a pattern for adjective plus one or two nouns
+# 形容詞と1つまたは2つの名詞からなるパターンを書きます
 pattern = [{"POS": ____}, {"POS": ____}, {"POS": ____, "OP": ____}]
 
-# Add the pattern to the matcher and apply the matcher to the doc
+# パターンをmatcherに追加し、docにmatcherを適用してください
 matcher.add("ADJ_NOUN_PATTERN", None, pattern)
 matches = matcher(doc)
 print("Total matches found:", len(matches))
 
-# Iterate over the matches and print the span text
+# 結果をイテレートし、スパンの文字列をプリントしてください。
 for match_id, start, end in matches:
     print("Match found:", doc[start:end].text)

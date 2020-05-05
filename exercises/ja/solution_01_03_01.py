@@ -1,13 +1,13 @@
-# Import the English language class and create the nlp object
+# Englishクラスをインポートしnlpオブジェクトを作成
 from spacy.lang.en import English
 
 nlp = English()
 
-# Process the text
+# テキストを処理
 doc = nlp("I like tree kangaroos and narwhals.")
 
-# Select the first token
+# 最初のトークンを選択
 first_token = doc[0]
 
-# Print the first token's text
+# 最初のトークンのテキストをプリント
 print(first_token.text)

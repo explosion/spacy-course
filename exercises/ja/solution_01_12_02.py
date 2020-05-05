@@ -11,14 +11,14 @@ doc = nlp(
     "I also need to download Winzip?"
 )
 
-# Write a pattern that matches a form of "download" plus proper noun
+# 「download + 固有名詞」からなるパターンを書きます
 pattern = [{"LEMMA": "download"}, {"POS": "PROPN"}]
 
-# Add the pattern to the matcher and apply the matcher to the doc
+# パターンをmatcherに追加し、docに対してmatcherを適用します
 matcher.add("DOWNLOAD_THINGS_PATTERN", None, pattern)
 matches = matcher(doc)
 print("Total matches found:", len(matches))
 
-# Iterate over the matches and print the span text
+# 結果をイテレートし、スパンの文字列をプリントします
 for match_id, start, end in matches:
     print("Match found:", doc[start:end].text)

@@ -1,11 +1,7 @@
 def test():
-    assert "for ent in doc.ents" in __solution__, "Are you iterating over the entities?"
-    assert (
-        "print(ent.text, ent.label_)" in __solution__
-    ), "Are you printing the text and the label?"
+    assert "for ent in doc.ents" in __solution__, "固有表現をイテレートしていますか？"
+    assert "print(ent.text, ent.label_)" in __solution__, "文字列とラベルをプリントしましたか？"
 
     __msg__.good(
-        "Great work! So far, the model has been correct every single time. "
-        "In the next exercise, you'll see what happens if the model is wrong, "
-        "and how to adjust it."
+        "素晴らしい！ここでは、モデルはすべての例で正しい予測を行いました。" "次の演習では、モデルが予測を誤る例を見ていき、モデルを修正する方法を学びます。"
     )

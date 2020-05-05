@@ -1,12 +1,12 @@
 import spacy
 
-# Load the "en_core_web_sm" model
+# 「en_core_web_sm」モデルをロード
 nlp = ____
 
 text = "It’s official: Apple is the first U.S. public company to reach a $1 trillion market value"
 
-# Process the text
+# テキストを処理
 doc = ____
 
-# Print the document text
+# docのテキストをプリント
 print(____.____)

@@ -4,16 +4,16 @@ nlp = spacy.load("en_core_web_sm")
 
 text = "Upcoming iPhone X release date leaked as Apple reveals pre-orders"
 
-# Process the text
+# テキストを処理
 doc = nlp(text)
 
-# Iterate over the entities
+# 固有表現をイテレート
 for ent in doc.ents:
-    # Print the entity text and label
+    # 固有表現の文字列とラベルをプリント
     print(ent.text, ent.label_)
 
-# Get the span for "iPhone X"
+# iPhone Xのスパンを取得
 iphone_x = doc[1:3]
 
-# Print the span text
+# スパンの文字列をプリント
 print("Missing entity:", iphone_x.text)

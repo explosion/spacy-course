@@ -1,18 +1,14 @@
 def test():
-    assert (
-        len(pattern) == 2
-    ), "The pattern should describe two tokens (two dictionaries)."
+    assert len(pattern) == 2, "パターンは2つのトークンについて表現している必要があります。（2つの辞書からなります。）"
     assert isinstance(pattern[0], dict) and isinstance(
         pattern[1], dict
-    ), "Each entry in a pattern should be a dictionary."
-    assert (
-        len(pattern[0]) == 1 and len(pattern[1]) == 1
-    ), "Each entry in the pattern should have only one key."
+    ), "パターンのそれぞれの要素は辞書である必要があります。"
+    assert len(pattern[0]) == 1 and len(pattern[1]) == 1, "パターンのそれぞれの要素は１つのキーからなります。"
     assert any(
         pattern[0].get(key) == "download" for key in ["lemma", "LEMMA"]
-    ), "Are you matching on the first token's lemma?"
+    ), "最初のトークンの見出し語にマッチングをしましたか？"
     assert any(
         pattern[1].get(key) == "PROPN" for key in ["pos", "POS"]
-    ), "Are you matching on the second token's part-of-speech tag and using the right label for proper noun?"
+    ), "2つめのトークンについて、固有名詞の品詞タグを用いてマッチングをしましたか？"
 
     __msg__.good("Good job!")
