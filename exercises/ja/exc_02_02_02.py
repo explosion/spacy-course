@@ -3,10 +3,10 @@ from spacy.lang.en import English
 nlp = English()
 doc = nlp("David Bowie is a PERSON")
 
-# Look up the hash for the string label "PERSON"
+# ラベル「PERSON」のハッシュを引く
 person_hash = ____.____.____[____]
 print(person_hash)
 
-# Look up the person_hash to get the string
+# person_hashを引いて文字列を取得
 person_string = ____.____.____[____]
 print(person_string)

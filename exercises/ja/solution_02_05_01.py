@@ -2,13 +2,13 @@ from spacy.lang.en import English
 
 nlp = English()
 
-# Import the Doc class
+# Docクラスをインポート
 from spacy.tokens import Doc
 
-# Desired text: "spaCy is cool!"
+# 作りたいテキスト：「spaCy is cool!」
 words = ["spaCy", "is", "cool", "!"]
 spaces = [True, True, False, False]
 
-# Create a Doc from the words and spaces
+# wordsとspacesからDocを作成
 doc = Doc(nlp.vocab, words=words, spaces=spaces)
 print(doc.text)

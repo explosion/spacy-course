@@ -13,22 +13,22 @@ matcher = PhraseMatcher(nlp.vocab)
 patterns = list(nlp.pipe(COUNTRIES))
 matcher.add("COUNTRY", None, *patterns)
 
-# Create a doc and reset existing entities
+# docを作成し、固有表現リストをリセット
 doc = nlp(TEXT)
 doc.ents = []
 
-# Iterate over the matches
+# matchesをイテレート
 for match_id, start, end in matcher(doc):
-    # Create a Span with the label for "GPE"
+    # 「GPE」のラベルを付けてスパンを作成
     span = ____(____, ____, ____, label=____)
 
-    # Overwrite the doc.ents and add the span
+    # doc.entsを上書きし、スパンを追加
     doc.ents = list(doc.ents) + [____]
 
-    # Get the span's root head token
+    # スパンのルートヘッドトークンを取得
     span_root_head = ____.____.____
-    # Print the text of the span root's head token and the span text
+    # スパンのルートヘッドトークンとスパンの文字列をプリント
     print(span_root_head.____, "-->", span.text)
 
-# Print the entities in the document
+# docの固有表現をプリント
 print([(ent.text, ent.label_) for ent in doc.ents if ent.label_ == "GPE"])

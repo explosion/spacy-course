@@ -1,13 +1,7 @@
 def test():
-    assert (
-        person_hash == nlp.vocab.strings["PERSON"]
-    ), "Did you assign the correct hash?"
-    assert (
-        'nlp.vocab.strings["PERSON"]' in __solution__
-    ), "Did you assign the correct hash?"
-    assert person_string == "PERSON", "Did you get the correct string?"
-    assert (
-        "nlp.vocab.strings[person_hash]" in __solution__
-    ), "Did you get the string from the hash?"
+    assert person_hash == nlp.vocab.strings["PERSON"], "正しいhashを代入しましたか？"
+    assert 'nlp.vocab.strings["PERSON"]' in __solution__, "正しいhashを代入しましたか？"
+    assert person_string == "PERSON", "正しい文字列を取得しましたか？"
+    assert "nlp.vocab.strings[person_hash]" in __solution__, "hashから文字列を取得しましたか？"
 
     __msg__.good("Good job!")

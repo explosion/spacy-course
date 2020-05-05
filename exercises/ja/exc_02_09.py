@@ -1,11 +1,11 @@
 import spacy
 
-# Load the en_core_web_md model
+# en_core_web_mdモデルをロード
 nlp = ____
 
-# Process a text
+# テキストを処理
 doc = nlp("Two bananas in pyjamas")
 
-# Get the vector for the token "bananas"
+# 「bananas」のベクトルを取得
 bananas_vector = ____.____
 print(bananas_vector)

@@ -1,44 +1,33 @@
 def test():
-    assert (
-        len(pattern1) == 2
-    ), "The number of tokens in pattern1 doesn't match the real number of tokens in the string."
-    assert (
-        len(pattern2) == 4
-    ), "The number of tokens in pattern2 doesn't match the real number of tokens in the string."
+    assert len(pattern1) == 2, "pattern1の要素の数がただしくありません。"
+    assert len(pattern2) == 4, "pattern2の要素の数がただしくありません。"
     # Pattern 1 validation
-    assert (
-        len(pattern1[0]) == 1
-    ), "The first token of pattern1 should include one attribute."
+    assert len(pattern1[0]) == 1, "pattern1の最初のトークンのキーの数がただしくありません。"
     assert any(
         pattern1[0].get(attr) == "amazon" for attr in ("lower", "LOWER")
-    ), "Check the attribute and value of the first token in pattern1."
-    assert (
-        len(pattern1[1]) == 2
-    ), "The second token of pattern1 should include two attributes."
+    ), "pattern1の最初のトークンのキーと値をチェックしてください"
+    assert len(pattern1[1]) == 2, "pattern1の2つめのトークンは、2つのキーからなります。"
     assert any(
         pattern1[1].get(attr) == True for attr in ("is_title", "IS_TITLE")
-    ), "Check the attributes and values of the second token in pattern1."
+    ), "pattern2の最初のトークンのキーと値をチェックしてください"
     assert any(
         pattern1[1].get(attr) == "PROPN" for attr in ("pos", "POS")
-    ), "Check the attributes and values of the second token in pattern1."
+    ), "pattern2の最初のトークンのキーと値をチェックしてください"
 
     # Pattern 2 validation
     assert any(
         pattern2[0].get(attr) == "ad" for attr in ("lower", "LOWER")
-    ), "Check the attribute and value of the first token in pattern2."
+    ), "pattern2の最初のトークンのキーと値をチェックしてください"
     assert any(
         pattern2[2].get(attr) == "free" for attr in ("lower", "LOWER")
-    ), "Check the attribute and value of the third token in pattern2."
+    ), "pattern2の3番目のトークンのキーと値をチェックしてください"
     assert any(
         pattern2[3].get(attr) == "NOUN" for attr in ("pos", "POS")
-    ), "Check the attribute and value of the fourth token in pattern2."
-    assert len(matcher(doc)) == 6, "Incorrect number of matches – expected 6."
+    ), "pattern2の4番目のトークンのキーと値をチェックしてください"
+    assert len(matcher(doc)) == 6, "マッチ数がただしくありません。正しくは6です。"
 
     __msg__.good(
-        "Well done! For the token '-', you can match on the attribute "
-        "'TEXT', 'LOWER' or even 'SHAPE'. All of those are correct. As you "
-        "can see, paying close attention to the tokenization is very "
-        "important when working with the token-based 'Matcher'. Sometimes "
-        "it's much easier to just match exact strings instead and use the "
-        "'PhraseMatcher', which we'll get to in the next exercise."
+        "Well done！トークン'-'については、'TEXT'か'LOWER'か'SHAPE'を用いてマッチすることができます。"
+        "どれを使っても良いです。トークンを注意深く観察することは、トークンベースのMatcherを使うのにとても重要です。"
+        "単に文字列にマッチさせるほうがかんたんな場合がありますが、その場合はPhraseMatcherを使いましょう。これは次の演習で見ていきます。"
     )

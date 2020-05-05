@@ -13,16 +13,16 @@ doc = nlp(
     "monthly subscriptions will have access to ad-free viewing until October 15."
 )
 
-# Create the match patterns
+# パターンを作る
 pattern1 = [{"LOWER": "Amazon"}, {"IS_TITLE": True, "POS": "PROPN"}]
 pattern2 = [{"LOWER": "ad-free"}, {"POS": "NOUN"}]
 
-# Initialize the Matcher and add the patterns
+# matcherを初期化し、パターンを追加する
 matcher = Matcher(nlp.vocab)
 matcher.add("PATTERN1", None, pattern1)
 matcher.add("PATTERN2", None, pattern2)
 
-# Iterate over the matches
+# 結果をイテレートする
 for match_id, start, end in matcher(doc):
-    # Print pattern string name and text of matched span
+    # パターンの名前と一致したテキストをプリントする
     print(doc.vocab.strings[match_id], doc[start:end].text)

@@ -1,17 +1,13 @@
 def test():
     assert (
         "import Doc, Span" or "import Span, Doc" in __solution__
-    ), "Did you import the Doc and Span correctly?"
-    assert doc.text == "I like David Bowie", "Did you create the Doc correctly?"
-    assert span.text == "David Bowie", "Did you create the span correctly?"
-    assert span.label_ == "PERSON", "Did you add the label PERSON to the span?"
-    assert "doc.ents =" in __solution__, "Did you overwrite the doc.ents?"
-    assert len(doc.ents) == 1, "Did you add the span to the doc.ents?"
-    assert (
-        list(doc.ents)[0].text == "David Bowie"
-    ), "Did you add the span to the doc.ents?"
+    ), "DocとSpanをきちんとインポートしましたか？"
+    assert doc.text == "I like David Bowie", "docをきちんと作成しましたか？"
+    assert span.text == "David Bowie", "spanをきちんと作成しましたか？"
+    assert span.label_ == "PERSON", "spanにPERSONラベルを追加しましたか？"
+    assert "doc.ents =" in __solution__, "doc.entsを上書きしましたか？"
+    assert len(doc.ents) == 1, "doc.entsにスパンを追加しましたか？"
+    assert list(doc.ents)[0].text == "David Bowie", "doc.entsにスパンを追加しましたか？"
     __msg__.good(
-        "Perfect! Creating spaCy's objects manually and modifying the "
-        "entities will come in handy later when you're writing your own "
-        "information extraction pipelines."
+        "完璧です！spaCyのオブジェクトを手動で作成し、固有表現を更新しました。" "これは後ほど、カスタムパイプラインコンポーネントを作成する際に役に立ちます。"
     )

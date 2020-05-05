@@ -3,10 +3,10 @@ import spacy
 nlp = spacy.load("en_core_web_sm")
 doc = nlp("Berlin is a nice city")
 
-# Iterate over the tokens
+# すべてのトークンの文字列と品詞タグを取得
 for token in doc:
-    # Check if the current token is a proper noun
+    # 現在のトークンが固有名詞かどうかをチェック
     if token.pos_ == "PROPN":
-        # Check if the next token is a verb
+        # 次のトークンが動詞かどうかをチェック
         if doc[token.i + 1].pos_ == "VERB":
             print("Found proper noun before a verb:", token.text)

@@ -3,10 +3,10 @@ from spacy.lang.en import English
 nlp = English()
 doc = nlp("I have a cat")
 
-# Look up the hash for the word "cat"
+# 単語「cat」のハッシュを引く
 cat_hash = nlp.vocab.strings["cat"]
 print(cat_hash)
 
-# Look up the cat_hash to get the string
+# cat_hashを使って文字列を引く
 cat_string = nlp.vocab.strings[cat_hash]
 print(cat_string)
