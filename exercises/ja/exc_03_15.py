@@ -7,16 +7,16 @@ with open("exercises/en/bookquotes.json") as f:
 
 nlp = English()
 
-# Register the Doc extension "author" (default None)
+# デフォルト値がNoneのDoc拡張属性「author」を登録
 ____
 
-# Register the Doc extension "book" (default None)
+# デフォルト値がNoneのDoc拡張属性「book」を登録
 ____
 
 for doc, ____ in ____(____, ____):
-    # Set the doc._.book and doc._.author attributes from the context
+    # doc._.bookとdoc._.author属性にコンテキストからデータをセット
     doc._.book = ____
     doc._.author = ____
 
-    # Print the text and custom attribute data
+    # テキストとカスタム属性をプリント
     print(f"{doc.text}\n — '{doc._.book}' by {doc._.author}\n")

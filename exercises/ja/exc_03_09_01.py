@@ -3,12 +3,12 @@ from spacy.tokens import Token
 
 nlp = English()
 
-# Register the Token extension attribute "is_country" with the default value False
+# デフォルト値がFalseである拡張属性「is_country」をトークンに追加
 ____.____(____, ____=____)
 
-# Process the text and set the is_country attribute to True for the token "Spain"
+# テキストを処理し、「Spain」のトークンについてis_country属性をTrueにする
 doc = nlp("I live in Spain.")
 ____ = True
 
-# Print the token text and the is_country attribute for all tokens
+# すべてのトークンについて、文字列とis_country属性をプリント
 print([(____, ____) for token in doc])

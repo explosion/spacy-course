@@ -15,22 +15,22 @@ matcher.add("COUNTRY", None, *list(nlp.pipe(COUNTRIES)))
 
 
 def countries_component(doc):
-    # Create an entity Span with the label "GPE" for all matches
+    # すべてのマッチ結果に対して、「GPE」ラベルが付いたスパンを作成しましょう
     matches = matcher(doc)
     doc.ents = [____(____, ____, ____, label=____) for match_id, start, end in matches]
     return doc
 
 
-# Add the component to the pipeline
+# パイプラインにコンポーネントを追加しましょう
 ____.____(____)
 print(nlp.pipe_names)
 
-# Getter that looks up the span text in the dictionary of country capitals
+# 国の首都名が入った辞書をスパンのテキストで引くゲッター
 get_capital = lambda span: CAPITALS.get(span.text)
 
-# Register the Span extension attribute "capital" with the getter get_capital
+# get_capitalをスパンの拡張属性「capital」に登録
 ____.____(____, ____)
 
-# Process the text and print the entity text, label and capital attributes
+# テキストを処理し、固有表現テキスト、ラベル、capital属性をプリント
 doc = nlp("Czech Republic may help Slovakia protect its airspace")
 print([(____, ____, ____) for ent in doc.ents])

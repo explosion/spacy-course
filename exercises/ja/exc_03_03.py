@@ -1,10 +1,10 @@
 import spacy
 
-# Load the en_core_web_sm model
+# en_core_web_sm モデルをロード
 nlp = ____
 
-# Print the names of the pipeline components
+# パイプラインの名前をプリント
 print(____.____)
 
-# Print the full pipeline of (name, component) tuples
+# (name, component) のタプルからなるパイプライン情報をプリント
 print(____.____)

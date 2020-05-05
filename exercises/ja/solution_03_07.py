@@ -9,21 +9,21 @@ print("animal_patterns:", animal_patterns)
 matcher = PhraseMatcher(nlp.vocab)
 matcher.add("ANIMAL", None, *animal_patterns)
 
-# Define the custom component
+# カスタムコンポーネントを定義
 def animal_component(doc):
-    # Apply the matcher to the doc
+    # matcherをdocに適用
     matches = matcher(doc)
-    # Create a Span for each match and assign the label "ANIMAL"
+    # マッチした結果に対してSpanを作り、"ANIMAL"のラベルを付ける
     spans = [Span(doc, start, end, label="ANIMAL") for match_id, start, end in matches]
-    # Overwrite the doc.ents with the matched spans
+    # doc.entsにマッチ結果のスパンを追加
     doc.ents = spans
     return doc
 
 
-# Add the component to the pipeline after the "ner" component
+# 「ner」コンポーネントのあとに追加
 nlp.add_pipe(animal_component, after="ner")
 print(nlp.pipe_names)
 
-# Process the text and print the text and label for the doc.ents
+# テキストを処理し、doc.entsの文字列とラベルをプリント
 doc = nlp("I have a cat and a Golden Retriever")
 print([(ent.text, ent.label_) for ent in doc.ents])

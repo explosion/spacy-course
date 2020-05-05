@@ -1,16 +1,7 @@
 def test():
-    assert (
-        'after="ner"' in __solution__
-    ), "Are you adding the component explicitly after the entity recognizer?"
-    assert (
-        nlp.pipe_names[-1] == "animal_component"
-    ), "Did you add the component after the entity recognizer?"
-    assert len(doc.ents) == 2, "Are you adding the entities correctly?"
-    assert all(
-        ent.label_ == "ANIMAL" for ent in doc.ents
-    ), "Did you assign the label ANIMAL?"
+    assert 'after="ner"' in __solution__, "明示的に固有表現抽出器のあとにコンポーネントを追加しましたか？"
+    assert nlp.pipe_names[-1] == "animal_component", "固有表現抽出器のあとにコンポーネントを追加しましたか？"
+    assert len(doc.ents) == 2, "きちんと固有表現を追加しましたか？"
+    assert all(ent.label_ == "ANIMAL" for ent in doc.ents), "ANIMALのラベルを追加しましたか？"
 
-    __msg__.good(
-        "Good job! You've built your first pipeline component for "
-        "rule-based entity matching."
-    )
+    __msg__.good("Good job！はじめてのカスタムパイプラインコンポーネントとしてルールベースの固有表現抽出器を作ることができましたね。")

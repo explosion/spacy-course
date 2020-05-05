@@ -6,9 +6,9 @@ text = (
     "the city of College Park, Georgia, specializing in chicken sandwiches."
 )
 
-# Disable the tagger and parser
+# taggerとparserを無効化する
 with ____.____(____):
-    # Process the text
+    # テキストを処理する
     doc = ____
-    # Print the entities in the doc
+    # docの固有表現をプリントする
     print(____)

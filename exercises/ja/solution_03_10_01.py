@@ -3,15 +3,15 @@ from spacy.tokens import Doc
 
 nlp = English()
 
-# Define the getter function
+# ゲッターを定義
 def get_has_number(doc):
-    # Return if any of the tokens in the doc return True for token.like_num
+    # 少なくとも1つのトークンについて、token.like_numがTrueとなるかどうかを返す
     return any(token.like_num for token in doc)
 
 
-# Register the Doc property extension "has_number" with the getter get_has_number
+# Docにget_has_number関数を「has_number」拡張プロパティとして登録
 Doc.set_extension("has_number", getter=get_has_number)
 
-# Process the text and check the custom has_number attribute
+# テキストを処理し、has_number属性をプリント
 doc = nlp("The museum closed for five years in 2012.")
 print("has_number:", doc._.has_number)

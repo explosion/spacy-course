@@ -1,12 +1,8 @@
 def test():
-    assert Token.has_extension(
-        "reversed"
-    ), "Did you register the extension on the token?"
+    assert Token.has_extension("reversed"), "拡張属性をトークンに追加しましたか？"
     ext = Token.get_extension("reversed")
-    assert ext[2] is not None, "Did you set the getter correctly?"
-    assert (
-        "getter=get_reversed" in __solution__
-    ), "Did you assign get_reversed as the getter?"
-    assert "token._.reversed" in __solution__, "Are you accessing the custom attribute?"
+    assert ext[2] is not None, "ゲッターをきちんと設定しましたか？"
+    assert "getter=get_reversed" in __solution__, "get_reversedをゲッターとして登録しましたか？"
+    assert "token._.reversed" in __solution__, "カスタム属性を取得しましたか？"
 
-    __msg__.good("Good job! Let's set some more complex attributes.")
+    __msg__.good("Good job！もっと複雑な属性を設定していきましょう。")

@@ -1,5 +1,5 @@
 def test():
     assert (
         "docs = list(nlp.pipe(TEXTS))" in __solution__
-    ), "Are you using nlp.pipe wrapped in a list?"
+    ), "nlp.pipeの結果に対してlistを呼び出しましたか？"
     __msg__.good("Great work!")

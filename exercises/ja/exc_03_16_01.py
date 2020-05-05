@@ -6,6 +6,6 @@ text = (
     "the city of College Park, Georgia, specializing in chicken sandwiches."
 )
 
-# Only tokenize the text
+# トークナイズのみ行う
 doc = nlp(text)
 print([token.text for token in doc])

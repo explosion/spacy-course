@@ -3,16 +3,16 @@ from spacy.tokens import Span
 
 nlp = English()
 
-# Define the method
+# メソッドを定義
 def to_html(span, tag):
-    # Wrap the span text in a HTML tag and return it
+    # スパンのテキストをHTMLタグに入れて返す
     return f"<{tag}>{span.text}</{tag}>"
 
 
-# Register the Span property extension "to_html" with the method to_html
+# to_htmlをスパンの「to_html」拡張属性に登録
 ____.____(____, ____=____)
 
-# Process the text and call the to_html method on the span with the tag name "strong"
+# テキストを処理し、「strong」タグを用いてスパンのto_htmlメソッドを呼びだす
 doc = nlp("Hello world, this is a sentence.")
 span = doc[0:2]
 print(____)

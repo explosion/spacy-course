@@ -4,5 +4,5 @@ nlp = English()
 
 people = ["David Bowie", "Angela Merkel", "Lady Gaga"]
 
-# Create a list of patterns for the PhraseMatcher
+# PhraseMatcherのパターンのリストを作成
 patterns = list(nlp.pipe(people))
