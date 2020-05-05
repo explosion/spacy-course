@@ -1,11 +1,11 @@
 import spacy
 
-# Create a blank "en" model
+# 空の「en」モデルを作成
 nlp = spacy.blank("en")
 
-# Create a new entity recognizer and add it to the pipeline
+# 新しい固有表現抽出器を作成し、パイプラインに追加
 ner = nlp.create_pipe("ner")
 nlp.add_pipe(ner)
 
-# Add the label "GADGET" to the entity recognizer
+# 「GADGET」ラベルを固有表現抽出器に追加
 ner.add_label("GADGET")

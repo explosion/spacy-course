@@ -1,29 +1,27 @@
 def test():
-    assert len(TRAINING_DATA) == 4, "Training data doesn't match – expected 4 examples."
+    assert len(TRAINING_DATA) == 4, "トレーニングデータの数がおかしいです。正しくは4つです。"
     assert all(
         len(entry) == 2 and isinstance(entry[1], dict) for entry in TRAINING_DATA
-    ), "Incorrect training data format. Expected a list of tuples where the second element is a dict."
+    ), "学習データのフォーマットがおかしいです。二番目の要素が辞書となるタプルのリストにしてください。"
     assert all(
         entry[1].get("entities") for entry in TRAINING_DATA
-    ), "All annotations in the training data should include entities."
+    ), "すべてのデータにentitiesのアノテーションが必要です。"
     assert TRAINING_DATA[0][1]["entities"] == [
         (10, 19, "GPE")
-    ], "Double-check the entities in the first example."
+    ], "1番目のデータのentitiesを見直してください。"
     assert TRAINING_DATA[1][1]["entities"] == [
         (17, 22, "GPE")
-    ], "Double-check the entities in the second example."
+    ], "2番目のデータのentitiesを見直してください。"
+
     assert TRAINING_DATA[2][1]["entities"] == [
         (15, 20, "GPE"),
         (24, 32, "GPE"),
-    ], "Double-check the entities in the third example."
+    ], "3番目のデータのentitiesを見直してください。"
     assert TRAINING_DATA[3][1]["entities"] == [
         (0, 6, "GPE")
-    ], "Double-check the entities in the fourth example."
+    ], "4番目のデータのentitiesを見直してください。"
 
     __msg__.good(
-        "Great work! Once the model achieves good results on detecting GPE "
-        "entities in the traveler reviews, you could add a rule-based "
-        "component to determine whether the entity is a tourist destination in "
-        "this context. For example, you could resolve the entities types back "
-        "to a knowledge base or look them up in a travel wiki."
+        "Great work！モデルがきちんと旅行者のレビューからGPE固有表現を抽出できるようになったら、その地理名称が、文脈的に旅行者の目的地であるかどうかを判断するルールベースコンポーネントをできます。"
+        "例えば、抽出された固有表現を知識ベースに照らし合わせたり、travel wikiを検索したりすると良いです。"
     )

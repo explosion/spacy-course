@@ -13,15 +13,15 @@ matcher.add("GADGET", None, pattern1, pattern2)
 
 TRAINING_DATA = []
 
-# Create a Doc object for each text in TEXTS
+# TEXTSに入っているそれぞれのtextについてDocオブジェクトを作る
 for ____ in ____:
-    # Match on the doc and create a list of matched spans
+    # docに対してmatcherを呼び出し、結果からスパンを作る
     spans = [____[____:____] for match_id, start, end in matcher(doc)]
-    # Get (start character, end character, label) tuples of matches
+    # (開始文字, 終了文字, ラベル)からなるタプルを取得
     entities = [(span.start_char, span.end_char, "GADGET") for span in spans]
-    # Format the matches as a (doc.text, entities) tuple
+    # マッチを(doc.text, entities)のように整形
     training_example = (____, {"entities": ____})
-    # Append the example to the training data
+    # 得た例を学習データに追加
     ____.____(____)
 
 print(*TRAINING_DATA, sep="\n")
