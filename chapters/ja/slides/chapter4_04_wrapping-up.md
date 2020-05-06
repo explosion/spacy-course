@@ -61,7 +61,7 @@ Notes: もちろん、spaCyができることは、このコースで紹介し�
 # spaCyができるその他のこと(2)
 
 - [トークナイザーのカスタマイズ](https://spacy.io/usage/linguistic-features#tokenization)
-  - テキストを分割するためのルールや例外を追加する
+  - テキストを分割するためのルールや例外を追加
 - [その他の言語を追加したり、改善したりする](https://spacy.io/usage/adding-languages)
   - 現在は55以上の言語をサポート
   - まだまだ改善の余地があります

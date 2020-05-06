@@ -129,7 +129,7 @@ Notes: 品詞タグづけに加えて、単語間の依存関係の解析もで�
 
 <img src="/dep_example.png" alt="'She ate the pizza'という文の構文木のグラフ" />
 
-| Label     | Description          | Example |
+| ラベル | 説明 | 例|
 | --------- | -------------------- | ------- |
 | **nsubj** | 名詞句主語 | She     |
 | **dobj**  | 目的語 | pizza   |

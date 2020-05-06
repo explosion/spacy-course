@@ -53,7 +53,7 @@ Notes: 要約:
 
 ---
 
-# Example loop
+# ループの例
 
 ```python
 TRAINING_DATA = [
@@ -95,7 +95,7 @@ Notes: ここに例を示します。
 
 ---
 
-# Updating an existing model
+# 既存のモデルを更新
 
 - 新しいデータで予測を改善します
 - 特に、`"PERSON"`のような既存のカテゴリを改善するのに便利です
