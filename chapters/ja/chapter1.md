@@ -25,24 +25,21 @@ id: 1
 - `English`クラスを`spacy.lang.en`からインポートし、`nlp`オブジェクトを作ってください。
 - `doc`オブジェクトを作り、文字列をプリントしてください。
 
-<codeblock id="01_02_01">
-</codeblock>
+<codeblock id="01_02_01"></codeblock>
 
 ### パート2: ドイツ語
 
 - `German`クラスを`spacy.lang.de`からインポートし、`nlp`オブジェクトを作ってください。
 - `doc`オブジェクトを作り、文字列をプリントしてください。
 
-<codeblock id="01_02_02">
-</codeblock>
+<codeblock id="01_02_02"></codeblock>
 
 ### パート3: スペイン語
 
 - `Spanish`クラスを`spacy.lang.es`からインポートし、`nlp`オブジェクトを作ってください。
 - `doc`オブジェクトを作り、文字列をプリントしてください。
 
-<codeblock id="01_02_03">
-</codeblock>
+<codeblock id="01_02_03"></codeblock>
 
 </exercise>
 

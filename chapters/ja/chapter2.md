@@ -283,8 +283,7 @@ for index, pos in enumerate(pos_tags):
 - 「great restaurant」と「really nice bar」のスパンを作ってください。
 - `span.similarity`を使ってこれらを比較し、結果をプリントしてください。
 
-<codeblock id="02_10_03">
-</codeblock>
+<codeblock id="02_10_03"></codeblock>
 
 </exercise>
 

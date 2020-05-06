@@ -308,8 +308,7 @@ current object to.
 - Create spans for "great restaurant"/"really nice bar".
 - Use `span.similarity` to compare them and print the result.
 
-<codeblock id="02_10_03">
-</codeblock>
+<codeblock id="02_10_03"></codeblock>
 
 </exercise>
 
