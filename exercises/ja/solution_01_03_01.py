@@ -1,4 +1,4 @@
-# Englishクラスをインポートしnlpオブジェクトを作成
+# Englishクラスをインポートし、nlpオブジェクトを作成
 from spacy.lang.en import English
 
 nlp = English()
