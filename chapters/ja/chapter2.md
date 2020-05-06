@@ -103,7 +103,7 @@ print(nlp_de.vocab.strings[bowie_id])
 
 ### パート1
 
-- `Doc`クラスを`spacy.tokens`からインポートして下さい。
+- `Doc`クラスを`spacy.tokens`からインポートしてください。
 - `Doc`オブジェクトを`words`と`spaces`から作成します。vocabオブジェクトを渡すのを忘れないでください！
 
 <codeblock id="02_05_01">
@@ -115,7 +115,7 @@ print(nlp_de.vocab.strings[bowie_id])
 
 ### パート2
 
-- `Doc`クラスを`spacy.tokens`からインポートして下さい。
+- `Doc`クラスを`spacy.tokens`からインポートしてください。
 - `Doc`オブジェクトを`words`と`spaces`から作成します。vocabオブジェクトを渡すのを忘れないでください！
 
 <codeblock id="02_05_02">
@@ -128,7 +128,7 @@ print(nlp_de.vocab.strings[bowie_id])
 
 ### パート3
 
-- `Doc`クラスを`spacy.tokens`からインポートして下さい。
+- `Doc`クラスを`spacy.tokens`からインポートしてください。
 - `Doc`オブジェクトを`words`と`spaces`から作成してください。
 
 <codeblock id="02_05_03">
@@ -239,7 +239,7 @@ for index, pos in enumerate(pos_tags):
 
 <exercise id="9" title="単語ベクトルの検査">
 
-この演習では、20,000個の単語ベクトルが含まれている大サイズの[English model](https://spacy.io/models/en)を使います。
+この演習では、20,000個の単語ベクトルが含まれている大サイズの[英語モデル](https://spacy.io/models/en)を使います。
 このモデルは既にインストールされています。
 
 - 単語ベクトルの入っている中サイズモデル`"en_core_web_md"`をロードしてください。
@@ -248,7 +248,7 @@ for index, pos in enumerate(pos_tags):
 <codeblock id="02_09">
 
 - `spacy.load`関数を呼びだし、機械学習モデルをロードしてください。
-- docに含まれるトークンを取得するには、インデックスを使ってください。例えば、`doc[4]`とします。
+- docに含まれるトークンを取得するには、インデックスを使ってください。例えば`doc[4]`とします。
 
 </codeblock>
 
@@ -336,8 +336,8 @@ doc = nlp("Can Silicon Valley workers rein in big tech from within?")
 <exercise id="13" title="パターンのデバッグ(2)">
 
 この演習中のパターンは両方とも誤っており、期待した通りには動きません。
-ただしく修正できますか？
-もしつまづいてしまったら、`doc`のトークンを全てプリントしてみて、トークンがどのように分割されているかを確認し、
+正しく修正できますか？
+もし躓いてしまったら、`doc`のトークンを全てプリントしてみて、トークンがどのように分割されているかを確認し、
 パターン中の各辞書が1つのトークンに対応するように調整してみましょう。
 
 - `pattern1`を修正し、大文字小文字によらず`"Amazon"`にマッチし、また、タイトルケースの固有名詞にマッチするようにしてください。
@@ -355,7 +355,7 @@ doc = nlp("Can Silicon Valley workers rein in big tech from within?")
 <exercise id="14" title="効率的なフレーズマッチング">
 
 個々のトークンを記述するパターンを書くよりも、正確な文字列をマッチさせた方が効率的な場合もあります。これは特に、世界のすべての国のような数に限りのある場合に当てはまります。
-すでに国のリストがあるので、これをつかって情報抽出スクリプトを作りましょう。
+すでに国のリストがあるので、これを使って情報抽出スクリプトを作りましょう。
 国名のリストは、`COUNTRIES`変数に入っています。
 
 - `PhraseMatcher`をインポートし、共有の`vocab`で初期化し、`matcher`変数に格納してください。

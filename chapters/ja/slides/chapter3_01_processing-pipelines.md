@@ -2,89 +2,76 @@
 type: slides
 ---
 
-# Processing pipelines
+# 処理パイプライン
 
-Notes: Welcome back! This chapter is dedicated to processing pipelines: a series
-of functions applied to a doc to add attributes like part-of-speech tags,
-dependency labels or named entities.
+Notes: Welcome back！
+この章では処理パイプラインを紹介します。
+処理パイプラインとは、docに品詞タグや依存関係ラベル、固有表現を追加する一連の関数です。
 
-In this lesson, you'll learn about the pipeline components provided by spaCy,
-and what happens behind the scenes when you call nlp on a string of text.
+このレッスンでは、spaCyが提供しているパイプラインコンポーネントを見ていき、文字列に対してnlpオブジェクトを呼び出したときに裏側で起こることを学びます。
 
 ---
 
-# What happens when you call nlp?
+# nlpを呼び出すと何が起こる？
 
-<img src="/pipeline.png" alt="Illustration of the spaCy pipeline transforming a text into a processed Doc" width="90%" />
+<img src="/pipeline.png" alt="spaCyパイプラインが文字列をDocに変換する図解" width="90%" />
 
 ```
 doc = nlp("This is a sentence.")
 ```
 
-Notes: You've already written this plenty of times by now: pass a string of text
-to the `nlp` object, and receive a `Doc` object.
+Notes: 
 
-But what does the `nlp` object _actually_ do?
+`nlp` オブジェクトにテキストの文字列を渡し、`Doc` オブジェクトを受け取るコードを何度も書いてきました。
 
-First, the tokenizer is applied to turn the string of text into a `Doc` object.
-Next, a series of pipeline components is applied to the doc in order. In this
-case, the tagger, then the parser, then the entity recognizer. Finally, the
-processed doc is returned, so you can work with it.
+しかし、`nlp` オブジェクトは実際に何をしているのでしょうか？
+
+まず、トークナイザーを適用してテキストの文字列を `Doc` オブジェクトに変換します。次に、一連のパイプラインコンポーネントが順にDocに適用されます。この場合、タグ付け器、パーサ、固有表現器の順に適用されます。最後に、処理されたdocが返されます。
 
 ---
 
-# Built-in pipeline components
+# ビルトインのパイプラインコンポーネント
 
 | Name        | Description             | Creates                                                   |
 | ----------- | :---------------------- | :-------------------------------------------------------- |
-| **tagger**  | Part-of-speech tagger   | `Token.tag`, `Token.pos`                                  |
-| **parser**  | Dependency parser       | `Token.dep`, `Token.head`, `Doc.sents`, `Doc.noun_chunks` |
-| **ner**     | Named entity recognizer | `Doc.ents`, `Token.ent_iob`, `Token.ent_type`             |
-| **textcat** | Text classifier         | `Doc.cats`                                                |
+| **tagger**  | 品詞タグ付け   | `Token.tag`, `Token.pos`                                  |
+| **parser**  | 依存関係解析 | `Token.dep`, `Token.head`, `Doc.sents`, `Doc.noun_chunks` |
+| **ner**     | 固有表現器 | `Doc.ents`, `Token.ent_iob`, `Token.ent_type`             |
+| **textcat** | 文書分類 | `Doc.cats`                                                |
 
-Notes: spaCy ships with the following built-in pipeline components.
+Notes: 
+spaCyには以下のパイプラインコンポーネントが同梱されています。
 
-The part-of-speech tagger sets the `token.tag` and `token.pos` attributes.
+品詞タグづけ器は `token.tag` と `token.pos` 属性を設定します。
 
-The dependency parser adds the `token.dep` and `token.head` attributes and is
-also responsible for detecting sentences and base noun phrases, also known as
-noun chunks.
+依存関係解析器は `token.dep` と `token.head` 属性を追加し、文や基本名詞句を検出します。
 
-The named entity recognizer adds the detected entities to the `doc.ents`
-property. It also sets entity type attributes on the tokens that indicate if a
-token is part of an entity or not.
+固有表現抽出器は、抽出された固有表現を `doc.ents` プロパティに追加します。また、トークンに固有表現タイプ属性を設定し、トークンが固有表現の一部であるかどうかを示します。
 
-Finally, the text classifier sets category labels that apply to the whole text,
-and adds them to the `doc.cats` property.
+最後に、文書分類器は、テキスト全体に適用されるカテゴリラベルを設定し、`doc.cats` プロパティに追加します。
 
-Because text categories are always very specific, the text classifier is not
-included in any of the pre-trained models by default. But you can use it to
-train your own system.
+テキストのカテゴリは特殊なものなので、文書分類器はデフォルトではどの事前学習モデルにも含まれていません。しかし、これを使って独自のシステムを学習することができます。
 
 ---
 
-# Under the hood
+# 舞台裏
 
-<img src="package_meta.png" alt="Illustration of a package labelled en_core_web_sm, folders and file and the meta.json" />
+<img src="package_meta.png" alt="en_core_web_smのフォルダ、ファイル、meta.jsonの図解" />
 
-- Pipeline defined in model's `meta.json` in order
-- Built-in components need binary data to make predictions
+- モデルの `meta.json` で定義されているパイプラインを順番に並べる
+- コンポーネントは、予測を行うために重みを必要とします。
 
-Notes: All models you can load into spaCy include several files and a
-`meta.json`.
+注意事項：spaCyがロードできるすべてのモデルには、いくつかのファイルと `meta.json` が含まれています。
 
-The meta defines things like the language and pipeline. This tells spaCy which
-components to instantiate.
+meta.jsonは言語やパイプライン等を定義しており、インスタンス化するコンポーネントをspaCyに伝えます。
 
-The built-in components that make predictions also need binary data. The data is
-included in the model package and loaded into the component when you load the
-model.
+予測を行うコンポーネントには重みデータも必要です。データはモデルパッケージに含まれており、モデルをロードする際にコンポーネントにロードされます。
 
 ---
 
 # Pipeline attributes
 
-- `nlp.pipe_names`: list of pipeline component names
+- `nlp.pipe_names`: コンポーネントの名前のリスト
 
 ```python
 print(nlp.pipe_names)
@@ -94,7 +81,7 @@ print(nlp.pipe_names)
 ['tagger', 'parser', 'ner']
 ```
 
-- `nlp.pipeline`: list of `(name, component)` tuples
+- `nlp.pipeline`: `(name, component)`のタプルのリスト
 
 ```python
 print(nlp.pipeline)
@@ -106,17 +93,14 @@ print(nlp.pipeline)
  ('ner', <spacy.pipeline.EntityRecognizer>)]
 ```
 
-Notes: To see the names of the pipeline components present in the current nlp
-object, you can use the `nlp.pipe_names` attribute.
+Notes: 現在のnlpオブジェクトに含まれるパイプラインコンポーネントの名前を見るには、`nlp.pipe_names`属性を利用します。
 
-For a list of component name and component function tuples, you can use the
-`nlp.pipeline` attribute.
+コンポーネント名とコンポーネント関数のタプルの一覧を見るには `nlp.pipeline` 属性を用います。
 
-The component functions are the functions applied to the doc to process it and
-set attributes – for example, part-of-speech tags or named entities.
+コンポーネント関数は、docを処理したり属性を設定したりするためにdocに適用される関数です。
 
 ---
 
 # Let's practice!
 
-Notes: Let's check out some spaCy pipelines and take a look under the hood!
+Notes: spaCyのパイプラインをいくつかチェックし、舞台裏を覗いてみましょう！
