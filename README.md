@@ -19,10 +19,11 @@ solutions are all in this repo, there's no penalty for clicking "Show hints" or
 
 ## 💬 Languages and Translations
 
-| Language                                  | Text Examples<sup>1</sup> | Source                                                       | Authors                          |
-| ----------------------------------------- | ------------------------- | ------------------------------------------------------------ | -------------------------------- |
-| **[English](https://course.spacy.io/en)** | English                   | [`chapters/en`](chapters/en), [`exercises/en`](exercises/en) | [@ines](https://github.com/ines) |
-| **[German](https://course.spacy.io/de)**  | German                    | [`chapters/de`](chapters/de), [`exercises/de`](exercises/de) | [@ines](https://github.com/ines) |
+| Language                                   | Text Examples<sup>1</sup> | Source                                                       | Authors                                |
+| ------------------------------------------ | ------------------------- | ------------------------------------------------------------ | -------------------------------------- |
+| **[English](https://course.spacy.io/en)**  | English                   | [`chapters/en`](chapters/en), [`exercises/en`](exercises/en) | [@ines](https://github.com/ines)       |
+| **[German](https://course.spacy.io/de)**   | German                    | [`chapters/de`](chapters/de), [`exercises/de`](exercises/de) | [@ines](https://github.com/ines)       |
+| **[Japanese](https://course.spacy.io/ja)** | English                   | [`chapters/ja`](chapters/ja), [`exercises/ja`](exercises/ja) | [@tamuhey](https://github.com/tamuhey) |
 
 If you spot a mistake, I always appreciate
 [pull requests](https://github.com/ines/spacy-course/pulls)!
