@@ -2,48 +2,40 @@
 type: slides
 ---
 
-# Best practices for training spaCy models
+# Buenas prácticas para entrenar modelos de spaCy
 
-Notes: When you start running your own experiments, you might find that a lot of
-things just don't work the way you want them to. And that's okay.
+Notes: Cuando comienzas a correr tus propios experimentos puede que veas que muchas cosas no funcionan de la manera en la que quieres. Eso está bien.
 
-Training models is an iterative process, and you have to try different things
-until you find out what works best.
+Entrenar modelos es un proceso iterativo y tienes que probar cosas diferentes hasta que encuentres lo que funciona mejor.
 
-In this lesson, I'll be sharing some best practices and things to keep in mind
-when training your own models.
+En esta lección mostraré algunas de las mejores prácticas y cosas que tener en cuenta a la hora de entrenar tus propios modelos.
 
-Let's take a look at some of the problems you may come across.
+Echemos un vistazo a algunos de los problemas con los que te puedes encontrar.
 
 ---
 
-# Problem 1: Models can "forget" things
+# Problema 1: Los modelos pueden "olvidar" cosas
 
-- Existing model can overfit on new data
-  - e.g.: if you only update it with `"WEBSITE"`, it can "unlearn" what a
-    `"PERSON"` is
-- Also known as "catastrophic forgetting" problem
+- Un modelo existente puede sobreajustar sobre nuevos datos
+  - e.g.: si solo lo actualizas con `"WEBSITE"`, puede "desaprender" lo que es una `"PERSON"`
+- También conocido como el problema del "olvido catastrófico"
 
-Notes: Statistical models can learn lots of things – but it doesn't mean that
-they won't unlearn them.
+Notes: Los modelos estadísticos pueden aprender muchas cosas - pero eso no quiere decir que no pueden olvidarlas.
 
-If you're updating an existing model with new data, especially new labels, it
-can overfit and adjust _too much_ to the new examples.
+Si estás actualizando un modelo existente con datos nuevos, especialmente labels nuevos, puede sobreajustar y ajustarse _demasiado_ a los nuevos ejemplos.
 
-For instance, if you're only updating it with examples of "website", it may
-"forget" other labels it previously predicted correctly – like "person".
+Por ejemplo, si solo estás actualizándolo con ejemplos de "website", puede "olvidar" otros labels que antes había predicho de manera correcta - como "person".
 
-This is also known as the catastrophic forgetting problem.
+Esto también se conoce como el problema del olvido catastrófico.
 
 ---
 
-# Solution 1: Mix in previously correct predictions
+# Solución 1: Incluye predicciones correctas anteriores
 
-- For example, if you're training `"WEBSITE"`, also include examples of
-  `"PERSON"`
-- Run existing spaCy model over data and extract all other relevant entities
+- Por ejemplo, si estás entrenando `"WEBSITE"`, también incluyes ejemplos de `"PERSON"`
+- Corre el modelo existente de spaCy sobre los datos y extrae todas las demás entidades relevantes
 
-**BAD:**
+**MAL:**
 
 ```python
 TRAINING_DATA = [
@@ -51,7 +43,7 @@ TRAINING_DATA = [
 ]
 ```
 
-**GOOD:**
+**BIEN:**
 
 ```python
 TRAINING_DATA = [
@@ -60,77 +52,63 @@ TRAINING_DATA = [
 ]
 ```
 
-Note: To prevent this, make sure to always mix in examples of what the model
-previously got correct.
+Note: Para prevenir esto asegurate que siempre incluyas ejemplos de lo que el modelo antes predijo correctamente.
 
-If you're training a new category `"WEBSITE"`, also include examples of
-`"PERSON"`.
+Si estás entrenando una nueva categoría `"WEBSITE"`, también incluyes ejemplos de `"PERSON"`
 
-spaCy can help you with this. You can create those additional examples by
-running the existing model over data and extracting the entity spans you care
-about.
+spaCy puede ayudarte con esto. Puedes crear ejemplos adicionales corriendo el modelo existente sobre los datos y extrayendo los spans de entidades que te interesan.
 
-You can then mix those examples in with your existing data and update the model
-with annotations of all labels.
+También puedes mezclar esos ejemplos junto con tus datos existentes y actualizar el modelo con anotaciones de todos los labels.
 
 ---
 
-# Problem 2: Models can't learn everything
+# Problema 2: Los modelos no pueden aprender todo
 
-- spaCy's models make predictions based on **local context**
-- Model can struggle to learn if decision is difficult to make based on context
-- Label scheme needs to be consistent and not too specific
-  - For example: `"CLOTHING"` is better than `"ADULT_CLOTHING"` and
-    `"CHILDRENS_CLOTHING"`
+- Los modelos de spaCy hacen predicciones basados en el **contexto local**
+- El modelo puede tener dificultades para aprender si es difícil tomar una decisión basada en el contexto
+- El esquema de labels debe ser consistente y no demasiado específico
+  - Por ejemplo: `"CLOTHING"` (ropa) es mejor que `"ADULT_CLOTHING"` (ropa de adultos) y `"CHILDRENS_CLOTHING"` (ropa de niños)
 
-Notes: Another common problem is that your model just won't learn what you want
-it to.
+Notes: Otro problema común es que tu modelo simplemente no aprende lo que quieres que aprenda.
 
-spaCy's models make predictions based on the local context – for example, for
-named entities, the surrounding words are most important.
+Los modelos de spaCy hacen predicciones basadas en el contexto local - por ejemplo, para entidades nombradas las palabras al rededor son las más importantes.
 
-If the decision is difficult to make based on the context, the model can
-struggle to learn it.
+Si la decisión es difícil de hacer basada en el contexto, el modelo puede tener dificultades en aprenderla.
 
-The label scheme also needs to be consistent and not too specific.
+El esquema de labels también tiene que ser consistente y no demasiado específico.
 
-For example, it may be very difficult to teach a model to predict whether
-something is adult clothing or children's clothing based on the context.
-However, just predicting the label "clothing" may work better.
+Por ejemplo, puede ser difícil enseñarle al modelo a predecir si algo es ropa de adulto o ropa de niños basado en el contexto. Sin embargo, solo predecir el label "ropa" puede funcionar mejor.
 
 ---
 
-# Solution 2: Plan your label scheme carefully
+# Solución 2: Planea tu esquema de label cuidadosamente
 
-- Pick categories that are reflected in local context
-- More generic is better than too specific
-- Use rules to go from generic labels to specific categories
+- Escoge categorías que estén reflejadas en el contexto local
+- Más genérico es mejor que demasiado específico
+- Usa reglas que vayan de label genéricos a categorías específicas
 
-**BAD:**
+**MAL:**
 
 ```python
 LABELS = ["ADULT_SHOES", "CHILDRENS_SHOES", "BANDS_I_LIKE"]
 ```
 
-**GOOD:**
+**BIEN:**
 
 ```python
 LABELS = ["CLOTHING", "BAND"]
 ```
 
-Notes: Before you start training and updating models, it's worth taking a step
-back and planning your label scheme.
+Notes: Antes de comenzar a entrenas y actualizar modelos vale la pena tomar un momento para planear tu esquema de labels.
 
-Try to pick categories that are reflected in the local context and make them
-more generic if possible.
+Intenta escoger categorías que estén reflejadas en el contexto local y haz que sean lo más genéricas si es posible.
 
-You can always add a rule-based system later to go from generic to specific.
+Siempre puedes añadir un sistema basado en reglas que después para ir de genérico a específico.
 
-Generic categories like "clothing" or "band" are both easier to label and easier
-to learn.
+Es más fácil ponerle labels y aprender categorías genéricas como "ropa" o "banda".
 
 ---
 
-# Let's practice!
+# ¡Practiquemos!
 
-Notes: Let's look at some of these problems in context and fix them!
+Notes: ¡Miremos algunos de los problemas en contexto y solucionémoslos!
