@@ -2,10 +2,10 @@ import spacy
 
 # カスタムコンポーネントを定義
 def length_component(doc):
-    # Get the doc's length
+    # docの長さを取得
     doc_length = len(doc)
     print(f"This document is {doc_length} tokens long.")
-    # Return the doc
+    # docを返す
     return doc
 
 
