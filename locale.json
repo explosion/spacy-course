@@ -11,10 +11,6 @@
                 "url": "https://spacy.io"
             },
             {
-                "text": "Course FAQ",
-                "url": "https://github.com/ines/spacy-course#-faq"
-            },
-            {
                 "text": "Source",
                 "url": "https://github.com/ines/spacy-course"
             },
@@ -101,10 +97,6 @@
             {
                 "text": "spaCyウェブサイト",
                 "url": "https://spacy.io"
-            },
-            {
-                "text": "コースのFAQ",
-                "url": "https://github.com/ines/spacy-course#-faq"
             },
             {
                 "text": "ソースファイル",
