@@ -10,20 +10,20 @@ ner = nlp.create_pipe("ner")
 nlp.add_pipe(ner)
 ner.add_label("GADGET")
 
-# Start the training
+# Comienza el entrenamiento
 ____.____
 
-# Loop for 10 iterations
+# Haz un loop por 10 iteraciones
 for itn in range(____):
-    # Shuffle the training data
+    # Mezcla los datos de entrenamiento
     random.shuffle(TRAINING_DATA)
     losses = {}
 
-    # Batch the examples and iterate over them
+    # Crea lotes con los ejemplos e itera sobre ellos
     for batch in ____.____.____(TRAINING_DATA, size=2):
         texts = [____ for text, entities in batch]
         annotations = [____ for text, entities in batch]
 
-        # Update the model
+        # Actualiza el modelo
         ____.____(texts, annotations, losses=losses)
     print(losses)

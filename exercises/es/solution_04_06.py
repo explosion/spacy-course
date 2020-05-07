@@ -1,11 +1,11 @@
 import spacy
 
-# Create a blank "en" model
+#Crea un modelo "en" en blanco
 nlp = spacy.blank("en")
 
-# Create a new entity recognizer and add it to the pipeline
+# Crea un nuevo entity recognizer y añádelo al pipeline
 ner = nlp.create_pipe("ner")
 nlp.add_pipe(ner)
 
-# Add the label "GADGET" to the entity recognizer
+# Añade el label "GADGET" al entity recognizer
 ner.add_label("GADGET")

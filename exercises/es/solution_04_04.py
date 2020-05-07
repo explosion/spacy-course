@@ -13,15 +13,15 @@ matcher.add("GADGET", None, pattern1, pattern2)
 
 TRAINING_DATA = []
 
-# Create a Doc object for each text in TEXTS
+# Crea un objeto Doc para cada texto en TEXTS
 for doc in nlp.pipe(TEXTS):
-    # Match on the doc and create a list of matched spans
+    # Encuentra en el doc y crea una lista de los spans resultantes
     spans = [doc[start:end] for match_id, start, end in matcher(doc)]
-    # Get (start character, end character, label) tuples of matches
+    # Obtén los tuples (carácter de inicio, carácter del final, label) resultantes
     entities = [(span.start_char, span.end_char, "GADGET") for span in spans]
-    # Format the matches as a (doc.text, entities) tuple
+    # Da formato a los resultados como tuples con (doc.text, entidades)
     training_example = (doc.text, {"entities": entities})
-    # Append the example to the training data
+    # Añade el ejemplo a los datos de entrenamiento
     TRAINING_DATA.append(training_example)
 
 print(*TRAINING_DATA, sep="\n")

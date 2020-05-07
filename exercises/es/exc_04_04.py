@@ -13,15 +13,15 @@ matcher.add("GADGET", None, pattern1, pattern2)
 
 TRAINING_DATA = []
 
-# Create a Doc object for each text in TEXTS
+# Crea un objeto Doc para cada texto en TEXTS
 for ____ in ____:
-    # Match on the doc and create a list of matched spans
+    # Encuentra en el doc y crea una lista de los spans resultantes
     spans = [____[____:____] for match_id, start, end in matcher(doc)]
-    # Get (start character, end character, label) tuples of matches
+    # Obtén los tuples (carácter de inicio, carácter del final, label) resultantes
     entities = [(span.start_char, span.end_char, "GADGET") for span in spans]
-    # Format the matches as a (doc.text, entities) tuple
+    # Da formato a los resultados como tuples con (doc.text, entidades)
     training_example = (____, {"entities": ____})
-    # Append the example to the training data
+    # Añade el ejemplo a los datos de entrenamiento
     ____.____(____)
 
 print(*TRAINING_DATA, sep="\n")
