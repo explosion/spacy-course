@@ -1,52 +1,43 @@
 ---
-title: 'Chapter 4: Training a neural network model'
+title: 'Capítulo 4: Entrenando un modelo de red neuronal'
 description:
-  "In this chapter, you'll learn how to update spaCy's statistical models to
-  customize them for your use case – for example, to predict a new entity type
-  in online comments. You'll write your own training loop from scratch, and
-  understand the basics of how training works, along with tips and tricks that
-  can make your custom NLP projects more successful."
+  "En este capítulo aprenderás a actualizar los modelos estadísticos de spaCy para personalizarlos para tu caso - por ejemplo, para predecir un nuevo tipo de entidad en comentarios en línea. Escribirás tu propio loop de entrenamiento desde cero y entenderás lo esencial de cómo funciona el entrenamiento, junto con consejos y trucos para hacer que tus proyectos de NLP sean más exitosos."
 prev: /chapter3
 next: null
 type: chapter
 id: 4
 ---
 
-<exercise id="1" title="Training and updating models" type="slides">
+<exercise id="1" title="Entrenando y actualizando modelos" type="slides">
 
 <slides source="chapter4_01_training-updating-models">
 </slides>
 
 </exercise>
 
-<exercise id="2" title="Purpose of training">
+<exercise id="2" title="El propósito de entrenar">
 
-While spaCy comes with a range of pre-trained models to predict linguistic
-annotations, you almost _always_ want to fine-tune them with more examples. You
-can do this by training them with more labelled data.
+A pesar que spaCy viene con un rango de modelos pre-entrenados para predecir anotaciones lingüísticas casi _siempre_ quieres afinarlos con más ejemplos. Puedes hacer esto entrenándolos con más datos con labels.
 
-What does training **not** help with?
+¿Con qué **no** ayuda el entrenamiento?
 
 <choice>
 
-<opt text="Improve model accuracy on your data.">
+<opt text="Mejorar la precisión del modelo con tus datos.">
 
-If a pre-trained model doesn't perform well on your data, training it with more
-examples is often a good solution.
-
-</opt>
-
-<opt text="Learn new classification schemes.">
-
-You can use training to teach the model new labels, entity types or other
-classification schemes.
+Si un modelo pre-entrenado no se desempeña bien con tus datos, entrenarlo con más ejemplos en normalmente una buena solución.
 
 </opt>
 
-<opt text="Discover patterns in unlabelled data." correct="true">
+<opt text="Aprneder nuevos esquemas de clasificación.">
 
-spaCy's components are supervised models for text annotations, meaning they can
-only learn to reproduce examples, not guess new labels from raw text.
+Puedes usar el entrenamiento para enseñarle al modelo nuevos labels, tipos de entidades u otros esquemas de clasificación.
+
+</opt>
+
+<opt text="Descubrir nuevos patrones en datos sin labels." correct="true">
+
+Los componentes de spaCy son modelos supervisados para anotaciones de texto, lo que quiere decir que solo pueden aprender a reproducir ejemplos, no a adivinar nuevos labels desde texto crudo.
 
 </opt>
 
@@ -54,124 +45,95 @@ only learn to reproduce examples, not guess new labels from raw text.
 
 </exercise>
 
-<exercise id="3" title="Creating training data (1)">
+<exercise id="3" title="Creando datos de entrenamiento (1)">
 
-spaCy's rule-based `Matcher` is a great way to quickly create training data for
-named entity models. A list of sentences is available as the variable `TEXTS`.
-You can print it to inspect it. We want to find all mentions of different iPhone
-models, so we can create training data to teach a model to recognize them as
-`"GADGET"`.
+El `Matcher` basado en reglas de spaCy es una manera excelente de crear datos de entrenamiento rápidamente para modelos de entidades nombradas. Una lista de frases está disponible en la variable `TEXTS`. Puedes imprimirla en pantalla para inspeccionarla. Queremos encontrar todas las menciones de los diferentes modelos de iPhone, así que creamos datos de entrenamineto para enseñarle al modelo a reconocerlos como `"GADGET"`.
 
-- Write a pattern for two tokens whose lowercase forms match `"iphone"` and
-  `"x"`.
-- Write a pattern for two tokens: one token whose lowercase form matches
-  `"iphone"` and a digit using the `"?"` operator.
+- Escribe un patrón para dos tokens que en minúsculas encuentran "iphone" y "x"
+- Escribe un patrón para dos tokens: Un token que en minúsculas encuentra "iphone" y un dígito usando el operador `"?"`.
 
 <codeblock id="04_03">
 
-- To match the lowercase form of a token, you can use the `"LOWER"` attribute.
-  For example: `{"LOWER": "apple"}`.
-- To find a digit token, you can use the `"IS_DIGIT"` flag. For example:
-  `{"IS_DIGIT": True}`.
+- Para encontrar la forma en minúsculas de un token puedes usar el atributo `"LOWER"`.
+  Por ejemplo: `{"LOWER": "apple"}`.
+- Para encontrar un token con un dígito puedes usar el flag `"IS_DIGIT"`. Por ejemplo: `{"IS_DIGIT": True}`.
 
 </codeblock>
 
 </exercise>
 
-<exercise id="4" title="Creating training data (2)">
+<exercise id="4" title="Creando datos de entrenamiento (2)">
 
-Let's use the match patterns we've created in the previous exercise to bootstrap
-a set of training examples. A list of sentences is available as the variable
-`TEXTS`.
+Usemos los patrones que creamos en el ejercicio anterior para crear un set de ejemplos de entrenamiento. Una lista de frases está disponible en la variable `TEXTS`.
 
-- Create a doc object for each text using `nlp.pipe`.
-- Match on the `doc` and create a list of matched spans.
-- Get `(start character, end character, label)` tuples of matched spans.
-- Format each example as a tuple of the text and a dict, mapping `"entities"` to
-  the entity tuples.
-- Append the example to `TRAINING_DATA` and inspect the printed data.
+- Crea un objeto `doc` para cada texto usando `nlp.pipe`.
+- Encuentra en el `doc` y crea una lista de spans resultantes.
+- Obtén los tuples `(carácter de inicio, carácter del final, label)` de los spans resultantes.
+- Da formato a cada ejemplo como un tuple de texto y un diccionario que hace mapping de `"entities"` a tuples de entidades.
+- Añade el ejemplo a `TRAINING_DATA` e inspecciona los datos impresos en pantalla.
 
 <codeblock id="04_04">
 
-- To find matches, call the `matcher` on a `doc`.
-- The returned matches are `(match_id, start, end)` tuples.
-- To add an example to the list of training examples, you can use
-  `TRAINING_DATA.append()`.
+- Para encontrar resultados llama al `matcher` sobre un `doc`.
+- Los resultados son tuples con `(match_id, start, end)`.
+- Para añadir un ejemplo a la lista de ejemplos de entrenamiento puedes usar `TRAINING_DATA.append()`.
 
 </codeblock>
 
 </exercise>
 
-<exercise id="5" title="The training loop" type="slides">
+<exercise id="5" title="El loop de entrenamiento" type="slides">
 
 <slides source="chapter4_02_training-loop">
 </slides>
 
 </exercise>
 
-<exercise id="6" title="Setting up the pipeline">
+<exercise id="6" title="Creando el pipeline">
 
-In this exercise, you'll prepare a spaCy pipeline to train the entity recognizer
-to recognize `"GADGET"` entities in a text – for example, "iPhone X".
+En este ejercicio preparás un pipeline de spaCy para entrenar al entity recognizer para que reconozca las entidades `"GADGET"` en un texto - por ejemplo, "iPhone X".
 
-- Create a blank `"en"` model, for example using the `spacy.blank` method.
-- Create a new entity recognizer using `nlp.create_pipe` and add it to the
-  pipeline.
-- Add the new label `"GADGET"` to the entity recognizer using the `add_label`
-  method on the pipeline component.
+- Crea un modelo `"en"` en blanco, por ejemplo, usando el método `spacy.blank`.
+- Crea un nuevo entity recognizer usando `nlp.create_pipe` y añádelo al pipeline
+- ñade el nuevo label "GADGET" al entity recognizer usando el método `add_label` en el componente del pipeline.
 
 <codeblock id="04_06">
 
-- To create a blank entity recognizer, you can call `nlp.create_pipe` with the
-  string `"ner"`.
-- To add the component to the pipeline, use the `nlp.add_pipe` method.
-- The `add_label` method is a method of the entity recognizer pipeline
-  component, which you've stored in the variable `ner`. To add a label to it,
-  you can call `ner.add_label` with the string name of the label, for example
-  `ner.add_label("SOME_LABEL")`.
+- Para crear un entity recognizer en blanco puedes llamar a `nlp.create_pipe` con `"ner"` en un string
+- Para añadir un componente al pipeline usa el método `nlp.add_pipe`.
+- El método `add_label` es un método del componente del pipeline, entity recognizer, que guardaste en la variable `ner`. Para añadirle un label puedes llamar a `ner.add_label` con el nombre del label en string, por ejemplo, `ner.add_label("SOME_LABEL")`.
 
 </codeblock>
 
 </exercise>
 
-<exercise id="7" title="Building a training loop">
+<exercise id="7" title="Contruyendo un loop de entrenamiento">
 
-Let's write a simple training loop from scratch!
+¡Escribamos un loop de entrenamiento sencillo desde cero!
 
-The pipeline you've created in the previous exercise is available as the `nlp`
-object. It already contains the entity recognizer with the added label
-`"GADGET"`.
+El pipeline que creaste en el ejercicio anterior está disponible como el objeto `nlp`. Ya contiene el entity recognizer con el label añadido, `"GADGET"`.
 
-The small set of labelled examples that you've created previously is available
-as `TRAINING_DATA`. To see the examples, you can print them in your script.
+El set pequeño de ejemplos con label que creaste anteriormente está disponible como `TRAINING_DATA`. Para ver los ejemplos puedes imprimirlos en pantalla con tu script.
 
-- Call `nlp.begin_training`, create a training loop for 10 iterations and
-  shuffle the training data.
-- Create batches of training data using `spacy.util.minibatch` and iterate over
-  the batches.
-- Convert the `(text, annotations)` tuples in the batch to lists of `texts` and
-  `annotations`.
-- For each batch, use `nlp.update` to update the model with the texts and
-  annotations.
+- Llama a `nlp.begin_training`, crea un loop de entrenamiento por 10 iteraciones y mezcla los datos de entrenamiento.
+- Crea lotes de datos de entrenamiento usando `spacy.util.minibatch` e itera sobre los lotes.
+- Convierte los tuples de `(text, annotations)` en el lote a listas de `texts` y `annotations`.
+- Para cada lote usa `nlp.update` para actualizar el modelo con los textos y anotaciones.
 
 <codeblock id="04_07">
 
-- To start the training and reset the weights call, the `nlp.begin_training()`
-  method.
-- To divide the training data into batches, call the `spacy.util.minibatch`
-  function on the list of training examples.
+- Para empezar el entrenamiento y reiniciar los parámetros llama al método `nlp.begin_training()`.
+- Para dividir los datos de entrenamiento en lotes llama a la función `spacy.util.minibatch` sobre la lista de ejemplos de entrenamiento.
 
 </codeblock>
 
 </exercise>
 
-<exercise id="8" title="Exploring the model">
+<exercise id="8" title="Explorando el modelo">
 
-Let's see how the model performs on unseen data! To speed things up a little, we
-already ran a trained model for the label `"GADGET"` over some text. Here are
-some of the results:
+¡Miremos cómo se desempeña el modelo con datos que no ha visto antes! Para acelerar las cosas ya corrimos un modelo entrenado para el label `"GADGET"` sobre unos textos. Aquí tenemos algunos de los resultados:
 
-| Text                                                                                                              | Entities               |
+| Texto                                                                                                             | Entidades              |
 | ----------------------------------------------------------------------------------------------------------------- | ---------------------- |
 | Apple is slowing down the iPhone 8 and iPhone X - how to stop it                                                  | `(iPhone 8, iPhone X)` |
 | I finally understand what the iPhone X 'notch' is for                                                             | `(iPhone X,)`          |
@@ -181,38 +143,31 @@ some of the results:
 | what is the cheapest ipad, especially ipad pro???                                                                 | `(ipad, ipad)`         |
 | Samsung Galaxy is a series of mobile computing devices designed, manufactured and marketed by Samsung Electronics | `(Samsung Galaxy,)`    |
 
-Out of all the entities in the texts, **how many did the model get correct**?
-Keep in mind that incomplete entity spans count as mistakes, too! Tip: Count the
-number of entities that the model _should_ have predicted. Then count the number
-of entities it _actually_ predicted correctly and divide it by the number of
-total correct entities.
+De todas las entidades en los textos, **cuántas tuvo correctas el modelo**? Ten en cuenta que los spans de entidades incompletos cuentan como errores también! Consejo: Cuenta el número de entidades que el modelo _debía_ haber predicho. Luego cuenta el número de entidades que _realmente_ predijo y divídelo por el número total de entidades correctas.
 
 <choice>
 
 <opt text="45%">
 
-Try counting the number of correctly predicted entities and divide it by the
-number of total correct entities the model _should_ have predicted.
+Intenta contar el número de entidades que el modelo predijo correctamente y divídelo por el número total de entidades correctas que el modelo _debía_ haber predicho.
 
 </opt>
 
 <opt text="60%">
 
-Try counting the number of correctly predicted entities and divide it by the
-number of total correct entities the model _should_ have predicted.
+Intenta contar el número de entidades que el modelo predijo correctamente y divídelo por el número total de entidades correctas que el modelo _debía_ haber predicho.
 
 </opt>
 
 <opt text="70%" correct="true">
 
-On our test data, the model achieved an accuracy of 70%.
+El modelo tuvo una precición del 70% con nuestro datos de prueba.
 
 </opt>
 
 <opt text="90%">
 
-Try counting the number of correctly predicted entities and divide it by the
-number of total correct entities the model _should_ have predicted.
+Intenta contar el número de entidades que el modelo predijo correctamente y divídelo por el número total de entidades correctas que el modelo _debía_ haber predicho.
 
 </opt>
 
@@ -220,17 +175,16 @@ number of total correct entities the model _should_ have predicted.
 
 </exercise>
 
-<exercise id="9" title="Training best practices" type="slides">
+<exercise id="9" title="Buenas prácticas de entrenamiento" type="slides">
 
 <slides source="chapter4_03_training-best-practices">
 </slides>
 
 </exercise>
 
-<exercise id="10" title="Good data vs. bad data">
+<exercise id="10" title="Buenos datos vs. Malos datos">
 
-Here's an excerpt from a training set that labels the entity type
-`TOURIST_DESTINATION` in traveler reviews.
+Aquí tenemos un fragmento de los datos de entrenamiento del tipo de entidad `TOURIST_DESTINATION` en comentarios de viajeros.
 
 ```python
 TRAINING_DATA = [
@@ -250,54 +204,41 @@ TRAINING_DATA = [
 ]
 ```
 
-### Part 1
+### Parte 1
 
-Why is this data and label scheme problematic?
+¿Por qué son problemáticos estos datos y su esquema de labels?
 
 <choice>
 
-<opt text="Whether a place is a tourist destination is a subjective judgement and not a definitive category. It will be very difficult for the entity recognizer to learn." correct="true">
+<opt text="Que un sitio sea un destino turístico es un jucio subjetico y no una categoría definitiva. Será muy difícil que el entity recognizer lo aprenda." correct="true">
 
-A much better approach would be to only label `"GPE"` (geopolitical entity) or
-`"LOCATION"` and then use a rule-based system to determine whether the entity is a
-tourist destination in this context. For example, you could resolve the entities
-types back to a knowledge base or look them up in a travel wiki.
+Una estrategia mejor sería tener únicamente el label `"GPE"` (entidad geopolítica) o `"LOCATION"` y luego usar un sistema basado en reglas para determinar si una entidad es un destino turístico en este contexto. Por ejemplo, puedes resolver los tipos de entidades en relación con un <abbr title="Un sistema de almacenamiento de conocimiento y sus relaciones. En español, base de conocimiento">knowledge base</abbr> o buscarlas en un wiki de viajes.
 
 </opt>
 
-<opt text="Paris should also be labelled as tourist destinations for consistency. Otherwise, the model will be confused.">
+<opt text="Paris también debería estar marcado como un destino turístico. De otra manera, el modelo se confundirá.">
 
-While it's possible that Paris, AK is also a tourist attraction, this only
-highlights how subjective the label scheme is and how difficult it will be to
-decide whether the label applies or not. As a result, this distinction will also
-be very difficult to learn for the entity recognizer.
+Así sea posible que Paris, AK también sea una atracción turística, esto solo resalta lo subjetivo que es el esquema de labels y lo difícil que será decidir si el label aplica o no. Como resultado esta distinción tambíen será muy difícil de aprender para el entity recognizer.
 
 </opt>
 
-<opt text="Rare out-of-vocabulary words like the misspelled 'amsterdem' shouldn't be labelled as entities.">
+<opt text="Palabras extrañas fuera del vocabulario, como el 'amsterdem' mal escrito no deberían estar marcadas como entidades.">
 
-Even very uncommon words or misspellings can be labelled as entities. In fact,
-being able to predict categories in misspelled text based on the context is one
-of the big advantages of statistical named entity recognition.
+Las palabras muy raras o mal deletreadas también pueden ser marcadas como entidades. De hecho, ser capaz de predecir categorías en texto mal deletreado en contexto es una de las grandes ventajas del reconocimiento estadístico de entidades nombradas.
 
 </opt>
 
 </choice>
 
-### Part 2
+### Parte 2
 
-- Rewrite the `TRAINING_DATA` to only use the label `"GPE"` (cities, states,
-  countries) instead of `"TOURIST_DESTINATION"`.
-- Don't forget to add tuples for the `"GPE"` entities that weren't labeled in the
-  old data.
+- Rescribe el `TRAINING_DATA` para que solo use el label `"GPE"` (ciudades, estados, países) en vez de `"TOURIST_DESTINATION"`.
+- No te olvides de añadir tuples para las entidades `"GPE"` que no fueron marcadas con un label en los datos viejos.
 
 <codeblock id="04_10">
 
-- For the spans that are already labelled, you'll only need to change the label
-  name from `"TOURIST_DESTINATION"` to `"GPE"`.
-- One text includes a city and a state that aren't labeled yet. To add the
-  entity spans, count the characters to find out where the entity span starts
-  and where it ends. Then add `(start, end, label)` tuples to the entities.
+- Para los spans que ya estaban marcados con labels, solo tienes que cambiar el label de `"TOURIST_DESTINATION"` a `"GPE"`.
+- Un texto incluye una ciudad y un estado que no están marcados con un label todavía. Para añadir los spans de entidades, cuenta los carácteres para averiguar dónde empiezan y dónde terminan los spans de entidades. Luego añade los tuples `(start, end, label)` a las entidades.
 
 </codeblock>
 
@@ -305,75 +246,57 @@ of the big advantages of statistical named entity recognition.
 
 <exercise id="11" title="Training multiple labels">
 
-Here's a small sample of a dataset created to train a new entity type `"WEBSITE"`.
-The original dataset contains a few thousand sentences. In this exercise, you'll
-be doing the labeling by hand. In real life, you probably want to automate this
-and use an annotation tool – for example, [Brat](http://brat.nlplab.org/), a
-popular open-source solution, or [Prodigy](https://prodi.gy), our own annotation
-tool that integrates with spaCy.
+Aquí tenemos una pequeña muestra de un dataset creado para entrenar un nuevo tipo de entidad `"WEBSITE"`. El dataset original contiene unas cuantas miles de frases. En este ejercicio estarás marcando con labels a mano. En la vida real, probablemente quieras automatizar esto y usar una herramienta para marcar con labels - por ejemplo, [Brat](http://brat.nlplab.org/), una popular solución de código libre, o [Prodigy](https://prodi.gy), nuestra propia herramienta de anotación que se integra con spaCy.
 
-### Part 1
+### Parte 1
 
-- Complete the entity offsets for the `"WEBSITE"` entities in the data. Feel free
-  to use `len()` if you don't want to count the characters.
+- Completa las posiciones de los carácteres para las entidades `"WEBSITE"` en los datos. Tienes la libertad de usar `len()` si no quieres contar los carácteres.
 
 <codeblock id="04_11_01">
 
-- The start and end offset of an entity span are the character offsets into the
-  text. For example, if an entity starts at position 5, the start offset is `5`.
-  Remember that the end offsets are _exclusive_ – so `10` means _up to_
-  character 10.
+- La posición de inicio y del final de un span de entidad son las posiciones de los carácteres en el texto. Por ejemplo, si una entidad comienza en la posición 5, entonces su posición de inicio es `5`. Recuerda que las posiciones del final son _excluyentes_ así que `10` significa _hasta_ el carácter 10.
 
 </codeblock>
 
-### Part 2
+### Parte 2
 
-A model was trained with the data you just labelled, plus a few thousand similar
-examples. After training, it's doing great on `"WEBSITE"`, but doesn't recognize
-`"PERSON"` anymore. Why could this be happening?
+Un modelo fue entrenado con los datos que acabas de marcar con labels, más unos miles de ejemplos similares. Después de entrenar está haciéndolo muy bien con `"WEBSITE"`, pero ahora no reconoce a `"PERSON"`. ¿Por qué podría estar pasando esto?
 
 <choice>
 
-<opt text='It’s very difficult for the model to learn about different categories like <code>"PERSON"</code> and <code>"WEBSITE"</code>.'>
+<opt text='Es muy difícil para el modelo aprender sobre diferente catgorías como <code>"PERSON"</code> y <code>"WEBSITE"</code>.'>
 
-It's definitely possible for a model to learn about very different categories.
-For example, spaCy's pre-trained English models can recognize persons, but also
-organizations or percentages.
+Definitivamente es posible que un modelo aprenda sobre varias categorías diferentes. Por ejemplo, los modelo pre-entrenados de inglés de spaCy pueden reconocer personas, pero también organizaciones o porcentajes.
 
 </opt>
 
-<opt text='The training data included no examples of <code>"PERSON"</code>, so the model learned that this label is incorrect.' correct="true">
+<opt text='Los datos de entrenamiento no incluyeron ejemplos de <code>"PERSON"</code>, así que el modelo aprendió que este label es incorrecto.' correct="true">
 
-If `"PERSON"` entities occur in the training data but aren't labelled, the model
-will learn that they shouldn't be predicted. Similarly, if an existing entity
-type isn't present in the training data, the model may \"forget\" and stop
-predicting it.
+Si entidades `"PERSON"` ocurren en los datos de entrenamiento, pero no están marcadas con labels, el modelo aprenderá que éstas no deben ser predecidas. Del mismo modo, si un tipo de entidad existente no está presente en los datos de entrenamiento el modelo puede "olvidar" y dejar de predecirlo.
 
 </opt>
 
-<opt text="The hyperparameters need to be retuned so that both entity types can be recognized.">
+<opt text="Los hyperparámetros tienen que ser recalibrados para que ambos tipos de entidades sean reconocidos.">
 
-While the hyperparameters can influence a model's accuracy, they're likely not
-the problem here.
+A pesar que los hyperparámetros pueden influenciar la precisión de un modelo, es probable que este no sea el problema aquí.
 
 </opt>
 
 </choice>
 
-### Part 3
+### Parte 3
 
-- Update the training data to include annotations for the `"PERSON"` entities
-  "PewDiePie" and "Alexis Ohanian".
+- Actualiza los datos de entrenamiento para incluir anotaciones para las entidades `"PERSON"`, "PewDiePie" y "Alexis Ohanian".
 
 <codeblock id="04_11_02">
 
-- To add more entities, append another `(start, end, label)` tuple to the list.
+- Para incluir más entidades, añade otro tuple `(start, end, label)` a la lista.
 
 </codeblock>
 
 </exercise>
 
-<exercise id="12" title="Wrapping up" type="slides">
+<exercise id="12" title="Cerrando el curso" type="slides">
 
 <slides source="chapter4_04_wrapping-up">
 </slides>
