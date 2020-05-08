@@ -3,33 +3,33 @@ def test():
 
     assert isinstance(
         matcher, spacy.matcher.Matcher
-    ), "Are you initializing the matcher correctly?"
+    ), "¿Estás inicilizando el matcher correctamente?"
     assert (
         "Matcher(nlp.vocab)" in __solution__
-    ), "Are you initializing the matcher correctly with the shared vocab?"
+    ), "¿Estás inicilizando el matcher correctamente con el vocabulario compartido?"
     assert (
         len(pattern) == 2
-    ), "The pattern should describe two tokens (two dictionaries)."
+    ), "El patrón debería describir dos tokens (dos diccionarios)."
     assert isinstance(pattern[0], dict) and isinstance(
         pattern[1], dict
-    ), "Each entry in a pattern should be a dictionary."
+    ), "Cada entrada en el patrón debería ser un diccionario."
     assert (
         len(pattern[0]) == 1 and len(pattern[1]) == 1
-    ), "Each entry in the pattern should have only one key."
+    ), "Cada entrada en el patrón debería tener solo un key."
     assert any(
         pattern[0].get(key) == "iPhone" for key in ["text", "TEXT"]
-    ), "Are you matching on the token text?"
+    ), "¿Estás encontrando el texto del token?"
     assert any(
         pattern[1].get(key) == "X" for key in ["text", "TEXT"]
-    ), "Are you matching on the token text?"
+    ), "¿Estás encontrando el texto del token?"
     assert (
         'matcher.add("IPHONE_X_PATTERN"' in __solution__
-    ), "Are you adding the match pattern correctly?"
+    ), "¿Estás añadiendo el patrón correctamente?"
     assert (
         "matches = matcher(doc)" in __solution__
-    ), "Are you calling the matcher on the doc?"
+    ), "¿Estás llamando al matcher sobre el doc?"
 
     __msg__.good(
-        "Well done! You successfully found one match: the tokens at doc[1:3] "
-        'describing the span for "iPhone X".'
+        "¡Bien hecho! Encontraste un resultado exitosamente: los tokens en doc[1:3] "
+        'que describen el span de "iPhone X".'
     )

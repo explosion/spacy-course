@@ -1,15 +1,14 @@
 def test():
     assert (
         "if token.like_num" in __solution__
-    ), "Are you checking the token's like_num attribute?"
+    ), "¿Estás revisando el atributo del token like_num?"
     assert (
         'next_token.text == "%"' in __solution__
-    ), "Are you checking whether the next token's text is a percent sign?"
+    ), "¿Estás revisando si el texto del siguiente token es un símbolo de porcentaje?"
     assert (
         next_token.text == "%"
-    ), "Are you checking whether the next token's text is a percent sign?"
+    ), "¿Estás revisando si el texto del siguiente token es un símbolo de porcentaje?"
 
     __msg__.good(
-        "Well done! As you can see, you can do a lot of very powerful "
-        "analyses using the tokens and their attributes."
+        "¡Bien hecho! Como puedes ver hay muchos análisis poderosos que puedes hacer usando los tokens y sus atributos."
     )
