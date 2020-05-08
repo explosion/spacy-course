@@ -16,7 +16,7 @@ Notes: Mientras que algunas libraries te dan un solo método para ocuparse del e
 4. **Actualiza** el modelo para cada lote.
 5. **Guarda** el modelo actualizado.
 
-Notes: El training loop es una serie de pasos tomados para entrenar o actualizar un modelo.
+Notes: El loop de entrenamiento es una serie de pasos tomados para entrenar o actualizar un modelo.
 
 Usualmente tenemos que llevarlo a cabo múltiples veces, por iteraciones múltiples, para que el modelo aprenda de él de manera efectiva. Si queremos entrenar por 10 iteraciones, tenemos que hacer el loop 10 veces.
 
@@ -102,7 +102,7 @@ Finalmente, llamamos al método `nlp.to_disk` para guardar el modelo entrenado a
 
 Notes: spaCy te permite actualizar los modelos pre-entrenados con más datos - por ejemplo, para mejorar sus predicciones con textos diferentes.
 
-Esto es especialmente útil si quieres mejorar las categorías que el modelo ya conoce, como "person" o "organization".
+Esto es especialmente útil si quieres mejorar las categorías que el modelo ya conoce, como `"PERSON"` para persona u `"ORG"` para organización.
 
 También puedes actualizar el modelo para añadir nuevas categorías.
 

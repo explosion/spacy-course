@@ -2,7 +2,7 @@
 type: slides
 ---
 
-# Cerrando
+# Cerrando el curso
 
 Notes: ¡Felicitaciones - terminaste el curso!
 
@@ -24,7 +24,7 @@ Notes: Aquí tenemos un resumen de todas las nuevas habilidades que aprendiste h
 
 En el primer capítulo aprendiste cómo extraer características lingüísticas como part-of-speech tags, dependencias sintácticas y entidades nombradas. También a cómo trabajar con modelos estadísticos pre-entrenados.
 
-También aprendiste a escribir reglas poderosas para extraer palabras y frases usando el matcher y el phrase matcher de spaCy.
+También aprendiste a escribir reglas poderosas para extraer palabras y frases usando el `Matcher` y el `PhraseMatcher` de spaCy.
 
 El capítulo 2 fue sobre extraer información y también aprendiste cómo trabajar con las estructuras de datos, el `Doc`, `Token` y `Span`, así como el `Vocab` y las entradas léxicas.
 

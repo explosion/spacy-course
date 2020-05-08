@@ -62,7 +62,7 @@ Continuamos llamando a `nlp.update` para cada lote de ejemplos en los datos.
 - **Label:** El label que el modelo debe predecir.
 - **Gradiente:** Cómo cambiar los parámetros.
 
-Notes: Aquí tenemos una ilsutración mostrando el proceso.
+Notes: Aquí tenemos una ilustración mostrando el proceso.
 
 Los datos de entrenamiento son los ejemplos con los que queremos actualizar el modelo.
 
@@ -102,7 +102,7 @@ Las entidades no pueden superponerse, así que cada token solo puede ser parte d
 
 Debido a que el entity recognizer predice entidades _en contexto_ también necesita ser entrenado en las entidades _y_ su contexto.
 
-La forma más fácil de hacer esto es mostrarle al modelo un texto y una lista de posiciones caracteres. Por ejemplo, "iPhone X" es un gadget (aparato), comienza en el caracter 0 y termina en el caracter 8.
+La forma más fácil de hacer esto es mostrarle al modelo un texto y una lista de posiciones caracteres. Por ejemplo, "iPhone X" es un gadget (aparato), comienza en el carácter 0 y termina en el carácter 8.
 
 También es muy importante que el modelo aprenda palabras que _no son_ entidades.
 
@@ -127,7 +127,7 @@ Para actualizar el modelo existente podemos comenzar un unos cientos a unos mile
 
 Para entrenar una nueva categoría podemos necesitar hasta un millón.
 
-Los modelos de inglés pre-entrenados de spaCy fueron entrenados con 2 millones de palabras anotadas con part-of-speech tags, denpendecias y entidades nombradas.
+Los modelos de inglés pre-entrenados de spaCy fueron entrenados con 2 millones de palabras anotadas con part-of-speech tags, dependencias y entidades nombradas.
 
 Los datos de entrenamiento son creado usualmente por humanos que le asignan labels a los textos.
 
