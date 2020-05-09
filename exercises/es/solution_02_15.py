@@ -25,9 +25,9 @@ for match_id, start, end in matcher(doc):
     # Sobrescribe el doc.ents y añade el span
     doc.ents = list(doc.ents) + [span]
 
-    # Obtén el token central de la raíz del span
+    # Obtén el token head de la raíz del span
     span_root_head = span.root.head
-    # Imprime en pantalla el texto del token central de la raíz del span y el texto del span
+    # Imprime en pantalla el texto del token head de la raíz del span y el texto del span
     print(span_root_head.text, "-->", span.text)
 
 # Imprime en pantalla las entidades del documento
