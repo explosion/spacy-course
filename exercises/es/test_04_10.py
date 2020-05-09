@@ -1,29 +1,29 @@
 def test():
-    assert len(TRAINING_DATA) == 4, "Training data doesn't match – expected 4 examples."
+    assert len(TRAINING_DATA) == 4, "Los datos de entrenamiento con concuerdan – esperaba 4 ejemplos."
     assert all(
         len(entry) == 2 and isinstance(entry[1], dict) for entry in TRAINING_DATA
-    ), "Incorrect training data format. Expected a list of tuples where the second element is a dict."
+    ), "Formato incorrecto de los datos de entrenamiento. Esperaba una lista de tuples dónde el segundo elemento es un dict."
     assert all(
         entry[1].get("entities") for entry in TRAINING_DATA
-    ), "All annotations in the training data should include entities."
+    ), "Todas las anotaciones en los datos de entrenamiento deberían incluir entidades."
     assert TRAINING_DATA[0][1]["entities"] == [
         (10, 19, "GPE")
-    ], "Double-check the entities in the first example."
+    ], "Vuelve a revisar las entidades en el primer ejemplo."
     assert TRAINING_DATA[1][1]["entities"] == [
         (17, 22, "GPE")
-    ], "Double-check the entities in the second example."
+    ], "Vuelve a revisar las entidades en el segundo ejemplo."
     assert TRAINING_DATA[2][1]["entities"] == [
         (15, 20, "GPE"),
         (24, 32, "GPE"),
-    ], "Double-check the entities in the third example."
+    ], "Vuelve a revisar las entidades en el tercer ejemplo."
     assert TRAINING_DATA[3][1]["entities"] == [
         (0, 6, "GPE")
-    ], "Double-check the entities in the fourth example."
+    ], "Vuelve a revisar las entidades en el cuarto ejemplo."
 
     __msg__.good(
-        "Great work! Once the model achieves good results on detecting GPE "
-        "entities in the traveler reviews, you could add a rule-based "
-        "component to determine whether the entity is a tourist destination in "
-        "this context. For example, you could resolve the entities types back "
-        "to a knowledge base or look them up in a travel wiki."
+        "¡Gran trabajo!  Una vez el modelo logra buenos resultados detectando entidades GPE "
+        "en los comentarios de los viajeros, podrías añadir un componente basado "
+        "en reglas para determinar si la entidad es un destino turístico en "
+        "este contexto. Por ejemplo, puedes resolver los tipos de entidades en relación con un knowledge base o "
+        "buscarlas en un wiki de viajes."
     )

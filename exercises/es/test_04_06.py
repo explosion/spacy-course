@@ -1,15 +1,15 @@
 def test():
     assert (
         'spacy.blank("en")' in __solution__
-    ), "Did you create the blank English model?"
+    ), "¿Creaste el modelo de inglés en blanco?"
     assert (
         len(nlp.pipe_names) == 1 and nlp.pipe_names[0] == "ner"
-    ), "Did you add the entity recognizer to the pipeline?"
+    ), "¿Añadiste el entity recognizer al pipeline?"
     assert (
         len(ner.labels) == 1 and ner.labels[0] == "GADGET"
-    ), "Did you add the label to the entity recognizer?"
+    ), "¿Añadiste el label al entity recognizer?"
 
     __msg__.good(
-        "Well done! The pipeline is now ready, so let's start writing the "
-        "training loop."
+        "¡Bien hecho! Ahora el pipeline está listo, así que vamos a comenzar a escribir el "
+        "loop de entrenamiento."
     )

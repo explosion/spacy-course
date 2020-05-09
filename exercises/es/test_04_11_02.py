@@ -1,21 +1,21 @@
 def test():
     assert (
         len(TRAINING_DATA) == 3
-    ), "Looks like there's something wrong with the data. Expected 3 examples."
+    ), "Parece que hay algo mal con los datos. Esperaba 3 ejemplos."
     assert all(
         len(entry) == 2 and isinstance(entry[1], dict) for entry in TRAINING_DATA
-    ), "Incorrect training data format. Expected a list of tuples where the second element is a dict."
+    ), "Formato incorrecto de los datos de entrenamiento. Esperaba una lista de tuples dónde el segundo elemento es un dict."
     ents = [entry[1].get("entities", []) for entry in TRAINING_DATA]
-    assert all(len(e) == 2 for e in ents), "Expected all examples to have two entities"
+    assert all(len(e) == 2 for e in ents), "Esperaba que todos los ejemplos tengan dos entidades."
     assert any(
         e == (0, 9, "PERSON") for e in ents[1]
-    ), "Did you label the PERSON correctly?"
+    ), "¿Pusiste el label para PERSON correctamente?"
     assert any(
         e == (15, 29, "PERSON") for e in ents[2]
-    ), "Did you label the PERSON correctly?"
+    ), "¿Pusiste el label para PERSON correctamente?"
 
     __msg__.good(
-        "Good job! After including both examples of the new WEBSITE "
-        "entities, as well as existing entity types like PERSON, the model "
-        "now performs much better."
+        "¡Buen trabajo! Después de incluir ambos ejemplos de las nuevas entidades WEBSITE, "
+        "así como los tipos de entidades existentes como PERSON, el modelo "
+        "ahora se desempeña mucho mejor."
     )

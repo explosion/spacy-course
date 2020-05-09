@@ -1,32 +1,32 @@
 def test():
-    assert len(pattern1) == 2, "pattern1 should describe two tokens."
-    assert len(pattern2) == 2, "pattern2 should describe two tokens."
+    assert len(pattern1) == 2, "El pattern1 debería describir dos tokens."
+    assert len(pattern2) == 2, "El pattern2 debería describir dos tokens."
     assert (
         len(pattern1[0]) == 1
-    ), "The first token of pattern1 only needs one attribute."
+    ), "El primer token de pattern1 solo necesita un atributo."
     assert any(
         pattern1[0].get(l) == "iphone" for l in ("LOWER", "lower")
-    ), "The first token of pattern1 should match lowercase 'iphone'."
+    ), "El primer token de pattern1 debería encontrar a 'iphone' en minúsculas."
     assert (
         len(pattern1[1]) == 1
-    ), "The second token of pattern1 only needs one attribute."
+    ), "El segundo token de pattern1 solo necesita un atributo."
     assert any(
         pattern1[1].get(l) == "x" for l in ("LOWER", "lower")
-    ), "The second token of pattern1 should match lowercase 'x'."
+    ), "El segundo token de pattern1 debería encontrar a 'x' en minúsculas."
     assert (
         len(pattern2[0]) == 1
-    ), "The first token of pattern2 only needs one attribute."
+    ), "El primer token de pattern2 solo necesita un atributo."
     assert any(
         pattern2[0].get(l) == "iphone" for l in ("LOWER", "lower")
-    ), "The first token of pattern2 should match lowercase 'iphone'."
+    ), "El primer token de pattern2 debería encontrar a 'iphone' en minúsculas."
     assert (
         len(pattern2[1]) == 1
-    ), "The second token of pattern2 should have one attribute."
+    ), "El segundo token de pattern2 debería tener un atributo."
     assert any(
         pattern2[1].get(l) == True for l in ("IS_DIGIT", "is_digit")
-    ), "The second token of pattern2 should match a digit."
+    ), "El segundo token de pattern2 debería encontrar un dígito."
 
     __msg__.good(
-        "Nice! Now let's use those patterns to quickly bootstrap some training "
-        "data for our model."
+        "¡Bien! Ahora usemos estos patrones para crear rápidamente unos datos "
+        "de entrenamiento para nuestro modelo."
     )
