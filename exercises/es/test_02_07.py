@@ -1,15 +1,15 @@
 def test():
-    assert "token_texts" not in __solution__, "Did you remove the token_texts variable?"
-    assert "pos_tags" not in __solution__, "Did you remove the pos_tags variable?"
+    assert "token_texts" not in __solution__, "¿Quitaste la variable token_texts?"
+    assert "pos_tags" not in __solution__, "¿Quitaste la variable pos_tags?"
     assert (
         "token.pos_ ==" in __solution__
-    ), "Are you checking whether the token's part-of-speech tag is a proper noun?"
+    ), "¿Estás chequeando si el part-of-speech tag del token es un nombre propio?"
     assert (
         "token.i + 1" in __solution__ or "token.i+1" in __solution__
-    ), "Are you using the token's index attribute to check the next token?"
+    ), "¿Estás usando el atributo índice del token para chequear el siguiente token?"
     __msg__.good(
-        "Great work! While the solution here works fine for the given example, "
-        "there are still things that can be improved. If the doc ends with a "
-        "proper noun, doc[token.i + 1] will fail. To make sure the code "
-        "generalizes, you should first check if token.i + 1 < len(doc)."
+        "¡Gran trabajo! Así esta solución funciona bien para el ejemplo dado, "
+        "Todavía hay cosas que pueden ser mejoradas. Si el doc termina con un "
+        "nombre propio, doc[token.i + 1] fallará. Para asegurarnos que el código "
+        "generalice, primero deberías revisar si token.i + 1 < len(doc)."
     )
