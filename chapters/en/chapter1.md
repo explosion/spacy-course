@@ -27,24 +27,21 @@ some of the 55+ [available languages](https://spacy.io/usage/models#languages).
 - Import the `English` class from `spacy.lang.en` and create the `nlp` object.
 - Create a `doc` and print its text.
 
-<codeblock id="01_02_01">
-</codeblock>
+<codeblock id="01_02_01"></codeblock>
 
 ### Part 2: German
 
 - Import the `German` class from `spacy.lang.de` and create the `nlp` object.
 - Create a `doc` and print its text.
 
-<codeblock id="01_02_02">
-</codeblock>
+<codeblock id="01_02_02"></codeblock>
 
 ### Part 3: Spanish
 
 - Import the `Spanish` class from `spacy.lang.es` and create the `nlp` object.
 - Create a `doc` and print its text.
 
-<codeblock id="01_02_03">
-</codeblock>
+<codeblock id="01_02_03"></codeblock>
 
 </exercise>
 

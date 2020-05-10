@@ -6,10 +6,18 @@
         "description": "spaCy is a modern Python library for industrial-strength Natural Language Processing. In this free and interactive online course, you'll learn how to use spaCy to build advanced natural language understanding systems, using both rule-based and machine learning approaches.",
         "bio": "I'm Ines, one of the core developers of spaCy and the co-founder of Explosion. I specialize in modern developer tools for AI, Machine Learning and NLP. I also really love building stuff for the web.",
         "footerLinks": [
-            { "text": "spaCy Website", "url": "https://spacy.io" },
-            { "text": "Course FAQ", "url": "https://github.com/ines/spacy-course#-faq" },
-            { "text": "Source", "url": "https://github.com/ines/spacy-course" },
-            { "text": "Follow me on Twitter", "url": "https://twitter.com/_inesmontani" }
+            {
+                "text": "spaCy Website",
+                "url": "https://spacy.io"
+            },
+            {
+                "text": "Source",
+                "url": "https://github.com/ines/spacy-course"
+            },
+            {
+                "text": "Follow me on Twitter",
+                "url": "https://twitter.com/_inesmontani"
+            }
         ],
         "socialImage": "social.jpg",
         "uiText": {
@@ -42,9 +50,18 @@
         "description": "spaCy ist eine moderne Python-Bibliothek für industriestarkes Natural Language Processing. In diesem kostenlosen und interaktiven Onlinekurs lernst du, mithilfe von spaCy fortgeschrittene Systeme für die Analyse natürlicher Sprache zu entwickeln und dabei sowohl regelbasierte Verfahren, als auch moderne Machine-Learning-Technologie einzusetzen.",
         "bio": "Ich bin Ines, eine Hauptentwicklerin von spaCy und Gründerin von Explosion. Mein Spezialgebiet sind moderne Entwicklertools für KI, Machine Learning und NLP. Ich baue außerdem supergern Dinge fürs Web.",
         "footerLinks": [
-            { "text": "spaCy Website", "url": "https://spacy.io" },
-            { "text": "Quellcode", "url": "https://github.com/ines/spacy-course" },
-            { "text": "Folge mir auf Twitter", "url": "https://twitter.com/_inesmontani" }
+            {
+                "text": "spaCy Website",
+                "url": "https://spacy.io"
+            },
+            {
+                "text": "Quellcode",
+                "url": "https://github.com/ines/spacy-course"
+            },
+            {
+                "text": "Folge mir auf Twitter",
+                "url": "https://twitter.com/_inesmontani"
+            }
         ],
         "socialImage": "social_de.jpg",
         "uiText": {
@@ -103,6 +120,50 @@
             "reconnectingDocker": "Reconectando con el Docker container en",
             "prevChapter": " Capítulo anterior",
             "nextChapter": "Siguiente capítulo"
+        }
+    },
+    "ja": {
+        "langName": "日本語",
+        "title": "spaCyを使った先進的な自然言語処理",
+        "slogan": "無料ののオンラインコース",
+        "description": "spaCyは産業応用向きの自然言語処理用Pythonライブラリです。この無料のオンラインコースでは、ルールベースと機械学習を用いた先進的な自然言語処理システムをspaCyで作る方法をインタラクティブに学ぶことができます。",
+        "bio": "私はspaCyのコア開発者で、Explosionの共同創業者の一人のInesです。AIや機械学習、自然言語処理の最新の開発ツールを専門としており、Web関連のものを作るのも大好きです。",
+        "footerLinks": [
+            {
+                "text": "spaCyウェブサイト",
+                "url": "https://spacy.io"
+            },
+            {
+                "text": "ソースファイル",
+                "url": "https://github.com/ines/spacy-course"
+            },
+            {
+                "text": "InesのTwitter",
+                "url": "https://twitter.com/_inesmontani"
+            }
+        ],
+        "socialImage": "social_ja.jpg",
+        "uiText": {
+            "aboutMe": "私について",
+            "aboutCourse": "このコースについて",
+            "markAsCompleted": "完了とする",
+            "removeFromCompleted": "未完了にする",
+            "completed": "完了",
+            "submit": "提出",
+            "correct": "正解です！",
+            "incorrect": "不正解です。",
+            "showSolution": "解答を見る",
+            "reset": "リセット",
+            "runCode": "コード実行",
+            "next": "Next",
+            "showHints": "ヒントを見る",
+            "hideHints": "ヒントを隠す",
+            "loading": "ロード中...",
+            "connectingFailed": "接続に失敗しました。再更新してください。",
+            "launchingDocker": "Dockerコンテナを起動する",
+            "reconnectingDocker": "Dockerコンテナに再接続する",
+            "prevChapter": "前章",
+            "nextChapter": "次章"
         }
     }
 }
