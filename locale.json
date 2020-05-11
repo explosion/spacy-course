@@ -87,6 +87,41 @@
             "nextChapter": "Nächstes Kapitel"
         }
     },
+    "es": {
+        "langName": "Español",
+        "title": "NLP avanzado con spaCy",
+        "slogan": " Un curso en línea gratis",
+        "description": "spaCy es un paquete moderno de Python para hacer Procesamiento de Lenguaje Natural de potencia industrial. En este curso en línea, interactivo y gratuito, aprenderás a usar spaCy para construir sistemas avanzados de comprensión de lenguaje natural usando enfoques basados en reglas y en machine learning.",
+        "bio": "Soy Ines, una de las programadoras principales de spaCy y cofundadora de Explosion. Me especializo en herramientas modernas de desarrollo para AI, Machine Learning y NLP. También amo construir cosas para la web.",
+        "footerLinks": [
+            { "text": "Website de spaCy", "url": "https://spacy.io" },
+            { "text": "Código fuente", "url": "https://github.com/ines/spacy-course" },
+            { "text": "Sígueme en Twitter", "url": "https://twitter.com/_inesmontani" }
+        ],
+        "socialImage": "social_es.jpg",
+        "uiText": {
+            "aboutMe": "Sobre mi",
+            "aboutCourse": "Sobre este curso",
+            "markAsCompleted": "Marcar como completado",
+            "removeFromCompleted": "Desmarcar como completado",
+            "completed": "Completado",
+            "submit": "Enviar",
+            "correct": "¡Es correcto!",
+            "incorrect": "Incorrecto.",
+            "showSolution": "Mostrar solución",
+            "reset": "Restaurar",
+            "runCode": "Correr código",
+            "next": "Siguiente",
+            "showHints": "Mostrar pistas",
+            "hideHints": "Esconder pistas",
+            "loading": "Cargando...",
+            "connectingFailed": "Conexión fallida. Por favor recargar e intenta nuevamente.",
+            "launchingDocker": "Launching Docker container en",
+            "reconnectingDocker": "Reconectando con el Docker container en",
+            "prevChapter": " Capítulo anterior",
+            "nextChapter": "Siguiente capítulo"
+        }
+    },
     "ja": {
         "langName": "日本語",
         "title": "spaCyを使った先進的な自然言語処理",
