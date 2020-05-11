@@ -24,26 +24,26 @@ id: 1
 ¡Empecemos y probemos spaCy! En este ejercicio vas a poder probar algunos de los
 55+ [lenguajes disponibles](https://spacy.io/usage/models#languages).
 
-### Parte 1: Inglés
+### Parte 1: Español
+
+- Importa la clase `Spanish` de `spacy.lang.es` y crea el objeto `nlp`.
+- Crea un `doc` e imprime en pantalla su texto.
+
+<codeblock id="01_02_03"></codeblock>
+
+### Parte 2: Inglés
 
 - Importa la clase `English` de `spacy.lang.en` y crea el objeto `nlp`.
 - Crea un `doc` e imprime en pantalla su texto.
 
 <codeblock id="01_02_01"></codeblock>
 
-### Parte 2: Alemán
+### Parte 3: Alemán
 
 - Importa la clase `German` de `spacy.lang.de` y crea el objeto `nlp`.
 - Crea un `doc` e imprime en pantalla su texto.
 
 <codeblock id="01_02_02"></codeblock>
-
-### Parte 3: Español
-
-- Importa la clase `Spanish` de `spacy.lang.es` y crea el objeto `nlp`.
-- Crea un `doc` e imprime en pantalla su texto.
-
-<codeblock id="01_02_03"></codeblock>
 
 </exercise>
 
