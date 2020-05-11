@@ -29,24 +29,21 @@ id: 1
 - Importa la clase `English` de `spacy.lang.en` y crea el objeto `nlp`.
 - Crea un `doc` e imprime en pantalla su texto.
 
-<codeblock id="01_02_01">
-</codeblock>
+<codeblock id="01_02_01"></codeblock>
 
 ### Parte 2: Alemán
 
 - Importa la clase `German` de `spacy.lang.de` y crea el objeto `nlp`.
 - Crea un `doc` e imprime en pantalla su texto.
 
-<codeblock id="01_02_02">
-</codeblock>
+<codeblock id="01_02_02"></codeblock>
 
 ### Parte 3: Español
 
 - Importa la clase `Spanish` de `spacy.lang.es` y crea el objeto `nlp`.
 - Crea un `doc` e imprime en pantalla su texto.
 
-<codeblock id="01_02_03">
-</codeblock>
+<codeblock id="01_02_03"></codeblock>
 
 </exercise>
 

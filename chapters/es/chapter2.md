@@ -316,8 +316,7 @@ En este ejercicio usarás los métodos `similarity` de spaCy para comparar objet
 - Crea spans para "great restaurant"/"really nice bar".
 - Usa `span.similarity` para compararlos e imprime el resultado en pantalla.
 
-<codeblock id="02_10_03">
-</codeblock>
+<codeblock id="02_10_03"></codeblock>
 
 </exercise>
 
