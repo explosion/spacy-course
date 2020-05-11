@@ -4,12 +4,12 @@ type: slides
 
 # Word vectors y similitud semántica
 
-Notes: En esta lección vas a aprender a usar spaCy para predecir que tan
+Notes: En esta lección vas a aprender a usar spaCy para predecir qué tan
 similares son documentos, spans o tokens entre sí.
 
 También aprenderás cómo usar
 <abbr title="Los word vectors son palabras o frases vinculadas a vectores de números reales mediante diferentes métodos. En español también se conocen como vectores de palabras.">word
-vectors</abbr> y cómo aprovechar los en tu aplicación de NLP.
+vectors</abbr> y cómo aprovecharlos en tu aplicación de NLP.
 
 ---
 
@@ -24,11 +24,11 @@ vectors</abbr> y cómo aprovechar los en tu aplicación de NLP.
   - ✅ `en_core_web_lg` (modelo grande)
   - 🚫 **NO** `en_core_web_sm` (modelo pequeño)
 
-Notes: spaCy puede comparar dos objetos y predecir que tan similares son - por
+Notes: spaCy puede comparar dos objetos y predecir qué tan similares son - por
 ejemplo, documentos, spans o tokens.
 
 Los objetos `Doc`, `Token` y `Span` tienen un método `.similarity` que recibe
-otro objeto y devuelve un número de punto flotante entre 0 y 1 - que indica que
+otro objeto y devuelve un número de punto flotante entre 0 y 1 - que indica qué
 tan similares son.
 
 Una cosa que es muy importante: Para poder usar similitud necesitas un modelo
@@ -137,12 +137,12 @@ medianamente similares.
   [Word2Vec](https://en.wikipedia.org/wiki/Word2vec) y mucho texto
 - Puede añadirse a los modelos estadísticos de spaCy
 - Por defecto: similitud coseno, pero puede ser ajustada
-- Los vectores de los `Doc` y `Span` tienden por defecto el valor del promedio
+- Los vectores de los `Doc` y `Span` tienen por defecto el valor del promedio
   de los vectores de los tokens.
 - Las frases cortas son mejores que los documentos largos con muchas palabras
   irrelevantes
 
-Notes: Pero cómo hace esto spaCy bajo el capó?
+Notes: ¿Pero cómo hace esto spaCy detrás de cámaras?
 
 La similitud se determina usando word vectors, que son representaciones
 multidimensionales de los significados de las palabras.
@@ -193,7 +193,7 @@ Notes: Para darte una idea de como se ven estos vectores aquí está un ejemplo.
 
 Primero, cargamos el modelo mediano otra vez. Este contiene word vectors.
 
-Siguiente, podemos procesar un texto y buscar el vector de un token usando el
+Después, podemos procesar un texto y buscar el vector de un token usando el
 atributo `.vector`.
 
 El resultado es un vector con 300 dimensiones de la palabra "banana".

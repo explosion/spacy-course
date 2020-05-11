@@ -116,7 +116,7 @@ existente, incluyendo el vocabulario.
 
 <codeblock id="02_05_01">
 
-La clase `Doc` recibe 3 argumentos: El vocabulario compartido, usualmente
+La clase `Doc` recibe 3 argumentos: el vocabulario compartido, usualmente
 `nlp.vocab`, una lista de `words` y una lista de `spaces`, que son valores
 booleanos que indican si una palabra está seguida de un espacio o no.
 
@@ -154,7 +154,7 @@ usualmente en spaCy puedes probarlo e imprimir los tokens de
 <exercise id="6" title="Docs, spans y entidades desde cero">
 
 En este ejercicio crearás los objetos `Doc` y `Span` manualmente y actualizarás
-las entidades nombradas - igual como lo hace spaCy detrás de la escena. Un
+las entidades nombradas - igual como lo hace spaCy detrás de cámaras. Un
 objeto `nlp` compartido ya fue creado.
 
 - Importa las clases `Doc` y `Span` desde `spacy.tokens`.
@@ -235,7 +235,7 @@ correcto para revisar los nombres propios.
 
 ### Parte 2
 
-- Rescribe el código y usa los atributos nativos de los tokenn en vez de listas
+- Reescribe el código y usa los atributos nativos de los tokens en vez de listas
   de `token_texts` y `pos_tags`.
 - Has un loop sobre cada `token` en el `doc` y revisa el atributo `token.pos_`.
 - Usa `doc[token.i + 1]` para revisar el token siguiente y su atributo `.pos_`.
@@ -244,7 +244,7 @@ correcto para revisar los nombres propios.
 
 <codeblock id="02_07">
 
-- Quita los `token_texts` y `pos_tags` – no necesitamos compilar listas de
+- Quita los `token_texts` y `pos_tags` – ¡No necesitamos compilar listas de
   strings por adelantado!
 - En vez de iterar sobre los `pos_tags`, has un loop sobre cada `token` en el
   `doc` y revisa el atributo `token.pos_`.
@@ -360,7 +360,7 @@ cada diccionario en el patrón describe un token.
 <opt text='A los tokens les está faltando un operador <code>"OP"</code> para indicar que deberían ser encontrados una vez exactamente.'>
 
 Por defecto, todos los tokens descritos por un patrón van a ser encontrados una
-vez. Los operadores solo tienen que añadidos para cambiar este comportamiento -
+vez. Los operadores solo tienen que ser añadidos para cambiar este comportamiento -
 por ejemplo, para encontrar cero o más veces.
 
 </opt>
@@ -372,7 +372,7 @@ por ejemplo, para encontrar cero o más veces.
 <exercise id="13" title="Debugging de patrones (2)">
 
 Los dos patrones en este ejercicio contienen errores y no van a tener los
-resultados esperados. Puedes arreglarlos? Si te atascas intenta imprimir en
+resultados esperados. ¿Puedes arreglarlos? Si te atascas intenta imprimir en
 pantalla los tokens en el `doc` para ver cómo se va a dividir el texto y ajusta
 el patrón para que cada diccionario represente un token.
 
@@ -387,14 +387,14 @@ el patrón para que cada diccionario represente un token.
 
 - Procesa los strings que deben ser encontrados con el objeto `nlp` - for
   ejemplo, `[token.text for token in nlp("ad-free viewing")]`.
-- Inspecciona los tokens y asegurate que cada diccionario en el patrón describa
+- Inspecciona los tokens y asegúrate de que cada diccionario en el patrón describa
   correctamente a un token.
 
 </codeblock>
 
 </exercise>
 
-<exercise id="14" title="Encontrando frases eficientemente 'phrase matching'">
+<exercise id="14" title="Encontrando frases eficientemente, 'phrase matching'">
 
 A veces es más eficiente encontrar los strings exactos en vez de escribir los
 patrones describiendo los tokens individuales. Esto es especialmente cierto para
@@ -403,7 +403,7 @@ tenemos una lista de países, así que usémoslos como base para nuestro script
 para extraer información. La lista de nombres en string está disponible en la
 variable `COUNTRIES`.
 
-- Importa el `PhraseMatcher` e inicializa el `vocab` compartido como la variable
+- Importa el `PhraseMatcher` e inicialízalo con el `vocab` compartido como la variable
   `matcher`.
 - Añade los patrones de frases y llama al matcher sobre el `doc`.
 

@@ -12,6 +12,6 @@ def test():
     ), "¿Añadiste el span a los doc.ents?"
     __msg__.good(
         "¡Perfecto! Crear manualmente los objetos de spaCy y modificar las "
-        "entidades vendrá a la mano más tarde cuando estés escribiendo tus propios "
+        "entidades será útil más tarde cuando estés escribiendo tus propios "
         "pipelines de extracción de información."
     )

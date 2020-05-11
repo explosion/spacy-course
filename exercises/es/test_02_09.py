@@ -7,5 +7,5 @@ def test():
     __msg__.good(
         "¡Bien hecho! En el próximo ejercicio usarás a spaCy para predecir "
         "similitudes entre documentos, spans y tokens a través de los word vectors "
-        "en el motor."
+        "usados detrás de cámaras."
     )

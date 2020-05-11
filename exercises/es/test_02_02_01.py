@@ -9,4 +9,4 @@ def test():
         "nlp.vocab.strings[cat_hash]" in __solution__
     ), "¿Obtuviste el string usando el hash?"
 
-    __msg__.good("¡Gran trabajo!")
+    __msg__.good("¡Muy buen trabajo!")

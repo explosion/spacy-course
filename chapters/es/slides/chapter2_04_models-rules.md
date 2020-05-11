@@ -63,7 +63,7 @@ matcher = Matcher(nlp.vocab)
 pattern = [{"LEMMA": "love", "POS": "VERB"}, {"LOWER": "cats"}]
 matcher.add("LOVE_CATS", None, pattern)
 
-# Los operadores pueden especificar que tan seguido puede ser buscado un token
+# Los operadores pueden especificar qué tan seguido puede ser buscado un token
 pattern = [{"TEXT": "very", "OP": "+"}, {"TEXT": "happy"}]
 matcher.add("VERY_HAPPY", None, pattern)
 
@@ -78,10 +78,10 @@ corto.
 
 El matcher se inicializa con el vocabulario compartido - usualmente `nlp.vocab`.
 
-Los patrones son listad de diccionarios y cada diccionario describe un token y
+Los patrones son listas de diccionarios y cada diccionario describe un token y
 sus atributos. Los patrones pueden ser añadidos usando el método `matcher.add`.
 
-Los operadores te permiten especificar que tan a menudo buscar un token. Por
+Los operadores te permiten especificar qué tan a menudo buscar un token. Por
 ejemplo, "+" te deja buscar una o más veces.
 
 Llamando a un matcher sobre el objeto doc devolverá una lista de los resultados.
@@ -115,7 +115,7 @@ Previous token: a DET
 ```
 
 Notes: Aquí tenemos un ejemplo de una regla para el matcher que encuentra
-"golden retriever.
+"golden retriever".
 
 Si iteramos sobre los resultados devueltos por el matcher podemos obtener el
 match ID y el índice de inicio y final del span encontrado. Entonces podemos
@@ -126,8 +126,8 @@ por el modelo.
 Por ejemplo, podemos obtener el token raíz del span. Si el span contiene más de
 un token, este token será el que determina la categoría de la frase. Por
 ejemplo, la raíz de "Golden Retriever" es "Retriever". También podemos encontrar
-el <abbr title="en inglés conoce como head. En este caso, root head token">token
-raíz central</abbr>. Esto es el "padre" sintáctico que gobierna la frase - en
+el <abbr title="En inglés se conoce como head. En este caso, root head token.">token
+raíz cabeza</abbr>. Esto es el "padre" sintáctico que gobierna la frase - en
 este caso, el verbo "have".
 
 Finalmente, podemos obtener el token anterior y sus atributos. En este caso, es
@@ -135,10 +135,10 @@ el determinante, el artículo "a".
 
 ---
 
-# Encontrando frases eficientemente "phrase matching" (1)
+# Encontrando frases eficientemente, "phrase matching" (1)
 
 - `PhraseMatcher` como las expresiones regulares o una búsqueda de palabras
-  claves - pero con acceso a los tokens!
+  claves - ¡Pero con acceso a los tokens!
 - Toma al objeto `Doc` como patrones
 - Mucho más eficiente y rápido que el `Matcher`
 - Excelente para encontrar listas largas de palabras
@@ -146,7 +146,7 @@ el determinante, el artículo "a".
 Notes: El phrase matcher es otra herramienta útil para encontrar secuencias de
 palabras en tus datos.
 
-Hace una búsqueda de <abbr title=" en español palabras clave">keyword</abbr> en
+Hace una búsqueda de <abbr title="En español: palabras clave.">keyword</abbr> en
 el documento pero en vez de encontrar únicamente strings, te da acceso directo a
 los tokens en contexto.
 
@@ -159,7 +159,7 @@ palabras en grandes volúmenes de texto.
 
 ---
 
-# Encontrando frases eficientemente "phrase matching" (2)
+# Encontrando frases eficientemente, "phrase matching" (2)
 
 ```python
 from spacy.matcher import PhraseMatcher

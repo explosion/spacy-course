@@ -1,10 +1,10 @@
 def test():
     assert (
         len(pattern1) == 2
-    ), "The number of tokens in pattern1 doesn't match the real number of tokens in the string."
+    ), "El número de tokens en pattern1 no concuerda con el número real de tokens en el string."
     assert (
         len(pattern2) == 4
-    ), "The number of tokens in pattern2 doesn't match the real number of tokens in the string."
+    ), "El número de tokens en pattern2 no concuerda con el número real de tokens en el string."
     # Pattern 1 validation
     assert (
         len(pattern1[0]) == 1

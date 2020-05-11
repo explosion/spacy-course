@@ -4,8 +4,8 @@ type: slides
 
 # Estructuras de datos (1): Vocab, Lexemas y StringStore
 
-Notes: Hola de nuevo! Ahora que tienes experiencia real usando los objetos de
-spaCy es hora que aprendas más de los que está sucediendo en el motor de spaCy.
+Notes: ¡Hola de nuevo! Ahora que tienes experiencia real usando los objetos de
+spaCy es hora de que aprendas más de lo que está sucediendo detrás de cámaras en spaCy.
 
 En esta lección veremos el vocabulario compartido y la manera en la que spaCy
 maneja los strings.
@@ -44,13 +44,13 @@ palabra ocurre múltiples veces, no tenemos que guardarla cada vez.
 En cambio, spaCy usa una función hash para generar un ID y guarda el string una
 vez en el string store. El string store está disponible como `nlp.vocab.strings`
 
-Es una <abbr title="en español: tabla de consulta">lookup table</abbr> que
+Es una <abbr title="En español: tabla de consulta, como un diccionario.">lookup table</abbr> que
 funciona en ambas direcciones. Puedes buscar un string y obtener su hash, así
 como puedes buscar un hash para obtener su valor string. Internamente spaCy solo
 se comunica en hash IDs.
 
 Los hash IDs no se pueden revertir. Si una palabra no está en el vocabulario no
-hay forma de obtener su string. Es por esto que siempre tenemos que pasar por el
+hay forma de obtener su string. Es por esto que siempre tenemos que pasar el
 vocabulario compartido.
 
 ---
@@ -84,7 +84,7 @@ hash value: 3197928453018144401
 Notes: Para obtener el hash de un string podemos buscarlo en
 `nlp.vocab.strings`.
 
-Para obtener el string the representa a un hash podemos buscar el hash.
+Para obtener el string que representa a un hash podemos buscar con el hash.
 
 Un objeto `Doc` también expone su vocabulario y strings.
 

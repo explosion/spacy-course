@@ -48,9 +48,9 @@ los espacios.
 
 <img src="/span_indices.png" width="65%" alt="Illustration of a Span object within a Doc with token indices" />
 
-Notes: Un `Span` es un slice de un Doc que consiste de uno o más tokens. El
+Notes: Un `Span` es un slice de un Doc que está formado por uno o más tokens. El
 `Span` recibe al menos tres argumentos: el doc al que se refiere, el índice de
-inicio y el índice del final del span. Recuerda que el índice del final es
+inicio y el índice del final del span. ¡Recuerda que el índice del final es
 excluyente!
 
 ---
@@ -99,9 +99,9 @@ sobrescribiendo los con una lista de spans.
 Notes: Unos trucos y tips antes de comenzar:
 
 El `Doc` y el `Span` son muy poderosos y optimizados para desempeño. Te dan
-acceso a todas las referencias y relaciones de las palabras y la frases.
+acceso a todas las referencias y relaciones de las palabras y las frases.
 
-Si tu aplicación tiene que generar strings asegurate que conviertas el doc lo
+Si tu aplicación tiene que generar strings asegúrate de que conviertas el doc lo
 más tarde posible. Si lo haces demasiado temprano perderás las relaciones entre
 los tokens.
 

@@ -8,8 +8,8 @@ def test():
         "token.i + 1" in __solution__ or "token.i+1" in __solution__
     ), "¿Estás usando el atributo índice del token para chequear el siguiente token?"
     __msg__.good(
-        "¡Gran trabajo! Así esta solución funciona bien para el ejemplo dado, "
-        "Todavía hay cosas que pueden ser mejoradas. Si el doc termina con un "
-        "nombre propio, doc[token.i + 1] fallará. Para asegurarnos que el código "
+        "¡Muy buen trabajo! Aunque esta solución funciona bien para el ejemplo dado, "
+        "todavía hay cosas que pueden ser mejoradas. Si el doc termina con un "
+        "nombre propio, doc[token.i + 1] fallará. Para asegurarnos de que el código "
         "generalice, primero deberías revisar si token.i + 1 < len(doc)."
     )
