@@ -8,6 +8,6 @@ def test():
     assert isinstance(
         doc, spacy.tokens.Doc
     ), "¿Procesaste el texto con el objeto nlp para crear un doc?"
-    assert "print(doc.text)" in __solution__, "Imprimiste en pantalla el doc.text?"
+    assert "print(doc.text)" in __solution__, "¿Imprimiste en pantalla el doc.text?"
 
     __msg__.good("¡Well done!")

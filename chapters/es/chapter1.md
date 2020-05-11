@@ -52,22 +52,22 @@ id: 1
 
 <exercise id="3" title="Documentos, spans y tokens">
 
-Cuando llamas `nlp` sobre un string, spaCy primero generas tokens del texto y
+Cuando llamas `nlp` sobre un string, spaCy primero genera tokens del texto y
 crea un objeto de documento. En este ejercicio aprenderás más sobre el `Doc`,
-así como de sus <abbr title="en español representaciones">views</abbr> `Token` y
+así como de sus <abbr title="En español: representaciones o vistas.">views</abbr> `Token` y
 `Span`.
 
 ### Paso 1
 
 - Importa la clase de lenguaje `English` y crea el objeto `nlp`.
 - Procesa el texto y genera un
-  <abbr title="en español ejemplar, a veces referido incorrectamente como instancia">instance</abbr>
+  <abbr title="En español: ejemplar, a veces referido incorrectamente como instancia.">instance</abbr>
   de un objeto `Doc` en la variable `doc`.
 - Selecciona el primer token de `Doc` e imprime en pantalla su `text`.
 
 <codeblock id="01_03_01">
 
-Puedes indexar a `Doc` de la misma manera en la que indexas en una lista de
+Puedes indexar un `Doc` de la misma manera en la que indexas en una lista de
 Python. Por ejemplo, `doc[4]` dará como resultado el token en el índice 4, que
 es el quinto token en el texto. Recuerda que en Python el primer índice es 0 y
 no 1.
@@ -78,7 +78,7 @@ no 1.
 
 - Importa la clase de lenguaje `English` y crea el objeto `nlp`.
 - Procesa el texto y genera un
-  <abbr title="en español ejemplar, a veces referido incorrectamente como instancia">instance</abbr>
+  <abbr title="En español: ejemplar, a veces referido incorrectamente como instancia.">instance</abbr>
   de un objeto `Doc` en la variable `doc`.
 - Crea un slice de `Doc` para los tokens "tree kangaroos" y "tree kangaroos and
   narwhals".
@@ -104,8 +104,7 @@ subsecuentes: un número y un símbolo de porcentaje.
   parece un número.
 - Toma el token que sigue al token actual en el documento. El índice del
   siguiente token en el `doc` es `token.i + 1`.
-- Revisa si el atributo `text` del siguiente token es un símbolo de porcentaje
-  "%".
+- Revisa si el atributo `text` del siguiente token es un símbolo de porcentaje "%".
 
 <codeblock id="01_04">
 
@@ -146,7 +145,7 @@ lingüísticas como part-of-speech tags, dependency labels o entidades nombradas
 
 Los modelos estadísticos te permiten generalizar basándote en un set de ejemplos
 de entrenamiento. Una vez están entrenados, usan los parámetros binarios para
-hacer predicciones. Es por esto que no es necesario incluirlos con los datos de
+hacer predicciones. Es por esto que no es necesario incluir los datos de
 entrenamiento.
 
 </opt>
@@ -175,7 +174,7 @@ en tu máquina revisa [la documentación](https://spacy.io/usage/models).
 
 Para cargar el modelo, llama a `spacy.load` usando su nombre en string. Los
 nombres de los modelos se diferencian dependiendo del lenguaje y los datos con
-los que fueron entrenados. Así que asegúrate que estés usando el nombre
+los que fueron entrenados. Así que asegúrate de que estés usando el nombre
 correcto.
 
 </codeblock>
@@ -187,7 +186,7 @@ correcto.
 Ahora puedes probar uno de los paquetes de modelos pre-entrenados de spaCy y ver
 sus predicciones en acción. ¡También puedes intentarlo con tu propio texto! Para
 averiguar lo que cada tag o label significa puedes llamar a `spacy.explain` en
-el loop. Por ejemplo, `spacy.explain('PROPN')` o `spacy.explain('GPE')`.
+el <abbr title="En español: bucle, un bloque de código que se repite.">loop</abbr>. Por ejemplo, `spacy.explain('PROPN')` o `spacy.explain('GPE')`.
 
 ### Parte 1
 
@@ -303,7 +302,7 @@ diferentes atributos de los tokens y operadores.
 
 - Escribe **un** patrón que únicamente encuentre formas de "download" (tokens
   con el lemma "download") seguido por un token que tenga el part-of-speech tag
-  `"PROPN"` (<abbr title="en español: nombre propio"> proper noun</abbr>).
+  `"PROPN"` (<abbr title="En español: nombre propio.">proper noun</abbr>).
 
 <codeblock id="01_12_02">
 

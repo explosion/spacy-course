@@ -25,7 +25,7 @@ nlp = English()
 
 Notes: En el centro de spaCy está el objeto que contiene el <abbr title="Un pipeline es una serie de acciones que se ejecutan en secuencia. Cada paso depende del anterior usando su resultado.">pipeline</abbr> de procesamiento. Normalmente llamamos esta variable "nlp".
 
-Por ejemplo, para crear un objeto `nlp` de inglés puedes importar la clase de lenguaje `English` de `spacy.lang.en` y creas un <abbr title="Es un ejemplar de una clase, a veces referido incorrectamente como instancia">instance</abbr>. Puedes usar el objeto nlp como una función para analizar el texto.
+Por ejemplo, para crear un objeto `nlp` de inglés puedes importar la clase de lenguaje `English` de `spacy.lang.en` y creas un <abbr title="Es un ejemplar de una clase, a veces referido incorrectamente como instancia.">instance</abbr>. Puedes usar el objeto nlp como una función para analizar el texto.
 
 Contiene todos los componentes diferentes de un pipeline.
 
@@ -50,7 +50,7 @@ world
 !
 ```
 
-Notes: Cuando procesas un texto con el objeto `nlp`, spaCy crea un objeto `Doc` - de "Documento". El Doc te permite acceder a la información sobre el texto en una forma estructurada y sin perder información.
+Notes: Cuando procesas un <abbr title="El tipo de dato de Python para texto.">string</abbr> de texto con el objeto `nlp`, spaCy crea un objeto `Doc` - de "Documento". El Doc te permite acceder a la información sobre el texto en una forma estructurada y sin perder información.
 
 El Doc se comporta como una secuencia normal de Python y te permite iterar sobre sus tokens u obtener un token con su índice. Más adelante hablaremos más de ello.
 
@@ -100,9 +100,9 @@ print(span.text)
 world!
 ```
 
-Notes: Un objeto `Span` es un <abbr title="Un slice es un subconjunto de elementos dentro de una secuencia de datos, como una lista o un objeto Doc">slice</abbr> de un documento que consiste de uno o más tokens. Es solo un <abbr title="en español, representaciones">view</abbr> de un `Doc` y no contiene los datos en sí.
+Notes: Un objeto `Span` es un <abbr title="Un slice es un subconjunto de elementos dentro de una secuencia de datos como una lista o un objeto Doc.">slice</abbr> de un documento compuesto por uno o más tokens. Es solo un <abbr title="En español: representación o vista.">view</abbr> de un `Doc` y no contiene los datos en sí.
 
-Para crear un span puedes usar la notación de slice de Python. Por ejemplo, `1:3` crea un slice que comienza en el token en posición 1 hasta - pero no incluyendo! - el token en la posición 3.
+Para crear un span puedes usar la notación de slice de Python. Por ejemplo, `1:3` crea un slice que comienza en el token en la posición 1 hasta - pero no incluyendo! - el token en la posición 3.
 
 ---
 
@@ -132,7 +132,7 @@ like_num: [False, False, False, True, False]
 
 Notes: Aquí puedes ver algunos de los atributos disponibles de los tokens :
 
-`i` es el índice del token dentro del documento padre (superordinado).
+`i` es el índice del token dentro del documento padre.
 
 `text` devuelve el texto del token.
 

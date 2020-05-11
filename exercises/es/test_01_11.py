@@ -3,10 +3,10 @@ def test():
 
     assert isinstance(
         matcher, spacy.matcher.Matcher
-    ), "¿Estás inicilizando el matcher correctamente?"
+    ), "¿Estás inicializando el matcher correctamente?"
     assert (
         "Matcher(nlp.vocab)" in __solution__
-    ), "¿Estás inicilizando el matcher correctamente con el vocabulario compartido?"
+    ), "¿Estás inicializando el matcher correctamente con el vocabulario compartido?"
     assert (
         len(pattern) == 2
     ), "El patrón debería describir dos tokens (dos diccionarios)."

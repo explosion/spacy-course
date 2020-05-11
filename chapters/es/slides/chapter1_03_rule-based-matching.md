@@ -101,7 +101,7 @@ El matcher es inicializado con el vocabulario compartido, `nlp.vocab`.
 Aprenderás más sobre esto más adelante - por ahora solo recuerda pasarlo.
 
 El método `matcher.add` te permite añadir un patrón. El primer argumento es un
-ID único para identificar el patrón que fue buscado. El segundo argumento en un
+ID único para identificar el patrón que fue buscado. El segundo argumento es un
 callback opcional, no necesitamos uno aquí, así que lo ponemos como `None`. El
 tercer argumento es el patrón.
 
@@ -134,7 +134,7 @@ iPhone X
 - `start`: índice de inicio del span resultante
 - `end`: índice del final del span resultante
 
-Notes: Cuando llamas el matcher sobre un doc, este devuelve una lista de tuples.
+Notes: Cuando llamas el matcher sobre un doc, este devuelve una lista de <abbr title="En español: tuplas, un tuple es un tipo de dato que contiene una secuencia fija de ítems, como una lista, pero que no se puede modificar.">tuples</abbr>.
 
 Cada tuple consiste de tres valores: el ID del resultado, el índice de inicio y
 el índice del final del span resultante.

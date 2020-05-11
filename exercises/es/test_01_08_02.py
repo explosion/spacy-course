@@ -5,7 +5,7 @@ def test():
     ), "¿Estás imprimiendo en pantalla el texto y el label?"
 
     __msg__.good(
-        "¡Gran trabajo! Hasta ahora el modelo a estado correcto todas las veces. "
+        "¡Muy buen trabajo! Hasta ahora el modelo a estado correcto todas las veces. "
         "En el siguiente ejercicio verás que sucede cuando el modelo se equivoca "
         "y cómo ajustarlo."
     )

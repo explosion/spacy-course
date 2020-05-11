@@ -25,7 +25,7 @@ def test():
     ), "¿Estás usando el operador correcto para el tercer token?"
 
     __msg__.good(
-        "Excelente trabajo - esos fueron unos patrones bastante complejos! Sigamos adelante "
+        "Excelente trabajo - ¡Esos fueron unos patrones bastante complejos! Sigamos adelante "
         "al siguiente capítulo y miremos cómo usar a spaCy para hacer análisis de texto más "
         "avanzado."
     )

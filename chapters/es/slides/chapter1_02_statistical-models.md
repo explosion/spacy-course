@@ -23,7 +23,7 @@ Notes: Algunas de las cosas más interesantes que puedes analizar son específic
 
 Los modelos estadísticos le permiten a spaCy hacer predicciones dentro del contexto. Esto normalmente incluye las part-of speech tags, dependencias sintácticas y entidades nombradas.
 
-Los modelos son entrenados con <abbr title="también conocido como conjunto de datos"> datasets </abbr> de textos de ejemplo anotados.
+Los modelos son entrenados con <abbr title="También conocido como conjunto de datos.">datasets</abbr> de textos de ejemplo anotados.
 
 Los modelos pueden ser actualizados con más ejemplos para afinar sus predicciones - por ejemplo, para que se desempeñe mejor con tus datos específicos.
 
@@ -51,7 +51,7 @@ Notes: spaCy provee varios paquetes de modelos pre-entrenados que puedes descarg
 
 El método `spacy.load` carga el paquete de modelo por su nombre y devuelve un objeto `nlp`.
 
-El paquete provee los <abbr title="en inglés, en un contexto de Machine Leraning, conocidos como binary weights">parámetros binarios</abbr> que le permiten a spaCy hacer predicciones.
+El paquete provee los <abbr title="En inglés: en un contexto de Machine Leraning, conocidos como binary weights.">parámetros binarios</abbr> que le permiten a spaCy hacer predicciones.
 
 También incluye el vocabulario y la metadata para que spaCy sepa cuál clase de lenguaje usar y cómo configurar el pipeline de procesamiento.
 
@@ -89,7 +89,7 @@ Siguiente, procesamos el texto "She ate the pizza".
 
 Para cada token en el Doc podemos imprimir en pantalla el texto y el part-of-speech tag predicho usando el atributo `.pos_`.
 
-En spaCy, los atributos que devuelven un string usualmente terminan con un guión bajo (`_`). mientras que atributos sin un guión bajo devuelven un valor ID de tipo integer.
+En spaCy, los atributos que devuelven un string usualmente terminan con un guión bajo (`_`). mientras que atributos sin un guión bajo devuelven un valor ID de tipo <abbr title="En inglés: integer, un número entero sin parte decimal.">entero</abbr>.
 
 Aquí el modelo predijo correctamente "ate" como el verbo y "pizza" como el sustantivo.
 
@@ -113,7 +113,7 @@ Notes: Además de los part-of-speech tags, también podemos predecir las relacio
 
 El atributo `.dep_` devuelve el dependency label predicho.
 
-El atributo `.head` devuelve el token <abbr title="en inglés head">cabeza</abbr> sintáctico. Otra forma de pensarlo es como el token padre (superordinado) al que esta palabra está atada.
+El atributo `.head` devuelve el token <abbr title="En inglés: head.">cabeza</abbr> sintáctico. Otra forma de pensarlo es como el token padre al que esta palabra está atada.
 
 ---
 
@@ -127,7 +127,7 @@ El atributo `.head` devuelve el token <abbr title="en inglés head">cabeza</abbr
 | **dobj**  | objeto directo          | pizza   |
 | **det**   | determinante (artículo) | the     |
 
-Notes: spaCy usa un esquema de labels estándar para describir dependencias sintácticas. Aquí verás un ejemplo de algunas <abbr title="en español se conocen como etiquetas, pero para mantener la diferenciación entre label y tag, las usamos en inglés">labels</abbr> comúnes:
+Notes: spaCy usa un esquema de <abbr title="En español se conocen como etiquetas, pero para mantener la diferenciación entre label y tag, las usamos en inglés.">labels</abbr> estándar para describir dependencias sintácticas. Aquí verás un ejemplo de algunas labels comúnes:
 
 El pronombre "She" es un sujeto nominal unido al verbo - en este caso, a "ate".
 
