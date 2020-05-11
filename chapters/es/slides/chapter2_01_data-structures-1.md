@@ -109,8 +109,8 @@ coffee 3197928453018144401 True
 - Contiene la información sobre una palabra, **independiente del contexto**
   - Texto de la palabra: `lexeme.text` y `lexeme.orth` (el hash)
   - Atributos léxicos como `lexeme.is_alpha`
-  - **No** part-of-speech tags, dependencies o entity labels dependedientes del
-    contexto.
+  - **No** part-of-speech tags, dependencies o entity labels dependientes del
+    contexto
 
 Notes: Los lexemas son entradas en el vocabulario independientes del contexto.
 

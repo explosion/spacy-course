@@ -131,7 +131,7 @@ El ejemplo muestra un componente personalizado que imprime la longitud de un doc
 
 - Completa la función del componente con la longitud del `doc`.
 - Añade el `length_component` al pipeline existente como el **primer** componente.
-- Prueba el nuevo pipeline y procesa cualquier texto con el objeto `nlp` - por ejemplo, "This is a sentence.".
+- Prueba el nuevo pipeline y procesa cualquier texto con el objeto `nlp` - por ejemplo, "This is a sentence."
 
 <codeblock id="03_06">
 

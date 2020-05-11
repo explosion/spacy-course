@@ -138,7 +138,7 @@ medianamente similares.
 - Puede añadirse a los modelos estadísticos de spaCy
 - Por defecto: similitud coseno, pero puede ser ajustada
 - Los vectores de los `Doc` y `Span` tienen por defecto el valor del promedio
-  de los vectores de los tokens.
+  de los vectores de los tokens
 - Las frases cortas son mejores que los documentos largos con muchas palabras
   irrelevantes
 

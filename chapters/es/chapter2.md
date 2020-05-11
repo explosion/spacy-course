@@ -37,7 +37,7 @@ id: 2
 
 - Busca el label del string "PERSON" en `nlp.vocab.strings` para obtener el
   hash.
-- Busca el hash para obtener el string
+- Busca el hash para obtener el string.
 
 <codeblock id="02_02_02">
 
