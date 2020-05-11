@@ -4,7 +4,7 @@ type: slides
 
 # Introducción a spaCy
 
-Notes: Hola, soy Ines! Soy una de las programadoras principales de spaCy, un paquete popular para hacer Procesamiento de Lenguaje Natural en Python.
+Notes: ¡Hola, soy Ines! Soy una de las programadoras principales de spaCy, un paquete popular para hacer Procesamiento de Lenguaje Natural en Python.
 
 En esta lección vamos a ver los conceptos más importantes de spaCy y cómo comenzar a usarlo.
 
