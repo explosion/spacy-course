@@ -85,7 +85,7 @@ for doc, context in nlp.pipe(data, as_tuples=True):
 
 Notes: コンテキストのメタデータを拡張属性に追加することもできます。
 
-この例では、`id` と `page number` という2つの拡張子を登録しており、デフォルトは `None` です。
+この例では、`id` と `page_number` という2つの拡張子を登録しており、デフォルトは `None` です。
 
 テキストを処理した後、コンテキストのメタデータでdocの拡張属性を上書きすることができます。
 
