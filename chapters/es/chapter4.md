@@ -1,7 +1,7 @@
 ---
 title: 'Capítulo 4: Entrenando un modelo de red neuronal'
 description:
-  "En este capítulo aprenderás a actualizar los modelos estadísticos de spaCy para personalizarlos para tu caso - por ejemplo, para predecir un nuevo tipo de entidad en comentarios en línea. Escribirás tu propio loop de entrenamiento desde cero y entenderás lo esencial de cómo funciona el entrenamiento, junto con consejos y trucos para hacer que tus proyectos de NLP sean más exitosos."
+  "En este capítulo aprenderás a actualizar los modelos estadísticos de spaCy para personalizarlos para tu caso - por ejemplo, para predecir un nuevo tipo de entidad en comentarios en internet. Escribirás tu propio loop de entrenamiento desde cero y entenderás lo esencial de cómo funciona el entrenamiento, junto con consejos y trucos para hacer que tus proyectos de NLP sean más exitosos."
 prev: /chapter3
 next: null
 type: chapter
@@ -17,7 +17,7 @@ id: 4
 
 <exercise id="2" title="El propósito de entrenar">
 
-A pesar que spaCy viene con un rango de modelos pre-entrenados para predecir anotaciones lingüísticas casi _siempre_ quieres afinarlos con más ejemplos. Puedes hacer esto entrenándolos con más datos con labels.
+A pesar de que spaCy viene con un rango de modelos pre-entrenados para predecir anotaciones lingüísticas casi _siempre_ querrás afinarlos con más ejemplos. Puedes hacer esto entrenándolos con más datos con labels.
 
 ¿Con qué **no** ayuda el entrenamiento?
 
@@ -25,11 +25,11 @@ A pesar que spaCy viene con un rango de modelos pre-entrenados para predecir ano
 
 <opt text="Mejorar la precisión del modelo con tus datos.">
 
-Si un modelo pre-entrenado no se desempeña bien con tus datos, entrenarlo con más ejemplos en normalmente una buena solución.
+Si un modelo pre-entrenado no se desempeña bien con tus datos, entrenarlo con más ejemplos es normalmente una buena solución.
 
 </opt>
 
-<opt text="Aprneder nuevos esquemas de clasificación.">
+<opt text="Aprender nuevos esquemas de clasificación.">
 
 Puedes usar el entrenamiento para enseñarle al modelo nuevos labels, tipos de entidades u otros esquemas de clasificación.
 
@@ -50,7 +50,7 @@ Los componentes de spaCy son modelos supervisados para anotaciones de texto, lo 
 El `Matcher` basado en reglas de spaCy es una manera excelente de crear datos de entrenamiento rápidamente para modelos de entidades nombradas. Una lista de frases está disponible en la variable `TEXTS`. Puedes imprimirla en pantalla para inspeccionarla. Queremos encontrar todas las menciones de los diferentes modelos de iPhone, así que creamos datos de entrenamineto para enseñarle al modelo a reconocerlos como `"GADGET"`.
 
 - Escribe un patrón para dos tokens que en minúsculas encuentran "iphone" y "x"
-- Escribe un patrón para dos tokens: Un token que en minúsculas encuentra "iphone" y un dígito usando el operador `"?"`.
+- Escribe un patrón para dos tokens: un token que en minúsculas encuentra "iphone" y un dígito usando el operador `"?"`.
 
 <codeblock id="04_03">
 
@@ -69,7 +69,7 @@ Usemos los patrones que creamos en el ejercicio anterior para crear un set de ej
 - Crea un objeto `doc` para cada texto usando `nlp.pipe`.
 - Encuentra en el `doc` y crea una lista de spans resultantes.
 - Obtén los tuples `(carácter de inicio, carácter del final, label)` de los spans resultantes.
-- Da formato a cada ejemplo como un tuple de texto y un diccionario que hace mapping de `"entities"` a tuples de entidades.
+- Crea cada ejemplo como un tuple de texto y un diccionario que hace <abbr title="Convertir un dato de un conjunto de datos al equivalente en otro conjunto de datos. Como un diccionario convierte de un key a un value.">mapping</abbr> de `"entities"` a tuples de entidades.
 - Añade el ejemplo a `TRAINING_DATA` e inspecciona los datos impresos en pantalla.
 
 <codeblock id="04_04">
@@ -94,14 +94,14 @@ Usemos los patrones que creamos en el ejercicio anterior para crear un set de ej
 En este ejercicio preparás un pipeline de spaCy para entrenar al entity recognizer para que reconozca las entidades `"GADGET"` en un texto - por ejemplo, "iPhone X".
 
 - Crea un modelo `"en"` en blanco, por ejemplo, usando el método `spacy.blank`.
-- Crea un nuevo entity recognizer usando `nlp.create_pipe` y añádelo al pipeline
-- ñade el nuevo label "GADGET" al entity recognizer usando el método `add_label` en el componente del pipeline.
+- Crea un nuevo entity recognizer usando `nlp.create_pipe` y añádelo al pipeline.
+- Añade el nuevo label "GADGET" al entity recognizer usando el método `add_label` en el componente del pipeline.
 
 <codeblock id="04_06">
 
-- Para crear un entity recognizer en blanco puedes llamar a `nlp.create_pipe` con `"ner"` en un string
+- Para crear un entity recognizer en blanco puedes llamar a `nlp.create_pipe` con `"ner"` en un string.
 - Para añadir un componente al pipeline usa el método `nlp.add_pipe`.
-- El método `add_label` es un método del componente del pipeline, entity recognizer, que guardaste en la variable `ner`. Para añadirle un label puedes llamar a `ner.add_label` con el nombre del label en string, por ejemplo, `ner.add_label("SOME_LABEL")`.
+- El método `add_label` es un método del componente del pipeline, entity recognizer, que guardaste en la variable `ner`. Para añadirle un label puedes llamar a `ner.add_label` con el nombre del label en un string, por ejemplo, `ner.add_label("SOME_LABEL")`.
 
 </codeblock>
 
@@ -143,7 +143,7 @@ El set pequeño de ejemplos con label que creaste anteriormente está disponible
 | what is the cheapest ipad, especially ipad pro???                                                                 | `(ipad, ipad)`         |
 | Samsung Galaxy is a series of mobile computing devices designed, manufactured and marketed by Samsung Electronics | `(Samsung Galaxy,)`    |
 
-De todas las entidades en los textos, **cuántas tuvo correctas el modelo**? Ten en cuenta que los spans de entidades incompletos cuentan como errores también! Consejo: Cuenta el número de entidades que el modelo _debía_ haber predicho. Luego cuenta el número de entidades que _realmente_ predijo y divídelo por el número total de entidades correctas.
+De todas las entidades en los textos, **¿cuántas tuvo correctas el modelo?** ¡Ten en cuenta que los spans de entidades incompletos cuentan como errores también! Consejo: cuenta el número de entidades que el modelo _debía_ haber predicho. Luego cuenta el número de entidades que _realmente_ predijo y divídelo por el número total de entidades correctas.
 
 <choice>
 
@@ -161,7 +161,7 @@ Intenta contar el número de entidades que el modelo predijo correctamente y div
 
 <opt text="70%" correct="true">
 
-El modelo tuvo una precición del 70% con nuestro datos de prueba.
+El modelo tuvo una precisión del 70% con nuestros datos de prueba.
 
 </opt>
 
@@ -210,9 +210,9 @@ TRAINING_DATA = [
 
 <choice>
 
-<opt text="Que un sitio sea un destino turístico es un jucio subjetico y no una categoría definitiva. Será muy difícil que el entity recognizer lo aprenda." correct="true">
+<opt text="Que un sitio sea un destino turístico es una opinión subjetiva y no una categoría definitiva. Será muy difícil que el entity recognizer lo aprenda." correct="true">
 
-Una estrategia mejor sería tener únicamente el label `"GPE"` (entidad geopolítica) o `"LOCATION"` y luego usar un sistema basado en reglas para determinar si una entidad es un destino turístico en este contexto. Por ejemplo, puedes resolver los tipos de entidades en relación con un <abbr title="Un sistema de almacenamiento de conocimiento y sus relaciones. En español, base de conocimiento">knowledge base</abbr> o buscarlas en un wiki de viajes.
+Una estrategia mejor sería tener únicamente el label `"GPE"` (entidad geopolítica) o `"LOCATION"` y luego usar un sistema basado en reglas para determinar si una entidad es un destino turístico en este contexto. Por ejemplo, puedes resolver los tipos de entidades en relación con un <abbr title="Un sistema de almacenamiento de conocimiento y sus relaciones. En español: base de conocimiento.">knowledge base</abbr> o buscarlas en un wiki de viajes.
 
 </opt>
 
@@ -232,7 +232,7 @@ Las palabras muy raras o mal deletreadas también pueden ser marcadas como entid
 
 ### Parte 2
 
-- Rescribe el `TRAINING_DATA` para que solo use el label `"GPE"` (ciudades, estados, países) en vez de `"TOURIST_DESTINATION"`.
+- Reescribe el `TRAINING_DATA` para que solo use el label `"GPE"` (ciudades, estados, países) en vez de `"TOURIST_DESTINATION"`.
 - No te olvides de añadir tuples para las entidades `"GPE"` que no fueron marcadas con un label en los datos viejos.
 
 <codeblock id="04_10">
@@ -264,7 +264,7 @@ Un modelo fue entrenado con los datos que acabas de marcar con labels, más unos
 
 <choice>
 
-<opt text='Es muy difícil para el modelo aprender sobre diferente catgorías como <code>"PERSON"</code> y <code>"WEBSITE"</code>.'>
+<opt text='Es muy difícil para el modelo aprender sobre diferentes catgorías como <code>"PERSON"</code> y <code>"WEBSITE"</code>.'>
 
 Definitivamente es posible que un modelo aprenda sobre varias categorías diferentes. Por ejemplo, los modelo pre-entrenados de inglés de spaCy pueden reconocer personas, pero también organizaciones o porcentajes.
 
@@ -272,13 +272,13 @@ Definitivamente es posible que un modelo aprenda sobre varias categorías difere
 
 <opt text='Los datos de entrenamiento no incluyeron ejemplos de <code>"PERSON"</code>, así que el modelo aprendió que este label es incorrecto.' correct="true">
 
-Si entidades `"PERSON"` ocurren en los datos de entrenamiento, pero no están marcadas con labels, el modelo aprenderá que éstas no deben ser predecidas. Del mismo modo, si un tipo de entidad existente no está presente en los datos de entrenamiento el modelo puede "olvidar" y dejar de predecirlo.
+Si entidades `"PERSON"` ocurren en los datos de entrenamiento, pero no están marcadas con labels, el modelo aprenderá que éstas no deben ser predichas. Del mismo modo, si un tipo de entidad existente no está presente en los datos de entrenamiento el modelo puede "olvidar" y dejar de predecirlo.
 
 </opt>
 
-<opt text="Los hyperparámetros tienen que ser recalibrados para que ambos tipos de entidades sean reconocidos.">
+<opt text="Los hiperparámetros tienen que ser recalibrados para que ambos tipos de entidades sean reconocidos.">
 
-A pesar que los hyperparámetros pueden influenciar la precisión de un modelo, es probable que este no sea el problema aquí.
+A pesar de que los hiperparámetros pueden influenciar la precisión de un modelo, es probable que este no sea el problema aquí.
 
 </opt>
 

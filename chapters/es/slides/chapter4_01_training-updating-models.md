@@ -4,9 +4,9 @@ type: slides
 
 # Entrenando y actualizando modelos
 
-Notes: Bienvenido/a al capítulo final, que trata uno de los aspectos más emocionantes del NLP moderno: entrenar tus propios modelos!
+Notes: Bienvenido/a al capítulo final, que trata uno de los aspectos más emocionantes del NLP moderno: ¡entrenar tus propios modelos!
 
-En esta lección aprenderás sobre entrenar y actualizar los modelos de red neuronal de spaCy y los datos que necesitarás para hacerlo - enfocándonos específicamente en el named entity recognizer.
+En esta lección aprenderás sobre entrenar y actualizar los modelos de redes neuronales de spaCy y los datos que necesitarás para hacerlo - enfocándonos específicamente en el named entity recognizer.
 
 ---
 
@@ -22,7 +22,7 @@ Notes: Antes de comenzar a explicar _cómo_, vale la pena que tomemos un momento
 
 Los modelos estadísticos hacen predicciones basados en los ejemplos con los que fueron entrenados.
 
-Normalmente, puedes hacer que el modelo sea mas preciso mostrándole ejemplos de tu área.
+Normalmente, puedes hacer que el modelo sea más preciso mostrándole ejemplos de tu área.
 
 A menudo también quieres predecir categorías específicas a tu problema, así que el modelo necesita aprender sobre ellas.
 
@@ -33,7 +33,7 @@ Esto es esencial para la clasificación de texto, muy útil para el reconocimien
 # Cómo funciona el entrenamiento (1)
 
 1. **Inicializa** los parámetros del modelo de manera aleatoria con `nlp.begin_training`
-2. **Predice** unos cuantos ejemplos con los parámetros actuales llamado a `nlp.update`
+2. **Predice** unos cuantos ejemplos con los parámetros actuales llamando a `nlp.update`
 3. **Compara** la predicción con los labels verdaderos
 4. **Calcula** cómo cambiar los parámetros para mejorar las predicciones
 5. **Actualiza** los parámetros un poco
@@ -66,7 +66,7 @@ Notes: Aquí tenemos una ilustración mostrando el proceso.
 
 Los datos de entrenamiento son los ejemplos con los que queremos actualizar el modelo.
 
-El texto debe ser un frase, párrafo, o un documento más largo. Para los mejores resultados debería ser similar a lo que el modelo verá cuando se esté ejecutando.
+El texto debe ser una frase, párrafo o un documento más largo. Para los mejores resultados debería ser similar a lo que el modelo verá cuando se esté ejecutando.
 
 El label es lo que queremos que el modelo prediga. Esto puede ser una categoría de texto, o un span de entidad y su tipo.
 
@@ -102,7 +102,7 @@ Las entidades no pueden superponerse, así que cada token solo puede ser parte d
 
 Debido a que el entity recognizer predice entidades _en contexto_ también necesita ser entrenado en las entidades _y_ su contexto.
 
-La forma más fácil de hacer esto es mostrarle al modelo un texto y una lista de posiciones caracteres. Por ejemplo, "iPhone X" es un gadget (aparato), comienza en el carácter 0 y termina en el carácter 8.
+La forma más fácil de hacer esto es mostrarle al modelo un texto y una lista de posiciones de carácteres. Por ejemplo, "iPhone X" es un gadget (aparato), comienza en el carácter 0 y termina en el carácter 8.
 
 También es muy importante que el modelo aprenda palabras que _no son_ entidades.
 
@@ -119,11 +119,11 @@ Nuestro objetivo es enseñarle al modelo a reconocer nuevas entidades en context
 - Para entrenar una **nueva categoría**: entre unos miles a un millón de ejemplos
   - Los modelos de inglés de spaCy: 2 millones de palabras
 - Creados normalmente a mano por anotadores humanos
-- Puede ser semi-automatizado - por ejemplo, usando el `Matcher` de spaCy!
+- Puede ser semi-automatizado - ¡por ejemplo, usando el `Matcher` de spaCy!
 
 Notes: Los datos de entrenamiento le dicen al modelo lo que queremos que prediga. Esto podrían ser textos y entidades nombradas que queremos reconocer, o tokens y sus part-of-speech tags correctos.
 
-Para actualizar el modelo existente podemos comenzar un unos cientos a unos miles de ejemplos.
+Para actualizar el modelo existente podemos comenzar con unos cientos a unos miles de ejemplos.
 
 Para entrenar una nueva categoría podemos necesitar hasta un millón.
 
@@ -131,7 +131,7 @@ Los modelos de inglés pre-entrenados de spaCy fueron entrenados con 2 millones 
 
 Los datos de entrenamiento son creado usualmente por humanos que le asignan labels a los textos.
 
-Esto es mucho trabajo, pero puede ser semi-automatizado - por ejemplo, usando el `Matcher` de spaCy
+Esto es mucho trabajo, pero puede ser semi-automatizado - por ejemplo, usando el `Matcher` de spaCy.
 
 ---
 

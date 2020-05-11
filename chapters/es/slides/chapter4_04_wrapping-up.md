@@ -16,7 +16,7 @@ Notes: ¡Felicitaciones - terminaste el curso!
 - Buenas prácticas para trabajar con las **estructuras de datos** `Doc`, `Token` `Span`, `Vocab`, `Lexeme`
 - Encontrar **similitudes semánticas** usando **word vectors**
 - Escribir **componentes personalizados del pipeline** con la **extensión de atributos**
-- **Aumentar la escala** de tus pipelines de spaCy y haz que sean rápidos
+- **Aumentar la escala** de tus pipelines de spaCy y hacer que sean rápidos
 - Crear **datos de entrenamiento** para los modelos estadísticos de spaCy
 - **Entrenar y actualizar** los modelos de redes neuronales de spaCy con nuevos datos
 
@@ -36,7 +36,7 @@ También creaste tus propias extensiones de atributos para docs, tokens y spans.
 
 Finalmente, en el capítulo 4 aprendiste sobre entrenar y actualizar los modelos estadísticos de spaCy, específicamente el entity recognizer.
 
-Aprendiste unos trucos útiles sobre cómo crear datos de entrenamiento y cómo diseñar tu esquema de labels para obtener los mejore resultados.
+Aprendiste unos trucos útiles sobre cómo crear datos de entrenamiento y cómo diseñar tu esquema de labels para obtener los mejores resultados.
 
 ---
 

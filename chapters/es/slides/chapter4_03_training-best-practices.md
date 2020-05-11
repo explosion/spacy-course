@@ -8,7 +8,7 @@ Notes: Cuando comienzas a correr tus propios experimentos puede que veas que muc
 
 Entrenar modelos es un proceso iterativo y tienes que probar cosas diferentes hasta que encuentres lo que funciona mejor.
 
-En esta lección mostraré algunas de las mejores prácticas y cosas que tener en cuenta a la hora de entrenar tus propios modelos.
+En esta lección mostraré algunas de las mejores prácticas y cosas para tener en cuenta a la hora de entrenar tus propios modelos.
 
 Echemos un vistazo a algunos de los problemas con los que te puedes encontrar.
 
@@ -16,7 +16,7 @@ Echemos un vistazo a algunos de los problemas con los que te puedes encontrar.
 
 # Problema 1: Los modelos pueden "olvidar" cosas
 
-- Un modelo existente puede sobreajustar sobre nuevos datos
+- Un modelo existente puede <abbr title="En inglés: overfit.">sobreajustar</abbr> sobre nuevos datos
   - e.g.: si solo lo actualizas con `"WEBSITE"`, puede "desaprender" lo que es una `"PERSON"`
 - También conocido como el problema del "olvido catastrófico"
 
@@ -32,7 +32,7 @@ Esto también se conoce como el problema del olvido catastrófico.
 
 # Solución 1: Incluye predicciones correctas anteriores
 
-- Por ejemplo, si estás entrenando `"WEBSITE"`, también incluyes ejemplos de `"PERSON"`
+- Por ejemplo, si estás entrenando `"WEBSITE"`, incluye también ejemplos de `"PERSON"`
 - Corre el modelo existente de spaCy sobre los datos y extrae todas las demás entidades relevantes
 
 **MAL:**
@@ -52,9 +52,9 @@ TRAINING_DATA = [
 ]
 ```
 
-Note: Para prevenir esto asegurate que siempre incluyas ejemplos de lo que el modelo antes predijo correctamente.
+Note: Para prevenir esto asegúrate de que siempre incluyas ejemplos de lo que el modelo antes predijo correctamente.
 
-Si estás entrenando una nueva categoría `"WEBSITE"`, también incluyes ejemplos de `"PERSON"`
+Si estás entrenando una nueva categoría `"WEBSITE"`, incluye también ejemplos de `"PERSON"`
 
 spaCy puede ayudarte con esto. Puedes crear ejemplos adicionales corriendo el modelo existente sobre los datos y extrayendo los spans de entidades que te interesan.
 
@@ -81,7 +81,7 @@ Por ejemplo, puede ser difícil enseñarle al modelo a predecir si algo es ropa 
 
 ---
 
-# Solución 2: Planea tu esquema de label cuidadosamente
+# Solución 2: Planea tu esquema de labels cuidadosamente
 
 - Escoge categorías que estén reflejadas en el contexto local
 - Más genérico es mejor que demasiado específico
@@ -99,11 +99,11 @@ LABELS = ["ADULT_SHOES", "CHILDRENS_SHOES", "BANDS_I_LIKE"]
 LABELS = ["CLOTHING", "BAND"]
 ```
 
-Notes: Antes de comenzar a entrenas y actualizar modelos vale la pena tomar un momento para planear tu esquema de labels.
+Notes: Antes de comenzar a entrenar y actualizar modelos vale la pena tomar un momento para planear tu esquema de labels.
 
-Intenta escoger categorías que estén reflejadas en el contexto local y haz que sean lo más genéricas si es posible.
+Intenta escoger categorías que estén reflejadas en el contexto local y haz que sean lo más genéricas que sea posible.
 
-Siempre puedes añadir un sistema basado en reglas que después para ir de genérico a específico.
+Siempre puedes añadir un sistema basado en reglas después para ir de genérico a específico.
 
 Es más fácil ponerle labels y aprender categorías genéricas como "ropa" o "banda".
 

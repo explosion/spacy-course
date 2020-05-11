@@ -18,11 +18,11 @@ Notes: Mientras que algunas libraries te dan un solo método para ocuparse del e
 
 Notes: El loop de entrenamiento es una serie de pasos tomados para entrenar o actualizar un modelo.
 
-Usualmente tenemos que llevarlo a cabo múltiples veces, por iteraciones múltiples, para que el modelo aprenda de él de manera efectiva. Si queremos entrenar por 10 iteraciones, tenemos que hacer el loop 10 veces.
+Usualmente tenemos que llevarlo a cabo múltiples veces, por iteraciones múltiples, para que el modelo aprenda de manera efectiva. Si queremos entrenar por 10 iteraciones, tenemos que hacer el loop 10 veces.
 
-Para prevenir que el modelo de atasque en una solución subóptima, mezclamos los datos de manera aleatoria para cada iteración. Esto es una estrategia común cuando estamos haciendo descenso de gradientes estocástico .
+Para prevenir que el modelo se atasque en una solución subóptima, mezclamos los datos de manera aleatoria para cada iteración. Esto es una estrategia común cuando estamos haciendo <abbr title="En inglés: Stochastic Gradient Descent (SGD).">descenso de gradientes estocástico</abbr>.
 
-Luego, dividimos los datos de entrenamiento en lotes de varios ejemplos, también conocido como <abbr title="En español, minilote">"minibatching"</abbr>. Esto incrementa la fiabilidad de los estimados de los estimados del gradiente.
+Luego, dividimos los datos de entrenamiento en lotes de varios ejemplos, también conocido como <abbr title="En español: minilote.">"minibatching"</abbr>. Esto incrementa la fiabilidad de los estimados del gradiente.
 
 Finalmente, actualizamos el modelo para cada lote y comenzamos el loop de nuevo hasta que hayamos alcanzado la última iteración.
 
@@ -79,7 +79,7 @@ nlp.to_disk(path_to_model)
 
 Notes: Aquí tenemos un ejemplo.
 
-Imaginémos que tenemos una lista de ejemplos de entrenamiento que consiste de textos y anotaciones de entidades.
+Imaginémos que tenemos una lista de ejemplos de entrenamiento compuesta por textos y anotaciones de entidades.
 
 Queremos hacer un loop por 10 iteraciones, así que iteramos sobre un `range` de 10.
 
@@ -96,9 +96,9 @@ Finalmente, llamamos al método `nlp.to_disk` para guardar el modelo entrenado a
 # Actualizando un modelo existente
 
 - Mejorar las predicciones con nuevos datos
-- Especialmente útil para mejorar categorías existente, como `"PERSON"`
+- Especialmente útil para mejorar categorías existentes, como `"PERSON"`
 - También es posible añadir nuevas categorías
-- Ten cuidado y asegurate que el modelo no "olvide" las viejas
+- Ten cuidado y asegúrate de que el modelo no "olvide" las viejas
 
 Notes: spaCy te permite actualizar los modelos pre-entrenados con más datos - por ejemplo, para mejorar sus predicciones con textos diferentes.
 
@@ -106,7 +106,7 @@ Esto es especialmente útil si quieres mejorar las categorías que el modelo ya 
 
 También puedes actualizar el modelo para añadir nuevas categorías.
 
-Simplemente asegurate que siempre actualices el modelo con ejemplos de la nueva categoría _y_ ejemplos de las categorías que antes estaba prediciendo de manera correcta. De otra manera mejorar una nueva categoría puede lastimar a las demás categorías.
+Simplemente asegúrate de que siempre actualices el modelo con ejemplos de la nueva categoría _y_ ejemplos de las categorías que antes estaba prediciendo de manera correcta. De otra manera mejorar una nueva categoría puede lastimar a las demás categorías.
 
 ---
 
@@ -138,7 +138,7 @@ Notes: En este ejemplo comenzamos con un modelo de inglés en blanco usando el m
 
 Luego creamos un entity recognizer en blanco y lo añadimos al pipeline.
 
-Usando el método `add_label` podemos luego añadir nuevos labels en strings al modelo.
+Usando el método `add_label` luego podemos añadir nuevos labels en strings al modelo.
 
 Ahora podemos llamar a `nlp.begin_training` para inicializar el modelo con parámetros aleatorios.
 
