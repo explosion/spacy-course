@@ -3,7 +3,7 @@ from spacy.tokens import Token
 
 nlp = English()
 
-#  Registra la extensión de atributo del Token, "is_country", con el valor por defecto False
+# Registra la extensión de atributo del Token, "is_country", con el valor por defecto False
 Token.set_extension("is_country", default=False)
 
 # Procesa el texto y pon True para el atributo "is_country" para el token "Spain"
