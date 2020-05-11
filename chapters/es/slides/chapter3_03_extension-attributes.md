@@ -34,11 +34,11 @@ Span.set_extension("has_color", default=False)
 
 Notes: Los atributos personalizados te permiten añadir metadatos a los docs, tokens y spans. Los datos pueden ser añadidos una vez, o calculados dinámicamente.
 
-Los atributos personalizados están disponibles a través de la propiedad `._` (punto y guión bajo). Esta notación hace que sea claro que fueron agregados por el usuario y no están integrados con spaCy como `token.text`.
+Los atributos personalizados están disponibles a través de la propiedad `._` (punto y guión bajo). Esta notación hace que sea claro que fueron agregados por el usuario y no están integrados en spaCy como `token.text`.
 
 Los atributos tienen que ser registrados en las clases `Doc`, `Token` y `Span` globales que puedes importar desde `spacy.tokens`. Ya trabajaste con ellas en los capítulos anteriores. Para registrar un atributo personalizado en los `Doc`, `Token` y `Span`, puedes usar el método `set_extension`.
 
-El primer argumento es el nombre del atributo. Los argumentos keyword te permiten definir como debe ser calculado el valor. En este caso, tiene un valor por defecto y puede ser sobrescrito.
+El primer argumento es el nombre del atributo. Los argumentos keyword te permiten definir cómo debe ser calculado el valor. En este caso, tiene un valor por defecto y puede ser sobrescrito.
 
 ---
 
@@ -100,11 +100,11 @@ print(doc[3]._.is_color, "-", doc[3].text)
 True - blue
 ```
 
-Notes: Las extensiones de propiedades funcionan como las propiedades de Python: pueden definir una función getter y una función setter opcional.
+Notes: Las extensiones de propiedades funcionan como las propiedades de Python: pueden definir una función <abbr title="En español: obtenedor. Una función que obtiene y devuelve un valor y que Python ejecuta automáticamente cuando se accede a un atributo especial de un objeto.">getter</abbr> y una función <abbr title="En español: establecedor. Una función que de alguna forma establece un valor y que Python ejecuta automáticamente cuando se asigna un valor a un atributo especial de un objeto.">setter</abbr> opcional.
 
 La función getter solo es llamada cuando consultas el atributo. Esto te permite calcular el valor dinámicamente, e inclusive puede tener en cuenta otros atributos personalizados.
 
-Las funciones getter toman un argumento: el objeto, en este caso el token. En este ejemplo, la función devuelve si el texto de un token se puede encontrar en nuestra lista de colores.
+Las funciones getter toman un argumento: el objeto, en este caso el token. En este ejemplo, la función devuelve si el texto de un token se encuentra en nuestra lista de colores.
 
 Podemos proveer la función mediante el argumento keyword `getter` cuando registramos la extensión.
 

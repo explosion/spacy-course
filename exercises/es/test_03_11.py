@@ -17,7 +17,7 @@ def test():
 
     __msg__.good(
         "¡Bien! Ahora tienes un componente del pipeline que usa entidades nombradas "
-        "predichas por el modelo para generar URLs de Wikipedia y las añade como "
-        "un atributo personalizado. ¡Intenta abrir el link en el browser para ver qué "
+        "predichas por el modelo para generar URLs de Wikipedia y añadirlas como "
+        "un atributo personalizado. ¡Intenta abrir el link en el navegador para ver qué "
         "pasa!"
     )

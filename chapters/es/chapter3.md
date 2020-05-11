@@ -1,7 +1,7 @@
 ---
 title: 'Capítulo 3: Pipelines de procesamiento'
 description:
-  "En este capítulo te mostrará todo lo que necesitas saber sobre el pipeline de procesamiento de spaCy. Aprenderás lo que sucede cuando procesas un texto, cómo escribir tus propios componentes y añadirlos al pipeline y cómo usar atributos personalizados para añadir tus propios metadatos a los documentos, spans y tokens."
+  "En este capítulo aprenderás todo lo que necesitas saber sobre el pipeline de procesamiento de spaCy. Aprenderás lo que sucede cuando procesas un texto, cómo escribir tus propios componentes y añadirlos al pipeline y cómo usar atributos personalizados para añadir tus propios metadatos a los documentos, spans y tokens."
 prev: /chapter2
 next: /chapter4
 type: chapter
@@ -61,7 +61,7 @@ Cuándo llamas a `spacy.load()` para cargar un modelo, spaCy inicializará el le
 
 <codeblock id="03_03">
 
-La lista de los nombres de los componentes está disponible como el atributo `nlp.pipe_names`. El pipeline entero, compuesto de los tuples de `(name, component)` está disponible como `nlp.pipeline`.
+La lista de los nombres de los componentes está disponible como el atributo `nlp.pipe_names`. El pipeline entero, compuesto de los tuples de `(name, component)`, está disponible como `nlp.pipeline`.
 
 </codeblock>
 
@@ -76,12 +76,12 @@ La lista de los nombres de los componentes está disponible como el atributo `nl
 
 <exercise id="5" title="Casos prácticos para los componentes personalizados">
 
-¿Cuáles de estos problemas pueden ser resueltos por los componentes personalizados del pipeline? Escoge todos los que apliquen!
+¿Cuáles de estos problemas pueden ser resueltos por los componentes personalizados del pipeline? ¡Escoge todos los que apliquen!
 
-1. Actualizando los modelos pre-entrenados y mejorando sus predicciones
-2. Calculando tus propios valores basados en los tokens y sus atributos
-3. Añadiendo entidades nombradas, por ejemplo, basadas en un diccionario
-4. Implementando soporte para un lenguaje adicional
+1. Actualizar los modelos pre-entrenados y mejorar sus predicciones
+2. Calcular tus propios valores basados en los tokens y sus atributos
+3. Añadir entidades nombradas, por ejemplo, basadas en un diccionario
+4. Implementar soporte para un lenguaje adicional
 
 <choice>
 
@@ -135,8 +135,8 @@ El ejemplo muestra un componente personalizado que imprime la longitud de un doc
 
 <codeblock id="03_06">
 
-- Para obtener la longitud del objeto `Doc`, puedes llamar al método integrado de Python, `len()`, sobre él.
-- Usa el método `nlp.add_pipe` para añadir el componente al pipeline. Recuerda poner `True` en el argumento keyword `first`, para asegurarte que se añada antes que los demás componentes.
+- Para obtener la longitud del objeto `Doc`, puedes llamar la función integrada de Python, `len()`, sobre él.
+- Usa el método `nlp.add_pipe` para añadir el componente al pipeline. Recuerda poner `True` en el argumento keyword `first`, para asegurarte de que se añada antes que los demás componentes.
 - Para procesar un texto, llama al objeto `nlp` sobre él.
 
 </codeblock>
@@ -156,7 +156,7 @@ En este ejercicio escribirás un componente personalizado que use el `PhraseMatc
 
 - Recuerda que los resultados son una lista de tuples `(match_id, start, end)`.
 - La clase `Span` toma 4 argumentos: el `doc` padre, el índice de inicio, el índice del final y el label.
-- Para añadir el componente después de otro usa el argumento keyword `after` en el `nlp.add_pipe`.
+- Para añadir el componente después de otro usa el argumento keyword `after` de `nlp.add_pipe`.
 
 </codeblock>
 
@@ -176,7 +176,7 @@ Vamos a practicar añadiendo algunas extensiones de atributos.
 ### Paso 1
 
 - Usa `Token.set_extension` para registrar `"is_country"` (por defecto `False`).
-- Actualízalo para `"Spain"` e imprimelo en pantalla para todos los tokens.
+- Actualízalo para `"Spain"` e imprímelo en pantalla para todos los tokens.
 
 <codeblock id="03_09_01">
 
@@ -216,7 +216,7 @@ Intentemos añadir algunos atributos más complejos usando getters y extensiones
 ### Parte 2
 
 - Usa `Span.set_extension` para registrar `"to_html"` (método `to_html`).
-- Llamalo sobre `doc[0:2]` con el tag `"strong"`.
+- Llámalo sobre `doc[0:2]` con el tag `"strong"`.
 
 <codeblock id="03_10_02">
 
@@ -229,9 +229,9 @@ Intentemos añadir algunos atributos más complejos usando getters y extensiones
 
 <exercise id="11" title="Entidades y extensiones">
 
-En este ejercicio combinarás la extensión de atributos personalizados con las predicciones del modelos y crearás un getter de atributo que devuelve una URL de búsqueda de Wikipedia si el span es una persona, organización o locación.
+En este ejercicio combinarás la extensión de atributos personalizados con las predicciones del modelo y crearás un getter de atributo que devuelve una URL de búsqueda de Wikipedia si el span es una persona, organización o lugar.
 
-- Completa el getter `get_wikipedia_url` para ques solo devuelva la URL si el label del sapn está en la lista de labels.
+- Completa el getter `get_wikipedia_url` para que solo devuelva la URL si el label del span está en la lista de labels.
 - Añade la extensión del `Span`, `"wikipedia_url"`, usando el getter `get_wikipedia_url`.
 - Itera sobre las entidades en el `doc` y devuelve sus URLs de Wikipedia.
 
@@ -279,24 +279,24 @@ En este ejercicio, usarás el `nlp.pipe` para procesar de manera más eficiente 
 
 ### Parte 1
 
-- Rescribe el ejemplo usando `nlp.pipe`. En vez de iterar sobre los textos y procesarlos, itera sobre los objetos `doc` devueltos usando `yield` por el `nlp.pipe`.
+- Reescribe el ejemplo usando `nlp.pipe`. En vez de iterar sobre los textos y procesarlos, itera sobre los objetos `doc` devueltos usando `yield` por el `nlp.pipe`.
 
 <codeblock id="03_14_01">
 
 - Usar `nlp.pipe` te permite combinar las dos primeras líneas de código en una sola.
-- `nlp.pipe` toma los `TEXTS` y usa `yield` para devolver objetos `doc` sobre los que puedes hacer loop.
+- `nlp.pipe` toma los `TEXTS` y usa `yield` para devolver objetos `doc` sobre los que puedes hacer un loop.
 
 </codeblock>
 
 ### Parte 2
 
-- Rescribe el ejemplo usando `nlp.pipe`. No olvides llamar a `list()` alrededor del resultado para convertirlo en una lista.
+- Reescribe el ejemplo usando `nlp.pipe`. No olvides llamar a `list()` alrededor del resultado para convertirlo en una lista.
 
 <codeblock id="03_14_02"></codeblock>
 
 ### Parte 3
 
-- Rescribe el ejemplo usando `nlp.pipe`. No olvides llamar a `list()` alrededor del resultado para convertirlo en una lista.
+- Reescribe el ejemplo usando `nlp.pipe`. No olvides llamar a `list()` alrededor del resultado para convertirlo en una lista.
 
 <codeblock id="03_14_03"></codeblock>
 
@@ -304,7 +304,7 @@ En este ejercicio, usarás el `nlp.pipe` para procesar de manera más eficiente 
 
 <exercise id="15" title="Procesando datos con contexto">
 
-En este ejercicio usarás los atributos personalizados para añadir información meta sobre el autor y el libro a citas.
+En este ejercicio usarás los atributos personalizados para añadir metainformación sobre el autor y el libro a citas.
 
 Una lista de ejemplos `[text, context]` está disponible como la variable `DATA`. Los textos son citas de libros famosos y los contextos son diccionarios con los keys `"author"` y `"book"`.
 
@@ -327,7 +327,7 @@ En este ejercicio usarás los métodos `nlp.make_doc` y `nlp.disable_pipes` para
 
 ### Parte 1
 
-- Rescribe el código para que solo convierta el texto en tokens usando `nlp.make_doc`.
+- Reescribe el código para que solo convierta el texto en tokens usando `nlp.make_doc`.
 
 <codeblock id="03_16_01">
 
@@ -342,7 +342,7 @@ El método `nlp.make_doc` puede ser llamado sobre un texto y devuelve un `Doc`, 
 
 <codeblock id="03_16_02">
 
-El método `nlp.disable_pipes` un número variable de argumentos: los nombres en string de los componentes del pipeline que serán deshabilitados. Por ejemplo, `nlp.disable_pipes("ner")` deshabilitará el named entity recognizer.
+El método `nlp.disable_pipes` recibe un número variable de argumentos: los nombres en string de los componentes del pipeline que serán deshabilitados. Por ejemplo, `nlp.disable_pipes("ner")` deshabilitará el named entity recognizer.
 
 </codeblock>
 

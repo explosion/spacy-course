@@ -13,7 +13,7 @@ def test():
     ), "¿Asignaste el valor por defecto a la extensión de libro?"
     assert (
         "nlp.pipe(DATA, as_tuples=True)" in __solution__
-    ), "¿Usaste nlp.pipe with as_tuples=True?"
+    ), "¿Usaste nlp.pipe usando as_tuples=True?"
     assert (
         'doc._.book = context["book"]' in __solution__
     ), "¿Sobrescribiste la extensión doc._.book con el valor de contexto de 'book'?"
@@ -23,8 +23,8 @@ def test():
 
     __msg__.good(
         "¡Bien hecho! La misma técnica es útil para una variedad de tareas. Por "
-        "ejemplo, podrías pasarle números dentro de la página o números de párrafo para relacionar el "
-        "El Doc procesado con la posición en un documento más grande. O "
-        "podrías pasar otros datos estructurados como IDs que refieren a un "
+        "ejemplo, podrías pasarle el número de la página o el número de párrafo para relacionar el "
+        "Doc procesado con la posición en un documento más grande. O "
+        "podrías pasar otros datos estructurados como IDs de referencias a un "
         "knowledge base."
     )

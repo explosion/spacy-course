@@ -1,7 +1,7 @@
 def test():
     assert (
         len(nlp.pipeline) == 1 and nlp.pipe_names[0] == "countries_component"
-    ), "Did you add the component correctly?"
+    ), "¿Añadiste el componente correctamente?"
     assert Span.has_extension("capital"), "¿Registraste la extensión en el span?"
     ext = Span.get_extension("capital")
     assert ext[2] is not None, "¿Registraste get_capital como el getter?"

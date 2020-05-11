@@ -18,7 +18,7 @@ Los componentes personalizados del pipeline te permiten añadir tu propia funci�
 - Añade tus propios metadatos a los documentos y a los tokens
 - Actualiza atributos incluidos como los `doc.ents`
 
-Notes: Después que el texto es convertido en tokens y un objeto `Doc` ha sido creado los componentes del pipeline se aplican en orden. spaCy ofrece soporte para un rango de componentes incluidos, pero también te permite definir los tuyos.
+Notes: Después de que el texto es convertido en tokens y un objeto `Doc` ha sido creado, los componentes del pipeline se aplican en orden. spaCy ofrece soporte para un rango de componentes incluidos, pero también te permite definir los tuyos.
 
 Los componentes personalizados se ejecutan automáticamente cuando llamas al objeto `nlp` sobre un texto.
 
@@ -41,7 +41,7 @@ def custom_component(doc):
 nlp.add_pipe(custom_component)
 ```
 
-Notes: Fundamentalmente, un componente del pipeline es una función o un <abbr title="algo que puede ser llamado o ejecutado, así como una función o una clase.">callable</abbr> que toma a un doc, lo modifica y lo devuelve para que pueda ser procesado por el próximo componente en el pipeline.
+Notes: Fundamentalmente, un componente del pipeline es una función o un <abbr title="Algo que puede ser llamado o ejecutado, así como una función o una clase.">callable</abbr> que toma a un doc, lo modifica y lo devuelve para que pueda ser procesado por el próximo componente en el pipeline.
 
 Los componentes pueden ser añadidos al pipeline usando el método `nlp.add_pipe`. Éste toma al menos un argumento: la función del componente.
 
@@ -72,7 +72,7 @@ Si haces que el valor de `first` sea `True`, se añadirá en el primer lugar del
 
 Los argumentos `before` y `after` te permiten definir el nombre de un componente existente al que le puedes añadir el nuevo componente antes o después. Por ejemplo, `before="ner"` añadirá el nuevo componente antes del named entity recognizer.
 
-Sin embargo, el otro componente al que se le añadirá un nuevo componente antes o después tiene que existir. Si no, spaCy devolverá un error.
+Sin embargo, el otro componente al que se le añadirá un nuevo componente antes o después tiene que existir. Si no, spaCy arrojará un error.
 
 ---
 

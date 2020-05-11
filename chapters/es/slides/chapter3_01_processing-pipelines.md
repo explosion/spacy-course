@@ -4,12 +4,12 @@ type: slides
 
 # Pipelines de procesamiento
 
-Notes: Hola otra vez! Este capítulo está dedicado a los pipelines de
+Notes: ¡Hola otra vez! Este capítulo está dedicado a los pipelines de
 procesamiento: una serie de funciones que se aplican a un doc para añadir
 atributos como part-of-speech tags, dependency labels o entidades nombradas.
 
 En esta lección aprenderás sobre los componentes del pipeline proveído por spaCy
-y qué sucede detrás de escenas cuando llamas a un objeto `nlp` sobre un string
+y qué sucede detrás de cámaras cuando llamas a un objeto `nlp` sobre un string
 de texto.
 
 ---
@@ -25,10 +25,10 @@ doc = nlp("This is a sentence.")
 Notes: Ya has escrito esto bastantes veces: le pasas un string de texto al
 objeto `nlp` y recibes un objeto `Doc`.
 
-¿Pero, qué hace el objeto `nlp` _realmente_?
+Pero, ¿qué hace el objeto `nlp` _realmente_?
 
 Primero, se aplica el tokenizer para convertir el string de texto a un objeto
-`Doc` Siguiente, una serie de componentes del pipeline se aplican al doc en
+`Doc` A continuación, una serie de componentes del pipeline se aplican al doc en
 orden. En este caso, el tagger, luego el parser, luego el
 <abbr title="Es el componente que identifica las entidades nombradas de un texto.">entity
 recognizer</abbr> . Finalmente, el doc procesado es devuelto para que puedas
@@ -51,7 +51,7 @@ El part-of-speech tagger añade los atributos `token.tag` y `token.pos`.
 
 El dependency parser añade los atributos `token.dep` y `token.head` y es
 responsable de detectar frases y los
-<abbr title="En español, frases nominales">base noun phrases</abbr>, también
+<abbr title="En español: frases nominales.">base noun phrases</abbr>, también
 conocidos como "noun chunks".
 
 El named entity recognizer añade las entidades detectadas a la propiedad
@@ -67,7 +67,7 @@ puedes usar para entrenar tu propio sistema.
 
 ---
 
-# Mirando en el motor
+# Detrás de cámaras
 
 <img src="/package_meta.png" alt="Illustration of a package labelled en_core_web_sm, folders and file and the meta.json" />
 
@@ -114,7 +114,7 @@ Notes: Para ver los nombres de los componentes del pipeline que están en el
 objeto `nlp` actual puedes usar el atributo `nlp.pipe_names`.
 
 Para una lista de tuples con los nombres y funciones de cada componente usa el
-atributo `nlp.pipeline`
+atributo `nlp.pipeline`.
 
 Las funciones de los componentes son aquellas funciones que se aplican al doc
 para procesarlo y añadir atributos - por ejemplo, part-of-speech tags o
@@ -124,4 +124,4 @@ entidades nombradas.
 
 # ¡Practiquemos!
 
-Notes: ¡Exploremos algunos de los pipelines de spaCy y miremos en su motor!
+Notes: ¡Exploremos algunos de los pipelines de spaCy y miremos detrás de cámaras!
