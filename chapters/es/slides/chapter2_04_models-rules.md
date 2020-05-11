@@ -94,7 +94,7 @@ token en el documento.
 
 ```python
 matcher = Matcher(nlp.vocab)
-matcher.add('DOG', None, [{"LOWER": "golden"}, {"LOWER": "retriever"}])
+matcher.add("DOG", None, [{"LOWER": "golden"}, {"LOWER": "retriever"}])
 doc = nlp("I have a Golden Retriever")
 
 for match_id, start, end in matcher(doc):

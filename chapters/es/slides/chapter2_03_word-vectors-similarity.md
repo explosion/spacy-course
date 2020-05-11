@@ -45,7 +45,7 @@ que si quieres usar los vectores usa uno de los modelos que terminan en "md" o
 
 ```python
 # Carga uno de los modelos más grandes que contiene vectores
-nlp = spacy.load('en_core_web_md')
+nlp = spacy.load("en_core_web_md")
 
 # Compara dos documentos
 doc1 = nlp("I like fast food")

@@ -164,7 +164,7 @@ Los modelos que estamos usando en este curso ya están pre-instalados. Para
 obtener más detalles sobre los modelos estadísticos de spaCy y cómo instalarlos
 en tu máquina revisa [la documentación](https://spacy.io/usage/models).
 
-- Usa `spacy.load` para cargar el modelo pequeño de inglés `'en_core_web_sm'`.
+- Usa `spacy.load` para cargar el modelo pequeño de inglés `"en_core_web_sm"`.
 - Procesa el texto e imprime en pantalla el texto del documento.
 
 <codeblock id="01_07">
@@ -183,7 +183,7 @@ correcto.
 Ahora puedes probar uno de los paquetes de modelos pre-entrenados de spaCy y ver
 sus predicciones en acción. ¡También puedes intentarlo con tu propio texto! Para
 averiguar lo que cada tag o label significa puedes llamar a `spacy.explain` en
-el <abbr title="En español: bucle, un bloque de código que se repite.">loop</abbr>. Por ejemplo, `spacy.explain('PROPN')` o `spacy.explain('GPE')`.
+el <abbr title="En español: bucle, un bloque de código que se repite.">loop</abbr>. Por ejemplo, `spacy.explain("PROPN")` o `spacy.explain("GPE")`.
 
 ### Parte 1
 

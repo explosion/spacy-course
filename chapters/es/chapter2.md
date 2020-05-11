@@ -268,7 +268,7 @@ En este ejercicio usarás un [modelo de inglés](https://spacy.io/models/en) má
 grande, que incluye al rededor de 20.000 word vectors. El modelo ya está
 pre-instalado.
 
-- Carga el modelo mediano `'en_core_web_md'` con word vectors.
+- Carga el modelo mediano `"en_core_web_md"` con word vectors.
 - Imprime en pantalla el vector de `"bananas"` usando el atributo
   `token.vector`.
 

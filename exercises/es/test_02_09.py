@@ -1,7 +1,6 @@
 def test():
     assert (
-        "spacy.load('en_core_web_md')" in __solution__
-        or 'spacy.load("en_core_web_md")' in __solution__
+        'spacy.load("en_core_web_md")' in __solution__
     ), "¿Estás cargando el modelo mediano correctamente?"
     assert "doc[1].vector" in __solution__, "¿Estás obteniendo el vector correcto?"
     __msg__.good(
