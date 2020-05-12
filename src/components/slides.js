@@ -125,49 +125,6 @@ const Video = ({ id, start = 0, end = 0 }) => {
     )
 }
 
-// const Video = ({ id, start = '', end = '' }) => {
-//     const { lang } = useContext(ChapterContext)
-//     const playerId = 'player'
-
-//     React.useEffect(() => {
-//         // https://developers.google.com/youtube/iframe_api_reference
-//         const tag = document.createElement('script')
-//         tag.src = 'https://www.youtube.com/iframe_api'
-//         const firstScriptTag = document.getElementsByTagName('script')[0]
-//         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag)
-
-//         window.onYouTubeIframeAPIReady = () => {
-//             console.log('yt ready')
-//             const player = new window.YT.Player(playerId, {
-//                 videoId: id,
-//                 events: {
-//                     onStateChange: ({ data }) => {
-//                         if (data === window.YT.PlayerState.ENDED) {
-//                             // Playback has ended
-//                             console.log('ended')
-//                         }
-//                     },
-//                 },
-//             })
-//         }
-//     }, [id, start, end])
-
-//     return (
-//         <figure className={classes.video}>
-//             <iframe
-//                 id={playerId}
-//                 title={id}
-//                 width="560"
-//                 height="315"
-//                 src={`https://www.youtube-nocookie.com/embed/${id}?start=${start}&end=${end}&version=3&color=white&hl=${lang}&modestbranding=1&rel=0&enablejsapi=1`}
-//                 frameBorder="0"
-//                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-//                 allowFullScreen
-//             />
-//         </figure>
-//     )
-// }
-
 class SlideDeck extends React.Component {
     componentDidMount() {
         import('reveal.js').then(({ default: Reveal }) => {
