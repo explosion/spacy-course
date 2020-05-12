@@ -7,7 +7,54 @@
 .slides
     text-align: left !important
 
+.menu
+    margin-top: -1rem
+    margin-bottom: 2rem
+
+.tab
+    font: inherit
+    font-size: var(--font-size-md)
+    font-weight: bold
+    padding: 0.25em 1em
+    border-radius: 2em
+    cursor: pointer
+    background-color: var(--color-subtle-medium)
+    cursor: pointer
+
+    &:not(:last-child)
+        margin-right: 1rem
+
+.tab-active
+    background: var(--color-theme)
+    color: var(--color-theme-contrast)
+
+.radio
+    display: none
+
 \:global
+    .plyr
+        iframe
+            margin: 0 auto
+            max-width: 100%
+
+        .plyr__progress
+            position: relative
+
+        .plyr__marker
+            position: absolute
+            bottom: 22px
+            left: var(--plyr-marker)
+            margin-left: -14px
+            font-weight: bold
+            text-transform: uppercase
+            cursor: pointer
+            pointer-events: initial
+            opacity: 1
+
+            &:before
+                left: initial
+                right: 0
+
     .reveal
         h1
             border-bottom: 1px solid var(--color-subtle-medium)

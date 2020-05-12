@@ -40,7 +40,10 @@
             "launchingDocker": "Launching Docker container on",
             "reconnectingDocker": "Reconnecting to Docker container on",
             "prevChapter": "Previous Chapter",
-            "nextChapter": "Next Chapter"
+            "nextChapter": "Next Chapter",
+            "start": "Start",
+            "video": "Video",
+            "slides": "Slides"
         }
     },
     "de": {
@@ -84,7 +87,10 @@
             "launchingDocker": "Starte Docker-Container auf",
             "reconnectingDocker": "Verbinde mit Docker-Container auf",
             "prevChapter": "Vorheriges Kapitel",
-            "nextChapter": "Nächstes Kapitel"
+            "nextChapter": "Nächstes Kapitel",
+            "start": "Start",
+            "video": "Video",
+            "slides": "Präsentation"
         }
     },
     "es": {

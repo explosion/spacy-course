@@ -42,10 +42,22 @@ const Template = ({ data }) => {
     const { lang } = fields
     const [activeExc, setActiveExc] = useState(null)
     const [completed, setCompleted] = useLocalStorage(`spacy-course-completed-${id}`, [])
+    const [slideType, setSlideType] = useLocalStorage(`spacy-course-slide-type`, 'video')
+    const context = {
+        lang,
+        activeExc,
+        setActiveExc,
+        completed,
+        setCompleted,
+        slideType,
+        setSlideType,
+    }
     const html = renderAst(htmlAst)
 
     return (
-        <ChapterContext.Provider value={{ lang, activeExc, setActiveExc, completed, setCompleted }}>
+        <ChapterContext.Provider
+            value={context}
+        >
             <Layout lang={lang} title={title} description={description} pageName={parent.name}>
                 {html}
 
