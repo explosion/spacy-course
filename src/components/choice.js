@@ -2,11 +2,11 @@ import React, { useState, useCallback, useContext } from 'react'
 import classNames from 'classnames'
 
 import { Button } from './button'
-import { UiTextContext } from '../context'
+import { LocaleContext } from '../context'
 import classes from '../styles/choice.module.sass'
 
 const Choice = ({ id = '0', children = [] }) => {
-    const uiText = useContext(UiTextContext)
+    const { uiText } = useContext(LocaleContext)
     const [selected, setSelected] = useState(null)
     const [answer, setAnswer] = useState(null)
     const handleAnswer = useCallback(() => setAnswer(selected), [selected])

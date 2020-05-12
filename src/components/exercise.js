@@ -2,12 +2,12 @@ import React, { useRef, useCallback, useContext, useEffect } from 'react'
 import classNames from 'classnames'
 
 import { Button, CompleteButton } from './button'
-import { ChapterContext, UiTextContext } from '../context'
+import { ChapterContext, LocaleContext } from '../context'
 import IconSlides from '../../static/icon_slides.svg'
 import classes from '../styles/exercise.module.sass'
 
 const Exercise = ({ id, title, type, children }) => {
-    const uiText = useContext(UiTextContext)
+    const { uiText } = useContext(LocaleContext)
     const excRef = useRef()
     const excId = parseInt(id)
     const { activeExc, setActiveExc, completed, setCompleted } = useContext(ChapterContext)

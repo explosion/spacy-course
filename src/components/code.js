@@ -3,7 +3,7 @@ import { StaticQuery, graphql } from 'gatsby'
 
 import { Hint } from './hint'
 import { Button } from './button'
-import { ChapterContext, UiTextContext } from '../context'
+import { ChapterContext, LocaleContext } from '../context'
 import classes from '../styles/code.module.sass'
 
 function getFiles({ allCode }, lang) {
@@ -109,8 +109,8 @@ class CodeBlock extends React.Component {
                             const solutionFile = files[solutionId]
                             const testFile = files[testId]
                             return (
-                                <UiTextContext.Consumer>
-                                    {uiText => (
+                                <LocaleContext.Consumer>
+                                    {({ uiText }) => (
                                         <div className={classes.root} key={this.state.key}>
                                             {Juniper && (
                                                 <Juniper
@@ -167,7 +167,7 @@ class CodeBlock extends React.Component {
                                             </Hint>
                                         </div>
                                     )}
-                                </UiTextContext.Consumer>
+                                </LocaleContext.Consumer>
                             )
                         }}
                     />
