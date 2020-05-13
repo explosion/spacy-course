@@ -249,7 +249,7 @@ The `.pos_` attribute returns the coarse-grained part-of-speech tag and
 
 </exercise>
 
-<exercise id="8" title="Word vectors and semantic similarities" type="slides">
+<exercise id="8" title="Word vectors and semantic similarity" type="slides">
 
 <slides source="chapter2_03_word-vectors-similarity">
 </slides>

@@ -109,7 +109,7 @@ benutzerdefinierten Doc-Attribute mit unseren Kontext-Metadaten überschreiben.
 
 <img src="/pipeline.png" width="90%" alt="Illustration der spaCy-Pipeline">
 
-- führe nicht die komplette Pipeline aus!
+- Führe nicht die komplette Pipeline aus!
 
 Notes: Ein weiteres Szenario, das dir häufig begegnen wird: Manchmal hast du
 zwar bereits ein Modell geladen, um andere Textverarbeitung vorzunehmen,
