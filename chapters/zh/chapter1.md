@@ -43,7 +43,7 @@ id: 1
 
 </exercise>
 
-<exercise id="3" title="文本(documents), 范围(spans)和词符(tokens) ">
+<exercise id="3" title="文本(documents), 跨度(spans)和词符(tokens) ">
 
 当我们在一段文字上调用`nlp`方法时，spaCy首先会对这段文字分词，然后创建一个文本对象。
 在这个练习中我们学习`Doc`及其视图`Token`和`Span`的用法。
@@ -195,7 +195,7 @@ spaCy可以读入的模型包中**不包含**以下哪项？
 
 - 使用`nlp`对象来处理文本
 - 对所有实体进行遍历，打印出实体的文本和标注。
-- 看上去模型并没有预测出"iPhone X"。为这几个词符创建一个范围（span）。
+- 看上去模型并没有预测出"iPhone X"。为这几个词符创建一个跨度（span）。
 
 <codeblock id="01_09">
 
@@ -225,15 +225,15 @@ spaCy可以读入的模型包中**不包含**以下哪项？
 - 创建一个模板使它可以和`"iPhone"`和`"X"`这两个词符的`"TEXT"`值匹配。
 - 使用`matcher.add`方法把模板加入到matcher里面。
 - 在`doc`上面调用matcher，把结果存储在`matches`变量中。
-- 遍历所有的match，得到从索引`start`到索引`end`的匹配结果的范围。
+- 遍历所有的match，得到从索引`start`到索引`end`的匹配结果的跨度。
 
 <codeblock id="01_11">
 
 - 共享的词汇表在`nlp.vocab`这个参数里面。
 - 一个模板就是一个列表，列表中的每一个元素是以属性名为键值的字典。
   举个例子，`[{"TEXT": "Hello"}]`会匹配到文本是"Hello"的一个词符。
-- 每一个匹配的`start`和`end`值代表了被匹配到的范围的起始和终止索引。
-  要得到这个范围，你需要用给定的start和end来创建`doc`的一段截取。
+- 每一个匹配的`start`和`end`值代表了被匹配到的跨度的起始和终止索引。
+  要得到这个跨度，你需要用给定的start和end来创建`doc`的一段截取。
 
 </codeblock>
 

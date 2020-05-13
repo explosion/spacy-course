@@ -2,51 +2,47 @@
 type: slides
 ---
 
-# Introduction to spaCy
+# spaCy介绍
 
-Notes: Hi, I'm Ines! I'm one of the core developers of spaCy, a popular library
-for advanced Natural Language Processing in Python.
+Notes: 大家好，我是Ines!我是spaCy的核心开发人员之一。
+spaCy是一个先进且广受欢迎的自然语言处理Python库。 
 
-In this lesson, we'll take a look at the most important concepts of spaCy and
-how to get started.
+在这门课中，我们会介绍一下spaCy中最重要的几个概念和如何快速上手。
 
 ---
 
-# The nlp object
+# nlp对象
 
 ```python
-# Import the English language class
+# 导入英语的语言类
 from spacy.lang.en import English
 
-# Create the nlp object
+# 创建nlp对象
 nlp = English()
 ```
 
-- contains the processing pipeline
-- includes language-specific rules for tokenization etc.
+- 包含了自然语言处理的流程
+- 包括了分词等任务的特定语言的规则
 
-Notes: At the center of spaCy is the object containing the processing pipeline.
-We usually call this variable "nlp".
+Notes: spaCy的核心就是包含了自然语言处理流程的对象。我们通常把这个变量叫做`nlp`。 
 
-For example, to create an English `nlp` object, you can import the `English`
-language class from `spacy.lang.en` and instantiate it. You can use the nlp
-object like a function to analyze text.
+举个例子，要创造一个英文的`nlp`的对象，我们要从`spacy.lang.en`中导入`English`这个语言类
+并创建一个实例。我们可以像一个函数一样使用nlp对象来分析文本。
 
-It contains all the different components in the pipeline.
+这个nlp对象包含了流程中的所有不同组件。
 
-It also includes language-specific rules used for tokenizing the text into words
-and punctuation. spaCy supports a variety of languages that are available in
-`spacy.lang`.
+它还包含了一些特定语言相关的规则，用来将文本分词成为单个的词汇和标点符号。
+spaCy支持多种不同语言，包含在`spacy.lang`中。
 
 ---
 
-# The Doc object
+# Doc对象
 
 ```python
-# Created by processing a string of text with the nlp object
+# 使用nlp对象处理一段文本并生成doc实例
 doc = nlp("Hello world!")
 
-# Iterate over tokens in a Doc
+# 遍历doc实例中的词符
 for token in doc:
     print(token.text)
 ```
@@ -57,26 +53,25 @@ world
 !
 ```
 
-Notes: When you process a text with the `nlp` object, spaCy creates a `Doc`
-object – short for "document". The Doc lets you access information about the
-text in a structured way, and no information is lost.
+Notes: 当我们用`nlp`对象来处理文本时，spaCy会创建一个`Doc`的对象，这是"document"的缩写。
+Doc可以让我们用结构化的方式来读取文本相关的信息，并且不会有信息丢失。
 
-The Doc behaves like a normal Python sequence by the way and lets you iterate
-over its tokens, or get a token by its index. But more on that later!
+Doc用起来就像一个正常的Python序列，我们可以遍历它的词符，
+或者使用索引读取其中一个词符。后面我们会详细介绍！
 
 ---
 
-# The Token object
+# Token对象
 
-<img src="/doc.png" alt="Illustration of a Doc object containing four tokens" width="50%" />
+<img src="/doc.png" alt="一个含有四个词符的Doc实例" width="50%" />
 
 ```python
 doc = nlp("Hello world!")
 
-# Index into the Doc to get a single Token
+# 使用Doc索引读取单个词符
 token = doc[1]
 
-# Get the token text via the .text attribute
+# 使用.text属性读取词符的文本
 print(token.text)
 ```
 
@@ -84,28 +79,27 @@ print(token.text)
 world
 ```
 
-Notes: `Token` objects represent the tokens in a document – for example, a word
-or a punctuation character.
+Notes: `Token`实例代表了一个文本中的词符，比如一个词或者一个标点符号。 
 
-To get a token at a specific position, you can index into the doc.
+要读取某一个位置的词符，我们可以直接使用doc的索引。
 
-`Token` objects also provide various attributes that let you access more
-information about the tokens. For example, the `.text` attribute returns the
-verbatim token text.
+`Token`实例同时提供了不同的属性可以让我们读取词符的其它信息。
+比如`.text`属性可以返回词符的原始文本。
+
 
 ---
 
-# The Span object
+# Span对象
 
-<img src="/doc_span.png" width="50%" alt="Illustration of a Doc object containing four tokens and three of them wrapped in a Span" />
+<img src="/doc_span.png" width="50%" alt="一个含有四个词符且其中三个被包装成一个跨度的Doc实例" />
 
 ```python
 doc = nlp("Hello world!")
 
-# A slice from the Doc is a Span object
+# 截取Doc的一部分就成为了Span实例
 span = doc[1:3]
 
-# Get the span text via the .text attribute
+# 使用.text属性获取span的文本
 print(span.text)
 ```
 
@@ -113,16 +107,16 @@ print(span.text)
 world!
 ```
 
-Notes: A `Span` object is a slice of the document consisting of one or more
-tokens. It's only a view of the `Doc` and doesn't contain any data itself.
+Notes: 一个`Span`实例是文本包含了一个或更多的词符的一段截取。
+它仅仅是`Doc`的一个视图而不包含实际的数据本身。 
 
-To create a span, you can use Python's slice notation. For example, `1:3` will
-create a slice starting from the token at position 1, up to – but not including!
-– the token at position 3.
+要创建一个span，我们可以使用Python截取的语法。举个例子，`1:3`会创建一个从索引1开始
+一直到索引3**之前**（不包括索引3）的词符截取。
+
 
 ---
 
-# Lexical Attributes
+# 词汇的属性
 
 ```python
 doc = nlp("It costs $5.")
@@ -146,22 +140,20 @@ is_punct: [False, False, False, False, True]
 like_num: [False, False, False, True, False]
 ```
 
-Notes: Here you can see some of the available token attributes:
+Notes: 我们可以看到一些可用的词符属性：
 
-`i` is the index of the token within the parent document.
+`i`是原始文本中的词符索引值。
 
-`text` returns the token text.
+`text`返回词符的文本。
 
-`is_alpha`, `is_punct` and `like_num` return boolean values indicating whether
-the token consists of alphabetic characters, whether it's punctuation or whether
-it _resembles_ a number. For example, a token "10" – one, zero – or the word
-"ten" – T, E, N.
+`is_alpha`，`is_punct`和`like_num`都会返回一个布尔值，检测词符是否有字母表字符组成、
+是否是标点符号或者是否_代表了_一个数字；举个例子，一个包含了1和0的词符"10"，
+或者一个包含了T,E,N三个字母的词组"ten"。
 
-These attributes are also called lexical attributes: they refer to the entry in
-the vocabulary and don't depend on the token's context.
+这些属性也被叫做词汇属性：他们仅仅代表了词典中元素的特性，而与词符所在的语义情境无关。
 
 ---
 
-# Let's practice!
+# 上手练习吧！
 
-Notes: Let's see this in action and process your first text with spaCy.
+Notes: 让我们上手实战，使用spaCy处理你的第一段文本吧。 
