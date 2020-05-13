@@ -11,6 +11,7 @@ import '../styles/plyr.css'
 import classes from '../styles/slides.module.sass'
 
 const CODE_LANGS = ['python']
+const FULLSCREEN = false
 
 function getFiles({ allMarkdownRemark }, lang) {
     return Object.assign(
@@ -162,7 +163,9 @@ class SlideDeck extends React.Component {
 
     render() {
         const { source } = this.props
-        const revealClassNames = classNames('reveal', 'show-notes', classes.reveal)
+        const revealClassNames = classNames('reveal', 'show-notes', classes.reveal, {
+            [classes.fullscreen]: FULLSCREEN,
+        })
         const slideClassNames = classNames('slides', classes.slides)
 
         return (
