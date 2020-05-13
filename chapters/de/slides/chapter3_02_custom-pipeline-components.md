@@ -180,4 +180,4 @@ wird gedruckt.
 # Los geht's!
 
 Notes: Zeit, das Gelernte umzusetzen und deine erste benutzerdefinierte
-Pipeline-Komponente zu definieren!
+Pipeline-Komponente zu erstellen!

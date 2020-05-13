@@ -7,7 +7,7 @@ type: slides
 Notes: In this lesson, you'll learn how to use spaCy to predict how similar
 documents, spans or tokens are to each other.
 
-You'll also learn about how to use word vectors and how to take advantage of
+You'll also learn how to use word vectors and how to take advantage of
 them in your NLP application.
 
 ---

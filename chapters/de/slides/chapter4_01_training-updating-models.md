@@ -9,7 +9,7 @@ behandelt: das Trainieren deiner eigenen Modelle!
 
 In dieser Lektion lernst du, wie du spaCys neuronale Netzwerk-Modelle trainieren
 und aktualisieren kannst, und welche Daten du dafür brauchst – vor allem für den
-Named Entity Recognizer und eigenen Entitäten.
+Named Entity Recognizer und neue Entitäten.
 
 ---
 
@@ -21,9 +21,9 @@ Named Entity Recognizer und eigenen Entitäten.
 - Sehr nützlich für Entitäten
 - Etwas weniger wichtig für Wortarten und Dependenzrelationen
 
-Notes: Bevor wir lernen _wie_ man Modelle trainiert, macht es Sinn, kurz inne zu
-halten und uns zu fragen: Warum sollten wir unser Modell mit unseren eigenen
-Beispielen aktualisieren? Und warum können wir uns nicht einfach auf
+Notes: Bevor wir uns anschauen, _wie_ man Modelle trainiert, macht es Sinn, kurz
+inne zu halten und uns zu fragen: Warum sollten wir unser Modell mit unseren
+eigenen Beispielen aktualisieren? Und warum können wir uns nicht einfach auf
 vortrainierte Modelle verlassen?
 
 Statistische Modelle treffen Vorhersagen auf Basis der Beispeile, mit denen sie
