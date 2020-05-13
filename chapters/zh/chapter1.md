@@ -1,5 +1,5 @@
 ---
-title: '第1章: 词语、短语、名字和概念的检索'
+title: '第一章: 词语、短语、名字和概念的检索'
 description:
   "本章介绍spaCy文本处理的基础知识。
    你将会学习到数据结构、构造统计模型以及如何用它们来抽取文本中的语言学特征。"
@@ -18,23 +18,23 @@ id: 1
 
 <exercise id="2" title="入门">
 
-让我们来一起开始使用spaCy吧！这个例子中你会尝试用到55+个[spaCy支持的语言](https://spacy.io/usage/models#languages)中的一些。
+让我们来一起开始使用spaCy吧！这个例子中我们会尝试用到55+个[spaCy支持的语言](https://spacy.io/usage/models#languages)中的一些。
 
-### Part 1: 英语
+### 第一部分: 英语
 
 - 从`spacy.lang.en`中导入`English`类然后创建`nlp`对象。
 - 创建`doc`并打印其中的文本。
 
 <codeblock id="01_02_01"></codeblock>
 
-### Part 2: 德语
+### 第二部分: 德语
 
 - 从`spacy.lang.de`中导入`German`类然后创建`nlp`对象。
 - 创建`doc`并打印其中的文本。
 
 <codeblock id="01_02_02"></codeblock>
 
-### Part 3: 西班牙语
+### 第三部分: 西班牙语
 
 - 从`spacy.lang.es`中导入`Spanish`类然后创建`nlp`对象。
 - 创建`doc`并打印其中的文本。
@@ -43,267 +43,245 @@ id: 1
 
 </exercise>
 
-<exercise id="3" title="Documents, spans and tokens">
+<exercise id="3" title="文本(documents), 范围(spans)和词符(tokens) ">
 
-When you call `nlp` on a string, spaCy first tokenizes the text and creates a
-document object. In this exercise, you'll learn more about the `Doc`, as well as
-its views `Token` and `Span`.
+当我们在一段文字上调用`nlp`方法时，spaCy首先会对这段文字分词，然后创建一个文本对象。
+在这个练习中我们学习`Doc`及其视图`Token`和`Span`的用法。
 
-### Step 1
+### 第一步
 
-- Import the `English` language class and create the `nlp` object.
-- Process the text and instantiate a `Doc` object in the variable `doc`.
-- Select the first token of the `Doc` and print its `text`.
+- 导入`English`的语言类然后创建`nlp`的对象
+- 处理文本，然后在`doc`变量中创建一个`Doc`对象的实例。
+- 选取`Doc`中的第一个词符并打印出它的`text`。
 
 <codeblock id="01_03_01">
 
-You can index into a `Doc` the same way you index into a list in Python. For
-example, `doc[4]` will give you the token at index 4, which is the fifth token
-in the text. Remember that in Python the first index is 0, not 1.
+我们可以像检索Python中的list一样检索`Doc`。
+举个例子，`doc[4]`会返回索引为4也就是文本中第五个位置的词符。
+要注意Python中的第一个索引是0而不是1。
 
 </codeblock>
 
-### Step 2
+### 第二步
 
-- Import the `English` language class and create the `nlp` object.
-- Process the text and instantiate a `Doc` object in the variable `doc`.
-- Create a slice of the `Doc` for the tokens "tree kangaroos" and "tree
-  kangaroos and narwhals".
+- 导入`English`的语言类然后创建`nlp`的对象
+- 处理文本，然后在`doc`变量中创建一个`Doc`对象的实例。
+- 从`Doc`中截取其部分的词符"tree kangaroos"和"treekangaroos and narwhals"。
 
 <codeblock id="01_03_02">
 
-Creating a slice of a `Doc` works just like creating a slice of a list in Python
-using the `:` notation. Remember that the last token index is _exclusive_ – for
-example, `0:4` describes the tokens 0 _up to_ token 4, but not including
-token 4.
+截取`Doc`中的一部分和截取Python list中的一部分是一样的，都可以使用`:`的标记方法。
+要注意最后一个词符的索引是_不被包含在内的_。
+举个例子，`0:4`包含了索引0,1,2,3的词符，但并不包含索引为4的词符。
 
 </codeblock>
 
 </exercise>
 
-<exercise id="4" title="Lexical attributes">
+<exercise id="4" title="词汇属性">
 
-In this example, you'll use spaCy's `Doc` and `Token` objects, and lexical
-attributes to find percentages in a text. You'll be looking for two subsequent
-tokens: a number and a percent sign.
+在这个例子中，我们要使用spaCy中的`Doc`和`Token`对象以及一些词汇属性来寻找文本中
+表示百分比的部分。我们要寻找两个相邻的词符：一个数字和一个百分比符号。
 
-- Use the `like_num` token attribute to check whether a token in the `doc`
-  resembles a number.
-- Get the token _following_ the current token in the document. The index of the
-  next token in the `doc` is `token.i + 1`.
-- Check whether the next token's `text` attribute is a percent sign "%".
+- 使用词符属性`like_num`来检查一个`doc`中的词符是否构成一个数字。
+- 获取文档中_紧接着_当前词符的词符。`doc`中下一个词符的索引是`token.i + 1`。
+- 检查下一个词符的`text`属性是否是百分比符号"%"。
 
 <codeblock id="01_04">
 
-To get the token at a certain index, you can index into the `doc`. For example,
-`doc[5]` is the token at index 5.
+要获取某一个索引的词符，我们可以直接用`doc`的索引。
+举个例子，`doc[5]`就是索引为5的词符。
 
 </codeblock>
 
 </exercise>
 
-<exercise id="5" title="Statistical models" type="slides">
+<exercise id="5" title="统计模型" type="slides">
 
 <slides source="chapter1_02_statistical-models">
 </slides>
 
 </exercise>
 
-<exercise id="6" title="Model packages" type="choice">
+<exercise id="6" title="模型包" type="choice">
 
-What's **not** included in a model package that you can load into spaCy?
+spaCy可以读入的模型包中**不包含**以下哪项？
 
 <choice>
-<opt text="A meta file including the language, pipeline and license.">
+<opt text="包含有语言、流程和许可证书的文件">
 
-All models include a `meta.json` that defines the language to initialize, the
-pipeline component names to load as well as general meta information like the
-model name, version, license, data sources, author and accuracy figures (if
-available).
+所以模型都包含一个`meta.json`，定义了启用的语言、调用的流程组件名字以及一些其它的信息，
+比如模型名字、版本、许可证书、数据源、作者以及准确率的图标（如果有的话）。
 
 </opt>
-<opt text="Binary weights to make statistical predictions.">
+<opt text="用来做统计预测的模型二进制权重">
 
-To predict linguistic annotations like part-of-speech tags, dependency labels or
-named entities, models include binary weights.
-
-</opt>
-<opt correct="true" text="The labelled data that the model was trained on.">
-
-Statistical models allow you to generalize based on a set of training examples.
-Once they're trained, they use binary weights to make predictions. That's why
-it's not necessary to ship them with their training data.
+用来做语义标注如词性标注、从属分析或者命名实体识别的模型，包含了二进制的权重
 
 </opt>
-<opt text="Strings of the model's vocabulary and their hashes.">
+<opt correct="true" text="模型训练使用的标注数据">
 
-Model packages include a `strings.json` that stores the entries in the model's
-vocabulary and the mapping to hashes. This allows spaCy to only communicate in
-hashes and look up the corresponding string if needed.
+统计模型可以在训练数据的基础上泛化。
+训练好之后模型就可以直接用二进制的权重做预测。
+这也是为什么我们不需要把模型当初训练时使用的训练数据也一并包含进来。
+
+</opt>
+<opt text="模型的词典字符串以及它们的哈希值">
+
+模型包包含了`string.json`，该文件存储了模型的词典及其对应的哈希值。
+这样spaCy在需要的时候可以直接调用哈希值来搜索到对应的词典字符串。
 
 </opt>
 </choice>
 
 </exercise>
 
-<exercise id="7" title="Loading models">
+<exercise id="7" title="调用模型">
 
-The models we're using in this course are already pre-installed. For more
-details on spaCy's statistical models and how to install them on your machine,
-see [the documentation](https://spacy.io/usage/models).
+这门课中我们需要使用的模型都已经预装好了。
+如果你想了解更多关于spaCy的统计模型以及如何在自己的电脑上安装这些模型，
+可以参考[这份文档](https://spacy.io/usage/models)。
 
-- Use `spacy.load` to load the small English model `"en_core_web_sm"`.
-- Process the text and print the document text.
+- 使用`spacy.load`来调用一个比较小的英文模型`"en_core_web_sm"`。
+- 处理文档并打印出文档中的文字。
 
 <codeblock id="01_07">
 
-To load a model, call `spacy.load` on its string name. Model names differ
-depending on the language and the data they were trained on – so make sure to
-use the correct name.
+要调用一个模型，我们可以调用`spacy.load`加上模型对应名字的字符串。
+模型的名字会因为语言和训练数据的不同而有所变化，所以请确保使用了正确的名字。
 
 </codeblock>
 
 </exercise>
 
-<exercise id="8" title="Predicting linguistic annotations">
+<exercise id="8" title="语言学标注的预测">
 
-You'll now get to try one of spaCy's pre-trained model packages and see its
-predictions in action. Feel free to try it out on your own text! To find out
-what a tag or label means, you can call `spacy.explain` in the loop. For
-example: `spacy.explain("PROPN")` or `spacy.explain("GPE")`.
+我们现在来试试spaCy的一个已经预训练好的模型包看看它在实际预测中的表现。
+你完全可以在自己设定的文本中做测试！
+如果你对某一个标注或者标签不清楚，可以在代码中调用`spacy.explain`。
+举个例子，`spacy.explain("PROPN")`或者`spacy.explain("GPE")`.
 
-### Part 1
+### 第一部分
 
-- Process the text with the `nlp` object and create a `doc`.
-- For each token, print the token text, the token's `.pos_` (part-of-speech tag)
-  and the token's `.dep_` (dependency label).
+- 使用`nlp`对象来处理文本，创建一个`doc`。
+- 对每一个词符，打印出其中的文字、词符的`.pos_`（词性标注）
+  以及词符的`.dep_`（从属标注）。
 
 <codeblock id="01_08_01">
 
-To create a `doc`, call the `nlp` object on a string of text. Remember that you
-need to use the token attribute names with an underscore to get the string
-values.
+如果要创建一个`doc`，我们要对文本中的一个字符串调用`nlp`对象。
+要注意我们要在词符属性名后面加一个下划线来拿到字符串的值。
 
 </codeblock>
 
 ### Part 2
 
-- Process the text and create a `doc` object.
-- Iterate over the `doc.ents` and print the entity text and `label_` attribute.
+- 处理文本创建一个`doc`对象。
+- 对`doc.ents`做遍历，打印出实体的文本以及`label_`属性。
 
 <codeblock id="01_08_02">
 
-To create a `doc`, call the `nlp` object on a string of text. Remember that you
-need to use the token attribute names with an underscore to get the string
-values.
+如果要创建一个`doc`，我们要对文本中的一个字符串调用`nlp`对象。
+要注意我们要在词符属性名后面加一个下划线来拿到字符串的值。
 
 </codeblock>
 
 </exercise>
 
-<exercise id="9" title="Predicting named entities in context">
+<exercise id="9" title="命名实体在情境中的预测">
 
-Models are statistical and not _always_ right. Whether their predictions are
-correct depends on the training data and the text you're processing. Let's take
-a look at an example.
+模型是基于统计学的但并不是_永远_正确。模型的预测是否正确取决于训练数据和我们要处理的文本。
+我们来看一个例子：
 
-- Process the text with the `nlp` object.
-- Iterate over the entities and print the entity text and label.
-- Looks like the model didn't predict "iPhone X". Create a span for those tokens
-  manually.
+- 使用`nlp`对象来处理文本
+- 对所有实体进行遍历，打印出实体的文本和标注。
+- 看上去模型并没有预测出"iPhone X"。为这几个词符创建一个范围（span）。
 
 <codeblock id="01_09">
 
-- To create a `doc`, call the `nlp` object on the text. Named entities are
-  available as the `doc.ents` property.
-- The easiest way to create a `Span` object is to use the slice notation – for
-  example `doc[5:10]` for the token at position 5 _up to_ position 10. Remember
-  that the last token index is exclusive.
+- 要创建一个`doc`，对文本调用`nlp`对象。命名实体的结果在`doc.ents`这个参数中。
+- 创建`Span`对象最简单的方法是使用截取的符号。
+  举个例子，`doc[5:10]`可以返回从索引为5的位置一直到索引10_之前_。
+  注意最后一个索引是排除在外的。
 
 </codeblock>
 
 </exercise>
 
-<exercise id="10" title="Rule-based matching" type="slides">
+<exercise id="10" title="基于规则的匹配抽取" type="slides">
 
 <slides source="chapter1_03_rule-based-matching">
 </slides>
 
 </exercise>
 
-<exercise id="11" title="Using the Matcher">
+<exercise id="11" title="Matcher的使用">
 
-Let's try spaCy's rule-based `Matcher`. You'll be using the example from the
-previous exercise and write a pattern that can match the phrase "iPhone X" in
-the text.
+现在我们来试试使用spaCy的基于规则的`Matcher`。
+我们继续沿用之前练习中的例子，写一个可以匹配到文本中"iPhone X"这个短语的模版。
 
-- Import the `Matcher` from `spacy.matcher`.
-- Initialize it with the `nlp` object's shared `vocab`.
-- Create a pattern that matches the `"TEXT"` values of two tokens: `"iPhone"`
-  and `"X"`.
-- Use the `matcher.add` method to add the pattern to the matcher.
-- Call the matcher on the `doc` and store the result in the variable `matches`.
-- Iterate over the matches and get the matched span from the `start` to the
-  `end` index.
+- 从`spacy.matcher`中导入`Matcher`。
+- 用`nlp`对象中共享的`vocab`来初始化它。
+- 创建一个模板使它可以和`"iPhone"`和`"X"`这两个词符的`"TEXT"`值匹配。
+- 使用`matcher.add`方法把模板加入到matcher里面。
+- 在`doc`上面调用matcher，把结果存储在`matches`变量中。
+- 遍历所有的match，得到从索引`start`到索引`end`的匹配结果的范围。
 
 <codeblock id="01_11">
 
-- The shared vocabulary is available as the `nlp.vocab` attribute.
-- A pattern is a list of dictionaries keyed by the attribute names. For example,
-  `[{"TEXT": "Hello"}]` will match one token whose exact text is "Hello".
-- The `start` and `end` values of each match describe the start and end index of
-  the matched span. To get the span, you can create a slice of the `doc` using
-  the given start and end.
+- 共享的词汇表在`nlp.vocab`这个参数里面。
+- 一个模板就是一个列表，列表中的每一个元素是以属性名为键值的字典。
+  举个例子，`[{"TEXT": "Hello"}]`会匹配到文本是"Hello"的一个词符。
+- 每一个匹配的`start`和`end`值代表了被匹配到的范围的起始和终止索引。
+  要得到这个范围，你需要用给定的start和end来创建`doc`的一段截取。
 
 </codeblock>
 
 </exercise>
 
-<exercise id="12" title="Writing match patterns">
+<exercise id="12" title="匹配模板的书写">
 
-In this exercise, you'll practice writing more complex match patterns using
-different token attributes and operators.
+这个练习中我们来试着用不同的词符属性和运算符写一些更复杂的匹配模板。
 
-### Part 1
+### 第一部分
 
-- Write **one** pattern that only matches mentions of the _full_ iOS versions:
-  "iOS 7", "iOS 11" and "iOS 10".
+- 写**一个**模板，只匹配到所有提及_完整_iOS版本的部分：
+  "iOS 7"，"iOS 11"和"iOS 10"。
 
 <codeblock id="01_12_01">
 
-- To match a token with an exact text, you can use the `TEXT` attribute. For
-  example, `{"TEXT": "Apple"}` will match tokens with the exact text "Apple".
-- To match a number token, you can use the `"IS_DIGIT"` attribute, which will
-  only return `True` for tokens consisting of only digits.
+- 要精确匹配词符到某一段文字，我们可以使用`TEXT`属性。
+  举个例子，`{"TEXT": "Apple"}`会精确匹配到所有文本是"Apple"的词符。
+- 要匹配一个数字的词符，我们可以使用`"IS_DIGIT"`属性，
+  该属性当目标词符只含有数字时会返回`True`。
 
 </codeblock>
 
-### Part 2
+### 第二部分
 
-- Write **one** pattern that only matches forms of "download" (tokens with the
-  lemma "download"), followed by a token with the part-of-speech tag `"PROPN"`
-  (proper noun).
+- 写**一个**模板，只匹配到不同格式的"download"词（词符的原词是"download"），
+  后面跟着一个词性是`"PROPN"`（专有名词）的词符。
 
 <codeblock id="01_12_02">
 
-- To specify a lemma, you can use the `"LEMMA"` attribute in the token pattern.
-  For example, `{"LEMMA": "be"}` will match tokens like "is", "was" or "being".
-- To find proper nouns, you want to match all tokens whose `"POS"` value equals
-  `"PROPN"`.
+- 要定义一个原词，我们可以在词符模板中使用`"LEMMA"`这个属性。
+  举个例子，`{"LEMMA": "be"}`会匹配到如"is", "was"和"being"这样的词符。
+- 要找到专有名词，我们可以寻找所有`"POS"`值是`"PROPN"`的词符。
 
 </codeblock>
 
-### Part 3
+### 第三部分
 
-- Write **one** pattern that matches adjectives (`"ADJ"`) followed by one or two
-  `"NOUN"`s (one noun and one optional noun).
+- 写**一个**模板，匹配到形容词（`"ADJ"`）
+  后面跟着一两个名词`"NOUN"`（一个名词和另一个可能有的名词）。
 
 <codeblock id="01_12_03">
 
-- To find adjectives, look for tokens whose `"POS"` value equals `"ADJ"`. For
-  nouns, look for `"NOUN"`.
-- Operators can be added via the `"OP"` key. For example, `"OP": "?"` to match
-  zero or one time.
+- 要找到形容词我们需要寻找那些`"POS"`值是`"ADJ"`的词符。
+  对于名词我们要寻找`"NOUN"`。
+- 运算符可以通过`"OP"`这个键值来添加。
+  举个例子，`"OP": "?"`可以用来表示0次或1次的匹配。
+
 
 </codeblock>
 
