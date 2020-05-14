@@ -228,7 +228,7 @@ a look at an example.
 
 <exercise id="10" title="Rule-based matching" type="slides,video">
 
-<slides source="chapter1_03_rule-based-matching" start="7:115" end="10:55">
+<slides source="chapter1_03_rule-based-matching" start="7:118" end="10:55">
 </slides>
 
 </exercise>
