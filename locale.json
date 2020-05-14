@@ -5,6 +5,7 @@
         "slogan": "A free online course",
         "description": "spaCy is a modern Python library for industrial-strength Natural Language Processing. In this free and interactive online course, you'll learn how to use spaCy to build advanced natural language understanding systems, using both rule-based and machine learning approaches.",
         "bio": "I'm Ines, one of the core developers of spaCy and the co-founder of Explosion. I specialize in modern developer tools for AI, Machine Learning and NLP. I also really love building stuff for the web.",
+        "video": "THduWAnG97k",
         "footerLinks": [
             {
                 "text": "spaCy Website",
