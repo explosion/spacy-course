@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 import Marked from 'reveal.js/plugin/markdown/marked.js'
 import Prism from 'prismjs'
-import Plyr from 'plyr'
 import classNames from 'classnames'
 
 import { ChapterContext, LocaleContext } from '../context'
@@ -91,36 +90,40 @@ const Video = ({ id, start = 0, end = 0 }) => {
     }
 
     useEffect(() => {
-        const player = new Plyr(ref.current, options)
-        player.on('ready', () => {
-            if (ref.current) {
-                const marker = document.createElement('span')
-                ref.current.querySelector('.plyr__progress').appendChild(marker)
-                marker.className = 'plyr__tooltip plyr__marker'
-                marker.textContent = uiText.start
-                marker.addEventListener('click', () => {
-                    player.currentTime = start
-                    player.play()
-                })
-            }
-            setDuration(player.duration)
-            player.currentTime = start
-        })
-        player.on('timeupdate', () => {
-            if (player.currentTime > end) {
-                player.pause()
-                player.currentTime = end
-            }
-        })
-        player.on('play', () => {
-            if (player.currentTime >= end) {
+        let player = null
+        import('plyr').then(({ default: Plyr }) => {
+            console.log(Plyr)
+            player = new Plyr(ref.current, options)
+            player.on('ready', () => {
+                if (ref.current) {
+                    const marker = document.createElement('span')
+                    ref.current.querySelector('.plyr__progress').appendChild(marker)
+                    marker.className = 'plyr__tooltip plyr__marker'
+                    marker.textContent = uiText.start
+                    marker.addEventListener('click', () => {
+                        player.currentTime = start
+                        player.play()
+                    })
+                }
+                setDuration(player.duration)
                 player.currentTime = start
-            }
+            })
+            player.on('timeupdate', () => {
+                if (player.currentTime > end) {
+                    player.pause()
+                    player.currentTime = end
+                }
+            })
+            player.on('play', () => {
+                if (player.currentTime >= end) {
+                    player.currentTime = start
+                }
+            })
         })
         return () => {
             if (player) player.destroy()
         }
-    }, [id, start, end])
+    }, [])
 
     return (
         <div style={{ '--plyr-marker': `${(100 / duration) * start}%` }}>
