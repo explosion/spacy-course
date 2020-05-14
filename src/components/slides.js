@@ -31,6 +31,14 @@ function getSlideContent(data, source, lang) {
     return file.split('\n---\n').map(f => f.trim())
 }
 
+function timestampToSeconds(ts) {
+    if (ts === null) return ts
+    const [mins, secs] = ts.split(':')
+    const seconds =
+        secs.length > 2 ? parseFloat(`${secs.slice(0, 2)}.${secs.slice(2)}`) : parseInt(secs)
+    return parseInt(mins) * 60 + seconds
+}
+
 const Slides = ({ source, start = null, end = null }) => {
     const { slideType, setSlideType } = useContext(ChapterContext)
     const { video, uiText } = useContext(LocaleContext)
@@ -59,7 +67,7 @@ const Slides = ({ source, start = null, end = null }) => {
                 })}
             </menu>
             {slideType === 'video' ? (
-                <Video id={video} start={parseInt(start)} end={parseInt(end)} />
+                <Video id={video} start={timestampToSeconds(start)} end={timestampToSeconds(end)} />
             ) : (
                 <SlideDeck source={source} />
             )}
