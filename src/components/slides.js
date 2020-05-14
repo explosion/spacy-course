@@ -91,7 +91,6 @@ const Video = ({ id, start = 0, end = 0 }) => {
             }
             setDuration(player.duration)
             player.currentTime = start
-            player.play()
         })
         player.on('timeupdate', () => {
             if (player.currentTime > end) {
