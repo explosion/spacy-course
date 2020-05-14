@@ -12,9 +12,9 @@ type: chapter
 id: 4
 ---
 
-<exercise id="1" title="Training and updating models" type="slides">
+<exercise id="1" title="Training and updating models" type="slides,video">
 
-<slides source="chapter4_01_training-updating-models">
+<slides source="chapter4_01_training-updating-models" start="35:02" end="38:495">
 </slides>
 
 </exercise>
@@ -102,9 +102,9 @@ a set of training examples. A list of sentences is available as the variable
 
 </exercise>
 
-<exercise id="5" title="The training loop" type="slides">
+<exercise id="5" title="The training loop" type="slides,video">
 
-<slides source="chapter4_02_training-loop">
+<slides source="chapter4_02_training-loop" start="39:00" end="42:25">
 </slides>
 
 </exercise>
@@ -220,9 +220,9 @@ number of total correct entities the model _should_ have predicted.
 
 </exercise>
 
-<exercise id="9" title="Training best practices" type="slides">
+<exercise id="9" title="Training best practices" type="slides,video">
 
-<slides source="chapter4_03_training-best-practices">
+<slides source="chapter4_03_training-best-practices" start="42:36" end="44:55">
 </slides>
 
 </exercise>
@@ -373,9 +373,9 @@ the problem here.
 
 </exercise>
 
-<exercise id="12" title="Wrapping up" type="slides">
+<exercise id="12" title="Wrapping up" type="slides,video">
 
-<slides source="chapter4_04_wrapping-up">
+<slides source="chapter4_04_wrapping-up" start="45:01" end="47:195">
 </slides>
 
 </exercise>

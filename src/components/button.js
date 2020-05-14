@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import classNames from 'classnames'
 
-import { UiTextContext } from '../context'
+import { LocaleContext } from '../context'
 import IconCheck from '../../static/icon_check.svg'
 import classes from '../styles/button.module.sass'
 
@@ -19,7 +19,7 @@ export const Button = ({ Component = 'button', children, onClick, variant, small
 }
 
 export const CompleteButton = ({ completed, toggleComplete, small = true }) => {
-    const uiText = useContext(UiTextContext)
+    const { uiText } = useContext(LocaleContext)
     const buttonClassNames = classNames({
         [classes.completeInactive]: !completed,
         [classes.completeActive]: completed,

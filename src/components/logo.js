@@ -1,15 +1,15 @@
 import React, { useContext } from 'react'
 
-import { UiTextContext } from '../context'
+import { LocaleContext } from '../context'
 import Logos from '../../static/logos.svg'
 
 export const Logo = ({ width = 300, height = 107, lang, className, ...props }) => {
-    const uiText = useContext(UiTextContext)
+    const { title } = useContext(LocaleContext)
     return (
         <>
             <Logos aria-hidden="true" width={1} height={1} style={{ visibility: 'hidden' }} />
             <svg
-                aria-label={uiText.courseTitle}
+                aria-label={title}
                 viewBox={Logos.defaultProps.viewBox}
                 className={className}
                 width={width}
