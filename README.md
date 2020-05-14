@@ -4,10 +4,10 @@ This repo contains both an [**online course**](https://course.spacy.io), as well
 as its modern open-source web framework. In the course, you'll learn how to use
 [spaCy](https://spacy.io) to build advanced natural language understanding
 systems, using both rule-based and machine learning approaches. The front-end is
-powered by [Gatsby](http://gatsbyjs.org/) and [Reveal.js](https://revealjs.com)
-and the back-end code execution uses [Binder](https://mybinder.org) 💖 It's all
-open-source and published under the MIT license (code and framework) and CC
-BY-NC (spaCy course materials).
+powered by [Gatsby](http://gatsbyjs.org/), [Reveal.js](https://revealjs.com) and
+[Plyr](https://github.com/sampotts/plyr), and the back-end code execution uses
+[Binder](https://mybinder.org) 💖 It's all open-source and published under the
+MIT license (code and framework) and CC BY-NC (spaCy course materials).
 
 _This course is mostly intended for **self-study**. Yes, you can cheat – the
 solutions are all in this repo, there's no penalty for clicking "Show hints" or
