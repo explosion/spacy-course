@@ -46,6 +46,8 @@
 
 \:global
     .plyr
+        background: var(--color-back) !important
+
         iframe
             margin: 0 auto
             max-width: 100%
@@ -57,7 +59,7 @@
                 top: 60px
                 height: calc(100% - 60px)
 
-            &.plyr--paused:after
+            &:not(.plyr--loading).plyr--paused:after
                 // Hide YouTube's recommended videos
                 content: ""
                 width: 100%
