@@ -45,8 +45,8 @@ und nicht in spaCy eingebaut sind, wie zum Beispiel Token.text.
 Attribute müssen über die globalen Klassen `Doc`, `Token` und `Span`, die du von
 `spacy.tokens` importieren kannst, registriert werden. Mit ihnen hast du bereits
 in den vorherigen Kapiteln gearbeitet. Um ein benutzerdefiniertes Attribut eines
-Docs, Tokens oder er Span zu registrieren, kannst du die Methode `set_extension`
-verwenden.
+Docs, Tokens oder einer Span zu registrieren, kannst du die Methode
+`set_extension` verwenden.
 
 Das erste Argument ist der Name des Attributs. Mit Keyword-Argumenten kannst du
 festlegen, wie der Wert des Attributs berechnet werden soll. In diesem Fall hat
@@ -83,7 +83,7 @@ doc[3]._.is_color = True
 Notes: Attribut-Erweiterungen legen einen Standardwert fest, der überschrieben
 werden kann.
 
-Das benutzerdefinierte Attribute `is_color` zum Beispiel hat standardmäßig den
+Das benutzerdefinierte Attribut `is_color` zum Beispiel hat standardmäßig den
 Wert `False`.
 
 Für einzelne Tokens kann sein Wert geändert werden, indem man den Wert
@@ -205,7 +205,7 @@ Du kannst dann Argumente definieren und beliebige Werte berechnen – zum
 Beispiel, basierend auf einem bestimmten Argument oder einer bestimmten
 Einstellung.
 
-In diesem Beispiel überprüft die Funktion, ob das Doc einen Token mit einen
+In diesem Beispiel überprüft die Funktion, ob das Doc einen Token mit einem
 bestimmten Text enthält. Das erste Argument der Methode ist immer das Objekt
 selbst – in diesem Fall, das Doc. Es wird automatisch eingefügt, wenn die
 Methode aufgerufen wird. Alle anderen Argumente der Funktion werden zu

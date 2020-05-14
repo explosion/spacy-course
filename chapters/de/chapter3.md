@@ -101,7 +101,7 @@ gelöst werden? Wähle alle Optionen aus, die zutreffen.
 
 <choice>
 
-<opt text="1 and 2.">
+<opt text="1 und 2.">
 
 Benutzerdefinierte Komponenten können lediglich das `Doc` bearbeiten und daher
 nicht dazu genutzt werden, die Gewichte des Modells anderer Komponenten direkt
@@ -109,7 +109,7 @@ zu verändern.
 
 </opt>
 
-<opt text="1 and 3.">
+<opt text="1 und 3.">
 
 Benutzerdefinierte Komponenten können lediglich das `Doc` bearbeiten und daher
 nicht dazu genutzt werden, die Gewichte des Modells anderer Komponenten direkt
@@ -117,7 +117,7 @@ zu verändern.
 
 </opt>
 
-<opt text="1 and 4.">
+<opt text="1 und 4.">
 
 Benutzerdefinierte Komponenten können lediglich das `Doc` bearbeiten und daher
 nicht dazu genutzt werden, die Gewichte des Modells anderer Komponenten direkt
@@ -127,7 +127,7 @@ nicht geeignet, um neue Sprachen hinzuzufügen.
 
 </opt>
 
-<opt text="2 and 3." correct="true">
+<opt text="2 und 3." correct="true">
 
 Benutzerdefinierte Komponenten eignen sich sehr gut dazu, eigene berechnete
 Werte zu Dokumenten, Tokens und Spans hinzuzufügen, und die `doc.ents` zu
@@ -135,7 +135,7 @@ bearbeiten.
 
 </opt>
 
-<opt text="2 and 4.">
+<opt text="2 und 4.">
 
 Benutzerdefinierte Komponenten werden zur Pipeline hinzugefügt, nachdem die
 Sprach-Klasse bereits initialisiert und der Text tokenisiert ist. Sie sind daher
@@ -143,7 +143,7 @@ nicht geeignet, um neue Sprachen hinzuzufügen.
 
 </opt>
 
-<opt text="3 and 4.">
+<opt text="3 und 4.">
 
 Benutzerdefinierte Komponenten werden zur Pipeline hinzugefügt, nachdem die
 Sprach-Klasse bereits initialisiert und der Text tokenisiert ist. Sie sind daher

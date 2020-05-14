@@ -37,9 +37,9 @@ Sie verarbeitet die Texte als Stream und gibt per `yield` `Doc`-Objekte zurück.
 Dies ist viel schneller, als das `nlp`-Objekt mit jedem Text aufzurufen, da es
 die Texte in Batches aufteilt.
 
-`nlp.pip` ist ein Generator, der `yield` verwendet und `Doc`-Objekte zurückgibt.
-Denke daher daran, dass du die Methode `list` drumherum aufrufen musst, um eine
-Liste von `Doc`-Objekten zu erhalten.
+`nlp.pipe` ist ein Generator, der `yield` verwendet und `Doc`-Objekte
+zurückgibt. Denke daher daran, dass du die Methode `list` drumherum aufrufen
+musst, um eine Liste von `Doc`-Objekten zu erhalten.
 
 ---
 
@@ -179,4 +179,4 @@ Innerhalb des `with`-Blocks führt spaCy nur die verbleibenden Komponenten aus.
 # Los geht's!
 
 Notes: Jetzt bist du dran. Lass uns die neuen Methoden ausprobieren und ein
-bisschen Code optimieren, damit er schnelle und effizienter läuft.
+bisschen Code optimieren, damit er schneller und effizienter läuft.

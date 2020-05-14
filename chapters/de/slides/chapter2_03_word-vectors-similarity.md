@@ -15,7 +15,7 @@ in deiner NLP-Anwendung nutzen kannst.
 # Semantische Ähnlichkeit vergleichen
 
 - spaCy kann zwei Objekte vergleichen und ihne Ähnlichkeit vorhersagen
-- `Doc.similarity()`, `Span.similarity()` and `Token.similarity()`
+- `Doc.similarity()`, `Span.similarity()` und `Token.similarity()`
 - Akzeptieren ein anderes Objekt und geben Ähnlichkeits-Score zurück (`0` bis
   `1`)
 - **Wichtig:** benötigt ein Modell, das Wortvektoren enthält, zum Beispiel:
@@ -76,13 +76,13 @@ Zuerst laden wir das mittelgroße englische Modell, "en_core_web_md".
 Wir können nun zwei Doc-Objekte erstellen und die `similarity`-Methode des
 ersten Docs verwenden, um es mit dem zweiten Doc zu vergleichen.
 
-In diesem Fall wird ein relativ hoher Ähnlichkeitswert von 0.83 für "I like fast
+In diesem Fall wird ein relativ hoher Ähnlichkeitswert von 0,83 für "I like fast
 food" und "I like pizza" vorhergesagt.
 
 Das gleiche funktioniert auch bei Tokens.
 
 Laut den Wortvektoren sind die Tokens "pizza" und "pasta" ziemlich ähnlich und
-erhalten einen Ähnlichkeitswert von 0.7.
+erhalten einen Ähnlichkeitswert von 0,7.
 
 ---
 
@@ -120,10 +120,10 @@ Zum Beispiel, ein Dokument und einen Token.
 Hier ist der Ähnlichkeitswert sehr niedrig und die beiden Objekte werden als
 ziemlich unähnlich angesehen.
 
-Hier ist ein weiteres Beispiel, das deine Span – "pizza and pasta" – mit einem
+Hier ist ein weiteres Beispiel, das eine Span – "pizza and pasta" – mit einem
 Dokument über McDonalds vergleicht.
 
-Der zurückgegebene Ähnlichkeitswert ist hier 0.61 und es wird also als ein
+Der zurückgegebene Ähnlichkeitswert ist hier 0,61 und es wird also als ein
 bisschen ähnlich angesehen.
 
 ---
@@ -227,7 +227,7 @@ Es ist allerding sehr wichtig zu beachten, dass keine objektive Definition davon
 existiert, was ähnlich ist und was nicht. Es hängt immer davon ab, was eine
 Anwendung tun soll und in welchem Kontext sie eingesetzt wird.
 
-Hier ist ein Beispiel: spaCy's Standard-Wortvektoren sagen einen sehr hohe
+Hier ist ein Beispiel: spaCy's Standard-Wortvektoren sagen einen sehr hohen
 Ähnlichkeitswert für "I like cats" und "I hate cats" vorher. Das macht Sinn, da
 beide Texte eine Empfindung gegenüber Katzen ausdrücken. In einem anderen
 Anwendungskontext könnte man jedoch beide Ausdrücke als sehr _unähnlich_

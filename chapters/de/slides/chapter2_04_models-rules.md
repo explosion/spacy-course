@@ -29,7 +29,7 @@ ob eine Span aus Tokens ein Personnenname ist. Ebenso kannst du
 Dependenzrelationen vorhersagen, um Subjekt-Objekt-Beziehungen zu finden.
 
 Hierzu würdest du spaCys Entity Recognizer für das Erkennen von Entitäten, den
-Dependency Parser für das Erkennen von syntaktischen Relationen und den
+Dependency Parser für das Erkennen von Dependenzrelationen und den
 Part-of-speech Tagger für das Erkennen von Wortarten verwenden.
 
 ---
