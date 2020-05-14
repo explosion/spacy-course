@@ -10,7 +10,6 @@ import '../styles/plyr.css'
 import classes from '../styles/slides.module.sass'
 
 const CODE_LANGS = ['python']
-const FULLSCREEN = false
 
 function getFiles({ allMarkdownRemark }, lang) {
     return Object.assign(
@@ -92,7 +91,6 @@ const Video = ({ id, start = 0, end = 0 }) => {
     useEffect(() => {
         let player = null
         import('plyr').then(({ default: Plyr }) => {
-            console.log(Plyr)
             player = new Plyr(ref.current, options)
             player.on('ready', () => {
                 if (ref.current) {
@@ -179,9 +177,7 @@ class SlideDeck extends React.Component {
 
     render() {
         const { source } = this.props
-        const revealClassNames = classNames('reveal', 'show-notes', classes.reveal, {
-            [classes.fullscreen]: FULLSCREEN,
-        })
+        const revealClassNames = classNames('reveal', 'show-notes', classes.reveal)
         const slideClassNames = classNames('slides', classes.slides)
 
         return (
