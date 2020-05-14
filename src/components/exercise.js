@@ -51,10 +51,10 @@ const Exercise = ({ id, title, type, children }) => {
                     {title}
                 </span>
                 {types.includes('slides') && (
-                    <IconSlides className={classes.icon} width={28} height={28} />
+                    <IconSlides className={classes.icon} width={26} height={26} />
                 )}
                 {types.includes('video') && (
-                    <IconVideo className={classes.icon} width={28} height={28} />
+                    <IconVideo className={classes.icon} width={26} height={26} />
                 )}
             </h2>
             {isExpanded && (
