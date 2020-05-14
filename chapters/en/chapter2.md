@@ -324,7 +324,7 @@ current object to.
 Why does this pattern not match the tokens "Silicon Valley" in the `doc`?
 
 ```python
-pattern = [{'LOWER': 'silicon'}, {'TEXT': ' '}, {'LOWER': 'valley'}]
+pattern = [{"LOWER": "silicon"}, {"TEXT": " "}, {"LOWER": "valley"}]
 ```
 
 ```python
