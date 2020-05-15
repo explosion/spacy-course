@@ -231,8 +231,7 @@ Garten
 Notes: Operatoren und Quantoren legen fest, wie oft ein Token gefunden werden
 soll. Sie können mit dem Schlüssel "OP" hinzugefügt werden.
 
-In diesem Beispiel macht der Operator "?" das Adjektiv optional, das heißt es
-findet einen Token mit dem Lemma "bunte", ein optionales Adjektiv und ein Nomen.
+In diesem Beispiel macht der Operator "?" das Adjektiv optional.
 
 ---
 
