@@ -33,8 +33,8 @@ Token.set_extension("is_color", default=False)
 Span.set_extension("has_color", default=False)
 ```
 
-Notes: Custom attributes let you add any meta data to docs, tokens and spans.
-The data can be added once, or it can be computed dynamically.
+Notes: Custom attributes let you add any metadata to docs, tokens and spans. The
+data can be added once, or it can be computed dynamically.
 
 Custom attributes are available via the `._` (dot underscore) property. This
 makes it clear that they were added by the user, and not built into spaCy, like

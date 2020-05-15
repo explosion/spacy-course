@@ -11,9 +11,9 @@ type: chapter
 id: 2
 ---
 
-<exercise id="1" title="Data Structures (1)" type="slides">
+<exercise id="1" title="Data Structures (1)" type="slides,video">
 
-<slides source="chapter2_01_data-structures-1">
+<slides source="chapter2_01_data-structures-1" start="11:06" end="13:37">
 </slides>
 
 </exercise>
@@ -96,9 +96,9 @@ the vocab.
 
 </exercise>
 
-<exercise id="4" title="Data Structures (2)" type="slides">
+<exercise id="4" title="Data Structures (2)" type="slides,video">
 
-<slides source="chapter2_02_data-structures-2">
+<slides source="chapter2_02_data-structures-2" start="13:475" end="15:47">
 </slides>
 
 </exercise>
@@ -249,9 +249,9 @@ The `.pos_` attribute returns the coarse-grained part-of-speech tag and
 
 </exercise>
 
-<exercise id="8" title="Word vectors and semantic similarities" type="slides">
+<exercise id="8" title="Word vectors and semantic similarity" type="slides,video">
 
-<slides source="chapter2_03_word-vectors-similarity">
+<slides source="chapter2_03_word-vectors-similarity" start="15:58" end="19:47">
 </slides>
 
 </exercise>
@@ -312,9 +312,9 @@ current object to.
 
 </exercise>
 
-<exercise id="11" title="Combining models and rules" type="slides">
+<exercise id="11" title="Combining models and rules" type="slides,video">
 
-<slides source="chapter2_04_models-rules">
+<slides source="chapter2_04_models-rules" start="19:58" end="23:25">
 </slides>
 
 </exercise>
@@ -324,7 +324,7 @@ current object to.
 Why does this pattern not match the tokens "Silicon Valley" in the `doc`?
 
 ```python
-pattern = [{'LOWER': 'silicon'}, {'TEXT': ' '}, {'LOWER': 'valley'}]
+pattern = [{"LOWER": "silicon"}, {"TEXT": " "}, {"LOWER": "valley"}]
 ```
 
 ```python

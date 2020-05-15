@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 import Marked from 'reveal.js/plugin/markdown/marked.js'
 import Prism from 'prismjs'
 import classNames from 'classnames'
 
-import { ChapterContext } from '../context'
+import { ChapterContext, LocaleContext } from '../context'
 import '../styles/reveal.css'
+import '../styles/plyr.css'
 import classes from '../styles/slides.module.sass'
 
 const CODE_LANGS = ['python']
@@ -28,7 +29,118 @@ function getSlideContent(data, source, lang) {
     return file.split('\n---\n').map(f => f.trim())
 }
 
-class Slides extends React.Component {
+function timestampToSeconds(ts) {
+    if (ts === null) return ts
+    const [mins, secs] = ts.split(':')
+    const seconds =
+        secs.length > 2 ? parseFloat(`${secs.slice(0, 2)}.${secs.slice(2)}`) : parseInt(secs)
+    return parseInt(mins) * 60 + seconds
+}
+
+const Slides = ({ source, start = null, end = null }) => {
+    const { slideType, setSlideType } = useContext(ChapterContext)
+    const { video, uiText } = useContext(LocaleContext)
+    const hasVideo = video && start !== null && end !== null
+    return hasVideo ? (
+        <>
+            <menu className={classes.menu}>
+                {['video', 'slides'].map(value => {
+                    const isActive = slideType === value
+                    const tabClassNames = classNames(classes.tab, {
+                        [classes.tabActive]: isActive,
+                    })
+                    return (
+                        <label key={value} htmlFor={value} className={tabClassNames}>
+                            <input
+                                className={classes.radio}
+                                name="type"
+                                id={value}
+                                type="radio"
+                                defaultChecked={isActive}
+                                onChange={() => setSlideType(value)}
+                            />
+                            {uiText[value]}
+                        </label>
+                    )
+                })}
+            </menu>
+            {slideType === 'video' ? (
+                <Video id={video} start={timestampToSeconds(start)} end={timestampToSeconds(end)} />
+            ) : (
+                <SlideDeck source={source} />
+            )}
+        </>
+    ) : (
+        <SlideDeck source={source} />
+    )
+}
+
+const Video = ({ id, start = 0, end = 0 }) => {
+    const ref = useRef(null)
+    const { lang } = useContext(ChapterContext)
+    const { uiText } = useContext(LocaleContext)
+    const [duration, setDuration] = useState(0)
+    const url = `https://www.youtube.com/embed/${id}?start=${start}&end=${end}&version=3&color=white&hl=${lang}&modestbranding=1&rel=0`
+    const options = {
+        duration: end,
+        tooltips: { seek: false },
+        disableContextMenu: false,
+        youtube: { noCookie: true },
+    }
+
+    useEffect(() => {
+        let player = null
+        import('plyr').then(({ default: Plyr }) => {
+            player = new Plyr(ref.current, options)
+            player.on('ready', () => {
+                if (ref.current) {
+                    const marker = document.createElement('span')
+                    ref.current.querySelector('.plyr__progress').appendChild(marker)
+                    marker.className = 'plyr__tooltip plyr__marker'
+                    marker.textContent = uiText.start
+                    marker.addEventListener('click', () => {
+                        player.currentTime = start
+                        player.play()
+                    })
+                }
+                setDuration(player.duration)
+                player.currentTime = start
+            })
+            player.on('timeupdate', () => {
+                if (player.currentTime > end) {
+                    player.pause()
+                    player.currentTime = end
+                }
+            })
+            player.on('play', () => {
+                if (player.currentTime >= end) {
+                    player.currentTime = start
+                }
+            })
+        })
+        return () => {
+            if (player) player.destroy()
+        }
+    }, [])
+
+    return (
+        <div style={{ '--plyr-marker': `${(100 / duration) * start}%` }}>
+            <div ref={ref}>
+                <iframe
+                    title={id}
+                    width="800"
+                    height="450"
+                    src={url}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                />
+            </div>
+        </div>
+    )
+}
+
+class SlideDeck extends React.Component {
     componentDidMount() {
         import('reveal.js').then(({ default: Reveal }) => {
             window.Reveal = Reveal

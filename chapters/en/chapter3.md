@@ -4,7 +4,7 @@ description:
   "This chapter will show you everything you need to know about spaCy's
   processing pipeline. You'll learn what goes on under the hood when you process
   a text, how to write your own components and add them to the pipeline, and how
-  to use custom attributes to add your own meta data to the documents, spans and
+  to use custom attributes to add your own metadata to the documents, spans and
   tokens."
 prev: /chapter2
 next: /chapter4
@@ -12,9 +12,9 @@ type: chapter
 id: 3
 ---
 
-<exercise id="1" title="Processing pipelines" type="slides">
+<exercise id="1" title="Processing pipelines" type="slides,video">
 
-<slides source="chapter3_01_processing-pipelines">
+<slides source="chapter3_01_processing-pipelines" start="23:36" end="26:12">
 </slides>
 
 </exercise>
@@ -79,9 +79,9 @@ full pipeline consisting of `(name, component)` tuples is available as
 
 </exercise>
 
-<exercise id="4" title="Custom pipeline components" type="slides">
+<exercise id="4" title="Custom pipeline components" type="slides,video">
 
-<slides source="chapter3_02_custom-pipeline-components">
+<slides source="chapter3_02_custom-pipeline-components" start="26:235" end="29:05">
 </slides>
 
 </exercise>
@@ -198,9 +198,9 @@ created as the variable `matcher`.
 
 </exercise>
 
-<exercise id="8" title="Extension attributes" type="slides">
+<exercise id="8" title="Extension attributes" type="slides,video">
 
-<slides source="chapter3_03_extension-attributes">
+<slides source="chapter3_03_extension-attributes" start="29:16" end="32:23">
 </slides>
 
 </exercise>
@@ -331,9 +331,9 @@ variable `CAPITALS`.
 
 </exercise>
 
-<exercise id="13" title="Scaling and performance" type="slides">
+<exercise id="13" title="Scaling and performance" type="slides,video">
 
-<slides source="chapter3_04_scaling-performance">
+<slides source="chapter3_04_scaling-performance" start="32:335" end="34:515">
 </slides>
 
 </exercise>

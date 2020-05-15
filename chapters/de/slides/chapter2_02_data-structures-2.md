@@ -51,7 +51,7 @@ und die Leerzeichen.
 Notes: Ein `Span`-Objekt ist ein Abschnitt eines Docs, bestehend aus einem oder
 mehreren Tokens. Die Span benötigt mindestens drei Argumente: das Doc, auf das
 sie sich bezieht, und den Start- und End-Index der Span. Denke daran, dass der
-End-Inxex ausschließend ist!
+End-Index ausschließend ist!
 
 ---
 

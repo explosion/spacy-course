@@ -53,8 +53,8 @@ Notes: Fundamentally, a pipeline component is a function or callable that takes
 a doc, modifies it and returns it, so it can be processed by the next component
 in the pipeline.
 
-Components can be added to the pipeline using the `nlp.add_pipe`. The method
-takes at least one argument: the component function.
+Components can be added to the pipeline using the `nlp.add_pipe` method. The
+method takes at least one argument: the component function.
 
 ---
 

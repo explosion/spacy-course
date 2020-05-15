@@ -92,9 +92,8 @@ Komponente anzugeben, vor oder nach welcher die neue Komponente eingefügt werde
 soll. Wird `before` beispielsweise auf `"ner"` gesetzt, wird die Komponente vor
 dem Named Entity Recognizer eingefügt.
 
-Die anderen Komponenten, vor oder nach denen die neue Komponente eingefügt
-werden soll, muss allerdings existieren. Ansonsten gibt spaCy eine Fehlermeldung
-aus.
+Die andere Komponente, vor oder nach der die neue Komponente eingefügt werden
+soll, muss allerdings existieren. Ansonsten gibt spaCy eine Fehlermeldung aus.
 
 ---
 
@@ -180,4 +179,4 @@ wird gedruckt.
 # Los geht's!
 
 Notes: Zeit, das Gelernte umzusetzen und deine erste benutzerdefinierte
-Pipeline-Komponente zu definieren!
+Pipeline-Komponente zu erstellen!

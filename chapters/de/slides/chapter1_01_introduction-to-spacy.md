@@ -90,7 +90,7 @@ Welt
 Notes: `Token`-Objekte repräsentieren die Tokens in einem Dokument – zum
 Beispiel ein Wort oder ein Satzzeichen.
 
-Um einen Token an einer bestimmten Position erhalten, kannst du wie bei einer
+Um einen Token an einer bestimmten Position zu erhalten, kannst du wie bei einer
 Liste auf seinen Index im Doc zugreifen.
 
 `Token`-Objekte haben außerdem verschiedene Attribute, die mehr Informationen
@@ -157,9 +157,9 @@ Notes: Hier siehst du einige der verfügbaren Token-Attribute:
 
 `text` gibt den Text des Tokens zurück.
 
-`is_alpha`, `is_punct` and `like_num` geben boolesche Werte zurück, die angeben,
+`is_alpha`, `is_punct` und `like_num` geben boolesche Werte zurück, die angeben,
 ob der Token aus alphabetischen Zeichen besteht, ob er ein Satzzeichen ist oder
-ob es einer Zahl _ähnelt_. Zum Beispiel, ein Token "10" – Eins, Null, oder das
+ob er einer Zahl _ähnelt_. Zum Beispiel, ein Token "10" – Eins, Null, oder das
 Wort "zehn" – Z, E, H, N.
 
 Diese Attribute werden auch lexikalische Attribute genannt: sie beziehen sich

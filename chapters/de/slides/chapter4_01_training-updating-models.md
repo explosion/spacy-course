@@ -9,7 +9,7 @@ behandelt: das Trainieren deiner eigenen Modelle!
 
 In dieser Lektion lernst du, wie du spaCys neuronale Netzwerk-Modelle trainieren
 und aktualisieren kannst, und welche Daten du dafür brauchst – vor allem für den
-Named Entity Recognizer und eigenen Entitäten.
+Named Entity Recognizer und neue Entitäten.
 
 ---
 
@@ -21,12 +21,12 @@ Named Entity Recognizer und eigenen Entitäten.
 - Sehr nützlich für Entitäten
 - Etwas weniger wichtig für Wortarten und Dependenzrelationen
 
-Notes: Bevor wir lernen _wie_ man Modelle trainiert, macht es Sinn, kurz inne zu
-halten und uns zu fragen: Warum sollten wir unser Modell mit unseren eigenen
-Beispielen aktualisieren? Und warum können wir uns nicht einfach auf
+Notes: Bevor wir uns anschauen, _wie_ man Modelle trainiert, macht es Sinn, kurz
+inne zu halten und uns zu fragen: Warum sollten wir unser Modell mit unseren
+eigenen Beispielen aktualisieren? Und warum können wir uns nicht einfach auf
 vortrainierte Modelle verlassen?
 
-Statistische Modelle treffen Vorhersagen auf Basis der Beispeile, mit denen sie
+Statistische Modelle treffen Vorhersagen auf Basis der Beispiele, mit denen sie
 trainiert wurden.
 
 Man kann typischerweise bessere Ergebnisse erzielen, wenn man einem Modell
@@ -134,9 +134,9 @@ einer einzigen Entität sein.
 Da der Entity Recognizer Vorhersagen über Entitäten _im Kontext_ trifft, muss er
 ebenfalls mit Entitäten _und_ deren umliegenden Kontext trainiert werden.
 
-Der einfachste Lösung ist, dem Modell einen Text und eine Liste mit Texten und
-Zeichen-Offsets zu zeigen. Zum Beispiel, "iPhone X" ist ein Gadget, beginnt bei
-Zeichen 0 und ended an Zeichen 8.
+Die einfachste Lösung ist, dem Modell eine Liste mit Texten und Zeichen-Offsets
+zu zeigen. Zum Beispiel, "iPhone X" ist ein Gadget, beginnt bei Zeichen 0 und
+ended an Zeichen 8.
 
 Es ist außerdem sehr wichtig, dass das Modell lernt, welche Wörter _keine_
 Entitäten sind.
@@ -162,7 +162,7 @@ Notes: Die Trainingdaten sagen dem Modell, was es vorhersagen soll. Dies können
 Texte und Entitäten sein, die wir erkennen wollen, oder Tokens und ihre
 korrekten Wortarten.
 
-Um ein vorhandenes Modell zu aktualisieren, kann man mit ein paar Hunder bis zu
+Um ein vorhandenes Modell zu aktualisieren, kann man mit ein paar Hundert bis zu
 ein paar Tausend Beispielen anfangen.
 
 Um eine neue Kategorie zu trainieren, kann man unter Umständen bis zu einer

@@ -194,7 +194,7 @@ Land.
 Über die Property `doc.ents` kannst du auf die vom Modell vorhergesagten
 Entitäten zugreifen.
 
-Es gibt einen Iterator von `Span`-Objekten zurück und wir können also den Text
+Sie gibt einen Iterator von `Span`-Objekten zurück und wir können also den Text
 der Entität, sowie das Label, verfügbar über das Attribut `.label_` drucken.
 
 In diesem Fall hat das Modell korrekt "Apple" als Organisation, "Cupertino" als

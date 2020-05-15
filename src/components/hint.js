@@ -1,10 +1,10 @@
 import React, { useState, useCallback, useContext } from 'react'
 
-import { UiTextContext } from '../context'
+import { LocaleContext } from '../context'
 import classes from '../styles/hint.module.sass'
 
 export const Hint = ({ expanded = false, actions = [], children }) => {
-    const uiText = useContext(UiTextContext)
+    const { uiText } = useContext(LocaleContext)
     const [isExpanded, setIsExpanded] = useState(expanded)
     const handleExpand = useCallback(() => setIsExpanded(!isExpanded), [isExpanded])
     return (

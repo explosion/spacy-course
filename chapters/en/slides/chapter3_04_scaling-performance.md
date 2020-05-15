@@ -91,7 +91,7 @@ for doc, context in nlp.pipe(data, as_tuples=True):
     doc._.page_number = context["page_number"]
 ```
 
-Notes: You can even add the context meta data to custom attributes.
+Notes: You can even add the context metadata to custom attributes.
 
 In this example, we're registering two extensions, `id` and `page_number`, which
 default to `None`.

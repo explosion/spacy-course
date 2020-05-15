@@ -2,14 +2,16 @@ import React, { useRef, useCallback, useContext, useEffect } from 'react'
 import classNames from 'classnames'
 
 import { Button, CompleteButton } from './button'
-import { ChapterContext, UiTextContext } from '../context'
+import { ChapterContext, LocaleContext } from '../context'
 import IconSlides from '../../static/icon_slides.svg'
+import IconVideo from '../../static/icon_video.svg'
 import classes from '../styles/exercise.module.sass'
 
 const Exercise = ({ id, title, type, children }) => {
-    const uiText = useContext(UiTextContext)
+    const { uiText } = useContext(LocaleContext)
     const excRef = useRef()
     const excId = parseInt(id)
+    const types = type ? type.split(',').map(t => t.trim()) : []
     const { activeExc, setActiveExc, completed, setCompleted } = useContext(ChapterContext)
     const isExpanded = activeExc === excId
     const isCompleted = completed.includes(excId)
@@ -31,7 +33,7 @@ const Exercise = ({ id, title, type, children }) => {
     }, [isCompleted, completed, excId])
     const rootClassNames = classNames(classes.root, {
         [classes.expanded]: isExpanded,
-        [classes.wide]: isExpanded && type === 'slides',
+        [classes.wide]: isExpanded && types.includes('slides'),
         [classes.completed]: !isExpanded && isCompleted,
     })
     const titleClassNames = classNames(classes.title, {
@@ -48,7 +50,12 @@ const Exercise = ({ id, title, type, children }) => {
                     </span>
                     {title}
                 </span>
-                {type === 'slides' && <IconSlides className={classes.icon} />}
+                {types.includes('slides') && (
+                    <IconSlides className={classes.icon} width={26} height={26} />
+                )}
+                {types.includes('video') && (
+                    <IconVideo className={classes.icon} width={26} height={26} />
+                )}
             </h2>
             {isExpanded && (
                 <div>
