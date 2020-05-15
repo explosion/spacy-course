@@ -28,10 +28,9 @@ nlp = German()
 Notes: Im Zentrum von spaCy steht das Objekt, das die Verarbeitungspipeline
 enthält. Wir nennen diese Variable typischerweise "nlp".
 
-Um beispielsweise ein englischsprachiges `nlp`-Objekt zu erstellen, kannst du
-die Sprach-Klasse `German` von `spacy.lang.de` importieren und initialisieren.
-Du kannst das `nlp`-Objekt wie eine Funktion benutzen und damit Text
-analysieren.
+Um beispielsweise ein deutschsprachiges `nlp`-Objekt zu erstellen, kannst du die
+Sprach-Klasse `German` von `spacy.lang.de` importieren und initialisieren. Du
+kannst das `nlp`-Objekt wie eine Funktion benutzen und damit Text analysieren.
 
 Es enthält alle verschiedenen Komponenten der Pipeline.
 

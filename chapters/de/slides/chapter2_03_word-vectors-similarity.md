@@ -76,8 +76,8 @@ Zuerst laden wir das mittelgroße englische Modell, "en_core_web_md".
 Wir können nun zwei Doc-Objekte erstellen und die `similarity`-Methode des
 ersten Docs verwenden, um es mit dem zweiten Doc zu vergleichen.
 
-In diesem Fall wird ein relativ hoher Ähnlichkeitswert von 0,83 für "I like fast
-food" und "I like pizza" vorhergesagt.
+In diesem Fall wird ein relativ hoher Ähnlichkeitswert für "I like fast food"
+und "I like pizza" vorhergesagt.
 
 Das gleiche funktioniert auch bei Tokens.
 
