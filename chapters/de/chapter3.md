@@ -207,14 +207,14 @@ wurde bereits für dich als Variable `matcher` erstellt.
 
 </exercise>
 
-<exercise id="8" title="Benutzerdefinierte Erweiterungen" type="slides">
+<exercise id="8" title="Erweiterte Attribute" type="slides">
 
 <slides source="chapter3_03_extension-attributes">
 </slides>
 
 </exercise>
 
-<exercise id="9" title="Erweiterte Attribute festlegen (1)">
+<exercise id="9" title="Erweiterungen festlegen (1)">
 
 Lass uns üben, ein paar benutzerdefinierte Attribute festzulegen.
 
@@ -247,7 +247,7 @@ Beispiel, `doc._.has_color`.
 
 </exercise>
 
-<exercise id="10" title="Erweiterte Attribute festlegen (2)">
+<exercise id="10" title="Erweiterungen festlegen (2)">
 
 Lass uns nun ein paar komplexere Attribute mit Getter-Funktionen und Methoden
 definieren.
