@@ -118,7 +118,7 @@ Notes: 簡単なコンポーネントの例をみていきます。
 
 ---
 
-## Example: a simple component (2)
+# Example: a simple component (2)
 
 ```python
 # nlpオブジェクトを作成

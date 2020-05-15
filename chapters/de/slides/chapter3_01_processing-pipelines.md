@@ -19,7 +19,7 @@ Text mit dem `nlp`-Objekt verarbeitest.
 
 <img src="/pipeline.png" alt="Illustration der spaCy Pipeline, die einen Text in ein verarbeitetes Doc umwandelt" width="90%" />
 
-```
+```python
 doc = nlp("Dies ist ein Satz.")
 ```
 

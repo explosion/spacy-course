@@ -29,7 +29,7 @@ Notes: Im Zentrum von spaCy steht das Objekt, das die Verarbeitungspipeline
 enthält. Wir nennen diese Variable typischerweise "nlp".
 
 Um beispielsweise ein englischsprachiges `nlp`-Objekt zu erstellen, kannst du
-die Sprach-Klasse `English` von `spacy.lang.en` importieren und initialisieren.
+die Sprach-Klasse `German` von `spacy.lang.de` importieren und initialisieren.
 Du kannst das `nlp`-Objekt wie eine Funktion benutzen und damit Text
 analysieren.
 

@@ -116,7 +116,7 @@ Cuando imprimimos en pantalla los nombres de los componentes el nuevo aparece al
 
 ---
 
-## Ejemplo: un componente simple (2)
+# Ejemplo: un componente simple (2)
 
 ```python
 # Crea el objeto nlp

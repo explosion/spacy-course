@@ -139,7 +139,7 @@ the start. This means it will be applied first when we process a doc.
 
 ---
 
-## Example: a simple component (2)
+# Example: a simple component (2)
 
 ```python
 # Create the nlp object
