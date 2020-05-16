@@ -182,14 +182,14 @@ das Ganze ein bisschen zu beschleunigen, haben wir schon einmal ein Modell mit
 dem Label `"GADGET"` trainiert und es über eine Auswahl an Texten laufen lassen.
 Hier sind ein paar der Ergebnisse:
 
-| Text                                                                                                     | Entitäten              |
-| -------------------------------------------------------------------------------------------------------- | ---------------------- |
-| iPhone X: Warum das iPhone 8 die bessere Wahl ist                                                        | `(iPhone X, iPhone 8)` |
-| Endlich verstehe ich, wofür der "Notch" beim iPhone X da ist                                             | `(iPhone X,)`          |
-| Alles was du über das Samsung Galaxy S9 wissen musst                                                     | `(Samsung Galaxy,)`    |
-| Tablet-Modelle aus 2018s im Vergleich: so schneidet das iPad ab                                          | `(iPad,)`              |
-| iPhone 8 und iPhone 8 Plus sind Smartphones, die von Apple entwickelt und vermarktet werden.             | `(iPhone 8, iPhone 8)` |
-| welches ist das günstigste ipad, vor allem ipad pro???                                                   | `(ipad, ipad)`         |
+| Text                                                                                                      | Entitäten              |
+| --------------------------------------------------------------------------------------------------------- | ---------------------- |
+| iPhone X: Warum das iPhone 8 die bessere Wahl ist                                                         | `(iPhone X, iPhone 8)` |
+| Endlich verstehe ich, wofür der "Notch" beim iPhone X da ist                                              | `(iPhone X,)`          |
+| Alles was du über das Samsung Galaxy S9 wissen musst                                                      | `(Samsung Galaxy,)`    |
+| Tablet-Modelle aus 2018s im Vergleich: so schneidet das iPad ab                                           | `(iPad,)`              |
+| iPhone 8 und iPhone 8 Plus sind Smartphones, die von Apple entwickelt und vermarktet werden.              | `(iPhone 8, iPhone 8)` |
+| welches ist das günstigste ipad, vor allem ipad pro???                                                    | `(ipad, ipad)`         |
 | Samsung Galaxy ist eine Reihe mobiler Computergeräte, hergestellt und vermarktet von Samsung Electronics. | `(Samsung Galaxy,)`    |
 
 Im Vergleich zu allen korrekten Entitäten im Text, **wie oft lag das Modell
@@ -348,10 +348,11 @@ Annotations-Tool, das zusammen mit spaCy verwendet werden kann.
 
 ### Teil 2
 
-Die Daten, die du gerade annotiert hast, wurden nun zusammen mit ein paar Tausend
-ähnlichen Beispielen dazu verwendet, ein Modell zu trainieren. Nach dem Training
-erzielt das Modell super Ergebnisse für das Label `"WEBSITE"`, aber es erkennt
-keine Entitäten mit dem Label `"PER"` mehr. Warum könnte das passiert sein?
+Die Daten, die du gerade annotiert hast, wurden nun zusammen mit ein paar
+Tausend ähnlichen Beispielen dazu verwendet, ein Modell zu trainieren. Nach dem
+Training erzielt das Modell super Ergebnisse für das Label `"WEBSITE"`, aber es
+erkennt keine Entitäten mit dem Label `"PER"` mehr. Warum könnte das passiert
+sein?
 
 <choice>
 
