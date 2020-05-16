@@ -1,0 +1,8 @@
+# Ignore everything
+*
+
+# Allow files and directories
+!/docker/**
+!gatsby*
+!package*.json
+!binder/requirements.txt
