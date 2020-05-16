@@ -11,9 +11,9 @@ type: chapter
 id: 1
 ---
 
-<exercise id="1" title="Einführung in spaCy" type="slides">
+<exercise id="1" title="Einführung in spaCy" type="slides,video">
 
-<slides source="chapter1_01_introduction-to-spacy">
+<slides source="chapter1_01_introduction-to-spacy" start="0:18" end="3:035">
 </slides>
 
 </exercise>
@@ -110,9 +110,9 @@ des `doc` zugreifen. `doc[5]` zum Beispiel ist der Token mit dem Index 5.
 
 </exercise>
 
-<exercise id="5" title="Statistische Modelle" type="slides">
+<exercise id="5" title="Statistische Modelle" type="slides,video">
 
-<slides source="chapter1_02_statistical-models">
+<slides source="chapter1_02_statistical-models"  start="3:14" end="7:37">
 </slides>
 
 </exercise>
@@ -238,9 +238,9 @@ ab. Hier ist ein Beispiel.
 
 </exercise>
 
-<exercise id="10" title="Regelbasiertes Matching" type="slides">
+<exercise id="10" title="Regelbasiertes Matching" type="slides,video">
 
-<slides source="chapter1_03_rule-based-matching">
+<slides source="chapter1_03_rule-based-matching" start="7:475" end="11:35">
 </slides>
 
 </exercise>
