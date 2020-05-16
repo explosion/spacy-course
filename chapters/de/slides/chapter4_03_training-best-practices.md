@@ -66,8 +66,8 @@ TRAINING_DATA = [
 ]
 ```
 
-Note: Um dies zu vermeiden, solltest du die neuen Beispiele stets mit Beispielen
-mischen, die das Modell bereits zuvor korrekt vorhergesagt hat.
+Notes: Um dies zu vermeiden, solltest du die neuen Beispiele stets mit
+Beispielen mischen, die das Modell bereits zuvor korrekt vorhergesagt hat.
 
 Wenn du also eine neue Kategorie `"WEBSITE"` trainierst, füge den Trainingsdaten
 außerdem Beispiele der Kategorie `"PER"` für "Person" bei.

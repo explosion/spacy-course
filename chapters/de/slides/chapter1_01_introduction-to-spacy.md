@@ -103,17 +103,17 @@ den wortwörtlichen Text des Tokens zurück.
 <img src="/doc_span.png" width="50%" alt="Illustration eines Doc-Objekts mit vier Tokens und drei davon innerhalb einer Span" />
 
 ```python
-doc = nlp("Hallo, wie geht es dir?")
+doc = nlp("Hallo Welt!")
 
 # Ein Abschnitt des Doc-Objekts ist ein Span-Objekt
-span = doc[2:4]
+span = doc[1:3]
 
 # Erhalte den Text der Span über das Attribut .text
 print(span.text)
 ```
 
 ```out
-wie geht
+Welt!
 ```
 
 Notes: Ein `Span`-Objekt ist ein Abschnitt des Dokuments, der aus einem oder

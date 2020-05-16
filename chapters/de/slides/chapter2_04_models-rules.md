@@ -16,7 +16,7 @@ In dieser Lektion schauen wir uns an, wie das mit spaCy funktioniert.
 |                        | **Statistische Modelle**                                    | **Regelbasierte Systeme**         |
 | ---------------------- | ----------------------------------------------------------- | --------------------------------- |
 | **Anwendungsbereiche** | Anwendung soll auf Basis von Beispielen _generalisieren_    | ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀ |
-| **Reale Beispiele**    | Produktnamen, Personnennamen, Subjekt-Objekt-Relationen     |                                   |
+| **Reale Beispiele**    | Produktnamen, Personennamen, Subjekt-Objekt-Relationen      |                                   |
 | **spaCy Features**     | Entity Recognizer, Dependency Parser, Part-of-speech Tagger |                                   |
 
 Notes: Statistische Modelle sind nützlich, wenn deine Anwendung in der Lage sein
@@ -25,7 +25,7 @@ soll, auf der Basis von einigen Beispielen zu generalisieren.
 Zum Beispiel, das Erkennen von Produkt- und Personennamen profitiert
 typischerweise von einem statistischen Modell. Statt lediglich eine Liste aller
 Personennamen zu verwenden, ist deine Anwendung so in der Lage, vorherzusagen,
-ob eine Span aus Tokens ein Personnenname ist. Ebenso kannst du
+ob eine Span aus Tokens ein Personenname ist. Ebenso kannst du
 Dependenzrelationen vorhersagen, um Subjekt-Objekt-Beziehungen zu finden.
 
 Hierzu würdest du spaCys Entity Recognizer für das Erkennen von Entitäten, den
@@ -39,7 +39,7 @@ Part-of-speech Tagger für das Erkennen von Wortarten verwenden.
 |                        | **Statistische Modelle**                                    | **Regelbasierte Systeme**                                                   |
 | ---------------------- | ----------------------------------------------------------- | --------------------------------------------------------------------------- |
 | **Anwendungsbereiche** | Anwendung soll auf Basis von Beispielen _generalisieren_    | Lexikon mit begrenzter Anzahl an Beispielen⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀ |
-| **Reale Beispiele**    | Produktnamen, Personnennamen, Subjekt-Objekt-Relationen     | Länder der Welt, Städte, Medikamentennamen, Hunderassen                     |
+| **Reale Beispiele**    | Produktnamen, Personennamen, Subjekt-Objekt-Relationen      | Länder der Welt, Städte, Medikamentennamen, Hunderassen                     |
 | **spaCy Features**     | Entity Recognizer, Dependency Parser, Part-of-speech Tagger | Tokenizer, `Matcher`, `PhraseMatcher`                                       |
 
 Notes: Regelbasierte Ansätze hingegen sind nützlich, wenn die Anzahl der zu
@@ -136,7 +136,7 @@ anschauen. In diesem Fall ist es ein Determinativ, der Artikel "einen".
 
 # Effizientes Phrase-Matching (1)
 
-- `PhraseMatcher`: wie reguläre Ausdrücke und Stichwortsuche – aber mit Zugruff
+- `PhraseMatcher`: wie reguläre Ausdrücke und Stichwortsuche – aber mit Zugriff
   auf die Tokens!
 - Akzeptiert `Doc`-Objekte als Patterns
 - Effizienter und schneller als der `Matcher`

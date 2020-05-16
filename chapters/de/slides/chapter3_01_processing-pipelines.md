@@ -42,7 +42,7 @@ verarbeitete Doc zurückgegeben, damit du mit ihm arbeiten kannst.
 | ----------- | :---------------------- | :-------------------------------------------------------- |
 | **tagger**  | Part-of-speech Tagger   | `Token.tag`, `Token.pos`                                  |
 | **parser**  | Dependency Parser       | `Token.dep`, `Token.head`, `Doc.sents`, `Doc.noun_chunks` |
-| **ner**     | Named entity Recognizer | `Doc.ents`, `Token.ent_iob`, `Token.ent_type`             |
+| **ner**     | Named Entity Recognizer | `Doc.ents`, `Token.ent_iob`, `Token.ent_type`             |
 | **textcat** | Text Classifier         | `Doc.cats`                                                |
 
 Notes: spaCy beinhaltet die folgenden eingebauten Pipeline-Komponenten.
