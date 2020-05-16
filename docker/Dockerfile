@@ -6,7 +6,14 @@ RUN apt-get update && apt-get install --yes \
         git \
         python3-pip \
         curl \
+        locales \
         musl-dev
+
+RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
+    dpkg-reconfigure --frontend=noninteractive locales && \
+    update-locale LANG=en_US.UTF-8
+
+ENV LANG en_US.UTF-8
 
 RUN pip3 --no-cache-dir install -U pip
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
