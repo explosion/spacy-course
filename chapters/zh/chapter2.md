@@ -9,9 +9,9 @@ type: chapter
 id: 2
 ---
 
-<exercise id="1" title="数据结构 (1)" type="slides,video">
+<exercise id="1" title="数据结构 (1)" type="slides">
 
-<slides source="chapter2_01_data-structures-1" start="11:06" end="13:37">
+<slides source="chapter2_01_data-structures-1">
 </slides>
 
 </exercise>
@@ -93,9 +93,9 @@ print(nlp_de.vocab.strings[bowie_id])
 
 </exercise>
 
-<exercise id="4" title="数据结构 (2)" type="slides,video">
+<exercise id="4" title="数据结构 (2)" type="slides">
 
-<slides source="chapter2_02_data-structures-2" start="13:475" end="15:47">
+<slides source="chapter2_02_data-structures-2">
 </slides>
 
 </exercise>
@@ -235,9 +235,9 @@ for index, pos in enumerate(pos_tags):
 
 </exercise>
 
-<exercise id="8" title="词向量和语义相似度" type="slides,video">
+<exercise id="8" title="词向量和语义相似度" type="slides">
 
-<slides source="chapter2_03_word-vectors-similarity" start="15:58" end="19:47">
+<slides source="chapter2_03_word-vectors-similarity">
 </slides>
 
 </exercise>
@@ -293,9 +293,9 @@ for index, pos in enumerate(pos_tags):
 
 </exercise>
 
-<exercise id="11" title="结合模型与规则" type="slides,video">
+<exercise id="11" title="结合模型与规则" type="slides">
 
-<slides source="chapter2_04_models-rules" start="19:58" end="23:25">
+<slides source="chapter2_04_models-rules">
 </slides>
 
 </exercise>

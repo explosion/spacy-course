@@ -10,9 +10,9 @@ type: chapter
 id: 3
 ---
 
-<exercise id="1" title="处理流程" type="slides,video">
+<exercise id="1" title="处理流程" type="slides">
 
-<slides source="chapter3_01_processing-pipelines" start="23:36" end="26:12">
+<slides source="chapter3_01_processing-pipelines">
 </slides>
 
 </exercise>
@@ -73,9 +73,9 @@ spaCy的所有运算都在本机，并不需要连接任何远端服务器。
 
 </exercise>
 
-<exercise id="4" title="定制化模型组件" type="slides,video">
+<exercise id="4" title="定制化模型组件" type="slides">
 
-<slides source="chapter3_02_custom-pipeline-components" start="26:235" end="29:05">
+<slides source="chapter3_02_custom-pipeline-components">
 </slides>
 
 </exercise>
@@ -177,9 +177,9 @@ spaCy的所有运算都在本机，并不需要连接任何远端服务器。
 
 </exercise>
 
-<exercise id="8" title="扩展属性" type="slides,video">
+<exercise id="8" title="扩展属性" type="slides">
 
-<slides source="chapter3_03_extension-attributes" start="29:16" end="32:23">
+<slides source="chapter3_03_extension-attributes">
 </slides>
 
 </exercise>
@@ -290,9 +290,9 @@ span为一个人、组织或者位置时返回其维基百科的查询URL。
 
 </exercise>
 
-<exercise id="13" title="规模化性能" type="slides,video">
+<exercise id="13" title="规模化性能" type="slides">
 
-<slides source="chapter3_04_scaling-performance" start="32:335" end="34:515">
+<slides source="chapter3_04_scaling-performance">
 </slides>
 
 </exercise>
