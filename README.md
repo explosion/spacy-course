@@ -26,6 +26,7 @@ solutions are all in this repo, there's no penalty for clicking "Show hints" or
 | **[Spanish](https://course.spacy.io/es)**  | English                   | [`chapters/es`](chapters/es), [`exercises/es`](exercises/es) |                      _WIP_                       | [@mariacamilagl](https://github.com/mariacamilagl) |
 | **[Japanese](https://course.spacy.io/ja)** | English                   | [`chapters/ja`](chapters/ja), [`exercises/ja`](exercises/ja) |                        ✕                         | [@tamuhey](https://github.com/tamuhey)             |
 | Chinese                                    | English                   | _in progress_                                                |                                                  |                                                    |
+| French                                     | French                    | _in progress_                                                |                                                  |                                                    |
 
 If you spot a mistake, I always appreciate
 [pull requests](https://github.com/ines/spacy-course/pulls)!
