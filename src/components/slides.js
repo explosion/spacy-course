@@ -85,7 +85,6 @@ const Video = ({ id, start = 0, end = 0 }) => {
         duration: end,
         tooltips: { seek: false },
         disableContextMenu: false,
-        youtube: { noCookie: true },
     }
 
     useEffect(() => {

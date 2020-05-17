@@ -18,7 +18,7 @@ de texto.
 
 <img src="/pipeline.png" alt="Illustration of the spaCy pipeline transforming a text into a processed Doc" width="90%" />
 
-```
+```python
 doc = nlp("This is a sentence.")
 ```
 
@@ -124,4 +124,5 @@ entidades nombradas.
 
 # ¡Practiquemos!
 
-Notes: ¡Exploremos algunos de los pipelines de spaCy y miremos detrás de cámaras!
+Notes: ¡Exploremos algunos de los pipelines de spaCy y miremos detrás de
+cámaras!

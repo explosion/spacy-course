@@ -28,10 +28,9 @@ nlp = German()
 Notes: Im Zentrum von spaCy steht das Objekt, das die Verarbeitungspipeline
 enthält. Wir nennen diese Variable typischerweise "nlp".
 
-Um beispielsweise ein englischsprachiges `nlp`-Objekt zu erstellen, kannst du
-die Sprach-Klasse `English` von `spacy.lang.en` importieren und initialisieren.
-Du kannst das `nlp`-Objekt wie eine Funktion benutzen und damit Text
-analysieren.
+Um beispielsweise ein deutschsprachiges `nlp`-Objekt zu erstellen, kannst du die
+Sprach-Klasse `German` von `spacy.lang.de` importieren und initialisieren. Du
+kannst das `nlp`-Objekt wie eine Funktion benutzen und damit Text analysieren.
 
 Es enthält alle verschiedenen Komponenten der Pipeline.
 
@@ -104,17 +103,17 @@ den wortwörtlichen Text des Tokens zurück.
 <img src="/doc_span.png" width="50%" alt="Illustration eines Doc-Objekts mit vier Tokens und drei davon innerhalb einer Span" />
 
 ```python
-doc = nlp("Hallo, wie geht es dir?")
+doc = nlp("Hallo Welt!")
 
 # Ein Abschnitt des Doc-Objekts ist ein Span-Objekt
-span = doc[2:4]
+span = doc[1:3]
 
 # Erhalte den Text der Span über das Attribut .text
 print(span.text)
 ```
 
 ```out
-wie geht
+Welt!
 ```
 
 Notes: Ein `Span`-Objekt ist ein Abschnitt des Dokuments, der aus einem oder

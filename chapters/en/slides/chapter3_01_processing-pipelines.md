@@ -17,7 +17,7 @@ and what happens behind the scenes when you call nlp on a string of text.
 
 <img src="/pipeline.png" alt="Illustration of the spaCy pipeline transforming a text into a processed Doc" width="90%" />
 
-```
+```python
 doc = nlp("This is a sentence.")
 ```
 

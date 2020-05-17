@@ -12,7 +12,7 @@ erstellen kannst, um Wörter und Ausdrücke im Text zu finden.
 # Warum nicht einfach reguläre Ausdrücke?
 
 - Durchsuche `Doc`-Objekte und nicht nur Strings
-- Verwende Token und Token-Attribute
+- Verwende Tokens und Token-Attribute
 - Verwende die Vorhersagen des Modells
 - Beispiel: "essen" (Verb) vs. "Essen" (Nomen)
 
@@ -201,7 +201,7 @@ mochte Hunde
 mag Katzen
 ```
 
-Note: In diesem Beispiel suchen wir zwei Tokens:
+Notes: In diesem Beispiel suchen wir zwei Tokens:
 
 Ein Verb mit dem Lemma "mögen", gefolgt von einem Nomen.
 

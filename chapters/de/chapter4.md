@@ -12,9 +12,9 @@ type: chapter
 id: 4
 ---
 
-<exercise id="1" title="Modelle trainieren und aktualisieren" type="slides">
+<exercise id="1" title="Modelle trainieren und aktualisieren" type="slides,video">
 
-<slides source="chapter4_01_training-updating-models">
+<slides source="chapter4_01_training-updating-models" start="38:01" end="42:175">
 </slides>
 
 </exercise>
@@ -109,9 +109,9 @@ Sätzen ist verfügbar als Variable `TEXTS`.
 
 </exercise>
 
-<exercise id="5" title="Die Trainingsschleife" type="slides">
+<exercise id="5" title="Die Trainingsschleife" type="slides,video">
 
-<slides source="chapter4_02_training-loop">
+<slides source="chapter4_02_training-loop" start="42:29" end="46:29">
 </slides>
 
 </exercise>
@@ -182,14 +182,14 @@ das Ganze ein bisschen zu beschleunigen, haben wir schon einmal ein Modell mit
 dem Label `"GADGET"` trainiert und es über eine Auswahl an Texten laufen lassen.
 Hier sind ein paar der Ergebnisse:
 
-| Text                                                                                                     | Entitäten              |
-| -------------------------------------------------------------------------------------------------------- | ---------------------- |
-| iPhone X: Warum das iPhone 8 die bessere Wahl ist                                                        | `(iPhone X, iPhone 8)` |
-| Endlich verstehe ich, wofür der "Notch" beim iPhone X da ist                                             | `(iPhone X,)`          |
-| Alles was du über das Samsung Galaxy S9 wissen musst                                                     | `(Samsung Galaxy,)`    |
-| Tablet-Modelle aus 2018s im Vergleich: so schneidet das iPad ab                                          | `(iPad,)`              |
-| iPhone 8 und iPhone 8 Plus sind Smartphones, die von Apple entwickelt und vermarktet werden.             | `(iPhone 8, iPhone 8)` |
-| welches ist das günstigste ipad, vor allem ipad pro???                                                   | `(ipad, ipad)`         |
+| Text                                                                                                      | Entitäten              |
+| --------------------------------------------------------------------------------------------------------- | ---------------------- |
+| iPhone X: Warum das iPhone 8 die bessere Wahl ist                                                         | `(iPhone X, iPhone 8)` |
+| Endlich verstehe ich, wofür der "Notch" beim iPhone X da ist                                              | `(iPhone X,)`          |
+| Alles was du über das Samsung Galaxy S9 wissen musst                                                      | `(Samsung Galaxy,)`    |
+| Tablet-Modelle aus 2018s im Vergleich: so schneidet das iPad ab                                           | `(iPad,)`              |
+| iPhone 8 und iPhone 8 Plus sind Smartphones, die von Apple entwickelt und vermarktet werden.              | `(iPhone 8, iPhone 8)` |
+| welches ist das günstigste ipad, vor allem ipad pro???                                                    | `(ipad, ipad)`         |
 | Samsung Galaxy ist eine Reihe mobiler Computergeräte, hergestellt und vermarktet von Samsung Electronics. | `(Samsung Galaxy,)`    |
 
 Im Vergleich zu allen korrekten Entitäten im Text, **wie oft lag das Modell
@@ -231,9 +231,9 @@ Anzahl der Entitäten, die das Modell hätte vorhersagen _sollen_.
 
 </exercise>
 
-<exercise id="9" title="Training Best Practices" type="slides">
+<exercise id="9" title="Training Best Practices" type="slides,video">
 
-<slides source="chapter4_03_training-best-practices">
+<slides source="chapter4_03_training-best-practices" start="46:40" end="49:30">
 </slides>
 
 </exercise>
@@ -348,10 +348,11 @@ Annotations-Tool, das zusammen mit spaCy verwendet werden kann.
 
 ### Teil 2
 
-Die Daten, die du gerade annotiert hast, wurden nun zusammen mit ein paar Tausend
-ähnlichen Beispielen dazu verwendet, ein Modell zu trainieren. Nach dem Training
-erzielt das Modell super Ergebnisse für das Label `"WEBSITE"`, aber es erkennt
-keine Entitäten mit dem Label `"PER"` mehr. Warum könnte das passiert sein?
+Die Daten, die du gerade annotiert hast, wurden nun zusammen mit ein paar
+Tausend ähnlichen Beispielen dazu verwendet, ein Modell zu trainieren. Nach dem
+Training erzielt das Modell super Ergebnisse für das Label `"WEBSITE"`, aber es
+erkennt keine Entitäten mit dem Label `"PER"` mehr. Warum könnte das passiert
+sein?
 
 <choice>
 
@@ -395,9 +396,9 @@ haben können, sind sie hier wahrscheinlich nicht das Problem.
 
 </exercise>
 
-<exercise id="12" title="Abschluss" type="slides">
+<exercise id="12" title="Abschluss" type="slides,video">
 
-<slides source="chapter4_04_wrapping-up">
+<slides source="chapter4_04_wrapping-up" start="49:40" end="52:21">
 </slides>
 
 </exercise>

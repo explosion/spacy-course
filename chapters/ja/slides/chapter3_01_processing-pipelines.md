@@ -16,11 +16,11 @@ Notes: Welcome back！
 
 <img src="/pipeline.png" alt="spaCyパイプラインが文字列をDocに変換する図解" width="90%" />
 
-```
+```python
 doc = nlp("This is a sentence.")
 ```
 
-Notes: 
+Notes:
 
 `nlp` オブジェクトにテキストの文字列を渡し、`Doc` オブジェクトを受け取るコードを何度も書いてきました。
 
@@ -39,7 +39,7 @@ Notes:
 | **ner**     | 固有表現器 | `Doc.ents`, `Token.ent_iob`, `Token.ent_type`             |
 | **textcat** | 文書分類 | `Doc.cats`                                                |
 
-Notes: 
+Notes:
 spaCyには以下のパイプラインコンポーネントが同梱されています。
 
 品詞タグづけ器は `token.tag` と `token.pos` 属性を設定します。

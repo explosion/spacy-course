@@ -110,7 +110,7 @@ Anwendung benutzen.
 - Beispiele müssen Kontext enthalten
 
 ```python
-("Das iPhone X kommt bald", {"entities": [(4, 12, "GADGET")]})
+("iPhone X vorbestellen: So geht's", {"entities": [(0, 8, "GADGET")]})
 ```
 
 - Texte ohne Entitäten sind auch wichtig

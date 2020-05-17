@@ -146,7 +146,7 @@ zuerst ausgeführt wird, wenn ein Doc verarbeitet wird.
 
 ---
 
-## Beispiel: einfache Komponente (2)
+# Beispiel: einfache Komponente (2)
 
 ```python
 # Erstelle das nlp-Objekt

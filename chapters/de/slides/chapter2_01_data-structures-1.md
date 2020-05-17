@@ -114,7 +114,7 @@ Kaffee 2226651744524530332 True
   - Lexikalische Attribute wie `lexeme.is_alpha`
   - **Nicht** kontextabhängige Wortarten, Relationen oder Entitäten-Labels
 
-Notes: Lexeme sind kontextabhängige Einträge im Vokabular.
+Notes: Lexeme sind kontextunabhängige Einträge im Vokabular.
 
 Um ein Lexem zu erhalten, kannst du einen String oder eine Hash-ID im Vokabular
 nachschlagen.
