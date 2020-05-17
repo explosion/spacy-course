@@ -119,6 +119,8 @@ npm install                # Install dependencies
 npm run dev                # Run the development server
 ```
 
+If running with docker just run `make build` and then `make gatsby-dev`
+
 ### How it works
 
 When building the site, Gatsby will look for `.py` files and make their contents
@@ -194,6 +196,8 @@ pip install -r binder/requirements.txt
 # Run the tests (will generate the files automatically)
 python -m pytest __tests__
 ```
+
+If running with docker just run `make build` and then `make pytest`
 
 ### Directory Structure
 
