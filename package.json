@@ -50,6 +50,7 @@
     },
     "devDependencies": {
         "browser-monads": "^1.0.0",
+        "eslint-config-react-app": "^5.2.1",
         "prettier": "^1.16.4"
     },
     "repository": {
