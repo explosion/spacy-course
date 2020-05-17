@@ -23,7 +23,7 @@ solutions are all in this repo, there's no penalty for clicking "Show hints" or
 | ------------------------------------------ | ------------------------- | ------------------------------------------------------------ | :----------------------------------------------: | -------------------------------------------------- |
 | **[English](https://course.spacy.io/en)**  | English                   | [`chapters/en`](chapters/en), [`exercises/en`](exercises/en) | [✓](https://www.youtube.com/watch?v=THduWAnG97k) | [@ines](https://github.com/ines)                   |
 | **[German](https://course.spacy.io/de)**   | German                    | [`chapters/de`](chapters/de), [`exercises/de`](exercises/de) | [✓](https://www.youtube.com/watch?v=K1elwpgDdls) | [@ines](https://github.com/ines)                   |
-| **[Spanish](https://course.spacy.io/es)**  | English                   | [`chapters/es`](chapters/es), [`exercises/es`](exercises/es) |                        ✕                         | [@mariacamilagl](https://github.com/mariacamilagl) |
+| **[Spanish](https://course.spacy.io/es)**  | English                   | [`chapters/es`](chapters/es), [`exercises/es`](exercises/es) |                      _WIP_                       | [@mariacamilagl](https://github.com/mariacamilagl) |
 | **[Japanese](https://course.spacy.io/ja)** | English                   | [`chapters/ja`](chapters/ja), [`exercises/ja`](exercises/ja) |                        ✕                         | [@tamuhey](https://github.com/tamuhey)             |
 | Chinese                                    | English                   | _in progress_                                                |                                                  |                                                    |
 
@@ -92,6 +92,18 @@ there are two different ways to get involved:
    technical writing or translation work you've done in the past, if available).
    It doesn't matter where you're based, but you should be able to issue
    invoices as a freelancer or similar, depending on your country.
+
+#### I want to help create a audio/video tutorial for an existing translation. How can I get involved?
+
+Again, thanks, this is super cool! While the
+[English](https://www.youtube.com/watch?v=THduWAnG97k) and
+[German](https://www.youtube.com/watch?v=K1elwpgDdls) videos also include a
+video recording, it's not a requirement and we'd be happy to just provide an
+audio track alongside the slides. We'd take care of the postprocessing and video
+editing, so all we need is the audio recording. So if you feel comfortable
+recording yourself reading out the slide notes in your language, email us at
+[contact@explosion.ai](mailto:contact@explosion.ai) and make us an offer and
+include a bit about you and similar work you've done in the past, if available.
 
 ## 🎛 Usage & API
 
