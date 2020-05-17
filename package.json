@@ -43,9 +43,9 @@
     "scripts": {
         "build": "gatsby build",
         "dev": "gatsby develop --host=0.0.0.0",
-        "lint": "eslint **",
         "clear": "rm -rf .cache",
         "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
+        "lint": "node ./node_modules/eslint/bin/eslint.js src",
         "pytest": "python -m pytest __tests__"
     },
     "devDependencies": {

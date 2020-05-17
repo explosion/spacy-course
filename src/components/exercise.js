@@ -23,14 +23,15 @@ const Exercise = ({ id, title, type, children }) => {
     const handleExpand = useCallback(() => setActiveExc(isExpanded ? null : excId), [
         isExpanded,
         excId,
+        setActiveExc,
     ])
-    const handleNext = useCallback(() => setActiveExc(excId + 1))
+    const handleNext = useCallback(() => setActiveExc(excId + 1), [excId, setActiveExc])
     const handleSetCompleted = useCallback(() => {
         const newCompleted = isCompleted
             ? completed.filter(v => v !== excId)
             : [...completed, excId]
         setCompleted(newCompleted)
-    }, [isCompleted, completed, excId])
+    }, [isCompleted, completed, excId, setCompleted])
     const rootClassNames = classNames(classes.root, {
         [classes.expanded]: isExpanded,
         [classes.wide]: isExpanded && types.includes('slides'),
