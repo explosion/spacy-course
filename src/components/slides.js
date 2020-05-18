@@ -120,7 +120,7 @@ const Video = ({ id, start = 0, end = 0 }) => {
         return () => {
             if (player) player.destroy()
         }
-    }, [])
+    }, [end, options, start, uiText.start])
 
     return (
         <div style={{ '--plyr-marker': `${(100 / duration) * start}%` }}>
