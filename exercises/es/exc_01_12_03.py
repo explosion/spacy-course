@@ -6,7 +6,7 @@ matcher = Matcher(nlp.vocab)
 
 doc = nlp("El gigante tecnológico IBM está poniendo lecciones virtuales sobre tecnologías avanzadas gratuitas en español.")
 
-# Escribe un patrón para uno o dos sustantivos más un adjetivo
+# Escribe un patrón para un sustantivo más uno o dos adjetivos
 pattern = [{"POS": ____}, {"POS": ____}, {"POS": ____, "OP": ____}]
 
 # Añade el patrón al matcher y usa el matcher sobre el documento
