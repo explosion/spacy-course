@@ -94,14 +94,14 @@ there are two different ways to get involved:
    It doesn't matter where you're based, but you should be able to issue
    invoices as a freelancer or similar, depending on your country.
 
-#### I want to help create a audio/video tutorial for an existing translation. How can I get involved?
+#### I want to help create an audio/video tutorial for an existing translation. How can I get involved?
 
 Again, thanks, this is super cool! While the
 [English](https://www.youtube.com/watch?v=THduWAnG97k) and
 [German](https://www.youtube.com/watch?v=K1elwpgDdls) videos also include a
 video recording, it's not a requirement and we'd be happy to just provide an
 audio track alongside the slides. We'd take care of the postprocessing and video
-editing, so all we need is the audio recording. So if you feel comfortable
+editing, so all we need is the audio recording. If you feel comfortable
 recording yourself reading out the slide notes in your language, email us at
 [contact@explosion.ai](mailto:contact@explosion.ai) and make us an offer and
 include a bit about you and similar work you've done in the past, if available.
