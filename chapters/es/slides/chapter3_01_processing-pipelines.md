@@ -69,7 +69,7 @@ puedes usar para entrenar tu propio sistema.
 
 # Detrás de cámaras
 
-<img src="/package_meta.png" alt="Illustration of a package labelled en_core_web_sm, folders and file and the meta.json" />
+<img src="/package_meta_es.png" alt="Illustration of a package labelled es_core_web_sm, folders and file and the meta.json" />
 
 - El pipeline está definido en el `meta.json` del modelo en el orden específico
 - Los componentes incluidos necesitan datos binarios para hacer predicciones

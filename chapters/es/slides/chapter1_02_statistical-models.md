@@ -31,7 +31,7 @@ Los modelos pueden ser actualizados con más ejemplos para afinar sus prediccion
 
 # Paquetes de modelos
 
-<img src="/package.png" alt="A package with the label en_core_web_sm" width="30%" align="right" />
+<img src="/package_es.png" alt="A package with the label en_core_web_sm" width="30%" align="right" />
 
 ```bash
 $ python -m spacy download es_core_news_sm
