@@ -4,7 +4,7 @@ type: slides
 
 # Die Trainingsschleife
 
-Notes: Während manche andere Bibliotheken eine einzelne Methode zur Verfügung
+Notes: Während manche anderen Bibliotheken eine einzelne Methode zur Verfügung
 stellen, die ein Modell trainiert, überlässt spaCy dir die volle Kontrolle über
 die Trainingsschleife.
 
@@ -21,7 +21,7 @@ die Trainingsschleife.
 Notes: Die Trainingsschleife besteht aus einer Reihe von Schritten, die
 ausgeführt werden, um ein Modell zu trainieren.
 
-Wir müssen ihn typischerweise mehrmals durchführen, für mehrere Iterationen,
+Wir müssen sie typischerweise mehrmals durchführen, für mehrere Iterationen,
 sodass das Modell effektiv etwas lernen kann. Wenn wir mit 10 Iterationen
 trainineren wollen, müssen wir die Schleife 10 Mal ausführen.
 
@@ -30,8 +30,8 @@ mischen wir die Daten zufällig in jeder Iteration. Dies ist eine sehr
 verbreitete Strategie für Stochastic Gradient Descent.
 
 Als nächstes teilen wir die Trainingsdaten in Batches von mehreren Beispielen
-auf, auch "Minibatching" genannt. Dies macht es einfacher, den Gradient
-zutreffende zu berechnen.
+auf, auch "Minibatching" genannt. Dies erhöht die Zuverlässigkeit der
+prognostizierten Gradients.
 
 Zuletzt aktualisieren wir das Modell für jeden Batch, und beginnen die Schleife
 erneut, bis wir die letzte Iteration erreicht haben.

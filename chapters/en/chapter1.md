@@ -10,9 +10,9 @@ type: chapter
 id: 1
 ---
 
-<exercise id="1" title="Introduction to spaCy" type="slides">
+<exercise id="1" title="Introduction to spaCy" type="slides,video">
 
-<slides source="chapter1_01_introduction-to-spacy">
+<slides source="chapter1_01_introduction-to-spacy" start="0:165" end="3:01">
 </slides>
 
 </exercise>
@@ -27,24 +27,21 @@ some of the 55+ [available languages](https://spacy.io/usage/models#languages).
 - Import the `English` class from `spacy.lang.en` and create the `nlp` object.
 - Create a `doc` and print its text.
 
-<codeblock id="01_02_01">
-</codeblock>
+<codeblock id="01_02_01"></codeblock>
 
 ### Part 2: German
 
 - Import the `German` class from `spacy.lang.de` and create the `nlp` object.
 - Create a `doc` and print its text.
 
-<codeblock id="01_02_02">
-</codeblock>
+<codeblock id="01_02_02"></codeblock>
 
 ### Part 3: Spanish
 
 - Import the `Spanish` class from `spacy.lang.es` and create the `nlp` object.
 - Create a `doc` and print its text.
 
-<codeblock id="01_02_03">
-</codeblock>
+<codeblock id="01_02_03"></codeblock>
 
 </exercise>
 
@@ -107,9 +104,9 @@ To get the token at a certain index, you can index into the `doc`. For example,
 
 </exercise>
 
-<exercise id="5" title="Statistical models" type="slides">
+<exercise id="5" title="Statistical models" type="slides,video">
 
-<slides source="chapter1_02_statistical-models">
+<slides source="chapter1_02_statistical-models" start="3:12" end="7:01">
 </slides>
 
 </exercise>
@@ -229,9 +226,9 @@ a look at an example.
 
 </exercise>
 
-<exercise id="10" title="Rule-based matching" type="slides">
+<exercise id="10" title="Rule-based matching" type="slides,video">
 
-<slides source="chapter1_03_rule-based-matching">
+<slides source="chapter1_03_rule-based-matching" start="7:118" end="10:55">
 </slides>
 
 </exercise>

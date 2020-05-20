@@ -28,10 +28,9 @@ nlp = German()
 Notes: Im Zentrum von spaCy steht das Objekt, das die Verarbeitungspipeline
 enthält. Wir nennen diese Variable typischerweise "nlp".
 
-Um beispielsweise ein englischsprachiges `nlp`-Objekt zu erstellen, kannst du
-die Sprach-Klasse `English` von `spacy.lang.en` importieren und initialisieren.
-Du kannst das `nlp`-Objekt wie eine Funktion benutzen und damit Text
-analysieren.
+Um beispielsweise ein deutschsprachiges `nlp`-Objekt zu erstellen, kannst du die
+Sprach-Klasse `German` von `spacy.lang.de` importieren und initialisieren. Du
+kannst das `nlp`-Objekt wie eine Funktion benutzen und damit Text analysieren.
 
 Es enthält alle verschiedenen Komponenten der Pipeline.
 
@@ -90,7 +89,7 @@ Welt
 Notes: `Token`-Objekte repräsentieren die Tokens in einem Dokument – zum
 Beispiel ein Wort oder ein Satzzeichen.
 
-Um einen Token an einer bestimmten Position erhalten, kannst du wie bei einer
+Um einen Token an einer bestimmten Position zu erhalten, kannst du wie bei einer
 Liste auf seinen Index im Doc zugreifen.
 
 `Token`-Objekte haben außerdem verschiedene Attribute, die mehr Informationen
@@ -104,17 +103,17 @@ den wortwörtlichen Text des Tokens zurück.
 <img src="/doc_span.png" width="50%" alt="Illustration eines Doc-Objekts mit vier Tokens und drei davon innerhalb einer Span" />
 
 ```python
-doc = nlp("Hallo, wie geht es dir?")
+doc = nlp("Hallo Welt!")
 
 # Ein Abschnitt des Doc-Objekts ist ein Span-Objekt
-span = doc[2:4]
+span = doc[1:3]
 
 # Erhalte den Text der Span über das Attribut .text
 print(span.text)
 ```
 
 ```out
-wie geht
+Welt!
 ```
 
 Notes: Ein `Span`-Objekt ist ein Abschnitt des Dokuments, der aus einem oder
@@ -130,7 +129,7 @@ enschließend! - dem Token an Position 3.
 # Lexikalische Attribute
 
 ```python
-doc = nlp("It costs $5.")
+doc = nlp("Es kostet 5€.")
 ```
 
 ```python
@@ -157,9 +156,9 @@ Notes: Hier siehst du einige der verfügbaren Token-Attribute:
 
 `text` gibt den Text des Tokens zurück.
 
-`is_alpha`, `is_punct` and `like_num` geben boolesche Werte zurück, die angeben,
+`is_alpha`, `is_punct` und `like_num` geben boolesche Werte zurück, die angeben,
 ob der Token aus alphabetischen Zeichen besteht, ob er ein Satzzeichen ist oder
-ob es einer Zahl _ähnelt_. Zum Beispiel, ein Token "10" – Eins, Null, oder das
+ob er einer Zahl _ähnelt_. Zum Beispiel, ein Token "10" – Eins, Null, oder das
 Wort "zehn" – Z, E, H, N.
 
 Diese Attribute werden auch lexikalische Attribute genannt: sie beziehen sich

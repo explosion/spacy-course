@@ -17,7 +17,7 @@ and what happens behind the scenes when you call nlp on a string of text.
 
 <img src="/pipeline.png" alt="Illustration of the spaCy pipeline transforming a text into a processed Doc" width="90%" />
 
-```
+```python
 doc = nlp("This is a sentence.")
 ```
 
@@ -65,7 +65,7 @@ train your own system.
 
 # Under the hood
 
-<img src="package_meta.png" alt="Illustration of a package labelled en_core_web_sm, folders and file and the meta.json" />
+<img src="/package_meta.png" alt="Illustration of a package labelled en_core_web_sm, folders and file and the meta.json" />
 
 - Pipeline defined in model's `meta.json` in order
 - Built-in components need binary data to make predictions

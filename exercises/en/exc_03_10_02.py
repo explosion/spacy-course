@@ -9,7 +9,7 @@ def to_html(span, tag):
     return f"<{tag}>{span.text}</{tag}>"
 
 
-# Register the Span property extension "to_html" with the method to_html
+# Register the Span method extension "to_html" with the method to_html
 ____.____(____, ____=____)
 
 # Process the text and call the to_html method on the span with the tag name "strong"

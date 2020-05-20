@@ -12,9 +12,9 @@ type: chapter
 id: 4
 ---
 
-<exercise id="1" title="Training and updating models" type="slides">
+<exercise id="1" title="Training and updating models" type="slides,video">
 
-<slides source="chapter4_01_training-updating-models">
+<slides source="chapter4_01_training-updating-models" start="35:02" end="38:495">
 </slides>
 
 </exercise>
@@ -102,9 +102,9 @@ a set of training examples. A list of sentences is available as the variable
 
 </exercise>
 
-<exercise id="5" title="The training loop" type="slides">
+<exercise id="5" title="The training loop" type="slides,video">
 
-<slides source="chapter4_02_training-loop">
+<slides source="chapter4_02_training-loop" start="39:00" end="42:25">
 </slides>
 
 </exercise>
@@ -220,9 +220,9 @@ number of total correct entities the model _should_ have predicted.
 
 </exercise>
 
-<exercise id="9" title="Training best practices" type="slides">
+<exercise id="9" title="Training best practices" type="slides,video">
 
-<slides source="chapter4_03_training-best-practices">
+<slides source="chapter4_03_training-best-practices" start="42:36" end="44:55">
 </slides>
 
 </exercise>
@@ -259,9 +259,9 @@ Why is this data and label scheme problematic?
 <opt text="Whether a place is a tourist destination is a subjective judgement and not a definitive category. It will be very difficult for the entity recognizer to learn." correct="true">
 
 A much better approach would be to only label `"GPE"` (geopolitical entity) or
-`"LOCATION"` and then use a rule-based system to determine whether the entity is a
-tourist destination in this context. For example, you could resolve the entities
-types back to a knowledge base or look them up in a travel wiki.
+`"LOCATION"` and then use a rule-based system to determine whether the entity is
+a tourist destination in this context. For example, you could resolve the
+entities types back to a knowledge base or look them up in a travel wiki.
 
 </opt>
 
@@ -288,8 +288,8 @@ of the big advantages of statistical named entity recognition.
 
 - Rewrite the `TRAINING_DATA` to only use the label `"GPE"` (cities, states,
   countries) instead of `"TOURIST_DESTINATION"`.
-- Don't forget to add tuples for the `"GPE"` entities that weren't labeled in the
-  old data.
+- Don't forget to add tuples for the `"GPE"` entities that weren't labeled in
+  the old data.
 
 <codeblock id="04_10">
 
@@ -305,17 +305,17 @@ of the big advantages of statistical named entity recognition.
 
 <exercise id="11" title="Training multiple labels">
 
-Here's a small sample of a dataset created to train a new entity type `"WEBSITE"`.
-The original dataset contains a few thousand sentences. In this exercise, you'll
-be doing the labeling by hand. In real life, you probably want to automate this
-and use an annotation tool – for example, [Brat](http://brat.nlplab.org/), a
-popular open-source solution, or [Prodigy](https://prodi.gy), our own annotation
-tool that integrates with spaCy.
+Here's a small sample of a dataset created to train a new entity type
+`"WEBSITE"`. The original dataset contains a few thousand sentences. In this
+exercise, you'll be doing the labeling by hand. In real life, you probably want
+to automate this and use an annotation tool – for example,
+[Brat](http://brat.nlplab.org/), a popular open-source solution, or
+[Prodigy](https://prodi.gy), our own annotation tool that integrates with spaCy.
 
 ### Part 1
 
-- Complete the entity offsets for the `"WEBSITE"` entities in the data. Feel free
-  to use `len()` if you don't want to count the characters.
+- Complete the entity offsets for the `"WEBSITE"` entities in the data. Feel
+  free to use `len()` if you don't want to count the characters.
 
 <codeblock id="04_11_01">
 
@@ -373,9 +373,9 @@ the problem here.
 
 </exercise>
 
-<exercise id="12" title="Wrapping up" type="slides">
+<exercise id="12" title="Wrapping up" type="slides,video">
 
-<slides source="chapter4_04_wrapping-up">
+<slides source="chapter4_04_wrapping-up" start="45:01" end="47:195">
 </slides>
 
 </exercise>

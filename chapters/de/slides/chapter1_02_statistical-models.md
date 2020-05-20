@@ -109,7 +109,8 @@ Für jeden Token im Doc können wir nun den Text und das Attribut `.pos_`, die
 vorhergesagte Wortart, drucken.
 
 Attribute, die Strings zurückgeben, enden in spaCy üblicherweise mit einem
-Unterstrich; Attribute ohne Unterstrich geben eine ID zurück.
+Unterstrich; Attribute ohne Unterstrich geben eine ID in Form eines
+Integer-Werts zurück.
 
 In diesem Fall hat das Modell korrekt das Wort "aß" als ein Verb und "Pizza" als
 ein Nomen vorhergesagt.
@@ -193,7 +194,7 @@ Land.
 Über die Property `doc.ents` kannst du auf die vom Modell vorhergesagten
 Entitäten zugreifen.
 
-Es gibt einen Iterator von `Span`-Objekten zurück und wir können also den Text
+Sie gibt einen Iterator von `Span`-Objekten zurück und wir können also den Text
 der Entität, sowie das Label, verfügbar über das Attribut `.label_` drucken.
 
 In diesem Fall hat das Modell korrekt "Apple" als Organisation, "Cupertino" als
@@ -206,7 +207,7 @@ Modell trainiert wurde. Das deutsche Modell zum Beispiel erkennt Personen als
 
 ---
 
-# Tipp: die Methode explain
+# Tipp: die Methode spacy.explain
 
 Schnelle Definitionen der am häufigsten verwendeten Tags und Labels.
 

@@ -12,7 +12,7 @@ erstellen kannst, um Wörter und Ausdrücke im Text zu finden.
 # Warum nicht einfach reguläre Ausdrücke?
 
 - Durchsuche `Doc`-Objekte und nicht nur Strings
-- Verwende Token und Token-Attribute
+- Verwende Tokens und Token-Attribute
 - Verwende die Vorhersagen des Modells
 - Beispiel: "essen" (Verb) vs. "Essen" (Nomen)
 
@@ -103,7 +103,7 @@ lernst später noch mehr darüber – denke erstmal nur daran, es immer einzufü
 Die Methode matcher.add kann verwendet werden, um ein Pattern hinzuzufügen. Das
 erste Argument ist eine eindeutige ID, um das Pattern zu identifizieren, wenn es
 gefunden wird. Das zweite Argument ist eine optionale Callback-Funktion. Wir
-brauchen hier keine, deshalb setzen wir es auf `None`. Das dritte Argument ist
+brauchen hier keine, deswegen setzen wir es auf `None`. Das dritte Argument ist
 das Pattern.
 
 Um das Pattern in einem Text zu finden, können wir den Matcher mit einem Doc
@@ -147,7 +147,7 @@ zum End-Index.
 
 ---
 
-# Lexikale Attribute finden
+# Lexikalische Attribute finden
 
 ```python
 pattern = [
@@ -167,7 +167,7 @@ doc = nlp("2018 FIFA World Cup: Frankreich hat gewonnen!")
 2018 FIFA World Cup:
 ```
 
-Notes: Hier ist ein Beispiel eines komplexeren Patterns mit lexikalen
+Notes: Hier ist ein Beispiel eines komplexeren Patterns mit lexikalischen
 Attributen.
 
 Wir suchen nach fünf Tokens:
@@ -179,7 +179,7 @@ Kleinschreibung.
 
 Und ein Token, der aus Satzzeichen besteht.
 
-Dieses Pattern findet die Token "2018 FIFA World Cup:".
+Dieses Pattern findet die Tokens "2018 FIFA World Cup:".
 
 ---
 
@@ -201,7 +201,7 @@ mochte Hunde
 mag Katzen
 ```
 
-Note: In diesem Beispiel suchen wir zwei Tokens:
+Notes: In diesem Beispiel suchen wir zwei Tokens:
 
 Ein Verb mit dem Lemma "mögen", gefolgt von einem Nomen.
 
@@ -231,8 +231,7 @@ Garten
 Notes: Operatoren und Quantoren legen fest, wie oft ein Token gefunden werden
 soll. Sie können mit dem Schlüssel "OP" hinzugefügt werden.
 
-In diesem Beispiel macht der Operator "?" das Adjektiv optional, das heißt es
-findet einen Token mit dem Lemma "bunte", ein optionales Adjektiv und ein Nomen.
+In diesem Beispiel macht der Operator "?" das Adjektiv optional.
 
 ---
 
@@ -251,11 +250,11 @@ Ein "!" negiert den Token und findet ihn 0 Mal.
 
 Ein "?" macht den Token optional und findet ihn 0 oder 1 Mal.
 
-Ein "+" fundet den Token 1 Mal oder öfter.
+Ein "+" findet den Token 1 Mal oder öfter.
 
 Und ein "\*" findet den Token 0 Mal oder öfter.
 
-Operatoren können deine Pattern leistungsfähiger machen, aber auch deutlich
+Operatoren können deine Patterns leistungsfähiger machen, aber auch deutlich
 komplexer. Nutze sie also mit Vorsicht.
 
 ---

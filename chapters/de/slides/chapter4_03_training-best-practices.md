@@ -66,14 +66,14 @@ TRAINING_DATA = [
 ]
 ```
 
-Note: Um dies zu vermeiden, solltest du die neuen Beispiele stets mit Beispielen
-mischen, die das Modell bereits zuvor correct vorhergesagt hat.
+Notes: Um dies zu vermeiden, solltest du die neuen Beispiele stets mit
+Beispielen mischen, die das Modell bereits zuvor korrekt vorhergesagt hat.
 
 Wenn du also eine neue Kategorie `"WEBSITE"` trainierst, füge den Trainingsdaten
 außerdem Beispiele der Kategorie `"PER"` für "Person" bei.
 
 spaCy kann dir dabei helfen. Du kannst diese zusätzlichen Beispiele erstellen,
-in dem du das vorhandene Modell auf deine Daten anwendest, und die
+indem du das vorhandene Modell auf deine Daten anwendest, und die
 Entitäten-Spans extrahierst, die dir wichtig sind.
 
 Du kannst diese Beispiele dann mit deinen bereits vorhandenen Trainingsdaten

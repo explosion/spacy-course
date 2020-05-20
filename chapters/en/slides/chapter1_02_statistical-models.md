@@ -101,7 +101,7 @@ For each token in the doc, we can print the text and the `.pos_` attribute, the
 predicted part-of-speech tag.
 
 In spaCy, attributes that return strings usually end with an underscore –
-attributes without the underscore return an ID.
+attributes without the underscore return an integer ID value.
 
 Here, the model correctly predicted "ate" as a verb and "pizza" as a noun.
 
@@ -189,7 +189,7 @@ In this case, the model is correctly predicting "Apple" as an organization,
 
 ---
 
-# Tip: the explain method
+# Tip: the spacy.explain method
 
 Get quick definitions of the most common tags and labels.
 

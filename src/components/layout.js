@@ -5,7 +5,7 @@ import SEO from './seo'
 import { Link } from './link'
 import { H3 } from './typography'
 import { Logo } from './logo'
-import { UiTextContext } from '../context'
+import { LocaleContext } from '../context'
 
 import '../styles/index.sass'
 import classes from '../styles/layout.module.sass'
@@ -26,7 +26,7 @@ const Layout = ({ isHome, title, description, lang, pageName, children }) => {
     return (
         <>
             <SEO title={title} description={description} lang={lang} localeData={localeData} />
-            <UiTextContext.Provider value={{ ...localeData.uiText, courseTitle: localeData.title }}>
+            <LocaleContext.Provider value={localeData}>
                 <main className={classes.root}>
                     {langs.length > 1 && (
                         <select
@@ -88,7 +88,7 @@ const Layout = ({ isHome, title, description, lang, pageName, children }) => {
                         </div>
                     </footer>
                 </main>
-            </UiTextContext.Provider>
+            </LocaleContext.Provider>
         </>
     )
 }

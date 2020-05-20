@@ -3,14 +3,14 @@ import { graphql, navigate } from 'gatsby'
 import useLocalStorage from '@illinois/react-use-local-storage'
 
 import { renderAst } from '../markdown'
-import { ChapterContext, UiTextContext } from '../context'
+import { ChapterContext, LocaleContext } from '../context'
 import Layout from '../components/layout'
 import { Button } from '../components/button'
 
 import classes from '../styles/chapter.module.sass'
 
 const Pagination = ({ prev, next, lang }) => {
-    const uiText = useContext(UiTextContext)
+    const { uiText } = useContext(LocaleContext)
     const buttons = [
         { slug: prev, text: `« ${uiText.prevChapter}` },
         { slug: next, text: `${uiText.nextChapter} »` },
@@ -42,10 +42,22 @@ const Template = ({ data }) => {
     const { lang } = fields
     const [activeExc, setActiveExc] = useState(null)
     const [completed, setCompleted] = useLocalStorage(`spacy-course-completed-${id}`, [])
+    const [slideType, setSlideType] = useLocalStorage(`spacy-course-slide-type`, 'video')
+    const context = {
+        lang,
+        activeExc,
+        setActiveExc,
+        completed,
+        setCompleted,
+        slideType,
+        setSlideType,
+    }
     const html = renderAst(htmlAst)
 
     return (
-        <ChapterContext.Provider value={{ lang, activeExc, setActiveExc, completed, setCompleted }}>
+        <ChapterContext.Provider
+            value={context}
+        >
             <Layout lang={lang} title={title} description={description} pageName={parent.name}>
                 {html}
 

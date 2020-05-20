@@ -13,9 +13,9 @@ type: chapter
 id: 3
 ---
 
-<exercise id="1" title="Pipelines für Textverarbeitung" type="slides">
+<exercise id="1" title="Pipelines für Textverarbeitung" type="slides,video">
 
-<slides source="chapter3_01_processing-pipelines">
+<slides source="chapter3_01_processing-pipelines" start="25:14" end="28:03">
 </slides>
 
 </exercise>
@@ -82,9 +82,9 @@ ist verfügbar als `nlp.pipeline`.
 
 </exercise>
 
-<exercise id="4" title="Benutzerdefinierte Pipeline-Komponenten" type="slides">
+<exercise id="4" title="Benutzerdefinierte Pipeline-Komponenten" type="slides,video">
 
-<slides source="chapter3_02_custom-pipeline-components">
+<slides source="chapter3_02_custom-pipeline-components" start="28:14" end="31:272">
 </slides>
 
 </exercise>
@@ -101,7 +101,7 @@ gelöst werden? Wähle alle Optionen aus, die zutreffen.
 
 <choice>
 
-<opt text="1 and 2.">
+<opt text="1 und 2.">
 
 Benutzerdefinierte Komponenten können lediglich das `Doc` bearbeiten und daher
 nicht dazu genutzt werden, die Gewichte des Modells anderer Komponenten direkt
@@ -109,7 +109,7 @@ zu verändern.
 
 </opt>
 
-<opt text="1 and 3.">
+<opt text="1 und 3.">
 
 Benutzerdefinierte Komponenten können lediglich das `Doc` bearbeiten und daher
 nicht dazu genutzt werden, die Gewichte des Modells anderer Komponenten direkt
@@ -117,7 +117,7 @@ zu verändern.
 
 </opt>
 
-<opt text="1 and 4.">
+<opt text="1 und 4.">
 
 Benutzerdefinierte Komponenten können lediglich das `Doc` bearbeiten und daher
 nicht dazu genutzt werden, die Gewichte des Modells anderer Komponenten direkt
@@ -127,7 +127,7 @@ nicht geeignet, um neue Sprachen hinzuzufügen.
 
 </opt>
 
-<opt text="2 and 3." correct="true">
+<opt text="2 und 3." correct="true">
 
 Benutzerdefinierte Komponenten eignen sich sehr gut dazu, eigene berechnete
 Werte zu Dokumenten, Tokens und Spans hinzuzufügen, und die `doc.ents` zu
@@ -135,7 +135,7 @@ bearbeiten.
 
 </opt>
 
-<opt text="2 and 4.">
+<opt text="2 und 4.">
 
 Benutzerdefinierte Komponenten werden zur Pipeline hinzugefügt, nachdem die
 Sprach-Klasse bereits initialisiert und der Text tokenisiert ist. Sie sind daher
@@ -143,7 +143,7 @@ nicht geeignet, um neue Sprachen hinzuzufügen.
 
 </opt>
 
-<opt text="3 and 4.">
+<opt text="3 und 4.">
 
 Benutzerdefinierte Komponenten werden zur Pipeline hinzugefügt, nachdem die
 Sprach-Klasse bereits initialisiert und der Text tokenisiert ist. Sie sind daher
@@ -207,14 +207,14 @@ wurde bereits für dich als Variable `matcher` erstellt.
 
 </exercise>
 
-<exercise id="8" title="Benutzerdefinierte Erweiterungen" type="slides">
+<exercise id="8" title="Erweiterte Attribute" type="slides,video">
 
-<slides source="chapter3_03_extension-attributes">
+<slides source="chapter3_03_extension-attributes" start="31:38" end="35:015">
 </slides>
 
 </exercise>
 
-<exercise id="9" title="Erweiterte Attribute festlegen (1)">
+<exercise id="9" title="Erweiterungen festlegen (1)">
 
 Lass uns üben, ein paar benutzerdefinierte Attribute festzulegen.
 
@@ -247,7 +247,7 @@ Beispiel, `doc._.has_color`.
 
 </exercise>
 
-<exercise id="10" title="Erweiterte Attribute festlegen (2)">
+<exercise id="10" title="Erweiterungen festlegen (2)">
 
 Lass uns nun ein paar komplexere Attribute mit Getter-Funktionen und Methoden
 definieren.
@@ -347,9 +347,9 @@ ist als Variable `CAPITALS` verfügbar.
 
 </exercise>
 
-<exercise id="13" title="Skalieren und Performance" type="slides">
+<exercise id="13" title="Skalieren und Performance" type="slides,video">
 
-<slides source="chapter3_04_scaling-performance">
+<slides source="chapter3_04_scaling-performance" start="35:12" end="37:51">
 </slides>
 
 </exercise>

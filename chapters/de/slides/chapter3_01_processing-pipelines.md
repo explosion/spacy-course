@@ -19,7 +19,7 @@ Text mit dem `nlp`-Objekt verarbeitest.
 
 <img src="/pipeline.png" alt="Illustration der spaCy Pipeline, die einen Text in ein verarbeitetes Doc umwandelt" width="90%" />
 
-```
+```python
 doc = nlp("Dies ist ein Satz.")
 ```
 
@@ -42,7 +42,7 @@ verarbeitete Doc zurückgegeben, damit du mit ihm arbeiten kannst.
 | ----------- | :---------------------- | :-------------------------------------------------------- |
 | **tagger**  | Part-of-speech Tagger   | `Token.tag`, `Token.pos`                                  |
 | **parser**  | Dependency Parser       | `Token.dep`, `Token.head`, `Doc.sents`, `Doc.noun_chunks` |
-| **ner**     | Named entity Recognizer | `Doc.ents`, `Token.ent_iob`, `Token.ent_type`             |
+| **ner**     | Named Entity Recognizer | `Doc.ents`, `Token.ent_iob`, `Token.ent_type`             |
 | **textcat** | Text Classifier         | `Doc.cats`                                                |
 
 Notes: spaCy beinhaltet die folgenden eingebauten Pipeline-Komponenten.
@@ -68,7 +68,7 @@ verwenden, um deine eignen Systeme zu trainieren.
 
 # Hinter den Kulissen
 
-<img src="package_meta_de.png" alt="Ein Paket mit dem Label de_core_news_sm mit Ordner und meta.json" />
+<img src="/package_meta_de.png" alt="Ein Paket mit dem Label de_core_news_sm mit Ordner und meta.json" />
 
 - Pipeline definiert in der `meta.json` des Modells in der entsprechenden
   Reihenfolge
