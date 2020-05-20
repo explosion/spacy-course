@@ -55,7 +55,7 @@ Continuamos llamando a `nlp.update` para cada lote de ejemplos en los datos.
 
 # Cómo funciona el entrenamiento (2)
 
-<img src="/training.png" alt="Diagram of the training process" />
+<img src="/training_es.png" alt="Diagram of the training process" />
 
 - **Datos de entrenamiento:** Ejemplos y sus anotaciones.
 - **Texto:** El texto al que el modelo debe predecirle un label.

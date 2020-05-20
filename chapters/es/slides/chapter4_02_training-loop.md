@@ -32,7 +32,7 @@ Entonces podemos guardar el modelo en un directorio y usarlo en spaCy.
 
 # Resumen: Cómo funciona el entrenamiento
 
-<img src="/training.png" alt="Diagram of the training process" />
+<img src="/training_es.png" alt="Diagram of the training process" />
 
 - **Datos de entrenamiento:** Ejemplos y sus anotaciones.
 - **Texto:** El texto al que el modelo debe predecirle un label.
