@@ -119,7 +119,7 @@ El atributo `.head` devuelve el token <abbr title="En inglés: head.">cabeza</ab
 
 # Esquema de Dependency label
 
-<img src="/dep_example.png" alt="Visualization of the dependency graph for 'She ate the pizza'" />
+<img src="/dep_example_es.png" alt="Visualization of the dependency graph for 'Ella comió la pizza'" />
 
 | Label     | Descripción             | Ejemplo |
 | --------- | ----------------------- | ------- |
@@ -139,7 +139,7 @@ El determinante "la", también conocido como artículo, está unido al sustantiv
 
 # Prediciendo entidades nombradas
 
-<img src="/ner_example.png" alt="Visualization of the named entities in 'Apple is looking at buying U.K. startup for $1 billion'" width="80%" />
+<img src="/ner_example_es.png" alt="Visualization of the named entities in 'Apple es la marca que más satisfacción genera en EE.UU.; pero el iPhone, fue superado por el Galaxy Note 9'" width="80%" />
 
 ```python
 # Procesa un texto
