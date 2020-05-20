@@ -13,11 +13,11 @@ En esta lección vamos a ver los conceptos más importantes de spaCy y cómo com
 # El objeto nlp
 
 ```python
-# Importa la clase de lenguaje "English"
-from spacy.lang.en import English
+# Importa la clase de lenguaje "Spanish"
+from spacy.lang.es import Spanish
 
 # Crea el objeto nlp
-nlp = English()
+nlp = Spanish()
 ```
 
 - contiene el pipeline de procesamiento
@@ -25,7 +25,7 @@ nlp = English()
 
 Notes: En el centro de spaCy está el objeto que contiene el <abbr title="Un pipeline es una serie de acciones que se ejecutan en secuencia. Cada paso depende del anterior usando su resultado.">pipeline</abbr> de procesamiento. Normalmente llamamos esta variable "nlp".
 
-Por ejemplo, para crear un objeto `nlp` de inglés puedes importar la clase de lenguaje `English` de `spacy.lang.en` y creas un <abbr title="Es un ejemplar de una clase, a veces referido incorrectamente como instancia.">instance</abbr>. Puedes usar el objeto nlp como una función para analizar el texto.
+Por ejemplo, para crear un objeto `nlp` de español puedes importar la clase de lenguaje `Spanish` de `spacy.lang.es` y creas un <abbr title="Es un ejemplar de una clase, a veces referido incorrectamente como instancia.">instance</abbr>. Puedes usar el objeto nlp como una función para analizar el texto.
 
 Contiene todos los componentes diferentes de un pipeline.
 
@@ -37,7 +37,7 @@ También incluye las reglas específicas de su lenguaje usadas para convertir el
 
 ```python
 # Creado procesando un string de texto con el objeto nlp
-doc = nlp("Hello world!")
+doc = nlp("¡Hola Mundo!")
 
 # Itera sobre los tokens en un Doc
 for token in doc:
@@ -45,8 +45,9 @@ for token in doc:
 ```
 
 ```out
-Hello
-world
+¡
+Hola
+Mundo
 !
 ```
 
@@ -61,17 +62,17 @@ El Doc se comporta como una secuencia normal de Python y te permite iterar sobre
 <img src="/doc.png" alt="Illustration of a Doc object containing four tokens" width="50%" />
 
 ```python
-doc = nlp("Hello world!")
+doc = nlp("¡Hola Mundo!")
 
 # Usa el índice del Doc para obtener un solo Token
-token = doc[1]
+token = doc[2]
 
 # Obtén el texto del token a través del atributo .text
 print(token.text)
 ```
 
 ```out
-world
+Mundo
 ```
 
 Notes: Los objetos `Token` representan a los tokens en un documento. Por ejemplo, una palabra o un signo de puntuación.
@@ -87,29 +88,29 @@ Los objetos `Token` también proveen varios atributos que te permiten acceder a 
 <img src="/doc_span.png" width="50%" alt="Illustration of a Doc object containing four tokens and three of them wrapped in a Span" />
 
 ```python
-doc = nlp("Hello world!")
+doc = nlp("¡Hola Mundo!")
 
 # Un slice de un Doc en un objeto Span
-span = doc[1:3]
+span = doc[2:4]
 
 # Obtén el texto del span a través del atributo .text
 print(span.text)
 ```
 
 ```out
-world!
+Mundo!
 ```
 
 Notes: Un objeto `Span` es un <abbr title="Un slice es un subconjunto de elementos dentro de una secuencia de datos como una lista o un objeto Doc.">slice</abbr> de un documento compuesto por uno o más tokens. Es solo un <abbr title="En español: representación o vista.">view</abbr> de un `Doc` y no contiene los datos en sí.
 
-Para crear un span puedes usar la notación de slice de Python. Por ejemplo, `1:3` crea un slice que comienza en el token en la posición 1 hasta - pero no incluyendo! - el token en la posición 3.
+Para crear un span puedes usar la notación de slice de Python. Por ejemplo, `2:4` crea un slice que comienza en el token en la posición 2 hasta - pero no incluyendo! - el token en la posición 4.
 
 ---
 
 # Atributos Léxicos
 
 ```python
-doc = nlp("It costs $5.")
+doc = nlp("Eso cuesta €5.")
 ```
 
 ```python
@@ -123,14 +124,14 @@ print("like_num:", [token.like_num for token in doc])
 
 ```out
 Index:    [0, 1, 2, 3, 4]
-Text:     ['It', 'costs', '$', '5', '.']
+Text:     ['Eso', 'cuesta', '€', '5', '.']
 
 is_alpha: [True, True, False, False, False]
 is_punct: [False, False, False, False, True]
 like_num: [False, False, False, True, False]
 ```
 
-Notes: Aquí puedes ver algunos de los atributos disponibles de los tokens :
+Notes: Aquí puedes ver algunos de los atributos disponibles de los tokens:
 
 `i` es el índice del token dentro del documento padre.
 
