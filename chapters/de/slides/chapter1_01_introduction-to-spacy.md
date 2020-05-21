@@ -129,7 +129,7 @@ enschließend! - dem Token an Position 3.
 # Lexikalische Attribute
 
 ```python
-doc = nlp("It costs $5.")
+doc = nlp("Es kostet 5€.")
 ```
 
 ```python
