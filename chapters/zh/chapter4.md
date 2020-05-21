@@ -7,9 +7,9 @@ type: chapter
 id: 4
 ---
 
-<exercise id="1" title="训练和更新模型" type="slides,video">
+<exercise id="1" title="训练和更新模型" type="slides">
 
-<slides source="chapter4_01_training-updating-models" start="35:02" end="38:495">
+<slides source="chapter4_01_training-updating-models">
 </slides>
 
 </exercise>
@@ -86,9 +86,9 @@ spaCy的基于规则的`Matcher`可以很好地被用来快速创建一些命名
 
 </exercise>
 
-<exercise id="5" title="模型训练过程" type="slides,video">
+<exercise id="5" title="模型训练过程" type="slides">
 
-<slides source="chapter4_02_training-loop" start="39:00" end="42:25">
+<slides source="chapter4_02_training-loop">
 </slides>
 
 </exercise>
@@ -188,9 +188,9 @@ spaCy的基于规则的`Matcher`可以很好地被用来快速创建一些命名
 
 </exercise>
 
-<exercise id="9" title="模型训练最佳实践" type="slides,video">
+<exercise id="9" title="模型训练最佳实践" type="slides">
 
-<slides source="chapter4_03_training-best-practices" start="42:36" end="44:55">
+<slides source="chapter4_03_training-best-practices">
 </slides>
 
 </exercise>
@@ -325,9 +325,9 @@ TRAINING_DATA = [
 
 </exercise>
 
-<exercise id="12" title="总结" type="slides,video">
+<exercise id="12" title="总结" type="slides">
 
-<slides source="chapter4_04_wrapping-up" start="45:01" end="47:195">
+<slides source="chapter4_04_wrapping-up">
 </slides>
 
 </exercise>
