@@ -1,12 +1,12 @@
 import spacy
 
-nlp = spacy.load("en_core_web_sm")
-doc = nlp("I have a cat")
+nlp = spacy.load("es_core_news_sm")
+doc = nlp("Yo tengo un gato")
 
-# Busca el hash para la palabra "cat"
-cat_hash = ____.____.____[____]
-print(cat_hash)
+# Busca el hash para la palabra "gato"
+gato_hash = ____.____.____[____]
+print(gato_hash)
 
-# Busca el cat_hash para obtener el string
-cat_string = ____.____.____[____]
-print(cat_string)
+# Busca el gato_hash para obtener el string
+gato_string = ____.____.____[____]
+print(gato_string)

@@ -2,8 +2,8 @@ def test():
     assert (
         "span1.similarity(span2)" or "span1.similarity(span2)" in __solution__
     ), "¿Estás comparando la similitud entre los dos spans?"
-    assert span1.text == "great restaurant", "¿Generaste correctamente el span1?"
-    assert span2.text == "really nice bar", "¿Generaste correctamente el span2?"
+    assert span1.text == "restaurante genial", "¿Generaste correctamente el span1?"
+    assert span2.text == "bar muy divertido", "¿Generaste correctamente el span2?"
     assert (
         0 <= float(similarity) <= 1
     ), "El valor de la similitud debe ser de punto flotante. ¿Lo calculaste correctamente?"
