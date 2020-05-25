@@ -1,6 +1,6 @@
 import spacy
 
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("es_core_news_sm")
 doc = nlp("Por Berlín fluye el río Esprea.")
 
 # Obtén todos los tokens y los part-of-speech tags

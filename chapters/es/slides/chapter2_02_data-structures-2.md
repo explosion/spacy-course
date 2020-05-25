@@ -14,15 +14,15 @@ estudiar las estructuras de datos más importantes: el `Doc` y sus views el
 
 ```python
 # Crea un objeto nlp
-from spacy.lang.en import English
-nlp = English()
+from spacy.lang.es import Spanish
+nlp = Spanish()
 
 # Importa la clase Doc
 from spacy.tokens import Doc
 
 # Las palabras y espacios que usaremos para crear el doc
-words = ["Hello", "world", "!"]
-spaces = [True, False, False]
+words = ["¡", "Hola", "Mundo", "!"]
+spaces = [False, True, False, False]
 
 # Crea un doc manualmente
 doc = Doc(nlp.vocab, words=words, spaces=spaces)
@@ -62,14 +62,14 @@ excluyente!
 from spacy.tokens import Doc, Span
 
 # Las palabras y espacios que usaremos para crear el doc
-words = ["Hello", "world", "!"]
-spaces = [True, False, False]
+words = ["¡", "Hola", "Mundo", "!"]
+spaces = [False, True, False, False]
 
 # Crea un doc manualmente
 doc = Doc(nlp.vocab, words=words, spaces=spaces)
 
 # Crea un span manualmente
-span = Span(doc, 0, 2)
+span = Span(doc, 1, 3)
 
 # Crea un span con un label
 span_with_label = Span(doc, 0, 2, label="GREETING")

@@ -4,10 +4,10 @@ def test():
     ), "¿Añadiste el span a los doc.ents?"
     assert (
         "span_root_head = span.root.head" in __solution__
-    ), "¿Estás obteniendo el head del token raíz del span?"
+    ), "¿Estás obteniendo la cabeza del token raíz del span?"
     assert (
         "print(span_root_head.text" in __solution__
-    ), "¿Estás imprimiendo en pantalla el texto del head del token raíz del span?"
+    ), "¿Estás imprimiendo en pantalla el texto de la cabeza del token raíz del span?"
     ents = [ent for ent in doc.ents if ent.label_ == "GPE"]
     assert len(ents) == 35, "Número incorrecto de resultados – esperaba 35."
     __msg__.good(
