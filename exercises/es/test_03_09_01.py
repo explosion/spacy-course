@@ -4,7 +4,7 @@ def test():
     ), "¿Registraste la extensión en el token?"
     ext = Token.get_extension("is_country")
     assert ext[0] == False, "¿Añadiste correctamente el valor por defecto?"
-    country_values = [False, False, False, True, False]
+    country_values = [False, False, True, False]
     assert [
         t._.is_country for t in doc
     ] == country_values, "¿Cambiaste el valor en el token correcto?"

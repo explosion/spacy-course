@@ -1,7 +1,7 @@
-from spacy.lang.en import English
+from spacy.lang.es import Spanish
 from spacy.tokens import Doc
 
-nlp = English()
+nlp = Spanish()
 
 # Define la función getter
 def get_has_number(doc):
@@ -13,5 +13,5 @@ def get_has_number(doc):
 ____.____(____, ____=____)
 
 # Procesa el texto y revisa el atributo personalizado "has_number"
-doc = nlp("The museum closed for five years in 2012.")
+doc = nlp("El museo cerró por cinco años en el 2012.")
 print("has_number:", ____)

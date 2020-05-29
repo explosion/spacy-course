@@ -1,7 +1,7 @@
-from spacy.lang.en import English
+from spacy.lang.es import Spanish
 from spacy.tokens import Span
 
-nlp = English()
+nlp = Spanish()
 
 # Define el método
 def to_html(span, tag):
@@ -13,6 +13,6 @@ def to_html(span, tag):
 ____.____(____, ____=____)
 
 # Procesa el texto y llama el método "to_html" en el span con el nombre de tag "strong"
-doc = nlp("Hello world, this is a sentence.")
+doc = nlp("Hola mundo, esto es una frase.")
 span = doc[0:2]
 print(____)

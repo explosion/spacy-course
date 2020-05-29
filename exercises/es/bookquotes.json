@@ -1,26 +1,26 @@
 [
     [
-        "One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin.",
-        { "author": "Franz Kafka", "book": "Metamorphosis" }
+        "Muchos años después, frente al pelotón de fusilamiento, el coronel Aureliano Buendía había de recordar aquella tarde remota en que su padre lo llevó a conocer el hielo.",
+        { "author": "Gabriel García Márquez", "book": "Cien años de soledad" }
     ],
     [
-        "I know not all that may be coming, but be it what it will, I'll go to it laughing.",
-        { "author": "Herman Melville", "book": "Moby-Dick or, The Whale" }
+        "Tenía la ternura torpe de quien nunca ha sido amado y debe improvisar.",
+        { "author": "Isabel Allende", "book": "La casa de los espíritus" }
     ],
     [
-        "It was the best of times, it was the worst of times.",
-        { "author": "Charles Dickens", "book": "A Tale of Two Cities" }
+        "Andábamos sin buscarnos, pero sabiendo que andábamos para encontrarnos.",
+        { "author": "Julio Cortázar", "book": "Rayuela" }
     ],
     [
-        "The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.",
-        { "author": "Jack Kerouac", "book": "On the Road" }
+        "Cuando fui leona nunca recordé, cómo pude un día mariposa ser.",
+        { "author": "Alfonsina Storni", "book": "Así" }
     ],
     [
-        "It was a bright cold day in April, and the clocks were striking thirteen.",
-        { "author": "George Orwell", "book": "1984" }
+        "Los dioses hicieron de maíz a las madres y a los padres. Con maíz amarillo y maíz blanco amasaron su carne.",
+        { "author": "Eduardo Galeano", "book": "Memoria del fuego" }
     ],
     [
-        "Nowadays people know the price of everything and the value of nothing.",
-        { "author": "Oscar Wilde", "book": "The Picture Of Dorian Gray" }
+        "Y no quiero llantos. La muerte hay que mirarla cara a cara. ¡Silencio!",
+        { "author": "Federico García Lorca", "book": "La casa de Bernarda Alba" }
     ]
 ]

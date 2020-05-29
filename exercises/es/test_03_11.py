@@ -11,8 +11,8 @@ def test():
         "(ent.text, ent._.wikipedia_url)" in __solution__
     ), "¿Estás accediendo al atributo personalizado?"
     assert (
-        doc.ents[-1]._.wikipedia_url
-        == "https://en.wikipedia.org/w/index.php?search=David_Bowie"
+        doc.ents[0]._.wikipedia_url
+        == "https://es.wikipedia.org/w/index.php?search=David_Bowie"
     ), "Parece que el valor del atributo no es correcto."
 
     __msg__.good(

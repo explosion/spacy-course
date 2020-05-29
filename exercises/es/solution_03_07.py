@@ -2,8 +2,8 @@ import spacy
 from spacy.matcher import PhraseMatcher
 from spacy.tokens import Span
 
-nlp = spacy.load("en_core_web_sm")
-animals = ["Golden Retriever", "cat", "turtle", "Rattus norvegicus"]
+nlp = spacy.load("es_core_news_sm")
+animals = ["Golden Retriever", "gato", "tortuga", "rata"]
 animal_patterns = list(nlp.pipe(animals))
 print("animal_patterns:", animal_patterns)
 matcher = PhraseMatcher(nlp.vocab)
@@ -25,5 +25,5 @@ nlp.add_pipe(animal_component, after="ner")
 print(nlp.pipe_names)
 
 # Procesa el texto e imprime en pantalla el texto y el label de los doc.ents
-doc = nlp("I have a cat and a Golden Retriever")
+doc = nlp("Tengo un gato y un Golden Retriever")
 print([(ent.text, ent.label_) for ent in doc.ents])
