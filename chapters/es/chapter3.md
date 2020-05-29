@@ -20,7 +20,7 @@ id: 3
 ¿Qué hace spaCy cuando llamas a `nlp` sobre un string de texto?
 
 ```python
-doc = nlp("This is a sentence.")
+doc = nlp("Esto es una frase.")
 ```
 
 <choice>
@@ -53,9 +53,9 @@ Cuándo llamas a `spacy.load()` para cargar un modelo, spaCy inicializará el le
 
 <exercise id="3" title="Inspeccionando el pipeline">
 
-¡Inspeccionemos el pipeline del modelo pequeño de inglés!
+¡Inspeccionemos el pipeline del modelo pequeño de español!
 
-- Carga el modelo `en_core_web_sm` y crea el objeto `nlp`.
+- Carga el modelo `es_core_news_sm` y crea el objeto `nlp`.
 - Imprime en pantalla los nombres de los componentes del pipeline usando `nlp.pipe_names`.
 - Imprime en pantalla el pipeline entero de tuples `(name, component)` usando `nlp.pipeline`.
 
@@ -131,7 +131,7 @@ El ejemplo muestra un componente personalizado que imprime la longitud de un doc
 
 - Completa la función del componente con la longitud del `doc`.
 - Añade el `length_component` al pipeline existente como el **primer** componente.
-- Prueba el nuevo pipeline y procesa cualquier texto con el objeto `nlp` - por ejemplo, "This is a sentence."
+- Prueba el nuevo pipeline y procesa cualquier texto con el objeto `nlp` - por ejemplo, "Esto es una frase."
 
 <codeblock id="03_06">
 
@@ -176,7 +176,7 @@ Vamos a practicar añadiendo algunas extensiones de atributos.
 ### Paso 1
 
 - Usa `Token.set_extension` para registrar `"is_country"` (por defecto `False`).
-- Actualízalo para `"Spain"` e imprímelo en pantalla para todos los tokens.
+- Actualízalo para `"España"` e imprímelo en pantalla para todos los tokens.
 
 <codeblock id="03_09_01">
 

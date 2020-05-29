@@ -80,7 +80,7 @@ Sin embargo, el otro componente al que se le añadirá un nuevo componente antes
 
 ```python
 # Crea el objeto nlp
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("es_core_news_sm")
 
 # Define un componente personalizado
 def custom_component(doc):
@@ -102,7 +102,7 @@ Pipeline: ['custom_component', 'tagger', 'parser', 'ner']
 
 Notes: Aquí tenemos un ejemplo de un componente simple del pipeline.
 
-Comenzamos con el modelo pequeño de inglés.
+Comenzamos con el modelo pequeño de español.
 
 Luego definimos el componente - una función que toma un objeto `Doc` y luego lo devuelve.
 
@@ -120,7 +120,7 @@ Cuando imprimimos en pantalla los nombres de los componentes el nuevo aparece al
 
 ```python
 # Crea el objeto nlp
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("es_core_news_sm")
 
 # Define un componente personalizado
 def custom_component(doc):
@@ -135,11 +135,11 @@ def custom_component(doc):
 nlp.add_pipe(custom_component, first=True)
 
 # Procesa un texto
-doc = nlp("Hello world!")
+doc = nlp("¡Hola Mundo!")
 ```
 
 ```out
-Doc length: 3
+Doc length: 4
 ```
 
 Notes: Ahora cuando procesamos un texto usando el objeto `nlp`, el componente personalizado será aplicado al doc y la longitud del documento será impresa en pantalla.
