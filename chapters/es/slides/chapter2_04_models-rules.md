@@ -39,7 +39,7 @@ part-of-speech tagger de spaCy.
 | ---------------------------- | ---------------------------------------------------------------------- | -------------------------------------------------------------- |
 | **Casos**                    | la aplicación necesita _generalizar_ basada en ejemplos                | diccionario con número finito de casos                       |
 | **Ejemplos de la vida real** | nombres de productos, nombres de personas, relaciones de sujeto/objeto | países del mundo, ciudades, nombres de drogas, razas de perros |
-| **Características de spaCy** | entity recognizer, dependency parser, part-of-speech tagger            | tokenizer `Matcher`, `PhraseMatcher`                           |
+| **Características de spaCy** | entity recognizer, dependency parser, part-of-speech tagger            | tokenizer, `Matcher`, `PhraseMatcher`                           |
 
 Notes: Los enfoques basados en reglas son muy útiles si hay un número más o
 menos finito de casos que quieres encontrar. Por ejemplo, todos los países o
