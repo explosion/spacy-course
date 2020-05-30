@@ -143,7 +143,10 @@ El determinante "la", también conocido como artículo, está unido al sustantiv
 
 ```python
 # Procesa un texto
-doc = nlp("Apple es la marca que más satisfacción genera en EE.UU.; pero el iPhone, fue superado por el Galaxy Note 9")
+doc = nlp(
+    "Apple es la marca que más satisfacción genera en EE.UU.; "
+    "pero el iPhone, fue superado por el Galaxy Note 9"
+)
 
 # Itera sobre las entidades predichas
 for ent in doc.ents:
