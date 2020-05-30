@@ -336,7 +336,7 @@ pattern = [{"LOWER": "silicon"}, {"TEXT": " "}, {"LOWER": "valley"}]
 ```
 
 ```python
-doc = nlp("¿Pueden los trabajadores de Silicon Valley controlar las grandes empresas de tecnología desde dentro?")
+doc = nlp("¿Por qué Silicon Valley necesita miles de astrofísicos?")
 ```
 
 <choice>
