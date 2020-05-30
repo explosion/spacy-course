@@ -14,7 +14,7 @@ def test():
     __msg__.good(
         "Buen trabajo – has entrenado exitosamente tu primer modelo de spaCy. Los "
         "números impresos en la terminal representan la pérdida en cada iteración, "
-        "la cantidad de trabajo que aún queda para el optimizer. Mientras más bajo el número, mejor. "
-        "En la vida real normalmente querrías usar *muchos* más datos que "
-        "esto, idealmente por lo menos unos cientos o miles de ejemplos."
+        "la cantidad de trabajo que aún queda para el optimizer. Mientras más bajo "
+        "el número, mejor. En la vida real normalmente querrías usar *muchos* más "
+        "datos que esto, idealmente por lo menos unos cientos o miles de ejemplos."
     )

@@ -8,10 +8,10 @@ def test():
     ents = [entry[1].get("entities", []) for entry in TRAINING_DATA]
     assert all(len(e) == 2 for e in ents), "Esperaba que todos los ejemplos tengan dos entidades."
     assert any(
-        e == (0, 9, "PERSON") for e in ents[1]
+        e == (0, 9, "PER") for e in ents[1]
     ), "¿Pusiste el label para PERSON correctamente?"
     assert any(
-        e == (15, 29, "PERSON") for e in ents[2]
+        e == (23, 37, "PER") for e in ents[2]
     ), "¿Pusiste el label para PERSON correctamente?"
 
     __msg__.good(

@@ -1,18 +1,18 @@
 TRAINING_DATA = [
     (
-        "i went to amsterdem last year and the canals were beautiful",
-        {"entities": [(10, 19, "GPE")]},
+        "El año pasado fuí a Venecie y los canales son hermosos",
+        {"entities": [(20, 27, "LOC")]},
     ),
     (
-        "You should visit Paris once in your life, but the Eiffel Tower is kinda boring",
-        {"entities": [(17, 22, "GPE")]},
+        "Tu deberías visitar Madrid una vez en tu vida, pero el museo prado es aburrido",
+        {"entities": [(20, 26, "LOC")]},
     ),
     (
-        "There's also a Paris in Arkansas, lol",
-        {"entities": [(15, 20, "GPE"), (24, 32, "GPE")]},
+        "Yo sé que también hay un Madrid en Colombia, jaja",
+        {"entities": [(25, 31, "LOC"), (35, 43, "LOC")]},
     ),
     (
-        "Berlin is perfect for summer holiday: lots of parks, great nightlife, cheap beer!",
-        {"entities": [(0, 6, "GPE")]},
+        "Una ciudad como Berlín es perfecta para las vacaciones de verano: muchos parques, gran vida nocturna, cerveza barata!",
+        {"entities": [(16, 22, "LOC")]},
     ),
 ]
