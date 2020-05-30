@@ -95,7 +95,7 @@ Un objeto `Doc` también expone su vocabulario y strings.
 - Un objeto `Lexeme` es una entrada en el vocabulario
 
 ```python
-doc = nlp("Inés toma café")
+doc = nlp("Ines toma café")
 lexeme = nlp.vocab["café"]
 
 # Imprime en pantalla los atributos léxicos
