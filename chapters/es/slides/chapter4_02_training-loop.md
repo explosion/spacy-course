@@ -55,7 +55,7 @@ El gradiente es cómo deberíamos cambiar el modelo para reducir el error actual
 
 ```python
 TRAINING_DATA = [
-    ("How to preorder the iPhone X", {"entities": [(20, 28, "GADGET")]})
+    ("Cómo pre-ordenar los adidas ZX", {"entities": [(21, 30, "ROPA")]})
     # y muchos más ejemplos...
 ]
 ```
@@ -96,13 +96,13 @@ Finalmente, llamamos al método `nlp.to_disk` para guardar el modelo entrenado a
 # Actualizando un modelo existente
 
 - Mejorar las predicciones con nuevos datos
-- Especialmente útil para mejorar categorías existentes, como `"PERSON"`
+- Especialmente útil para mejorar categorías existentes, como `"PER"`
 - También es posible añadir nuevas categorías
 - Ten cuidado y asegúrate de que el modelo no "olvide" las viejas
 
 Notes: spaCy te permite actualizar los modelos pre-entrenados con más datos - por ejemplo, para mejorar sus predicciones con textos diferentes.
 
-Esto es especialmente útil si quieres mejorar las categorías que el modelo ya conoce, como `"PERSON"` para persona u `"ORG"` para organización.
+Esto es especialmente útil si quieres mejorar las categorías que el modelo ya conoce, como `"PER"` para persona u `"ORG"` para organización.
 
 También puedes actualizar el modelo para añadir nuevas categorías.
 
@@ -113,13 +113,13 @@ Simplemente asegúrate de que siempre actualices el modelo con ejemplos de la nu
 # Creando un nuevo pipeline desde cero
 
 ```python
-# Comienza con un modelo de inglés en blanco
-nlp = spacy.blank("en")
+# Comienza con un modelo de español en blanco
+nlp = spacy.blank("es")
 # Crea un entity recognizer en blanco y añádelo al pipeline
 ner = nlp.create_pipe("ner")
 nlp.add_pipe(ner)
 # Añade un nuevo label
-ner.add_label("GADGET")
+ner.add_label("ROPA")
 
 # Comienza el entrenamiento
 nlp.begin_training()

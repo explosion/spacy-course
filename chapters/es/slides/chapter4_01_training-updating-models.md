@@ -83,13 +83,13 @@ Después de entrenar podemos guardar un modelo actualizado y usarlo en nuestra a
 - Los ejemplos deben venir con contexto
 
 ```python
-("iPhone X is coming", {"entities": [(0, 8, "GADGET")]})
+("Los nuevos adidas ZX vienen en camino", {"entities": [(11, 20, "ROPA")]})
 ```
 
 - Textos sin entidades también son importantes
 
 ```python
-("I need a new phone! Any tips?", {"entities": []})
+("Necesito nuevas zapatillas! ¿Qué me recomiendan?", {"entities": []})
 ```
 
 - **Objetivo:** enseñarle al modelo a generalizar
@@ -102,7 +102,7 @@ Las entidades no pueden superponerse, así que cada token solo puede ser parte d
 
 Debido a que el entity recognizer predice entidades _en contexto_ también necesita ser entrenado en las entidades _y_ su contexto.
 
-La forma más fácil de hacer esto es mostrarle al modelo un texto y una lista de posiciones de carácteres. Por ejemplo, "iPhone X" es un gadget (aparato), comienza en el carácter 0 y termina en el carácter 8.
+La forma más fácil de hacer esto es mostrarle al modelo un texto y una lista de posiciones de carácteres. Por ejemplo, "adidas ZX" es ropa, comienza en el carácter 11 y termina en el carácter 20.
 
 También es muy importante que el modelo aprenda palabras que _no son_ entidades.
 
