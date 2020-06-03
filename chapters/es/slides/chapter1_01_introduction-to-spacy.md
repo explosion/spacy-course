@@ -21,11 +21,11 @@ nlp = Spanish()
 ```
 
 - contiene el pipeline de procesamiento
-- incluye las reglas específicas de su lenguaje para hacer la tokenización, etc.
+- incluye las reglas específicas de su lenguaje para tokenizar, etc.
 
-Notes: En el centro de spaCy está el objeto que contiene el <abbr title="Un pipeline es una serie de acciones que se ejecutan en secuencia. Cada paso depende del anterior usando su resultado.">pipeline</abbr> de procesamiento. Normalmente llamamos esta variable "nlp".
+Notes: En el centro de spaCy está el objeto que contiene el <abbr title="Un pipeline es una serie de acciones que se ejecutan en secuencia. Cada paso depende del anterior usando su resultado.">pipeline</abbr> de procesamiento. Normalmente llamamos "nlp" a esta variable.
 
-Por ejemplo, para crear un objeto `nlp` de español puedes importar la clase de lenguaje `Spanish` de `spacy.lang.es` y creas un <abbr title="Es un ejemplar de una clase, a veces referido incorrectamente como instancia.">instance</abbr>. Puedes usar el objeto nlp como una función para analizar el texto.
+Por ejemplo, para crear un objeto `nlp` de español puedes importar la clase de lenguaje `Spanish` de `spacy.lang.es` y crear un <abbr title="Es un ejemplar de una clase, a veces referido incorrectamente como instancia.">instance</abbr>. Puedes usar el objeto nlp como una función para analizar el texto.
 
 Contiene todos los componentes diferentes de un pipeline.
 
@@ -51,7 +51,8 @@ Mundo
 !
 ```
 
-Notes: Cuando procesas un <abbr title="El tipo de dato de Python para texto.">string</abbr> de texto con el objeto `nlp`, spaCy crea un objeto `Doc` - de "Documento". El Doc te permite acceder a la información sobre el texto en una forma estructurada y sin perder información.
+Notes: Cuando procesas un <abbr title="El tipo de dato de Python para texto.">string</abbr> de texto con el objeto `nlp`, spaCy crea un objeto `Doc` - de "documento". 
+El Doc te permite acceder a la información sobre el texto en una forma estructurada y sin perder información.
 
 El Doc se comporta como una secuencia normal de Python y te permite iterar sobre sus tokens u obtener un token con su índice. Más adelante hablaremos más de ello.
 
