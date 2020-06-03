@@ -312,7 +312,7 @@ diferentes atributos de los tokens y operadores.
 
 ### Parte 3
 
-- Escribe **un** patrón que encuentre un sustantivo `"NOUN"` seguido de uno o dos adjetivos adjetivos `"ADJ"`(un adjetivo y un adjetivo opcional).
+- Escribe **un** patrón que encuentre un sustantivo `"NOUN"` seguido de uno o dos adjetivos `"ADJ"`(un adjetivo y un adjetivo opcional).
 
 <codeblock id="01_12_03">
 

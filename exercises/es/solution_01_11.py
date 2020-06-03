@@ -4,7 +4,10 @@ import spacy
 from spacy.matcher import Matcher
 
 nlp = spacy.load("es_core_news_sm")
-doc = nlp("Los Olímpicos de Tokio 2020 son la inspiración para la nueva colección de zapatillas adidas ZX.")
+doc = nlp(
+    "Los Olímpicos de Tokio 2020 son la inspiración para la nueva "
+    "colección de zapatillas adidas ZX."
+)
 
 # Inicializa el matcher con el vocabulario compartido
 matcher = Matcher(nlp.vocab)

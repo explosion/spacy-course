@@ -4,7 +4,12 @@ from spacy.matcher import Matcher
 nlp = spacy.load("es_core_news_sm")
 matcher = Matcher(nlp.vocab)
 
-doc = nlp("descargué Fortnite en mi computadora, pero no puedo abrir el juego. Ayuda? Cuando estaba descargando Minecraft, conseguí la versión de Windows donde tiene una carpeta '.zip' y usé el programa por defecto para descomprimirlo…así que también tengo que descargar Winzip?")
+doc = nlp(
+    "descargué Fortnite en mi computadora, pero no puedo abrir el juego. "
+    "Ayuda? Cuando estaba descargando Minecraft, conseguí la versión de Windows "
+    "donde tiene una carpeta '.zip' y usé el programa por defecto para "
+    "descomprimirlo…así que también tengo que descargar Winzip?"
+)
 
 # Escribe un patrón que encuentre una forma de "descargar" más un nombre propio
 pattern = [{"LEMMA": ____}, {"POS": ____}]

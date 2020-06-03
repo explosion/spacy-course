@@ -4,7 +4,11 @@ from spacy.matcher import Matcher
 nlp = spacy.load("es_core_news_sm")
 matcher = Matcher(nlp.vocab)
 
-doc = nlp("Después de hacer la actualización de iOS no notarás un rediseño radical del sistema: nada como los cambios estéticos que tuvimos con el iOS 7. La mayoría de los muebles del iOS 11 siguen iguales que en el iOS 10.")
+doc = nlp(
+    "Después de hacer la actualización de iOS no notarás un rediseño radical del sistema: "
+    "no se compara con los cambios estéticos que tuvimos con el iOS 7. La mayoría de las "
+    "funcionalidades del iOS 11 siguen iguales en el iOS 10."
+)
 
 # Escribe un patrón para las versiones de iOS enteras ("iOS 7", "iOS 11", "iOS 10")
 pattern = [{"TEXT": ____}, {"IS_DIGIT": ____}]
