@@ -2,7 +2,7 @@
 type: slides
 ---
 
-# Modelos Estadísticos
+# Modelos estadísticos
 
 Notes: ¡Ahora vamos a añadir más poder al objeto `nlp`!
 
@@ -21,7 +21,7 @@ En esta lección aprenderás sobre los modelos estadísticos de spaCy.
 
 Notes: Algunas de las cosas más interesantes que puedes analizar son específicas al contexto: por ejemplo, si una palabra es un verbo o si un span de texto es el nombre de una persona.
 
-Los modelos estadísticos le permiten a spaCy hacer predicciones dentro del contexto. Esto normalmente incluye las part-of speech tags, dependencias sintácticas y entidades nombradas.
+Los modelos estadísticos le permiten a spaCy hacer predicciones dentro del contexto. Esto normalmente incluye las part-of-speech tags, dependencias sintácticas y entidades nombradas.
 
 Los modelos son entrenados con <abbr title="También conocido como conjunto de datos.">datasets</abbr> de textos de ejemplo anotados.
 
@@ -51,13 +51,13 @@ Notes: spaCy provee varios paquetes de modelos pre-entrenados que puedes descarg
 
 El método `spacy.load` carga el paquete de modelo por su nombre y devuelve un objeto `nlp`.
 
-El paquete provee los <abbr title="En inglés: en un contexto de Machine Leraning, conocidos como binary weights.">parámetros binarios</abbr> que le permiten a spaCy hacer predicciones.
+El paquete provee los <abbr title="En inglés: en un contexto de Machine Learning, conocidos como binary weights.">parámetros binarios</abbr> que le permiten a spaCy hacer predicciones.
 
 También incluye el vocabulario y la metadata para que spaCy sepa cuál clase de lenguaje usar y cómo configurar el pipeline de procesamiento.
 
 ---
 
-# Prediciendo Part-of-speech Tags
+# Prediciendo part-of-speech tags
 
 ```python
 import spacy
@@ -66,7 +66,7 @@ import spacy
 nlp = spacy.load("es_core_news_sm")
 
 # Procesa un texto
-doc = nlp("Ella comió la pizza")
+doc = nlp("Ella comió pizza")
 
 # Itera sobre los tokens
 for token in doc:
@@ -77,7 +77,6 @@ for token in doc:
 ```out
 Ella PRON
 comió VERB
-la DET
 pizza NOUN
 ```
 
@@ -85,11 +84,11 @@ Notes: Revisemos las predicciones del modelo. En este ejemplo estamos usando spa
 
 Primero, cargamos el modelo pequeño de inglés y recibimos un objeto `nlp`.
 
-Siguiente, procesamos el texto "Ella comió la pizza".
+Luego, procesamos el texto "Ella comió pizza".
 
 Para cada token en el Doc podemos imprimir en pantalla el texto y el part-of-speech tag predicho usando el atributo `.pos_`.
 
-En spaCy, los atributos que devuelven un string usualmente terminan con un guión bajo (`_`). mientras que atributos sin un guión bajo devuelven un valor ID de tipo <abbr title="En inglés: integer, un número entero sin parte decimal.">entero</abbr>.
+En spaCy, los atributos que devuelven un string normalmente terminan con un guión bajo (`_`). mientras que atributos sin un guión bajo devuelven un valor ID de tipo <abbr title="En inglés: integer, un número entero sin parte decimal.">entero</abbr>.
 
 Aquí el modelo predijo correctamente "comió" como el verbo y "pizza" como el sustantivo.
 
@@ -105,7 +104,6 @@ for token in doc:
 ```out
 Ella PRON nsubj comió
 comió VERB ROOT comió
-la DET det pizza
 pizza NOUN obj comió
 ```
 
@@ -117,7 +115,7 @@ El atributo `.head` devuelve el token <abbr title="En inglés: head.">cabeza</ab
 
 ---
 
-# Esquema de Dependency label
+# Esquema de dependency label
 
 <img src="/dep_example_es.png" alt="Visualization of the dependency graph for 'Ella comió la pizza'" />
 
@@ -125,15 +123,12 @@ El atributo `.head` devuelve el token <abbr title="En inglés: head.">cabeza</ab
 | --------- | ----------------------- | ------- |
 | **nsubj** | sujeto nominal          | Ella    |
 | **obj**   | objeto                  | pizza   |
-| **det**   | determinante (artículo) | la      |
 
-Notes: spaCy usa un esquema de <abbr title="En español se conocen como etiquetas, pero para mantener la diferenciación entre label y tag, las usamos en inglés.">labels</abbr> estándar para describir dependencias sintácticas. Aquí verás un ejemplo de algunas labels comúnes:
+Notes: spaCy usa un esquema de <abbr title="En español se conocen como etiquetas, pero para mantener la diferenciación entre label y tag, las usamos en inglés.">labels</abbr> estándar para describir dependencias sintácticas. Aquí verás un ejemplo de algunas labels comunes:
 
 El pronombre "Ella" es un sujeto nominal unido al verbo - en este caso, a "comió".
 
 El sustantivo "pizza" es un objeto unido al verbo "comió". Está siendo comido por el sujeto "ella".
-
-El determinante "la", también conocido como artículo, está unido al sustantivo "pizza".
 
 ---
 
@@ -144,13 +139,13 @@ El determinante "la", también conocido como artículo, está unido al sustantiv
 ```python
 # Procesa un texto
 doc = nlp(
-    "Apple es la marca que más satisfacción genera en EE.UU.; "
+    "Apple es la marca que más satisfacción genera en EE.UU., "
     "pero el iPhone, fue superado por el Galaxy Note 9"
 )
 
 # Itera sobre las entidades predichas
 for ent in doc.ents:
-    # Imprime en pantalla el texto y el label del la entidad
+    # Imprime en pantalla el texto y el label de la entidad
     print(ent.text, ent.label_)
 ```
 
@@ -167,7 +162,7 @@ La propiedad `doc.ents` te permite acceder a las entidades nombradas predichas p
 
 Devuelve un iterador de objetos `Span`, así que podemos imprimir en pantalla el texto y el label de la entidad usando el atributo `.label_`.
 
-En este caso, el modelo predijo correctamente "Apple" como una organización, "EE.UU" como una entidad geopolítica, "iPhone" y "Galaxy Note 9" con la categoría miscelanea.
+En este caso, el modelo predijo correctamente "Apple" como una organización, "EE.UU" como un lugar, "iPhone" y "Galaxy Note 9" con la categoría miscelanea.
 
 ---
 
@@ -176,11 +171,11 @@ En este caso, el modelo predijo correctamente "Apple" como una organización, "E
 Obtén definiciones rápidas de los tags y labels más comunes.
 
 ```python
-spacy.explain("GPE")
+spacy.explain("LOC")
 ```
 
 ```out
-'Countries, cities, states'
+'Name of politically or geographically defined location'
 ```
 
 ```python
@@ -201,7 +196,7 @@ spacy.explain("MISC")
 
 Notes: Un tip rápido: Para obtener definiciones de los tags y labels más comunes puedes usar la función asistente `spacy.explain`.
 
-Por ejemplo, "GPE" para entidad geopolítica no es necesariamente intuitivo, pero `spacy.explain` puede decirte que se refiere a países, ciudades y estados.
+Por ejemplo, "LOC" para lugar no es necesariamente intuitivo, pero `spacy.explain` puede decirte que se refiere a nombres de una localización definida política o geográficamente.
 
 Lo mismo funciona para part-of-speech tags y dependency labels.
 

@@ -80,7 +80,7 @@ Notes: Los objetos `Token` representan a los tokens en un documento. Por ejemplo
 
 Para obtener el token en una posición específica puedes usar el índice del doc.
 
-Los objetos `Token` también proveen varios atributos que te permiten acceder a más información sobre los tokens. Por ejemplo, el atributo `.text` devuelve exactamente el texto del token.
+Los objetos `Token` también proveen varios atributos que te permiten acceder a más información sobre los tokens. Por ejemplo, el atributo `.text` devuelve el texto del token.
 
 ---
 
@@ -108,7 +108,7 @@ Para crear un span puedes usar la notación de slice de Python. Por ejemplo, `2:
 
 ---
 
-# Atributos Léxicos
+# Atributos léxicos
 
 ```python
 doc = nlp("Eso cuesta €5.")
@@ -138,7 +138,7 @@ Notes: Aquí puedes ver algunos de los atributos disponibles de los tokens:
 
 `text` devuelve el texto del token.
 
-`is_alpha`, `is_punct` y `like_num` devuelven valores booleanos que indican si un token está compuesto por caractéres alfabéticos, si es puntuación, o si _parece_ un número. Por ejemplo, el token "10" - uno, cero - o la palabra "diez" - D, I, E, Z.
+`is_alpha`, `is_punct` y `like_num` devuelven valores booleanos que indican si un token está compuesto por caracteres alfabéticos, si es puntuación, o si _parece_ un número. Por ejemplo, el token "10" - uno, cero - o la palabra "diez" - D, I, E, Z.
 
 Estos atributos también se llaman atributos léxicos: se refieren a una entrada en el vocabulario y no dependen del contexto del token.
 
@@ -146,4 +146,4 @@ Estos atributos también se llaman atributos léxicos: se refieren a una entrada
 
 # ¡Practiquemos!
 
-Notes: Veámos todo esto en acción y procesemos tu primer texto con spaCy.
+Notes: Veamos todo esto en acción y procesemos tu primer texto con spaCy.

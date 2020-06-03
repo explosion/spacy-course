@@ -90,10 +90,10 @@ no incluye el token 4.
 
 </exercise>
 
-<exercise id="4" title="Atributos Léxicos">
+<exercise id="4" title="Atributos léxicos">
 
 En este ejemplo usarás los objetos `Doc` y `Token` de spaCy y los atributos
-léxicos para encontrar porcentajes en el texto. Estarás buscando por dos tokens
+léxicos para encontrar porcentajes en el texto. Estarás buscando dos tokens
 subsecuentes: un número y un símbolo de porcentaje.
 
 - Usa el atributo `like_num` del token para revisar si un token en el `doc`
@@ -111,7 +111,7 @@ ejemplo, `doc[5]` es el token en el índice 5.
 
 </exercise>
 
-<exercise id="5" title="Modelos Estadísticos" type="slides">
+<exercise id="5" title="Modelos estadísticos" type="slides">
 
 <slides source="chapter1_02_statistical-models">
 </slides>
@@ -276,7 +276,7 @@ el texto.
 
 <exercise id="12" title="Escribiendo patrones">
 
-En este ejercicio practicarás escribiendo patrones más complejos usando
+En este ejercicio practicarás escribir patrones más complejos usando
 diferentes atributos de los tokens y operadores.
 
 ### Parte 1
