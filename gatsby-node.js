@@ -18,7 +18,9 @@ async function onCreateNode({
     const { createNodeField, createNode, createParentChildLink } = actions
     if (node.internal.type === 'MarkdownRemark') {
         const parentDir = getNode(node.parent).relativeDirectory
-        const lang = parentDir.split('/')[0]
+        // Fix paths for Windows
+        const dir = parentDir.replace(/\\/g, '/')
+        const lang = dir.split('/')[0]
         const slug = createFilePath({ node, getNode, basePath: 'chapters', trailingSlash: false })
         createNodeField({ name: 'slug', node, value: slug })
         createNodeField({ name: 'lang', node, value: lang })
