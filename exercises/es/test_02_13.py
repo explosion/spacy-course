@@ -38,8 +38,8 @@ def test():
     assert len(matcher(doc)) == 7, "Número incorrecto de resultados – esperaba 7."
 
     __msg__.good(
-        "¡Bien hecho! Para el token '-', puedes encontrarlo con los atributos "
-        "'TEXT', 'LOWER' o inclusive 'SHAPE'. Todos son correctos. Como puedes "
+        "¡Bien hecho! Puedes encontrar el token '-' con los atributos 'TEXT', "
+        "'LOWER' o inclusive 'SHAPE'. Todos son correctos. Como puedes "
         "ver, es muy importante prestarle atención a la conversión a tokens "
         " cuando estés trabajando con el 'Matcher' basado en tokens. A veces "
         "es mucho más fácil encontrar usando los strings exactos y usar el "

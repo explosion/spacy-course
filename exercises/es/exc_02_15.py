@@ -19,7 +19,7 @@ doc.ents = []
 
 # Itera sobre los resultados
 for match_id, start, end in matcher(doc):
-    # Crea un Span con el label para "GPE"
+    # Crea un Span con el label para "LOC"
     span = ____(____, ____, ____, label=____)
 
     # Sobrescribe el doc.ents y añade el span
@@ -27,8 +27,9 @@ for match_id, start, end in matcher(doc):
 
     # Obtén el token cabeza de la raíz del span
     span_root_head = ____.____.____
-    # Imprime en pantalla el texto del token cabeza de la raíz del span y el texto del span
+    # Imprime en pantalla el texto del token cabeza de
+    # la raíz del span y el texto del span
     print(span_root_head.____, "-->", span.text)
 
 # Imprime en pantalla las entidades del documento
-print([(ent.text, ent.label_) for ent in doc.ents if ent.label_ == "GPE"])
+print([(ent.text, ent.label_) for ent in doc.ents if ent.label_ == "LOC"])

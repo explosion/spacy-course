@@ -15,7 +15,7 @@ En esta lección veremos cómo hacerlo con spaCy.
 
 |                              | **Modelos estadísticos**                                               | **Sistemas basados en reglas** |
 | ---------------------------- | ---------------------------------------------------------------------- | ------------------------------ |
-| **Casos**                    | la aplicación necesita _generalizar_ basada en ejemplos                |                                |
+| **Casos**                    | la aplicación necesita _generalizar_ basándose en ejemplos                |                                |
 | **Ejemplos de la vida real** | nombres de productos, nombres de personas, relaciones de sujeto/objeto |                                |
 | **Características de spaCy** | entity recognizer, dependency parser, part-of-speech tagger            |                                |
 
@@ -37,7 +37,7 @@ part-of-speech tagger de spaCy.
 
 |                              | **Modelos estadísticos**                                               | **Sistemas basados en reglas**                                 |
 | ---------------------------- | ---------------------------------------------------------------------- | -------------------------------------------------------------- |
-| **Casos**                    | la aplicación necesita _generalizar_ basada en ejemplos                | diccionario con número finito de casos                       |
+| **Casos**                    | la aplicación necesita _generalizar_ basándose en ejemplos                | diccionario con número finito de casos                       |
 | **Ejemplos de la vida real** | nombres de productos, nombres de personas, relaciones de sujeto/objeto | países del mundo, ciudades, nombres de drogas, razas de perros |
 | **Características de spaCy** | entity recognizer, dependency parser, part-of-speech tagger            | tokenizer, `Matcher`, `PhraseMatcher`                           |
 
@@ -63,11 +63,13 @@ matcher = Matcher(nlp.vocab)
 pattern = [{"LEMMA": "comer", "POS": "VERB"}, {"LOWER": "pizza"}]
 matcher.add("PIZZA", None, pattern)
 
-# Los operadores pueden especificar qué tan seguido puede ser buscado un token
+# Los operadores pueden especificar qué tan seguido puede
+# ser buscado un token
 pattern = [{"TEXT": "muy", "OP": "+"}, {"TEXT": "feliz"}]
 matcher.add("MUY_FELIZ", None, pattern)
 
-# Llamar al matcher sobre un doc devuelve una lista de tuples con (match_id, inicio, final)
+# Llamar al matcher sobre un doc devuelve una lista de
+# tuples con (match_id, inicio, final)
 doc = nlp("Me gusta comer pizza y estoy muy muy feliz")
 matches = matcher(doc)
 ```
@@ -76,7 +78,7 @@ Notes: En el capítulo anterior aprendiste a usar el matcher basado en reglas de
 spaCy para encontrar patrones complejos en tus textos. Aquí está un resumen
 corto.
 
-El matcher se inicializa con el vocabulario compartido - usualmente `nlp.vocab`.
+El matcher se inicializa con el vocabulario compartido, generalmente `nlp.vocab`.
 
 Los patrones son listas de diccionarios y cada diccionario describe un token y
 sus atributos. Los patrones pueden ser añadidos usando el método `matcher.add`.
@@ -94,8 +96,8 @@ token en el documento.
 
 ```python
 matcher = Matcher(nlp.vocab)
-matcher.add("PERRO", None, [{"LOWER": "golden"}, {"LOWER": "retriever"}])
-doc = nlp("Tengo un Golden Retriever")
+matcher.add("PERRO", None, [{"LOWER": "labrador"}, {"LOWER": "dorado"}])
+doc = nlp("Tengo un labrador dorado")
 
 for match_id, start, end in matcher(doc):
     span = doc[start:end]
@@ -108,14 +110,14 @@ for match_id, start, end in matcher(doc):
 ```
 
 ```out
-span encontrado: Golden Retriever
-Token raíz: Golden
+span encontrado: labrador Dorado
+Token raíz: labrador
 Token raíz cabeza: Tengo
 Token anterior: un DET
 ```
 
 Notes: Aquí tenemos un ejemplo de una regla para el matcher que encuentra
-"golden retriever".
+"labrador dorado".
 
 Si iteramos sobre los resultados devueltos por el matcher podemos obtener el
 match ID y el índice de inicio y final del span encontrado. Entonces podemos
@@ -125,7 +127,7 @@ por el modelo.
 
 Por ejemplo, podemos obtener el token raíz del span. Si el span contiene más de
 un token, este token será el que determina la categoría de la frase. Por
-ejemplo, la raíz de "Golden Retriever" es "Retriever". También podemos encontrar
+ejemplo, la raíz de "labrador dorado" es "labrador". También podemos encontrar
 el <abbr title="En inglés se conoce como head. En este caso, root head token.">token
 raíz cabeza</abbr>. Esto es el "padre" sintáctico que gobierna la frase - en
 este caso, el verbo "tener".
@@ -166,9 +168,9 @@ from spacy.matcher import PhraseMatcher
 
 matcher = PhraseMatcher(nlp.vocab)
 
-pattern = nlp("Golden Retriever")
+pattern = nlp("labrador dorado")
 matcher.add("PERRO", None, pattern)
-doc = nlp("Tengo un Golden Retriever")
+doc = nlp("Tengo un labrador dorado")
 
 # Itera sobre los resultados
 for match_id, start, end in matcher(doc):
@@ -178,12 +180,12 @@ for match_id, start, end in matcher(doc):
 ```
 
 ```out
-span resultante: Golden Retriever
+span resultante: labrador dorado
 ```
 
 Notes: Aquí tenemos un ejemplo.
 
-El phrase matcher puede ser importado desde `spacy.matcher` y sigue a la misma
+El phrase matcher puede ser importado desde `spacy.matcher` y depende de la misma
 API que el matcher normal.
 
 En vez de pasarle una lista de diccionarios, le pasamos un objeto `Doc` como el
@@ -191,7 +193,7 @@ patrón que debe encontrar.
 
 Entonces podemos iterar sobre los resultados en el texto, lo que nos da un match
 ID y el inicio y final del resultado. Esto nos permite crear un objeto `Span`
-para los tokens resultantes "Golden Retriever" para analizarlos en su contexto.
+para los tokens resultantes "labrador dorado" para analizarlos en su contexto.
 
 ---
 

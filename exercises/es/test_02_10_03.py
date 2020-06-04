@@ -9,7 +9,7 @@ def test():
     ), "El valor de la similitud debe ser de punto flotante. ¿Lo calculaste correctamente?"
     __msg__.good(
         "¡Bien hecho! No dudes en experimentar con la comparación de más objetos si "
-        "quieres. Las similitudes no *siempre* son tan decisivas. Una vez "
+        "quieres. Las similitudes no *siempre* son tan decisivas. Una vez que "
         "comiences a desarrollar aplicaciones de NLP con más seriedad que "
         "hagan uso de la similitud semántica, puede que quieras entrenar vectores con "
         "tus propios datos, o modificar el algoritmo de similitud."

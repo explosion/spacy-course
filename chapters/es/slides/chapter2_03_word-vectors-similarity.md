@@ -13,7 +13,7 @@ vectors</abbr> y cómo aprovecharlos en tu aplicación de NLP.
 
 ---
 
-# Comparando similitud semántica
+# Prediciendo similitud semántica
 
 - `spaCy` puede comparar dos objetos y predecir similitud
 - `Doc.similarity()`, `Span.similarity()` y `Token.similarity()`
@@ -29,10 +29,10 @@ Notes: spaCy puede comparar dos objetos y predecir qué tan similares son - por
 ejemplo, documentos, spans o tokens.
 
 Los objetos `Doc`, `Token` y `Span` tienen un método `.similarity` que recibe
-otro objeto y devuelve un número de punto flotante entre 0 y 1 - que indica qué
+otro objeto y devuelve un número de punto flotante entre 0 y 1 indicando qué
 tan similares son.
 
-Una cosa que es muy importante: Para poder usar similitud necesitas un modelo
+Algo muy importante: Para poder usar similitud necesitas un modelo
 más grande de spaCy que incluya los word vectors.
 
 Por ejemplo, el modelo de inglés mediano o grande - pero _no_ el pequeño. Así
@@ -124,7 +124,7 @@ bastante diferentes.
 Aquí tenemos otro ejemplo que compara un span - "la pizza y la pasta" – a un
 documento sobre McDonalds.
 
-El puntaje que devolvió aquí es de 0.62, así que determinamos que son
+El puntaje que obtuvimos aquí es de 0.62, así que determinamos que son
 medianamente similares.
 
 ---
@@ -136,7 +136,7 @@ medianamente similares.
 - Generado usando un algoritmo como
   [Word2Vec](https://en.wikipedia.org/wiki/Word2vec) y mucho texto
 - Puede añadirse a los modelos estadísticos de spaCy
-- Por defecto: similitud coseno, pero puede ser ajustada
+- Por defecto: similitud coseno, pero puede cambiarse por otra medida de semejanza
 - Los vectores de los `Doc` y `Span` tienen por defecto el valor del promedio
   de los vectores de los tokens
 - Las frases cortas son mejores que los documentos largos con muchas palabras
@@ -153,13 +153,12 @@ frecuentemente para entrenar vectores de palabras desde texto puro.
 Los vectores se pueden añadir a los modelos estadísticos de spaCy.
 
 Por defecto, la similitud que devuelve spaCy es una similitud coseno entre dos
-vectores - pero esto puede ser ajustado si es necesario.
+vectores, pero esto puede cambiarse si es necesario.
 
 Los vectores para objetos que consisten de varios tokens, como el Doc y el Span
 tienen por defecto el valor promedio de los vectores de sus tokens.
 
-Es por esto que normalmente puedes obtener más valor con las frases más cortas
-que contienen menos palabras irrelevantes.
+Es por esto que normalmente puedes obtener más valor con las frases más cortas, ya que contienen menos palabras irrelevantes.
 
 ---
 
@@ -175,18 +174,20 @@ print(doc[2].vector)
 ```
 
 ```out
-
-[-0.162944  0.042666  0.405069 -0.884944  0.13951   1.37826  -0.807906
- -0.432592 -0.747897  0.953742  0.90389  -0.514217  0.360039 -0.409261
-  1.11574  -0.407411  0.118361 -0.426352 -0.315689  0.027726  0.79418
- -0.99135   0.147428  0.36956   0.547555 -0.023946 -2.024585 -0.122916
-  0.406145  0.911639  0.76197  -0.01012  -0.763252 -0.674616  0.04863
-  1.395744 -0.349407 -0.515107 -0.737187  0.870402 -0.16684  -0.587724
-  0.406655 -0.444897  0.788494 -0.096343 -0.452753 -0.892051 -0.818379
- -2.062615]
+[-0.162944,   0.042666,   0.405069,
+ -0.884944,   0.13951 ,   1.37826 ,
+ -0.807906,  -0.432592,  -0.747897,  
+  0.953742,   0.90389 ,  -0.514217,
+  0.360039,  -0.409261,   1.11574 ,
+ -0.407411,   0.118361,  -0.426352,
+ -0.315689,   0.027726,   0.79418 ,
+ -0.99135 ,   0.147428,   0.36956 ,
+  0.547555,  -0.023946,  -2.024585,
+ -0.122916,   0.406145,   0.911639,
+ ...
 ```
 
-Notes: Para darte una idea de como se ven estos vectores aquí está un ejemplo.
+Notes: Aquí hay un ejemplo para darte una idea de cómo se ven estos vectores.
 
 Primero, cargamos el modelo mediano otra vez. Este contiene word vectors.
 
@@ -199,8 +200,8 @@ El resultado es un vector con 300 dimensiones de la palabra "manzana".
 
 # La similitud depende del contexto de la aplicación
 
-- Útil para muchas aplicaciones: sistemas de recomendaciones, reportando
-  duplicados, etc.
+- Útil para muchas aplicaciones: sistemas de recomendaciones, reporte
+  de duplicados, etc.
 - No hay una definición objetiva de "similitud"
 - Depende del contexto y de lo que la aplicación necesita hacer
 
@@ -221,7 +222,7 @@ ha leído. También puede ser útil para reportar contenido duplicado, como post
 en una plataforma en línea.
 
 Sin embargo, es importante tener presente que no hay una definición objetiva de
-lo que es similar y no que no. Siempre depende del contexto y de lo que tu
+lo que es similar y lo que no. Siempre depende del contexto y de lo que tu
 aplicación tiene que hacer.
 
 Aquí tenemos un ejemplo: los word vectors por defecto de spaCy le asignan un

@@ -5,7 +5,7 @@ type: slides
 # Estructuras de datos (1): Vocab, Lexemas y StringStore
 
 Notes: ¡Hola de nuevo! Ahora que tienes experiencia real usando los objetos de
-spaCy es hora de que aprendas más de lo que está sucediendo detrás de cámaras en spaCy.
+spaCy es hora de que aprendas más sobre lo que está sucediendo detrás de cámaras en spaCy.
 
 En esta lección veremos el vocabulario compartido y la manera en la que spaCy
 maneja los strings.
@@ -121,7 +121,7 @@ Los lexemas exponen atributos, al igual que los tokens.
 Ellos contienen información sobre una palabra independiente del contexto, como
 el texto o si la palabra está compuesta por caracteres alfanuméricos.
 
-Los lexemas no tienen part-of-speech tags, dependencies o entity labels. Esos
+Los lexemas no tienen part-of-speech tags, dependencies o entity labels, ya que esos
 dependen del contexto.
 
 ---
