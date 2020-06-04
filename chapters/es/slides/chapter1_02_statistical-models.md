@@ -196,7 +196,7 @@ spacy.explain("MISC")
 
 Notes: Un tip rápido: Para obtener definiciones de los tags y labels más comunes puedes usar la función asistente `spacy.explain`.
 
-Por ejemplo, "LOC" para lugar no es necesariamente intuitivo, pero `spacy.explain` puede decirte que se refiere a nombres de una localización definida política o geográficamente.
+Por ejemplo, "LOC" para lugar no es necesariamente intuitivo, pero `spacy.explain` puede decirte que se refiere a nombres de ubicaciones definidas política o geográficamente.
 
 Lo mismo funciona para part-of-speech tags y dependency labels.
 
