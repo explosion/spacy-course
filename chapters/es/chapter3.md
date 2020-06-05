@@ -33,7 +33,7 @@ El tokenizer siempre se corre _antes_ que todos los demás componentes del pipel
 
 <opt text="Convierte en tokens el texto y aplica cada componente del pipeline en orden." correct="true">
 
-El tokenizer convierte un string de texto en un objeto `Doc`. Luego, spaCy aplica en orden cada componente en el pipeline sobre el documento.
+El tokenizer convierte un string de texto en un objeto `Doc`. Luego, spaCy aplica en orden cada componente del pipeline sobre el documento.
 
 </opt>
 
@@ -45,7 +45,7 @@ spaCy calcula todo en la máquina y no necesita conectarse con un servidor.
 
 <opt text="Inicializa el lenguaje, añade el pipeline y carga los parámetros binarios.">
 
-Cuándo llamas a `spacy.load()` para cargar un modelo, spaCy inicializará el lenguaje, añadirá el pipeline y cargará los parámetros binarios. Cuándo _llamas_ al objeto `nlp` sobre un texto, el modelo ya está cargado.
+Cuando llamas a `spacy.load()` para cargar un modelo, spaCy inicializará el lenguaje, añadirá el pipeline y cargará los parámetros binarios. Cuándo _llamas_ al objeto `nlp` sobre un texto, el modelo ya está cargado.
 
 </opt>
 
@@ -169,7 +169,7 @@ En este ejercicio escribirás un componente personalizado que use el `PhraseMatc
 
 </exercise>
 
-<exercise id="9" title="Añadiendo extensión de atributos (1)">
+<exercise id="9" title="Añadiendo extensiones de atributos (1)">
 
 Vamos a practicar añadiendo algunas extensiones de atributos.
 
@@ -197,7 +197,7 @@ Recuerda que los atributos que fueron extendidos están disponibles a través de
 
 </exercise>
 
-<exercise id="10" title="Añadiendo extensión de atributos (2)">
+<exercise id="10" title="Añadiendo extensiones de atributos (2)">
 
 Intentemos añadir algunos atributos más complejos usando getters y extensiones de métodos.
 
@@ -221,7 +221,7 @@ Intentemos añadir algunos atributos más complejos usando getters y extensiones
 <codeblock id="03_10_02">
 
 - Las extensiones de método pueden tomar uno o más argumentos. Por ejemplo, `doc._.some_method("argument")`.
-- El primer argumento que se le pasa al método siempre es el objeto `Doc`, `Token` o `Span` sobre el que el método se llama.
+- El primer argumento que se le pasa al método siempre es el objeto `Doc`, `Token` o `Span` sobre el cual se llama al método.
 
 </codeblock>
 
@@ -250,7 +250,7 @@ La extensión de atributos es especialmente poderosa si es combinada con los com
 
 Un patrón de frases con todos los países está disponible como la variable `matcher`. Un diccionario de países relacionados con sus ciudades capitales está disponible como la variable `CAPITALS`.
 
-- Completa el `countries_component` y crea un `Span` con el label `"GPE"` (entidad geopolítica) para todos los resultados.
+- Completa el `countries_component` y crea un `Span` con el label `"LOC"` para todos los resultados.
 - Añade el componente al pipeline.
 - Registra la extensión del atributo del Span, `"capital"`, con el getter `get_capital`.
 - Procesa el texto e imprime en pantalla el texto de la entidad, el label y la capital de la entidad para cada span que contiene una entidad en `doc.ents`.
@@ -279,7 +279,7 @@ En este ejercicio, usarás el `nlp.pipe` para procesar de manera más eficiente 
 
 ### Parte 1
 
-- Reescribe el ejemplo usando `nlp.pipe`. En vez de iterar sobre los textos y procesarlos, itera sobre los objetos `doc` devueltos usando `yield` por el `nlp.pipe`.
+- Reescribe el ejemplo usando `nlp.pipe`. En vez de iterar sobre los textos y procesarlos, itera sobre los objetos `doc` que han sido devueltos por `nlp.pipe` usando yield.
 
 <codeblock id="03_14_01">
 

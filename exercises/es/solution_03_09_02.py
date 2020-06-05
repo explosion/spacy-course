@@ -8,10 +8,12 @@ def get_reversed(token):
     return token.text[::-1]
 
 
-# Registra la extensión de propiedad del Token, "reversed", con el getter get_reversed
+# Registra la extensión de propiedad del Token, "reversed", con
+# el getter get_reversed
 Token.set_extension("reversed", getter=get_reversed)
 
-# Procesa el texto e imprime en pantalla el atributo "reversed" para cada token
-doc = nlp("Todas las generalizaciones son falsas, incluyendo ésta.")
+# Procesa el texto e imprime en pantalla el atributo "reversed"
+# para cada token
+doc = nlp("Todas las generalizaciones son falsas, incluyendo esta.")
 for token in doc:
     print("invertido:", token._.reversed)

@@ -12,7 +12,8 @@ def length_component(doc):
 # Carga el modelo pequeño de español
 nlp = spacy.load("es_core_news_sm")
 
-# Añade el componente en el primer lugar del pipeline e imprime los nombres de los pipes en pantalla
+# Añade el componente en el primer lugar del pipeline e imprime
+# los nombres de los pipes en pantalla
 nlp.add_pipe(length_component, first=True)
 print(nlp.pipe_names)
 

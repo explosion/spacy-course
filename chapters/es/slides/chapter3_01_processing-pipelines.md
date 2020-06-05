@@ -36,7 +36,7 @@ trabajar con él.
 
 ---
 
-# Componentes incorporados del pipeline
+# Componentes incluidos en el pipeline
 
 | Nombre      | Descripción             | Crea                                                      |
 | ----------- | :---------------------- | :-------------------------------------------------------- |

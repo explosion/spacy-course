@@ -15,8 +15,9 @@ def get_wikipedia_url(span):
 ____.____(____, ____=____)
 
 doc = nlp(
-    "Antes de finalizar 1976, el interés de David Bowie en la floreciente escena musical alemana,"
-    "le llevó a mudarse a Alemania para revitalizar su carrera."
+    "Antes de finalizar 1976, el interés de David Bowie en la "
+    "floreciente escena musical alemana, le llevó a mudarse a "
+    "Alemania para revitalizar su carrera."
 )
 for ent in doc.ents:
     # Imprime en pantalla el texto y la URL de Wikipedia de la entidad

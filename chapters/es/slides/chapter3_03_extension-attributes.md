@@ -70,7 +70,7 @@ doc[3]._.is_color = True
 
 Notes: Las extensiones de atributo añaden un valor por defecto que puede ser sobrescrito.
 
-Por ejemplo, un atributo personalizado en el token, llamado `is_color`, que tiene por defecto el valor `False`.
+Por ejemplo, un atributo personalizado del token, llamado `is_color`, que tiene por defecto el valor `False`.
 
 En tokens individuales su valor puede ser cambiado cuando se sobrescribe - en este caso, `True` para el token "azul".
 
@@ -147,7 +147,7 @@ Después de haber procesado el doc, podemos revisar los diferentes slices del do
 
 # Extensión de métodos
 
-- Asigna una **función** que se está disponible como un método de un objeto
+- Asigna una **función** que pasa a estar disponible como método de un objeto
 - Te permite pasar **argumentos** a la función de extensión
 
 ```python
@@ -171,7 +171,7 @@ True - azul
 False - nube
 ```
 
-Notes: La extensión de métodos hacen que la extensión del atributo sea un método que puede ser llamado.
+Notes: La extensión de métodos hace que la extensión del atributo sea un método que puede ser llamado.
 
 Puedes pasarle uno o más argumentos y calcular los valores del atributo de manera dinámica - por ejemplo, basados en cierto argumento o configuración.
 

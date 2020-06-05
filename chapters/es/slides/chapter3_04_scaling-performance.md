@@ -11,7 +11,7 @@ Notes: En esta lección te mostraré algunos trucos y consejos para hacer que tu
 # Procesando grandes volúmenes de texto
 
 - Usa el método `nlp.pipe`
-- Procesa los textos como un stream, arroja objectos`Doc` usando yield
+- Procesa los textos como un stream, devuelve objetos`Doc` usando yield
 - Mucho más rápido que llamar al objeto `nlp` en cada texto
 
 **MAL:**
@@ -32,7 +32,7 @@ Procesa los textos como un <abbr title="En español: un flujo, en este caso de d
 
 Es mucho más rápido que solo llamar al objeto `nlp` sobre cada texto, porque procesa en <abbr title="En español: grupos.">batches</abbr> los textos.
 
-`nlp.pipe` es un generador que usa `yield` para devolver objetos `Doc`, así que para obtener una lista de `Doc`, recuerda llamar la función `list` alrededor de él.
+`nlp.pipe` es un generador que usa `yield` para devolver objetos `Doc`, así que para obtener una lista de `Doc`, recuerda llamar la función `list` sobre él.
 
 ---
 
@@ -57,7 +57,7 @@ Esto es un texto 15
 y otro texto 16
 ```
 
-Notes: `nlp.pipe` también provee soporte para pasar tuples de text / contexto si pones `as_tuples` como `True`.
+Notes: `nlp.pipe` también provee soporte para pasar tuples de text / contexto si defines `as_tuples` como `True`.
 
 El método entonces usará `yield` para devolver tuples de doc / context.
 
@@ -121,7 +121,7 @@ doc = nlp.make_doc("¡Hola Mundo!")
 
 Notes: Si solo necesitas un objeto `Doc` que fue convertido en tokens puedes usar el método `nlp.make_doc` en vez de `nlp`. `nlp.make_doc` toma un texto y devuelve un doc.
 
-Así es como lo hace spaCy tras bastidores: `nlp.make_doc` convierte el texto en un doc antes de llamar a los componentes del pipeline.
+Así es como lo hace spaCy detrás de cámaras: `nlp.make_doc` convierte el texto en un doc antes de llamar a los componentes del pipeline.
 
 ---
 
