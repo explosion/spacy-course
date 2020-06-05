@@ -18,15 +18,15 @@ Echemos un vistazo a algunos de los problemas con los que te puedes encontrar.
 
 - Un modelo existente puede <abbr title="En inglés: overfit.">sobreajustar</abbr> sobre nuevos datos
   - e.g.: si solo lo actualizas con `"WEBSITE"`, puede "desaprender" lo que es una persona `"PER"`
-- También conocido como el problema del "olvido catastrófico"
+- También conocido como el problema del "Catastrophic Forgetting"
 
 Notes: Los modelos estadísticos pueden aprender muchas cosas - pero eso no quiere decir que no pueden olvidarlas.
 
 Si estás actualizando un modelo existente con datos nuevos, especialmente labels nuevos, puede sobreajustar y ajustarse _demasiado_ a los nuevos ejemplos.
 
-Por ejemplo, si solo estás actualizándolo con ejemplos de "website", puede "olvidar" otros labels que antes había predicho de manera correcta - como "per".
+Por ejemplo, si solo estás actualizándolo con ejemplos de `"WEBSITE"` para un sitio web, puede "olvidar" otros labels que antes había predicho de manera correcta - como `"PER"` para una persona.
 
-Esto también se conoce como el problema del olvido catastrófico.
+Esto también se conoce como el problema del "Catastrophic Forgetting".
 
 ---
 
@@ -71,13 +71,13 @@ También puedes mezclar esos ejemplos junto con tus datos existentes y actualiza
 
 Notes: Otro problema común es que tu modelo simplemente no aprende lo que quieres que aprenda.
 
-Los modelos de spaCy hacen predicciones basadas en el contexto local - por ejemplo, para entidades nombradas las palabras al rededor son las más importantes.
+Los modelos de spaCy hacen predicciones basadas en el contexto local - por ejemplo, para entidades nombradas las palabras alrededor son las más importantes.
 
 Si la decisión es difícil de hacer basada en el contexto, el modelo puede tener dificultades en aprenderla.
 
 El esquema de labels también tiene que ser consistente y no demasiado específico.
 
-Por ejemplo, puede ser difícil enseñarle al modelo a predecir si algo es ropa de adulto o ropa de niños basado en el contexto. Sin embargo, solo predecir el label "ropa" puede funcionar mejor.
+Por ejemplo, puede ser difícil enseñarle al modelo a predecir si algo es ropa de adulto o ropa de niños basado en el contexto. Sin embargo, solo predecir el label `"ROPA"` puede funcionar mejor.
 
 ---
 
@@ -105,7 +105,7 @@ Intenta escoger categorías que estén reflejadas en el contexto local y haz que
 
 Siempre puedes añadir un sistema basado en reglas después para ir de genérico a específico.
 
-Es más fácil ponerle labels y aprender categorías genéricas como "ropa" o "banda".
+Es más fácil ponerle labels y aprender categorías genéricas como `"ROPA"` o `"BANDA"`.
 
 ---
 

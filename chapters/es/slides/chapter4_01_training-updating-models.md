@@ -45,7 +45,7 @@ Si no estamos comenzando con un modelo pre-entrenado, primero inicializamos los 
 
 Después llamamos a `nlp.update`, que predice un lote de ejemplos con los parámetros actuales.
 
-El modelo luego revisa las predicciones contra las respuestas correctas y decide cómo cambiar los parámetros para obtener mejores predicciones la próxima vez.
+El modelo luego revisa las predicciones comparándolas con las respuestas correctas y decide cómo cambiar los parámetros para obtener mejores predicciones la próxima vez.
 
 Finalmente, hacemos una pequeña corrección a los parámetros actuales y seguimos adelante con el siguiente lote de ejemplos.
 
@@ -66,7 +66,7 @@ Notes: Aquí tenemos una ilustración mostrando el proceso.
 
 Los datos de entrenamiento son los ejemplos con los que queremos actualizar el modelo.
 
-El texto debe ser una frase, párrafo o un documento más largo. Para los mejores resultados debería ser similar a lo que el modelo verá cuando se esté ejecutando.
+El texto debe ser una frase, párrafo o un documento más largo. Para mejores resultados, debería ser similar a lo que el modelo verá cuando se esté ejecutando.
 
 El label es lo que queremos que el modelo prediga. Esto puede ser una categoría de texto, o un span de entidad y su tipo.
 
@@ -102,13 +102,13 @@ Las entidades no pueden superponerse, así que cada token solo puede ser parte d
 
 Debido a que el entity recognizer predice entidades _en contexto_ también necesita ser entrenado en las entidades _y_ su contexto.
 
-La forma más fácil de hacer esto es mostrarle al modelo un texto y una lista de posiciones de carácteres. Por ejemplo, "adidas ZX" es ropa, comienza en el carácter 11 y termina en el carácter 20.
+La forma más fácil de hacer esto es mostrarle al modelo un texto y una lista de posiciones de caracteres. Por ejemplo, "adidas ZX" es ropa, comienza en el carácter 11 y termina en el carácter 20.
 
 También es muy importante que el modelo aprenda palabras que _no son_ entidades.
 
 En este caso, la lista de anotaciones del span estará vacía.
 
-Nuestro objetivo es enseñarle al modelo a reconocer nuevas entidades en contextos similares, así no estuviesen en nuestros datos de entrenamiento.
+Nuestro objetivo es enseñarle al modelo a reconocer nuevas entidades en contextos similares, aunque no estuviesen en nuestros datos de entrenamiento.
 
 ---
 
@@ -129,7 +129,7 @@ Para entrenar una nueva categoría podemos necesitar hasta un millón.
 
 Los modelos de inglés pre-entrenados de spaCy fueron entrenados con 2 millones de palabras anotadas con part-of-speech tags, dependencias y entidades nombradas.
 
-Los datos de entrenamiento son creado usualmente por humanos que le asignan labels a los textos.
+Los datos de entrenamiento son creados normalmente por humanos que le asignan labels a los textos.
 
 Esto es mucho trabajo, pero puede ser semi-automatizado - por ejemplo, usando el `Matcher` de spaCy.
 

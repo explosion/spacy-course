@@ -18,9 +18,9 @@ Notes: Mientras que algunas libraries te dan un solo método para ocuparse del e
 
 Notes: El loop de entrenamiento es una serie de pasos tomados para entrenar o actualizar un modelo.
 
-Usualmente tenemos que llevarlo a cabo múltiples veces, por iteraciones múltiples, para que el modelo aprenda de manera efectiva. Si queremos entrenar por 10 iteraciones, tenemos que hacer el loop 10 veces.
+Generalmente tenemos que llevarlo a cabo múltiples veces, por iteraciones múltiples, para que el modelo aprenda de manera efectiva. Si queremos entrenar por 10 iteraciones, tenemos que hacer el loop 10 veces.
 
-Para prevenir que el modelo se atasque en una solución subóptima, mezclamos los datos de manera aleatoria para cada iteración. Esto es una estrategia común cuando estamos haciendo <abbr title="En inglés: Stochastic Gradient Descent (SGD).">descenso de gradientes estocástico</abbr>.
+Para prevenir que el modelo se atasque en una solución subóptima, mezclamos los datos de manera aleatoria para cada iteración. Esto es una estrategia común cuando estamos haciendo <abbr title="En inglés: Stochastic Gradient Descent (SGD).">descenso del gradiente estocástico</abbr>.
 
 Luego, dividimos los datos de entrenamiento en lotes de varios ejemplos, también conocido como <abbr title="En español: minilote.">"minibatching"</abbr>. Esto incrementa la fiabilidad de los estimados del gradiente.
 
@@ -43,7 +43,7 @@ Notes: Para resumir:
 
 Los datos de entrenamiento son los ejemplos con los que queremos actualizar el modelo.
 
-El texto debería ser una frase, un párrafo o un documento más largo. Para los mejores resultados debería ser similar a lo que el modelo verá cuando se esté ejecutando.
+El texto debería ser una frase, un párrafo o un documento más largo. Para mejores resultados debería ser similar a lo que el modelo verá cuando se esté ejecutando.
 
 El label es lo que queremos que el modelo prediga. Esto puede ser una categoría de texto, o un span de entidad y su tipo.
 
@@ -79,7 +79,7 @@ nlp.to_disk(path_to_model)
 
 Notes: Aquí tenemos un ejemplo.
 
-Imaginémos que tenemos una lista de ejemplos de entrenamiento compuesta por textos y anotaciones de entidades.
+Imaginemos que tenemos una lista de ejemplos de entrenamiento compuesta por textos y anotaciones de entidades.
 
 Queremos hacer un loop por 10 iteraciones, así que iteramos sobre un `range` de 10.
 
@@ -134,7 +134,7 @@ for itn in range(10):
         nlp.update(texts, annotations)
 ```
 
-Notes: En este ejemplo comenzamos con un modelo de inglés en blanco usando el método `spacy.blank`. El modelo en blanco no tiene ningún componente del pipeline, solo los datos del lenguaje y las reglas para convertir el texto en tokens.
+Notes: En este ejemplo comenzamos con un modelo de español en blanco usando el método `spacy.blank`. El modelo en blanco no tiene ningún componente del pipeline, solo los datos del lenguaje y las reglas para convertir el texto en tokens.
 
 Luego creamos un entity recognizer en blanco y lo añadimos al pipeline.
 

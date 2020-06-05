@@ -47,7 +47,7 @@ Los componentes de spaCy son modelos supervisados para anotaciones de texto, lo 
 
 <exercise id="3" title="Creando datos de entrenamiento (1)">
 
-El `Matcher` basado en reglas de spaCy es una manera excelente de crear datos de entrenamiento rápidamente para modelos de entidades nombradas. Una lista de frases está disponible en la variable `TEXTS`. Puedes imprimirla en pantalla para inspeccionarla. Queremos encontrar todas las menciones de los diferentes modelos de iPhone, así que creamos datos de entrenamiento para enseñarle al modelo a reconocerlos como `"ROPA"`.
+El `Matcher` basado en reglas de spaCy es una manera excelente de crear datos de entrenamiento rápidamente para modelos de entidades nombradas. Una lista de frases está disponible en la variable `TEXTS`. Puedes imprimirla en pantalla para inspeccionarla. Queremos encontrar todas las menciones de los diferentes modelos de zapatillas adidas, así que creamos datos de entrenamiento para enseñarle al modelo a reconocerlas como `"ROPA"`.
 
 - Escribe un patrón para dos tokens que en minúsculas encuentran "adidas" y "zx"
 - Escribe un patrón para dos tokens: un token que en minúsculas encuentra "adidas" y un dígito.
@@ -67,7 +67,7 @@ El `Matcher` basado en reglas de spaCy es una manera excelente de crear datos de
 Usemos los patrones que creamos en el ejercicio anterior para crear un set de ejemplos de entrenamiento. Una lista de frases está disponible en la variable `TEXTS`.
 
 - Crea un objeto `doc` para cada texto usando `nlp.pipe`.
-- Encuentra en el `doc` y crea una lista de spans resultantes.
+- Busca en el `doc` y crea una lista de spans resultantes.
 - Obtén los tuples `(carácter de inicio, carácter del final, label)` de los spans resultantes.
 - Crea cada ejemplo como un tuple de texto y un diccionario que hace <abbr title="Convertir un dato de un conjunto de datos al equivalente en otro conjunto de datos. Como un diccionario convierte de un key a un value.">mapping</abbr> de `"entities"` a tuples de entidades.
 - Añade el ejemplo a `TRAINING_DATA` e inspecciona los datos impresos en pantalla.
@@ -95,7 +95,7 @@ En este ejercicio preparás un pipeline de spaCy para entrenar al entity recogni
 
 - Crea un modelo `"es"` en blanco, por ejemplo, usando el método `spacy.blank`.
 - Crea un nuevo entity recognizer usando `nlp.create_pipe` y añádelo al pipeline.
-- Añade el nuevo label "ROPA" al entity recognizer usando el método `add_label` en el componente del pipeline.
+- Añade el nuevo label `"ROPA"` al entity recognizer usando el método `add_label` en el componente del pipeline.
 
 <codeblock id="04_06">
 
@@ -184,7 +184,7 @@ Intenta contar el número de entidades que el modelo predijo correctamente y div
 
 <exercise id="10" title="Buenos datos vs. Malos datos">
 
-Aquí tenemos un fragmento de los datos de entrenamiento del tipo de entidad `TOURIST_DESTINATION` en comentarios de viajeros.
+Aquí tenemos un fragmento de los datos de entrenamiento del tipo de entidad `DESTINO_TURISTICO` en comentarios de viajeros.
 
 ```python
 TRAINING_DATA = [
@@ -214,7 +214,7 @@ TRAINING_DATA = [
 
 <opt text="Que un sitio sea un destino turístico es una opinión subjetiva y no una categoría definitiva. Será muy difícil que el entity recognizer lo aprenda." correct="true">
 
-Una estrategia mejor sería tener únicamente el label `"LOC"` (entidad geopolítica) o `"LOCATION"` y luego usar un sistema basado en reglas para determinar si una entidad es un destino turístico en este contexto. Por ejemplo, puedes resolver los tipos de entidades en relación con un <abbr title="Un sistema de almacenamiento de conocimiento y sus relaciones. En español: base de conocimiento.">knowledge base</abbr> o buscarlas en un wiki de viajes.
+Una estrategia mejor sería tener únicamente el label `"LOC"` o `"LOCATION"` y luego usar un sistema basado en reglas para determinar si una entidad es un destino turístico en este contexto. Por ejemplo, puedes resolver los tipos de entidades en relación con un <abbr title="Un sistema de almacenamiento de conocimiento y sus relaciones. En español: base de conocimiento.">knowledge base</abbr> o buscarlas en un wiki de viajes.
 
 </opt>
 
@@ -234,7 +234,7 @@ Las palabras muy raras o mal deletreadas también pueden ser marcadas como entid
 
 ### Parte 2
 
-- Reescribe el `TRAINING_DATA` para que solo use el label `"LOC"` (ciudades, estados, países) en vez de `"DESTINO_TURISTICO"`.
+- Reescribe el `TRAINING_DATA` para que solo use el label `"LOC"` en vez de `"DESTINO_TURISTICO"`.
 - No te olvides de añadir tuples para las entidades `"LOC"` que no fueron marcadas con un label en los datos viejos.
 
 <codeblock id="04_10">

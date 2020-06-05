@@ -1,5 +1,7 @@
 def test():
-    assert len(TRAINING_DATA) == 4, "Los datos de entrenamiento no concuerdan – esperaba 4 ejemplos."
+    assert (
+        len(TRAINING_DATA) == 4
+    ), "Los datos de entrenamiento no concuerdan – esperaba 4 ejemplos."
     assert all(
         len(entry) == 2 and isinstance(entry[1], dict) for entry in TRAINING_DATA
     ), "Formato incorrecto de los datos de entrenamiento. Esperaba una lista de tuples dónde el segundo elemento es un dict."
@@ -21,9 +23,9 @@ def test():
     ], "Vuelve a revisar las entidades en el cuarto ejemplo."
 
     __msg__.good(
-        "¡Muy buen trabajo! Una vez el modelo logra buenos resultados detectando entidades LOC "
-        "en los comentarios de los viajeros, podrías añadir un componente basado "
-        "en reglas para determinar si la entidad es un destino turístico en "
-        "este contexto. Por ejemplo, puedes resolver los tipos de entidades en relación con un knowledge base o "
-        "buscarlas en un wiki de viajes."
+        "¡Muy buen trabajo! Una vez el modelo logra buenos resultados detectando "
+        "entidades LOC en los comentarios de los viajeros, podrías añadir un "
+        "componente basado en reglas para determinar si la entidad es un destino "
+        "turístico en este contexto. Por ejemplo, puedes resolver los tipos de "
+        "entidades en relación con un knowledge base o buscarlas en un wiki de viajes."
     )
