@@ -42,7 +42,7 @@ Aprendiste unos trucos útiles sobre cómo crear datos de entrenamiento y cómo 
 
 # Más cosas para hacer con spaCy (1)
 
-- [Entrenando y actualizando](https://spacy.io/usage/training) otros componentes del pipeline
+- [Entrenar y actualizar](https://spacy.io/usage/training) otros componentes del pipeline
   - Part-of-speech tagger
   - Dependency parser
   - Text classifier

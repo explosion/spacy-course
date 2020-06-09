@@ -23,7 +23,7 @@ def test():
     ], "Vuelve a revisar las entidades en el cuarto ejemplo."
 
     __msg__.good(
-        "¡Muy buen trabajo! Una vez el modelo logra buenos resultados detectando "
+        "¡Muy buen trabajo! Una vez que el modelo logra buenos resultados detectando "
         "entidades LOC en los comentarios de los viajeros, podrías añadir un "
         "componente basado en reglas para determinar si la entidad es un destino "
         "turístico en este contexto. Por ejemplo, puedes resolver los tipos de "

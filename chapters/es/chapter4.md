@@ -91,7 +91,7 @@ Usemos los patrones que creamos en el ejercicio anterior para crear un set de ej
 
 <exercise id="6" title="Creando el pipeline">
 
-En este ejercicio preparás un pipeline de spaCy para entrenar al entity recognizer para que reconozca las entidades `"ROPA"` en un texto - por ejemplo, "adidas ZX".
+En este ejercicio prepararás un pipeline de spaCy para entrenar al entity recognizer para que reconozca las entidades `"ROPA"` en un texto - por ejemplo, "adidas ZX".
 
 - Crea un modelo `"es"` en blanco, por ejemplo, usando el método `spacy.blank`.
 - Crea un nuevo entity recognizer usando `nlp.create_pipe` y añádelo al pipeline.
@@ -240,7 +240,7 @@ Las palabras muy raras o mal deletreadas también pueden ser marcadas como entid
 <codeblock id="04_10">
 
 - Para los spans que ya estaban marcados con labels, solo tienes que cambiar el label de `"DESTINO_TURISTICO"` a `"LOC"`.
-- Un texto incluye una ciudad y un estado que no están marcados con un label todavía. Para añadir los spans de entidades, cuenta los carácteres para averiguar dónde empiezan y dónde terminan los spans de entidades. Luego añade los tuples `(start, end, label)` a las entidades.
+- Un texto incluye una ciudad y un estado que no están marcados con un label todavía. Para añadir los spans de entidades, cuenta los caracteres para averiguar dónde empiezan y dónde terminan los spans de entidades. Luego añade los tuples `(start, end, label)` a las entidades.
 
 </codeblock>
 
@@ -252,11 +252,11 @@ Aquí tenemos una pequeña muestra de un dataset creado para entrenar un nuevo t
 
 ### Parte 1
 
-- Completa las posiciones de los carácteres para las entidades `"WEBSITE"` en los datos. Tienes la libertad de usar `len()` si no quieres contar los carácteres.
+- Completa las posiciones de los caracteres para las entidades `"WEBSITE"` en los datos. Tienes la libertad de usar `len()` si no quieres contar los caracteres.
 
 <codeblock id="04_11_01">
 
-- La posición de inicio y del final de un span de entidad son las posiciones de los carácteres en el texto. Por ejemplo, si una entidad comienza en la posición 5, entonces su posición de inicio es `5`. Recuerda que las posiciones del final son _excluyentes_ así que `10` significa _hasta_ el carácter 10.
+- La posición de inicio y del final de un span de entidad son las posiciones de los caracteres en el texto. Por ejemplo, si una entidad comienza en la posición 5, entonces su posición de inicio es `5`. Recuerda que las posiciones del final son _excluyentes_ así que `10` significa _hasta_ el carácter 10.
 
 </codeblock>
 
