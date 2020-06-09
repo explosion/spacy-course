@@ -2,7 +2,7 @@ import spacy
 
 nlp = spacy.load("es_core_news_sm")
 
-doc = nlp(
+text = (
     "Los Olímpicos de Tokio 2020 son la inspiración para la nueva "
     "colección de zapatillas adidas ZX."
 )
