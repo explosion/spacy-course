@@ -2,7 +2,7 @@ import json
 from spacy.matcher import Matcher
 from spacy.lang.de import German
 
-with open("exercises/de/iphone.json") as f:
+with open("exercises/de/iphone.json", encoding="utf8") as f:
     TEXTS = json.loads(f.read())
 
 nlp = German()
