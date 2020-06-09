@@ -8,7 +8,7 @@ def test():
     assert (
         "print(span_root_head.text" in __solution__
     ), "¿Estás imprimiendo en pantalla el texto de la cabeza del token raíz del span?"
-    ents = [ent for ent in doc.ents if ent.label_ == "GPE"]
+    ents = [ent for ent in doc.ents if ent.label_ == "LOC"]
     assert len(ents) == 35, "Número incorrecto de resultados – esperaba 35."
     __msg__.good(
         "¡Bien hecho! Ahora que has practicado combinar predicciones con "

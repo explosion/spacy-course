@@ -1,6 +1,6 @@
 def test():
     assert len(pattern1) == 2, "El pattern1 debería describir dos tokens."
-    assert len(pattern2) == 2, "El pattern2 debería describir tres tokens."
+    assert len(pattern2) == 2, "El pattern2 debería describir dos tokens."
     assert (
         len(pattern1[0]) == 1
     ), "El primer token de pattern1 solo necesita un atributo."
@@ -23,7 +23,7 @@ def test():
         len(pattern2[1]) == 1
     ), "El segundo token de pattern2 debería tener un atributo."
     assert any(
-        pattern2[2].get(l) == True for l in ("IS_DIGIT", "is_digit")
+        pattern2[1].get(l) == True for l in ("IS_DIGIT", "is_digit")
     ), "El segundo token de pattern2 debería encontrar un dígito."
 
     __msg__.good(

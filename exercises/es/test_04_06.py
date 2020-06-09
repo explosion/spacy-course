@@ -1,6 +1,6 @@
 def test():
     assert (
-        'spacy.blank("eS")' in __solution__
+        'spacy.blank("es")' in __solution__
     ), "¿Creaste el modelo de español en blanco?"
     assert (
         len(nlp.pipe_names) == 1 and nlp.pipe_names[0] == "ner"
