@@ -2,7 +2,7 @@ import json
 from spacy.lang.de import German
 from spacy.tokens import Doc
 
-with open("exercises/de/bookquotes.json") as f:
+with open("exercises/de/bookquotes.json", encoding="utf8") as f:
     DATA = json.loads(f.read())
 
 nlp = German()
