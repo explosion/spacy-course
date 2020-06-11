@@ -4,10 +4,10 @@ def test():
 
     assert isinstance(
         nlp, spacy.lang.es.Spanish
-    ), "The nlp object should be an instance of the Spanish class."
+    ), "L'objet nlp doit être une instance de la classe Spanish."
     assert isinstance(
         doc, spacy.tokens.Doc
-    ), "Did you process the text with the nlp object to create a doc?"
-    assert "print(doc.text)" in __solution__, "Did you print the doc.text?"
+    ), "As-tu traité le texte avec l'objet nlp pour créer un doc ?"
+    assert "print(doc.text)" in __solution__, "As-tu affiché doc.text ?"
 
-    __msg__.good("Perfecto! Let's move on to documents, spans and tokens.")
+    __msg__.good("Perfecto ! Passons aux documents, aux spans et aux tokens.")

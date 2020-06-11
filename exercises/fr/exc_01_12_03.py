@@ -9,14 +9,14 @@ doc = nlp(
     "labels and optional voice responses."
 )
 
-# Write a pattern for adjective plus one or two nouns
+# Écris un motif pour un adjectif suivi d'un ou deux noms
 pattern = [{"POS": ____}, {"POS": ____}, {"POS": ____, "OP": ____}]
 
-# Add the pattern to the matcher and apply the matcher to the doc
+# Ajoute le motif au matcher et applique le matcher au doc
 matcher.add("ADJ_NOUN_PATTERN", None, pattern)
 matches = matcher(doc)
-print("Total matches found:", len(matches))
+print("Nombre de correspondances trouvées :", len(matches))
 
-# Iterate over the matches and print the span text
+# Itère sur les correspondances et affiche la portion de texte
 for match_id, start, end in matches:
-    print("Match found:", doc[start:end].text)
+    print("Correspondance trouvée :", doc[start:end].text)

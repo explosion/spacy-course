@@ -1,9 +1,9 @@
 def test():
-    assert "for ent in doc.ents" in __solution__, "Are you iterating over the entities?"
-    assert iphone_x.text == "iPhone X", "Are you sure iphone_x covers the right tokens?"
+    assert "for ent in doc.ents" in __solution__, "Itères-tu sur les entités ?"
+    assert iphone_x.text == "iPhone X", "Es-tu certain que iphone_x contient les bons tokens ?"
 
     __msg__.good(
-        "Perfect! Of course, you don't always have to do this manually. In "
-        "the next exercise, you'll learn about spaCy's rule-based matcher, "
-        "which can help you find certain words and phrases in text."
+        "Parfait ! Bien sur, tu n'as pas besoin de faire cela manuellement à chaque fois."
+        "Dans le prochain exercice, tu vas découvrir le matcher à base de règles de Spacy, "
+        "qui peut t'aider à trouver des mots et des phrases spécifiques dans un texte."
     )

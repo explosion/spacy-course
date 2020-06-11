@@ -1,31 +1,31 @@
 def test():
     assert (
         len(pattern) == 3
-    ), "The pattern should describe three tokens (three dictionaries)."
+    ), "Le motif doit décrire trois tokens (trois dictionnaires)."
     assert (
         isinstance(pattern[0], dict)
         and isinstance(pattern[1], dict)
         and isinstance(pattern[2], dict)
-    ), "Each entry in a pattern should be a dictionary."
+    ), "Chaque élément d'un motif doit être un dictionnaire."
     assert (
         len(pattern[0]) == 1 and len(pattern[1]) == 1
-    ), "The first two pattern entries should have only one key."
-    assert len(pattern[2]) == 2, "The third pattern entry should have two keys."
+    ), "Les deux premiers éléments du motif ne doivent comporter qu'une seule clé."
+    assert len(pattern[2]) == 2, "Le troisième élément du motif doit avoir deux clés."
     assert any(
         pattern[0].get(key) == "ADJ" for key in ["pos", "POS"]
-    ), "Are you matching on the first token's part-of-speech tag with the correct label?"
+    ), "Recherches-tu sur la partie de discours du premier token avec le bon label ?"
     assert any(
         pattern[1].get(key) == "NOUN" for key in ["pos", "POS"]
-    ), "Are you matching on the second token's part-of-speech tag with the correct label?"
+    ), "Recherches-tu sur la partie de discours du deuxième token avec le bon label ?"
     assert any(
         pattern[2].get(key) == "NOUN" for key in ["pos", "POS"]
-    ), "Are you matching on the third token's part-of-speech tag with the correct label?"
+    ), "Recherches-tu sur la partie de discours du troisième token avec le bon label ?"
     assert (
         pattern[2].get("OP") == "?"
-    ), "Are you using the correct operator for the third token?"
+    ), "Utilises-tu le bon opérateur pour le troisième token ?"
 
     __msg__.good(
-        "Great work – those were some pretty complex patterns! Let's move on "
-        "to the next chapter and take a look at how to use spaCy for more "
-        "advanced text analysis."
+        "Excellent travail – ces motifs étaient plutôt complexes ! Passons au chapitre "
+        "suivant et voyons comment utiliser spaCy pour effectuer des analyses de textes "
+        "plus sophistiquées."
     )

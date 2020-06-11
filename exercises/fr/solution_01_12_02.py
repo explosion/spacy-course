@@ -11,14 +11,14 @@ doc = nlp(
     "I also need to download Winzip?"
 )
 
-# Write a pattern that matches a form of "download" plus proper noun
+# Écris un motif qui recherche une forme de "download" suivie d'un nom propre
 pattern = [{"LEMMA": "download"}, {"POS": "PROPN"}]
 
-# Add the pattern to the matcher and apply the matcher to the doc
+# Ajoute le motif au matcher et applique le matcher au doc
 matcher.add("DOWNLOAD_THINGS_PATTERN", None, pattern)
 matches = matcher(doc)
-print("Total matches found:", len(matches))
+print("Nombre de correspondances trouvées :", len(matches))
 
-# Iterate over the matches and print the span text
+# Itère sur les correspondances et affiche la portion de texte
 for match_id, start, end in matches:
-    print("Match found:", doc[start:end].text)
+    print("Correspondance trouvée : ", doc[start:end].text)

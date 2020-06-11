@@ -1,18 +1,18 @@
 def test():
     assert (
         len(pattern) == 2
-    ), "The pattern should describe two tokens (two dictionaries)."
+    ), "Le motif doit décrire deux tokens (deux dictionnaires)."
     assert isinstance(pattern[0], dict) and isinstance(
         pattern[1], dict
-    ), "Each entry in a pattern should be a dictionary."
+    ), "Chaque élément d'un motif doit être un dictionnaire."
     assert (
         len(pattern[0]) == 1 and len(pattern[1]) == 1
-    ), "Each entry in the pattern should have only one key."
+    ), "Chaque élément du motif ne doit comporter qu'une seule clé."
     assert any(
         pattern[0].get(key) == "download" for key in ["lemma", "LEMMA"]
-    ), "Are you matching on the first token's lemma?"
+    ), "Recherches-tu sur le lemme du premier token ?"
     assert any(
         pattern[1].get(key) == "PROPN" for key in ["pos", "POS"]
-    ), "Are you matching on the second token's part-of-speech tag and using the right label for proper noun?"
+    ), "Recherches-tu la partie du discours du second token en utilisant le bon label pour un nom propre ?"
 
     __msg__.good("Good job!")

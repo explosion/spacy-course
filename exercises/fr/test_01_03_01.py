@@ -1,7 +1,7 @@
 def test():
     assert (
         doc.text == "I like tree kangaroos and narwhals."
-    ), "Are you sure you processed the text correctly?"
-    assert first_token == doc[0], "Are you sure you selected the first token?"
-    assert "print(first_token.text)" in __solution__, "Are you printing the token text?"
-    __msg__.good("Nicely done!")
+    ), "Es-tu certain d'avoir traité correctement le texte ?"
+    assert first_token == doc[0], "Es-tu certain d'avoir sélectionné le premier token ?"
+    assert "print(first_token.text)" in __solution__, "Affiches-tu le texte du token ?"
+    __msg__.good("Bien joué !")

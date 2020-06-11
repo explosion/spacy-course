@@ -1,13 +1,13 @@
-# Import the English language class and create the nlp object
+# Importe la classe de langue "English" et crée l'objet nlp
 from ____ import ____
 
 nlp = ____
 
-# Process the text
+# Traite le texte
 doc = ____("I like tree kangaroos and narwhals.")
 
-# Select the first token
+# Sélectionne le premier token
 first_token = doc[____]
 
-# Print the first token's text
+# Affiche le texte du premier token
 print(first_token.____)
