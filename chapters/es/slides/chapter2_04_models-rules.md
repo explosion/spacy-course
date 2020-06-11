@@ -110,7 +110,7 @@ for match_id, start, end in matcher(doc):
 ```
 
 ```out
-span encontrado: labrador Dorado
+span encontrado: labrador dorado
 Token raíz: labrador
 Token raíz cabeza: Tengo
 Token anterior: un DET

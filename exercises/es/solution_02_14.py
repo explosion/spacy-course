@@ -5,7 +5,11 @@ with open("exercises/es/countries.json", encoding="utf8") as f:
     COUNTRIES = json.loads(f.read())
 
 nlp = Spanish()
-doc = nlp("La Unión Europea fue fundada por seis países de Europa occidental (Francia, Alemania, Italia, Bélgica, Países Bajos, y Luxemburgo) y se amplió en seis ocasiones.")
+doc = nlp(
+    "La Unión Europea fue fundada por seis países de Europa occidental "
+    "(Francia, Alemania, Italia, Bélgica, Países Bajos, y Luxemburgo) y "
+    "se amplió en seis ocasiones."
+)
 
 # Importa el PhraseMatcher e inicialízalo
 from spacy.matcher import PhraseMatcher
