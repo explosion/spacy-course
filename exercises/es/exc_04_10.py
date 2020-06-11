@@ -1,15 +1,15 @@
 TRAINING_DATA = [
     (
-        "i went to amsterdem last year and the canals were beautiful",
-        {"entities": [(10, 19, "TOURIST_DESTINATION")]},
+        "El año pasado fuí a Venecie y los canales son hermosos",
+        {"entities": [(20, 27, "DESTINO_TURISTICO")]},
     ),
     (
-        "You should visit Paris once in your life, but the Eiffel Tower is kinda boring",
-        {"entities": [(17, 22, "TOURIST_DESTINATION")]},
+        "Tu deberías visitar Madrid una vez en tu vida, pero el museo prado es aburrido",
+        {"entities": [(20, 26, "DESTINO_TURISTICO")]},
     ),
-    ("There's also a Paris in Arkansas, lol", {"entities": []}),
+    ("Yo sé que también hay un Madrid en Colombia, jaja", {"entities": []}),
     (
-        "Berlin is perfect for summer holiday: lots of parks, great nightlife, cheap beer!",
-        {"entities": [(0, 6, "TOURIST_DESTINATION")]},
+        "Una ciudad como Berlín es perfecta para las vacaciones de verano: muchos parques, gran vida nocturna, cerveza barata!",
+        {"entities": [(16, 22, "DESTINO_TURISTICO")]},
     ),
 ]

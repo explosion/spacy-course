@@ -18,9 +18,9 @@ Notes: Mientras que algunas libraries te dan un solo método para ocuparse del e
 
 Notes: El loop de entrenamiento es una serie de pasos tomados para entrenar o actualizar un modelo.
 
-Usualmente tenemos que llevarlo a cabo múltiples veces, por iteraciones múltiples, para que el modelo aprenda de manera efectiva. Si queremos entrenar por 10 iteraciones, tenemos que hacer el loop 10 veces.
+Generalmente tenemos que llevarlo a cabo múltiples veces, por iteraciones múltiples, para que el modelo aprenda de manera efectiva. Si queremos entrenar por 10 iteraciones, tenemos que hacer el loop 10 veces.
 
-Para prevenir que el modelo se atasque en una solución subóptima, mezclamos los datos de manera aleatoria para cada iteración. Esto es una estrategia común cuando estamos haciendo <abbr title="En inglés: Stochastic Gradient Descent (SGD).">descenso de gradientes estocástico</abbr>.
+Para prevenir que el modelo se atasque en una solución subóptima, mezclamos los datos de manera aleatoria para cada iteración. Esto es una estrategia común cuando estamos haciendo <abbr title="En inglés: Stochastic Gradient Descent (SGD).">descenso del gradiente estocástico</abbr>.
 
 Luego, dividimos los datos de entrenamiento en lotes de varios ejemplos, también conocido como <abbr title="En español: minilote.">"minibatching"</abbr>. Esto incrementa la fiabilidad de los estimados del gradiente.
 
@@ -32,7 +32,7 @@ Entonces podemos guardar el modelo en un directorio y usarlo en spaCy.
 
 # Resumen: Cómo funciona el entrenamiento
 
-<img src="/training.png" alt="Diagram of the training process" />
+<img src="/training_es.png" alt="Diagram of the training process" />
 
 - **Datos de entrenamiento:** Ejemplos y sus anotaciones.
 - **Texto:** El texto al que el modelo debe predecirle un label.
@@ -43,7 +43,7 @@ Notes: Para resumir:
 
 Los datos de entrenamiento son los ejemplos con los que queremos actualizar el modelo.
 
-El texto debería ser una frase, un párrafo o un documento más largo. Para los mejores resultados debería ser similar a lo que el modelo verá cuando se esté ejecutando.
+El texto debería ser una frase, un párrafo o un documento más largo. Para mejores resultados debería ser similar a lo que el modelo verá cuando se esté ejecutando.
 
 El label es lo que queremos que el modelo prediga. Esto puede ser una categoría de texto, o un span de entidad y su tipo.
 
@@ -55,7 +55,7 @@ El gradiente es cómo deberíamos cambiar el modelo para reducir el error actual
 
 ```python
 TRAINING_DATA = [
-    ("How to preorder the iPhone X", {"entities": [(20, 28, "GADGET")]})
+    ("Cómo pre-ordenar los adidas ZX", {"entities": [(21, 30, "ROPA")]})
     # y muchos más ejemplos...
 ]
 ```
@@ -79,7 +79,7 @@ nlp.to_disk(path_to_model)
 
 Notes: Aquí tenemos un ejemplo.
 
-Imaginémos que tenemos una lista de ejemplos de entrenamiento compuesta por textos y anotaciones de entidades.
+Imaginemos que tenemos una lista de ejemplos de entrenamiento compuesta por textos y anotaciones de entidades.
 
 Queremos hacer un loop por 10 iteraciones, así que iteramos sobre un `range` de 10.
 
@@ -96,13 +96,13 @@ Finalmente, llamamos al método `nlp.to_disk` para guardar el modelo entrenado a
 # Actualizando un modelo existente
 
 - Mejorar las predicciones con nuevos datos
-- Especialmente útil para mejorar categorías existentes, como `"PERSON"`
+- Especialmente útil para mejorar categorías existentes, como `"PER"`
 - También es posible añadir nuevas categorías
 - Ten cuidado y asegúrate de que el modelo no "olvide" las viejas
 
 Notes: spaCy te permite actualizar los modelos pre-entrenados con más datos - por ejemplo, para mejorar sus predicciones con textos diferentes.
 
-Esto es especialmente útil si quieres mejorar las categorías que el modelo ya conoce, como `"PERSON"` para persona u `"ORG"` para organización.
+Esto es especialmente útil si quieres mejorar las categorías que el modelo ya conoce, como `"PER"` para persona u `"ORG"` para organización.
 
 También puedes actualizar el modelo para añadir nuevas categorías.
 
@@ -113,13 +113,13 @@ Simplemente asegúrate de que siempre actualices el modelo con ejemplos de la nu
 # Creando un nuevo pipeline desde cero
 
 ```python
-# Comienza con un modelo de inglés en blanco
-nlp = spacy.blank("en")
+# Comienza con un modelo de español en blanco
+nlp = spacy.blank("es")
 # Crea un entity recognizer en blanco y añádelo al pipeline
 ner = nlp.create_pipe("ner")
 nlp.add_pipe(ner)
 # Añade un nuevo label
-ner.add_label("GADGET")
+ner.add_label("ROPA")
 
 # Comienza el entrenamiento
 nlp.begin_training()
@@ -134,7 +134,7 @@ for itn in range(10):
         nlp.update(texts, annotations)
 ```
 
-Notes: En este ejemplo comenzamos con un modelo de inglés en blanco usando el método `spacy.blank`. El modelo en blanco no tiene ningún componente del pipeline, solo los datos del lenguaje y las reglas para convertir el texto en tokens.
+Notes: En este ejemplo comenzamos con un modelo de español en blanco usando el método `spacy.blank`. El modelo en blanco no tiene ningún componente del pipeline, solo los datos del lenguaje y las reglas para convertir el texto en tokens.
 
 Luego creamos un entity recognizer en blanco y lo añadimos al pipeline.
 

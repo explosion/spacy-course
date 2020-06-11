@@ -23,9 +23,9 @@ solutions are all in this repo, there's no penalty for clicking "Show hints" or
 | ------------------------------------------ | ------------------------- | ------------------------------------------------------------ | :----------------------------------------------: | -------------------------------------------------- |
 | **[English](https://course.spacy.io/en)**  | English                   | [`chapters/en`](chapters/en), [`exercises/en`](exercises/en) | [✓](https://www.youtube.com/watch?v=THduWAnG97k) | [@ines](https://github.com/ines)                   |
 | **[German](https://course.spacy.io/de)**   | German                    | [`chapters/de`](chapters/de), [`exercises/de`](exercises/de) | [✓](https://www.youtube.com/watch?v=K1elwpgDdls) | [@ines](https://github.com/ines)                   |
-| **[Spanish](https://course.spacy.io/es)**  | English                   | [`chapters/es`](chapters/es), [`exercises/es`](exercises/es) |                      _WIP_                       | [@mariacamilagl](https://github.com/mariacamilagl) |
+| **[Spanish](https://course.spacy.io/es)**  | Spanish                   | [`chapters/es`](chapters/es), [`exercises/es`](exercises/es) |                      _WIP_                       | [@mariacamilagl](https://github.com/mariacamilagl) |
 | **[Japanese](https://course.spacy.io/ja)** | English                   | [`chapters/ja`](chapters/ja), [`exercises/ja`](exercises/ja) |                        ✕                         | [@tamuhey](https://github.com/tamuhey)             |
-| Chinese                                    | English                   | _in progress_                                                |                                                  |                                                    |
+| Chinese                                    | Chinese                   | _in progress_                                                |                                                  |                                                    |
 | French                                     | French                    | _in progress_                                                |                                                  |                                                    |
 
 If you spot a mistake, I always appreciate

@@ -48,7 +48,7 @@ sustantivo.
 - Encuentra por cualquier atributo del token
 
 ```python
-[{"LEMMA": "buy"}, {"POS": "NOUN"}]
+[{"LEMMA": "comprar"}, {"POS": "NOUN"}]
 ```
 
 Notes: Los match patterns son listas de diccionarios. Cada diccionario describe
@@ -62,9 +62,9 @@ buscamos. Aquí estamos buscando dos tokens que en minúsculas son iguales a
 "iphone" y "x".
 
 También podemos escribir patrones que usen los atributos predichos por el
-modelo. Aquí estamos buscando un token con el lemma "buy", más un sustantivo. El
-lemma es la forma básica, así que este patrón encontraría frases como "buying
-milk" o "bought flowers".
+modelo. Aquí estamos buscando un token con el lemma "comprar", más un sustantivo. El
+lemma es la forma básica, así que este patrón encontraría frases como "comprando
+leche" o "compré flores".
 
 ---
 
@@ -77,17 +77,17 @@ import spacy
 from spacy.matcher import Matcher
 
 # Carga el modelo y crea un objeto nlp
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("es_core_news_sm")
 
 # Inicializa el matcher con el vocabulario compartido
 matcher = Matcher(nlp.vocab)
 
 # Añade el patrón al matcher
-pattern = [{"TEXT": "iPhone"}, {"TEXT": "X"}]
-matcher.add("IPHONE_PATTERN", None, pattern)
+pattern = [{"TEXT": "adidas"}, {"TEXT": "ZX"}]
+matcher.add("ADIDAS_PATTERN", None, pattern)
 
 # Procesa un texto
-doc = nlp("New iPhone X release date leaked")
+doc = nlp("Nuevos diseños de zapatillas en la colección adidas ZX")
 
 # Llama al matcher sobre el doc
 matches = matcher(doc)
@@ -116,7 +116,7 @@ Esto devolverá los resultados.
 
 ```python
 # Llama al matcher sobre el doc
-doc = nlp("New iPhone X release date leaked")
+doc = nlp("Nuevos diseños de zapatillas en la colección adidas ZX")
 matches = matcher(doc)
 
 # Itera sobre los resultados
@@ -127,7 +127,7 @@ for match_id, start, end in matches:
 ```
 
 ```out
-iPhone X
+adidas ZX
 ```
 
 - `match_id`: valor hash del nombre del patrón
@@ -150,19 +150,19 @@ final.
 ```python
 pattern = [
     {"IS_DIGIT": True},
+    {"LOWER": "copa"},
+    {"LOWER": "mundial"},
     {"LOWER": "fifa"},
-    {"LOWER": "world"},
-    {"LOWER": "cup"},
     {"IS_PUNCT": True}
 ]
 ```
 
 ```python
-doc = nlp("2018 FIFA World Cup: France won!")
+doc = nlp("2014 Copa Mundial FIFA: Alemania ganó!")
 ```
 
 ```out
-2018 FIFA World Cup:
+2014 Copa Mundial FIFA:
 ```
 
 Notes: Aquí tenemos un ejemplo de un patrón más complejo usando atributos
@@ -172,11 +172,11 @@ Estamos buscando cinco tokens:
 
 Un token compuesto únicamente por dígitos.
 
-Tres tokens insensibles a mayúsculas/minúsculas para "fifa", "world" y "cup".
+Tres tokens insensibles a mayúsculas/minúsculas para "copa", "mundial" y "fifa".
 
 Un token que está compuesto por puntuación.
 
-El patrón encuentra los tokens "2018 FIFA World Cup:".
+El patrón encuentra los tokens "2014 Copa Mundial FIFA:".
 
 ---
 
@@ -184,25 +184,25 @@ El patrón encuentra los tokens "2018 FIFA World Cup:".
 
 ```python
 pattern = [
-    {"LEMMA": "love", "POS": "VERB"},
-    {"POS": "NOUN"}
+    {"LEMMA": "gustar", "POS": "VERB"},
+    {"POS": "VERB"}
 ]
 ```
 
 ```python
-doc = nlp("I loved dogs but now I love cats more.")
+doc = nlp("Me gustaba correr pero ahora me gusta nadar.")
 ```
 
 ```out
-loved dogs
-love cats
+gustaba correr
+gusta nadar
 ```
 
-Note: En este ejemplo estamos buscando dos tokens:
+Notes: En este ejemplo estamos buscando dos tokens:
 
-Un verbo con el lemma "love", seguido por un sustantivo.
+Un verbo con el lemma "gustar", seguido por un verbo.
 
-Este patrón encontrará "loved dogs" y "love cats".
+Este patrón encontrará "gustaba correr" y "gusta nadar".
 
 ---
 
@@ -210,26 +210,26 @@ Este patrón encontrará "loved dogs" y "love cats".
 
 ```python
 pattern = [
-    {"LEMMA": "buy"},
+    {"LEMMA": "comprar"},
     {"POS": "DET", "OP": "?"},  # opcional: encuentra 0 o 1 veces
     {"POS": "NOUN"}
 ]
 ```
 
 ```python
-doc = nlp("I bought a smartphone. Now I'm buying apps.")
+doc = nlp("Me compré un smartphone. Ahora le estoy comprando aplicaciones.")
 ```
 
 ```out
-bought a smartphone
-buying apps
+compré un smartphone
+comprando aplicaciones
 ```
 
 Notes: Operadores y cuantificadores te permiten definir con qué frecuencia un
 token debe ser encontrado. Pueden ser añadidos con el key "OP".
 
 Aquí, el operador "?" hace que el token determinante sea opcional, así que
-encontrará un token con el lemma "buy", un artículo opcional y un sustantivo.
+encontrará un token con el lemma "comprar", un artículo opcional y un sustantivo.
 
 ---
 

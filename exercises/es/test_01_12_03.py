@@ -12,13 +12,13 @@ def test():
     ), "Los primeras dos entradas del patrón deberían tener un solo key."
     assert len(pattern[2]) == 2, "El tercer patrón debería tener dos keys."
     assert any(
-        pattern[0].get(key) == "ADJ" for key in ["pos", "POS"]
+        pattern[0].get(key) == "NOUN" for key in ["pos", "POS"]
     ), "¿Estás encontrando usando el part-of-speech tag del primer token con el label correcto?"
     assert any(
-        pattern[1].get(key) == "NOUN" for key in ["pos", "POS"]
+        pattern[1].get(key) == "ADJ" for key in ["pos", "POS"]
     ), "¿Estás encontrando usando el part-of-speech tag del segundo token con el label correcto?"
     assert any(
-        pattern[2].get(key) == "NOUN" for key in ["pos", "POS"]
+        pattern[2].get(key) == "ADJ" for key in ["pos", "POS"]
     ), "¿Estás encontrando usando el part-of-speech tag del tercer token con el label correcto?"
     assert (
         pattern[2].get("OP") == "?"

@@ -3,9 +3,9 @@ from spacy.matcher import PhraseMatcher
 from spacy.tokens import Span
 import json
 
-with open("exercises/de/countries.json") as f:
+with open("exercises/de/countries.json", encoding="utf8") as f:
     COUNTRIES = json.loads(f.read())
-with open("exercises/de/country_text.txt") as f:
+with open("exercises/de/country_text.txt", encoding="utf8") as f:
     TEXT = f.read()
 
 nlp = spacy.load("de_core_news_sm")

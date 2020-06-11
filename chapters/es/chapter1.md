@@ -56,7 +56,7 @@ así como de sus <abbr title="En español: representaciones o vistas.">views</ab
 
 ### Paso 1
 
-- Importa la clase de lenguaje `English` y crea el objeto `nlp`.
+- Importa la clase de lenguaje `Spanish` y crea el objeto `nlp`.
 - Procesa el texto y genera un
   <abbr title="En español: ejemplar, a veces referido incorrectamente como instancia.">instance</abbr>
   de un objeto `Doc` en la variable `doc`.
@@ -73,12 +73,11 @@ no 1.
 
 ### Paso 2
 
-- Importa la clase de lenguaje `English` y crea el objeto `nlp`.
+- Importa la clase de lenguaje `Spanish` y crea el objeto `nlp`.
 - Procesa el texto y genera un
   <abbr title="En español: ejemplar, a veces referido incorrectamente como instancia.">instance</abbr>
   de un objeto `Doc` en la variable `doc`.
-- Crea un slice de `Doc` para los tokens "tree kangaroos" y "tree kangaroos and
-  narwhals".
+- Crea un slice de `Doc` para los tokens "panteras negras" y "panteras negras y los leones".
 
 <codeblock id="01_03_02">
 
@@ -91,10 +90,10 @@ no incluye el token 4.
 
 </exercise>
 
-<exercise id="4" title="Atributos Léxicos">
+<exercise id="4" title="Atributos léxicos">
 
 En este ejemplo usarás los objetos `Doc` y `Token` de spaCy y los atributos
-léxicos para encontrar porcentajes en el texto. Estarás buscando por dos tokens
+léxicos para encontrar porcentajes en el texto. Estarás buscando dos tokens
 subsecuentes: un número y un símbolo de porcentaje.
 
 - Usa el atributo `like_num` del token para revisar si un token en el `doc`
@@ -112,7 +111,7 @@ ejemplo, `doc[5]` es el token en el índice 5.
 
 </exercise>
 
-<exercise id="5" title="Modelos Estadísticos" type="slides">
+<exercise id="5" title="Modelos estadísticos" type="slides">
 
 <slides source="chapter1_02_statistical-models">
 </slides>
@@ -164,7 +163,7 @@ Los modelos que estamos usando en este curso ya están pre-instalados. Para
 obtener más detalles sobre los modelos estadísticos de spaCy y cómo instalarlos
 en tu máquina revisa [la documentación](https://spacy.io/usage/models).
 
-- Usa `spacy.load` para cargar el modelo pequeño de inglés `"en_core_web_sm"`.
+- Usa `spacy.load` para cargar el modelo pequeño de español `"es_core_news_sm"`.
 - Procesa el texto e imprime en pantalla el texto del documento.
 
 <codeblock id="01_07">
@@ -224,7 +223,7 @@ procesando. Veamos un ejemplo.
 - Procesa el texto con el objeto `doc`.
 - Itera sobre las entidades e imprime en pantalla el texto de la entidad y el
   label.
-- Parece ser que el modelo no predijo "iPhone X". Crea un span para esos tokens
+- Parece ser que el modelo no predijo "adidas ZX". Crea un span para esos tokens
   manualmente.
 
 <codeblock id="01_09">
@@ -249,13 +248,13 @@ procesando. Veamos un ejemplo.
 <exercise id="11" title="Usando el Matcher">
 
 Probemos el `Matcher` basado en reglas de spaCy. Vas a usar un ejemplo del
-ejercicio anterior y escribirás un patrón que encuentre la frase "iPhone X" en
+ejercicio anterior y escribirás un patrón que encuentre la frase "adidas ZX" en
 el texto.
 
 - Importa el `Matcher` desde `spacy.matcher`.
 - Inicialízalo con el `vocab` compartido del objeto `nlp`.
-- Crea un patrón que encuentre los valores `"TEXT"` de dos tokens: `"iPhone"` y
-  `"X"`.
+- Crea un patrón que encuentre los valores `"TEXT"` de dos tokens: `"adidas"` y
+  `"ZX"`.
 - Usa el método `matcher.add` para añadir el patrón al matcher.
 - Llama al matcher en el `doc` y guarda el resultado en la variable `matches`.
 - Itera sobre los resultados y obtén el span resultante desde el índice `start`
@@ -265,8 +264,8 @@ el texto.
 
 - El vocabulario compartido está disponible como el atributo `nlp.vocab`.
 - El patrón es una lista de diccionarios que utiliza los nombres de los
-  atributos como keys. Por ejemplo, `[{"TEXT": "Hello"}]` encontrará un token
-  cuyo texto exacto sea "Hello".
+  atributos como keys. Por ejemplo, `[{"TEXT": "Hola"}]` encontrará un token
+  cuyo texto exacto sea "Hola".
 - Los valores `start` y `end` de cada resultado describen el índice de inicio y
   el índice final de un span resultante. Para obtener el span puedes crear un
   slice del `doc` usando su inicio y final.
@@ -277,7 +276,7 @@ el texto.
 
 <exercise id="12" title="Escribiendo patrones">
 
-En este ejercicio practicarás escribiendo patrones más complejos usando
+En este ejercicio practicarás escribir patrones más complejos usando
 diferentes atributos de los tokens y operadores.
 
 ### Parte 1
@@ -297,15 +296,15 @@ diferentes atributos de los tokens y operadores.
 
 ### Parte 2
 
-- Escribe **un** patrón que únicamente encuentre formas de "download" (tokens
-  con el lemma "download") seguido por un token que tenga el part-of-speech tag
+- Escribe **un** patrón que únicamente encuentre formas de "descargar" (tokens
+  con el lemma "descargar") seguido por un token que tenga el part-of-speech tag
   `"PROPN"` (<abbr title="En español: nombre propio.">proper noun</abbr>).
 
 <codeblock id="01_12_02">
 
 - Para especificar un lemma puedes usar el atributo `"LEMMA"` en el patrón de
-  tokens. Por ejemplo, `{"LEMMA": "be"}` va a encontrar los tokens como "is",
-  "was" o "being".
+  tokens. Por ejemplo, `{"LEMMA": "ser"}` va a encontrar los tokens como "soy",
+  "siendo" o "seré".
 - Para encontrar nombres propios puedes encontrar todos los tokens que tengan
   `"PROPN"` como el valor del `"POS"`.
 
@@ -313,8 +312,7 @@ diferentes atributos de los tokens y operadores.
 
 ### Parte 3
 
-- Escribe **un** patrón que encuentre adjetivos (`"ADJ"`) seguidos de uno o dos
-  sustantivos `"NOUN"` (un sustantivo y un sustantivo opcional).
+- Escribe **un** patrón que encuentre un sustantivo `"NOUN"` seguido de uno o dos adjetivos `"ADJ"`(un adjetivo y un adjetivo opcional).
 
 <codeblock id="01_12_03">
 
