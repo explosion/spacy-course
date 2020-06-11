@@ -52,7 +52,7 @@ TRAINING_DATA = [
 ]
 ```
 
-Note: Para prevenir esto asegúrate de que siempre incluyas ejemplos de lo que el modelo antes predijo correctamente.
+Notes: Para prevenir esto asegúrate de que siempre incluyas ejemplos de lo que el modelo antes predijo correctamente.
 
 Si estás entrenando una nueva categoría `"WEBSITE"`, incluye también ejemplos de `"PER"`
 
