@@ -197,7 +197,7 @@ TRAINING_DATA = [
         "museo prado es aburrido",
         {"entities": [(20, 26, "DESTINO_TURISTICO")]},
     ),
-    ("Yo sé que también hay  un Madrid en Colombia, jaja", {"entities": []}),
+    ("Yo sé que también hay un Madrid en Colombia, jaja", {"entities": []}),
     (
         "Una ciudad como Berlín es perfecta para las vacaciones de verano: "
         "muchos, parques, gran vida nocturna, cerveza barata!",
