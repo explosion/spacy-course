@@ -28,22 +28,22 @@ id: 2
 <codeblock id="02_02_01">
 
 - Puedes usar el string store en `nlp.vocab.strings` como un diccionario de
-  Python normal. Por ejemplo, `nlp.vocab.strings["unicorn"]` devolverá el hash y
-  buscar el hash devolverá el string `"unicorn"`.
+  Python normal. Por ejemplo, `nlp.vocab.strings["unicornio"]` devolverá el hash y
+  buscar el hash devolverá el string `"unicornio"`.
 
 </codeblock>
 
 ### Parte 2
 
-- Busca el label del string "PERSON" en `nlp.vocab.strings` para obtener el
+- Busca el label del string "PER" en `nlp.vocab.strings` para obtener el
   hash.
 - Busca el hash para obtener el string.
 
 <codeblock id="02_02_02">
 
 - Puedes usar el string store en `nlp.vocab.strings` como un diccionario de
-  Python normal. Por ejemplo, `nlp.vocab.strings["unicorn"]` devolverá el hash y
-  buscar el hash devolverá el string `"unicorn"`.
+  Python normal. Por ejemplo, `nlp.vocab.strings["unicornio"]` devolverá el hash y
+  buscar el hash devolverá el string `"unicornio"`.
 
 </codeblock>
 
@@ -51,14 +51,14 @@ id: 2
 
 <exercise id="3" title="Vocabulario, hashes y lexemas">
 
-Porqué devuelve un error este código?
+¿Porqué devuelve un error este código?
 
 ```python
-from spacy.lang.en import English
+from spacy.lang.es import Spanish
 from spacy.lang.de import German
 
-# Crea un objeto nlp de Inglés y uno de Alemán
-nlp = English()
+# Crea un objeto nlp de español y uno de alemán
+nlp = Spanish()
 nlp_de = German()
 
 # Obtén el ID para el string "Bowie"
@@ -79,7 +79,7 @@ string, o usa el mismo vocabulario para resolver el hash de regreso a string.
 
 </opt>
 
-<opt text='<code>"Bowie"</code> no es una palabra normal en los diccionarios de Inglés o de Alemán así que no puede ser convertida a un hash.'>
+<opt text='<code>"Bowie"</code> no es una palabra normal en los diccionarios de español o de alemán así que no puede ser convertida a un hash.'>
 
 Cualquier string puede ser convertido a un hash.
 
@@ -116,9 +116,9 @@ existente, incluyendo el vocabulario.
 
 <codeblock id="02_05_01">
 
-La clase `Doc` recibe 3 argumentos: el vocabulario compartido, usualmente
-`nlp.vocab`, una lista de `words` y una lista de `spaces`, que son valores
-booleanos que indican si una palabra está seguida de un espacio o no.
+La clase `Doc` recibe 3 argumentos: el vocabulario compartido (generalmente
+`nlp.vocab`), una lista de `words` y una lista de `spaces`, ( valores
+booleanos que indican si una palabra está seguida de un espacio o no).
 
 </codeblock>
 
@@ -144,8 +144,8 @@ Si lo está, el valor del espacio debería ser `True`. Si no, debería ser `Fals
 <codeblock id="02_05_03">
 
 Presta atención a los tokens individuales. Para ver cómo se tokeniza un string
-usualmente en spaCy puedes probarlo e imprimir los tokens de
-`nlp("Oh, really?!")`.
+normalmente en spaCy puedes probarlo e imprimir los tokens de
+`nlp("¡¿En serio?!")`.
 
 </codeblock>
 
@@ -154,15 +154,15 @@ usualmente en spaCy puedes probarlo e imprimir los tokens de
 <exercise id="6" title="Docs, spans y entidades desde cero">
 
 En este ejercicio crearás los objetos `Doc` y `Span` manualmente y actualizarás
-las entidades nombradas - igual como lo hace spaCy detrás de cámaras. Un
+las entidades nombradas - igual que lo hace spaCy detrás de cámaras. Un
 objeto `nlp` compartido ya fue creado.
 
 - Importa las clases `Doc` y `Span` desde `spacy.tokens`.
 - Usa la clase `Doc` directamente para crear un `doc` a partir de palabras y
   espacios.
-- Crea un `Span` para "David Bowie" desde el `doc` y asignalo al label
-  `"PERSON"`.
-- Sobrescribe los `doc.ents` con una lista de una entidad, el `span` "David
+- Crea un `Span` para "David Bowie" desde el `doc` y asígnalo al label
+  `"PER"`.
+- Sobrescribe los `doc.ents` con una lista de una entidad, el `Span` "David
   Bowie".
 
 <codeblock id="02_06">
@@ -187,8 +187,8 @@ nombres propios que están seguidos por un verbo.
 ```python
 import spacy
 
-nlp = spacy.load("en_core_web_sm")
-doc = nlp("Berlin is a nice city")
+nlp = spacy.load("es_core_news_sm")
+doc = nlp("Por Berlín fluye el río Esprea.")
 
 # Obtén todos los tokens y los part-of-speech tags
 token_texts = [token.text for token in doc]
@@ -200,12 +200,12 @@ for index, pos in enumerate(pos_tags):
         # Revisa si el token siguiente es un verbo
         if pos_tags[index + 1] == "VERB":
             result = token_texts[index]
-            print("Found proper noun before a verb:", result)
+            print("Encontré un nombre propio antes de un verbo:", result)
 ```
 
 ### Parte 1
 
-Por qué está mal este código?
+¿Por qué está mal este código?
 
 <choice>
 
@@ -220,11 +220,11 @@ atributos y relaciones.
 <opt correct="true" text="Únicamente usa listas de strings en vez de los atributos nativos de los tokens. Esto es normalmente menos eficiente y no puede expresar relaciones complejas.">
 
 Siempre convierte los resultados a strings lo más tarde posible e intenta usar
-los atributos nativos de los tokens para mantener las cosas consistentes.
+los atributos nativos de los tokens para mantener la consistencia.
 
 </opt>
 
-<opt text='<code>pos_</code> es el atributo equivocado para extraer nombres propios. Debería usar <code>tag_</code> y los labels <code>"NNP"</code> y <code>"NNS"</code> en vez.'>
+<opt text='<code>pos_</code> es el atributo equivocado para extraer nombres propios. Debería usar <code>tag_</code> y los labels <code>"NNP"</code> y <code>"NNS"</code> en su lugar.'>
 
 El atributo `.pos_` devuelve el part-of-speech tag grueso y `PROPN` es el tag
 correcto para revisar los nombres propios.
@@ -264,12 +264,12 @@ correcto para revisar los nombres propios.
 
 <exercise id="9" title="Inspeccionando los word vectors">
 
-En este ejercicio usarás un [modelo de inglés](https://spacy.io/models/en) más
+En este ejercicio usarás un [modelo de español](https://spacy.io/models/es) más
 grande, que incluye al rededor de 20.000 word vectors. El modelo ya está
 pre-instalado.
 
-- Carga el modelo mediano `"en_core_web_md"` con word vectors.
-- Imprime en pantalla el vector de `"bananas"` usando el atributo
+- Carga el modelo mediano `"es_core_news_md"` con word vectors.
+- Imprime en pantalla el vector de `"banano"` usando el atributo
   `token.vector`.
 
 <codeblock id="02_09">
@@ -282,14 +282,14 @@ pre-instalado.
 
 </exercise>
 
-<exercise id="10" title="Comparando similitudes">
+<exercise id="10" title="Prediciendo similitudes">
 
-En este ejercicio usarás los métodos `similarity` de spaCy para comparar objetos
+En este ejercicio usarás el método `similarity` de spaCy para comparar objetos
 `Doc`, `Token` y `Span` y obtener puntajes de similitud.
 
 ### Parte 1
 
-- Usa el método `doc.similarity` para comparar el `doc1` al `doc2` e imprime el
+- Usa el método `doc.similarity` para comparar el `doc1` con el `doc2` e imprime el
   resultado en pantalla.
 
 <codeblock id="02_10_01">
@@ -313,7 +313,7 @@ En este ejercicio usarás los métodos `similarity` de spaCy para comparar objet
 
 ### Parte 3
 
-- Crea spans para "great restaurant"/"really nice bar".
+- Crea spans para "restaurante genial"/ "bar muy divertido".
 - Usa `span.similarity` para compararlos e imprime el resultado en pantalla.
 
 <codeblock id="02_10_03"></codeblock>
@@ -336,7 +336,7 @@ pattern = [{"LOWER": "silicon"}, {"TEXT": " "}, {"LOWER": "valley"}]
 ```
 
 ```python
-doc = nlp("Can Silicon Valley workers rein in big tech from within?")
+doc = nlp("¿Por qué Silicon Valley necesita miles de astrofísicos?")
 ```
 
 <choice>
@@ -345,7 +345,7 @@ doc = nlp("Can Silicon Valley workers rein in big tech from within?")
 
 El atributo `LOWER` en el patrón describe a los tokens que pueden ser
 encontrados con el valor dado _en minúsculas_. Así, `{"LOWER": "valley"}`
-encontrará tokens como "Valley", "VALLEY", "valley" etc.
+encontrará tokens como "Valley", "VALLEY", "valley", etc.
 
 </opt>
 
@@ -376,16 +376,15 @@ pantalla los tokens en el `doc` para ver cómo se va a dividir el texto y ajusta
 el patrón para que cada diccionario represente un token.
 
 - Edita el `pattern1` para que encuentre correctamente todas las menciones de
-  `"Amazon"`, sin importar si son minúsculas o mayúsculas, más un nombre propio
+  `"Bandai"`, sin importar si son minúsculas o mayúsculas, más un nombre propio
   con la primera letra en mayúscula.
 - Edita el `pattern2` para que encuentre correctamente todas las menciones de
-  `"ad-free"`, sin importar si son minúsculas o mayúsculas, más el sustantivo
-  siguiente.
+  `"Pac-Man"`, sin importar si son minúsculas o mayúsculas, más uno o dos nombres propios siguientes opcionales.
 
 <codeblock id="02_13">
 
 - Procesa los strings que deben ser encontrados con el objeto `nlp` - for
-  ejemplo, `[token.text for token in nlp("ad-free viewing")]`.
+  ejemplo, `[token.text for token in nlp("Pac-Man Live")]`.
 - Inspecciona los tokens y asegúrate de que cada diccionario en el patrón describa
   correctamente a un token.
 
@@ -395,11 +394,11 @@ el patrón para que cada diccionario represente un token.
 
 <exercise id="14" title="Encontrando frases eficientemente, 'phrase matching'">
 
-A veces es más eficiente encontrar los strings exactos en vez de escribir los
+A veces es más eficiente buscar los strings exactos en vez de escribir los
 patrones describiendo los tokens individuales. Esto es especialmente cierto para
 cosas que tienen categorías finitas - como todos los países del mundo. Aquí
 tenemos una lista de países, así que usémoslos como base para nuestro script
-para extraer información. La lista de nombres en string está disponible en la
+para extraer información. La lista de nombres en strings está disponible en la
 variable `COUNTRIES`.
 
 - Importa el `PhraseMatcher` e inicialízalo con el `vocab` compartido como la variable
@@ -418,19 +417,18 @@ El `vocab` compartido está disponible como `nlp.vocab`.
 
 En el ejercicio anterior escribiste un script usando el `PhraseMatcher` de spaCy
 para encontrar nombres de países en un texto. Usemos ese buscador de países en
-un texto más largo. Analiza la sintáxis y actualiza las entidades del documento
+un texto más largo. Analiza la sintaxis y actualiza las entidades del documento
 con los países resultantes.
 
-- Itera sobre los resultados y crea un `Span` con el label `"GPE"` (entidad
-  geopolítica).
+- Itera sobre los resultados y crea un `Span` con el label `"LOC"` (Nombres de ubicaciones definidas política o geográficamente).
 - Sobrescribe las entidades en el `doc.ents` y añade el span resultante.
-- Obtén el token central de la raíz del span.
-- Imprime en pantalla el texto del token central y el span.
+- Obtén el token cabeza de la raíz del span.
+- Imprime en pantalla el texto del token cabeza y el span.
 
 <codeblock id="02_15">
 
 - Recuerda que el texto está disponible como la variable `text`.
-- El token raíz del span está disponible como `span.root`. El token central está
+- El token raíz del span está disponible como `span.root`. El token cabeza está
   disponible a través del atributo `token.head`.
 
 </codeblock>

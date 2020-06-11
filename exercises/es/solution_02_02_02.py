@@ -1,10 +1,10 @@
 import spacy
 
-nlp = spacy.load("en_core_web_sm")
-doc = nlp("David Bowie is a PERSON")
+nlp = spacy.load("es_core_news_sm")
+doc = nlp("David Bowie tiene el label PER")
 
-# Busca el hash para el label del string "PERSON"
-person_hash = nlp.vocab.strings["PERSON"]
+# Busca el hash para el label del string "PER"
+person_hash = nlp.vocab.strings["PER"]
 print(person_hash)
 
 # Busca el person_hash para obtener el string

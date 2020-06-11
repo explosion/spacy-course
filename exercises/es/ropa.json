@@ -1,0 +1,7 @@
+[
+    ["Cómo pre-ordenar los adidas ZX", {"entities": [[21, 30, "ROPA"]]}], 
+    ["Los nuevos adidas ZX vienen en camino", {"entities": [[11, 20, "ROPA"]]}], 
+    ["Debería pagar €200 por un par de adidas ZX?", {"entities": [[33, 42, "ROPA"]]}], 
+    ["Cuál es la diferencia entre los adidas 8000 y los adidas 4000?", {"entities": [[32, 43, "ROPA"], [50, 61, "ROPA"]]}], 
+    ["Necesito nuevas zapatillas! ¿Qué me recomiendan?", {"entities": []}]
+]

@@ -1,9 +1,9 @@
 import spacy
 
-nlp = spacy.load("en_core_web_md")
+nlp = spacy.load("es_core_news_md")
 
-doc1 = nlp("It's a warm summer day")
-doc2 = nlp("It's sunny outside")
+doc1 = nlp("Es un cálido día de verano")
+doc2 = nlp("Hay sol afuera")
 
 # Obtén la similitud entre el doc1 y el doc2
 similarity = ____.____(____)

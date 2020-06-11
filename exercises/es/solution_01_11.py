@@ -3,18 +3,21 @@ import spacy
 # Importa el Matcher
 from spacy.matcher import Matcher
 
-nlp = spacy.load("en_core_web_sm")
-doc = nlp("New iPhone X release date leaked as Apple reveals pre-orders by mistake")
+nlp = spacy.load("es_core_news_sm")
+doc = nlp(
+    "Los Olímpicos de Tokio 2020 son la inspiración para la nueva "
+    "colección de zapatillas adidas ZX."
+)
 
 # Inicializa el matcher con el vocabulario compartido
 matcher = Matcher(nlp.vocab)
 
-# Crea un patrón que encuentre dos tokens: "iPhone" y "X"
-pattern = [{"TEXT": "iPhone"}, {"TEXT": "X"}]
+# Crea un patrón que encuentre dos tokens: "adidas" y "ZX"
+pattern = [{"TEXT": "adidas"}, {"TEXT": "ZX"}]
 
 # Añade el patrón al matcher
-matcher.add("IPHONE_X_PATTERN", None, pattern)
+matcher.add("ADIDAS_ZX_PATTERN", None, pattern)
 
 # Usa al matcher sobre el doc
 matches = matcher(doc)
-print("Matches:", [doc[start:end].text for match_id, start, end in matches])
+print("Resultados:", [doc[start:end].text for match_id, start, end in matches])

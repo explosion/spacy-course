@@ -19,7 +19,7 @@ de texto.
 <img src="/pipeline.png" alt="Illustration of the spaCy pipeline transforming a text into a processed Doc" width="90%" />
 
 ```python
-doc = nlp("This is a sentence.")
+doc = nlp("Esto es una frase.")
 ```
 
 Notes: Ya has escrito esto bastantes veces: le pasas un string de texto al
@@ -36,7 +36,7 @@ trabajar con él.
 
 ---
 
-# Componentes incorporados del pipeline
+# Componentes incluidos en el pipeline
 
 | Nombre      | Descripción             | Crea                                                      |
 | ----------- | :---------------------- | :-------------------------------------------------------- |
@@ -58,7 +58,7 @@ El named entity recognizer añade las entidades detectadas a la propiedad
 `doc.ents`. También escribe los atributos del tipo de entidad en los tokens, lo
 que indica si un token es parte de una entidad o no.
 
-Finalmente, el text classifier escribe las labels de categoría que aplican a
+Finalmente, el <abbr title="En español: clasificador de texto.">text classifier</abbr> escribe las labels de categoría que aplican a
 todo el texto y las añade a la propiedad `doc.cats`.
 
 Debido a que las categorías de texto son siempre muy específicas, el text
@@ -69,7 +69,7 @@ puedes usar para entrenar tu propio sistema.
 
 # Detrás de cámaras
 
-<img src="/package_meta.png" alt="Illustration of a package labelled en_core_web_sm, folders and file and the meta.json" />
+<img src="/package_meta_es.png" alt="Illustration of a package labelled es_core_news_sm, folders and file and the meta.json" />
 
 - El pipeline está definido en el `meta.json` del modelo en el orden específico
 - Los componentes incluidos necesitan datos binarios para hacer predicciones

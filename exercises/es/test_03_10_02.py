@@ -7,7 +7,7 @@ def test():
         'span._.to_html("strong")' in __solution__
     ), "¿Estás accediendo al atributo personalizado?"
     assert (
-        span._.to_html("strong") == "<strong>Hello world</strong>"
+        span._.to_html("strong") == "<strong>Hola mundo</strong>"
     ), "Parece que el método está devolviendo el valor equivocado."
 
     __msg__.good(

@@ -42,7 +42,7 @@ Aprendiste unos trucos útiles sobre cómo crear datos de entrenamiento y cómo 
 
 # Más cosas para hacer con spaCy (1)
 
-- [Entrenando y actualizando](https://spacy.io/usage/training) otros componentes del pipeline
+- [Entrenar y actualizar](https://spacy.io/usage/training) otros componentes del pipeline
   - Part-of-speech tagger
   - Dependency parser
   - Text classifier
@@ -64,7 +64,7 @@ Otro componente del pipeline útil es el text classifier, que puede aprender a p
   - Mucho espacio para mejoras y más lenguajes
   - Permite entrenar modelos para otros lenguajes
 
-Notes: En este curso básicamente aceptamos la conversión a tokens por defecto como está. ¡Pero no tienes que hacerlo!
+Notes: En este curso básicamente aceptamos la conversión a tokens por defecto tal y cómo está. ¡Pero no tienes que hacerlo!
 
 spaCy te permite personalizar las reglas para determinar dónde y cómo dividir el texto.
 
@@ -82,7 +82,7 @@ Permitir la conversión a tokens en un nuevo lenguaje es el primer paso hacia po
 
 👉 [spacy.io](https://spacy.io)
 
-Notes: Para más ejemplos, tutoriales y documentación a profundidad de la API, revisa el sitio web de spaCy.
+Notes: Para más ejemplos, tutoriales y documentación de la API a profundidad, revisa el sitio web de spaCy.
 
 ---
 

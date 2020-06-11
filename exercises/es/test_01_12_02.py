@@ -9,7 +9,7 @@ def test():
         len(pattern[0]) == 1 and len(pattern[1]) == 1
     ), "Cada entrada en el patrón debería tener solo un key."
     assert any(
-        pattern[0].get(key) == "download" for key in ["lemma", "LEMMA"]
+        pattern[0].get(key) == "descargar" for key in ["lemma", "LEMMA"]
     ), "¿Estás encontrando usando el lemma del primer token?"
     assert any(
         pattern[1].get(key) == "PROPN" for key in ["pos", "POS"]
