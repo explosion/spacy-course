@@ -198,7 +198,7 @@ gustaba correr
 gusta nadar
 ```
 
-Note: En este ejemplo estamos buscando dos tokens:
+Notes: En este ejemplo estamos buscando dos tokens:
 
 Un verbo con el lemma "gustar", seguido por un verbo.
 
