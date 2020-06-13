@@ -1,5 +1,5 @@
 def test():
-    assert "for ent in doc.ents" in __solution__, "Iterierst du über die Entitäten?"
+    assert "in doc.ents" in __solution__, "Iterierst du über die Entitäten?"
     assert (
         iphone_se.text == "iPhone SE"
     ), "Bist du dir sicher, dass iphone_se die richtigen Tokens erfasst?"
