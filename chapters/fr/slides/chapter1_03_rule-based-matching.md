@@ -2,120 +2,127 @@
 type: slides
 ---
 
-# Rule-based matching
+# Correspondances avec des règles
 
-Notes: In this lesson, we'll take a look at spaCy's matcher, which lets you
-write rules to find words and phrases in text.
+Notes : Dans cette leçon, nous allons faire connaissance avec le matcher de
+spaCy, qui te permet d'écrire des règles pour trouver des mots et des phrases
+dans un texte.
 
 ---
 
-# Why not just regular expressions?
+# Pourquoi pas simplement des expressions régulières ?
 
-- Match on `Doc` objects, not just strings
-- Match on tokens and token attributes
-- Use the model's predictions
-- Example: "duck" (verb) vs. "duck" (noun)
+- Recherche de correspondances sur les objets `Doc`, pas seulement sur les
+  chaines de caractères
+- Recherche de correspondances sur les tokens les attriburts des tokens
+- Utilisation des prédictions du modèle
+- Exemple: "duck" (verbe) vs. "duck" (nom)
 
-Notes: Compared to regular expressions, the matcher works with `Doc` and `Token`
+Notes : par rapport aux expressions régulières, le matcher fonctionne avec des
+objets `Doc` et `Token` et pas simplement des chaines de caractères.
 objects instead of only strings.
 
-It's also more flexible: you can search for texts but also other lexical
-attributes.
+Il est également plus flexible : tu peux rechercher des textes mais aussi
+d'autres attributs lexicaux.
 
-You can even write rules that use the model's predictions.
+Tu peux même écrire des règles qui utilisent les prédictions du modèle.
 
-For example, find the word "duck" only if it's a verb, not a noun.
+Par exemple, trouve le mot "duck" seulement si c'est un verbe, pas un nom.
 
 ---
 
-# Match patterns
+# Motifs de correspondance
 
-- Lists of dictionaries, one per token
+- Listes de dictionnaires, un par token
 
-- Match exact token texts
+- Recherche de correspondances exactes des textes
 
 ```python
 [{"TEXT": "iPhone"}, {"TEXT": "X"}]
 ```
 
-- Match lexical attributes
+- Recherche d'attributs lexicaux
 
 ```python
 [{"LOWER": "iphone"}, {"LOWER": "x"}]
 ```
 
-- Match any token attributes
+- Recherche de n'importe quels attributs des tokens
 
 ```python
 [{"LEMMA": "buy"}, {"POS": "NOUN"}]
 ```
 
-Notes: Match patterns are lists of dictionaries. Each dictionary describes one
-token. The keys are the names of token attributes, mapped to their expected
-values.
+Notes : les motifs de correspondance sont des listes de dictionnaires. Chaque
+dictionnaire décrit un token. Les clés sont les noms des attributs des tokens,
+auxquelles sont associées les valeurs recherchées.
 
-In this example, we're looking for two tokens with the text "iPhone" and "X".
+Dans cet exemple, nous recherchons deux tokens avec les textes "iPhone" et "X".
 
-We can also match on other token attributes. Here, we're looking for two tokens
-whose lowercase forms equal "iphone" and "x".
+Nous pouvons aussi rechercher sur d'autres attributs des tokens. Ici, nous
+recherchons deux tokens dont les formes minuscules sont "iphone" et "x".
 
-We can even write patterns using attributes predicted by the model. Here, we're
-matching a token with the lemma "buy", plus a noun. The lemma is the base form,
-so this pattern would match phrases like "buying milk" or "bought flowers".
+Nous pouvons même écrire des motifs utilisant des attributs prédits par le
+modèle. Ici, nous recherchons un token avec le lemme "buy", plus un nom. Le
+lemme est dans sa forme de base, donc ce motif trouvera des phrases comme
+"buying milk" ou "bought flowers".
 
 ---
 
-# Using the Matcher (1)
+# Utilisation du Matcher (1)
 
 ```python
 import spacy
 
-# Import the Matcher
+# Importe le Matcher
 from spacy.matcher import Matcher
 
-# Load a model and create the nlp object
+# Charge le modèle et crée l'objet nlp
 nlp = spacy.load("en_core_web_sm")
 
-# Initialize the matcher with the shared vocab
+# Initialise le matcher avec le vocabulaire partagé
 matcher = Matcher(nlp.vocab)
 
-# Add the pattern to the matcher
+# Ajoute le motif au matcher
 pattern = [{"TEXT": "iPhone"}, {"TEXT": "X"}]
 matcher.add("IPHONE_PATTERN", None, pattern)
 
-# Process some text
+# Traite un texte
 doc = nlp("Upcoming iPhone X release date leaked")
 
-# Call the matcher on the doc
+# Appelle le matcher sur le doc
 matches = matcher(doc)
 ```
 
-Notes: To use a pattern, we first import the matcher from `spacy.matcher`.
+Notes : Pour utiliser un motif, nous devons d'abord importer le matcher à partir
+de `spacy.matcher`.
 
-We also load a model and create the `nlp` object.
+Nous chargons également un modèle et créons l'objet `nlp`.
 
-The matcher is initialized with the shared vocabulary, `nlp.vocab`. You'll learn
-more about this later – for now, just remember to always pass it in.
+Le matcher est initialisé avec le vocabulaire partagé, `nlp.vocab`. Tu en sauras
+plus là dessus par la suite – pour le moment, rappelle-toi seulement de toujours
+le passer en argument.
 
-The `matcher.add` method lets you add a pattern. The first argument is a unique
-ID to identify which pattern was matched. The second argument is an optional
-callback. We don't need one here, so we set it to `None`. The third argument is
-the pattern.
+La méthode `matcher.add` te permet d'ajouter un motif. Le premier argument est
+un ID unique pour identifier quel motif a été trouvé. Le deuxième argument est
+une fonction de rappel optionnelle. Nous n'en avons pas besoin ici, alors nous
+indiquons `None`. Le troisième argument est le motif.
 
-To match the pattern on a text, we can call the matcher on any doc.
+Pour trouver le motif sur un texte, nous pouvons appeler le matcher sur
+n'importe quel doc.
 
-This will return the matches.
+Ceci nous retournera les correspondances.
 
 ---
 
-# Using the Matcher (2)
+# Utilisation du Matcher (2)
 
 ```python
-# Call the matcher on the doc
+# Appel du matcher sur le doc
 doc = nlp("Upcoming iPhone X release date leaked")
 matches = matcher(doc)
 
-# Iterate over the matches
+# Itère sur les correspondances
 for match_id, start, end in matches:
     # Get the matched span
     matched_span = doc[start:end]
@@ -126,21 +133,23 @@ for match_id, start, end in matches:
 iPhone X
 ```
 
-- `match_id`: hash value of the pattern name
-- `start`: start index of matched span
-- `end`: end index of matched span
+- `match_id`: valeur de hash du nom du motif
+- `start`: index de début du span en correspondance
+- `end`: index de fin du span en correspondance
 
-Notes: When you call the matcher on a doc, it returns a list of tuples.
+Notes : Quand tu appelles le matcher sur un doc, il retourne une liste de
+tuples.
 
-Each tuple consists of three values: the match ID, the start index and the end
-index of the matched span.
+Chaque tuple contient trois valeurs : l'ID du motif, l'index de début et l'index
+de fin du span en correspondance.
 
-This means we can iterate over the matches and create a `Span` object: a slice
-of the doc at the start and end index.
+Cela signifie que nous pouvons itérer sur les correspondances et créer un objet
+`Span` object: une portion du doc depuis l'index de début jusqu'à l'index de
+fin.
 
 ---
 
-# Matching lexical attributes
+# Recherche d'attributs lexicaux
 
 ```python
 pattern = [
@@ -160,21 +169,22 @@ doc = nlp("2018 FIFA World Cup: France won!")
 2018 FIFA World Cup:
 ```
 
-Notes: Here's an example of a more complex pattern using lexical attributes.
+Notes : Voici un exemple de motif un peu plus complexe utilisant des attributs
+lexicaux.
 
-We're looking for five tokens:
+Nous recherchons cinq tokens:
 
-A token consisting of only digits.
+Un token composé uniquement de chiffres.
 
-Three case-insensitive tokens for "fifa", "world" and "cup".
+Trois tokens insensibles à la casse pour "fifa", "world" et "cup".
 
-And a token that consists of punctuation.
+Et un token de type ponctuation.
 
-The pattern matches the tokens "2018 FIFA World Cup:".
+Le motif trouve les "2018 FIFA World Cup:".
 
 ---
 
-# Matching other token attributes
+# Recherche sur d'autres attributs des tokens
 
 ```python
 pattern = [
@@ -192,20 +202,20 @@ loved dogs
 love cats
 ```
 
-Note: In this example, we're looking for two tokens:
+Note : Dans cet exemple, nous recherchons deux tokens:
 
-A verb with the lemma "love", followed by a noun.
+Un verbe avec le lemme "love", suivi par un nom.
 
-This pattern will match "loved dogs" and "love cats".
+Ce motif trouvera "loved dogs" et "love cats".
 
 ---
 
-# Using operators and quantifiers (1)
+# Utilisation d'opérateurs et de quantificateurs (1)
 
 ```python
 pattern = [
     {"LEMMA": "buy"},
-    {"POS": "DET", "OP": "?"},  # optional: match 0 or 1 times
+    {"POS": "DET", "OP": "?"},  # optionnel: trouve 0 or 1 fois
     {"POS": "NOUN"}
 ]
 ```
@@ -219,39 +229,40 @@ bought a smartphone
 buying apps
 ```
 
-Notes: Operators and quantifiers let you define how often a token should be
-matched. They can be added using the "OP" key.
+Notes : Les opérateurs et les quantificateurs te permettent de définir combien
+de fois un token doit être trouvé. Ils peuvent être ajoutés avec la clé "OP".
 
-Here, the "?" operator makes the determiner token optional, so it will match a
-token with the lemma "buy", an optional article and a noun.
-
----
-
-# Using operators and quantifiers (2)
-
-| Example       | Description                  |
-| ------------- | ---------------------------- |
-| `{"OP": "!"}` | Negation: match 0 times      |
-| `{"OP": "?"}` | Optional: match 0 or 1 times |
-| `{"OP": "+"}` | Match 1 or more times        |
-| `{"OP": "*"}` | Match 0 or more times        |
-
-Notes: "OP" can have one of four values:
-
-An "!" negates the token, so it's matched 0 times.
-
-A "?" makes the token optional, and matches it 0 or 1 times.
-
-A "+" matches a token 1 or more times.
-
-And finally, an "\*" matches 0 or more times.
-
-Operators can make your patterns a lot more powerful, but they also add more
-complexity – so use them wisely.
+Ici, l'opérateur "?" rend le token du déterminant optionnel, donc il trouvera un
+token avec le lemme "buy", un article optionnel et un nom.
 
 ---
 
-# Let's practice!
+# Utilisation d'opérateurs et de quantificateurs (2)
 
-Notes: Token-based matching opens up a lot of new possibilities for information
-extraction. So let's try it out and write some patterns!
+| Exemple       | Description                    |
+| ------------- | ------------------------------ |
+| `{"OP": "!"}` | Négation : trouve 0 fois       |
+| `{"OP": "?"}` | Optionnel : trouve 0 ou 1 fois |
+| `{"OP": "+"}` | Trouve 1 ou plusieurs fois     |
+| `{"OP": "*"}` | Trouve 0 ou plusieurs fois     |
+
+Notes : "OP" peut prendre quatre valeurs distinctes :
+
+Un "!" exclut le token, donc il doit être trouvé 0 fois.
+
+Un "?" rend le token optionnel, il peut être trouvé 0 ou 1 fois.
+
+Un "+" cherche le token 1 ou plusieurs fois.
+
+Et enfin, un "\*" cherche le token 0 ou plusieurs fois.
+
+Les opérateurs peuvent rendre tes motifs beaucoup plus puissants, mais ils
+ajoutent aussi de la complexité - donc utilise-les à bon escient.
+
+---
+
+# Passons à la pratique !
+
+Notes : La recherche de correspondances basée sur les motifs ouvrent de
+nombreuses nouvelles possibilités d'extraction d'informations. Alors essayons et
+écrivons quelques motifs !
