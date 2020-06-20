@@ -2,50 +2,52 @@
 type: slides
 ---
 
-# Word vectors and semantic similarity
+# Vecteurs de mots et similarité sémantique
 
-Notes: In this lesson, you'll learn how to use spaCy to predict how similar
-documents, spans or tokens are to each other.
+Notes : Dans cette leçon, tu vas apprendre à utiliser spaCy pour prédire à quel
+point des documents, des spans ou des tokens sont similaires les uns avec les
+autres.
 
-You'll also learn how to use word vectors and how to take advantage of
-them in your NLP application.
-
----
-
-# Comparing semantic similarity
-
-- `spaCy` can compare two objects and predict similarity
-- `Doc.similarity()`, `Span.similarity()` and `Token.similarity()`
-- Take another object and return a similarity score (`0` to `1`)
-- **Important:** needs a model that has word vectors included, for example:
-  - ✅ `en_core_web_md` (medium model)
-  - ✅ `en_core_web_lg` (large model)
-  - 🚫 **NOT** `en_core_web_sm` (small model)
-
-Notes: spaCy can compare two objects and predict how similar they are – for
-example, documents, spans or single tokens.
-
-The `Doc`, `Token` and `Span` objects have a `.similarity` method that takes
-another object and returns a floating point number between 0 and 1, indicating
-how similar they are.
-
-One thing that's very important: In order to use similarity, you need a larger
-spaCy model that has word vectors included.
-
-For example, the medium or large English model – but _not_ the small one. So if
-you want to use vectors, always go with a model that ends in "md" or "lg". You
-can find more details on this in the
-[models documentation](https://spacy.io/models).
+Tu vas aussi apprendre à utiliser les vecteurs de mots et à les exploiter dans
+ton application de TALN.
 
 ---
 
-# Similarity examples (1)
+# Comparaison de similarité sémantique
+
+- `spaCy` peut comparer deux objets et prédire leur similarité
+- `Doc.similarity()`, `Span.similarity()` et `Token.similarity()`
+- Accepte un autre objet et retourne un score de similarité (de `0` à `1`)
+- **Important :** nécessite un modèle qui inclut les vecteurs de mots, par
+  exemple:
+  - ✅ `en_core_web_md` (modèle moyen)
+  - ✅ `en_core_web_lg` (grand modèle)
+  - 🚫 **PAS** `en_core_web_sm` (petit modèle)
+
+Notes : spaCy peut comparer deux objets et prédire à quel point ils sont
+similaires – par exemple, documents, spans ou simples tokens.
+
+Les objets `Doc`, `Token` et `Span` possèdent une méthode `.similarity` qui
+prend en argument un autre objet et retourne un nombre décimal entre 0 et 1,
+indiquant dans quelle mesure ils sont similaires.
+
+Un point très important : Pour pouvoir utiliser la similarité, tu dois utiliser
+un modèle spaCy plus grand qui inclut les vecteurs de mots.
+
+Par exemple, le modèle anglais moyen ou grand – mais _pas_ le petit. Donc si tu
+veux utiliser les vecteurs, choisis toujours un modèle qui se termine par "md"
+ou par "lg". Tu trouveras de plus amples informations dans la
+[documentation des modèles](https://spacy.io/models).
+
+---
+
+# Exemples de similarité (1)
 
 ```python
-# Load a larger model with vectors
+# Charge un plus grand modèle avec les vecteurs
 nlp = spacy.load("en_core_web_md")
 
-# Compare two documents
+# Compare deux documents
 doc1 = nlp("I like fast food")
 doc2 = nlp("I like pizza")
 print(doc1.similarity(doc2))
@@ -56,7 +58,7 @@ print(doc1.similarity(doc2))
 ```
 
 ```python
-# Compare two tokens
+# Compare deux tokens
 doc = nlp("I like pizza and pasta")
 token1 = doc[2]
 token2 = doc[4]
@@ -67,28 +69,28 @@ print(token1.similarity(token2))
 0.7369546
 ```
 
-Notes: Here's an example. Let's say we want to find out whether two documents
-are similar.
+Notes : Voici un exemple. Disons que nous voulons savoir si deux documents sont
+similaires.
 
-First, we load the medium English model, "en_core_web_md".
+D'abord, nous chargons le modèle anglais de taille moyenne, "en_core_web_md".
 
-We can then create two doc objects and use the first doc's `similarity` method
-to compare it to the second.
+Nous pouvons ensuite créer deux objets doc et utiliser la méthode `similarity`
+du premier doc pour le comparer au second.
 
-Here, a fairly high similarity score of 0.86 is predicted for "I like fast food"
-and "I like pizza".
+Ici, la prédiction est un score plutôt élevé de similarité de 0,86 pour "I like
+fast food" et "I like pizza".
 
-The same works for tokens.
+Cela fonctionne aussi avec les tokens.
 
-According to the word vectors, the tokens "pizza" and "pasta" are kind of
-similar, and receive a score of 0.7.
+Selon les vecteurs de mots, les tokens "pizza" et "pasta" sont relativement
+similaires, et obtiennent un score de 0,7.
 
 ---
 
-# Similarity examples (2)
+# Exemples de similarité (2)
 
 ```python
-# Compare a document with a token
+# Compare un document avec un token
 doc = nlp("I like pizza")
 token = nlp("soap")[0]
 
@@ -100,7 +102,7 @@ print(doc.similarity(token))
 ```
 
 ```python
-# Compare a span with a document
+# Compare un span avec un document
 span = nlp("I like pizza and pasta")[2:5]
 doc = nlp("McDonalds sells burgers")
 
@@ -111,61 +113,63 @@ print(span.similarity(doc))
 0.619909235817623
 ```
 
-Notes: You can also use the `similarity` methods to compare different types of
-objects.
+Notes : Tu peux aussi utiliser les méthodes `similarity` pour comparer des
+objets de types différents.
 
-For example, a document and a token.
+Par exemple, un document et un token.
 
-Here, the similarity score is pretty low and the two objects are considered
-fairly dissimilar.
+Ici, le score de similarité est assez bas et les deux objets sont considérés
+assez peu similaires.
 
-Here's another example comparing a span – "pizza and pasta" – to a document
-about McDonalds.
+Voici un autre exemple comparant un span – "pizza and pasta" – à un document
+relatif à McDonalds.
 
-The score returned here is 0.61, so it's determined to be kind of similar.
-
----
-
-# How does spaCy predict similarity?
-
-- Similarity is determined using **word vectors**
-- Multi-dimensional meaning representations of words
-- Generated using an algorithm like
-  [Word2Vec](https://en.wikipedia.org/wiki/Word2vec) and lots of text
-- Can be added to spaCy's statistical models
-- Default: cosine similarity, but can be adjusted
-- `Doc` and `Span` vectors default to average of token vectors
-- Short phrases are better than long documents with many irrelevant words
-
-Notes: But how does spaCy do this under the hood?
-
-Similarity is determined using word vectors, multi-dimensional representations
-of meanings of words.
-
-You might have heard of Word2Vec, which is an algorithm that's often used to
-train word vectors from raw text.
-
-Vectors can be added to spaCy's statistical models.
-
-By default, the similarity returned by spaCy is the cosine similarity between
-two vectors – but this can be adjusted if necessary.
-
-Vectors for objects consisting of several tokens, like the `Doc` and `Span`,
-default to the average of their token vectors.
-
-That's also why you usually get more value out of shorter phrases with fewer
-irrelevant words.
+Le score retourné ici est 0,61, donc il y a une forme de similarité.
 
 ---
 
-# Word vectors in spaCy
+# Comment spaCy prédit la similarité ?
+
+- La similarité est déterminée en utilisant des **word vectors**
+- Des représentations multi-dimensionnelles de la signification des mots
+- Générées avec un algorithme comme
+  [Word2Vec](https://en.wikipedia.org/wiki/Word2vec) et beaucoup de textes
+- Peuvent être ajoutés aux modèles statistiques de spaCy
+- Par défaut : similarité cosinus, mais peut être modifiée
+- Les vecteurs des `Doc` et `Span` sont par défaut la moyenne des vecteurs des
+  tokens
+- Les phrases courtes sont meilleures que les longs documents comportant de
+  nombreux mots non pertinents
+
+Notes : Mais comment spaCy fait-il ça sous le capot ?
+
+La similarité est déterminée en utilisant des vecteurs de mots, des
+représentations multi-dimensionnelles de la signification des mots.
+
+Tu as peut-être entendu parler de Word2Vec, c'est un algorithme qui est souvent
+utilisé pour entrainer des vecteurs de mots à partir de textes bruts.
+
+Les vecteurs peuvent être ajoutés aux modèles statistiques de spaCy.
+
+Par défaut, la similarité retournée par spaCy est la similarité cosinus entre
+deux vecteurs - mais cela peut être modifié si nécessaire.
+
+Les vecteurs des objets composés de plusieurs tokens, comme le `Doc` et le
+`Span`, sont par défaut la moyenne des vecteurs de leurs tokens.
+
+C'est aussi pour cela que tu obtiens généralement de meilleurs résultats avec
+des phrases courtes qui comportent moins de mots non pertinents.
+
+---
+
+# Les vecteurs de mots dans spaCy
 
 ```python
-# Load a larger model with vectors
+# Charge un plus grand modèle avec des vecteurs
 nlp = spacy.load("en_core_web_md")
 
 doc = nlp("I have a banana")
-# Access the vector via the token.vector attribute
+# Accède au vecteur via l'attribut token.vector
 print(doc[3].vector)
 ```
 
@@ -184,22 +188,25 @@ print(doc[3].vector)
   ...
 ```
 
-Notes: To give you an idea of what those vectors look like, here's an example.
+Notes : Pour te donner une idée, voici un exemple montrant à quoi ressemblent
+ces vecteurs.
 
-First, we load the medium model again, which ships with word vectors.
+D'abord, nous chargeons à nouveau le modèle moyen, qui comporte des vecteurs de
+mots.
 
-Next, we can process a text and look up a token's vector using the `.vector`
-attribute.
+Ensuite, nous pouvons traiter un texte et chercher le vecteur d'un token en
+utilisant l'attribut `.vector`.
 
-The result is a 300-dimensional vector of the word "banana".
+Le résultat est un vecteur à 300 dimensions du mot "banana".
 
 ---
 
-# Similarity depends on the application context
+# La similarité depend du contexte d'application
 
-- Useful for many applications: recommendation systems, flagging duplicates etc.
-- There's no objective definition of "similarity"
-- Depends on the context and what application needs to do
+- Utile pour de nombreuses applications : systèmes de recommandations, repérage
+  de doublons etc.
+- Il n'y a pas de définition objective de "similarité"
+- Cela dépend du contexte et des besoins de l'application
 
 ```python
 doc1 = nlp("I like cats")
@@ -212,23 +219,25 @@ print(doc1.similarity(doc2))
 0.9501447503553421
 ```
 
-Notes: Predicting similarity can be useful for many types of applications. For
-example, to recommend a user similar texts based on the ones they have read. It
-can also be helpful to flag duplicate content, like posts on an online platform.
+Notes : Prédire la similarité peut s'avérer utile pour toutes sortes
+d'applications. Par exemple, pour recommander à un utilisateur des textes
+similaires à ceux qu'il a lus. C'est aussi utile pour repérer du contenu en
+doublon, comme des posts sur une plateforme en ligne.
 
-However, it's important to keep in mind that there's no objective definition of
-what's similar and what isn't. It always depends on the context and what your
-application needs to do.
+Toutefois, il est important de retenir qu'il n'y a pas de définition objective
+de ce qui est similaire et de ce qui ne l'est pas. Cela dépend toujours du
+contexte et des besoins de ton application.
 
-Here's an example: spaCy's default word vectors assign a very high similarity
-score to "I like cats" and "I hate cats". This makes sense, because both texts
-express sentiment about cats. But in a different application context, you might
-want to consider the phrases as very _dissimilar_, because they talk about
-opposite sentiments.
+Voici un exemple : les vecteurs de mots de spaCy attribuent par défaut un score
+élevé de similarité entre "I like cats" et "I hate cats". Cela parait logique,
+car les deux textes expriment des sentiments à propos des chats. Mais dans un
+contexte d'application différent, tu pourrais vouloir considérer les phrases
+comme étant très _dissemblables_, parce qu'elles expriment des sentiments
+opposés.
 
 ---
 
-# Let's practice!
+# Pratiquons !
 
-Notes: Now it's your turn. Let's try out some of spaCy's word vectors and use
-them to predict similarities.
+Notes : Maintenant c'est à ton tour. Essayons quelques vecteurs de mots de spaCy
+et utilisons-les pour prédire des similarités.

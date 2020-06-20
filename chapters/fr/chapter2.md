@@ -1,94 +1,98 @@
 ---
-title: 'Chapter 2: Large-scale data analysis with spaCy'
+title: 'Chapitre 2: analyse de données à grande échelle avec spaCy'
 description:
-  "In this chapter, you'll use your new skills to extract specific information
-  from large volumes of text. You''ll learn how to make the most of spaCy's data
-  structures, and how to effectively combine statistical and rule-based
-  approaches for text analysis."
+  "Dans ce chapitre, tu vas utiliser tes nouvelles compétences pour extraire des
+  informations spécifiques à partir de grandes quantités de textes. Tu vas
+  apprendre à tirer le meilleur parti des structures de données de spaCy, et
+  comment combiner efficacement les approches statistiques et basées sur les
+  règles pour l'analyse de textes."
 prev: /chapter1
 next: /chapter3
 type: chapter
 id: 2
 ---
 
-<exercise id="1" title="Data Structures (1)" type="slides,video">
+<exercise id="1" title="Structures de données (1)" type="slides,video">
 
 <slides source="chapter2_01_data-structures-1" start="11:06" end="13:37">
 </slides>
 
 </exercise>
 
-<exercise id="2" title="Strings to hashes">
+<exercise id="2" title="Des chaines de caractères aux hashs">
 
-### Part 1
+### Partie 1
 
-- Look up the string "cat" in `nlp.vocab.strings` to get the hash.
-- Look up the hash to get back the string.
+- Recherche la chaine de caractères "cat" dans `nlp.vocab.strings` pour obtenir
+  le hash.
+- Recherche le hash pour revenir à la chaine de caractères.
 
 <codeblock id="02_02_01">
 
-- You can use the string store in `nlp.vocab.strings` like a regular Python
-  dictionary. For example, `nlp.vocab.strings["unicorn"]` will return the hash,
-  and looking up the hash again will return the string `"unicorn"`.
+- Tu peux utiliser le magasin de chaines de caractères `nlp.vocab.strings` comme
+  un dictionnaire Python normal. Par exemple `nlp.vocab.strings["unicorn"]` va
+  retourner le hash, et la recherche du hash va retourner la chaine `"unicorn"`.
 
 </codeblock>
 
-### Part 2
+### Partie 2
 
-- Look up the string label "PERSON" in `nlp.vocab.strings` to get the hash.
-- Look up the hash to get back the string.
+- Recherche l'étiquette de la chaine "PERSON" dans `nlp.vocab.strings` pour
+  obtenir le hash.
+- Recherche le hash pour revenir à la chaine de caractères.
 
 <codeblock id="02_02_02">
 
-- You can use the string store in `nlp.vocab.strings` like a regular Python
-  dictionary. For example, `nlp.vocab.strings["unicorn"]` will return the hash,
-  and looking up the hash again will return the string `"unicorn"`.
+- Tu peux utiliser le magasin de chaines de caractères `nlp.vocab.strings` comme
+  un dictionnaire Python normal. Par exemple `nlp.vocab.strings["unicorn"]` va
+  retourner le hash, et la recherche du hash va retourner la chaine `"unicorn"`.
 
 </codeblock>
 
 </exercise>
 
-<exercise id="3" title="Vocab, hashes and lexemes">
+<exercise id="3" title="Vocabulaire, hashs et lexèmes">
 
-Why does this code throw an error?
+Pourquoi ce code génère-t-il une erreur ?
 
 ```python
 from spacy.lang.en import English
 from spacy.lang.de import German
 
-# Create an English and German nlp object
+# Crée un objet nlp pour l'anglais et un pour l'allemand
 nlp = English()
 nlp_de = German()
 
-# Get the ID for the string 'Bowie'
+# Obtient l'ID pour la chaine 'Bowie'
 bowie_id = nlp.vocab.strings["Bowie"]
 print(bowie_id)
 
-# Look up the ID for "Bowie" in the vocab
+# Recherche l'ID de "Bowie" dans le vocabulaire
 print(nlp_de.vocab.strings[bowie_id])
 ```
 
 <choice>
 
-<opt correct="true" text='The string <code>"Bowie"</code> isn’t in the German vocab, so the hash can’t be resolved in the string store.'>
+<opt correct="true" text='La chaine <code>"Bowie"</code> n'est pas présente dans le vocabulaire allemand, donc le hash ne peut pas être trouvé dans le magasin de chaines de caractères.'>
 
-Hashes can't be reversed. To prevent this problem, add the word to the new vocab
-by processing a text or looking up the string, or use the same vocab to resolve
-the hash back to a string.
-
-</opt>
-
-<opt text='<code>"Bowie"</code> is not a regular word in the English or German dictionary, so it can’t be hashed.'>
-
-Any string can be converted to a hash.
+Les hashes ne peuvent pas être inversés. Pour éviter ce problème, ajoute le mot
+au nouveau vocabulaire en traitant un texte ou en cherchant la chaine, ou
+utilise le même vocabulaire pour résoudre le hash vers une chaine.
 
 </opt>
 
-<opt text="<code>nlp_de</code> is not a valid name. The vocab can only be shared if the <code>nlp</code> objects have the same name.">
+<opt text='<code>"Bowie"</code> n'est pas un mot normal du dictionnaire en anglais ou en allemand, donc il ne peut pas être hashé.'>
 
-The variable name `nlp` is only a convention. If the code used the variable name
-`nlp` instead of `nlp_de`, it'd overwrite the existing `nlp` object, including
-the vocab.
+N'importe quelle chaine de caractères peut être convertie en has.
+
+</opt>
+
+<opt text="<code>nlp_de</code> n'est pas un nom valide. Le vocabulaire peut
+uniquement être partagé si les objets <code>nlp</code> ont le même nom.">
+
+Le nom de variable `nlp` est seulement une convention. Si le code utilisait le
+nom de variable `nlp` au lieu de `nlp_de`, il écraserait l'objet `nlp` existant,
+vocabulaire y compris.
 
 </opt>
 
@@ -96,89 +100,92 @@ the vocab.
 
 </exercise>
 
-<exercise id="4" title="Data Structures (2)" type="slides,video">
+<exercise id="4" title="Structures de données (2)" type="slides,video">
 
 <slides source="chapter2_02_data-structures-2" start="13:475" end="15:47">
 </slides>
 
 </exercise>
 
-<exercise id="5" title="Creating a Doc">
+<exercise id="5" title="Créer un Doc">
 
-Let's create some `Doc` objects from scratch!
+Créons quelques objets `Doc` de toutes pièces !
 
-### Part 1
+### Partie 1
 
-- Import the `Doc` from `spacy.tokens`.
-- Create a `Doc` from the `words` and `spaces`. Don't forget to pass in the
-  vocab!
+- Importe le `Doc` depuis `spacy.tokens`.
+- Crée un `Doc` à partir des `words` et des `spaces`. N'oublie pas de passer le
+  vocabulaire en argument !
 
 <codeblock id="02_05_01">
 
-The `Doc` class takes 3 arguments: the shared vocabulary, usually `nlp.vocab`, a
-list of `words` and a list of `spaces`, boolean values, indicating whether the
-word is followed by a space or not.
+La classe `Doc` prend 3 arguments : le vocabulaire partagé, généralement
+`nlp.vocab`, une liste de `words` et une liste de `spaces`, valeurs booléennes
+indiquant si le mot est suivi par un espace ou pas.
 
 </codeblock>
 
-### Part 2
+### Partie 2
 
-- Import the `Doc` from `spacy.tokens`.
-- Create a `Doc` from the `words` and `spaces`. Don't forget to pass in the
-  vocab!
+- Importe le `Doc` depuis `spacy.tokens`.
+- Crée un `Doc` à partir des `words` et des `spaces`. N'oublie pas de passer le
+  vocabulaire en argument !
 
 <codeblock id="02_05_02">
 
-Look at each word in the desired text output and check if it's followed by a
-space. If so, the spaces value should be `True`. If not, it should be `False`.
+Inspecte chaque mot du résultat textuel souhaité et vérifie s'il est suivi par
+un espace. Si c'est le cas, les valeurs d'espace doivent être `True`. Sinon,
+elles doivent être `False`.
 
 </codeblock>
 
-### Part 3
+### Partie 3
 
-- Import the `Doc` from `spacy.tokens`.
-- Complete the `words` and `spaces` to match the desired text and create a
-  `doc`.
+- Importe le `Doc` depuis `spacy.tokens`.
+- Complète les `words` et `spaces` pour correspondre au texte désiré et créer
+  un `doc`.
 
 <codeblock id="02_05_03">
 
-Pay attention to the individual tokens. To see how spaCy usually tokenizes that
-string, you can try it and print the tokens for `nlp("Oh, really?!")`.
+Fais attention aux tokens individuels. Pour voir comment spaCy effectue
+normalement cette chaine, tu peux essayer d'afficher les tokens pour
+`nlp("Oh, really?!")`.
 
 </codeblock>
 
 </exercise>
 
-<exercise id="6" title="Docs, spans and entities from scratch">
+<exercise id="6" title="Docs, spans et entités en partant de zéro">
 
-In this exercise, you'll create the `Doc` and `Span` objects manually, and
-update the named entities – just like spaCy does behind the scenes. A shared
-`nlp` object has already been created.
+Dans cet exercice, tu vas créer les objets `Doc` et `Span` manuellement, et
+actualiser les entités nommées – exactement comme spaCy le fait en coulisses. Un
+objet `nlp` partagé a déjà été créé.
 
-- Import the `Doc` and `Span` classes from `spacy.tokens`.
-- Use the `Doc` class directly to create a `doc` from the words and spaces.
-- Create a `Span` for "David Bowie" from the `doc` and assign it the label
+- Importe les classes `Doc` et `Span` depuis `spacy.tokens`.
+- Utilise la classe `Doc` directement pour créer un `doc` à partir des mots et
+  des espaces.
+- Crée un `Span` pour "David Bowie" à partir du `doc` et assigne-lui le libellé
   `"PERSON"`.
-- Overwrite the `doc.ents` with a list of one entity, the "David Bowie" `span`.
+- Remplace `doc.ents` par une liste d'une seule entité, le `span` "David Bowie".
 
 <codeblock id="02_06">
 
-- The `Doc` is initialized with three arguments: the shared vocab, e.g.
-  `nlp.vocab`, a list of words and a list of boolean values indicating whether
-  the word should be followed by a space.
-- The `Span` class takes four arguments: the reference `doc`, the start token
-  index, the end token index and an optional label.
-- The `doc.ents` property is writable, so you can assign it any iterable
-  consisting of `Span` objects.
+- Le `Doc` est initialisé avec trois arguments : le vocabulaire partagé, par
+  exemple `nlp.vocab`, une liste de mots et une liste de valeurs booléenes
+  indiquant si le mot doit ou non être suivi par un espace.
+- La classe `Span` prend quatre arguments: le `doc` de référence, l'index du
+  token de début, l'index du token de fin et un libellé optionnel.
+- La propriété `doc.ents` est accessible en écriture, tu peux donc lui assigner
+  n'importe quel itérable composé d'objets `Span`.
 
 </codeblock>
 
 </exercise>
 
-<exercise id="7" title="Data structures best practices">
+<exercise id="7" title="Meilleures pratiques pour les structures de données">
 
-The code in this example is trying to analyze a text and collect all proper
-nouns that are followed by a verb.
+Le code de cet exemple essaie d'analyser un texte et de recueillir tous les noms
+propres qui sont suivis par un verbe.
 
 ```python
 import spacy
@@ -186,142 +193,147 @@ import spacy
 nlp = spacy.load("en_core_web_sm")
 doc = nlp("Berlin is a nice city")
 
-# Get all tokens and part-of-speech tags
+# Obtient tous les tokens et les étiquettes de partie de discours
 token_texts = [token.text for token in doc]
 pos_tags = [token.pos_ for token in doc]
 
 for index, pos in enumerate(pos_tags):
-    # Check if the current token is a proper noun
+    # Vérifie si le token courant est un nom propre
     if pos == "PROPN":
-        # Check if the next token is a verb
+        # Vérifie si le token suivant est un verbe
         if pos_tags[index + 1] == "VERB":
             result = token_texts[index]
             print("Found proper noun before a verb:", result)
 ```
 
-### Part 1
+### Partie 1
 
-Why is the code bad?
+Pourquoi le code est-il mauvais ?
 
 <choice>
 
-<opt text="The <code>result</code> token should be converted back to a <code>Token</code> object. This will let you reuse it in spaCy.">
+<opt text="Le token <code>result</code> devrait être reconverti en un objet <code>Token</code>. Cela te permettrait de les réutiliser dans spaCy.">
 
-It shouldn't be necessary to convert strings back to `Token` objects. Instead,
-try to avoid converting tokens to strings if you still need to access their
-attributes and relationships.
-
-</opt>
-
-<opt correct="true" text="It only uses lists of strings instead of native token attributes. This is often less efficient, and can't express complex relationships.">
-
-Always convert the results to strings as late as possible, and try to use native
-token attributes to keep things consistent.
+Il ne sera pas nécessaire de reconvertir les chaines en objets `Token`. Evite
+plutôt de convertir les tokens en chaines de caractères si tu as encore besoin
+d'accéder à leurs attributs et leurs relations.
 
 </opt>
 
-<opt text='<code>pos_</code> is the wrong attribute to use for extracting proper nouns. You should use <code>tag_</code> and the <code>"NNP"</code> and <code>"NNS"</code> labels instead.'>
+<opt correct="true" text="Il utilise uniquement des listes de chaines de caractères au lieu des attributs natifs des tokens. C'est souvent moins efficace, et cela ne permet pas d'exprimer des relations complexes.">
 
-The `.pos_` attribute returns the coarse-grained part-of-speech tag and
-`"PROPN"` is the correct tag to check for proper nouns.
+Convertis toujours les résultats en chaines le plus tard possible, et essaie
+d'utiliser les attributs natifs des tokens pour garder un code cohérent.
+
+</opt>
+
+<opt text='<code>pos_</code> n'est pas le bon attribut pour extraire des noms propres. Tu devrais utiliser <code>tag_</code> et les libellés <code>"NNP"</code> et <code>"NNS"</code> à la place.'>
+
+L'attribut `.pos_` retourne l'étiquetage approximatif de partie de discours et
+`"PROPN"` est la bonne étiquette pour chercher des noms propres.
 
 </opt>
 
 </choice>
 
-### Part 2
+### Partie 2
 
-- Rewrite the code to use the native token attributes instead of lists of
-  `token_texts` and `pos_tags`.
-- Loop over each `token` in the `doc` and check the `token.pos_` attribute.
-- Use `doc[token.i + 1]` to check for the next token and its `.pos_` attribute.
-- If a proper noun before a verb is found, print its `token.text`.
+- Réécris le code pour utiliser les attributs de tokens natifs au lieu des
+  listes `token_texts` et `pos_tags`.
+- Boucle sur chaque `token` du `doc` et contrôle son attribut `token.pos_`.
+- Utilise `doc[token.i + 1]` pour vérifier le token suivant et son attribut
+  `.pos_`.
+- Si un nom propre est trouvé devant un verbe, affiche son `token.text`.
 
 <codeblock id="02_07">
 
-- Remove the `token_texts` and `pos_tags` – we don't need to compile lists of
-  strings upfront!
-- Instead of iterating over the `pos_tags`, loop over each `token` in the `doc`
-  and check the `token.pos_` attribute.
-- To check if the next token is a verb, take a look at `doc[token.i + 1].pos_`.
+- Supprime les `token_texts` et `pos_tags` – on n'a pas besoin de compiler
+  d'avance des listes de chaines de caractères !
+- Au lieu d'itérer sur les `pos_tags`, boucle sur chaque `token` dans le `doc`
+  et vérifie l'attribut `token.pos_`.
+- Pour savoir si le token suivant est un verbe, jette un oeil à
+  `doc[token.i + 1].pos_`.
 
 </codeblock>
 
 </exercise>
 
-<exercise id="8" title="Word vectors and semantic similarity" type="slides,video">
+<exercise id="8" title="Vecteurs de mots et similarité sémantique" type="slides,video">
 
 <slides source="chapter2_03_word-vectors-similarity" start="15:58" end="19:47">
 </slides>
 
 </exercise>
 
-<exercise id="9" title="Inspecting word vectors">
+<exercise id="9" title="Inspecter des vecteurs de mots">
 
-In this exercise, you'll use a larger
-[English model](https://spacy.io/models/en), which includes around 20.000 word
-vectors. The model is already pre-installed.
+Dans cet exercice, nous utiliserons un
+[modèle anglais](https://spacy.io/models/en) plus étendu, qui comporte environ
+20.000 vecteurs de mots. Le modèle est déjà pré-installé.
 
-- Load the medium `"en_core_web_md"` model with word vectors.
-- Print the vector for `"bananas"` using the `token.vector` attribute.
+- Charge le modèle moyen avec vecteurs de mots `"en_core_web_md"`.
+- Affiche le vecteur pour `"bananas"` en utilisant l'attribut `token.vector`.
 
 <codeblock id="02_09">
 
-- To load a statistical model, call `spacy.load` with its string name.
-- To access a token in a doc, you can index into it. For example, `doc[4]`.
+- Pour charger un modèle statistique, appelle `spacy.load` avec son nom sous
+  forme de chaine de caractères.
+- Pour accéder à un token dans un doc, tu peux utiliser son index. Par exemple,
+  `doc[4]`.
 
 </codeblock>
 
 </exercise>
 
-<exercise id="10" title="Comparing similarities">
+<exercise id="10" title="Comparer des similarités">
 
-In this exercise, you'll be using spaCy's `similarity` methods to compare `Doc`,
-`Token` and `Span` objects and get similarity scores.
+Dans cet exercice, tu vas utiliser les méthodes `similarity` de spaCy pour
+comparer des objets `Doc`, `Token` et `Span` et obtenir leurs scores de
+similarité.
 
-### Part 1
+### Partie 1
 
-- Use the `doc.similarity` method to compare `doc1` to `doc2` and print the
-  result.
+- Utilise la méthode `doc.similarity` pour comparer `doc1` à `doc2` et afficher
+  le résultat.
 
 <codeblock id="02_10_01">
 
-The `doc.similarity` method takes one argument: the other object to compare the
-current object to.
+La méthode `doc.similarity` prend un argument: l'autre objet auquel l'objet
+courant doit être comparé.
 
 </codeblock>
 
-### Part 2
+### Partie 2
 
-- Use the `token.similarity` method to compare `token1` to `token2` and print
-  the result.
+- Utilise la méthode  `token.similarity` pour comparer `token1` à `token2` et
+  afficher le résultat.
 
 <codeblock id="02_10_02">
 
-- The `token.similarity` method takes one argument: the other object to compare
-  the current object to.
+- La méthode `token.similarity` prend un argument: l'autre objet auquel l'objet
+courant doit être comparé.
 
 </codeblock>
 
-### Part 3
+### Partie 3
 
-- Create spans for "great restaurant"/"really nice bar".
-- Use `span.similarity` to compare them and print the result.
+- Crée des spans pour "great restaurant" et "really nice bar".
+- Utilise `span.similarity` pour les comparer et afficher le résultat.
 
 <codeblock id="02_10_03"></codeblock>
 
 </exercise>
 
-<exercise id="11" title="Combining models and rules" type="slides,video">
+<exercise id="11" title="Combiner modèles et règles" type="slides,video">
 
 <slides source="chapter2_04_models-rules" start="19:58" end="23:25">
 </slides>
 
 </exercise>
 
-<exercise id="12" title="Debugging patterns (1)">
+<exercise id="12" title="Débuggons les motifs (1)">
 
-Why does this pattern not match the tokens "Silicon Valley" in the `doc`?
+Pourquoi ce motif ne trouve-t-il pas les tokens "Silicon Valley" dans le `doc` ?
 
 ```python
 pattern = [{"LOWER": "silicon"}, {"TEXT": " "}, {"LOWER": "valley"}]
@@ -333,26 +345,26 @@ doc = nlp("Can Silicon Valley workers rein in big tech from within?")
 
 <choice>
 
-<opt text='The tokens "Silicon" and "Valley" are not lowercase, so the <code>"LOWER"</code> attribute won’t match.'>
+<opt text='Les tokens "Silicon" et "Valley" ne sont pas en minuscules, donc l'attribut <code>"LOWER"</code> ne correspondra pas.'>
 
-The `"LOWER"` attribute in the pattern describes tokens whose _lowercase form_
-matches a given value. So `{"LOWER": "valley"}` will match tokens like "Valley",
-"VALLEY", "valley" etc.
-
-</opt>
-
-<opt correct="true" text='The tokenizer doesn’t create tokens for single spaces, so there’s no token with the value <code>" "</code> in between.'>
-
-The tokenizer already takes care of splitting off whitespace and each dictionary
-in the pattern describes one token.
+L'attribut `"LOWER"` dans le motif décrit des tokens dont la _forme minuscule_
+correspond à une valeur donnée. Ainsi `{"LOWER": "valley"}` trouvera les tokens
+"Valley", "VALLEY", "valley" etc.
 
 </opt>
 
-<opt text='The tokens are missing an operator <code>"OP"</code> to indicate that they should be matched exactly once.'>
+<opt correct="true" text='Le tokenizer ne crée pas de tokens pour les espaces simples, donc il n'y pas de token dont la valeur est <code>" "</code> au milieu.'>
 
-By default, all tokens described by a pattern will be matched exactly once.
-Operators are only needed to change this behavior – for example, to match zero
-or more times.
+Le tokenizer effectue déjà la séparation sur la base des espaces et chaque
+dictionnaire du motif contient un token.
+
+</opt>
+
+<opt text='Il manque un opérateur <code>"OP"</code> aux tokens pour indiquer qu'ils devraient être trouvés exactement une fois.'>
+
+Par défaut, tous les tokens décrits dans un motif doivent être trouvés
+exactement une fois. Les opérateurs sont nécessaires uniquement pour modifier ce
+comportement – par exemple, pour trouver zéro ou plusieurs fois un token.
 
 </opt>
 
@@ -360,24 +372,25 @@ or more times.
 
 </exercise>
 
-<exercise id="13" title="Debugging patterns (2)">
+<exercise id="13" title="Débuggons les motifs (2)">
 
-Both patterns in this exercise contain mistakes and won't match as expected. Can
-you fix them? If you get stuck, try printing the tokens in the `doc` to see how
-the text will be split and adjust the pattern so that each dictionary represents
-one token.
+Les deux motifs de cet exercice comportent des erreurs et ne vont pas
+fonctionner comme souhaité. Peux-tu les corriger ? Si tu es bloqué, essaie
+d'afficher les tokens du `doc` pour voir comment le texte sera séparé et ajuster
+les motifs pour que chaque dictionnaire représente un token.
 
-- Edit `pattern1` so that it correctly matches all case-insensitive mentions of
-  `"Amazon"` plus a title-cased proper noun.
-- Edit `pattern2` so that it correctly matches all case-insensitive mentions of
-  `"ad-free"`, plus the following noun.
+- Édite `pattern1` pour qu'il trouve correctement toutes les mentions quelle que
+  soit la casse pour `"Amazon"` suivi d'un nom propre commençant par une
+  majuscule.
+- Édite `pattern2` pour qu'il trouve correctement toutes les mentions quelle que
+  soit la casse de `"ad-free"`, et d'un nom à la suite.
 
 <codeblock id="02_13">
 
-- Try processing the strings that should be matched with the `nlp` object – for
-  example `[token.text for token in nlp("ad-free viewing")]`.
-- Inspect the tokens and make sure each dictionary in the pattern correctly
-  describes one token.
+- Essaie de traiter les chaines qui devraient être trouvées par l'objet `nlp` –
+  par exemple `[token.text for token in nlp("ad-free viewing")]`.
+- Inspecte les tokens et vérifie que chaque dictionnaire du motif décrit
+  correctement un seul token.
 
 </codeblock>
 
@@ -385,42 +398,43 @@ one token.
 
 <exercise id="14" title="Efficient phrase matching">
 
-Sometimes it's more efficient to match exact strings instead of writing patterns
-describing the individual tokens. This is especially true for finite categories
-of things – like all countries of the world. We already have a list of
-countries, so let's use this as the basis of our information extraction script.
-A list of string names is available as the variable `COUNTRIES`.
+Parfois il est plus efficace de rechercher des chaines de caractères exactes au
+lieu d'écrire des motifs décrivant individuellement les tokens. C'est
+particulièrement vrai pour les catégories finies - comme l'ensemble des pays du
+monde. Nous disposons déjà d'une liste de pays, alors utilisons-là comme base
+pour notre script d'extraction d'informations. Une liste de chaines est
+caractères est accessible par la variable `COUNTRIES`.
 
-- Import the `PhraseMatcher` and initialize it with the shared `vocab` as the
+- Importe le `PhraseMatcher` et initialise-le avec le `vocab` partagé dans la
   variable `matcher`.
-- Add the phrase patterns and call the matcher on the `doc`.
+- Ajoute les motifs de phrase et appelle le matcher sur le `doc`.
 
 <codeblock id="02_14">
 
-The shared `vocab` is available as `nlp.vocab`.
+Le `vocab` partagé est accessible avec `nlp.vocab`.
 
 </codeblock>
 
 </exercise>
 
-<exercise id="15" title="Extracting countries and relationships">
+<exercise id="15" title="Extraire des pays et des relations">
 
-In the previous exercise, you wrote a script using spaCy's `PhraseMatcher` to
-find country names in text. Let's use that country matcher on a longer text,
-analyze the syntax and update the document's entities with the matched
-countries.
+Dans l'exercice précédent, tu as écrit un script utilisant le `PhraseMatcher` de
+spaCy pour trouver des noms de pays dans un texte. Nous allons maintenant
+l'utiliser sur un texte plus long, analyser la syntaxe et mettre à jour les
+entités du document avec les pays trouvés.
 
-- Iterate over the matches and create a `Span` with the label `"GPE"`
-  (geopolitical entity).
-- Overwrite the entities in `doc.ents` and add the matched span.
-- Get the matched span's root head token.
-- Print the text of the head token and the span.
+- Itère sur les correspondances et crée un `Span` avec l'étiquette `"GPE"`
+  (entité géopolitique).
+- Mets à jour les entités dans `doc.ents` en y ajoutant les spans trouvés.
+- Obtiens la tête du token racine du span trouvé.
+- Affiche le texte de la tête et le span.
 
 <codeblock id="02_15">
 
-- Remember that the text is available as the variable `text`.
-- The span's root token is available as `span.root`. A token's head is available
-  via the `token.head` attribute.
+- Rappelle-toi que le texte est disponible avec la variable `text`.
+- Le otken racine du span est accessible avec `span.root`. La tête d'un token
+  est accessible avec l'attribut `token.head`.
 
 </codeblock>
 
