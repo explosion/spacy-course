@@ -2,7 +2,7 @@
 type: slides
 ---
 
-# Structures de données (1): Vocabulaire, lexèmes et magasin de chaines
+# Structures de données (1) : Vocabulaire, lexèmes et magasin de chaines
 
 Notes : Bienvenue à nouveau ! Maintenant que tu as eu une expérience concrète
 d'utilisation des objets de spaCy, le moment est venu pour toi d'en savoir plus
