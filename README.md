@@ -56,7 +56,7 @@ little app to present the exercises and content in a fun and interactive way.
 
 Probably, yes! If you've been looking for a DIY way to publish your materials, I
 hope that my little framework can be useful. Because so many people expressed
-interest in this, I put together some starter repos hat you can fork and adapt:
+interest in this, I put together some starter repos that you can fork and adapt:
 
 - 🐍 Python:
   [`ines/course-starter-python`](https://github.com/ines/course-starter-python)
