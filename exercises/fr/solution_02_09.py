@@ -1,11 +1,11 @@
 import spacy
 
-# Load the en_core_web_md model
+# Charge le modèle en_core_web_md
 nlp = spacy.load("en_core_web_md")
 
-# Process a text
+# Traite le texte
 doc = nlp("Two bananas in pyjamas")
 
-# Get the vector for the token "bananas"
+# Obtiens le vecteur pour le token "bananas"
 bananas_vector = doc[1].vector
 print(bananas_vector)

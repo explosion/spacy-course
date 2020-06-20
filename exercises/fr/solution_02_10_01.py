@@ -5,6 +5,6 @@ nlp = spacy.load("en_core_web_md")
 doc1 = nlp("It's a warm summer day")
 doc2 = nlp("It's sunny outside")
 
-# Get the similarity of doc1 and doc2
+# Obtiens la similarité entre doc1 et doc2
 similarity = doc1.similarity(doc2)
 print(similarity)

@@ -1,17 +1,17 @@
 def test():
     assert (
         "import Doc, Span" or "import Span, Doc" in __solution__
-    ), "Did you import the Doc and Span correctly?"
-    assert doc.text == "I like David Bowie", "Did you create the Doc correctly?"
-    assert span.text == "David Bowie", "Did you create the span correctly?"
-    assert span.label_ == "PERSON", "Did you add the label PERSON to the span?"
-    assert "doc.ents =" in __solution__, "Did you overwrite the doc.ents?"
-    assert len(doc.ents) == 1, "Did you add the span to the doc.ents?"
+    ), "As-tu correctement importé Doc et Span ?"
+    assert doc.text == "I like David Bowie", "As-tu correctement créé le Doc ?"
+    assert span.text == "David Bowie", "As-tu correctement créé le span ?"
+    assert span.label_ == "PERSON", "As-tu ajouté le libellé PERSON au span?"
+    assert "doc.ents =" in __solution__, "As-tu réécrit doc.ents?"
+    assert len(doc.ents) == 1, "As-tu ajouté le span à doc.ents ?"
     assert (
         list(doc.ents)[0].text == "David Bowie"
-    ), "Did you add the span to the doc.ents?"
+    ), "As-tu ajouté le span à doc.ents ?"
     __msg__.good(
-        "Perfect! Creating spaCy's objects manually and modifying the "
-        "entities will come in handy later when you're writing your own "
-        "information extraction pipelines."
+        "Parfait ! Savoir créer manuellement des objets de spaCy et modifier "
+        "les entités sera utile plus tard quand tu créeras tes propres "
+        "pipelines d'extraction d'informations."
     )

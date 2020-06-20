@@ -1,13 +1,13 @@
 def test():
     assert (
         person_hash == nlp.vocab.strings["PERSON"]
-    ), "Did you assign the correct hash?"
+    ), "As-tu indiqué la bonne chaine pour obtenir le hash?"
     assert (
         'nlp.vocab.strings["PERSON"]' in __solution__
-    ), "Did you assign the correct hash?"
-    assert person_string == "PERSON", "Did you get the correct string?"
+    ), "As-tu indiqué la bonne chaine pour obtenir le hash?"
+    assert person_string == "PERSON", "As-tu indiqué le bon hash pour obtenir la chaine ?"
     assert (
         "nlp.vocab.strings[person_hash]" in __solution__
-    ), "Did you get the string from the hash?"
+    ), "As-tu indiqué le hash pour obtenir la chaine ?"
 
-    __msg__.good("Good job!")
+    __msg__.good("Bien joué !")

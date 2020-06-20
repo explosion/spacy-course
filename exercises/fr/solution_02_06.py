@@ -2,22 +2,23 @@ from spacy.lang.en import English
 
 nlp = English()
 
-# Import the Doc and Span classes
+# Importe les classes Doc et Span
 from spacy.tokens import Doc, Span
 
 words = ["I", "like", "David", "Bowie"]
 spaces = [True, True, True, False]
 
-# Create a doc from the words and spaces
+# Crée un doc à partir des mots et des espaces
 doc = Doc(nlp.vocab, words=words, spaces=spaces)
 print(doc.text)
 
-# Create a span for "David Bowie" from the doc and assign it the label "PERSON"
+# Crée un span pour "David Bowie" à partir du doc
+# et assigne-lui le libellé "PERSON"
 span = Span(doc, 2, 4, label="PERSON")
 print(span.text, span.label_)
 
-# Add the span to the doc's entities
+# Ajoute le span aux entités du doc
 doc.ents = [span]
 
-# Print entities' text and labels
+# Affiche les textes et les libellés des entités
 print([(ent.text, ent.label_) for ent in doc.ents])

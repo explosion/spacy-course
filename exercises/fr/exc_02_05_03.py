@@ -2,13 +2,13 @@ from spacy.lang.en import English
 
 nlp = English()
 
-# Import the Doc class
+# Importe la classe Doc
 from ____ import ____
 
-# Desired text: "Oh, really?!"
+# Texte désiré : "Oh, really?!"
 words = [____, ____, ____, ____, ____]
 spaces = [____, ____, ____, ____, ____]
 
-# Create a Doc from the words and spaces
+# Crée un Doc à partir des mots et des espaces
 doc = ____(____, ____=____, ____=____)
 print(doc.text)

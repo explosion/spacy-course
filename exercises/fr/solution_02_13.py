@@ -13,16 +13,16 @@ doc = nlp(
     "monthly subscriptions will have access to ad-free viewing until October 15."
 )
 
-# Create the match patterns
+# Crée les motifs de correspondance
 pattern1 = [{"LOWER": "amazon"}, {"IS_TITLE": True, "POS": "PROPN"}]
 pattern2 = [{"LOWER": "ad"}, {"TEXT": "-"}, {"LOWER": "free"}, {"POS": "NOUN"}]
 
-# Initialize the Matcher and add the patterns
+# Initialise le Matcher et ajoute les motifs
 matcher = Matcher(nlp.vocab)
 matcher.add("PATTERN1", None, pattern1)
 matcher.add("PATTERN2", None, pattern2)
 
-# Iterate over the matches
+# Itère sur les correspondances
 for match_id, start, end in matcher(doc):
-    # Print pattern string name and text of matched span
+    # Affiche le nom de la chaine et le texte de la portion en correspondance
     print(doc.vocab.strings[match_id], doc[start:end].text)
