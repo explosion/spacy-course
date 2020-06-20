@@ -57,9 +57,9 @@ Esto es un texto 15
 y otro texto 16
 ```
 
-Notes: `nlp.pipe` también provee soporte para pasar tuples de text / contexto si defines `as_tuples` como `True`.
+Notes: `nlp.pipe` también provee soporte para pasar tuples de texto / contexto si defines `as_tuples` como `True`.
 
-El método entonces usará `yield` para devolver tuples de doc / context.
+El método entonces usará `yield` para devolver tuples de doc / contexto.
 
 Esto es útil para pasar metadatos adicionales, como un ID asociado con el texto o con el número de página.
 

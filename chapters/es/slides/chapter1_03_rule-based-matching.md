@@ -55,7 +55,7 @@ Notes: Los match patterns son listas de diccionarios. Cada diccionario describe
 un token. Los keys son los nombres de los atributos del token, mapeados a sus
 valores esperados.
 
-En este ejemplo, estamos buscando dos token con el texto "iPhone" y "X".
+En este ejemplo, estamos buscando dos tokens con el texto "iPhone" y "X".
 
 También podemos usar otros atributos de los tokens para encontrar lo que
 buscamos. Aquí estamos buscando dos tokens que en minúsculas son iguales a
