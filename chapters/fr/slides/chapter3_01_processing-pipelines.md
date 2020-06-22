@@ -2,89 +2,91 @@
 type: slides
 ---
 
-# Processing pipelines
+# Traitements de textes en pipelines
 
-Notes: Welcome back! This chapter is dedicated to processing pipelines: a series
-of functions applied to a doc to add attributes like part-of-speech tags,
-dependency labels or named entities.
+Notes : Bienvenue à nouveau ! Ce chapitre est consacré aux pipelines : une série
+de fonctions appliquée à un doc pour ajouter des attributs comme les étiquettes
+de partie de discours, les relations de dépendances ou les entités nommées.
 
-In this lesson, you'll learn about the pipeline components provided by spaCy,
-and what happens behind the scenes when you call nlp on a string of text.
+Dans cette leçon, tu vas découvrir les composants de pipeline fournis par spaCy,
+et ce qui se passe en coulisses quand tu appelles nlp sur un texte sous forme de
+chaine de caractères.
 
 ---
 
-# What happens when you call nlp?
+# Que se passe-t-til quand tu appelles nlp ?
 
-<img src="/pipeline.png" alt="Illustration of the spaCy pipeline transforming a text into a processed Doc" width="90%" />
+<img src="/pipeline.png" alt="Illustration du pipeline de spaCy pipeline transformant un texte en Doc traité" width="90%" />
 
 ```python
 doc = nlp("This is a sentence.")
 ```
 
-Notes: You've already written this plenty of times by now: pass a string of text
-to the `nlp` object, and receive a `Doc` object.
+Notes : Tu l'as déjà fait de nombreuses fois maintenant : passer une chaine de
+caractères à l'objet `nlp` object, et recevoir un objet `Doc`.
 
-But what does the `nlp` object _actually_ do?
+Mais que fait _vraiment_ l'objet `nlp` ?
 
-First, the tokenizer is applied to turn the string of text into a `Doc` object.
-Next, a series of pipeline components is applied to the doc in order. In this
-case, the tagger, then the parser, then the entity recognizer. Finally, the
-processed doc is returned, so you can work with it.
+D'abord, le tokenizer est appliqué pour transformer la chaine en un objet `Doc`.
+Ensuite, un ensemble de composants du pipeline est appliqué dans l'ordre au doc.
+Dans le cas présent, le tagger, ensuite le parser, puis l'entity recognizer.
+Finalement, le document traité est retourné pour que tu puisses travailler avec.
 
 ---
 
-# Built-in pipeline components
+# Composants intégrés au pipeline
 
-| Name        | Description             | Creates                                                   |
+| Nom         | Description             | Crée                                                   |
 | ----------- | :---------------------- | :-------------------------------------------------------- |
 | **tagger**  | Part-of-speech tagger   | `Token.tag`, `Token.pos`                                  |
 | **parser**  | Dependency parser       | `Token.dep`, `Token.head`, `Doc.sents`, `Doc.noun_chunks` |
 | **ner**     | Named entity recognizer | `Doc.ents`, `Token.ent_iob`, `Token.ent_type`             |
 | **textcat** | Text classifier         | `Doc.cats`                                                |
 
-Notes: spaCy ships with the following built-in pipeline components.
+Notes : spaCy est fourni avec les composants intégrés suivants.
 
-The part-of-speech tagger sets the `token.tag` and `token.pos` attributes.
+Le part-of-speech tagger définit les attributs `token.tag` et `token.pos`.
 
-The dependency parser adds the `token.dep` and `token.head` attributes and is
-also responsible for detecting sentences and base noun phrases, also known as
-noun chunks.
+Le dependency parser ajoute les attributs `token.dep` et `token.head` et est
+également chargé de détecter les phrases et les groupes nominaux, également
+appelés "noun chunks".
 
-The named entity recognizer adds the detected entities to the `doc.ents`
-property. It also sets entity type attributes on the tokens that indicate if a
-token is part of an entity or not.
+Le named entity recognizer ajoute les entités détectées à la propriété
+`doc.ents`. Il définit aussi les attributs de type d'entité sur les tokens qui
+indiquent si un token fait partie ou non d'une entité.
 
-Finally, the text classifier sets category labels that apply to the whole text,
-and adds them to the `doc.cats` property.
+Enfin, le text classifier définit les libellés de catégories qui s'appliquent à
+l'ensemble du texte, et les ajoute à la propriété `doc.cats`.
 
-Because text categories are always very specific, the text classifier is not
-included in any of the pre-trained models by default. But you can use it to
-train your own system.
-
----
-
-# Under the hood
-
-<img src="/package_meta.png" alt="Illustration of a package labelled en_core_web_sm, folders and file and the meta.json" />
-
-- Pipeline defined in model's `meta.json` in order
-- Built-in components need binary data to make predictions
-
-Notes: All models you can load into spaCy include several files and a
-`meta.json`.
-
-The meta defines things like the language and pipeline. This tells spaCy which
-components to instantiate.
-
-The built-in components that make predictions also need binary data. The data is
-included in the model package and loaded into the component when you load the
-model.
+Comme les catégories de textes sont toujours très spécifiques, le text
+classifier n'est pas inclus par défaut dans les modèles pré-entrainés. Mais tu
+peux l'utiliser pour entrainer ton propre système.
 
 ---
 
-# Pipeline attributes
+# Sous le capot
 
-- `nlp.pipe_names`: list of pipeline component names
+<img src="/package_meta.png" alt="Illustration d'un package libellé en_core_web_sm, de dossiers, fichiers et du meta.json" />
+
+- Pipeline défini dans l'ordre dans le `meta.json` du modèle
+- Les composants intégrés ont besoin de données binaires pour effectuer des
+  prédictions
+
+Notes : Tous les modèles que tu peux charger dans spaCy comportent plusieurs
+fichiers et un `meta.json`.
+
+Le meta définit des éléments tels que la langue et le pipeline. Cela indique à
+spaCy quels composants instancier.
+
+Les composants intégrés qui effectuent des prédictions ont également besoin de
+données binaires. Les données sont incluses dans le package de modèle et chargés
+dans le composant quand tu charges le modèle.
+
+---
+
+# Attributs de pipeline
+
+- `nlp.pipe_names`: liste de noms des composants du pipeline
 
 ```python
 print(nlp.pipe_names)
@@ -94,7 +96,7 @@ print(nlp.pipe_names)
 ['tagger', 'parser', 'ner']
 ```
 
-- `nlp.pipeline`: list of `(name, component)` tuples
+- `nlp.pipeline`: liste de tuples `(name, component)`
 
 ```python
 print(nlp.pipeline)
@@ -106,17 +108,19 @@ print(nlp.pipeline)
  ('ner', <spacy.pipeline.EntityRecognizer>)]
 ```
 
-Notes: To see the names of the pipeline components present in the current nlp
-object, you can use the `nlp.pipe_names` attribute.
+Notes : Pour voir les noms des composants de pipeline présents dans l'objet nlp
+courant, tu peux utiliser l'attribut `nlp.pipe_names`.
 
-For a list of component name and component function tuples, you can use the
-`nlp.pipeline` attribute.
+Pour la liste des tuples de noms et fonctions des composants, tu peux utiliser
+l'attribut `nlp.pipeline`.
 
-The component functions are the functions applied to the doc to process it and
-set attributes – for example, part-of-speech tags or named entities.
+Les fonctions des composants sont les fonctions appliquées au doc pour le
+traiter et définir les attributs - par exemple étiquetage de partie de discours
+ou entités nommées.
 
 ---
 
-# Let's practice!
+# Pratiquons !
 
-Notes: Let's check out some spaCy pipelines and take a look under the hood!
+Notes : Voyons maintenant quelques pipelines spaCy pipelines et jetons un oeil
+sous le capot !

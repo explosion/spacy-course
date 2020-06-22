@@ -1,27 +1,27 @@
 ---
-title: 'Chapter 3: Processing Pipelines'
+title: 'Chapitre 3 : Traitements de textes en pipelines'
 description:
-  "This chapter will show you everything you need to know about spaCy's
-  processing pipeline. You'll learn what goes on under the hood when you process
-  a text, how to write your own components and add them to the pipeline, and how
-  to use custom attributes to add your own metadata to the documents, spans and
-  tokens."
+  "Ce chapitre va te montrer tout ce qu'il y a à savoir à propos du pipeline de
+  traitement de spaCy. Tu va apprendre ce qui se passe en coulisses quand tu
+  traites un texte, comment écrire tes propres composants et les ajouter au
+  pipeline, et comment utiliser des attributs personnalisés et ajouter tes
+  propres métadonnées aux documents, aux spans et aux tokens."
 prev: /chapter2
 next: /chapter4
 type: chapter
 id: 3
 ---
 
-<exercise id="1" title="Processing pipelines" type="slides,video">
+<exercise id="1" title="Traitements de textes en pipelines" type="slides,video">
 
 <slides source="chapter3_01_processing-pipelines" start="23:36" end="26:12">
 </slides>
 
 </exercise>
 
-<exercise id="2" title="What happens when you call nlp?">
+<exercise id="2" title="Que se passe-t-il quand tu appelles nlp?">
 
-What does spaCy do when you call `nlp` on a string of text?
+Que fait spaCy quand tu appelles `nlp` sur une chaine de caractères ?
 
 ```python
 doc = nlp("This is a sentence.")
@@ -29,118 +29,122 @@ doc = nlp("This is a sentence.")
 
 <choice>
 
-<opt text="Run the tagger, parser and entity recognizer and then the tokenizer.">
+<opt text="Lance le tagger, le parser l'entity recognizer et enfin le tokenizer.">
 
-The tokenizer is always run _before_ all other pipeline components, because it
-transforms a string of text into a `Doc` object. The pipeline also doesn't have
-to consist of the tagger, parser and entity recognizer.
-
-</opt>
-
-<opt text="Tokenize the text and apply each pipeline component in order." correct="true">
-
-The tokenizer turns a string of text into a `Doc` object. spaCy then applies
-every component in the pipeline on document, in order.
+Le tokenizer est toujours exécuté _avant_ tous les autres composants du
+pipeline, parce qu'il transforme une chaine de caractères en objet `Doc`. De
+plus, le pipeline ne doit pas nécessairement inclure le tagger, le parser et
+l'entity recognizer.
 
 </opt>
 
-<opt text="Connect to the spaCy server to compute the result and return it.">
+<opt text="Convertit le texte en tokens et applique chaque composant du pipeline dans l'ordre." correct="true">
 
-spaCy computes everything on the machine and doesn't need to connect to any
-server.
+Le tokenizer transforme une chaine de caractères en un objet `Doc`. spaCy
+applique ensuite  chaque composant du pipeline, dans l'ordre.
 
 </opt>
 
-<opt text="Initialize the language, add the pipeline and load in the binary model weights.">
+<opt text="Se connecte au serveur de spaCy pour calculer et retourner le résultat.">
 
-When you call `spacy.load()` to load a model, spaCy will initialize the
-language, add the pipeline and load in the binary model weights. When you _call_
-the `nlp` object on a text, the model is already loaded.
+spaCy calcule tout sur ta machine et n'a pas besoin de se connecter à un quelconque serveur.
+
+</opt>
+
+<opt text="Initialise la langue, ajoute le pipeline et charge le modèle binaire de poids.">
+
+Quand tu appelles `spacy.load()` pour charger un modèle, spaCy va initialiser la
+langue, ajouter le pipeline et charger le modèle binaire de poids. Quand tu
+_appelles_ l'objet `nlp` sur un texte, le modèle est déjà chargé.
 
 </opt>
 
 </exercise>
 
-<exercise id="3" title="Inspecting the pipeline">
+<exercise id="3" title="Inspection du pipeline">
 
-Let's inspect the small English model's pipeline!
+Inspectons le pipeline du petit modèle anglais !
 
-- Load the `en_core_web_sm` model and create the `nlp` object.
-- Print the names of the pipeline components using `nlp.pipe_names`.
-- Print the full pipeline of `(name, component)` tuples using `nlp.pipeline`.
+- Charge le modèle `en_core_web_sm` et crée l'objet `nlp`.
+- Affiche les noms des composants du pipeline avec `nlp.pipe_names`.
+- Affiche le pipeline complet de tuples `(name, component)` avec `nlp.pipeline`.
 
 <codeblock id="03_03">
 
-The list of component names is available as the `nlp.pipe_names` attribute. The
-full pipeline consisting of `(name, component)` tuples is available as
+La liste des noms des composants est accessible via l'attribut `nlp.pipe_names`.
+Le pipeline complet composé de tuples `(name, component)` est accessible avec
 `nlp.pipeline`.
 
 </codeblock>
 
 </exercise>
 
-<exercise id="4" title="Custom pipeline components" type="slides,video">
+<exercise id="4" title="Composants de pipeline personnalisés" type="slides,video">
 
 <slides source="chapter3_02_custom-pipeline-components" start="26:235" end="29:05">
 </slides>
 
 </exercise>
 
-<exercise id="5" title="Use cases for custom components">
+<exercise id="5" title="Cas d'usages pour des composants personnalisés">
 
-Which of these problems can be solved by custom pipeline components? Choose all
-that apply!
+Lequel de ces problèmes peut être résolu avec des composants de pipeline
+personnalisés. Choisis toutes les réponses pertinentes !
 
-1. Updating the pre-trained models and improving their predictions
-2. Computing your own values based on tokens and their attributes
-3. Adding named entities, for example based on a dictionary
-4. Implementing support for an additional language
+1. Actualisation des modèles pré-entrainés pour améliorer leurs prédictions
+2. Calcul de nos propres valeurs basées sur les tokens et leurs attributs
+3. Ajout d'entités nommées, par exemple basées sur un dictionnaire
+4. Implémentation du support de langues supplémentaires
 
 <choice>
 
-<opt text="1 and 2.">
+<opt text="1 et 2.">
 
-Custom components can only modify the `Doc` and can't be used to update weights
-of other components directly.
-
-</opt>
-
-<opt text="1 and 3.">
-
-Custom components can only modify the `Doc` and can't be used to update weights
-of other components directly.
+Les composants personnalisés peuvent seulement modifier le `Doc` et ne peuvent
+pas être utilisés pour actualiser directement les poids binaires ou d'autres
+composants.
 
 </opt>
 
-<opt text="1 and 4.">
+<opt text="1 et 3.">
 
-Custom components can only modify the `Doc` and can't be used to update weights
-of other components directly. They're also added to the pipeline after the
-language class is already initialized and after tokenization, so they're not
-suitable to add new languages.
-
-</opt>
-
-<opt text="2 and 3." correct="true">
-
-Custom components are great for adding custom values to documents, tokens and
-spans, and customizing the `doc.ents`.
+Les composants personnalisés peuvent seulement modifier le `Doc` et ne peuvent
+pas être utilisés pour actualiser directement les poids binaires ou d'autres
+composants.
 
 </opt>
 
-<opt text="2 and 4.">
+<opt text="1 et 4.">
 
-Custom components are added to the pipeline after the language class is already
-initialized and after tokenization, so they're not suitable to add new
-languages.
+Les composants personnalisés peuvent seulement modifier le `Doc` et ne peuvent
+pas être utilisés pour actualiser directement les poids binaires ou d'autres
+composants. De plus quand ils sont ajoutés au pipeline, la classe de langue
+a déjà été initialisée, donc ils ne peuvent pas servir à ajouter des langues
+supplémentaires.
 
 </opt>
 
-<opt text="3 and 4.">
+<opt text="2 et 3." correct="true">
 
-Custom components are added to the pipeline after the language class is already
-initialized and after tokenization, so they're not suitable to add new
-languages.
+Les composants personnalisés sont fantastiques pour ajouter des valeurs
+personnalisées aux documents, aux tokens et aux spans, ainsi que pour
+personnaliser les `doc.ents`.
+
+</opt>
+
+<opt text="2 et 4.">
+
+Les composants personnalisés sont ajoutés au pipeline après l'initialisation de
+la classe de langue et la tokénisation, donc ils ne peuvent pas servir à ajouter
+des langues supplémentaires.
+
+</opt>
+
+<opt text="3 et 4.">
+
+Les composants personnalisés sont ajoutés au pipeline après l'initialisation de
+la classe de langue et la tokénisation, donc ils ne peuvent pas servir à ajouter
+des langues supplémentaires.
 
 </opt>
 
@@ -148,284 +152,292 @@ languages.
 
 </exercise>
 
-<exercise id="6" title="Simple components">
+<exercise id="6" title="Composants simples">
 
-The example shows a custom component that prints the token length of a document.
-Can you complete it?
+L'exemple montre un composant personnalisé qui affiche la longueur des tokens
+d'un document. Peux-tu le compléter ?
 
-- Complete the component function with the `doc`'s length.
-- Add the `length_component` to the existing pipeline as the **first**
-  component.
-- Try out the new pipeline and process any text with the `nlp` object – for
-  example "This is a sentence.".
+- Complète la fonction du composant avec la longueur du `doc`.
+- Ajoute `length_component` au pipeline existant en tant que **premier**
+  composant.
+- Essaie le nouveau pipeline en traitant un texte quelconque avec l'objet `nlp`–
+  par exemple "This is a sentence.".
 
 <codeblock id="03_06">
 
-- To get the length of a `Doc` object, you can call Python's built-in `len()`
-  method on it.
-- Use the `nlp.add_pipe` method to add the component to the pipeline. Remember
-  to set the `first` keyword argument to `True` to make sure it's added before
-  all other components.
-- To process a text, call the `nlp` object on it.
+- Pour obtenir la longueur d'un objet `Doc`, tu peux appeler la fonction native
+  `len()` de Python avec le `Doc` en argument.
+- Utilise la méthode `nlp.add_pipe` pour ajouter le composant au pipeline.
+  N'oublie pas de mettre l'argument nommé `first` à `True` pour t'assurer qu'il
+  sera ajouté avant tous les autres composants.
+- Pour traiter un texte, appelle l'objet `nlp` avec le texte en argument.
 
 </codeblock>
 
 </exercise>
 
-<exercise id="7" title="Complex components">
+<exercise id="7" title="Composants complexes">
 
-In this exercise, you'll be writing a custom component that uses the
-`PhraseMatcher` to find animal names in the document and adds the matched spans
-to the `doc.ents`. A `PhraseMatcher` with the animal patterns has already been
-created as the variable `matcher`.
+Dans cet exercice, tu vas écrire un composant personnalisé qui utilise le
+`PhraseMatcher` pour trouver des noms d'animaux dans le document et ajouter les
+spans correspondants à `doc.ents`. Un `PhraseMatcher` avec les motifs des
+animaux a déjà été créé sous le nom de variable `matcher`.
 
-- Define the custom component and apply the `matcher` to the `doc`.
-- Create a `Span` for each match, assign the label ID for `"ANIMAL"` and
-  overwrite the `doc.ents` with the new spans.
-- Add the new component to the pipeline _after_ the `"ner"` component.
-- Process the text and print the entity text and entity label for the entities
-  in `doc.ents`.
+- Définis le composant personnalisé et applique le `matcher` au `doc`.
+- Crée un `Span` pour chaque correspondance, assigne-lui l'ID de libellé pour
+  `"ANIMAL"` et actualise le `doc.ents` avec les nouveaux spans.
+- Ajoute le nouveau composant au pipeline _après_ le composant `"ner"`.
+- Traite le texte et affiche le texte et le libellé pour les entités figurant
+  dans `doc.ents`.
 
 <codeblock id="03_07">
 
-- Remember that the matches are a list of `(match_id, start, end)` tuples.
-- The `Span` class takes 4 arguments: the parent `doc`, the start index, the end
-  index and the label.
-- To add a component after another, use the `after` keyword argument on
-  `nlp.add_pipe`.
+- Rappelle-toi que les correspondances sont constituées d'une liste de tuples
+  `(match_id, start, end)`.
+- La classe `Span` prend 4 arguments : le `doc` parent, l'index de début,
+  l'index de fin et le libellé.
+- Pour ajouter un composant après un autre, utilise l'argument nommé `after`
+  dans `nlp.add_pipe`.
 
 </codeblock>
 
 </exercise>
 
-<exercise id="8" title="Extension attributes" type="slides,video">
+<exercise id="8" title="Extension d'attributs" type="slides,video">
 
 <slides source="chapter3_03_extension-attributes" start="29:16" end="32:23">
 </slides>
 
 </exercise>
 
-<exercise id="9" title="Setting extension attributes (1)">
+<exercise id="9" title="Configuration d'attributs étendus (1)">
 
-Let's practice setting some extension attributes.
+Pratiquons l'extension d'attributs.
 
-### Step 1
+### Étape 1
 
-- Use `Token.set_extension` to register `"is_country"` (default `False`).
-- Update it for `"Spain"` and print it for all tokens.
+- Utilise `Token.set_extension` pour déclarer `"is_country"` (valeur par défaut
+  `False`).
+- Mets-le à jour pour `"Spain"` et affiche-le pour tous les tokens.
 
 <codeblock id="03_09_01">
 
-Remember that extension attributes are available via the `._` property. For
-example, `doc._.has_color`.
+Rappelle-toi que les attributs étendus sont accessible via la propriété `._`.
+Par exemple, `doc._.has_color`.
 
 </codeblock>
 
-### Step 2
+### Étape 1
 
-- Use `Token.set_extension` to register `"reversed"` (getter function
+- Utilise `Token.set_extension` pour déclarer `"reversed"` (la fonction getter
   `get_reversed`).
-- Print its value for each token.
+- Affiche sa valeur pour chaque token.
 
 <codeblock id="03_09_02">
 
-Remember that extension attributes are available via the `._` property. For
-example, `doc._.has_color`.
+Rappelle-toi que les attributs étendus sont accessible via la propriété `._`.
+Par exemple, `doc._.has_color`.
 
 </codeblock>
 
 </exercise>
 
-<exercise id="10" title="Setting extension attributes (2)">
+<exercise id="10" title="Configuration d'attributs étendus (2)">
 
-Let's try setting some more complex attributes using getters and method
-extensions.
+Essayons de définir des attributs plus complexes en utilisant des getters
+(accesseurs) et des extensions de méthodes.
 
-### Part 1
+### Partie 1
 
-- Complete the `get_has_number` function .
-- Use `Doc.set_extension` to register `"has_number"` (getter `get_has_number`)
-  and print its value.
+- Complète la fonction `get_has_number`.
+- Utilise `Doc.set_extension` pour déclarer `"has_number"` (getter
+  `get_has_number`) et affiche sa valeur.
 
 <codeblock id="03_10_01">
 
-- Remember that extension attributes are available via the `._` property. For
-  example, `doc._.has_color`.
-- The `get_has_number` function should return whether any of the tokens in the
-  `doc` return `True` for `token.like_num` (whether the token resembles a
-  number).
+- Rappelle-toi que les attributs étendus sont accessibles via la propriété
+  `._`. Par exemple, `doc._.has_color`.
+- La fonction `get_has_number` devrait indiquer si au moins l'un des tokens du
+  `doc` retourne `True` pour `token.like_num` (qui indique si le token ressemble
+  à un nombre).
 
 </codeblock>
 
-### Part 2
+### Partie 2
 
-- Use `Span.set_extension` to register `"to_html"` (method `to_html`).
-- Call it on `doc[0:2]` with the tag `"strong"`.
+- Utilise `Span.set_extension` pour déclarer `"to_html"` (méthode `to_html`).
+- Appelle-là sur `doc[0:2]` avec la balise `"strong"`.
 
 <codeblock id="03_10_02">
 
-- Method extensions can take one or more arguments. For example:
-  `doc._.some_method("argument")`.
-- The first argument passed to the method is always the `Doc`, `Token` or `Span`
-  object the method was called on.
+- Les méthodes étendues peuvent accepter un ou plusieurs arguments. Par
+  exemple : `doc._.some_method("argument")`.
+- Le premier argument passé à la méthode est toujours le `Doc`, le `Token` ou le
+  `Span` sur lequel la méthode a été appelée.
 
 </codeblock>
 
 </exercise>
 
-<exercise id="11" title="Entities and extensions">
+<exercise id="11" title="Entités et extensions">
 
-In this exercise, you'll combine custom extension attributes with the model's
-predictions and create an attribute getter that returns a Wikipedia search URL
-if the span is a person, organization, or location.
+Dans cet exercice, tu vas combiner l'extension d'attributs personnalisés avec
+les prédictions du modèle et créer un accesseur d'attribut qui retourne une URL
+de recherche Wikipédia si le span est une personne, une organisation ou un lieu.
 
-- Complete the `get_wikipedia_url` getter so it only returns the URL if the
-  span's label is in the list of labels.
-- Set the `Span` extension `"wikipedia_url"` using the getter
+- Complète le getter `get_wikipedia_url` pour qu'il retourne une URL uniquement
+  si le libellé du span est dans la liste des libellés.
+- Définis l'extension de `Span` nommée `"wikipedia_url"` avec le getter
   `get_wikipedia_url`.
-- Iterate over the entities in the `doc` and output their Wikipedia URL.
+- Itère sur les entités du `doc` et affiche leur URL Wikipédia.
 
 <codeblock id="03_11">
 
-- To get the string label of a span, use the `span.label_` attribute. This is
-  the label predicted by the entity recognizer if the span is an entity span.
-- Remember that extension attributes are available via the `._` property. For
-  example, `doc._.has_color`.
+- Pour obtenir le libellé textuel d'un span, utilise l'attribut `span.label_`.
+  C'est le libellé prédit par l'entity recognizer si le span constitue une
+  entité.
+- Rappelle-toi que les attributs étendus sont accessibles via la propriété `._`.
+  Par exemple, `doc._.has_color`.
 
 </codeblock>
 
 </exercise>
 
-<exercise id="12" title="Components with extensions">
+<exercise id="12" title="Composants avec extensions">
 
-Extension attributes are especially powerful if they're combined with custom
-pipeline components. In this exercise, you'll write a pipeline component that
-finds country names and a custom extension attribute that returns a country's
-capital, if available.
+Les extensions d'attributs sont particulièrement puissants quand ils sont
+combinés avec des composants de pipeline personnalisés. Dans cet exercice, tu
+vas écrire un composant de pipeline qui trouve des noms de pays et une extension
+personnalisée qui retourne le nom de la capitale du pays s'il est disponible.
 
-A phrase matcher with all countries is available as the variable `matcher`. A
-dictionary of countries mapped to their capital cities is available as the
-variable `CAPITALS`.
+Un matcher de phrases avec tous les pays est proposé avec la variable `matcher`.
+Un dictionnaire des pays avec leurs capitales en correspondance est proposé avec
+la variable `CAPITALS`.
 
-- Complete the `countries_component` and create a `Span` with the label `"GPE"`
-  (geopolitical entity) for all matches.
-- Add the component to the pipeline.
-- Register the Span extension attribute `"capital"` with the getter
+- Complète le composant `countries_component` et crée un `Span` avec le libellé
+   `"GPE"` (entité géopolitique) pour toutes les correspondances.
+- Ajoute le composant au pipeline.
+- Déclare l'extension d'attribut Span nommée `"capital"` avec le getter
   `get_capital`.
-- Process the text and print the entity text, entity label and entity capital
-  for each entity span in `doc.ents`.
+- Traite le texte et affiche le texte de l'entité, le libellé de l'entité, et la
+  capitale de l'entité pour chaque span d'entité de `doc.ents`.
 
 <codeblock id="03_12">
 
-- The `Span` class takes four arguments: the `doc`, the `start` and `end` token
-  index of the span and the `label`.
-- Calling the `PhraseMatcher` on a `doc` returns a list of
-  `(match_id, start, end)` tuples.
-- To register a new extension attribute, use the `set_extension` method on the
-  global class, e.g. `Doc`, `Token` or `Span`. To define a getter, use the
-  `getter` keyword argument.
-- Remember that extension attributes are available via the `._.` property. For
-  example, `doc._.has_color`.
+- La classe `Span` requiert quatre arguments: le `doc`, les index de token
+  `start` et `end` du span et le `label`.
+- L'appel du `PhraseMatcher` sur un `doc` retourne une liste de tuples
+  `(match_id, start, end)`.
+- Pour déclarer un nouvel attribut étendu, utilise la méthode `set_extension`
+  sur la classe globale, c'est-à-dire `Doc`, `Token` ou `Span`. Pour définir un
+  getter, utilise l'argument nommé `getter`.
+- Rappelle-toi que les attributs étendus sont accessibles via la propriété
+  `._.`. Par exemple, `doc._.has_color`.
 
 </codeblock>
 
 </exercise>
 
-<exercise id="13" title="Scaling and performance" type="slides,video">
+<exercise id="13" title="Scalabilité et performance" type="slides,video">
 
 <slides source="chapter3_04_scaling-performance" start="32:335" end="34:515">
 </slides>
 
 </exercise>
 
-<exercise id="14" title="Processing streams">
+<exercise id="14" title="Traitement de flux">
 
-In this exercise, you'll be using `nlp.pipe` for more efficient text processing.
-The `nlp` object has already been created for you. A list of tweets about a
-popular American fast food chain are available as the variable `TEXTS`.
+Dans cet exercice, tu vas utiliser `nlp.pipe` pour un traitement plus efficace
+du texte. L'objet `nlp` a déjà été créé pour toi. Une liste de tweets à propos
+d'une chaine américaine connue de fast-food est disponible avec la variable
+nommée `TEXTS`.
 
-### Part 1
+### Partie 1
 
-- Rewrite the example to use `nlp.pipe`. Instead of iterating over the texts and
-  processing them, iterate over the `doc` objects yielded by `nlp.pipe`.
+- Réécris l'exemple pour utiliser `nlp.pipe`. Au lieu d'itérer sur les textes et
+  de les traiter, itère sur les objets `doc` générés par `nlp.pipe`.
 
 <codeblock id="03_14_01">
 
-- Using `nlp.pipe` lets you merge the first two lines of code into one.
-- `nlp.pipe` takes the `TEXTS` and yields `doc` objects that you can loop over.
+- L'utilisation de `nlp.pipe` te permet de fusionner les deux premières lignes
+  de code en une seule.
+- `nlp.pipe` prend `TEXTS` en argument et génère des objets `doc` sur lesquels
+  tu peux boucler.
 
 </codeblock>
 
-### Part 2
+### Partie 2
 
-- Rewrite the example to use `nlp.pipe`. Don't forget to call `list()` around
-  the result to turn it into a list.
+- Réécris l'exemple pour utiliser `nlp.pipe`. N'oublie pas d'appeler `list()`
+  sur le résultat pour le transformer en liste.
 
 <codeblock id="03_14_02"></codeblock>
 
-### Part 3
+### Partie 3
 
-- Rewrite the example to use `nlp.pipe`. Don't forget to call `list()` around
-  the result to turn it into a list.
+- Réécris l'exemple pour utiliser `nlp.pipe`. N'oublie pas d'appeler `list()`
+  sur le résultat pour le transformer en liste.
 
 <codeblock id="03_14_03"></codeblock>
 
 </exercise>
 
-<exercise id="15" title="Processing data with context">
+<exercise id="15" title="Traitement de données avec contexte">
 
-In this exercise, you'll be using custom attributes to add author and book meta
-information to quotes.
+Dans cet exercice, tu vas utiliser les attributs personnalisés pour ajouter aux
+citations des métadonnées sur l'auteur et le livre correspondants.
 
-A list of `[text, context]` examples is available as the variable `DATA`. The
-texts are quotes from famous books, and the contexts dictionaries with the keys
-`"author"` and `"book"`.
+Une liste d'exemples sous la forme `[text, context]` est disponible avec la
+variable `DATA`. Les textes sont des citations de livres célèbres, et les
+contextes sont des dictionnaires avec pour clés `"author"` et `"book"`.
 
-- Use the `set_extension` method to register the custom attributes `"author"`
-  and `"book"` on the `Doc`, which default to `None`.
-- Process the `[text, context]` pairs in `DATA` using `nlp.pipe` with
-  `as_tuples=True`.
-- Overwrite the `doc._.book` and `doc._.author` with the respective info passed
-  in as the context.
+- Utilise la méthode `set_extension` pour déclarer les attributs personnalisés
+  `"author"` et `"book"` sur le `Doc`, avec `None` comme valeur par défaut.
+- Traite les paires `[text, context]` contenues dans `DATA` en utilisant
+  `nlp.pipe` avec `as_tuples=True`.
+- Réécris `doc._.book` et `doc._.author` avec les valeurs respectives
+  d'informations obtenues avec le contexte.
 
 <codeblock id="03_15">
 
-- The `Doc.set_extension` method takes two arguments: the string name of the
-  attribute, and a keyword argument indicating the default, getter, setter or
-  method. For example, `default=True`.
-- If `as_tuples` is set to `True`, the `nlp.pipe` method takes a list of
-  `(text, context)` tuples and yields `(doc, context)` tuples.
+- La méthode `Doc.set_extension` prend deux arguments : le nom de l'attribut
+  sous forme de chaine, et un argument nommé indiquant la valeur par défaut, le
+  getter, le setter, ou la méthode. Par exemple, `default=True`.
+- Quand `as_tuples` est mis à `True`, la méthode `nlp.pipe` prend en argument
+  une liste de tuples `(text, context)` et génère des tuples `(doc, context)`.
 
 </codeblock>
 
 </exercise>
 
-<exercise id="16" title="Selective processing">
+<exercise id="16" title="Traitement sélectif">
 
-In this exercise, you'll use the `nlp.make_doc` and `nlp.disable_pipes` methods
-to only run selected components when processing a text.
+Dans cet exercice, tu vas utiliser les méthodes `nlp.make_doc` et
+`nlp.disable_pipes` pour appliquer uniquement les composants sélectionnés lors
+du traitement d'un texte.
 
-### Part 1
+### Partie 1
 
-- Rewrite the code to only tokenize the text using `nlp.make_doc`.
+- Réécris le code en utilisant `nlp.make_doc` pour uniquement tokéniser le
+  texte.
 
 <codeblock id="03_16_01">
 
-The `nlp.make_doc` method can be called on a text and returns a `Doc`, just like
-the `nlp` object.
+La méthode `nlp.make_doc` peut être appelée sur un texte et retourne un `Doc`,
+exactement comme l'objet `nlp`.
 
 </codeblock>
 
-### Part 2
+### Partie 2
 
-- Disable the tagger and parser using the `nlp.disable_pipes` method.
-- Process the text and print all entities in the `doc`.
+- Désactive le tagger et le parser en utilisant la méthode `nlp.disable_pipes`.
+- Traite le texte et affiche toutes les entités contenues dans le `doc`.
 
 <codeblock id="03_16_02">
 
-The `nlp.disable_pipes` method takes a variable number of arguments: the string
-names of the pipeline components to disable. For example,
-`nlp.disable_pipes("ner")` will disable the named entity recognizer.
+La méthode `nlp.disable_pipes` prend un nombre variable d'arguments : le nom
+sous forme de chaine de caractères des composants du pipeline à désactiver. Par
+exemple, `nlp.disable_pipes("ner")` désactivera le named entity recognizer.
 
 </codeblock>
 
