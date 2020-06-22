@@ -28,19 +28,20 @@ def test_01_09_predictions(nlp):
     text = "Los Olímpicos de Tokio 2020 son la inspiración para la nueva colección de zapatillas adidas ZX."
     doc = nlp(text)
     ents = [(ent.text, ent.label_) for ent in doc.ents]
-    assert len(ents) == 1
-    assert ents[0] == ("Olímpicos de Tokio 2020", "MISC")
+    assert len(ents) == 2
+    assert ents[0] == ("Olímpicos de Tokio 2020", "LOC")
+    assert ents[1] == ("ZX", "MISC")
     assert doc[14].ent_type == 0
-    assert doc[15].ent_type == 0
+    assert doc[15].ent_type == 7654241940133152407
 
 
 def test_slides_01_03(nlp):
-    doc = nlp("Me gustaba correr pero ahora me gusta nadar.")
-    pattern = [{"LEMMA": "gustar", "POS": "VERB"}, {"POS": "VERB"}]
+    doc = nlp("Camila prefería comer tacos. Pero ahora está comiendo pasta.")
+    pattern = [{"LEMMA": "comer", "POS": "VERB"}, {"POS": "NOUN"}]
     matcher = Matcher(nlp.vocab)
     matcher.add("TEST", None, pattern)
     matches = [doc[start:end].text for _, start, end in matcher(doc)]
-    assert matches == ["gustaba correr", "gusta nadar"]
+    assert matches == ["comer tacos", "comiendo pasta"]
 
 
 def test_03_16_02_predictions(nlp):
@@ -50,4 +51,4 @@ def test_03_16_02_predictions(nlp):
         "especializada en sándwiches de pollo."
     )
     doc = nlp(text)
-    assert [ent.text for ent in doc.ents] == ["Chick", "College Park", "Georgia"]
+    assert [ent.text for ent in doc.ents] == ["Chick-fil-A", "College Park", "Georgia"]

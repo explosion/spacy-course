@@ -15,8 +15,13 @@ doc = nlp(
 )
 
 # Crea los patrones
-pattern1 = [{"LOWER": "Bandai"}, {"IS_TITLE": True, "POS": "PROPN"}]
-pattern2 = [{"LOWER": "Pac-Man"}, {"POS": "NOUN"}]
+pattern1 = [{"LIKE_NUM": False}, {"POS": "INTJ"}]
+pattern2 = [
+   {"LOWER": "pac"},
+   {"TEXT": "-"},
+   {"LOWER": "man"},
+   {"POS": "PROPN", "OP": "*"},
+]
 
 # Inicializa el Matcher y añade los patrones
 matcher = Matcher(nlp.vocab)

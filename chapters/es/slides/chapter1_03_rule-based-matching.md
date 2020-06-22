@@ -184,25 +184,25 @@ El patrón encuentra los tokens "2014 Copa Mundial FIFA:".
 
 ```python
 pattern = [
-    {"LEMMA": "gustar", "POS": "VERB"},
-    {"POS": "VERB"}
+    {"LEMMA": "comer", "POS": "VERB"},
+    {"POS": "NOUN"}
 ]
 ```
 
 ```python
-doc = nlp("Me gustaba correr pero ahora me gusta nadar.")
+doc = nlp("Camila prefería comer tacos. Pero ahora está comiendo pasta.")
 ```
 
 ```out
-gustaba correr
-gusta nadar
+comer tacos
+comiendo pasta
 ```
 
 Notes: En este ejemplo estamos buscando dos tokens:
 
-Un verbo con el lemma "gustar", seguido por un verbo.
+Un verbo con el lemma "comer", seguido por un sustantivo.
 
-Este patrón encontrará "gustaba correr" y "gusta nadar".
+Este patrón encontrará "comer tacos" y "comiendo pasta".
 
 ---
 

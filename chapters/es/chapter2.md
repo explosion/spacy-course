@@ -376,15 +376,14 @@ pantalla los tokens en el `doc` para ver cómo se va a dividir el texto y ajusta
 el patrón para que cada diccionario represente un token.
 
 - Edita el `pattern1` para que encuentre correctamente todas las menciones de
-  `"Bandai"`, sin importar si son minúsculas o mayúsculas, más un nombre propio
-  con la primera letra en mayúscula.
+  una cantidad de tiempo, más un sustantivo.
 - Edita el `pattern2` para que encuentre correctamente todas las menciones de
-  `"Pac-Man"`, sin importar si son minúsculas o mayúsculas, más uno o dos nombres propios siguientes opcionales.
+  `"pac-man"`, sin importar si son minúsculas o mayúsculas, más uno o dos nombres propios siguientes opcionales.
 
 <codeblock id="02_13">
 
 - Procesa los strings que deben ser encontrados con el objeto `nlp` - for
-  ejemplo, `[token.text for token in nlp("Pac-Man Live")]`.
+  ejemplo, `[token.text for token in nlp("pac-Man Live")]`.
 - Inspecciona los tokens y asegúrate de que cada diccionario en el patrón describa
   correctamente a un token.
 

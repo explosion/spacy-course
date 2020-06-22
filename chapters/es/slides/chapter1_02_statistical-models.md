@@ -66,7 +66,7 @@ import spacy
 nlp = spacy.load("es_core_news_sm")
 
 # Procesa un texto
-doc = nlp("Ella comió pizza")
+doc = nlp("Ella comió pizza.")
 
 # Itera sobre los tokens
 for token in doc:
