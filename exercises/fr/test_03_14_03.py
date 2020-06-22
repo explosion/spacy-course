@@ -1,9 +1,9 @@
 def test():
     assert (
         "patterns = list(nlp.pipe(people))" in __solution__
-    ), "Are you using nlp.pipe wrapped in a list?"
+    ), "Utilises-tu nlp.pipe enveloppé dans une liste ?"
 
     __msg__.good(
-        "Good job! Let's move on to a practical example that uses nlp.pipe "
-        "to process documents with additional meta data."
+        "Bon boulot ! Passons à un exemple pratique qui utilise nlp.pipe "
+        "pour traiter des documents avec des métadonnées supplémentaires."
     )

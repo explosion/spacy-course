@@ -15,22 +15,22 @@ matcher.add("COUNTRY", None, *list(nlp.pipe(COUNTRIES)))
 
 
 def countries_component(doc):
-    # Create an entity Span with the label "GPE" for all matches
+    # Crée une entité Span avec le libellé "GPE" pour toutes les correspondances
     matches = matcher(doc)
     doc.ents = [____(____, ____, ____, label=____) for match_id, start, end in matches]
     return doc
 
 
-# Add the component to the pipeline
+# Ajoute le composant au pipeline
 ____.____(____)
 print(nlp.pipe_names)
 
-# Getter that looks up the span text in the dictionary of country capitals
+# Getter qui recherche le texte du span dans le dictionnaire des capitales des pays
 get_capital = lambda span: CAPITALS.get(span.text)
 
-# Register the Span extension attribute "capital" with the getter get_capital
+# Déclare l'extension d'attribut de Span "capital" avec le getter get_capital
 ____.____(____, ____)
 
-# Process the text and print the entity text, label and capital attributes
+# Traite le texte et affiche le texte de l'entité, ses attributs libellé et capitale
 doc = nlp("Czech Republic may help Slovakia protect its airspace")
 print([(____, ____, ____) for ent in doc.ents])

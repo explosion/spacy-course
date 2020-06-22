@@ -1,16 +1,16 @@
 def test():
     assert (
         'after="ner"' in __solution__
-    ), "Are you adding the component explicitly after the entity recognizer?"
+    ), "Ajoutes-tu le composant explicitement après l'entity recognizer ?"
     assert (
         nlp.pipe_names[-1] == "animal_component"
-    ), "Did you add the component after the entity recognizer?"
-    assert len(doc.ents) == 2, "Are you adding the entities correctly?"
+    ), "As-tu ajouté le composant après l'entity recognizer ?"
+    assert len(doc.ents) == 2, "As-tu correctement ajouté les entités ?"
     assert all(
         ent.label_ == "ANIMAL" for ent in doc.ents
-    ), "Did you assign the label ANIMAL?"
+    ), "As-tu affecté le libellé ANIMAL?"
 
     __msg__.good(
-        "Good job! You've built your first pipeline component for "
-        "rule-based entity matching."
+        "Bien joué ! Tu as contruit ton premier composant de pipeline pour "
+        "la recherche de correspondance d'entités basée sur des règles."
     )

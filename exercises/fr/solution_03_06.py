@@ -1,20 +1,21 @@
 import spacy
 
-# Define the custom component
+# Définis le composant personnalisé
 def length_component(doc):
-    # Get the doc's length
+    # Obtiens la longueur du doc
     doc_length = len(doc)
     print(f"This document is {doc_length} tokens long.")
-    # Return the doc
+    # Retourne le doc
     return doc
 
 
-# Load the small English model
+# Charge le petit modèle anglais
 nlp = spacy.load("en_core_web_sm")
 
-# Add the component first in the pipeline and print the pipe names
+# Ajoute le composant en premier dans le pipeline
+# et affiche les noms des composants
 nlp.add_pipe(length_component, first=True)
 print(nlp.pipe_names)
 
-# Process a text
+# Traite un texte
 doc = nlp("This is a sentence.")

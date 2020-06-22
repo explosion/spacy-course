@@ -1,30 +1,30 @@
 def test():
     assert Doc.has_extension(
         "author"
-    ), "Did you set up the author extension on the Doc?"
+    ), "As-tu défini l'extension author du Doc ?"
     ext = Doc.get_extension("author")
     assert all(
         v is None for v in ext
-    ), "Did you assign the default value to the author extension?"
-    assert Doc.has_extension("book"), "Did you set up the book extension on the Doc?"
+    ), "As-tu affecté la valeur par défaut à l'extension author ?"
+    assert Doc.has_extension("book"), "As-tu défini l'extension book du Doc ?"
     ext = Doc.get_extension("book")
     assert all(
         v is None for v in ext
-    ), "Did you assign the default value to the book extension?"
+    ), "As-tu affecté la valeur par défaut à l'extension book ?"
     assert (
         "nlp.pipe(DATA, as_tuples=True)" in __solution__
-    ), "Did you use nlp.pipe with as_tuples=True?"
+    ), "As-tu utilisé nlp.pipe avec as_tuples=True?"
     assert (
         'doc._.book = context["book"]' in __solution__
-    ), "Did you overwrite the doc._.book extension with the context value of 'book'?"
+    ), "As-tu actualisé l'extension doc._.book avec la valeur de contexte de 'book' ?"
     assert (
         'doc._.author = context["author"]' in __solution__
-    ), "Did you overwrite the doc._.author extension with the context value of 'author'?"
+    ), "As-tu actualisé l'extension doc._.author avec la valeur de contexte de 'author' ?"
 
     __msg__.good(
-        "Well done! The same technique is useful for a variety of tasks. For "
-        "example, you could pass in page or paragraph numbers to relate the "
-        "processed Doc back to the position in a larger document. Or you "
-        "could pass in other structured data like IDs referring to a "
-        "knowledge base."
+        "Bien joué ! Cette même technique est utile pour de nombreuses taches. "
+        "Par exemple, tu pourrais passer des numéros de page ou de paragraphe "
+        "pour lier le Doc traité à sa position dans un plus grand document. Ou "
+        "tu pourrais passer d'autres données structurées comme des ID faisant "
+        "référence à une base de connaissances."
     )

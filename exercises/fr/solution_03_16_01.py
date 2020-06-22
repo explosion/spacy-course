@@ -6,6 +6,6 @@ text = (
     "the city of College Park, Georgia, specializing in chicken sandwiches."
 )
 
-# Only tokenize the text
+# Tokenise seulement le texte
 doc = nlp.make_doc(text)
 print([token.text for token in doc])

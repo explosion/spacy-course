@@ -1,11 +1,11 @@
 def test():
-    assert Doc.has_extension("has_number"), "Did you register the extension on the doc?"
+    assert Doc.has_extension("has_number"), "As-tu déclaré l'extension du doc ?"
     ext = Doc.get_extension("has_number")
-    assert ext[2] is not None, "Did you set the getter correctly?"
+    assert ext[2] is not None, "As-tu défini correctement le getter ?"
     assert (
         "getter=get_has_number" in __solution__
-    ), "Did you assign get_has_number as the getter?"
-    assert "doc._.has_number" in __solution__, "Are you accessing the custom attribute?"
-    assert doc._.has_number, "Looks like the getter is returning the wrong value."
+    ), "As-tu affecté get_has_number comme getter?"
+    assert "doc._.has_number" in __solution__, "Accèdes-tu à l'attribut personnalisé ?"
+    assert doc._.has_number, "Il semble que le getter retourne une valeur incorrecte."
 
-    __msg__.good("Nice work!")
+    __msg__.good("Beau boulot !")

@@ -1,19 +1,19 @@
 def test():
     assert (
         len(nlp.pipeline) == 1 and nlp.pipe_names[0] == "countries_component"
-    ), "Did you add the component correctly?"
-    assert Span.has_extension("capital"), "Did you set the extension on the span?"
+    ), "As-tu ajouté le composant correctement ?"
+    assert Span.has_extension("capital"), "As-tu défini l'extension du span ?"
     ext = Span.get_extension("capital")
-    assert ext[2] is not None, "Did you register get_capital as the getter?"
+    assert ext[2] is not None, "As-tu déclaré get_capital comme getter ?"
     assert (
         "(ent.text, ent.label_, ent._.capital)" in __solution__
-    ), "Are you printing the correct attributes?"
-    assert len(doc.ents) == 2, "Looks like the entities didn't get set correctly?"
+    ), "Affiches-tu les bons attributs ?"
+    assert len(doc.ents) == 2, "Il semble que les entités n'ont pas été définies correctement ?"
     assert (
         doc.ents[0]._.capital == "Prague" and doc.ents[1]._.capital == "Bratislava"
-    ), "Looks like the capital attribute isn't working correctly."
+    ), "Il semble que l'attribut capital ne fonctionne pas correctement."
 
     __msg__.good(
-        "Well done! This is a great example of how you can add structured "
-        "data to your spaCy pipeline."
+        "Bien joué ! C'est un excellent exemple de la manière dont tu peux "
+        "ajouter des données structurées à ton pipeline spaCy."
     )

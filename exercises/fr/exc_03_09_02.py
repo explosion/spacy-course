@@ -3,15 +3,15 @@ from spacy.tokens import Token
 
 nlp = English()
 
-# Define the getter function that takes a token and returns its reversed text
+# Définis la fonction getter qui prend en argument un token et retourne son texte inversé
 def get_reversed(token):
     return token.text[::-1]
 
 
-# Register the Token property extension "reversed" with the getter get_reversed
+# Déclare l'extension de propriété de Token "reversed" avec le getter get_reversed
 ____.____(____, ____=____)
 
-# Process the text and print the reversed attribute for each token
+# Traite le texte et affiche l'attribut inversé pour chaque token
 doc = nlp("All generalizations are false, including this one.")
 for ____ in ____:
     print("reversed:", ____)
