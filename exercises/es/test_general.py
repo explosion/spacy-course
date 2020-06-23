@@ -52,3 +52,4 @@ def test_03_16_02_predictions(nlp):
     )
     doc = nlp(text)
     assert [ent.text for ent in doc.ents] == ["Chick-fil-A", "College Park", "Georgia"]
+    
