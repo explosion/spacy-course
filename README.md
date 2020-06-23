@@ -27,6 +27,7 @@ solutions are all in this repo, there's no penalty for clicking "Show hints" or
 | **[Japanese](https://course.spacy.io/ja)** | English                   | [`chapters/ja`](chapters/ja), [`exercises/ja`](exercises/ja) |                        ✕                         | [@tamuhey](https://github.com/tamuhey)             |
 | Chinese                                    | Chinese                   | _in progress_                                                |                                                  |                                                    |
 | French                                     | French                    | _in progress_                                                |                                                  |                                                    |
+| Russian                                    | English                   | _in progress_                                                |                                                  |                                                    |
 
 If you spot a mistake, I always appreciate
 [pull requests](https://github.com/ines/spacy-course/pulls)!
@@ -55,7 +56,7 @@ little app to present the exercises and content in a fun and interactive way.
 
 Probably, yes! If you've been looking for a DIY way to publish your materials, I
 hope that my little framework can be useful. Because so many people expressed
-interest in this, I put together some starter repos hat you can fork and adapt:
+interest in this, I put together some starter repos that you can fork and adapt:
 
 - 🐍 Python:
   [`ines/course-starter-python`](https://github.com/ines/course-starter-python)

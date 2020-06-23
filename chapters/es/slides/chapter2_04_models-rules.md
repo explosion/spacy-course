@@ -193,7 +193,7 @@ patrón que debe encontrar.
 
 Entonces podemos iterar sobre los resultados en el texto, lo que nos da un match
 ID y el inicio y final del resultado. Esto nos permite crear un objeto `Span`
-para los tokens resultantes "labrador dorado" para analizarlos en su contexto.
+para los tokens resultantes "labrador dorado" y poder analizarlos en su contexto.
 
 ---
 

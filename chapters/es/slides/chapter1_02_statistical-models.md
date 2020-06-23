@@ -47,7 +47,7 @@ nlp = spacy.load("es_core_news_sm")
 - Vocabulario
 - Metadata (lenguaje, pipeline)
 
-Notes: spaCy provee varios paquetes de modelos pre-entrenados que puedes descargar usando el comando `spacy download`. Por ejemplo, el paquete "en_core_web_sm" es un modelo pequeño de inglés que provee soporte para todas las capacidades centrales y está entrenado usando texto de la web.
+Notes: spaCy provee varios paquetes de modelos pre-entrenados que puedes descargar usando el comando `spacy download`. Por ejemplo, el paquete "es_core_news_sm" es un modelo pequeño de español que provee soporte para todas las capacidades centrales y está entrenado usando textos de noticias.
 
 El método `spacy.load` carga el paquete de modelo por su nombre y devuelve un objeto `nlp`.
 
@@ -82,7 +82,7 @@ pizza NOUN
 
 Notes: Revisemos las predicciones del modelo. En este ejemplo estamos usando spaCy para predecir part-of-speech tags, los tipos de palabras en el contexto.
 
-Primero, cargamos el modelo pequeño de inglés y recibimos un objeto `nlp`.
+Primero, cargamos el modelo pequeño de español y recibimos un objeto `nlp`.
 
 Luego, procesamos el texto "Ella comió pizza".
 

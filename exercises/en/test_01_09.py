@@ -1,5 +1,5 @@
 def test():
-    assert "for ent in doc.ents" in __solution__, "Are you iterating over the entities?"
+    assert "in doc.ents" in __solution__, "Are you iterating over the entities?"
     assert iphone_x.text == "iPhone X", "Are you sure iphone_x covers the right tokens?"
 
     __msg__.good(
