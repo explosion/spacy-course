@@ -223,7 +223,7 @@ procesando. Veamos un ejemplo.
 - Procesa el texto con el objeto `doc`.
 - Itera sobre las entidades e imprime en pantalla el texto de la entidad y el
   label.
-- Parece ser que el modelo no predijo "adidas ZX". Crea un span para esos tokens
+- Parece ser que el modelo no predijo "adidas zx". Crea un span para esos tokens
   manualmente.
 
 <codeblock id="01_09">
@@ -248,13 +248,13 @@ procesando. Veamos un ejemplo.
 <exercise id="11" title="Usando el Matcher">
 
 Probemos el `Matcher` basado en reglas de spaCy. Vas a usar un ejemplo del
-ejercicio anterior y escribirás un patrón que encuentre la frase "adidas ZX" en
+ejercicio anterior y escribirás un patrón que encuentre la frase "adidas zx" en
 el texto.
 
 - Importa el `Matcher` desde `spacy.matcher`.
 - Inicialízalo con el `vocab` compartido del objeto `nlp`.
 - Crea un patrón que encuentre los valores `"TEXT"` de dos tokens: `"adidas"` y
-  `"ZX"`.
+  `"zx"`.
 - Usa el método `matcher.add` para añadir el patrón al matcher.
 - Llama al matcher en el `doc` y guarda el resultado en la variable `matches`.
 - Itera sobre los resultados y obtén el span resultante desde el índice `start`

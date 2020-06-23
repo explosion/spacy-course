@@ -147,7 +147,7 @@ Notes: ¿Pero cómo hace esto spaCy detrás de cámaras?
 La similitud se determina usando word vectors, que son representaciones
 multidimensionales de los significados de las palabras.
 
-Puedes que hayas escuchado sobre Word2Vec, que es un algoritmo que se usa
+Puede que hayas escuchado sobre Word2Vec, que es un algoritmo que se usa
 frecuentemente para entrenar vectores de palabras desde texto puro.
 
 Los vectores se pueden añadir a los modelos estadísticos de spaCy.

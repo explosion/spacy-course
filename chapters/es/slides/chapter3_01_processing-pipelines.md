@@ -28,7 +28,7 @@ objeto `nlp` y recibes un objeto `Doc`.
 Pero, ¿qué hace el objeto `nlp` _realmente_?
 
 Primero, se aplica el tokenizer para convertir el string de texto a un objeto
-`Doc` A continuación, una serie de componentes del pipeline se aplican al doc en
+`Doc`. A continuación, una serie de componentes del pipeline se aplican al doc en
 orden. En este caso, el tagger, luego el parser, luego el
 <abbr title="Es el componente que identifica las entidades nombradas de un texto.">entity
 recognizer</abbr> . Finalmente, el doc procesado es devuelto para que puedas
