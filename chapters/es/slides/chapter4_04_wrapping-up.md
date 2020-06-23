@@ -70,7 +70,7 @@ spaCy te permite personalizar las reglas para determinar dónde y cómo dividir 
 
 También puedes añadir y mejorar el soporte para otros lenguajes.
 
-Así spaCy ya permita convertir a tokens para muchos lenguajes diferente, todavía hay mucho espacio para mejorar.
+Así spaCy ya permita convertir a tokens para muchos lenguajes diferentes, todavía hay mucho espacio para mejorar.
 
 Permitir la conversión a tokens en un nuevo lenguaje es el primer paso hacia poder entrenar un modelo estadístico.
 

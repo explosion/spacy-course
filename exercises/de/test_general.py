@@ -24,13 +24,13 @@ def test_01_08_02_predictions(nlp):
 
 
 def test_01_09_predictions(nlp):
-    text = "Apple: Neues Modell iPhone SE kommt im Sommer"
+    text = "Apple: Modell IPhone SE kommt im Sommer"
     doc = nlp(text)
     ents = [(ent.text, ent.label_) for ent in doc.ents]
     assert len(ents) == 1
     assert ents[0] == ("Apple", "ORG")
+    assert doc[3].ent_type == 0
     assert doc[4].ent_type == 0
-    assert doc[5].ent_type == 0
 
 
 def test_slides_01_03(nlp):

@@ -4,8 +4,8 @@ nlp = Spanish()
 
 # Procesa el texto
 doc = nlp(
-    "En 1990, más del 60% de las personas en Asia del Este se encontraban "
-    "en extrema pobreza. Ahora, menos del 4% lo están."
+    "En 1990, más del 60 % de las personas en Asia del Este se encontraban "
+    "en extrema pobreza. Ahora, menos del 4 % lo están."
 )
 
 # Itera sobre los tokens en el doc

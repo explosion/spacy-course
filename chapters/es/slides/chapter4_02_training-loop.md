@@ -106,7 +106,7 @@ Esto es especialmente útil si quieres mejorar las categorías que el modelo ya 
 
 También puedes actualizar el modelo para añadir nuevas categorías.
 
-Simplemente asegúrate de que siempre actualices el modelo con ejemplos de la nueva categoría _y_ ejemplos de las categorías que antes estaba prediciendo de manera correcta. De otra manera mejorar una nueva categoría puede lastimar a las demás categorías.
+Simplemente asegúrate de que siempre actualices el modelo con ejemplos de la nueva categoría _y_ ejemplos de las categorías que antes estaba prediciendo de manera correcta. De otra manera mejorar una nueva categoría puede lastimar a las demás.
 
 ---
 

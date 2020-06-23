@@ -52,7 +52,7 @@ TRAINING_DATA = [
 ]
 ```
 
-Notes: Para prevenir esto asegúrate de que siempre incluyas ejemplos de lo que el modelo antes predijo correctamente.
+Notes: Para prevenir esto, asegúrate que siempre incluyas ejemplos de lo que el modelo antes predijo correctamente.
 
 Si estás entrenando una nueva categoría `"WEBSITE"`, incluye también ejemplos de `"PER"`
 
@@ -77,7 +77,7 @@ Si la decisión es difícil de hacer basada en el contexto, el modelo puede tene
 
 El esquema de labels también tiene que ser consistente y no demasiado específico.
 
-Por ejemplo, puede ser difícil enseñarle al modelo a predecir si algo es ropa de adulto o ropa de niños basado en el contexto. Sin embargo, solo predecir el label `"ROPA"` puede funcionar mejor.
+Por ejemplo, puede ser difícil enseñarle al modelo a predecir si algo es ropa de adultos o ropa de niños basado en el contexto. Sin embargo, solo predecir el label `"ROPA"` puede funcionar mejor.
 
 ---
 
