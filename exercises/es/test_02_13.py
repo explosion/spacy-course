@@ -26,10 +26,7 @@ def test():
     assert any(
         pattern2[1].get(attr) == True for attr in ("is_title", "IS_TITLE")
     ), "Revisa el atributo y el valor del segundo token en pattern2."
-    assert any(
-        pattern2[1].get(attr) == "*" for attr in ("op", "OP")
-    ), "Revisa el atributo y el valor del segundo token en pattern2."
-    assert len(matcher(doc)) == 7, "Número incorrecto de resultados – esperaba 7."
+    assert len(matcher(doc)) == 3, "Número incorrecto de resultados – esperaba 3."
 
     __msg__.good(
         "¡Bien hecho! Como puedes ver, es muy importante prestarle atención "

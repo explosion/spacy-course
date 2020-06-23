@@ -16,7 +16,7 @@ doc = nlp(
 
 # Crea los patrones
 pattern1 = [{"LIKE_NUM": True}, {"POS": "NOUN"}]
-pattern2 = [{"LOWER": "pac-man"}, {"IS_TITLE": True, "OP": "*"}]
+pattern2 = [{"LOWER": "pac-man"}, {"IS_TITLE": True}]
 
 # Inicializa el Matcher y añade los patrones
 matcher = Matcher(nlp.vocab)

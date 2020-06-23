@@ -378,12 +378,12 @@ el patrón para que cada diccionario represente un token.
 - Edita el `pattern1` para que encuentre correctamente todas las menciones de
   una cantidad de tiempo, más un sustantivo.
 - Edita el `pattern2` para que encuentre correctamente todas las menciones de
-  `"pac-man"`, sin importar si son minúsculas o mayúsculas, más uno o dos nombres propios siguientes opcionales.
+  `"pac-man"`, sin importar si son minúsculas o mayúsculas, más una palabra en mayúsculas.
 
 <codeblock id="02_13">
 
 - Procesa los strings que deben ser encontrados con el objeto `nlp` - for
-  ejemplo, `[token.text for token in nlp("pac-Man Live")]`.
+  ejemplo, `[token.text for token in nlp("pac-man Live")]`.
 - Inspecciona los tokens y asegúrate de que cada diccionario en el patrón describa
   correctamente a un token.
 
