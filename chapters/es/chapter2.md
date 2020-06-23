@@ -383,7 +383,7 @@ el patrón para que cada diccionario represente un token.
 <codeblock id="02_13">
 
 - Procesa los strings que deben ser encontrados con el objeto `nlp` - for
-  ejemplo, `[token.text for token in nlp("pac-Man Live")]`.
+  ejemplo, `[token.text for token in nlp("pac-man Live")]`.
 - Inspecciona los tokens y asegúrate de que cada diccionario en el patrón describa
   correctamente a un token.
 
