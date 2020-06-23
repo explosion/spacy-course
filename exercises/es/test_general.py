@@ -25,14 +25,13 @@ def test_01_08_02_predictions(nlp):
 
 
 def test_01_09_predictions(nlp):
-    text = "Los Olímpicos de Tokio 2020 son la inspiración para la nueva colección de zapatillas adidas ZX."
+    text = "Los Olímpicos de Tokio 2020 son la inspiración para la nueva colección de zapatillas adidas zx."
     doc = nlp(text)
     ents = [(ent.text, ent.label_) for ent in doc.ents]
-    assert len(ents) == 2
+    assert len(ents) == 1
     assert ents[0] == ("Olímpicos de Tokio 2020", "LOC")
-    assert ents[1] == ("ZX", "MISC")
     assert doc[14].ent_type == 0
-    assert doc[15].ent_type == 7654241940133152407
+    assert doc[15].ent_type == 0
 
 
 def test_slides_01_03(nlp):

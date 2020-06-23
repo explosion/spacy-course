@@ -20,7 +20,7 @@ def test():
         pattern[0].get(key) == "adidas" for key in ["text", "TEXT"]
     ), "¿Estás encontrando el texto del token?"
     assert any(
-        pattern[1].get(key) == "ZX" for key in ["text", "TEXT"]
+        pattern[1].get(key) == "zx" for key in ["text", "TEXT"]
     ), "¿Estás encontrando el texto del token?"
     assert (
         'matcher.add("ADIDAS_ZX_PATTERN"' in __solution__

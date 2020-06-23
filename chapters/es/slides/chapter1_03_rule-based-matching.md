@@ -83,11 +83,11 @@ nlp = spacy.load("es_core_news_sm")
 matcher = Matcher(nlp.vocab)
 
 # Añade el patrón al matcher
-pattern = [{"TEXT": "adidas"}, {"TEXT": "ZX"}]
+pattern = [{"TEXT": "adidas"}, {"TEXT": "zx"}]
 matcher.add("ADIDAS_PATTERN", None, pattern)
 
 # Procesa un texto
-doc = nlp("Nuevos diseños de zapatillas en la colección adidas ZX")
+doc = nlp("Nuevos diseños de zapatillas en la colección adidas zx")
 
 # Llama al matcher sobre el doc
 matches = matcher(doc)
@@ -116,7 +116,7 @@ Esto devolverá los resultados.
 
 ```python
 # Llama al matcher sobre el doc
-doc = nlp("Nuevos diseños de zapatillas en la colección adidas ZX")
+doc = nlp("Nuevos diseños de zapatillas en la colección adidas zx")
 matches = matcher(doc)
 
 # Itera sobre los resultados
@@ -127,7 +127,7 @@ for match_id, start, end in matches:
 ```
 
 ```out
-adidas ZX
+adidas zx
 ```
 
 - `match_id`: valor hash del nombre del patrón
