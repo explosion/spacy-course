@@ -2,168 +2,186 @@
 type: slides
 ---
 
-# Training and updating models
+# Entrainement et actualisation des modèles
 
-Notes: Welcome to the final chapter, which is about one of the most exciting
-aspects of modern NLP: training your own models!
+Notes : Bienvenue au dernier chapitre, qui concerne un des aspects les plus
+formidables du TALN moderne : l'entrainement de tes propres modèles !
 
-In this lesson, you'll learn about training and updating spaCy's neural network
-models and the data you need for it – focusing specifically on the named entity
-recognizer.
-
----
-
-# Why updating the model?
-
-- Better results on your specific domain
-- Learn classification schemes specifically for your problem
-- Essential for text classification
-- Very useful for named entity recognition
-- Less critical for part-of-speech tagging and dependency parsing
-
-Notes: Before we get starting with explaining _how_, it's worth taking a second
-to ask ourselves: Why would we want to update the model with our own examples?
-Why can't we just rely on pre-trained models?
-
-Statistical models make predictions based on the examples they were trained on.
-
-You can usually make the model more accurate by showing it examples from your
-domain.
-
-You often also want to predict categories specific to your problem, so the model
-needs to learn about them.
-
-This is essential for text classification, very useful for entity recognition
-and a little less critical for tagging and parsing.
+Dans cette leçon, tu vas apprendre à entrainer et à mettre à jour les modèles de
+réseaux de neurones de spaCy et les données dont tu as besoin pour le faire -
+en se concentrant spécifiquement sur le named entity recognizer.
 
 ---
 
-# How training works (1)
+# Pourquoi mettre à jour le modèle ?
 
-1. **Initialize** the model weights randomly with `nlp.begin_training`
-2. **Predict** a few examples with the current weights by calling `nlp.update`
-3. **Compare** prediction with true labels
-4. **Calculate** how to change weights to improve predictions
-5. **Update** weights slightly
-6. Go back to 2.
+- Meilleurs résultats sur ton domaine spécifique
+- Apprentissage de schémas de classification spécifiques à ton problème
+- Essentiel pour la classification de texte
+- Très utile pour la reconnaissance d'entités nommées
+- Moins critique pour l'étiquetage de partie de discours et l'analyse des
+  relations de dépendances
 
-Notes: spaCy supports updating existing models with more examples, and training
-new models.
+Notes : Avant de commencer à expliquer le _comment_, il est utile de prendre une
+seconde pour nous demander : Pourquoi voudrions-nous mettre à jour le modèle
+avec nos propres exemples ? Pourquoi ne peut-on pas simplement s'appuyer sur les
+modèles pré-entrainés ?
 
-If we're not starting with a pre-trained model, we first initialize the weights
-randomly.
+Les modèles statistiques effectuent des prédictions basés sur les exemples sur
+lesquels ils ont été entrainés.
 
-Next, we call `nlp.update`, which predicts a batch of examples with the current
-weights.
+Tu peux généralement rendre le modèle plus précis en lui montrant des exemples
+de ton domaine.
 
-The model then checks the predictions against the correct answers, and decides
-how to change the weights to achieve better predictions next time.
+Souvent tu veux prédire des catégories qui sont spécifiques à ton problème, donc
+le modèle doit les apprendre.
 
-Finally, we make a small correction to the current weights and move on to the
-next batch of examples.
-
-We continue calling `nlp.update` for each batch of examples in the data.
-
----
-
-# How training works (2)
-
-<img src="/training.png" alt="Diagram of the training process" />
-
-- **Training data:** Examples and their annotations.
-- **Text:** The input text the model should predict a label for.
-- **Label:** The label the model should predict.
-- **Gradient:** How to change the weights.
-
-Notes: Here's an illustration showing the process.
-
-The training data are the examples we want to update the model with.
-
-The text should be a sentence, paragraph or longer document. For the best
-results, it should be similar to what the model will see at runtime.
-
-The label is what we want the model to predict. This can be a text category, or
-an entity span and its type.
-
-The gradient is how we should change the model to reduce the current error. It's
-computed when we compare the predicted label to the true label.
-
-After training, we can then save out an updated model and use it in our
-application.
+C'est essentiel pour la classification de texte, très utile pour la
+reconnaissance d'entités et un peu moins critique pour l'étiquetage de partie de
+discours et l'analyse de dépendances.
 
 ---
 
-# Example: Training the entity recognizer
+# Comment fonctionne l'apprentissage (1)
 
-- The entity recognizer tags words and phrases in context
-- Each token can only be part of one entity
-- Examples need to come with context
+1. **Initialise** les poids du modèle aléatoirement avec `nlp.begin_training`
+2. **Prédit** quelques exemples avec les poids courants en appelant `nlp.update`
+3. **Compare** les prédictions avec les vrais labels
+4. **Calcule** comment changer les poids pour améliorer les prédictions
+5. **Modifie** légèrement les poids
+6. Retourne au point 2.
+
+Notes : spaCy permet l'actualisation de modèles existants avec plus d'exemples,
+et l'entrainement de nouveaux modèles.
+
+Si nous ne démarrons pas avec un modèle pré-entrainé, nous initialisons d'abord
+les poids aléatoirement.
+
+Ensuite, nous appelons `nlp.update`, qui prédit une série d'exemples avec les
+poids courants.
+
+Le modèle compare ensuite les prédictions avec les bonnes réponses, et décide
+comment changer les poids pour effectuer de meilleures prédictions les fois
+suivantes.  
+
+Finalement, nous effectuons une petite correction aux poids courants et passons
+au lot suivant d'exemples.
+
+On continue d'appeler `nlp.update` sur chaque lot d'exemples dans les données.
+
+---
+
+# Comment fonctionne l'apprentissage (2)
+
+<img src="/training.png" alt="Diagramme du processus d'apprentissage" />
+
+- **Jeu d'apprentissage :** Exemples et leurs annotations.
+- **Texte :** Le texte d'entrée pour lequel le modèle devrait prédire un label.
+- **Label :** Le label que le modèle devrait prédire.
+- **Gradient :** Comment changer les poids.
+
+Notes : Voici une illustration montrant le processus.
+
+Les données d'apprentissage sont les exemples avec lesquels nous voulons
+actualiser le modèle.
+
+Le texte doit être une phrase, un paragraphe ou un document plus long. Pour un
+résultat optimal, il doit être similaire à ce que le modèle rencontrera en
+production.
+
+Le label est ce qu'on veut que le modèle prédise. Il peut s'agir d'une catégorie
+de texte, ou d'un span d'entité et son type.
+
+Le gradient est la manière dont nous devons modifier le modèle pour réduire
+l'erreur actuelle. It est calculé quand nous comparons les labels prédits avec
+les vrais labels.
+
+A l'issue de l'apprentissage, nous pouvons enregistrer un modèle actualisé et
+l'utiliser dans notre application.
+
+---
+
+# Exemple : Entrainement de l'entity recognizer
+
+- L'entity recognizer reconnait des mots et des phrases en contexte
+- Chaque token peut seulement faire partie d'une entité
+- Les exemples doivent être fournis avec le contexte
 
 ```python
 ("iPhone X is coming", {"entities": [(0, 8, "GADGET")]})
 ```
 
-- Texts with no entities are also important
+- Les textes dépourvus d'entités sont importants aussi
 
 ```python
 ("I need a new phone! Any tips?", {"entities": []})
 ```
 
-- **Goal:** teach the model to generalize
+- **But :** apprendre au modèle à généraliser
 
-Notes: Let's look at an example for a specific component: the entity recognizer.
+Notes : Jetons un oeil à un exemple pour un composant spécifique : l'entity
+recognizer.
 
-The entity recognizer takes a document and predicts phrases and their labels.
-This means that the training data needs to include texts, the entities they
-contain, and the entity labels.
+L'entity recognizer prend un document et prédit des phrases et leurs libellés.
+Cela signifie que les données d'apprentissage doivent comprendre des textes,
+les entités qu'ils contiennent et les libellés des entités.
 
-Entities can't overlap, so each token can only be part of one entity.
+Les entités ne peuvent pas se chevaucher, donc chaque token ne peut faire partie
+que d'une seule entité.
 
-Because the entity recognizer predicts entities _in context_, it also needs to
-be trained on entities _and_ their surrounding context.
+Comme l'entity recognizer prédit les entités _en contexte_, il a aussi besoin
+d'être entrainé sur des entités _et_ sur le contexte qui les environne.
 
-The easiest way to do this is to show the model a text and a list of character
-offsets. For example, "iPhone X" is a gadget, starts at character 0 and ends at
-character 8.
+La manière la plus facile pour le faire est de montrer au modèle un texte et une
+liste de positions de caractères. Par exemple , "iPhone X" est un gadget,
+commence au caractère 0 et finit au caractère 8.
 
-It's also very important for the model to learn words that _aren't_ entities.
+Il est également très important que le modèle apprennet des mots qui
+_ne sont pas_ des entités.
 
-In this case, the list of span annotations will be empty.
+Dans ce cas, la liste des annotations de spans sera vide.
 
-Our goal is to teach the model to recognize new entities in similar contexts,
-even if they weren't in the training data.
-
----
-
-# The training data
-
-- Examples of what we want the model to predict in context
-- Update an **existing model**: a few hundred to a few thousand examples
-- Train a **new category**: a few thousand to a million examples
-  - spaCy's English models: 2 million words
-- Usually created manually by human annotators
-- Can be semi-automated – for example, using spaCy's `Matcher`!
-
-Notes: The training data tells the model what we want it to predict. This could
-be texts and named entities we want to recognize, or tokens and their correct
-part-of-speech tags.
-
-To update an existing model, we can start with a few hundred to a few thousand
-examples.
-
-To train a new category we may need up to a million.
-
-spaCy's pre-trained English models for instance were trained on 2 million words
-labelled with part-of-speech tags, dependencies and named entities.
-
-Training data is usually created by humans who assign labels to texts.
-
-This is a lot of work, but can be semi-automated – for example, using spaCy's
-`Matcher`.
+Notre objectif est d'apprendre au modèle à reconnaitre de nouvelles entités dans
+des contextes similaires, même s'ils n'étaient pas présents dans les données
+d'apprentissage.
 
 ---
 
-# Let's practice!
+# Les données d'apprentissage
 
-Notes: Now it's time to get started and prepare the training data. Let's look at
-some examples and create a small dataset for a new entity type.
+- Exemples de ce qu'on veut que le modèle prédise en contexte
+- Actualise un **modèle existant** : quelques centaines à quelques milliers
+  d'exemples
+- Entraine une **nouvelle catégorie** : quelques milliers à un million
+  d'exemples
+  - les modèles anglais de spaCy : 2 millions de mots
+- Généralement créés manuellement par des annotateurs humains
+- Peut être semi-automatisé – par exemple, en utilisant le `Matcher` de spaCy !
+
+Notes : Les données d'apprentissage indiquent au modèle ce qu'on veut qu'il
+prédise. Il peut s'agir de textes ou d'entités nommées qu'on veut qu'il
+reconnaisse, ou de tokens et de leur étiquetage correct de partie de discours.
+
+Pour mettre à jour un modèle existant, on peut commencer avec quelques centaines
+à quelques milliers d'exemples.
+
+Pour entrainer une nouvelle catégorie, cela peut en nécessiter jusqu'à un
+million.
+
+Les modèles anglais de spaCy ont par exemple été entrainés sur 2 millions de
+mots libellés avec les étiquettes de partie de discours, les relations de
+dépendance et les entités nommées.
+
+Les données d'apprentissage sont généralement créées par des humains qui
+affectent des libellés à des textes.
+
+C'est beaucoup de travail, mais il peut être semi-automatisé – par exemple, en
+utilisant le `Matcher` de spaCy.
+
+---
+
+# Pratiquons !
+
+Notes : Maintenant il est temps de commencer à préparer les données
+d'apprentissage. Jetons un oeil à quelques exemples et créons un petit jeu de
+données pour un nouveau type d'entité.

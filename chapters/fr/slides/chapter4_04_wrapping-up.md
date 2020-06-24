@@ -2,113 +2,125 @@
 type: slides
 ---
 
-# Wrapping up
+# Résumé
 
-Notes: Congratulations – you've made it to the end of the course!
-
----
-
-# Your new spaCy skills
-
-- Extract **linguistic features**: part-of-speech tags, dependencies, named
-  entities
-- Work with pre-trained **statistical models**
-- Find words and phrases using `Matcher` and `PhraseMatcher` **match rules**
-- Best practices for working with **data structures** `Doc`, `Token` `Span`,
-  `Vocab`, `Lexeme`
-- Find **semantic similarities** using **word vectors**
-- Write custom **pipeline components** with **extension attributes**
-- **Scale up** your spaCy pipelines and make them fast
-- Create **training data** for spaCy' statistical models
-- **Train and update** spaCy's neural network models with new data
-
-Notes: Here's an overview of all the new skills you learned so far:
-
-In the first chapter, you learned how to extract linguistic features like
-part-of-speech tags, syntactic dependencies and named entities, and how to work
-with pre-trained statistical models.
-
-You also learned to write powerful match patterns to extract words and phrases
-using spaCy's matcher and phrase matcher.
-
-Chapter 2 was all about information extraction, and you learned how to work with
-the data structures, the `Doc`, `Token` and `Span`, as well as the `Vocab` and
-lexical entries.
-
-You also used spaCy to predict semantic similarities using word vectors.
-
-In chapter 3, you got some more insights into spaCy's pipeline, and learned to
-write your own custom pipeline components that modify the doc.
-
-You also created your own custom extension attributes for docs, tokens and
-spans, and learned about processing streams and making your pipeline faster.
-
-Finally, in chapter 4, you learned about training and updating spaCy's
-statistical models, specifically the entity recognizer.
-
-You learned some useful tricks for how to create training data, and how to
-design your label scheme to get the best results.
+Notes : Félicitations – tu as atteint la fin du cours !
 
 ---
 
-# More things to do with spaCy (1)
+# Tes nouvelles compétences spaCy
 
-- [Training and updating](https://spacy.io/usage/training) other pipeline
-  components
-  - Part-of-speech tagger
-  - Dependency parser
-  - Text classifier
+- Extraction de **caractéristiques linguistiques** : partie de discours,
+  dépendances, entités nommées
+- Travail avec **modèles statistiques** pré-entrainés
+- Recherche de mots et de phrases selon des **règles de correspondance ** avec
+  `Matcher` et `PhraseMatcher`
+- Meilleures pratiques pour l'emploi des **structures de données ** `Doc`,
+  `Token` `Span`, `Vocab`, `Lexeme`
+- Recherche de **similarités sémantiques** avec les **vecteurs de mots**
+- Ecriture de **composants de pipeline** avec des **extensions d'attributs**
+- **Accroissement d'échelle** des pipelines spaCy pour les rendre rapides
+- Création de **données d'apprentissage** pour les modèles statistiques de spaCy
+- **Entrainement et actualisation** des modèles de réseaux de neurones de spaCy
+  avec de nouvelles données
 
-Notes: Of course, there's a lot more that spaCy can do that we didn't get to
-cover in this course.
+Notes : Voici une vue d'ensemble de toutes les nouvelles compétences que tu as
+apprises jusqu'à présent :
 
-While we focused mostly on training the entity recognizer, you can also train
-and update the other statistical pipeline components like the part-of-speech
-tagger and dependency parser.
+Dans le premier chapitre, tu as appris comment extraire des caractéristiques
+linguistiques comme les étiquettes de partie de discours, les dépendances
+syntaxiques et les entités nommées, et comment travailler avec des modèles
+pré-entrainés.
 
-Another useful pipeline component is the text classifier, which can learn to
-predict labels that apply to the whole text. It's not part of the pre-trained
-models, but you can add it to an existing model and train it on your own data.
+Tu as aussi appris à écrire des règles de correspondances puissantes pour
+extraire des mots et des phrases en utilisant le matcher et le phrase matcher de
+spaCy.
+
+Le chapitre 2 était consacré à l'extraction d'informations, et tu as appris
+comment travailler avec les structures de données, les `Doc`, `Token` et `Span`,
+ainsi qu'avec le `Vocab` et les éléments lexicaux.
+
+Tu as aussi utilisé spaCy pour prédire des similarités sémantiques en utilisant
+des vecteurs de mots.
+
+Dans le chapitre 3, tu as acquis des connaissances plus complètes sur le
+pipeline de spaCy, et tu as appris à écrire tes propres composants de pipeline
+personnalisés qui modifient le doc.
+
+Tu as également créé tes propres extensions d'attributs personnalisées pour des
+docs, des tokens et des spans, et tu as appris à traiter des flux et à rendre
+tes pipelines plus rapides.
+
+Enfin, dans le chapitre 4, tu as appris à entrainer et à actualiser les modèles
+statistiques de spaCy, spécifiquement l'entity recognizer.
+
+Tu as appris quelques trucs utiles sur la manière de créer des données
+d'apprentissage, et comment concevoir ton schéma de labellisation pour obtenir
+les meilleurs résultats.
 
 ---
 
-# More things to do with spaCy (2)
+# D'autres choses à faire avec spaCy (1)
 
-- [Customizing the tokenizer](https://spacy.io/usage/linguistic-features#tokenization)
-  - Adding rules and exceptions to split text differently
-- [Adding or improving support for other languages](https://spacy.io/usage/adding-languages)
-  - 55+ languages currently
-  - Lots of room for improvement and more languages
-  - Allows training models for other languages
+- [Entrainement et actualisation](https://spacy.io/usage/training) d'autres
+  composants de pipeline
+  - Etiqueteur de partie de discours
+  - Analyseur de dépendances
+  - Classificateur de texte
 
-Notes: In this course, we basically accepted the default tokenization as it is.
-But you don't have to!
+Notes : Bien sur, il y a beaucoup plus de choses que spaCy peut faire et que
+nous n'avons pas couvertes dans ce cours.
 
-spaCy lets you customize the rules used to determine where and how to split the
-text.
+Si nous nous sommes surtout concentrés sur l'entrainement de la reconnaissance
+d'entités, tu peux aussi entrainer et actualiser les autres composants
+statistiques du pipeline comme l'étiqueteur de partie de discours et l'analyseur
+de dépendances.
 
-You can also add and improve the support for other languages.
-
-While spaCy already supports tokenization for many different languages, there's
-still a lot of room for improvement.
-
-Supporting tokenization for a new language is the first step towards being able
-to train a statistical model.
+Le classificateur de texte est un autre composant de pipeline utile, qui peut
+apprendre à prédire des labels s'appliquant à tout un texte. Cela ne fait pas
+partie des modèles pré-entrainés, mais tu peux l'ajouter à un modèle existant
+et l'entrainer sur tes propres données.
 
 ---
 
-# See the website for more info and documentation!
+# D'autres choses à faire avec spaCy (2)
 
-<img src="/website.png" alt="Laptop showing the spacy.io website" width="50%" />
+- [Personnalisation du tokeniseur](https://spacy.io/usage/linguistic-features#tokenization)
+  - Ajout de règles et d'exceptions pour scinder différemment le texte
+- [Ajout ou amélioration du support pour d'autres langues](https://spacy.io/usage/adding-languages)
+  - Plus de 55 langues actuellement
+  - Marge de progression importante pour des améliorations et plus de langues
+  - Possibilité d'entrainer des modèles pour d'autres langues
+
+Notes : Dans ce cours, nous avons simplement accepté la tokénisation par défaut
+telle qu'elle était. Mais tu n'es pas obligé !
+
+spaCy te permet de personnaliser les règles utilisés pour déterminer où et
+comment scinder le texte.
+
+Tu peux aussi ajouter et améliorer le support pour d'autres langues.
+
+Si spaCy permet déjà la tokénisation pour beaucoup de langues différentes, il y
+a toujours des possibilités d'améliorations.
+
+La gestion de la tokénisation pour une nouvelle langue est la première étape
+pour afin de pouvoir entrainer un modèle statistique.
+
+---
+
+# Consulte le site web pour plus d'info et la documentation !
+
+<img src="/website.png" alt="Ordinateur portable montrant le site web spacy.io" width="50%" />
 
 👉 [spacy.io](https://spacy.io)
 
-Notes: For more examples, tutorials and in-depth API documentation, check out
-the spaCy website.
+Notes : Pour plus d'exemples, de tutoriels et une documentation complète sur
+l'API, consulte le site web de spaCy.
 
 ---
 
-# Thanks and see you soon! 👋
+# Merci et à bientôt ! 👋
 
-Notes: Thanks so much for taking this course! I hope you had fun, and I'm
-excited to hear about the cool things you end up building with spaCy.
+Notes : Merci beaucoup d'avoir suivi ce cours ! J'espère que tu t'es amusé, et
+j'ai hâte d'apprendre les trucs cools que tu auras réussi à construire avec
+spaCy.
