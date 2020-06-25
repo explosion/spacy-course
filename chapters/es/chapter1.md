@@ -12,9 +12,9 @@ type: chapter
 id: 1
 ---
 
-<exercise id="1" title="Introducción a spaCy" type="slides">
+<exercise id="1" title="Introducción a spaCy" type="slides,video">
 
-<slides source="chapter1_01_introduction-to-spacy">
+<slides source="chapter1_01_introduction-to-spacy" start="0:18" end="3:51">
 </slides>
 
 </exercise>
@@ -51,7 +51,8 @@ id: 1
 
 Cuando llamas `nlp` sobre un string, spaCy primero genera tokens del texto y
 crea un objeto de documento. En este ejercicio aprenderás más sobre el `Doc`,
-así como de sus <abbr title="En español: representaciones o vistas.">views</abbr> `Token` y
+así como de sus
+<abbr title="En español: representaciones o vistas.">views</abbr> `Token` y
 `Span`.
 
 ### Paso 1
@@ -77,7 +78,8 @@ no 1.
 - Procesa el texto y genera un
   <abbr title="En español: ejemplar, a veces referido incorrectamente como instancia.">instance</abbr>
   de un objeto `Doc` en la variable `doc`.
-- Crea un slice de `Doc` para los tokens "panteras negras" y "panteras negras y los leones".
+- Crea un slice de `Doc` para los tokens "panteras negras" y "panteras negras y
+  los leones".
 
 <codeblock id="01_03_02">
 
@@ -100,7 +102,8 @@ subsecuentes: un número y un símbolo de porcentaje.
   parece un número.
 - Toma el token que sigue al token actual en el documento. El índice del
   siguiente token en el `doc` es `token.i + 1`.
-- Revisa si el atributo `text` del siguiente token es un símbolo de porcentaje "%".
+- Revisa si el atributo `text` del siguiente token es un símbolo de porcentaje
+  "%".
 
 <codeblock id="01_04">
 
@@ -111,9 +114,9 @@ ejemplo, `doc[5]` es el token en el índice 5.
 
 </exercise>
 
-<exercise id="5" title="Modelos estadísticos" type="slides">
+<exercise id="5" title="Modelos estadísticos" type="slides,video">
 
-<slides source="chapter1_02_statistical-models">
+<slides source="chapter1_02_statistical-models" start="4:03" end="8:35">
 </slides>
 
 </exercise>
@@ -182,7 +185,9 @@ correcto.
 Ahora puedes probar uno de los paquetes de modelos pre-entrenados de spaCy y ver
 sus predicciones en acción. ¡También puedes intentarlo con tu propio texto! Para
 averiguar lo que cada tag o label significa puedes llamar a `spacy.explain` en
-el <abbr title="En español: bucle, un bloque de código que se repite.">loop</abbr>. Por ejemplo, `spacy.explain("PROPN")` o `spacy.explain("GPE")`.
+el
+<abbr title="En español: bucle, un bloque de código que se repite.">loop</abbr>.
+Por ejemplo, `spacy.explain("PROPN")` o `spacy.explain("GPE")`.
 
 ### Parte 1
 
@@ -238,9 +243,9 @@ procesando. Veamos un ejemplo.
 
 </exercise>
 
-<exercise id="10" title="Encontrando patrones basados en reglas" type="slides">
+<exercise id="10" title="Encontrando patrones basados en reglas" type="slides,video">
 
-<slides source="chapter1_03_rule-based-matching">
+<slides source="chapter1_03_rule-based-matching" start="8:472" end="13:375">
 </slides>
 
 </exercise>
@@ -276,8 +281,8 @@ el texto.
 
 <exercise id="12" title="Escribiendo patrones">
 
-En este ejercicio practicarás escribir patrones más complejos usando
-diferentes atributos de los tokens y operadores.
+En este ejercicio practicarás escribir patrones más complejos usando diferentes
+atributos de los tokens y operadores.
 
 ### Parte 1
 
@@ -312,7 +317,8 @@ diferentes atributos de los tokens y operadores.
 
 ### Parte 3
 
-- Escribe **un** patrón que encuentre un sustantivo `"NOUN"` seguido de uno o dos adjetivos `"ADJ"`(un adjetivo y un adjetivo opcional).
+- Escribe **un** patrón que encuentre un sustantivo `"NOUN"` seguido de uno o
+  dos adjetivos `"ADJ"`(un adjetivo y un adjetivo opcional).
 
 <codeblock id="01_12_03">
 

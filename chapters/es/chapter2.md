@@ -11,9 +11,9 @@ type: chapter
 id: 2
 ---
 
-<exercise id="1" title="Estructuras de datos (1)" type="slides">
+<exercise id="1" title="Estructuras de datos (1)" type="slides,video">
 
-<slides source="chapter2_01_data-structures-1">
+<slides source="chapter2_01_data-structures-1" start="13:48" end="15:55">
 </slides>
 
 </exercise>
@@ -28,22 +28,21 @@ id: 2
 <codeblock id="02_02_01">
 
 - Puedes usar el string store en `nlp.vocab.strings` como un diccionario de
-  Python normal. Por ejemplo, `nlp.vocab.strings["unicornio"]` devolverá el hash y
-  buscar el hash devolverá el string `"unicornio"`.
+  Python normal. Por ejemplo, `nlp.vocab.strings["unicornio"]` devolverá el hash
+  y buscar el hash devolverá el string `"unicornio"`.
 
 </codeblock>
 
 ### Parte 2
 
-- Busca el label del string "PER" en `nlp.vocab.strings` para obtener el
-  hash.
+- Busca el label del string "PER" en `nlp.vocab.strings` para obtener el hash.
 - Busca el hash para obtener el string.
 
 <codeblock id="02_02_02">
 
 - Puedes usar el string store en `nlp.vocab.strings` como un diccionario de
-  Python normal. Por ejemplo, `nlp.vocab.strings["unicornio"]` devolverá el hash y
-  buscar el hash devolverá el string `"unicornio"`.
+  Python normal. Por ejemplo, `nlp.vocab.strings["unicornio"]` devolverá el hash
+  y buscar el hash devolverá el string `"unicornio"`.
 
 </codeblock>
 
@@ -97,9 +96,9 @@ existente, incluyendo el vocabulario.
 
 </exercise>
 
-<exercise id="4" title="Estructuras de datos (2)" type="slides">
+<exercise id="4" title="Estructuras de datos (2)" type="slides,video">
 
-<slides source="chapter2_02_data-structures-2">
+<slides source="chapter2_02_data-structures-2" start="16:06" end="17:56">
 </slides>
 
 </exercise>
@@ -117,8 +116,8 @@ existente, incluyendo el vocabulario.
 <codeblock id="02_05_01">
 
 La clase `Doc` recibe 3 argumentos: el vocabulario compartido (generalmente
-`nlp.vocab`), una lista de `words` y una lista de `spaces`, ( valores
-booleanos que indican si una palabra está seguida de un espacio o no).
+`nlp.vocab`), una lista de `words` y una lista de `spaces`, ( valores booleanos
+que indican si una palabra está seguida de un espacio o no).
 
 </codeblock>
 
@@ -154,14 +153,13 @@ normalmente en spaCy puedes probarlo e imprimir los tokens de
 <exercise id="6" title="Docs, spans y entidades desde cero">
 
 En este ejercicio crearás los objetos `Doc` y `Span` manualmente y actualizarás
-las entidades nombradas - igual que lo hace spaCy detrás de cámaras. Un
-objeto `nlp` compartido ya fue creado.
+las entidades nombradas - igual que lo hace spaCy detrás de cámaras. Un objeto
+`nlp` compartido ya fue creado.
 
 - Importa las clases `Doc` y `Span` desde `spacy.tokens`.
 - Usa la clase `Doc` directamente para crear un `doc` a partir de palabras y
   espacios.
-- Crea un `Span` para "David Bowie" desde el `doc` y asígnalo al label
-  `"PER"`.
+- Crea un `Span` para "David Bowie" desde el `doc` y asígnalo al label `"PER"`.
 - Sobrescribe los `doc.ents` con una lista de una entidad, el `Span` "David
   Bowie".
 
@@ -255,9 +253,9 @@ correcto para revisar los nombres propios.
 
 </exercise>
 
-<exercise id="8" title="Word vectors y similitud semántica" type="slides">
+<exercise id="8" title="Word vectors y similitud semántica" type="slides,video">
 
-<slides source="chapter2_03_word-vectors-similarity">
+<slides source="chapter2_03_word-vectors-similarity" start="18:075" end="21:508">
 </slides>
 
 </exercise>
@@ -269,8 +267,7 @@ grande, que incluye al rededor de 20.000 word vectors. El modelo ya está
 pre-instalado.
 
 - Carga el modelo mediano `"es_core_news_md"` con word vectors.
-- Imprime en pantalla el vector de `"banano"` usando el atributo
-  `token.vector`.
+- Imprime en pantalla el vector de `"banano"` usando el atributo `token.vector`.
 
 <codeblock id="02_09">
 
@@ -289,8 +286,8 @@ En este ejercicio usarás el método `similarity` de spaCy para comparar objetos
 
 ### Parte 1
 
-- Usa el método `doc.similarity` para comparar el `doc1` con el `doc2` e imprime el
-  resultado en pantalla.
+- Usa el método `doc.similarity` para comparar el `doc1` con el `doc2` e imprime
+  el resultado en pantalla.
 
 <codeblock id="02_10_01">
 
@@ -320,9 +317,9 @@ En este ejercicio usarás el método `similarity` de spaCy para comparar objetos
 
 </exercise>
 
-<exercise id="11" title="Combinando modelos y reglas" type="slides">
+<exercise id="11" title="Combinando modelos y reglas" type="slides,video">
 
-<slides source="chapter2_04_models-rules">
+<slides source="chapter2_04_models-rules" start="22:015" end="25:308">
 </slides>
 
 </exercise>
@@ -359,8 +356,8 @@ cada diccionario en el patrón describe un token.
 <opt text='A los tokens les está faltando un operador <code>"OP"</code> para indicar que deberían ser encontrados una vez exactamente.'>
 
 Por defecto, todos los tokens descritos por un patrón van a ser encontrados una
-vez. Los operadores solo tienen que ser añadidos para cambiar este comportamiento -
-por ejemplo, para encontrar cero o más veces.
+vez. Los operadores solo tienen que ser añadidos para cambiar este
+comportamiento - por ejemplo, para encontrar cero o más veces.
 
 </opt>
 
@@ -378,14 +375,15 @@ el patrón para que cada diccionario represente un token.
 - Edita el `pattern1` para que encuentre correctamente todas las menciones de
   una cantidad de tiempo, más un sustantivo.
 - Edita el `pattern2` para que encuentre correctamente todas las menciones de
-  `"pac-man"`, sin importar si son minúsculas o mayúsculas, más una palabra en mayúsculas.
+  `"pac-man"`, sin importar si son minúsculas o mayúsculas, más una palabra en
+  mayúsculas.
 
 <codeblock id="02_13">
 
 - Procesa los strings que deben ser encontrados con el objeto `nlp` - for
   ejemplo, `[token.text for token in nlp("pac-man Live")]`.
-- Inspecciona los tokens y asegúrate de que cada diccionario en el patrón describa
-  correctamente a un token.
+- Inspecciona los tokens y asegúrate de que cada diccionario en el patrón
+  describa correctamente a un token.
 
 </codeblock>
 
@@ -400,8 +398,8 @@ tenemos una lista de países, así que usémoslos como base para nuestro script
 para extraer información. La lista de nombres en strings está disponible en la
 variable `COUNTRIES`.
 
-- Importa el `PhraseMatcher` e inicialízalo con el `vocab` compartido como la variable
-  `matcher`.
+- Importa el `PhraseMatcher` e inicialízalo con el `vocab` compartido como la
+  variable `matcher`.
 - Añade los patrones de frases y llama al matcher sobre el `doc`.
 
 <codeblock id="02_14">
@@ -419,7 +417,8 @@ para encontrar nombres de países en un texto. Usemos ese buscador de países en
 un texto más largo. Analiza la sintaxis y actualiza las entidades del documento
 con los países resultantes.
 
-- Itera sobre los resultados y crea un `Span` con el label `"LOC"` (Nombres de ubicaciones definidas política o geográficamente).
+- Itera sobre los resultados y crea un `Span` con el label `"LOC"` (Nombres de
+  ubicaciones definidas política o geográficamente).
 - Sobrescribe las entidades en el `doc.ents` y añade el span resultante.
 - Obtén el token cabeza de la raíz del span.
 - Imprime en pantalla el texto del token cabeza y el span.
