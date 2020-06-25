@@ -101,6 +101,7 @@
         "slogan": "Un curso en línea gratis",
         "description": "spaCy es un paquete moderno de Python para hacer Procesamiento de Lenguaje Natural de potencia industrial. En este curso en línea, interactivo y gratuito, aprenderás a usar spaCy para construir sistemas avanzados de comprensión de lenguaje natural usando enfoques basados en reglas y en machine learning.",
         "bio": "Soy Ines, una de las programadoras principales de spaCy y cofundadora de Explosion. Me especializo en herramientas modernas de desarrollo para AI, Machine Learning y NLP. También amo construir cosas para la web.",
+        "video": "RNiLVCE5d4k",
         "footerLinks": [
             { "text": "Website de spaCy", "url": "https://spacy.io" },
             { "text": "Código fuente", "url": "https://github.com/ines/spacy-course" },
@@ -127,7 +128,10 @@
             "launchingDocker": "Launching Docker container en",
             "reconnectingDocker": "Reconectando con el Docker container en",
             "prevChapter": " Capítulo anterior",
-            "nextChapter": "Siguiente capítulo"
+            "nextChapter": "Siguiente capítulo",
+            "start": "Inicio",
+            "video": "Vídeo",
+            "slides": "Diapositivas"
         }
     },
     "ja": {
