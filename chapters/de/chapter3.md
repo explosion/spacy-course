@@ -157,7 +157,7 @@ nicht geeignet, um neue Sprachen hinzuzufügen.
 
 <exercise id="6" title="Einfache Komponenten">
 
-Dieses Beispiel zeigt eine benutzerdefinierte Komponente, die die Länge der
+Dieses Beispiel zeigt eine benutzerdefinierte Komponente, die die Anzahl der
 Tokens eines Dokuments druckt. Kannst du den Code vervollständigen?
 
 - Ergänze die Funktion der Komponente mit der Länge des `doc`s.
