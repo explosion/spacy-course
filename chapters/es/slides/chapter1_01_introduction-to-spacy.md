@@ -8,6 +8,8 @@ Notes: ¡Hola, soy Ines! Soy una de las programadoras principales de spaCy, un p
 
 En esta lección vamos a ver los conceptos más importantes de spaCy y cómo comenzar a usarlo.
 
+Antes de comenzar, algo que debes tener en cuenta es que a lo largo del curso usaremos algunas palabras técnicas en inglés. Puedes buscar su definición en las explicaciones de las diapositivas, moviendo tu mouse sobre las palabras resaltadas.
+
 ---
 
 # El objeto nlp
@@ -51,7 +53,7 @@ Mundo
 !
 ```
 
-Notes: Cuando procesas un <abbr title="El tipo de dato de Python para texto.">string</abbr> de texto con el objeto `nlp`, spaCy crea un objeto `Doc` - de "documento". 
+Notes: Cuando procesas un <abbr title="El tipo de dato de Python para texto.">string</abbr> de texto con el objeto `nlp`, spaCy crea un objeto `Doc` - de "documento".
 El Doc te permite acceder a la información sobre el texto en una forma estructurada y sin perder información.
 
 El Doc se comporta como una secuencia normal de Python y te permite iterar sobre sus tokens u obtener un token con su índice. Más adelante hablaremos más de ello.
