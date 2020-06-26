@@ -1,11 +1,11 @@
 import spacy
 
-# Create a blank "en" model
+# Crée un modèle "en" vide
 nlp = ____
 
-# Create a new entity recognizer and add it to the pipeline
+# Crée un nouvel entity recognizer et ajoute-le au pipeline
 ner = ____
 ____
 
-# Add the label "GADGET" to the entity recognizer
+# Ajoute le label "GADGET" à l'entity recognizer
 ____.____

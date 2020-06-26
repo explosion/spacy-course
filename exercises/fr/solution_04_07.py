@@ -10,20 +10,20 @@ ner = nlp.create_pipe("ner")
 nlp.add_pipe(ner)
 ner.add_label("GADGET")
 
-# Start the training
+# Commence l'apprentissage
 nlp.begin_training()
 
-# Loop for 10 iterations
+# Boucle pour 10 itérations
 for itn in range(10):
-    # Shuffle the training data
+    # Mélange les données d'apprentissage
     random.shuffle(TRAINING_DATA)
     losses = {}
 
-    # Batch the examples and iterate over them
+    # Répartis les exemples en lots et itère dessus
     for batch in spacy.util.minibatch(TRAINING_DATA, size=2):
         texts = [text for text, entities in batch]
         annotations = [entities for text, entities in batch]
 
-        # Update the model
+        # Actualise le modèle
         nlp.update(texts, annotations, losses=losses)
     print(losses)

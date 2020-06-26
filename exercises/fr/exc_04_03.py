@@ -8,13 +8,13 @@ with open("exercises/en/iphone.json") as f:
 nlp = English()
 matcher = Matcher(nlp.vocab)
 
-# Two tokens whose lowercase forms match "iphone" and "x"
+# Deux tokens dont les formes majuscules correspondent à "iphone" et "x"
 pattern1 = [{____: ____}, {____: ____}]
 
-# Token whose lowercase form matches "iphone" and a digit
+# Tokens dont les formes majuscules correspondent à "iphone" et un nombre
 pattern2 = [{____: ____}, {____: ____}]
 
-# Add patterns to the matcher and check the result
+# Ajoute les motifs au matcher et vérifie le résultat
 matcher.add("GADGET", None, pattern1, pattern2)
 for doc in nlp.pipe(TEXTS):
     print([doc[start:end] for match_id, start, end in matcher(doc)])

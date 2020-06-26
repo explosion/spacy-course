@@ -1,29 +1,30 @@
 def test():
-    assert len(TRAINING_DATA) == 4, "Training data doesn't match – expected 4 examples."
+    assert len(TRAINING_DATA) == 4, "Les données d'apprentissage ne correspondent pas – attendu 4 exemples."
     assert all(
         len(entry) == 2 and isinstance(entry[1], dict) for entry in TRAINING_DATA
-    ), "Incorrect training data format. Expected a list of tuples where the second element is a dict."
+    ), "Format incorrect des données d'apprentissage. Attendu une liste de tuples dont le second élément est un dict."
     assert all(
         entry[1].get("entities") for entry in TRAINING_DATA
-    ), "All annotations in the training data should include entities."
+    ), "Toutes les annotations des données d'apprentissage doivent comporter des entités."
     assert TRAINING_DATA[0][1]["entities"] == [
         (10, 19, "GPE")
-    ], "Double-check the entities in the first example."
+    ], "Vérifie les entités dans le premier exemple."
     assert TRAINING_DATA[1][1]["entities"] == [
         (17, 22, "GPE")
-    ], "Double-check the entities in the second example."
+    ], "Vérifie les entités dans le deuxième exemple."
     assert TRAINING_DATA[2][1]["entities"] == [
         (15, 20, "GPE"),
         (24, 32, "GPE"),
-    ], "Double-check the entities in the third example."
+    ], "Vérifie les entités dans le troisième exemple."
     assert TRAINING_DATA[3][1]["entities"] == [
         (0, 6, "GPE")
-    ], "Double-check the entities in the fourth example."
+    ], "Vérifie les entités dans le quatrième exemple."
 
     __msg__.good(
-        "Great work! Once the model achieves good results on detecting GPE "
-        "entities in the traveler reviews, you could add a rule-based "
-        "component to determine whether the entity is a tourist destination in "
-        "this context. For example, you could resolve the entities types back "
-        "to a knowledge base or look them up in a travel wiki."
+        "Super boulot ! Une fois que le modèle fournit des bons résultats pour "
+        "la détection d'entités GPE dans les évaluations de voyageurs, tu "
+        "pourrais ajouter un composant basé sur une règle pour déterminer si "
+        "l'entité est une destination touristique dans ce contexte. Par "
+        "exemple, tu pourrais recouper les entités avec une base de données ou "
+        "les rechercher dans un wiki sur le voyage."
     )

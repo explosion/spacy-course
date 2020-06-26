@@ -8,5 +8,5 @@ TRAINING_DATA = [
         "Reddit founder Alexis Ohanian gave away two Metallica tickets to fans",
         {"entities": [(____, ___, "WEBSITE")]},
     ),
-    # And so on...
+    # Et ainsi de suite...
 ]
