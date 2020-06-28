@@ -14,13 +14,12 @@ dans un texte.
 
 - Recherche de correspondances sur les objets `Doc`, pas seulement sur les
   chaines de caractères
-- Recherche de correspondances sur les tokens les attriburts des tokens
+- Recherche de correspondances sur les tokens et les attributs des tokens
 - Utilisation des prédictions du modèle
 - Exemple: "duck" (verbe) vs. "duck" (nom)
 
 Notes : par rapport aux expressions régulières, le matcher fonctionne avec des
 objets `Doc` et `Token` et pas simplement des chaines de caractères.
-objects instead of only strings.
 
 Il est également plus flexible : tu peux rechercher des textes mais aussi
 d'autres attributs lexicaux.
@@ -47,7 +46,7 @@ Par exemple, trouve le mot "duck" seulement si c'est un verbe, pas un nom.
 [{"LOWER": "iphone"}, {"LOWER": "x"}]
 ```
 
-- Recherche de n'importe quels attributs des tokens
+- Recherche de n'importe quel attribut des tokens
 
 ```python
 [{"LEMMA": "buy"}, {"POS": "NOUN"}]
@@ -64,7 +63,7 @@ recherchons deux tokens dont les formes minuscules sont "iphone" et "x".
 
 Nous pouvons même écrire des motifs utilisant des attributs prédits par le
 modèle. Ici, nous recherchons un token avec le lemme "buy", plus un nom. Le
-lemme est dans sa forme de base, donc ce motif trouvera des phrases comme
+lemme est la forme de base, donc ce motif trouvera des phrases comme
 "buying milk" ou "bought flowers".
 
 ---
@@ -97,7 +96,7 @@ matches = matcher(doc)
 Notes : Pour utiliser un motif, nous devons d'abord importer le matcher à partir
 de `spacy.matcher`.
 
-Nous chargons également un modèle et créons l'objet `nlp`.
+Nous chargeons également un modèle et créons l'objet `nlp`.
 
 Le matcher est initialisé avec le vocabulaire partagé, `nlp.vocab`. Tu en sauras
 plus là dessus par la suite – pour le moment, rappelle-toi seulement de toujours
@@ -124,7 +123,7 @@ matches = matcher(doc)
 
 # Itère sur les correspondances
 for match_id, start, end in matches:
-    # Get the matched span
+    # Obtiens le span en correspondance
     matched_span = doc[start:end]
     print(matched_span.text)
 ```
@@ -134,17 +133,17 @@ iPhone X
 ```
 
 - `match_id`: valeur de hash du nom du motif
-- `start`: index de début du span en correspondance
-- `end`: index de fin du span en correspondance
+- `start`: indice de début du span en correspondance
+- `end`: indice de fin du span en correspondance
 
 Notes : Quand tu appelles le matcher sur un doc, il retourne une liste de
 tuples.
 
-Chaque tuple contient trois valeurs : l'ID du motif, l'index de début et l'index
-de fin du span en correspondance.
+Chaque tuple contient trois valeurs : l'ID du motif, l'indice de début et
+l'indice de fin du span en correspondance.
 
 Cela signifie que nous pouvons itérer sur les correspondances et créer un objet
-`Span` object: une portion du doc depuis l'index de début jusqu'à l'index de
+`Span` object: une portion du doc depuis l'indice de début jusqu'à l'indice de
 fin.
 
 ---
@@ -172,9 +171,9 @@ doc = nlp("2018 FIFA World Cup: France won!")
 Notes : Voici un exemple de motif un peu plus complexe utilisant des attributs
 lexicaux.
 
-Nous recherchons cinq tokens:
+Nous recherchons cinq tokens :
 
-Un token composé uniquement de chiffres.
+Un token composé uniquement de valeurs numériques.
 
 Trois tokens insensibles à la casse pour "fifa", "world" et "cup".
 
@@ -202,7 +201,7 @@ loved dogs
 love cats
 ```
 
-Note : Dans cet exemple, nous recherchons deux tokens:
+Note : Dans cet exemple, nous recherchons deux tokens :
 
 Un verbe avec le lemme "love", suivi par un nom.
 
@@ -215,7 +214,7 @@ Ce motif trouvera "loved dogs" et "love cats".
 ```python
 pattern = [
     {"LEMMA": "buy"},
-    {"POS": "DET", "OP": "?"},  # optionnel: trouve 0 or 1 fois
+    {"POS": "DET", "OP": "?"},  # optionnel : trouve 0 or 1 fois
     {"POS": "NOUN"}
 ]
 ```
@@ -263,6 +262,6 @@ ajoutent aussi de la complexité - donc utilise-les à bon escient.
 
 # Passons à la pratique !
 
-Notes : La recherche de correspondances basée sur les motifs ouvrent de
+Notes : La recherche de correspondances basée sur les motifs ouvre de
 nombreuses nouvelles possibilités d'extraction d'informations. Alors essayons et
 écrivons quelques motifs !

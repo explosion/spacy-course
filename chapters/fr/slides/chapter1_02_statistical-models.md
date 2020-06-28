@@ -16,7 +16,7 @@ Dans cette leçon, tu vas en apprendre plus les modèles statistiques de spaCy.
   - Étiquetage de partie du discours
   - Dépendances syntaxiques
   - Entités nommées
-- Entrainés sur des exemples de textes étiquetés
+- Entrainés sur des exemples de textes labellisés
 - Peuvent être améliorés avec des exemples supplémentaires
 
 Notes : Certaines des choses les plus intéressantes à analyser dépendent du
@@ -27,7 +27,7 @@ Les modèles statistiques permettent à spaCy d'effectuer des prédictions en
 contexte. Cela inclut généralement les étiquettes de partie de discours, les
 dépendances syntaxiques et les entités nommées..
 
-Les modèles sont entrainés sur de larges jeux de données de textes étiquetés.
+Les modèles sont entrainés sur de larges jeux de données de textes labellisés.
 
 Ils peuvent être actualisés avec davantage d'exemples pour améliorer leurs
 prédictions - par exemple, pour obtenir de meilleurs résultats sur tes propres
@@ -150,7 +150,7 @@ voir comme le token parent auquel le mot considéré se rattache.
 | **det**   | déterminant (article)     | the     |
 
 Notes: Pour décrire les dépendances syntaxiques, spaCy utilise un système de
-labelisation standardisé. Voici un exemple avec quelques labels courants :
+labellisation standardisé. Voici un exemple avec quelques labels courants :
 
 Le pronom "She" est le sujet rattaché au verbe – ici, "ate".
 
@@ -171,7 +171,7 @@ doc = nlp("Apple is looking at buying U.K. startup for $1 billion")
 
 # Itère sur les entités prédites
 for ent in doc.ents:
-    # Affiche le texte de l'entité et son étiquette
+    # Affiche le texte de l'entité et son label
     print(ent.text, ent.label_)
 ```
 
@@ -188,7 +188,7 @@ La propriété `doc.ents` vous permet d'accéder aux entités nommées prédites
 le modèle.
 
 Elle retourne un itérateur d'objets `Span`, donc nous pouvons imprimer le texte
-de l'entité et son étiquette en utilisant l'attribut `.label_`.
+de l'entité et son label en utilisant l'attribut `.label_`.
 
 Dans notre exemple, le modèle a correctement prédit "Apple" en tant
 qu'organisation, "U.K." comme entité géopolitique et "\$1 billion" comme somme
@@ -225,14 +225,14 @@ spacy.explain("dobj")
 ```
 
 Notes : Une petite astuce : Pour obtenir des définitions pour les tags et les
-étiquettes les plus courants, tu peux utiliser la fonction d'assistance
+labels les plus courants, tu peux utiliser la fonction d'assistance
 `spacy.explain`.
 
 Par exemple, "GPE" pour entité géopolitique n'est pas vraiment intuitif – mais
 `spacy.explain` peut t'indiquer que cela fait référence à des pays, des villes
 et des états.
 
-Cela s'applique aussi aux tags de partie de discours et aux dépendances
+Cela s'applique aussi aux étiquettes de partie de discours et aux dépendances
 syntaxiques.
 
 ---

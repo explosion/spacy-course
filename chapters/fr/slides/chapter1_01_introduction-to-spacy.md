@@ -4,12 +4,12 @@ type: slides
 
 # Présentation de spaCy
 
-Notes : Salut, je m'appelle Ines ! Je suis l'un des développeurs principaux de
+Notes : Salut, je m'appelle Inès ! Je suis l'un des principaux développeurs de
 spaCy, une bibliothèque populaire pour le traitement automatique du langage
 naturel en Python.
 
-Dans cette leçon, nous allons aborder les principaux concepts de spaCy et
-faire nos premiers pas.
+Dans cette leçon, nous allons aborder les principaux concepts de spaCy et faire
+nos premiers pas.
 
 ---
 
@@ -24,7 +24,7 @@ nlp = English()
 ```
 
 - contient le pipeline de traitement
-- inclut des règles spécifiques à la langue pour la tokénization.
+- inclut des règles spécifiques à la langue pour la tokenisation.
 
 Notes : Au coeur de spaCy se trouve l'objet contenant le pipeline de traitement.
 Nous nommons habituellement cette variable "nlp".
@@ -36,7 +36,7 @@ utiliser l'objet nlp comme une fonction pour analyser le texte.
 Il contient l'ensemble des différents composants du pipeline.
 
 Il inclut aussi des règles spécifiques à la langue utilisées pour la
-tokénisation du texte en mots et ponctuation. spaCy supporte un grand nombre de
+tokenisation du texte en mots et ponctuations. spaCy supporte un grand nombre de
 langues qui sont accessibles à partir de `spacy.lang`.
 
 ---
@@ -58,12 +58,12 @@ world
 !
 ```
 
-Notes : Quand tu traites un textes avec l'objet `nlp`, spaCy crée un objet
+Notes : Quand tu traites un texte avec l'objet `nlp`, spaCy crée un objet
 `Doc` – abréviation de "document". Le Doc te permet d'accéder aux informations
 sur le texte de manière structurée, sans perte d'information.
 
 Le Doc se comporte d'ailleurs comme une séquence Python normale qui te permet
-d'itérer sur ses tokens, ou d'obtenir un token à partir de son index. Nous
+d'itérer sur ses tokens, ou d'obtenir un token à partir de son indice. Nous
 reviendrons là dessus plus tard !
 
 ---
@@ -75,10 +75,10 @@ reviendrons là dessus plus tard !
 ```python
 doc = nlp("Hello world!")
 
-# Utilisation d'un index au sein du Doc pour obtenir un Token unique
+# Utilisation d'un indice au sein du Doc pour obtenir un Token unique
 token = doc[1]
 
-# Obtient le texte du token avec l'attribut .text
+# Obtiens le texte du token avec l'attribut .text
 print(token.text)
 ```
 
@@ -89,7 +89,7 @@ world
 Notes : Les objets `Token` représentent les tokens dans un document – par
 exemple, un mot ou un signe de ponctuation.
 
-Pour obtenir un token à une position donnée, tu peux utiliser l'index dans le
+Pour obtenir un token à une position donnée, tu peux utiliser l'indice dans le
 doc.
 
 Les objets `Token` proposent aussi différents attributs qui te fournissent plus
@@ -108,7 +108,7 @@ doc = nlp("Hello world!")
 # Une portion du Doc est un objet Span
 span = doc[1:3]
 
-# Obtient le texte du span avec l'attribut .text
+# Obtiens le texte du span avec l'attribut .text
 print(span.text)
 ```
 
@@ -150,9 +150,9 @@ is_punct: [False, False, False, False, True]
 like_num: [False, False, False, True, False]
 ```
 
-Notes : Tu peux voir ici certains des attributs diponibles sur les tokens :
+Notes : Tu peux voir ici certains des attributs disponibles sur les tokens :
 
-`i` est l'index du token au sein du document parent.
+`i` est l'indice du token au sein du document parent.
 
 `text` retourne le texte du token.
 

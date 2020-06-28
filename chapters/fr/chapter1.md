@@ -1,5 +1,5 @@
 ---
-title: 'Chapitre 1: Recherche de mots, phrases, noms et concepts'
+title: 'Chapitre 1 : Recherche de mots, phrases, noms et concepts'
 description:
   "Ce chapitre te présente les bases du traitement de texte avec spaCy.
   Tu vas découvrir les structures de données, comment utiliser les modèles
@@ -23,21 +23,21 @@ id: 1
 Commençons à utiliser spaCy ! Dans cet exercice, tu vas pouvoir essayer quelques
 uns des 55+ [langages disponibles](https://spacy.io/usage/models#languages).
 
-### Partie 1: Anglais
+### Partie 1 : Anglais
 
 - Importe la classe `English` depuis `spacy.lang.en` et crée l'objet `nlp`.
 - Crée un `doc` et affiche son texte.
 
 <codeblock id="01_02_01"></codeblock>
 
-### Partie 2: Allemand
+### Partie 2 : Allemand
 
 - Importe la classe `German` depuis `spacy.lang.de` et crée l'objet `nlp`.
 - Crée un `doc` et affiche son texte.
 
 <codeblock id="01_02_02"></codeblock>
 
-### Partie 3: Espagnol
+### Partie 3 : Espagnol
 
 - Importe la classe `Spanish` depuis `spacy.lang.es` et crée l'objet `nlp`.
 - Crée un `doc` et affiche son texte.
@@ -61,9 +61,9 @@ vas en apprendre davantage sur le `Doc`, ainsi que sur ses vues `Token` et
 
 <codeblock id="01_03_01">
 
-Tu peux utiliser les index dans un `Doc` comme dans une liste Python. Par
-exemple, `doc[4]` désigne le token à l'index 4, qui est le cinquième token
-dans le texte. N'oublie pas qu'en Python le premier est index est 0, et pas 1.
+Tu peux utiliser les indices dans un `Doc` comme dans une liste Python. Par
+exemple, `doc[4]` désigne le token à l'indice 4, qui est le cinquième token
+dans le texte. N'oublie pas qu'en Python le premier indice est 0, et pas 1.
 
 </codeblock>
 
@@ -78,7 +78,7 @@ dans le texte. N'oublie pas qu'en Python le premier est index est 0, et pas 1.
 
 La création d'une portion d'un `Doc` s'effectue exactement comme pour la
 portion d'une liste en Python en utilisant la notation `:`. N'oublie pas que
-l'index du dernier token est _exclu_ – par exemple, `0:4` désigne les tokens à
+l'indice du dernier token est _exclu_ – par exemple, `0:4` désigne les tokens à
 partir de 0 _jusqu'au_ token 4, mais sans inclure le token 4.
 
 </codeblock>
@@ -93,14 +93,14 @@ deux tokens consécutifs : un nombre et un symbole pourcentage.
 
 - Utilise l'attribut `like_num` pour vérifier si un token du `doc` ressemble à
   un nombre.
-- Obtiens le token _suivant_ le token courant dans le document. L'index du
+- Obtiens le token _suivant_ le token courant dans le document. L'indice du
   token suivant dans le `doc` est `token.i + 1`.
 - Vérifie si l'attribut `text` du token suivant est un symbole "%".
 
 <codeblock id="01_04">
 
-Pour obtenir le token situé à un index, tu peux utiliser la notation indexée
-sur le `doc`. Par exemple, `doc[5]` est le token situé à l'index 5.
+Pour obtenir le token situé à un indice, tu peux utiliser la notation indicielle
+sur le `doc`. Par exemple, `doc[5]` est le token situé à l'indice 5.
 
 </codeblock>
 
@@ -124,12 +124,12 @@ charger dans spaCy ?
 Tous les modèles comportent un `meta.json` qui définit la langue à initialiser,
 les noms des composants de pipeline à charger ainsi que des méta-informations
 générales comme le nom du modèle, sa version, la licence, les sources de
-données, l'auteur et la précision des données (si disponibles).
+données, l'auteur et la justesse des données (si disponibles).
 
 </opt>
 <opt text="Des poids binaires pour effectuer des prédictions statistiques.">
 
-Les modèles incluent  des poids binaires pour prédire les annotations
+Les modèles incluent des poids binaires pour prédire les annotations
 linguistiques comme l'étiquetage de partie du discours, les relations de
 dépendance ou les entités nommées.
 
@@ -160,7 +160,7 @@ Les modèles que nous utilisons dans ce cours sont déjà pré-installés. Pour 
 d'informations sur les modèles statistiques de spaCy et la manière de les
 installer sur ta machine, consulte [la documentation](https://spacy.io/usage/models).
 
-- Utilise `spacy.load` pour charger le petit modèle English `"en_core_web_sm"`.
+- Utilise `spacy.load` pour charger le petit modèle anglais `"en_core_web_sm"`.
 - Traite le texte et affiche le texte du document.
 
 <codeblock id="01_07">
@@ -215,8 +215,8 @@ tiret bas pour obtenir les valeurs de la chaine.
 <exercise id="9" title="Prédiction d'entités nommées dans le contexte">
 
 Les modèles statistiques ne sont pas _toujours_ exacts. La justesse de leurs
-prédictions dépendent du jeu de données d'apprentissage et du texte que tu
-traites. Voyons cela avec un exemple.
+prédictions dépend du jeu de données d'apprentissage et du texte que tu traites.
+Voyons cela avec un exemple.
 
 - Traite le texte avec l'objet `nlp`.
 - Itère sur les entités et affiche le texte et le label de chaque entité.
@@ -230,7 +230,7 @@ traites. Voyons cela avec un exemple.
 - La manière la plus facile de créer un objet `Span` object est d'utiliser la
   notation par portion – par exemple `doc[5:10]` pour le token depuis la
   position 5 _jusqu'à_ la position 10. N'oublie pas que la dernière position
-  d'index du token n'est pas incluse.
+  d'indice du token n'est pas incluse.
 
 </codeblock>
 
@@ -251,13 +251,13 @@ dans le texte.
 
 - Importe le `Matcher` depuis `spacy.matcher`.
 - Initialise-le avec le `vocab` partagé de l'objet `nlp`.
-- Crée un motif qui corresponde avec les valeurs de `"TEXT"` de deux tokens:
+- Crée un motif qui corresponde avec les valeurs de `"TEXT"` de deux tokens :
   `"iPhone"` et `"X"`.
 - Utilise la méthode `matcher.add` pour ajouter le motif au matcher.
 - Appelle le matcher sur le `doc` et affecte le résultat à la variable
   `matches`.
 - Itère sur les correspondances et obtiens les spans correspondants depuis
-  l'index `start` jusqu'à l'index `end`.
+  l'indice `start` jusqu'à l'indice `end`.
 
 <codeblock id="01_11">
 
@@ -265,7 +265,7 @@ dans le texte.
 - Un motif est une liste de dictionnaires dont les clés sont des noms
   d'attributs. Par exemple, `[{"TEXT": "Hello"}]` recherchera un token dont le
   texte exact est "Hello".
-- Les valeurs `start` et `end` de chaque correspondance indiquent les index de
+- Les valeurs `start` et `end` de chaque correspondance indiquent les indices de
   début et de fin du span trouvé. Pour obtenir le span, tu peux créer une
   portion du `doc` en utilisant les valeurs fournies de début et de fin.
 
@@ -290,7 +290,7 @@ plus complexes qui utilisent différents attributs des tokens et des opérateurs
   utiliser l'attribut `TEXT`. Par exemple, `{"TEXT": "Apple"}` recherchera
   des tokens dont le texte est exactement "Apple".
 - Pour rechercher un token numérique, tu peux utiliser l'attribut `"IS_DIGIT"`,
-  qui retournera `True` pour les tokens constitués uniquement de chiffres.
+  qui retournera `True` pour les tokens constitués uniquement de nombres.
 
 </codeblock>
 
