@@ -1,11 +1,11 @@
 ---
-title: 'Chapitre 2: analyse de données à grande échelle avec spaCy'
+title: 'Chapitre 2 : analyse de données à grande échelle avec spaCy'
 description:
-  "Dans ce chapitre, tu vas utiliser tes nouvelles compétences pour extraire des
-  informations spécifiques à partir de grandes quantités de textes. Tu vas
+  "Dans ce chapitre, tu vas utiliser tes nouvelles compétences pour extraire
+  des informations spécifiques à partir de grandes quantités de textes. Tu vas
   apprendre à tirer le meilleur parti des structures de données de spaCy, et
-  comment combiner efficacement les approches statistiques et basées sur les
-  règles pour l'analyse de textes."
+  comment combiner efficacement les approches statistiques et celles basées sur
+  les règles pour l'analyse de textes."
 prev: /chapter1
 next: /chapter3
 type: chapter
@@ -63,7 +63,7 @@ from spacy.lang.de import German
 nlp = English()
 nlp_de = German()
 
-# Obtient l'ID pour la chaine 'Bowie'
+# Obtiens l'ID pour la chaine 'Bowie'
 bowie_id = nlp.vocab.strings["Bowie"]
 print(bowie_id)
 
@@ -83,7 +83,7 @@ utilise le même vocabulaire pour résoudre le hash vers une chaine.
 
 <opt text='<code>"Bowie"</code> n'est pas un mot normal du dictionnaire en anglais ou en allemand, donc il ne peut pas être hashé.'>
 
-N'importe quelle chaine de caractères peut être convertie en has.
+N'importe quelle chaine de caractères peut être convertie en hash.
 
 </opt>
 
@@ -164,17 +164,17 @@ objet `nlp` partagé a déjà été créé.
 - Importe les classes `Doc` et `Span` depuis `spacy.tokens`.
 - Utilise la classe `Doc` directement pour créer un `doc` à partir des mots et
   des espaces.
-- Crée un `Span` pour "David Bowie" à partir du `doc` et assigne-lui le libellé
+- Crée un `Span` pour "David Bowie" à partir du `doc` et assigne-lui le label
   `"PERSON"`.
 - Remplace `doc.ents` par une liste d'une seule entité, le `span` "David Bowie".
 
 <codeblock id="02_06">
 
 - Le `Doc` est initialisé avec trois arguments : le vocabulaire partagé, par
-  exemple `nlp.vocab`, une liste de mots et une liste de valeurs booléenes
+  exemple `nlp.vocab`, une liste de mots et une liste de valeurs booléennes
   indiquant si le mot doit ou non être suivi par un espace.
-- La classe `Span` prend quatre arguments: le `doc` de référence, l'index du
-  token de début, l'index du token de fin et un libellé optionnel.
+- La classe `Span` prend quatre arguments: le `doc` de référence, l'indice du
+  token de début, l'indice du token de fin et un label optionnel.
 - La propriété `doc.ents` est accessible en écriture, tu peux donc lui assigner
   n'importe quel itérable composé d'objets `Span`.
 
@@ -193,7 +193,7 @@ import spacy
 nlp = spacy.load("en_core_web_sm")
 doc = nlp("Berlin is a nice city")
 
-# Obtient tous les tokens et les étiquettes de partie de discours
+# Obtiens tous les tokens et les étiquettes de partie de discours
 token_texts = [token.text for token in doc]
 pos_tags = [token.pos_ for token in doc]
 
@@ -227,10 +227,10 @@ d'utiliser les attributs natifs des tokens pour garder un code cohérent.
 
 </opt>
 
-<opt text='<code>pos_</code> n'est pas le bon attribut pour extraire des noms propres. Tu devrais utiliser <code>tag_</code> et les libellés <code>"NNP"</code> et <code>"NNS"</code> à la place.'>
+<opt text='<code>pos_</code> n'est pas le bon attribut pour extraire des noms propres. Tu devrais utiliser <code>tag_</code> et les labels <code>"NNP"</code> et <code>"NNS"</code> à la place.'>
 
 L'attribut `.pos_` retourne l'étiquetage approximatif de partie de discours et
-`"PROPN"` est la bonne étiquette pour chercher des noms propres.
+`"PROPN"` est le bon label pour chercher des noms propres.
 
 </opt>
 
@@ -278,7 +278,7 @@ Dans cet exercice, nous utiliserons un
 
 - Pour charger un modèle statistique, appelle `spacy.load` avec son nom sous
   forme de chaine de caractères.
-- Pour accéder à un token dans un doc, tu peux utiliser son index. Par exemple,
+- Pour accéder à un token dans un doc, tu peux utiliser son indice. Par exemple,
   `doc[4]`.
 
 </codeblock>
@@ -298,7 +298,7 @@ similarité.
 
 <codeblock id="02_10_01">
 
-La méthode `doc.similarity` prend un argument: l'autre objet auquel l'objet
+La méthode `doc.similarity` prend un argument : l'autre objet auquel l'objet
 courant doit être comparé.
 
 </codeblock>
@@ -310,8 +310,8 @@ courant doit être comparé.
 
 <codeblock id="02_10_02">
 
-- La méthode `token.similarity` prend un argument: l'autre objet auquel l'objet
-courant doit être comparé.
+- La méthode `token.similarity` prend un argument : l'autre objet auquel l'objet
+  courant doit être comparé.
 
 </codeblock>
 
@@ -396,14 +396,14 @@ les motifs pour que chaque dictionnaire représente un token.
 
 </exercise>
 
-<exercise id="14" title="Efficient phrase matching">
+<exercise id="14" title="Recherche efficace de correspondance de phrase">
 
 Parfois il est plus efficace de rechercher des chaines de caractères exactes au
 lieu d'écrire des motifs décrivant individuellement les tokens. C'est
 particulièrement vrai pour les catégories finies - comme l'ensemble des pays du
 monde. Nous disposons déjà d'une liste de pays, alors utilisons-là comme base
 pour notre script d'extraction d'informations. Une liste de chaines est
-caractères est accessible par la variable `COUNTRIES`.
+caractères est accessible via la variable `COUNTRIES`.
 
 - Importe le `PhraseMatcher` et initialise-le avec le `vocab` partagé dans la
   variable `matcher`.
@@ -424,7 +424,7 @@ spaCy pour trouver des noms de pays dans un texte. Nous allons maintenant
 l'utiliser sur un texte plus long, analyser la syntaxe et mettre à jour les
 entités du document avec les pays trouvés.
 
-- Itère sur les correspondances et crée un `Span` avec l'étiquette `"GPE"`
+- Itère sur les correspondances et crée un `Span` avec le label `"GPE"`
   (entité géopolitique).
 - Mets à jour les entités dans `doc.ents` en y ajoutant les spans trouvés.
 - Obtiens la tête du token racine du span trouvé.
@@ -433,7 +433,7 @@ entités du document avec les pays trouvés.
 <codeblock id="02_15">
 
 - Rappelle-toi que le texte est disponible avec la variable `text`.
-- Le otken racine du span est accessible avec `span.root`. La tête d'un token
+- Le token racine du span est accessible avec `span.root`. La tête d'un token
   est accessible avec l'attribut `token.head`.
 
 </codeblock>

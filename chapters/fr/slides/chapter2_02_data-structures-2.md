@@ -46,11 +46,11 @@ les espaces.
 
 # L'objet Span (1)
 
-<img src="/span_indices.png" width="65%" alt="Illustration d'un objet Span au sein d'un Doc avec les index des tokens" />
+<img src="/span_indices.png" width="65%" alt="Illustration d'un objet Span au sein d'un Doc avec les indices des tokens" />
 
-Notes : Un `Span` est une portion d'un document compososé d'un ou de plusieurs
-tokens. Le `Span` requiert trois arguments: le doc auquel il fait référence, et
-les index de début et de fin du span. N'oublie pas que l'index de fin est
+Notes : Un `Span` est une portion d'un document composé d'un ou de plusieurs
+tokens. Le `Span` requiert trois arguments : le doc auquel il fait référence, et
+les indices de début et de fin du span. N'oublie pas que l'indice de fin est
 exclu !
 
 ---
@@ -71,7 +71,7 @@ doc = Doc(nlp.vocab, words=words, spaces=spaces)
 # Crée un span manuellement
 span = Span(doc, 0, 2)
 
-# Crée un span avec un libellé
+# Crée un span avec un label
 span_with_label = Span(doc, 0, 2, label="GREETING")
 
 # Ajoute le span à doc.ents
@@ -80,10 +80,10 @@ doc.ents = [span_with_label]
 
 Notes : pour créer un `Span` manuellement, nous pouvons aussi importer la classe
 à partir de `spacy.tokens`. Nous pouvons ensuite l'instancier avec le doc et les
-index de début et de fin du span, ainsi qu'avec un libellé optionnel.
+indices de début et de fin du span, ainsi qu'avec un label optionnel.
 
 Les `doc.ents` sont modifiables, donc nous pouvons ajouter manuellement des
-entités en le remplaçant par une liste de spans.
+entités en les remplaçant par une liste de spans.
 
 ---
 
@@ -93,7 +93,7 @@ entités en le remplaçant par une liste de spans.
    relations entre les mots et les phrases
   - **Convertis les résultats en chaines le plus tard possible**
   - **Utilise les attributs des tokens quand ils existent** – par exemple,
-    `token.i` pour l'index du token
+    `token.i` pour l'indice du token
 - N'oublie pas de passer en argument le `vocab` partagé
 
 Notes : Quelques trucs et astuces avant de commencer :
@@ -107,7 +107,7 @@ de convertir le doc le plus tard possible. Si tu le fais trop tôt, tu perdras
 toutes les relations entre les tokens.
 
 Pour être cohérent, fais en sorte d'utiliser les attributs natifs des tokens
-chaque fois que c'est possible. Par exemple, `token.i` pour l'index du token.
+chaque fois que c'est possible. Par exemple, `token.i` pour l'indice du token.
 
 Aussi, n'oublie pas de toujours passer en argument le vocabulaire partagé !
 

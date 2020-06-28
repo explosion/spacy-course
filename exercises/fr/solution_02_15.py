@@ -19,7 +19,7 @@ doc.ents = []
 
 # Itère sur les correspondances
 for match_id, start, end in matcher(doc):
-    # Crée un Span avec le libellée pour "GPE"
+    # Crée un Span avec le label pour "GPE"
     span = Span(doc, start, end, label="GPE")
 
     # Actualise doc.ents avec l'ajout du span

@@ -9,7 +9,7 @@ point des documents, des spans ou des tokens sont similaires les uns avec les
 autres.
 
 Tu vas aussi apprendre à utiliser les vecteurs de mots et à les exploiter dans
-ton application de TALN.
+ton application de NLP.
 
 ---
 
@@ -72,7 +72,7 @@ print(token1.similarity(token2))
 Notes : Voici un exemple. Disons que nous voulons savoir si deux documents sont
 similaires.
 
-D'abord, nous chargons le modèle anglais de taille moyenne, "en_core_web_md".
+D'abord, nous chargeons le modèle anglais de taille moyenne, "en_core_web_md".
 
 Nous pouvons ensuite créer deux objets doc et utiliser la méthode `similarity`
 du premier doc pour le comparer au second.
@@ -130,7 +130,7 @@ Le score retourné ici est 0,61, donc il y a une forme de similarité.
 
 # Comment spaCy prédit la similarité ?
 
-- La similarité est déterminée en utilisant des **word vectors**
+- La similarité est déterminée en utilisant des **vecteurs de mots**
 - Des représentations multi-dimensionnelles de la signification des mots
 - Générées avec un algorithme comme
   [Word2Vec](https://en.wikipedia.org/wiki/Word2vec) et beaucoup de textes

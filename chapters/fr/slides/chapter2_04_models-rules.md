@@ -6,7 +6,7 @@ type: slides
 
 Notes : La combinaison de modèles statistiques avec des systèmes basés sur des
 règles est l'un des trucs les plus importants à avoir dans ta boite à outils de
-TALN.
+NLP.
 
 Dans cette leçon, tu vas apprendre comment le faire avec spaCy.
 
@@ -47,7 +47,7 @@ y a un nombre plus ou moins limité d'éléments que tu veux trouver. Par exempl
 tous les pays ou toutes les villes du monde, des noms de médicaments ou encore
 des races de chiens.
 
-Dans spaCy, tu peux réaliser cela avec des règles de tokénization
+Dans spaCy, tu peux réaliser cela avec des règles de tokenisation
 personnalisées,  ainsi qu'avec le matcher et le matcher de phrases.
 
 ---
@@ -68,7 +68,7 @@ pattern = [{"TEXT": "very", "OP": "+"}, {"TEXT": "happy"}]
 matcher.add("VERY_HAPPY", None, pattern)
 
 # L'appel du matcher sur le doc retourne une liste de tuples
-# composé avec (match_id, début, fin)
+# composés avec (match_id, début, fin)
 doc = nlp("I love cats and I'm very very happy")
 matches = matcher(doc)
 ```
@@ -88,7 +88,7 @@ Les opérateurs te permettent de spécifier combien de fois il faut trouver un
 token donné. Par exemple, "+" le recherchera une ou plusieurs fois.
 
 L'appel du matcher sur un objet doc retournera une liste de correspondances.
-Chaque correspondance est un tuple composé d'un ID, et des index des tokens de
+Chaque correspondance est un tuple composé d'un ID, et des indices des tokens de
 début et de fin dans le document.
 
 ---
@@ -103,10 +103,10 @@ doc = nlp("I have a Golden Retriever")
 for match_id, start, end in matcher(doc):
     span = doc[start:end]
     print("Matched span:", span.text)
-    # Obtient le token racine du span et le token de tête de la racine
+    # Obtiens le token racine du span et le token de tête de la racine
     print("Root token:", span.root.text)
     print("Root head token:", span.root.head.text)
-    # Obtient le token précédent et son étiquette de partie de discours
+    # Obtiens le token précédent et son étiquette de partie de discours
     print("Previous token:", doc[start - 1].text, doc[start - 1].pos_)
 ```
 
@@ -120,7 +120,7 @@ Previous token: a DET
 Notes : Voici un exemple de règle de matcher pour "golden retriever".
 
 Si nous itérons sur les correspondances retournées par le matcher, nous pouvons
-obtenir l'identifiant de la correspondance, ainsi que les index de début et de
+obtenir l'identifiant de la correspondance, ainsi que les indices de début et de
 fin du span en correspondance. Nous pouvons ensuite obtenir plus d'informations
 sur lui. Les objets `Span` nous donnent accès au document original et à tous les
 autres attributs des tokens et fonctionnalités linguistiques prédites par le
@@ -140,7 +140,7 @@ déterminant, l'article "a".
 # Recherche efficace de motifs (1)
 
 - le `PhraseMatcher` est comme les expressions régulières ou la recherche par
-  mot-clé – mais avec l'accès aux tokens!
+  mot-clé – mais avec l'accès aux tokens !
 - Accepte des objets `Doc` en motifs
 - Plus efficace et rapide que le `Matcher`
 - Parfait pour rechercher de grandes listes de mots
@@ -174,7 +174,7 @@ doc = nlp("I have a Golden Retriever")
 
 # Itère sur les correspondances
 for match_id, start, end in matcher(doc):
-    # Obtient le span en correspondance
+    # Obtiens le span en correspondance
     span = doc[start:end]
     print("Matched span:", span.text)
 ```

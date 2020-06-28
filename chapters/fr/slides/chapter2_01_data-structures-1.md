@@ -35,11 +35,11 @@ coffee_string = nlp.vocab.strings[coffee_hash]
 string = nlp.vocab.strings[3197928453018144401]
 ```
 
-Notes : spaCy stockes toutes les données partagées dans un vocabulaire, le
+Notes : spaCy stocke toutes les données partagées dans un vocabulaire, le
 Vocab.
 
 Il inclut les mots, mais aussi les schémas de nommage pour les étiquettes et les
-libellés.
+labels.
 
 Pour économiser de l'espace mémoire, toutes les chaines sont encodées en ID sous
 forme de hashs. Si un mot est présent plus d'une fois, nous n'avons pas besoin
@@ -75,7 +75,7 @@ hash value: 3197928453018144401
 string value: coffee
 ```
 
-- Le `doc` exposes aussi le vocabulaire et les chaines
+- Le `doc` expose aussi le vocabulaire et les chaines
 
 ```python
 doc = nlp("I love coffee")
@@ -113,10 +113,10 @@ coffee 3197928453018144401 True
 ```
 
 - Contient les informations **indépendantes du contexte** à propos d'un mot
-  - Le text du mot : `lexeme.text` et `lexeme.orth` (le hash)
+  - Le texte du mot : `lexeme.text` et `lexeme.orth` (le hash)
   - Des attributs lexicaux comme `lexeme.is_alpha`
   - Etiquettes de partie de discours **non** dépendantes du contexte,
-    dépendances ou libellés d'entités
+    dépendances ou labels d'entités
 
 Notes : Les lexèmes sont des éléments du vocabulaire indépendants du contexte.
 
@@ -128,8 +128,8 @@ Les lexèmes exposent des attributs, tout comme les tokens.
 Ils contiennent des informations indépendantes du contexte à propos d'un mot,
 comme le texte, ou si le mot est composé de caractères alphabétiques.
 
-Les lexèmes n'ont pas d'étiquettes de partie de discours, de libellés d'entités
-ou de dépendances. Ceux-ci dépendent du contexte.
+Les lexèmes n'ont pas d'étiquettes de partie de discours, de labels d'entités ou
+de dépendances. Ceux-ci dépendent du contexte.
 
 ---
 

@@ -3,7 +3,7 @@ from spacy.lang.en import English
 nlp = English()
 doc = nlp("David Bowie is a PERSON")
 
-# Cherche le hash pour le libellé de chaine "PERSON"
+# Cherche le hash pour le label de chaine "PERSON"
 person_hash = ____.____.____[____]
 print(person_hash)
 

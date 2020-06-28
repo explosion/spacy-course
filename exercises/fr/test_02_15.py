@@ -1,7 +1,7 @@
 def test():
     assert (
         "list(doc.ents) + [span]" in __solution__
-    ), "As-tu ajouté le span à doc.ents?"
+    ), "As-tu ajouté le span à doc.ents ?"
     assert (
         "span_root_head = span.root.head" in __solution__
     ), "Obtiens-tu la tête du token racine du span ?"
