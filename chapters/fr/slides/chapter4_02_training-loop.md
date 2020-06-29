@@ -4,7 +4,7 @@ type: slides
 
 # La boucle d'apprentissage
 
-Notes : Si certaines autres bibliothèque te proposent une méthode qui gère
+Notes : Si certaines autres bibliothèques te proposent une méthode qui gère
 l'entrainement du modèle, spaCy te fournit un contrôle total sur la boucle
 d'apprentissage.
 
@@ -36,7 +36,7 @@ des estimations de gradient.
 Enfin, on actualise le modèle pour chaque lot, et on recommence la boucle
 jusqu'à atteindre la dernière itération.
 
-on peut alors enregister le modèle dans un répertoire et l'utiliser dans spaCy.
+on peut alors enregistrer le modèle dans un répertoire et l'utiliser dans spaCy.
 
 ---
 
@@ -163,7 +163,7 @@ for itn in range(10):
 
 Notes : Dans cet exemple, nous commençons avec un modèle anglais vide en
 utilisant la méthode `spacy.blank`. Le modèle vide n'a aucun composant de
-pipeline, uniquement les données de la langue et les règles de tokénisation.
+pipeline, uniquement les données de la langue et les règles de tokenisation.
 
 On crée ensuite un entity recognizer vide et on l'ajoute au pipeline.
 
@@ -173,7 +173,7 @@ modèle.
 On peut alors appeler `nlp.begin_training` pour initialiser le modèle avec des
 poids aléatoires.
 
-Pour obtenir une meilleure précision, on bouclera à plusieurs reprises sur les
+Pour obtenir une meilleure justesse, on bouclera à plusieurs reprises sur les
 exemples en mélangeant les données à chaque itération.
 
 A chaque itération, on divise les exemples en lots avec la fonction utilitaire

@@ -5,11 +5,11 @@ type: slides
 # Entrainement et actualisation des modèles
 
 Notes : Bienvenue au dernier chapitre, qui concerne un des aspects les plus
-formidables du TALN moderne : l'entrainement de tes propres modèles !
+formidables du NLP moderne : l'entrainement de tes propres modèles !
 
 Dans cette leçon, tu vas apprendre à entrainer et à mettre à jour les modèles de
 réseaux de neurones de spaCy et les données dont tu as besoin pour le faire -
-en se concentrant spécifiquement sur le named entity recognizer.
+en te concentrant spécifiquement sur le named entity recognizer.
 
 ---
 
@@ -122,9 +122,9 @@ l'utiliser dans notre application.
 Notes : Jetons un oeil à un exemple pour un composant spécifique : l'entity
 recognizer.
 
-L'entity recognizer prend un document et prédit des phrases et leurs libellés.
+L'entity recognizer prend un document et prédit des phrases et leurs labels.
 Cela signifie que les données d'apprentissage doivent comprendre des textes,
-les entités qu'ils contiennent et les libellés des entités.
+les entités qu'ils contiennent et les labels des entités.
 
 Les entités ne peuvent pas se chevaucher, donc chaque token ne peut faire partie
 que d'une seule entité.
@@ -136,7 +136,7 @@ La manière la plus facile pour le faire est de montrer au modèle un texte et u
 liste de positions de caractères. Par exemple , "iPhone X" est un gadget,
 commence au caractère 0 et finit au caractère 8.
 
-Il est également très important que le modèle apprennet des mots qui
+Il est également très important que le modèle apprenne des mots qui
 _ne sont pas_ des entités.
 
 Dans ce cas, la liste des annotations de spans sera vide.
@@ -169,11 +169,11 @@ Pour entrainer une nouvelle catégorie, cela peut en nécessiter jusqu'à un
 million.
 
 Les modèles anglais de spaCy ont par exemple été entrainés sur 2 millions de
-mots libellés avec les étiquettes de partie de discours, les relations de
+mots labellisés avec les étiquettes de partie de discours, les relations de
 dépendance et les entités nommées.
 
 Les données d'apprentissage sont généralement créées par des humains qui
-affectent des libellés à des textes.
+affectent des labels à des textes.
 
 C'est beaucoup de travail, mais il peut être semi-automatisé – par exemple, en
 utilisant le `Matcher` de spaCy.

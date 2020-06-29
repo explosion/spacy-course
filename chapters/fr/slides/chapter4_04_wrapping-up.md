@@ -13,12 +13,12 @@ Notes : Félicitations – tu as atteint la fin du cours !
 - Extraction de **caractéristiques linguistiques** : partie de discours,
   dépendances, entités nommées
 - Travail avec **modèles statistiques** pré-entrainés
-- Recherche de mots et de phrases selon des **règles de correspondance ** avec
+- Recherche de mots et de phrases selon des **règles de correspondance** avec
   `Matcher` et `PhraseMatcher`
-- Meilleures pratiques pour l'emploi des **structures de données ** `Doc`,
+- Meilleures pratiques pour l'emploi des **structures de données** `Doc`,
   `Token` `Span`, `Vocab`, `Lexeme`
 - Recherche de **similarités sémantiques** avec les **vecteurs de mots**
-- Ecriture de **composants de pipeline** avec des **extensions d'attributs**
+- Écriture de **composants de pipeline** avec des **extensions d'attributs**
 - **Accroissement d'échelle** des pipelines spaCy pour les rendre rapides
 - Création de **données d'apprentissage** pour les modèles statistiques de spaCy
 - **Entrainement et actualisation** des modèles de réseaux de neurones de spaCy
@@ -92,7 +92,7 @@ et l'entrainer sur tes propres données.
   - Marge de progression importante pour des améliorations et plus de langues
   - Possibilité d'entrainer des modèles pour d'autres langues
 
-Notes : Dans ce cours, nous avons simplement accepté la tokénisation par défaut
+Notes : Dans ce cours, nous avons simplement accepté la tokenisation par défaut
 telle qu'elle était. Mais tu n'es pas obligé !
 
 spaCy te permet de personnaliser les règles utilisés pour déterminer où et
@@ -100,11 +100,11 @@ comment scinder le texte.
 
 Tu peux aussi ajouter et améliorer le support pour d'autres langues.
 
-Si spaCy permet déjà la tokénisation pour beaucoup de langues différentes, il y
+Si spaCy permet déjà la tokenisation pour beaucoup de langues différentes, il y
 a toujours des possibilités d'améliorations.
 
-La gestion de la tokénisation pour une nouvelle langue est la première étape
-pour afin de pouvoir entrainer un modèle statistique.
+La gestion de la tokenisation pour une nouvelle langue est la première étape
+afin de pouvoir entrainer un modèle statistique.
 
 ---
 

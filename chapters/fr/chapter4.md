@@ -40,16 +40,16 @@ l'entrainer avec davantage d'exemples est souvent une bonne solution.
 
 <opt text="L'apprentissage de nouveaux schémas de classification.">
 
-Tu peux utiliser l'apprentissage pour apprendre au modèle de nouvelles
-étiquettes, de nouveaux types d'entités ou d'autres schémas de classification.
+Tu peux utiliser l'apprentissage pour apprendre au modèle de nouveaux labels,
+de nouveaux types d'entités ou d'autres schémas de classification.
 
 </opt>
 
-<opt text="La découverte de motifs sur des données non étiquetées." correct="true">
+<opt text="La découverte de motifs sur des données non labellisées." correct="true">
 
 Les composants de spaCy sont des modèles supervisés pour l'annotation de texte,
 ce qui signifie qu'ils peuvent seulement apprendre à reproduire des exemples,
-mais pas deviner de nouvelles étiquettes à partir de texte brut.
+mais pas deviner de nouveaux labels à partir de texte brut.
 
 </opt>
 
@@ -151,7 +151,7 @@ Le pipeline que tu as créé dans l'exercice précédent est disponible en tant
 qu'objet `nlp`. Il contient déjà l'entity recognizer avec le label ajouté
 `"GADGET"`.
 
-Le petit jeu d'exemples étiquetés que tu as créé précédemment est disponible en
+Le petit jeu d'exemples labellisés que tu as créé précédemment est disponible en
 tant que `TRAINING_DATA`. Pour voir les exemples, tu peux les imprimer dans ton
 script.
 
@@ -216,7 +216,7 @@ nombre total d'entités correctes que le modèle _aurait dû_ prédire.
 
 <opt text="70%" correct="true">
 
-Sur nos données de test, le modèle a atteint une précision de 70 %.
+Sur nos données de test, le modèle a atteint une justesse de 70 %.
 
 </opt>
 
@@ -240,7 +240,7 @@ nombre total d'entités correctes que le modèle _aurait dû_ prédire.
 
 <exercise id="10" title="Bonnes données vs. mauvaises données">
 
-Voici un extrait d'un jeu d'apprentissage qui étiquette le type d'entité
+Voici un extrait d'un jeu d'apprentissage qui labellise le type d'entité
 `TOURIST_DESTINATION` dans des évaluations de voyageurs.
 
 ```python
@@ -267,9 +267,9 @@ Pourquoi ces données et ce schéma d'étiquetage sont-ils problématiques ?
 
 <choice>
 
-<opt text="Déterminer si un lieu est une destination touristique est un jugement subjectif et pas une catégorie certaine. Ce sera très difficile à apprendre pour l'entity recognizer to learn." correct="true">
+<opt text="Déterminer si un lieu est une destination touristique est un jugement subjectif et pas une catégorie certaine. Ce sera très difficile à apprendre pour l'entity recognizer." correct="true">
 
-Il serait bien plus judicieux d'étiqueter uniquement avec l'étiquette `"GPE"`
+Il serait bien plus judicieux de labelliser uniquement avec le label `"GPE"`
 (entité géopolitique) ou `"LOCATION"` (lieu) et ensuite d'utiliser un système à
 base de règles pour déterminer si l'entité est ou non une destination
 touristique dans ce contexte. Par exemple, tu pourrais recouper les types
@@ -277,19 +277,19 @@ d'entités avec une base de connaissances ou les chercher dans un wiki de voyage
 
 </opt>
 
-<opt text="Paris devrait être aussi étiqueté comme destination touristique par cohérence. Sinon le modèle sera induit en erreur.">
+<opt text="Paris devrait être aussi labellisé comme destination touristique par cohérence. Sinon le modèle sera induit en erreur.">
 
 Même s'il est possible que Paris, AK soit aussi une attraction touristique, cela
-ne fait que souligner à quel point le schéma d'étiquetage est subjectif et à
-quel point il sera difficile de décider si l'étiquette s'applique ou non. De ce
+ne fait que souligner à quel point le schéma de labellisation est subjectif et à
+quel point il sera difficile de décider si le label s'applique ou non. De ce
 fait, cette distinction sera très difficile à apprendre pour l'entity recognizer.
 
 </opt>
 
-<opt text="Les mots rares hors-vocabulaire comme le 'amsterdem' mal orthographié ne devraient pas être étiquetés comme entités.">
+<opt text="Les mots rares hors-vocabulaire comme le 'amsterdem' mal orthographié ne devraient pas être labellisés comme entités.">
 
 Même des mots très peu communs ou des mots mal orthographiés peuvent être
-étiquetés comme entités. En fait, la capacité à prédire des catégories sur des
+labellisés comme entités. En fait, la capacité à prédire des catégories sur des
 textes mal orthographiés en se basant sur le contexte est l'un des principaux
 avantages des reconnaissances statistiques d'entités nommées.
 
@@ -302,14 +302,14 @@ avantages des reconnaissances statistiques d'entités nommées.
 - Réécris le `TRAINING_DATA` pour utiliser uniquement le label `"GPE"` (villes,
    états, pays) au lieu de `"TOURIST_DESTINATION"`.
 - N'oublie pas d'ajouter les tuples pour les entités `"GPE"` qui n'avaient pas
-  été étiquetées dans les anciennes données.
+  été labellisées dans les anciennes données.
 
 <codeblock id="04_10">
 
-- Pour les spans qui sont déjà étiquetés, tu as juste à changer le nom du label
+- Pour les spans qui sont déjà labellisés, tu as juste à changer le nom du label
   de `"TOURIST_DESTINATION"` en `"GPE"`.
-- Un texte comporte une ville et un état qui ne sont pas encore étiquetés. Pour
-  ajouter les spans des entités, compte les caractère pour trouver où commence
+- Un texte comporte une ville et un état qui ne sont pas encore labellisés. Pour
+  ajouter les spans des entités, compte les caractères pour trouver où commence
   et où finit le span. Ensuite ajoute les tuples `(start, end, label)` aux
   entités.
 
@@ -321,7 +321,7 @@ avantages des reconnaissances statistiques d'entités nommées.
 
 Voici un petit échantillon d'un jeu de données créé pour entrainer un nouveau
 type d'entité `"WEBSITE"`. Le jeu de données original contient quelques milliers
-de phrases. Dans cet exercice, tu vas effectuer l'étiquetage à la main. En
+de phrases. Dans cet exercice, tu vas effectuer la labellisation à la main. En
 situation réelle, tu l'automatiserais probablement en utilisant un outil
 d'annotations - par exemple, [Brat](http://brat.nlplab.org/), une solution
 open-source populaire, ou [Prodigy](https://prodi.gy), notre propre outil
@@ -350,7 +350,7 @@ cela pourrait-il être dû ?
 
 <choice>
 
-<opt text='Il est très difficile pour le modèle d'apprendre plusieurs catégories commme <code>"PERSON"</code> et <code>"WEBSITE"</code>.'>
+<opt text='Il est très difficile pour le modèle d'apprendre plusieurs catégories comme <code>"PERSON"</code> et <code>"WEBSITE"</code>.'>
 
 Il est parfaitement possible pour un modèle d'apprendre des catégories très
 différentes. Par exemple, le modèle anglais pré-entrainé de spaCy est capable de
@@ -361,7 +361,7 @@ reconnaitre des personnes, mais aussi des organisations ou des pourcentages.
 <opt text='Les données d'apprentissage ne comportaient aucun exemple de <code>"PERSON"</code>, donc le modèle a appris que ce label est incorrect.' correct="true">
 
 Si des entités `"PERSON"` sont présentes dans les données d'apprentissage mais
-ne sont pas étiquetées, le modèle va apprendre qu'elles ne doivent pas être
+ne sont pas labellisées, le modèle va apprendre qu'elles ne doivent pas être
 prédites. De même, si un type d'entité existante n'est pas présent dans les
 données d'apprentissage, le modèle peut les \"oublier\" et arrêter de les
 prédire.
@@ -370,7 +370,7 @@ prédire.
 
 <opt text="Les hyperparamètres doivent être réglés à nouveau pour que les deux types d'entités puissent être reconnus.">
 
-Si les hyperparamètres peuvent influer sur la précision d'un modèle, ils ne sont
+Si les hyperparamètres peuvent influer sur la justesse d'un modèle, ils ne sont
 probablement pas le problème ici.
 
 </opt>
@@ -379,12 +379,12 @@ probablement pas le problème ici.
 
 ### Partie 3
 
-- Actualise les données d'apprentissage pour inclure les annotations pour les
+- Actualise les données d'apprentissage pour inclure des annotations pour les
   entités `"PERSON"` "PewDiePie" et "Alexis Ohanian".
 
 <codeblock id="04_11_02">
 
-- Pour ajouter d'autres entités, ajoute un autre tuple  `(start, end, label)` à
+- Pour ajouter d'autres entités, ajoute un autre tuple `(start, end, label)` à
   la liste.
 
 </codeblock>

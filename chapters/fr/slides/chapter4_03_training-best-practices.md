@@ -21,7 +21,7 @@ Jetons un oeil à certains des problèmes que tu pourrais rencontrer.
 # Problème 1 : Les modèles peuvent "oublier" des choses
 
 - Les modèles existants peuvent sur-optimiser sur les nouvelles données
-  - e.g.: si tu l'actualises uniquement avec `"WEBSITE"`, il peut "oublier" ce
+  - e.g. : si tu l'actualises uniquement avec `"WEBSITE"`, il peut "oublier" ce
     qu'est une `"PERSON"`
 - On appelle ça le problème de "l'oubli catastrophique"
 
@@ -81,7 +81,7 @@ le modèle avec des annotations pour tous les labels.
 
 # Problème 2 : Les modèles ne peuvent pas tout apprendre
 
-- Les modèles de spaCy effectuent des prédictions basées  sur le
+- Les modèles de spaCy effectuent des prédictions basées sur le
   **contexte local**
 - Les modèles peuvent avoir des difficultés à apprendre si la décision est
   difficile à prendre en se basant sur le contexte
@@ -131,10 +131,7 @@ Notes : Avant de commencer à entrainer et à actualiser des modèles, il est
 judicieux de prendre du recul et de planifier ton schéma de labellisation.
 
 Essaie de choisir des catégories qui sont représentées dans le contexte local et
-rends-les plus générique si possible.
-
-Try to pick categories that are reflected in the local context and make them
-more generic if possible.
+rends-les plus génériques si possible.
 
 Tu peux toujours ajouter un système à base de règles après coup pour aller du
 générique vers du spécifique.
