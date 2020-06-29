@@ -38,7 +38,7 @@ C'est beaucoup plus rapide que d'appeler nlp sur chaque texte, car les textes
 sont réunis en lots.
 
 `nlp.pipe` est un générateur qui génère des objets `Doc`, donc pour obtenir une
-liste des docs, rappelle-toi de la appliquer la méthode `list`.
+liste des docs, rappelle-toi de lui appliquer la méthode `list`.
 
 ---
 
@@ -64,7 +64,7 @@ This is a text 15
 And another text 16
 ```
 
-Notes : `nlp.pipe` supporte aussi le passe de tuples de texte / contexte si tu
+Notes : `nlp.pipe` supporte aussi le passage de tuples de texte / contexte si tu
 définis `as_tuples` à `True`.
 
 La méthode va alors générer des tuples doc / contexte.
@@ -134,7 +134,7 @@ doc = nlp("Hello world")
 doc = nlp.make_doc("Hello world!")
 ```
 
-Notes : Si tu as seulement besoin d'un objet `Doc` tokenizé, tu peux utiliser
+Notes : Si tu as seulement besoin d'un objet `Doc` tokenisé, tu peux utiliser
 la méthode `nlp.make_doc` à la place, elle prend en argument un texte et
 retourne un doc.
 

@@ -9,7 +9,8 @@ def get_has_number(doc):
     return any(____ for token in doc)
 
 
-# Déclare l'extension de propriété de Doc "has_number" avec le getter get_has_number
+# Déclare l'extension de propriété de Doc "has_number"
+# avec le getter get_has_number
 ____.____(____, ____=____)
 
 # Traite le texte et vérifie l'attribut personnalisé has_number

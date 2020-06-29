@@ -97,7 +97,7 @@ exister, toutefois – sinon, spaCy génèrera une erreur.
 # Exemple : un composant simple (1)
 
 ```python
-# Créee l'objet nlp
+# Crée l'objet nlp
 nlp = spacy.load("en_core_web_sm")
 
 # Définit un composant personnalisé
@@ -132,7 +132,7 @@ N'oublie pas de retourner le doc pour qu'il puisse être traité par le composan
 suivant dans le pipeline ! Le doc créé par le tokenizer est passé dans tous les
 composants, donc il est important qu'ils retournent tous le doc modifié.
 
-On peut maintenant ajouter le composant au pipeline. Ajoutons le au tout début
+On peut maintenant ajouter le composant au pipeline. Ajoutons-le au tout début
 juste après le tokenizer en définissant `first=True`.
 
 Quand on imprime les noms des composants du pipeline, le composant personnalisé

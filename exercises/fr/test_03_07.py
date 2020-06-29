@@ -8,7 +8,7 @@ def test():
     assert len(doc.ents) == 2, "As-tu correctement ajouté les entités ?"
     assert all(
         ent.label_ == "ANIMAL" for ent in doc.ents
-    ), "As-tu affecté le libellé ANIMAL?"
+    ), "As-tu affecté le label ANIMAL?"
 
     __msg__.good(
         "Bien joué ! Tu as contruit ton premier composant de pipeline pour "

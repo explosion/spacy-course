@@ -41,13 +41,14 @@ l'entity recognizer.
 <opt text="Convertit le texte en tokens et applique chaque composant du pipeline dans l'ordre." correct="true">
 
 Le tokenizer transforme une chaine de caractères en un objet `Doc`. spaCy
-applique ensuite  chaque composant du pipeline, dans l'ordre.
+applique ensuite chaque composant du pipeline, dans l'ordre.
 
 </opt>
 
 <opt text="Se connecte au serveur de spaCy pour calculer et retourner le résultat.">
 
-spaCy calcule tout sur ta machine et n'a pas besoin de se connecter à un quelconque serveur.
+spaCy calcule tout sur ta machine et n'a pas besoin de se connecter à un
+quelconque serveur.
 
 </opt>
 
@@ -135,7 +136,7 @@ personnaliser les `doc.ents`.
 <opt text="2 et 4.">
 
 Les composants personnalisés sont ajoutés au pipeline après l'initialisation de
-la classe de langue et la tokénisation, donc ils ne peuvent pas servir à ajouter
+la classe de langue et la tokenisation, donc ils ne peuvent pas servir à ajouter
 des langues supplémentaires.
 
 </opt>
@@ -143,7 +144,7 @@ des langues supplémentaires.
 <opt text="3 et 4.">
 
 Les composants personnalisés sont ajoutés au pipeline après l'initialisation de
-la classe de langue et la tokénisation, donc ils ne peuvent pas servir à ajouter
+la classe de langue et la tokenisation, donc ils ne peuvent pas servir à ajouter
 des langues supplémentaires.
 
 </opt>
@@ -184,18 +185,18 @@ spans correspondants à `doc.ents`. Un `PhraseMatcher` avec les motifs des
 animaux a déjà été créé sous le nom de variable `matcher`.
 
 - Définis le composant personnalisé et applique le `matcher` au `doc`.
-- Crée un `Span` pour chaque correspondance, assigne-lui l'ID de libellé pour
+- Crée un `Span` pour chaque correspondance, assigne-lui l'ID de label pour
   `"ANIMAL"` et actualise le `doc.ents` avec les nouveaux spans.
 - Ajoute le nouveau composant au pipeline _après_ le composant `"ner"`.
-- Traite le texte et affiche le texte et le libellé pour les entités figurant
+- Traite le texte et affiche le texte et le label pour les entités figurant
   dans `doc.ents`.
 
 <codeblock id="03_07">
 
 - Rappelle-toi que les correspondances sont constituées d'une liste de tuples
   `(match_id, start, end)`.
-- La classe `Span` prend 4 arguments : le `doc` parent, l'index de début,
-  l'index de fin et le libellé.
+- La classe `Span` prend 4 arguments : le `doc` parent, l'indice de début,
+  l'indice de fin et le label.
 - Pour ajouter un composant après un autre, utilise l'argument nommé `after`
   dans `nlp.add_pipe`.
 
@@ -286,15 +287,15 @@ les prédictions du modèle et créer un accesseur d'attribut qui retourne une U
 de recherche Wikipédia si le span est une personne, une organisation ou un lieu.
 
 - Complète le getter `get_wikipedia_url` pour qu'il retourne une URL uniquement
-  si le libellé du span est dans la liste des libellés.
+  si le label du span est dans la liste des labels.
 - Définis l'extension de `Span` nommée `"wikipedia_url"` avec le getter
   `get_wikipedia_url`.
 - Itère sur les entités du `doc` et affiche leur URL Wikipédia.
 
 <codeblock id="03_11">
 
-- Pour obtenir le libellé textuel d'un span, utilise l'attribut `span.label_`.
-  C'est le libellé prédit par l'entity recognizer si le span constitue une
+- Pour obtenir le label textuel d'un span, utilise l'attribut `span.label_`.
+  C'est le label prédit par l'entity recognizer si le span constitue une
   entité.
 - Rappelle-toi que les attributs étendus sont accessibles via la propriété `._`.
   Par exemple, `doc._.has_color`.
@@ -305,8 +306,8 @@ de recherche Wikipédia si le span est une personne, une organisation ou un lieu
 
 <exercise id="12" title="Composants avec extensions">
 
-Les extensions d'attributs sont particulièrement puissants quand ils sont
-combinés avec des composants de pipeline personnalisés. Dans cet exercice, tu
+Les extensions d'attributs sont particulièrement puissantes quand elles sont
+combinées avec des composants de pipeline personnalisés. Dans cet exercice, tu
 vas écrire un composant de pipeline qui trouve des noms de pays et une extension
 personnalisée qui retourne le nom de la capitale du pays s'il est disponible.
 
@@ -314,17 +315,17 @@ Un matcher de phrases avec tous les pays est proposé avec la variable `matcher`
 Un dictionnaire des pays avec leurs capitales en correspondance est proposé avec
 la variable `CAPITALS`.
 
-- Complète le composant `countries_component` et crée un `Span` avec le libellé
+- Complète le composant `countries_component` et crée un `Span` avec le label
    `"GPE"` (entité géopolitique) pour toutes les correspondances.
 - Ajoute le composant au pipeline.
 - Déclare l'extension d'attribut Span nommée `"capital"` avec le getter
   `get_capital`.
-- Traite le texte et affiche le texte de l'entité, le libellé de l'entité, et la
+- Traite le texte et affiche le texte de l'entité, le label de l'entité, et la
   capitale de l'entité pour chaque span d'entité de `doc.ents`.
 
 <codeblock id="03_12">
 
-- La classe `Span` requiert quatre arguments: le `doc`, les index de token
+- La classe `Span` requiert quatre arguments: le `doc`, les indices de token
   `start` et `end` du span et le `label`.
 - L'appel du `PhraseMatcher` sur un `doc` retourne une liste de tuples
   `(match_id, start, end)`.
@@ -418,7 +419,7 @@ du traitement d'un texte.
 
 ### Partie 1
 
-- Réécris le code en utilisant `nlp.make_doc` pour uniquement tokéniser le
+- Réécris le code en utilisant `nlp.make_doc` pour uniquement tokeniser le
   texte.
 
 <codeblock id="03_16_01">

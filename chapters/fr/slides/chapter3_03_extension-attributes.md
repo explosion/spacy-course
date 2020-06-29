@@ -159,7 +159,7 @@ True - sky is blue
 False - The sky
 ```
 
-Notes : Si tu veux définis des attributs étendus sur un span, tu voudras presque
+Notes : Si tu veux définir des attributs étendus sur un span, tu voudras presque
 toujours utiliser une extension de propriété avec un getter. Sinon, tu serais
 obligé d'actualiser _tous les spans possibles_ à la main pour définir toutes les
 valeurs.

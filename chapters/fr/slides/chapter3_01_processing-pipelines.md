@@ -14,7 +14,7 @@ chaine de caractères.
 
 ---
 
-# Que se passe-t-til quand tu appelles nlp ?
+# Que se passe-t-il quand tu appelles nlp ?
 
 <img src="/pipeline.png" alt="Illustration du pipeline de spaCy pipeline transformant un texte en Doc traité" width="90%" />
 
@@ -55,7 +55,7 @@ Le named entity recognizer ajoute les entités détectées à la propriété
 `doc.ents`. Il définit aussi les attributs de type d'entité sur les tokens qui
 indiquent si un token fait partie ou non d'une entité.
 
-Enfin, le text classifier définit les libellés de catégories qui s'appliquent à
+Enfin, le text classifier définit les labels de catégories qui s'appliquent à
 l'ensemble du texte, et les ajoute à la propriété `doc.cats`.
 
 Comme les catégories de textes sont toujours très spécifiques, le text
@@ -66,9 +66,9 @@ peux l'utiliser pour entrainer ton propre système.
 
 # Sous le capot
 
-<img src="/package_meta.png" alt="Illustration d'un package libellé en_core_web_sm, de dossiers, fichiers et du meta.json" />
+<img src="/package_meta.png" alt="Illustration d'un package nommé en_core_web_sm, de dossiers, fichiers et du meta.json" />
 
-- Pipeline défini dans l'ordre dans le `meta.json` du modèle
+- Le pipeline est défini dans l'ordre dans le `meta.json` du modèle
 - Les composants intégrés ont besoin de données binaires pour effectuer des
   prédictions
 
@@ -79,8 +79,8 @@ Le meta définit des éléments tels que la langue et le pipeline. Cela indique 
 spaCy quels composants instancier.
 
 Les composants intégrés qui effectuent des prédictions ont également besoin de
-données binaires. Les données sont incluses dans le package de modèle et chargés
-dans le composant quand tu charges le modèle.
+données binaires. Les données sont incluses dans le package de modèle et
+chargées dans le composant quand tu charges le modèle.
 
 ---
 
@@ -122,5 +122,5 @@ ou entités nommées.
 
 # Pratiquons !
 
-Notes : Voyons maintenant quelques pipelines spaCy pipelines et jetons un oeil
-sous le capot !
+Notes : Voyons maintenant quelques pipelines spaCy et jetons un oeil sous le
+capot !

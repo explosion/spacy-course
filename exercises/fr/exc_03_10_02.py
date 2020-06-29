@@ -12,7 +12,8 @@ def to_html(span, tag):
 # Déclare l'extension de méthode de Span "to_html" avec la méthode to_html
 ____.____(____, ____=____)
 
-# Traite le texte et applique la méthode to_html sur le span avec la balise "strong"
+# Traite le texte et applique la méthode to_html sur le span
+# avec la balise "strong"
 doc = nlp("Hello world, this is a sentence.")
 span = doc[0:2]
 print(____)
