@@ -96,7 +96,7 @@ Notes : Tu peux même ajouter les métadonnées de contexte à des attributs
 personnalisés.
 
 Dans cet exemple, nous déclarons deux extensions, `id` et `page_number`, avec
-pour valeur par défaut `None`.
+comme valeur par défaut `None`.
 
 Après avoir traité le texte et en prenant en compte le contexte, nous pouvons
 actualiser les extensions du doc avec nos métadonnées de contexte.

@@ -23,7 +23,7 @@ doc = nlp("This is a sentence.")
 ```
 
 Notes : Tu l'as déjà fait de nombreuses fois maintenant : passer une chaine de
-caractères à l'objet `nlp` object, et recevoir un objet `Doc`.
+caractères à l'objet `nlp`, et recevoir un objet `Doc`.
 
 Mais que fait _vraiment_ l'objet `nlp` ?
 
@@ -68,7 +68,7 @@ peux l'utiliser pour entrainer ton propre système.
 
 <img src="/package_meta.png" alt="Illustration d'un package nommé en_core_web_sm, de dossiers, fichiers et du meta.json" />
 
-- Le pipeline est défini dans l'ordre dans le `meta.json` du modèle
+- L'ordre du pipeline est défini dans le `meta.json` du modèle
 - Les composants intégrés ont besoin de données binaires pour effectuer des
   prédictions
 

@@ -2,7 +2,7 @@
 type: slides
 ---
 
-# Extension attributes
+# Attributs étendus
 
 Notes : Dans cette leçon, tu vas apprendre comment ajouter des attributs
 personnalisés aux objets `Doc`, `Token` et `Span` pour stocker des données
@@ -28,7 +28,7 @@ span._.has_color = False
 # Importe les classes globales
 from spacy.tokens import Doc, Token, Span
 
-# Définit des extensions sur Doc, Token et Span
+# Définis des extensions sur Doc, Token et Span
 Doc.set_extension("title", default=None)
 Token.set_extension("is_color", default=False)
 Span.set_extension("has_color", default=False)
@@ -71,7 +71,7 @@ propriétés et extensions de méthodes.
 ```python
 from spacy.tokens import Token
 
-# Définit l'extension sur le Token avec une valeur par défaut
+# Définis l'extension sur le Token avec une valeur par défaut
 Token.set_extension("is_color", default=False)
 
 doc = nlp("The sky is blue.")
@@ -104,7 +104,7 @@ def get_is_color(token):
     colors = ["red", "yellow", "blue"]
     return token.text in colors
 
-# Définit l'extension de Token avec le getter
+# Définis l'extension de Token avec le getter
 Token.set_extension("is_color", getter=get_is_color)
 
 doc = nlp("The sky is blue.")
@@ -116,7 +116,7 @@ True - blue
 ```
 
 Notes : Les extensions de propriétés fonctionnent comme les propriétés en
-Python: elles peuvent définir une fonction getter et une fonction optionnelle
+Python : elles peuvent définir une fonction getter et une fonction optionnelle
 setter.
 
 La fonction getter est appelée uniquement quand tu récupères l'attribut. Cela
@@ -141,12 +141,12 @@ Le token "blue" retourne maintenant `True` pour `._.is_color`.
 ```python
 from spacy.tokens import Span
 
-# Définit la fonction getter
+# Définis la fonction getter
 def get_has_color(span):
     colors = ["red", "yellow", "blue"]
     return any(token.text in colors for token in span)
 
-# Définit l'extension de Span avec le getter
+# Définis l'extension de Span avec le getter
 Span.set_extension("has_color", getter=get_has_color)
 
 doc = nlp("The sky is blue.")
@@ -182,12 +182,12 @@ ou pas une couleur.
 ```python
 from spacy.tokens import Doc
 
-# Définit la méthode avec des arguments
+# Définis la méthode avec des arguments
 def has_token(doc, token_text):
     in_doc = token_text in [token.text for token in doc]
     return in_doc
 
-# Définit l'extension du Doc avec la méthode
+# Définis l'extension du Doc avec la méthode
 Doc.set_extension("has_token", method=has_token)
 
 doc = nlp("The sky is blue.")

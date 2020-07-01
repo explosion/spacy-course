@@ -188,8 +188,8 @@ animaux a déjà été créé sous le nom de variable `matcher`.
 - Crée un `Span` pour chaque correspondance, assigne-lui l'ID de label pour
   `"ANIMAL"` et actualise le `doc.ents` avec les nouveaux spans.
 - Ajoute le nouveau composant au pipeline _après_ le composant `"ner"`.
-- Traite le texte et affiche le texte et le label pour les entités figurant
-  dans `doc.ents`.
+- Traite le texte puis affiche le texte et le label des entités figurant dans
+  `doc.ents`.
 
 <codeblock id="03_07">
 
@@ -311,8 +311,8 @@ combinées avec des composants de pipeline personnalisés. Dans cet exercice, tu
 vas écrire un composant de pipeline qui trouve des noms de pays et une extension
 personnalisée qui retourne le nom de la capitale du pays s'il est disponible.
 
-Un matcher de phrases avec tous les pays est proposé avec la variable `matcher`.
-Un dictionnaire des pays avec leurs capitales en correspondance est proposé avec
+Un matcher de phrases avec tous les pays est proposé via la variable `matcher`.
+Un dictionnaire des pays avec leurs capitales en correspondance est proposé via
 la variable `CAPITALS`.
 
 - Complète le composant `countries_component` et crée un `Span` avec le label
@@ -350,7 +350,7 @@ la variable `CAPITALS`.
 
 Dans cet exercice, tu vas utiliser `nlp.pipe` pour un traitement plus efficace
 du texte. L'objet `nlp` a déjà été créé pour toi. Une liste de tweets à propos
-d'une chaine américaine connue de fast-food est disponible avec la variable
+d'une chaine américaine connue de fast-food est disponible via la variable
 nommée `TEXTS`.
 
 ### Partie 1
@@ -388,7 +388,7 @@ nommée `TEXTS`.
 Dans cet exercice, tu vas utiliser les attributs personnalisés pour ajouter aux
 citations des métadonnées sur l'auteur et le livre correspondants.
 
-Une liste d'exemples sous la forme `[text, context]` est disponible avec la
+Une liste d'exemples sous la forme `[text, context]` est disponible via la
 variable `DATA`. Les textes sont des citations de livres célèbres, et les
 contextes sont des dictionnaires avec pour clés `"author"` et `"book"`.
 

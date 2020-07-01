@@ -100,7 +100,7 @@ exister, toutefois – sinon, spaCy génèrera une erreur.
 # Crée l'objet nlp
 nlp = spacy.load("en_core_web_sm")
 
-# Définit un composant personnalisé
+# Définis un composant personnalisé
 def custom_component(doc):
     # Affiche la longueur du doc
     print("Doc length:", len(doc))
@@ -147,7 +147,7 @@ quand nous traiterons un doc.
 # Crée l'objet nlp
 nlp = spacy.load("en_core_web_sm")
 
-# Définit un composant personnalisé
+# Définis un composant personnalisé
 def custom_component(doc):
 
     # Affiche la longueur du doc
