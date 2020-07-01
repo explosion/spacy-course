@@ -1,11 +1,11 @@
 import json
-from spacy.lang.en import English
+from spacy.lang.es import Spanish
 from spacy.tokens import Doc
 
-with open("exercises/en/bookquotes.json") as f:
+with open("exercises/es/bookquotes.json", encoding="utf8") as f:
     DATA = json.loads(f.read())
 
-nlp = English()
+nlp = Spanish()
 
 # Registra la extensión del Doc, "author" (por defecto None)
 ____

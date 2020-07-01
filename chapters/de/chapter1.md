@@ -223,7 +223,7 @@ ab. Hier ist ein Beispiel.
 
 - Verarbeite einen Text mit dem `nlp`-Objekt.
 - Iteriere über die Entitäten und drucke ihren Text und ihr Label.
-- Es scheint, als hat das Modell "iPhone SE" nicht korrekt vorhergesagt.
+- Es scheint, als hat das Modell "IPhone SE" nicht korrekt vorhergesagt.
   Erstelle eine Span für diese Tokens von Hand.
 
 <codeblock id="01_09">

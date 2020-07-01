@@ -1,15 +1,15 @@
-# Importa la clase de lenguaje "English" y crea el objeto nlp
+# Importa la clase de lenguaje "Spanish" y crea el objeto nlp
 from ____ import ____
 
 nlp = ____
 
 # Procesa el texto
-doc = ____("I like tree kangaroos and narwhals.")
+doc = ____("Me gustan las panteras negras y los leones.")
 
-# Un slice del Doc para "tree kangaroos"
-tree_kangaroos = ____
-print(tree_kangaroos.text)
+# Un slice del Doc para "panteras negras"
+panteras_negras = ____
+print(panteras_negras.text)
 
-# Un slice del Doc para "tree kangaroos and narwhals" (sin el ".")
-tree_kangaroos_and_narwhals = ____
-print(tree_kangaroos_and_narwhals.text)
+# Un slice del Doc para "panteras negras y los leones" (sin el ".")
+panteras_negras_y_leones = ____
+print(panteras_negras_y_leones.text)

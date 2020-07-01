@@ -80,12 +80,12 @@ Sin embargo, el otro componente al que se le añadirá un nuevo componente antes
 
 ```python
 # Crea el objeto nlp
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("es_core_news_sm")
 
 # Define un componente personalizado
 def custom_component(doc):
     # Imprime la longitud del doc en pantalla
-    print("Doc length:", len(doc))
+    print("longitud del Doc:", len(doc))
     # Devuelve el objeto doc
     return doc
 
@@ -102,15 +102,15 @@ Pipeline: ['custom_component', 'tagger', 'parser', 'ner']
 
 Notes: Aquí tenemos un ejemplo de un componente simple del pipeline.
 
-Comenzamos con el modelo pequeño de inglés.
+Comenzamos con el modelo pequeño de español.
 
 Luego definimos el componente - una función que toma un objeto `Doc` y luego lo devuelve.
 
 Hagamos algo simple e imprimamos en pantalla la longitud del documento que pasa por el pipeline.
 
-¡No olvides devolver el doc para que pueda ser procesado por el próximo componente en el pipeline! El doc creado por el tokenizer es pasado por todos los componentes, así que es importante que todos devuelvan el doc modificado.
+¡No olvides devolver el doc para que pueda ser procesado por el próximo componente en el pipeline! El doc creado por el tokenizer pasa por todos los componentes, así que es importante que todos devuelvan el doc modificado.
 
-Ahora podemos añadir el componente al pipeline. Vamos a añadirlo en el primer lugar, justo después del tokenizer. Lo hacemos poniendo `first=True`.
+Ahora podemos añadir el componente al pipeline. Vamos a añadirlo en el primer lugar, justo después del tokenizer. Lo hacemos definiendo `first=True`.
 
 Cuando imprimimos en pantalla los nombres de los componentes el nuevo aparece al principio. Esto significa que será aplicado cuando procesemos un doc.
 
@@ -120,13 +120,13 @@ Cuando imprimimos en pantalla los nombres de los componentes el nuevo aparece al
 
 ```python
 # Crea el objeto nlp
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("es_core_news_sm")
 
 # Define un componente personalizado
 def custom_component(doc):
 
     # Imprime la longitud del doc en pantalla
-    print("Doc length:", len(doc))
+    print("longitud del Doc:", len(doc))
 
     # Devuelve el objeto doc
     return doc
@@ -135,14 +135,14 @@ def custom_component(doc):
 nlp.add_pipe(custom_component, first=True)
 
 # Procesa un texto
-doc = nlp("Hello world!")
+doc = nlp("¡Hola Mundo!")
 ```
 
 ```out
-Doc length: 3
+longitud del Doc: 4
 ```
 
-Notes: Ahora cuando procesamos un texto usando el objeto `nlp`, el componente personalizado será aplicado al doc y la longitud del documento será impresa en pantalla.
+Notes: Ahora, cuando procesamos un texto usando el objeto `nlp`, el componente personalizado será aplicado al doc y la longitud del documento será impresa en pantalla.
 
 ---
 

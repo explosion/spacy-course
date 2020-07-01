@@ -3,7 +3,7 @@ import spacy
 
 nlp = spacy.load("de_core_news_sm")
 
-with open("exercises/de/tweets.json") as f:
+with open("exercises/de/tweets.json", encoding="utf8") as f:
     TEXTS = json.loads(f.read())
 
 # Verarbeite den Text und drucke die Nomen

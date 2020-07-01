@@ -11,6 +11,6 @@ def test():
     ), "¿Asignaste el label ANIMAL?"
 
     __msg__.good(
-        "¡Buen trabajo! Construíste tu primer componente del pipeline para "
+        "¡Buen trabajo! Construiste tu primer componente del pipeline para "
         "encontrar entidades basado en reglas."
     )
