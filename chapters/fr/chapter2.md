@@ -229,7 +229,7 @@ d'utiliser les attributs natifs des tokens pour garder un code cohérent.
 
 <opt text='<code>pos_</code> n'est pas le bon attribut pour extraire des noms propres. Tu devrais utiliser <code>tag_</code> et les labels <code>"NNP"</code> et <code>"NNS"</code> à la place.'>
 
-L'attribut `.pos_` retourne l'étiquetage approximatif de partie de discours et
+L'attribut `.pos_` retourne l'étiquetage grossier de partie de discours et
 `"PROPN"` est le bon label pour chercher des noms propres.
 
 </opt>

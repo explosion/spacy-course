@@ -15,11 +15,11 @@ comment spaCy gère les chaines de caractères.
 
 # Vocabulaire partagé et magasin de chaines (1)
 
-- `Vocab`: stocke les données partagées entre des documents multiples
+- `Vocab` : stocke les données partagées entre des documents multiples
 - Pour économiser de l'espace mémoire, spaCy encode toutes les chaines en
   **valeurs de hachage**
-- Les chaines ne sont stockées qu'une seule fois dans le `StringStore` (magasin
-  de chaines) via `nlp.vocab.strings`
+- Les chaines ne sont stockées qu'une seule fois dans le `StringStore`
+  via `nlp.vocab.strings`
 - String store : **table de consultation** dans les deux sens
 
 ```python
