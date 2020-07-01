@@ -1,6 +1,7 @@
 ---
-title: 'Chapitre 4 : Entrainement d'un modèle de réseau de neurones'
-description: "Dans ce chapitre, tu vas apprendre comment actualiser les modèles
+title: "Chapitre 4 : Entrainement d'un modèle de réseau de neurones"
+description:
+  "Dans ce chapitre, tu vas apprendre comment actualiser les modèles
   statistiques de spaCy afin de les personnaliser pour tes cas d'utilisation -
   par exemple, pour prédire un nouveau type d'entité pour des commentaires en
   ligne. Tu vas écrire ta propre boucle d'apprentissage en partant de zéro, et
