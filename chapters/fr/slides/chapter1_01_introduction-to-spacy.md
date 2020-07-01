@@ -27,7 +27,7 @@ nlp = English()
 - inclut des règles spécifiques à la langue pour la tokenisation.
 
 Notes : Au coeur de spaCy se trouve l'objet contenant le pipeline de traitement.
-Nous nommons habituellement cette variable "nlp".
+Nous nommons généralement cette variable "nlp".
 
 Par exemple, pour créer un objet `nlp` en langue anglaise, tu peux importer la
 classe de langue `English` depuis `spacy.lang.en` et l'instancier. Tu peux

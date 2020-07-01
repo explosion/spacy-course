@@ -19,7 +19,7 @@ dans un texte.
 - Exemple: "duck" (verbe) vs. "duck" (nom)
 
 Notes : par rapport aux expressions régulières, le matcher fonctionne avec des
-objets `Doc` et `Token` et pas simplement des chaines de caractères.
+objets `Doc` et `Token` et pas simplement avec des chaines de caractères.
 
 Il est également plus flexible : tu peux rechercher des textes mais aussi
 d'autres attributs lexicaux.
@@ -143,7 +143,7 @@ Chaque tuple contient trois valeurs : l'ID du motif, l'indice de début et
 l'indice de fin du span en correspondance.
 
 Cela signifie que nous pouvons itérer sur les correspondances et créer un objet
-`Span` object: une portion du doc depuis l'indice de début jusqu'à l'indice de
+`Span` : une portion du doc depuis l'indice de début jusqu'à l'indice de
 fin.
 
 ---

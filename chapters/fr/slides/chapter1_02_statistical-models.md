@@ -25,7 +25,7 @@ nom d'une personne.
 
 Les modèles statistiques permettent à spaCy d'effectuer des prédictions en
 contexte. Cela inclut généralement les étiquettes de partie de discours, les
-dépendances syntaxiques et les entités nommées..
+dépendances syntaxiques et les entités nommées.
 
 Les modèles sont entrainés sur de larges jeux de données de textes labellisés.
 
@@ -145,7 +145,7 @@ voir comme le token parent auquel le mot considéré se rattache.
 
 | Label     | Description               | Exemple |
 | --------- | ------------------------- | ------- |
-| **nsubj** | sujet                     | She     |
+| **nsubj** | sujet nominal             | She     |
 | **dobj**  | complément d'objet direct | pizza   |
 | **det**   | déterminant (article)     | the     |
 
@@ -184,7 +184,7 @@ $1 billion MONEY
 Notes : Les entités nommées sont des "objets du monde réel" auxquels on assigne
 un nom - par exemple, une personne, une organisation ou un pays.
 
-La propriété `doc.ents` vous permet d'accéder aux entités nommées prédites par
+La propriété `doc.ents` te permet d'accéder aux entités nommées prédites par
 le modèle.
 
 Elle retourne un itérateur d'objets `Span`, donc nous pouvons imprimer le texte

@@ -138,8 +138,8 @@ dépendance ou les entités nommées.
 
 Les modèles statistiques permettent de généraliser à partir d'un jeu de données
 d'apprentissage. Une fois entrainés, ils utilisent les poids binaires pour
-effectuer des prédictions. Il n'est donc pas nécessaire de les fournir avec les
-données d'apprentissage.
+effectuer des prédictions. Il n'est donc pas nécessaire de les fournir avec
+leurs données d'apprentissage.
 
 </opt>
 <opt text="Les Strings du vocabulaire du modèle et leurs hashs.">
@@ -281,7 +281,7 @@ plus complexes qui utilisent différents attributs des tokens et des opérateurs
 ### Partie 1
 
 - Écris **un** motif qui recherche uniquement les mentions de versions
-  _complètes_ de versions d'iOS :
+  _complètes_ d'iOS :
   "iOS 7", "iOS 11" et "iOS 10".
 
 <codeblock id="01_12_01">
