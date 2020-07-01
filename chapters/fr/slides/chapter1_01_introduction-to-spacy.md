@@ -4,7 +4,7 @@ type: slides
 
 # Présentation de spaCy
 
-Notes : Salut, je m'appelle Inès ! Je suis l'un des principaux développeurs de
+Notes: Salut, je m'appelle Inès ! Je suis l'un des principaux développeurs de
 spaCy, une bibliothèque populaire pour le traitement automatique du langage
 naturel en Python.
 
@@ -26,7 +26,7 @@ nlp = English()
 - contient le pipeline de traitement
 - inclut des règles spécifiques à la langue pour la tokenisation.
 
-Notes : Au coeur de spaCy se trouve l'objet contenant le pipeline de traitement.
+Notes: Au coeur de spaCy se trouve l'objet contenant le pipeline de traitement.
 Nous nommons généralement cette variable "nlp".
 
 Par exemple, pour créer un objet `nlp` en langue anglaise, tu peux importer la
@@ -58,9 +58,9 @@ world
 !
 ```
 
-Notes : Quand tu traites un texte avec l'objet `nlp`, spaCy crée un objet
-`Doc` – abréviation de "document". Le Doc te permet d'accéder aux informations
-sur le texte de manière structurée, sans perte d'information.
+Notes: Quand tu traites un texte avec l'objet `nlp`, spaCy crée un objet `Doc` –
+abréviation de "document". Le Doc te permet d'accéder aux informations sur le
+texte de manière structurée, sans perte d'information.
 
 Le Doc se comporte d'ailleurs comme une séquence Python normale qui te permet
 d'itérer sur ses tokens, ou d'obtenir un token à partir de son indice. Nous
@@ -86,15 +86,15 @@ print(token.text)
 world
 ```
 
-Notes : Les objets `Token` représentent les tokens dans un document – par
+Notes: Les objets `Token` représentent les tokens dans un document – par
 exemple, un mot ou un signe de ponctuation.
 
 Pour obtenir un token à une position donnée, tu peux utiliser l'indice dans le
 doc.
 
 Les objets `Token` proposent aussi différents attributs qui te fournissent plus
-d'informations sur les tokens. Par exemple, l'attribut `.text` retourne le
-texte exact du token.
+d'informations sur les tokens. Par exemple, l'attribut `.text` retourne le texte
+exact du token.
 
 ---
 
@@ -116,13 +116,13 @@ print(span.text)
 world!
 ```
 
-Notes : Un objet `Span` est une portion du document composée d'un ou plusieurs
+Notes: Un objet `Span` est une portion du document composée d'un ou plusieurs
 tokens. Il s'agit seulement d'une vue du `Doc` qui ne contient pas elle-même de
 données.
 
 Pour créer un span, tu peux utiliser la notion entre crochets de Python. Par
-exemple, `1:3` créera une portion commençant avec le token situé à la
-position 1, jusqu'à – mais sans inclure ! – le token à la position 3.
+exemple, `1:3` créera une portion commençant avec le token situé à la position
+1, jusqu'à – mais sans inclure ! – le token à la position 3.
 
 ---
 
@@ -150,7 +150,7 @@ is_punct: [False, False, False, False, True]
 like_num: [False, False, False, True, False]
 ```
 
-Notes : Tu peux voir ici certains des attributs disponibles sur les tokens :
+Notes: Tu peux voir ici certains des attributs disponibles sur les tokens :
 
 `i` est l'indice du token au sein du document parent.
 
@@ -158,8 +158,8 @@ Notes : Tu peux voir ici certains des attributs disponibles sur les tokens :
 
 `is_alpha`, `is_punct` et `like_num` retournent des valeurs booléennes indiquant
 si les tokens sont composés de caractères alphabétiques, s'ils sont des signes
-de ponctuation et s'ils _ressemblent_ à un nombre. Par exemple, un token "10"
-– un, zéro – ou le mot "dix" – D, I, X.
+de ponctuation et s'ils _ressemblent_ à un nombre. Par exemple, un token "10" –
+un, zéro – ou le mot "dix" – D, I, X.
 
 Ces attributs sont également appelés attributs lexicaux : ils se comprennent
 comme des éléments de vocabulaire et ne dépendent pas du contexte du token.
@@ -168,4 +168,4 @@ comme des éléments de vocabulaire et ne dépendent pas du contexte du token.
 
 # Passons à la pratique !
 
-Notes : Voyons cela en pratique en traitant ton premier texte avec spaCy.
+Notes: Voyons cela en pratique en traitant ton premier texte avec spaCy.

@@ -4,7 +4,7 @@ type: slides
 
 # Attributs étendus
 
-Notes : Dans cette leçon, tu vas apprendre comment ajouter des attributs
+Notes: Dans cette leçon, tu vas apprendre comment ajouter des attributs
 personnalisés aux objets `Doc`, `Token` et `Span` pour stocker des données
 personnalisées.
 
@@ -34,7 +34,7 @@ Token.set_extension("is_color", default=False)
 Span.set_extension("has_color", default=False)
 ```
 
-Notes : Les attributs personnalisés te permettent d'ajouter n'importe quelle
+Notes: Les attributs personnalisés te permettent d'ajouter n'importe quelle
 métadonnée aux docs, tokens et spans. Les données peuvent être ajoutées
 ponctuellement, ou peuvent être calculées dynamiquement.
 
@@ -59,7 +59,7 @@ valeur par défaut et peut être modifiée.
 2. Extensions de propriétés
 3. Extensions de méthodes
 
-Notes : Ce sont trois types d'extensions : extensions d'attributs, extensions de
+Notes: Ce sont trois types d'extensions : extensions d'attributs, extensions de
 propriétés et extensions de méthodes.
 
 ---
@@ -80,7 +80,7 @@ doc = nlp("The sky is blue.")
 doc[3]._.is_color = True
 ```
 
-Notes : Les attributs étendus définissent une valeur par défaut qui peut être
+Notes: Les attributs étendus définissent une valeur par défaut qui peut être
 modifiée.
 
 Par exemple, un attribut personnalisé `is_color` sur le token qui possède une
@@ -115,9 +115,8 @@ print(doc[3]._.is_color, "-", doc[3].text)
 True - blue
 ```
 
-Notes : Les extensions de propriétés fonctionnent comme les propriétés en
-Python : elles peuvent définir une fonction getter et une fonction optionnelle
-setter.
+Notes: Les extensions de propriétés fonctionnent comme les propriétés en Python
+: elles peuvent définir une fonction getter et une fonction optionnelle setter.
 
 La fonction getter est appelée uniquement quand tu récupères l'attribut. Cela
 permet de calculer la valeur dynamiquement, et même de prendre en compte
@@ -159,7 +158,7 @@ True - sky is blue
 False - The sky
 ```
 
-Notes : Si tu veux définir des attributs étendus sur un span, tu voudras presque
+Notes: Si tu veux définir des attributs étendus sur un span, tu voudras presque
 toujours utiliser une extension de propriété avec un getter. Sinon, tu serais
 obligé d'actualiser _tous les spans possibles_ à la main pour définir toutes les
 valeurs.
@@ -200,7 +199,7 @@ True - blue
 False - cloud
 ```
 
-Notes : Les extensions de méthodes te permettent d'obtenir une extension
+Notes: Les extensions de méthodes te permettent d'obtenir une extension
 d'attribut sous forme de méthode appelable.
 
 Tu peux ensuite lui passer un ou plusieurs arguments, et calculer dynamiquement
@@ -220,4 +219,4 @@ et `False` pour le mot "cloud".
 
 # Pratiquons !
 
-Notes : Maintenant c'est à toi. Ajoutons quelques extensions personnalisées !
+Notes: Maintenant c'est à toi. Ajoutons quelques extensions personnalisées !

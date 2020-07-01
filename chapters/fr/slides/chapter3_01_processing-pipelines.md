@@ -4,7 +4,7 @@ type: slides
 
 # Traitements de textes en pipelines
 
-Notes : Bienvenue à nouveau ! Ce chapitre est consacré aux pipelines : une série
+Notes: Bienvenue à nouveau ! Ce chapitre est consacré aux pipelines : une série
 de fonctions appliquée à un doc pour ajouter des attributs comme les étiquettes
 de partie de discours, les relations de dépendances ou les entités nommées.
 
@@ -22,7 +22,7 @@ chaine de caractères.
 doc = nlp("This is a sentence.")
 ```
 
-Notes : Tu l'as déjà fait de nombreuses fois maintenant : passer une chaine de
+Notes: Tu l'as déjà fait de nombreuses fois maintenant : passer une chaine de
 caractères à l'objet `nlp`, et recevoir un objet `Doc`.
 
 Mais que fait _vraiment_ l'objet `nlp` ?
@@ -36,14 +36,14 @@ Finalement, le document traité est retourné pour que tu puisses travailler ave
 
 # Composants intégrés au pipeline
 
-| Nom         | Description             | Crée                                                   |
+| Nom         | Description             | Crée                                                      |
 | ----------- | :---------------------- | :-------------------------------------------------------- |
 | **tagger**  | Part-of-speech tagger   | `Token.tag`, `Token.pos`                                  |
 | **parser**  | Dependency parser       | `Token.dep`, `Token.head`, `Doc.sents`, `Doc.noun_chunks` |
 | **ner**     | Named entity recognizer | `Doc.ents`, `Token.ent_iob`, `Token.ent_type`             |
 | **textcat** | Text classifier         | `Doc.cats`                                                |
 
-Notes : spaCy est fourni avec les composants intégrés suivants.
+Notes: spaCy est fourni avec les composants intégrés suivants.
 
 Le part-of-speech tagger définit les attributs `token.tag` et `token.pos`.
 
@@ -72,7 +72,7 @@ peux l'utiliser pour entrainer ton propre système.
 - Les composants intégrés ont besoin de données binaires pour effectuer des
   prédictions
 
-Notes : Tous les modèles que tu peux charger dans spaCy comportent plusieurs
+Notes: Tous les modèles que tu peux charger dans spaCy comportent plusieurs
 fichiers et un `meta.json`.
 
 Le meta définit des éléments tels que la langue et le pipeline. Cela indique à
@@ -108,7 +108,7 @@ print(nlp.pipeline)
  ('ner', <spacy.pipeline.EntityRecognizer>)]
 ```
 
-Notes : Pour voir les noms des composants de pipeline présents dans l'objet nlp
+Notes: Pour voir les noms des composants de pipeline présents dans l'objet nlp
 courant, tu peux utiliser l'attribut `nlp.pipe_names`.
 
 Pour la liste des tuples de noms et fonctions des composants, tu peux utiliser
@@ -122,5 +122,5 @@ ou entités nommées.
 
 # Pratiquons !
 
-Notes : Voyons maintenant quelques pipelines spaCy et jetons un oeil sous le
+Notes: Voyons maintenant quelques pipelines spaCy et jetons un oeil sous le
 capot !

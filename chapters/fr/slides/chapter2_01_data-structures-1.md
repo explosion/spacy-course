@@ -4,7 +4,7 @@ type: slides
 
 # Structures de données (1) : Vocabulaire, lexèmes et magasin de chaines
 
-Notes : Bienvenue à nouveau ! Maintenant que tu as eu une expérience concrète
+Notes: Bienvenue à nouveau ! Maintenant que tu as eu une expérience concrète
 d'utilisation des objets de spaCy, le moment est venu pour toi d'en savoir plus
 sur ce qui se passe sous le capot de spaCy.
 
@@ -18,8 +18,8 @@ comment spaCy gère les chaines de caractères.
 - `Vocab` : stocke les données partagées entre des documents multiples
 - Pour économiser de l'espace mémoire, spaCy encode toutes les chaines en
   **valeurs de hachage**
-- Les chaines ne sont stockées qu'une seule fois dans le `StringStore`
-  via `nlp.vocab.strings`
+- Les chaines ne sont stockées qu'une seule fois dans le `StringStore` via
+  `nlp.vocab.strings`
 - String store : **table de consultation** dans les deux sens
 
 ```python
@@ -35,8 +35,7 @@ coffee_string = nlp.vocab.strings[coffee_hash]
 string = nlp.vocab.strings[3197928453018144401]
 ```
 
-Notes : spaCy stocke toutes les données partagées dans un vocabulaire, le
-Vocab.
+Notes: spaCy stocke toutes les données partagées dans un vocabulaire, le Vocab.
 
 Il inclut les mots, mais aussi les schémas de nommage pour les étiquettes et les
 labels.
@@ -86,7 +85,7 @@ print("hash value:", doc.vocab.strings["coffee"])
 hash value: 3197928453018144401
 ```
 
-Notes : Pour obtenir le hash d'une chaine, nous pouvons le rechercher dans
+Notes: Pour obtenir le hash d'une chaine, nous pouvons le rechercher dans
 `nlp.vocab.strings`.
 
 Pour obtenir la représentation en chaine d'un hash, nous pouvons rechercher le
@@ -118,7 +117,7 @@ coffee 3197928453018144401 True
   - Etiquettes de partie de discours **non** dépendantes du contexte,
     dépendances ou labels d'entités
 
-Notes : Les lexèmes sont des éléments du vocabulaire indépendants du contexte.
+Notes: Les lexèmes sont des éléments du vocabulaire indépendants du contexte.
 
 Tu peux obtenir un lexème en cherchant une chaine ou un ID de hash dans le
 vocabulaire.
@@ -137,7 +136,7 @@ de dépendances. Ceux-ci dépendent du contexte.
 
 <img src="/vocab_stringstore.png" width="70%" alt="Illustration des mots 'I', 'love' and 'coffee' dans le Doc, Vocab et StringStore" />
 
-Notes : Voici un exemple.
+Notes: Voici un exemple.
 
 Le `Doc` contient les mots dans leur contexte – dans le cas présent, les tokens
 "I", "love" et "coffee" avec leurs étiquettes de partie de discours et leurs
@@ -151,5 +150,5 @@ magasin de chaines.
 
 # Pratiquons !
 
-Notes : Tout ceci semble un peu abstrait - voyons donc le vocabulaire et le
+Notes: Tout ceci semble un peu abstrait - voyons donc le vocabulaire et le
 magasin de chaines en pratique.

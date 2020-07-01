@@ -1,7 +1,6 @@
 ---
 title: 'Chapitre 4 : Entrainement d'un modèle de réseau de neurones'
-description:
-  "Dans ce chapitre, tu vas apprendre comment actualiser les modèles
+description: "Dans ce chapitre, tu vas apprendre comment actualiser les modèles
   statistiques de spaCy afin de les personnaliser pour tes cas d'utilisation -
   par exemple, pour prédire un nouveau type d'entité pour des commentaires en
   ligne. Tu vas écrire ta propre boucle d'apprentissage en partant de zéro, et
@@ -13,7 +12,7 @@ type: chapter
 id: 4
 ---
 
-<exercise id="1" title="Apprentissage et actualisation des modèles" type="slides,video">
+<exercise id="1" title="Apprentissage et actualisation des modèles" type="slides">
 
 <slides source="chapter4_01_training-updating-models" start="35:02" end="38:495">
 </slides>
@@ -40,8 +39,8 @@ l'entrainer avec davantage d'exemples est souvent une bonne solution.
 
 <opt text="L'apprentissage de nouveaux schémas de classification.">
 
-Tu peux utiliser l'apprentissage pour apprendre au modèle de nouveaux labels,
-de nouveaux types d'entités ou d'autres schémas de classification.
+Tu peux utiliser l'apprentissage pour apprendre au modèle de nouveaux labels, de
+nouveaux types d'entités ou d'autres schémas de classification.
 
 </opt>
 
@@ -61,11 +60,10 @@ mais pas deviner de nouveaux labels à partir de texte brut.
 
 Le `Matcher` basé sur les règles de spaCy est un excellent moyen pour créer
 rapidement des données d'apprentissage pour les modèles d'entités nommées. Une
-liste de phrases est accessible via la variable `TEXTS`.
-Tu peux l'imprimer pour l'inspecter. Nous voulons trouver toutes les mentions
-de différents modèles d'iPhone, donc nous allons créer des données
-d'entrainement pour apprendre à notre modèle à les reconnaitre en tant que
-`"GADGET"`.
+liste de phrases est accessible via la variable `TEXTS`. Tu peux l'imprimer pour
+l'inspecter. Nous voulons trouver toutes les mentions de différents modèles
+d'iPhone, donc nous allons créer des données d'entrainement pour apprendre à
+notre modèle à les reconnaitre en tant que `"GADGET"`.
 
 - Écris un motif pour deux tokens dont la forme en minuscules correspond à
   `"iphone"` et `"x"`.
@@ -75,8 +73,7 @@ d'entrainement pour apprendre à notre modèle à les reconnaitre en tant que
 <codeblock id="04_03">
 
 - Pour trouver les formes minuscules d'un token, tu peux utiliser l'attribut
-  `"LOWER"`.
-  Par exemple : `{"LOWER": "apple"}`.
+  `"LOWER"`. Par exemple : `{"LOWER": "apple"}`.
 - Pour trouver un token numérique, tu peux utiliser le marqueur `"IS_DIGIT"`.
   Par exemple : `{"IS_DIGIT": True}`.
 
@@ -110,7 +107,7 @@ phrases est accessible via la variable `TEXTS`.
 
 </exercise>
 
-<exercise id="5" title="La boucle d'apprentissage" type="slides,video">
+<exercise id="5" title="La boucle d'apprentissage" type="slides">
 
 <slides source="chapter4_02_training-loop" start="39:00" end="42:25">
 </slides>
@@ -132,7 +129,7 @@ recognizer à reconnaitre des entités `"GADGET"` dans un texte – par exemple,
 <codeblock id="04_06">
 
 - Pour créer un entity recognizer vide, tu peux appeler `nlp.create_pipe` avec
- la chaine `"ner"`.
+  la chaine `"ner"`.
 - Pour ajouter le composant au pipeline, utilise la méthode `nlp.add_pipe`.
 - La méthode `add_label` est une méthode du composant de pipeline entity
   recognizer, stocké dans la variable `ner`. Pour lui ajouter un label, tu peux
@@ -192,11 +189,11 @@ un peu les choses, nous avons déjà fait tourner un modèle entrainé pour le l
 | Samsung Galaxy is a series of mobile computing devices designed, manufactured and marketed by Samsung Electronics | `(Samsung Galaxy,)`    |
 
 Parmi toutes les entités présentes dans les textes, **combien le modèle en
-a-t-il identifiées correctement** ?
-Rappelle-toi que que les spans d'entités incomplets comptent aussi comme des
-erreurs ! Astuce : Compte le nombre d'entités que le modèle _aurait dû_ prédire.
-Ensuite compte le nombre d'entités qu'il a _effectivement_ prédites correctement
-et divise-le par le nombre total d'entités correctes.
+a-t-il identifiées correctement** ? Rappelle-toi que que les spans d'entités
+incomplets comptent aussi comme des erreurs ! Astuce : Compte le nombre
+d'entités que le modèle _aurait dû_ prédire. Ensuite compte le nombre d'entités
+qu'il a _effectivement_ prédites correctement et divise-le par le nombre total
+d'entités correctes.
 
 <choice>
 
@@ -231,7 +228,7 @@ nombre total d'entités correctes que le modèle _aurait dû_ prédire.
 
 </exercise>
 
-<exercise id="9" title="Meilleures pratiques d'apprentissage" type="slides,video">
+<exercise id="9" title="Meilleures pratiques d'apprentissage" type="slides">
 
 <slides source="chapter4_03_training-best-practices" start="42:36" end="44:55">
 </slides>
@@ -282,7 +279,8 @@ d'entités avec une base de connaissances ou les chercher dans un wiki de voyage
 Même s'il est possible que Paris, AK soit aussi une attraction touristique, cela
 ne fait que souligner à quel point le schéma de labellisation est subjectif et à
 quel point il sera difficile de décider si le label s'applique ou non. De ce
-fait, cette distinction sera très difficile à apprendre pour l'entity recognizer.
+fait, cette distinction sera très difficile à apprendre pour l'entity
+recognizer.
 
 </opt>
 
@@ -300,7 +298,7 @@ avantages des reconnaissances statistiques d'entités nommées.
 ### Partie 2
 
 - Réécris le `TRAINING_DATA` pour utiliser uniquement le label `"GPE"` (villes,
-   états, pays) au lieu de `"TOURIST_DESTINATION"`.
+  états, pays) au lieu de `"TOURIST_DESTINATION"`.
 - N'oublie pas d'ajouter les tuples pour les entités `"GPE"` qui n'avaient pas
   été labellisées dans les anciennes données.
 
@@ -350,7 +348,8 @@ cela pourrait-il être dû ?
 
 <choice>
 
-<opt text='Il est très difficile pour le modèle d'apprendre plusieurs catégories comme <code>"PERSON"</code> et <code>"WEBSITE"</code>.'>
+<opt text='Il est très difficile pour le modèle d'apprendre plusieurs catégories
+comme <code>"PERSON"</code> et <code>"WEBSITE"</code>.'>
 
 Il est parfaitement possible pour un modèle d'apprendre des catégories très
 différentes. Par exemple, le modèle anglais pré-entrainé de spaCy est capable de
@@ -358,7 +357,9 @@ reconnaitre des personnes, mais aussi des organisations ou des pourcentages.
 
 </opt>
 
-<opt text='Les données d'apprentissage ne comportaient aucun exemple de <code>"PERSON"</code>, donc le modèle a appris que ce label est incorrect.' correct="true">
+<opt text='Les données d'apprentissage ne comportaient aucun exemple de
+<code>"PERSON"</code>, donc le modèle a appris que ce label est incorrect.'
+correct="true">
 
 Si des entités `"PERSON"` sont présentes dans les données d'apprentissage mais
 ne sont pas labellisées, le modèle va apprendre qu'elles ne doivent pas être
@@ -391,7 +392,7 @@ probablement pas le problème ici.
 
 </exercise>
 
-<exercise id="12" title="Résumé" type="slides,video">
+<exercise id="12" title="Résumé" type="slides">
 
 <slides source="chapter4_04_wrapping-up" start="45:01" end="47:195">
 </slides>

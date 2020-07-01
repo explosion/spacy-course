@@ -130,6 +130,53 @@
             "nextChapter": "Siguiente capítulo"
         }
     },
+    "fr": {
+        "langName": "Français",
+        "title": "NLP avancé avec spaCy",
+        "slogan": "Un cours en ligne gratuit",
+        "description": "spaCy est une bibliothèque Python moderne pour le Traitement Automatique du Langage Naturel de qualité industrielle. Dans ce cours en ligne gratuit et interactif, tu vas apprendre comment utiliser spaCy pour construire des systèmes avancés de compréhension du langage naturel, utilisant à la fois des approches à base de règles et d'apprentissage automatique.",
+        "bio": "Je m'appelle Inès, je suis l'un des principaux développeurs de spaCy et la co-fondatrice d'Explosion. Je suis spécialisée dans les outils de développement modernes pour l'IA, l'apprentissage automatique et le NLP. J'adore aussi construire des trucs pour le web.",
+        "footerLinks": [
+            {
+                "text": "Site web de spaCy",
+                "url": "https://spacy.io"
+            },
+            {
+                "text": "Source",
+                "url": "https://github.com/ines/spacy-course"
+            },
+            {
+                "text": "Suis-moi sur Twitter",
+                "url": "https://twitter.com/_inesmontani"
+            }
+        ],
+        "socialImage": "social.jpg",
+        "uiText": {
+            "aboutMe": "À propos de moi",
+            "aboutCourse": "À propos de ce cours",
+            "markAsCompleted": "Marquer comme terminé",
+            "removeFromCompleted": "Marquer comme non terminé",
+            "completed": "Terminé",
+            "submit": "Soumettre",
+            "correct": "C'est correct !",
+            "incorrect": "Incorrect.",
+            "showSolution": "Montrer la solution",
+            "reset": "Réinitialiser",
+            "runCode": "Lancer le code",
+            "next": "Suivant",
+            "showHints": "Montrer des indices",
+            "hideHints": "Cacher les indices",
+            "loading": "Chargement...",
+            "connectingFailed": "Échec de la connexion. Merci de recharger et de réessayer.",
+            "launchingDocker": "Lancement du conteneur Docker sur",
+            "reconnectingDocker": "Reconnexion au conteneur Docker sur",
+            "prevChapter": "Chapitre précédent",
+            "nextChapter": "Chapitre suivant",
+            "start": "Début",
+            "video": "Vidéo",
+            "slides": "Diapositives"
+        }
+    },
     "ja": {
         "langName": "日本語",
         "title": "spaCyを使った先進的な自然言語処理",
@@ -172,54 +219,6 @@
             "reconnectingDocker": "Dockerコンテナに再接続する",
             "prevChapter": "前章",
             "nextChapter": "次章"
-        }
-    },
-    "fr": {
-        "langName": "Français",
-        "title": "NLP avancé avec spaCy",
-        "slogan": "Un cours en ligne gratuit",
-        "description": "spaCy est une bibliothèque Python moderne pour le Traitement Automatique du Langage Naturel de qualité industrielle. Dans ce cours en ligne gratuit et interactif, tu vas apprendre comment utiliser spaCy pour construire des systèmes avancés de compréhension du langage naturel, utilisant à la fois des approches à base de règles et d'apprentissage automatique.",
-        "bio": "Je m'appelle Inès, je suis l'un des principaux développeurs de spaCy et la co-fondatrice d'Explosion. Je suis spécialisée dans les outils de développement modernes pour l'IA, l'apprentissage automatique et le NLP. J'adore aussi construire des trucs pour le web.",
-        "video": "THduWAnG97k",
-        "footerLinks": [
-            {
-                "text": "Site web de spaCy",
-                "url": "https://spacy.io"
-            },
-            {
-                "text": "Source",
-                "url": "https://github.com/ines/spacy-course"
-            },
-            {
-                "text": "Suis-moi sur Twitter",
-                "url": "https://twitter.com/_inesmontani"
-            }
-        ],
-        "socialImage": "social.jpg",
-        "uiText": {
-            "aboutMe": "À propos de moi",
-            "aboutCourse": "À propos de ce cours",
-            "markAsCompleted": "Marquer comme terminé",
-            "removeFromCompleted": "Marquer comme non terminé",
-            "completed": "Terminé",
-            "submit": "Soumettre",
-            "correct": "C'est correct !",
-            "incorrect": "Incorrect.",
-            "showSolution": "Montrer la solution",
-            "reset": "Réinitialiser",
-            "runCode": "Lancer le code",
-            "next": "Suivant",
-            "showHints": "Montrer des indices",
-            "hideHints": "Cacher les indices",
-            "loading": "Chargement...",
-            "connectingFailed": "Échec de la connexion. Merci de recharger et de réessayer.",
-            "launchingDocker": "Lancement du conteneur Docker sur",
-            "reconnectingDocker": "Reconnexion au conteneur Docker sur",
-            "prevChapter": "Chapitre précédent",
-            "nextChapter": "Chapitre suivant",
-            "start": "Début",
-            "video": "Vidéo",
-            "slides": "Diapositives"
         }
     }
 }

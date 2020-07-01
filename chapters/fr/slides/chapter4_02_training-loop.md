@@ -4,7 +4,7 @@ type: slides
 
 # La boucle d'apprentissage
 
-Notes : Si certaines autres bibliothèques te proposent une méthode qui gère
+Notes: Si certaines autres bibliothèques te proposent une méthode qui gère
 l'entrainement du modèle, spaCy te fournit un contrôle total sur la boucle
 d'apprentissage.
 
@@ -18,7 +18,7 @@ d'apprentissage.
 4. **Actualise** le modèle pour chaque lot.
 5. **Enregistre** le modèle actualisé.
 
-Notes : La boucle d'apprentissage consiste en une série d'étapes qui sont
+Notes: La boucle d'apprentissage consiste en une série d'étapes qui sont
 effectuées pour entrainer ou pour actualiser un modèle.
 
 On a généralement besoin de le faire plusieurs fois, avec de multiples
@@ -49,7 +49,7 @@ on peut alors enregistrer le modèle dans un répertoire et l'utiliser dans spaC
 - **Label :** Le label que le modèle devrait prédire.
 - **Gradient :** Comment changer les poids.
 
-Notes : Pour récapituler :
+Notes: Pour récapituler :
 
 Les données d'apprentissage sont les exemples avec lesquels on veut actualiser
 le modèle.
@@ -93,7 +93,7 @@ for i in range(10):
 nlp.to_disk(path_to_model)
 ```
 
-Notes : Voici un exemple.
+Notes: Voici un exemple.
 
 Imaginons que nous avons une liste d'exemples d'apprentissage composée de textes
 et d'annotations d'entités.
@@ -122,7 +122,7 @@ entrainé dans un répertoire.
 - Aussi possible pour ajouter de nouvelles catégories
 - Fais attention et assure-toi que le modèle "n'oublie" pas les anciennes
 
-Notes : spaCy te permet d'actualiser un modèle pré-entrainé avec davantage de
+Notes: spaCy te permet d'actualiser un modèle pré-entrainé avec davantage de
 données - par exemple, pour améliorer ses prédictions sur différents textes.
 
 C'est particulièrement utile si tu veux améliorer les catégories que le modèle
@@ -161,7 +161,7 @@ for itn in range(10):
         nlp.update(texts, annotations)
 ```
 
-Notes : Dans cet exemple, nous commençons avec un modèle anglais vide en
+Notes: Dans cet exemple, nous commençons avec un modèle anglais vide en
 utilisant la méthode `spacy.blank`. Le modèle vide n'a aucun composant de
 pipeline, uniquement les données de la langue et les règles de tokenisation.
 
@@ -187,6 +187,6 @@ la boucle.
 
 # Pratiquons !
 
-Notes : Il est temps de pratiquer ! Maintenant que tu as vu la boucle
+Notes: Il est temps de pratiquer ! Maintenant que tu as vu la boucle
 d'apprentissage, utilisons les données créées dans l'exercice précédent pour
 actualiser le modèle.

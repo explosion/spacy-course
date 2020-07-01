@@ -4,8 +4,8 @@ type: slides
 
 # Composants de pipeline personnalisés
 
-Notes : Maintenant que tu sais comment fonctionne le pipeline de spaCy, jetons
-un oeil à une autre fonctionnalité très puissante : les composants de pipeline
+Notes: Maintenant que tu sais comment fonctionne le pipeline de spaCy, jetons un
+oeil à une autre fonctionnalité très puissante : les composants de pipeline
 personnalisés.
 
 Les composants de pipeline personnalisés te permettent d'ajouter ta propre
@@ -22,7 +22,7 @@ sur un texte – par exemple, pour modifier le doc et lui ajouter des données.
 - Ajoute tes propres métadonnées aux documents et aux tokens
 - Actualise les attributs natifs comme `doc.ents`
 
-Notes : Une fois le texte tokenisé et l'objet `Doc` créé, les composants du
+Notes: Une fois le texte tokenisé et l'objet `Doc` créé, les composants du
 pipeline sont appliqués dans l'ordre. spaCy intègre un ensemble de composants
 natifs, mais te permet aussi de créer ton propre composant.
 
@@ -50,7 +50,7 @@ def custom_component(doc):
 nlp.add_pipe(custom_component)
 ```
 
-Notes : Fondamentalement, un composant de pipeline est une fonction ou un
+Notes: Fondamentalement, un composant de pipeline est une fonction ou un
 appelable qui prend un doc, le modifie et le retourne, pour qu'il puisse être
 traité par le composant suivant dans le pipeline.
 
@@ -76,7 +76,7 @@ nlp.add_pipe(custom_component)
 | `before` | Ajoute avant le composant    | `nlp.add_pipe(component, before="ner")`   |
 | `after`  | Ajoute après le composant    | `nlp.add_pipe(component, after="tagger")` |
 
-Notes : Pour spécifier _où_ ajouter le composant dans le pipeline, tu peux
+Notes: Pour spécifier _où_ ajouter le composant dans le pipeline, tu peux
 utiliser les arguments nommés suivants :
 
 Définir `last` à `True` ajoutera le composant en dernier dans le pipeline. C'est
@@ -118,7 +118,7 @@ print("Pipeline:", nlp.pipe_names)
 Pipeline: ['custom_component', 'tagger', 'parser', 'ner']
 ```
 
-Notes : Voici un exemple de composant simple de pipeline.
+Notes: Voici un exemple de composant simple de pipeline.
 
 On commence avec le petit modèle anglais.
 
@@ -136,8 +136,8 @@ On peut maintenant ajouter le composant au pipeline. Ajoutons-le au tout début
 juste après le tokenizer en définissant `first=True`.
 
 Quand on imprime les noms des composants du pipeline, le composant personnalisé
-apparait maintenant au début. Cela signifie qu'il sera appliqué en premier
-quand nous traiterons un doc.
+apparait maintenant au début. Cela signifie qu'il sera appliqué en premier quand
+nous traiterons un doc.
 
 ---
 
@@ -167,7 +167,7 @@ doc = nlp("Hello world!")
 Doc length: 3
 ```
 
-Notes : Maintenant quand nous traitons un texte en utilisant l'objet `nlp`, le
+Notes: Maintenant quand nous traitons un texte en utilisant l'objet `nlp`, le
 composant personnalisé sera appliqué en premier au doc et la longueur du
 document sera affichée.
 
@@ -175,5 +175,5 @@ document sera affichée.
 
 # Pratiquons !
 
-Notes : Il est temps de mettre cela en pratique et d'écrire ton premier
-composant de pipeline !
+Notes: Il est temps de mettre cela en pratique et d'écrire ton premier composant
+de pipeline !

@@ -4,7 +4,7 @@ type: slides
 
 # Structures de données (2) : Doc, Span et Token
 
-Notes : Maintenant que tu sais tout sur le vocabulaire et le magasin de chaines,
+Notes: Maintenant que tu sais tout sur le vocabulaire et le magasin de chaines,
 nous pouvons examiner de plus près les structures de données les plus
 importantes : le `Doc`, ainsi que ses vues `Token` et `Span`.
 
@@ -28,7 +28,7 @@ spaces = [True, False, False]
 doc = Doc(nlp.vocab, words=words, spaces=spaces)
 ```
 
-Notes : Le `Doc` est une des structures de données centrales de spaCy. Il est
+Notes: Le `Doc` est une des structures de données centrales de spaCy. Il est
 créé automatiquement quand tu traites un texte avec l'objet `nlp`. Mais tu peux
 aussi instancier la classe manuellement.
 
@@ -48,7 +48,7 @@ les espaces.
 
 <img src="/span_indices.png" width="65%" alt="Illustration d'un objet Span au sein d'un Doc avec les indices des tokens" />
 
-Notes : Un `Span` est une portion d'un document composé d'un ou de plusieurs
+Notes: Un `Span` est une portion d'un document composé d'un ou de plusieurs
 tokens. Le `Span` requiert trois arguments : le doc auquel il fait référence, et
 les indices de début et de fin du span. N'oublie pas que l'indice de fin est
 exclu !
@@ -78,7 +78,7 @@ span_with_label = Span(doc, 0, 2, label="GREETING")
 doc.ents = [span_with_label]
 ```
 
-Notes : pour créer un `Span` manuellement, nous pouvons aussi importer la classe
+Notes: pour créer un `Span` manuellement, nous pouvons aussi importer la classe
 à partir de `spacy.tokens`. Nous pouvons ensuite l'instancier avec le doc et les
 indices de début et de fin du span, ainsi qu'avec un label optionnel.
 
@@ -90,13 +90,13 @@ entités en les remplaçant par une liste de spans.
 # Meilleures pratiques
 
 - `Doc` et `Span` sont très puissants et contiennent les références et les
-   relations entre les mots et les phrases
+  relations entre les mots et les phrases
   - **Convertis les résultats en chaines le plus tard possible**
   - **Utilise les attributs des tokens quand ils existent** – par exemple,
     `token.i` pour l'indice du token
 - N'oublie pas de passer en argument le `vocab` partagé
 
-Notes : Quelques trucs et astuces avant de commencer :
+Notes: Quelques trucs et astuces avant de commencer :
 
 Les `Doc` et `Span` sont très puissants et sont optimisés pour la performance.
 Ils te donnent accès à toutes les références et les relations entre les mots et
@@ -115,5 +115,5 @@ Aussi, n'oublie pas de toujours passer en argument le vocabulaire partagé !
 
 # Pratiquons !
 
-Notes : Maintenant essayons cela en créant quelques docs et spans en partant de
+Notes: Maintenant essayons cela en créant quelques docs et spans en partant de
 zéro.

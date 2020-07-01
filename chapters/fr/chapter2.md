@@ -1,8 +1,8 @@
 ---
 title: 'Chapitre 2 : analyse de données à grande échelle avec spaCy'
 description:
-  "Dans ce chapitre, tu vas utiliser tes nouvelles compétences pour extraire
-  des informations spécifiques à partir de grandes quantités de textes. Tu vas
+  "Dans ce chapitre, tu vas utiliser tes nouvelles compétences pour extraire des
+  informations spécifiques à partir de grandes quantités de textes. Tu vas
   apprendre à tirer le meilleur parti des structures de données de spaCy, et
   comment combiner efficacement les approches statistiques et celles basées sur
   les règles pour l'analyse de textes."
@@ -12,7 +12,7 @@ type: chapter
 id: 2
 ---
 
-<exercise id="1" title="Structures de données (1)" type="slides,video">
+<exercise id="1" title="Structures de données (1)" type="slides">
 
 <slides source="chapter2_01_data-structures-1" start="11:06" end="13:37">
 </slides>
@@ -73,7 +73,9 @@ print(nlp_de.vocab.strings[bowie_id])
 
 <choice>
 
-<opt correct="true" text='La chaine <code>"Bowie"</code> n'est pas présente dans le vocabulaire allemand, donc le hash ne peut pas être trouvé dans le magasin de chaines de caractères.'>
+<opt correct="true" text='La chaine <code>"Bowie"</code> n'est pas présente dans
+le vocabulaire allemand, donc le hash ne peut pas être trouvé dans le magasin de
+chaines de caractères.'>
 
 Les hashes ne peuvent pas être inversés. Pour éviter ce problème, ajoute le mot
 au nouveau vocabulaire en traitant un texte ou en cherchant la chaine, ou
@@ -81,7 +83,8 @@ utilise le même vocabulaire pour résoudre le hash vers une chaine.
 
 </opt>
 
-<opt text='<code>"Bowie"</code> n'est pas un mot normal du dictionnaire en anglais ou en allemand, donc il ne peut pas être hashé.'>
+<opt text='<code>"Bowie"</code> n'est pas un mot normal du dictionnaire en
+anglais ou en allemand, donc il ne peut pas être hashé.'>
 
 N'importe quelle chaine de caractères peut être convertie en hash.
 
@@ -100,7 +103,7 @@ vocabulaire y compris.
 
 </exercise>
 
-<exercise id="4" title="Structures de données (2)" type="slides,video">
+<exercise id="4" title="Structures de données (2)" type="slides">
 
 <slides source="chapter2_02_data-structures-2" start="13:475" end="15:47">
 </slides>
@@ -142,8 +145,8 @@ elles doivent être `False`.
 ### Partie 3
 
 - Importe le `Doc` depuis `spacy.tokens`.
-- Complète les `words` et `spaces` pour correspondre au texte désiré et créer
-  un `doc`.
+- Complète les `words` et `spaces` pour correspondre au texte désiré et créer un
+  `doc`.
 
 <codeblock id="02_05_03">
 
@@ -227,7 +230,9 @@ d'utiliser les attributs natifs des tokens pour garder un code cohérent.
 
 </opt>
 
-<opt text='<code>pos_</code> n'est pas le bon attribut pour extraire des noms propres. Tu devrais utiliser <code>tag_</code> et les labels <code>"NNP"</code> et <code>"NNS"</code> à la place.'>
+<opt text='<code>pos*</code> n'est pas le bon attribut pour extraire des noms
+propres. Tu devrais utiliser <code>tag*</code> et les labels <code>"NNP"</code>
+et <code>"NNS"</code> à la place.'>
 
 L'attribut `.pos_` retourne l'étiquetage grossier de partie de discours et
 `"PROPN"` est le bon label pour chercher des noms propres.
@@ -258,7 +263,7 @@ L'attribut `.pos_` retourne l'étiquetage grossier de partie de discours et
 
 </exercise>
 
-<exercise id="8" title="Vecteurs de mots et similarité sémantique" type="slides,video">
+<exercise id="8" title="Vecteurs de mots et similarité sémantique" type="slides">
 
 <slides source="chapter2_03_word-vectors-similarity" start="15:58" end="19:47">
 </slides>
@@ -305,7 +310,7 @@ courant doit être comparé.
 
 ### Partie 2
 
-- Utilise la méthode  `token.similarity` pour comparer `token1` à `token2` et
+- Utilise la méthode `token.similarity` pour comparer `token1` à `token2` et
   afficher le résultat.
 
 <codeblock id="02_10_02">
@@ -324,7 +329,7 @@ courant doit être comparé.
 
 </exercise>
 
-<exercise id="11" title="Combiner modèles et règles" type="slides,video">
+<exercise id="11" title="Combiner modèles et règles" type="slides">
 
 <slides source="chapter2_04_models-rules" start="19:58" end="23:25">
 </slides>
@@ -345,7 +350,8 @@ doc = nlp("Can Silicon Valley workers rein in big tech from within?")
 
 <choice>
 
-<opt text='Les tokens "Silicon" et "Valley" ne sont pas en minuscules, donc l'attribut <code>"LOWER"</code> ne correspondra pas.'>
+<opt text='Les tokens "Silicon" et "Valley" ne sont pas en minuscules, donc
+l'attribut <code>"LOWER"</code> ne correspondra pas.'>
 
 L'attribut `"LOWER"` dans le motif décrit des tokens dont la _forme minuscule_
 correspond à une valeur donnée. Ainsi `{"LOWER": "valley"}` trouvera les tokens
@@ -353,14 +359,17 @@ correspond à une valeur donnée. Ainsi `{"LOWER": "valley"}` trouvera les token
 
 </opt>
 
-<opt correct="true" text='Le tokenizer ne crée pas de tokens pour les espaces simples, donc il n'y pas de token dont la valeur est <code>" "</code> au milieu.'>
+<opt correct="true" text='Le tokenizer ne crée pas de tokens pour les espaces
+simples, donc il n'y pas de token dont la valeur est <code>" "</code> au
+milieu.'>
 
 Le tokenizer effectue déjà la séparation sur la base des espaces et chaque
 dictionnaire du motif contient un token.
 
 </opt>
 
-<opt text='Il manque un opérateur <code>"OP"</code> aux tokens pour indiquer qu'ils devraient être trouvés exactement une fois.'>
+<opt text='Il manque un opérateur <code>"OP"</code> aux tokens pour indiquer
+qu'ils devraient être trouvés exactement une fois.'>
 
 Par défaut, tous les tokens décrits dans un motif doivent être trouvés
 exactement une fois. Les opérateurs sont nécessaires uniquement pour modifier ce
@@ -424,8 +433,8 @@ spaCy pour trouver des noms de pays dans un texte. Nous allons maintenant
 l'utiliser sur un texte plus long, analyser la syntaxe et mettre à jour les
 entités du document avec les pays trouvés.
 
-- Itère sur les correspondances et crée un `Span` avec le label `"GPE"`
-  (entité géopolitique).
+- Itère sur les correspondances et crée un `Span` avec le label `"GPE"` (entité
+  géopolitique).
 - Mets à jour les entités dans `doc.ents` en y ajoutant les spans trouvés.
 - Obtiens la tête du token racine du span trouvé.
 - Affiche le texte de la tête et le span.

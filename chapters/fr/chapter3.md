@@ -12,7 +12,7 @@ type: chapter
 id: 3
 ---
 
-<exercise id="1" title="Traitements de textes en pipelines" type="slides,video">
+<exercise id="1" title="Traitements de textes en pipelines" type="slides">
 
 <slides source="chapter3_01_processing-pipelines" start="23:36" end="26:12">
 </slides>
@@ -80,7 +80,7 @@ Le pipeline complet composé de tuples `(name, component)` est accessible avec
 
 </exercise>
 
-<exercise id="4" title="Composants de pipeline personnalisés" type="slides,video">
+<exercise id="4" title="Composants de pipeline personnalisés" type="slides">
 
 <slides source="chapter3_02_custom-pipeline-components" start="26:235" end="29:05">
 </slides>
@@ -119,8 +119,8 @@ composants.
 
 Les composants personnalisés peuvent seulement modifier le `Doc` et ne peuvent
 pas être utilisés pour actualiser directement les poids binaires ou d'autres
-composants. De plus quand ils sont ajoutés au pipeline, la classe de langue
-a déjà été initialisée, donc ils ne peuvent pas servir à ajouter des langues
+composants. De plus quand ils sont ajoutés au pipeline, la classe de langue a
+déjà été initialisée, donc ils ne peuvent pas servir à ajouter des langues
 supplémentaires.
 
 </opt>
@@ -204,7 +204,7 @@ animaux a déjà été créé sous le nom de variable `matcher`.
 
 </exercise>
 
-<exercise id="8" title="Extension d'attributs" type="slides,video">
+<exercise id="8" title="Extension d'attributs" type="slides">
 
 <slides source="chapter3_03_extension-attributes" start="29:16" end="32:23">
 </slides>
@@ -256,8 +256,8 @@ Essayons de définir des attributs plus complexes en utilisant des getters
 
 <codeblock id="03_10_01">
 
-- Rappelle-toi que les attributs étendus sont accessibles via la propriété
-  `._`. Par exemple, `doc._.has_color`.
+- Rappelle-toi que les attributs étendus sont accessibles via la propriété `._`.
+  Par exemple, `doc._.has_color`.
 - La fonction `get_has_number` devrait indiquer si au moins l'un des tokens du
   `doc` retourne `True` pour `token.like_num` (qui indique si le token ressemble
   à un nombre).
@@ -271,8 +271,8 @@ Essayons de définir des attributs plus complexes en utilisant des getters
 
 <codeblock id="03_10_02">
 
-- Les méthodes étendues peuvent accepter un ou plusieurs arguments. Par
-  exemple : `doc._.some_method("argument")`.
+- Les méthodes étendues peuvent accepter un ou plusieurs arguments. Par exemple
+  : `doc._.some_method("argument")`.
 - Le premier argument passé à la méthode est toujours le `Doc`, le `Token` ou le
   `Span` sur lequel la méthode a été appelée.
 
@@ -295,8 +295,7 @@ de recherche Wikipédia si le span est une personne, une organisation ou un lieu
 <codeblock id="03_11">
 
 - Pour obtenir le label textuel d'un span, utilise l'attribut `span.label_`.
-  C'est le label prédit par l'entity recognizer si le span constitue une
-  entité.
+  C'est le label prédit par l'entity recognizer si le span constitue une entité.
 - Rappelle-toi que les attributs étendus sont accessibles via la propriété `._`.
   Par exemple, `doc._.has_color`.
 
@@ -316,7 +315,7 @@ Un dictionnaire des pays avec leurs capitales en correspondance est proposé via
 la variable `CAPITALS`.
 
 - Complète le composant `countries_component` et crée un `Span` avec le label
-   `"GPE"` (entité géopolitique) pour toutes les correspondances.
+  `"GPE"` (entité géopolitique) pour toutes les correspondances.
 - Ajoute le composant au pipeline.
 - Déclare l'extension d'attribut Span nommée `"capital"` avec le getter
   `get_capital`.
@@ -339,7 +338,7 @@ la variable `CAPITALS`.
 
 </exercise>
 
-<exercise id="13" title="Scalabilité et performance" type="slides,video">
+<exercise id="13" title="Scalabilité et performance" type="slides">
 
 <slides source="chapter3_04_scaling-performance" start="32:335" end="34:515">
 </slides>

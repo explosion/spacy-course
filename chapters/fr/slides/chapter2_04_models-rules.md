@@ -4,7 +4,7 @@ type: slides
 
 # Combinaison de modèles et de règles
 
-Notes : La combinaison de modèles statistiques avec des systèmes basés sur des
+Notes: La combinaison de modèles statistiques avec des systèmes basés sur des
 règles est l'un des trucs les plus importants à avoir dans ta boite à outils de
 NLP.
 
@@ -14,13 +14,13 @@ Dans cette leçon, tu vas apprendre comment le faire avec spaCy.
 
 # Modèles statistiques vs. règles
 
-|                              | **Modèles statistiques**                                                           | **Systèmes basés sur des règles**        |
-| ---------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------- |
-| **Cas d'usage**              | l'application doit _généraliser_ à partir d'exemples                               |                                          |
-| **Exemples du monde réel**   | noms de produits, noms de personnes, relations sujets/objets                       |                                          |
-| **Fonctionnalités de spaCy** | reconnaissance d'entités, analyse de dépendances, étiquetage de partie de discours |                                          |
+|                              | **Modèles statistiques**                                                           | **Systèmes basés sur des règles** |
+| ---------------------------- | ---------------------------------------------------------------------------------- | --------------------------------- |
+| **Cas d'usage**              | l'application doit _généraliser_ à partir d'exemples                               |                                   |
+| **Exemples du monde réel**   | noms de produits, noms de personnes, relations sujets/objets                       |                                   |
+| **Fonctionnalités de spaCy** | reconnaissance d'entités, analyse de dépendances, étiquetage de partie de discours |                                   |
 
-Notes : Les modèles statistiques sont utiles si ton application a besoin d'être
+Notes: Les modèles statistiques sont utiles si ton application a besoin d'être
 capable de généraliser à partir de quelques exemples.
 
 Par exemple, un modèle statistique est avantageux pour détecter des noms de
@@ -42,13 +42,13 @@ d'analyse de dépendances ou d'étiquetage de partie de discours de spaCy.
 | **Exemples du monde réel**   | noms de produits, noms de personnes, relations sujets/objets                       | pays du monde, villes, noms de médicaments, races de chiens |
 | **Fonctionnalités de spaCy** | reconnaissance d'entités, analyse de dépendances, étiquetage de partie de discours | tokenizer, `Matcher`, `PhraseMatcher`                       |
 
-Notes : les approches basées sur des règles sont en revanche pratiques quand il
-y a un nombre plus ou moins limité d'éléments que tu veux trouver. Par exemple,
+Notes: les approches basées sur des règles sont en revanche pratiques quand il y
+a un nombre plus ou moins limité d'éléments que tu veux trouver. Par exemple,
 tous les pays ou toutes les villes du monde, des noms de médicaments ou encore
 des races de chiens.
 
 Dans spaCy, tu peux réaliser cela avec des règles de tokenisation
-personnalisées,  ainsi qu'avec le matcher et le matcher de phrases.
+personnalisées, ainsi qu'avec le matcher et le matcher de phrases.
 
 ---
 
@@ -73,7 +73,7 @@ doc = nlp("I love cats and I'm very very happy")
 matches = matcher(doc)
 ```
 
-Notes : Dans le chapitre précédent, tu as appris comment utiliser le matcher à
+Notes: Dans le chapitre précédent, tu as appris comment utiliser le matcher à
 base de règles de spaCy pour trouver des motifs complexes dans tes textes. Voici
 un rapide résumé.
 
@@ -117,7 +117,7 @@ Root head token: have
 Previous token: a DET
 ```
 
-Notes : Voici un exemple de règle de matcher pour "golden retriever".
+Notes: Voici un exemple de règle de matcher pour "golden retriever".
 
 Si nous itérons sur les correspondances retournées par le matcher, nous pouvons
 obtenir l'identifiant de la correspondance, ainsi que les indices de début et de
@@ -145,7 +145,7 @@ déterminant, l'article "a".
 - Plus efficace et rapide que le `Matcher`
 - Parfait pour rechercher de grandes listes de mots
 
-Notes : Le matcheur de phrase est un autre outil très utile pour trouver des
+Notes: Le matcheur de phrase est un autre outil très utile pour trouver des
 séquences de mots dans tes données.
 
 Il effectue une recherche de mot-clé sur le document, mais au lieu de seulement
@@ -183,7 +183,7 @@ for match_id, start, end in matcher(doc):
 Matched span: Golden Retriever
 ```
 
-Notes : Ceci est un exemple.
+Notes: Ceci est un exemple.
 
 Le matcheur de phrase peut être importé à partir de `spacy.matcher` et suit la
 même API que le matcheur normal.
@@ -199,5 +199,5 @@ Retriever" afin de les analyser dans leur contexte.
 
 # Pratiquons !
 
-Notes : Essayons quelques-unes des nouvelles techniques pour combiner les règles
+Notes: Essayons quelques-unes des nouvelles techniques pour combiner les règles
 avec les modèles statistiques.

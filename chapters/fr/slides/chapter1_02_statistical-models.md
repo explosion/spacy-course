@@ -4,7 +4,7 @@ type: slides
 
 # Modèles statistiques
 
-Notes : Ajoutons du pouvoir à notre objet `nlp` !
+Notes: Ajoutons du pouvoir à notre objet `nlp` !
 
 Dans cette leçon, tu vas en apprendre plus les modèles statistiques de spaCy.
 
@@ -19,7 +19,7 @@ Dans cette leçon, tu vas en apprendre plus les modèles statistiques de spaCy.
 - Entrainés sur des exemples de textes labellisés
 - Peuvent être améliorés avec des exemples supplémentaires
 
-Notes : Certaines des choses les plus intéressantes à analyser dépendent du
+Notes: Certaines des choses les plus intéressantes à analyser dépendent du
 contexte : par exemple, si un mot est un verbe or si une portion de texte est le
 nom d'une personne.
 
@@ -53,7 +53,7 @@ nlp = spacy.load("en_core_web_sm")
 - Vocabulaire
 - Méta-information (langage, pipeline)
 
-Notes : spaCy propose un certain nombre de modèles pré-entrainés que tu peux
+Notes: spaCy propose un certain nombre de modèles pré-entrainés que tu peux
 télécharger avec la commande `spacy download`. Par exemple, le paquet
 "en_core_web_sm" est un petit modèle pour la langue anglaise qui propose toutes
 les fonctionnalités de base et qui a été entrainé sur des textes du web.
@@ -93,17 +93,17 @@ the DET
 pizza NOUN
 ```
 
-Notes : Jetons un oeil aux prédictions du modèle. Dans cet exemple, nous
+Notes: Jetons un oeil aux prédictions du modèle. Dans cet exemple, nous
 utilisons spaCy pour prédire des étiquettes de partie de discours, les types des
 mots dans leur contexte.
 
-D'abord, nous chargeons le petit modèle en langue anglaise et obtenons un
-objet `nlp`.
+D'abord, nous chargeons le petit modèle en langue anglaise et obtenons un objet
+`nlp`.
 
 Ensuite, nous traitons le texte "She ate the pizza".
 
-Pour chaque token dans le doc, nous pouvons afficher le texte et
-l'attribut `.pos_`, l'étiquette de partie de discours prédite.
+Pour chaque token dans le doc, nous pouvons afficher le texte et l'attribut
+`.pos_`, l'étiquette de partie de discours prédite.
 
 Dans spaCy, les attributs qui retournent des chaines de caractères se terminent
 généralement par un tiret bas - les attributs sans tiret bas retournent un ID
@@ -128,7 +128,7 @@ the DET det pizza
 pizza NOUN dobj ate
 ```
 
-Notes : En plus des étiquettes de partie de discours, nous pouvons aussi prédire
+Notes: En plus des étiquettes de partie de discours, nous pouvons aussi prédire
 comment les mots sont reliés. Par exemple, si un mot est le sujet ou un objet
 d'une phrase.
 
@@ -181,11 +181,11 @@ U.K. GPE
 $1 billion MONEY
 ```
 
-Notes : Les entités nommées sont des "objets du monde réel" auxquels on assigne
+Notes: Les entités nommées sont des "objets du monde réel" auxquels on assigne
 un nom - par exemple, une personne, une organisation ou un pays.
 
-La propriété `doc.ents` te permet d'accéder aux entités nommées prédites par
-le modèle.
+La propriété `doc.ents` te permet d'accéder aux entités nommées prédites par le
+modèle.
 
 Elle retourne un itérateur d'objets `Span`, donc nous pouvons imprimer le texte
 de l'entité et son label en utilisant l'attribut `.label_`.
@@ -224,7 +224,7 @@ spacy.explain("dobj")
 'direct object'
 ```
 
-Notes : Une petite astuce : Pour obtenir des définitions pour les tags et les
+Notes: Une petite astuce : Pour obtenir des définitions pour les tags et les
 labels les plus courants, tu peux utiliser la fonction d'assistance
 `spacy.explain`.
 
@@ -239,5 +239,5 @@ syntaxiques.
 
 # Passons à la pratique !
 
-Notes : Maintenant c'est à toi de jouer. Jetons un oeil aux modèles statistiques
+Notes: Maintenant c'est à toi de jouer. Jetons un oeil aux modèles statistiques
 de spaCy et à leurs prédictions.

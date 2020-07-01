@@ -4,7 +4,7 @@ type: slides
 
 # Meilleures pratiques pour l'entrainement des modèles spaCy
 
-Notes : Quand tu commenceras à mener tes propres expérimentations, tu te rendras
+Notes: Quand tu commenceras à mener tes propres expérimentations, tu te rendras
 peut-être compte que beaucoup de choses ne vont pas comme tu voudrais. Et c'est
 ok.
 
@@ -25,11 +25,11 @@ Jetons un oeil à certains des problèmes que tu pourrais rencontrer.
     qu'est une `"PERSON"`
 - On appelle ça le problème de "l'oubli catastrophique"
 
-Notes : Les modèles statistiques peuvent apprendre beaucoup de choses - mais
-cela ne signifie pas qu'ils ne peuvent pas les désapprendre.
+Notes: Les modèles statistiques peuvent apprendre beaucoup de choses - mais cela
+ne signifie pas qu'ils ne peuvent pas les désapprendre.
 
 Si tu actualises un modèle existant avec de nouvelles données, en particulier de
-nouveaux labels, il peut sur-optimiser et s'ajuster _exagérément_  aux nouveaux
+nouveaux labels, il peut sur-optimiser et s'ajuster _exagérément_ aux nouveaux
 exemples.
 
 Par exemple, si tu l'actualises uniquement avec des exemples de "website", il
@@ -81,15 +81,15 @@ le modèle avec des annotations pour tous les labels.
 
 # Problème 2 : Les modèles ne peuvent pas tout apprendre
 
-- Les modèles de spaCy effectuent des prédictions basées sur le
-  **contexte local**
+- Les modèles de spaCy effectuent des prédictions basées sur le **contexte
+  local**
 - Les modèles peuvent avoir des difficultés à apprendre si la décision est
   difficile à prendre en se basant sur le contexte
 - Les schémas de labellisation doivent être cohérents et pas trop spécifiques
   - Par exemple: `"CLOTHING"` est préférable à `"ADULT_CLOTHING"` et
     `"CHILDRENS_CLOTHING"`
 
-Notes : Un autre problème courant est que ton modèle n'apprenne pas ce que tu
+Notes: Un autre problème courant est que ton modèle n'apprenne pas ce que tu
 veux qu'il apprenne.
 
 Les modèles de spaCy effectuent des prédictions basées sur le contexte local -
@@ -127,7 +127,7 @@ LABELS = ["ADULT_SHOES", "CHILDRENS_SHOES", "BANDS_I_LIKE"]
 LABELS = ["CLOTHING", "BAND"]
 ```
 
-Notes : Avant de commencer à entrainer et à actualiser des modèles, il est
+Notes: Avant de commencer à entrainer et à actualiser des modèles, il est
 judicieux de prendre du recul et de planifier ton schéma de labellisation.
 
 Essaie de choisir des catégories qui sont représentées dans le contexte local et
@@ -143,4 +143,4 @@ Les catégories génériques comme "clothing" ou "band" sont à la fois plus fac
 
 # Pratiquons !
 
-Notes : Jetons un oeil à ces problèmes en contexte et réglons-les !
+Notes: Jetons un oeil à ces problèmes en contexte et réglons-les !

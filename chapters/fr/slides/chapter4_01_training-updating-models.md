@@ -4,12 +4,12 @@ type: slides
 
 # Entrainement et actualisation des modèles
 
-Notes : Bienvenue au dernier chapitre, qui concerne un des aspects les plus
+Notes: Bienvenue au dernier chapitre, qui concerne un des aspects les plus
 formidables du NLP moderne : l'entrainement de tes propres modèles !
 
 Dans cette leçon, tu vas apprendre à entrainer et à mettre à jour les modèles de
-réseaux de neurones de spaCy et les données dont tu as besoin pour le faire -
-en te concentrant spécifiquement sur le named entity recognizer.
+réseaux de neurones de spaCy et les données dont tu as besoin pour le faire - en
+te concentrant spécifiquement sur le named entity recognizer.
 
 ---
 
@@ -22,7 +22,7 @@ en te concentrant spécifiquement sur le named entity recognizer.
 - Moins critique pour l'étiquetage de partie de discours et l'analyse des
   relations de dépendances
 
-Notes : Avant de commencer à expliquer le _comment_, il est utile de prendre une
+Notes: Avant de commencer à expliquer le _comment_, il est utile de prendre une
 seconde pour nous demander : Pourquoi voudrions-nous mettre à jour le modèle
 avec nos propres exemples ? Pourquoi ne peut-on pas simplement s'appuyer sur les
 modèles pré-entrainés ?
@@ -51,7 +51,7 @@ discours et l'analyse de dépendances.
 5. **Modifie** légèrement les poids
 6. Retourne au point 2.
 
-Notes : spaCy permet l'actualisation de modèles existants avec plus d'exemples,
+Notes: spaCy permet l'actualisation de modèles existants avec plus d'exemples,
 et l'entrainement de nouveaux modèles.
 
 Si nous ne démarrons pas avec un modèle pré-entrainé, nous initialisons d'abord
@@ -62,7 +62,7 @@ poids courants.
 
 Le modèle compare ensuite les prédictions avec les bonnes réponses, et décide
 comment changer les poids pour effectuer de meilleures prédictions les fois
-suivantes.  
+suivantes.
 
 Finalement, nous effectuons une petite correction aux poids courants et passons
 au lot suivant d'exemples.
@@ -80,7 +80,7 @@ On continue d'appeler `nlp.update` sur chaque lot d'exemples dans les données.
 - **Label :** Le label que le modèle devrait prédire.
 - **Gradient :** Comment changer les poids.
 
-Notes : Voici une illustration montrant le processus.
+Notes: Voici une illustration montrant le processus.
 
 Les données d'apprentissage sont les exemples avec lesquels nous voulons
 actualiser le modèle.
@@ -119,12 +119,12 @@ l'utiliser dans notre application.
 
 - **But :** apprendre au modèle à généraliser
 
-Notes : Jetons un oeil à un exemple pour un composant spécifique : l'entity
+Notes: Jetons un oeil à un exemple pour un composant spécifique : l'entity
 recognizer.
 
 L'entity recognizer prend un document et prédit des phrases et leurs labels.
-Cela signifie que les données d'apprentissage doivent comprendre des textes,
-les entités qu'ils contiennent et les labels des entités.
+Cela signifie que les données d'apprentissage doivent comprendre des textes, les
+entités qu'ils contiennent et les labels des entités.
 
 Les entités ne peuvent pas se chevaucher, donc chaque token ne peut faire partie
 que d'une seule entité.
@@ -136,8 +136,8 @@ La manière la plus facile pour le faire est de montrer au modèle un texte et u
 liste de positions de caractères. Par exemple , "iPhone X" est un gadget,
 commence au caractère 0 et finit au caractère 8.
 
-Il est également très important que le modèle apprenne des mots qui
-_ne sont pas_ des entités.
+Il est également très important que le modèle apprenne des mots qui _ne sont
+pas_ des entités.
 
 Dans ce cas, la liste des annotations de spans sera vide.
 
@@ -158,7 +158,7 @@ d'apprentissage.
 - Généralement créés manuellement par des annotateurs humains
 - Peut être semi-automatisé – par exemple, en utilisant le `Matcher` de spaCy !
 
-Notes : Les données d'apprentissage indiquent au modèle ce qu'on veut qu'il
+Notes: Les données d'apprentissage indiquent au modèle ce qu'on veut qu'il
 prédise. Il peut s'agir de textes ou d'entités nommées qu'on veut qu'il
 reconnaisse, ou de tokens et de leur étiquetage correct de partie de discours.
 
@@ -182,6 +182,6 @@ utilisant le `Matcher` de spaCy.
 
 # Pratiquons !
 
-Notes : Maintenant il est temps de commencer à préparer les données
+Notes: Maintenant il est temps de commencer à préparer les données
 d'apprentissage. Jetons un oeil à quelques exemples et créons un petit jeu de
 données pour un nouveau type d'entité.

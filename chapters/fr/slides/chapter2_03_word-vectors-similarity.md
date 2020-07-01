@@ -4,7 +4,7 @@ type: slides
 
 # Vecteurs de mots et similarité sémantique
 
-Notes : Dans cette leçon, tu vas apprendre à utiliser spaCy pour prédire à quel
+Notes: Dans cette leçon, tu vas apprendre à utiliser spaCy pour prédire à quel
 point des documents, des spans ou des tokens sont similaires les uns avec les
 autres.
 
@@ -24,7 +24,7 @@ ton application de NLP.
   - ✅ `en_core_web_lg` (grand modèle)
   - 🚫 **PAS** `en_core_web_sm` (petit modèle)
 
-Notes : spaCy peut comparer deux objets et prédire à quel point ils sont
+Notes: spaCy peut comparer deux objets et prédire à quel point ils sont
 similaires – par exemple, documents, spans ou simples tokens.
 
 Les objets `Doc`, `Token` et `Span` possèdent une méthode `.similarity` qui
@@ -69,7 +69,7 @@ print(token1.similarity(token2))
 0.7369546
 ```
 
-Notes : Voici un exemple. Disons que nous voulons savoir si deux documents sont
+Notes: Voici un exemple. Disons que nous voulons savoir si deux documents sont
 similaires.
 
 D'abord, nous chargeons le modèle anglais de taille moyenne, "en_core_web_md".
@@ -113,8 +113,8 @@ print(span.similarity(doc))
 0.619909235817623
 ```
 
-Notes : Tu peux aussi utiliser les méthodes `similarity` pour comparer des
-objets de types différents.
+Notes: Tu peux aussi utiliser les méthodes `similarity` pour comparer des objets
+de types différents.
 
 Par exemple, un document et un token.
 
@@ -141,7 +141,7 @@ Le score retourné ici est 0,61, donc il y a une forme de similarité.
 - Les phrases courtes sont meilleures que les longs documents comportant de
   nombreux mots non pertinents
 
-Notes : Mais comment spaCy fait-il ça sous le capot ?
+Notes: Mais comment spaCy fait-il ça sous le capot ?
 
 La similarité est déterminée en utilisant des vecteurs de mots, des
 représentations multi-dimensionnelles de la signification des mots.
@@ -188,8 +188,8 @@ print(doc[3].vector)
   ...
 ```
 
-Notes : Pour te donner une idée, voici un exemple montrant à quoi ressemblent
-ces vecteurs.
+Notes: Pour te donner une idée, voici un exemple montrant à quoi ressemblent ces
+vecteurs.
 
 D'abord, nous chargeons à nouveau le modèle moyen, qui comporte des vecteurs de
 mots.
@@ -219,7 +219,7 @@ print(doc1.similarity(doc2))
 0.9501447503553421
 ```
 
-Notes : Prédire la similarité peut s'avérer utile pour toutes sortes
+Notes: Prédire la similarité peut s'avérer utile pour toutes sortes
 d'applications. Par exemple, pour recommander à un utilisateur des textes
 similaires à ceux qu'il a lus. C'est aussi utile pour repérer du contenu en
 doublon, comme des posts sur une plateforme en ligne.
@@ -239,5 +239,5 @@ opposés.
 
 # Pratiquons !
 
-Notes : Maintenant c'est à ton tour. Essayons quelques vecteurs de mots de spaCy
+Notes: Maintenant c'est à ton tour. Essayons quelques vecteurs de mots de spaCy
 et utilisons-les pour prédire des similarités.

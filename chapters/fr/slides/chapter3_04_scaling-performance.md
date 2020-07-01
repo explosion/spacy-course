@@ -4,7 +4,7 @@ type: slides
 
 # Scalabilité et performance
 
-Notes : Dans cette leçon, tu vas apprendre quelques trucs et astuces pour faire
+Notes: Dans cette leçon, tu vas apprendre quelques trucs et astuces pour faire
 tourner tes pipelines spaCy aussi vite que possible, et pour traiter
 efficacement d'importantes quantités de texte.
 
@@ -28,7 +28,7 @@ docs = [nlp(text) for text in LOTS_OF_TEXTS]
 docs = list(nlp.pipe(LOTS_OF_TEXTS))
 ```
 
-Notes : Si tu as besoin de traiter d'importantes quantités de texte et de créer
+Notes: Si tu as besoin de traiter d'importantes quantités de texte et de créer
 de nombreux objets `Doc` à la suite, la méthode `nlp.pipe` peut accélérer
 significativement le processus.
 
@@ -64,7 +64,7 @@ This is a text 15
 And another text 16
 ```
 
-Notes : `nlp.pipe` supporte aussi le passage de tuples de texte / contexte si tu
+Notes: `nlp.pipe` supporte aussi le passage de tuples de texte / contexte si tu
 définis `as_tuples` à `True`.
 
 La méthode va alors générer des tuples doc / contexte.
@@ -92,7 +92,7 @@ for doc, context in nlp.pipe(data, as_tuples=True):
     doc._.page_number = context["page_number"]
 ```
 
-Notes : Tu peux même ajouter les métadonnées de contexte à des attributs
+Notes: Tu peux même ajouter les métadonnées de contexte à des attributs
 personnalisés.
 
 Dans cet exemple, nous déclarons deux extensions, `id` et `page_number`, avec
@@ -109,7 +109,7 @@ actualiser les extensions du doc avec nos métadonnées de contexte.
 
 - ne lance pas le pipeline complet !
 
-Notes : Un autre scénario courant : Parfois tu as déjà un modèle chargé pour
+Notes: Un autre scénario courant : Parfois tu as déjà un modèle chargé pour
 effectuer d'autres traitements, mais tu as seulement besoin du tokenizer pour un
 texte particulier.
 
@@ -134,9 +134,9 @@ doc = nlp("Hello world")
 doc = nlp.make_doc("Hello world!")
 ```
 
-Notes : Si tu as seulement besoin d'un objet `Doc` tokenisé, tu peux utiliser
-la méthode `nlp.make_doc` à la place, elle prend en argument un texte et
-retourne un doc.
+Notes: Si tu as seulement besoin d'un objet `Doc` tokenisé, tu peux utiliser la
+méthode `nlp.make_doc` à la place, elle prend en argument un texte et retourne
+un doc.
 
 C'est aussi la manière dont spaCy le fait en coulisses : `nlp.make_doc`
 transforme le texte en un doc avant que les composants du pipeline ne soient
@@ -160,7 +160,7 @@ with nlp.disable_pipes("tagger", "parser"):
 - Les réactive après le bloc `with`
 - N'exécute que les composants restants
 
-Notes : spaCy te permet aussi de désactiver temporairement des composants du
+Notes: spaCy te permet aussi de désactiver temporairement des composants du
 pipeline en utilisant le gestionnaire de contexte `nlp.disable_pipes`.
 
 Il prend un nombre variable d'arguments, les chaines de caractères des
@@ -177,5 +177,5 @@ Dans le bloc `with`, spaCy exécutera uniquement les composants restants.
 
 # Pratiquons !
 
-Notes : Maintenant c'est à toi. Essayons ces nouvelles méthodes et optimisons du
+Notes: Maintenant c'est à toi. Essayons ces nouvelles méthodes et optimisons du
 code pour qu'il soit plus rapide et plus efficace.

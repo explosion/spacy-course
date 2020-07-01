@@ -4,7 +4,7 @@ type: slides
 
 # Résumé
 
-Notes : Félicitations – tu as atteint la fin du cours !
+Notes: Félicitations – tu as atteint la fin du cours !
 
 ---
 
@@ -24,7 +24,7 @@ Notes : Félicitations – tu as atteint la fin du cours !
 - **Entrainement et actualisation** des modèles de réseaux de neurones de spaCy
   avec de nouvelles données
 
-Notes : Voici une vue d'ensemble de toutes les nouvelles compétences que tu as
+Notes: Voici une vue d'ensemble de toutes les nouvelles compétences que tu as
 apprises jusqu'à présent :
 
 Dans le premier chapitre, tu as appris comment extraire des caractéristiques
@@ -68,8 +68,8 @@ les meilleurs résultats.
   - Analyseur de dépendances
   - Classificateur de texte
 
-Notes : Bien sur, il y a beaucoup plus de choses que spaCy peut faire et que
-nous n'avons pas couvertes dans ce cours.
+Notes: Bien sur, il y a beaucoup plus de choses que spaCy peut faire et que nous
+n'avons pas couvertes dans ce cours.
 
 Si nous nous sommes surtout concentrés sur l'entrainement de la reconnaissance
 d'entités, tu peux aussi entrainer et actualiser les autres composants
@@ -78,8 +78,8 @@ de dépendances.
 
 Le classificateur de texte est un autre composant de pipeline utile, qui peut
 apprendre à prédire des labels s'appliquant à tout un texte. Cela ne fait pas
-partie des modèles pré-entrainés, mais tu peux l'ajouter à un modèle existant
-et l'entrainer sur tes propres données.
+partie des modèles pré-entrainés, mais tu peux l'ajouter à un modèle existant et
+l'entrainer sur tes propres données.
 
 ---
 
@@ -92,7 +92,7 @@ et l'entrainer sur tes propres données.
   - Marge de progression importante pour des améliorations et plus de langues
   - Possibilité d'entrainer des modèles pour d'autres langues
 
-Notes : Dans ce cours, nous avons simplement accepté la tokenisation par défaut
+Notes: Dans ce cours, nous avons simplement accepté la tokenisation par défaut
 telle qu'elle était. Mais tu n'es pas obligé !
 
 spaCy te permet de personnaliser les règles utilisés pour déterminer où et
@@ -114,13 +114,13 @@ afin de pouvoir entrainer un modèle statistique.
 
 👉 [spacy.io](https://spacy.io)
 
-Notes : Pour plus d'exemples, de tutoriels et une documentation complète sur
+Notes: Pour plus d'exemples, de tutoriels et une documentation complète sur
 l'API, consulte le site web de spaCy.
 
 ---
 
 # Merci et à bientôt ! 👋
 
-Notes : Merci beaucoup d'avoir suivi ce cours ! J'espère que tu t'es amusé, et
+Notes: Merci beaucoup d'avoir suivi ce cours ! J'espère que tu t'es amusé, et
 j'ai hâte d'apprendre les trucs cools que tu auras réussi à construire avec
 spaCy.

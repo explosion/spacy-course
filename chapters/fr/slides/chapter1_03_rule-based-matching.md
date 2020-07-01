@@ -4,7 +4,7 @@ type: slides
 
 # Correspondances avec des règles
 
-Notes : Dans cette leçon, nous allons faire connaissance avec le matcher de
+Notes: Dans cette leçon, nous allons faire connaissance avec le matcher de
 spaCy, qui te permet d'écrire des règles pour trouver des mots et des phrases
 dans un texte.
 
@@ -18,7 +18,7 @@ dans un texte.
 - Utilisation des prédictions du modèle
 - Exemple: "duck" (verbe) vs. "duck" (nom)
 
-Notes : par rapport aux expressions régulières, le matcher fonctionne avec des
+Notes: par rapport aux expressions régulières, le matcher fonctionne avec des
 objets `Doc` et `Token` et pas simplement avec des chaines de caractères.
 
 Il est également plus flexible : tu peux rechercher des textes mais aussi
@@ -52,7 +52,7 @@ Par exemple, trouve le mot "duck" seulement si c'est un verbe, pas un nom.
 [{"LEMMA": "buy"}, {"POS": "NOUN"}]
 ```
 
-Notes : les motifs de correspondance sont des listes de dictionnaires. Chaque
+Notes: les motifs de correspondance sont des listes de dictionnaires. Chaque
 dictionnaire décrit un token. Les clés sont les noms des attributs des tokens,
 auxquelles sont associées les valeurs recherchées.
 
@@ -63,8 +63,8 @@ recherchons deux tokens dont les formes minuscules sont "iphone" et "x".
 
 Nous pouvons même écrire des motifs utilisant des attributs prédits par le
 modèle. Ici, nous recherchons un token avec le lemme "buy", plus un nom. Le
-lemme est la forme de base, donc ce motif trouvera des phrases comme
-"buying milk" ou "bought flowers".
+lemme est la forme de base, donc ce motif trouvera des phrases comme "buying
+milk" ou "bought flowers".
 
 ---
 
@@ -93,7 +93,7 @@ doc = nlp("Upcoming iPhone X release date leaked")
 matches = matcher(doc)
 ```
 
-Notes : Pour utiliser un motif, nous devons d'abord importer le matcher à partir
+Notes: Pour utiliser un motif, nous devons d'abord importer le matcher à partir
 de `spacy.matcher`.
 
 Nous chargeons également un modèle et créons l'objet `nlp`.
@@ -136,15 +136,13 @@ iPhone X
 - `start`: indice de début du span en correspondance
 - `end`: indice de fin du span en correspondance
 
-Notes : Quand tu appelles le matcher sur un doc, il retourne une liste de
-tuples.
+Notes: Quand tu appelles le matcher sur un doc, il retourne une liste de tuples.
 
 Chaque tuple contient trois valeurs : l'ID du motif, l'indice de début et
 l'indice de fin du span en correspondance.
 
 Cela signifie que nous pouvons itérer sur les correspondances et créer un objet
-`Span` : une portion du doc depuis l'indice de début jusqu'à l'indice de
-fin.
+`Span` : une portion du doc depuis l'indice de début jusqu'à l'indice de fin.
 
 ---
 
@@ -168,7 +166,7 @@ doc = nlp("2018 FIFA World Cup: France won!")
 2018 FIFA World Cup:
 ```
 
-Notes : Voici un exemple de motif un peu plus complexe utilisant des attributs
+Notes: Voici un exemple de motif un peu plus complexe utilisant des attributs
 lexicaux.
 
 Nous recherchons cinq tokens :
@@ -228,8 +226,8 @@ bought a smartphone
 buying apps
 ```
 
-Notes : Les opérateurs et les quantificateurs te permettent de définir combien
-de fois un token doit être trouvé. Ils peuvent être ajoutés avec la clé "OP".
+Notes: Les opérateurs et les quantificateurs te permettent de définir combien de
+fois un token doit être trouvé. Ils peuvent être ajoutés avec la clé "OP".
 
 Ici, l'opérateur "?" rend le token du déterminant optionnel, donc il trouvera un
 token avec le lemme "buy", un article optionnel et un nom.
@@ -245,7 +243,7 @@ token avec le lemme "buy", un article optionnel et un nom.
 | `{"OP": "+"}` | Trouve 1 ou plusieurs fois     |
 | `{"OP": "*"}` | Trouve 0 ou plusieurs fois     |
 
-Notes : "OP" peut prendre quatre valeurs distinctes :
+Notes: "OP" peut prendre quatre valeurs distinctes :
 
 Un "!" exclut le token, donc il doit être trouvé 0 fois.
 
@@ -262,6 +260,6 @@ ajoutent aussi de la complexité - donc utilise-les à bon escient.
 
 # Passons à la pratique !
 
-Notes : La recherche de correspondances basée sur les motifs ouvre de
-nombreuses nouvelles possibilités d'extraction d'informations. Alors essayons et
-écrivons quelques motifs !
+Notes: La recherche de correspondances basée sur les motifs ouvre de nombreuses
+nouvelles possibilités d'extraction d'informations. Alors essayons et écrivons
+quelques motifs !
