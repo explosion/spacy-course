@@ -133,7 +133,7 @@ Tu peux aussi actualiser le modèle pour ajouter de nouvelles catégories.
 Assure-toi seulement de toujours l'actualiser avec des exemples de la nouvelle
 catégorie _et_ des exemples des autres catégories qu'il prédisait déjà
 correctement. Sinon l'amélioration sur la nouvelle catégorie pourrait nuire aux
-autres catégories..
+autres catégories.
 
 ---
 

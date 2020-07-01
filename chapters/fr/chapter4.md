@@ -27,7 +27,7 @@ annotations linguistiques, tu voudras presque _toujours_ le perfectionner avec
 plus d'exemples. Tu peux le faire en les entrainant avec davantage de données
 étiquetées.
 
-Qu'est-ce que l'apprentissage n'améliore **pas ** ?
+Qu'est-ce que l'apprentissage n'améliore **pas** ?
 
 <choice>
 
