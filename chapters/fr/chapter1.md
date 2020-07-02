@@ -23,16 +23,16 @@ id: 1
 Commençons à utiliser spaCy ! Dans cet exercice, tu vas pouvoir essayer quelques
 uns des 55+ [langages disponibles](https://spacy.io/usage/models#languages).
 
-### Partie 1 : Anglais
+### Partie 1 : Français
 
-- Importe la classe `English` depuis `spacy.lang.en` et crée l'objet `nlp`.
+- Importe la classe `French` depuis `spacy.lang.fr` et crée l'objet `nlp`.
 - Crée un `doc` et affiche son texte.
 
 <codeblock id="01_02_01"></codeblock>
 
-### Partie 2 : Allemand
+### Partie 2 : Anglais
 
-- Importe la classe `German` depuis `spacy.lang.de` et crée l'objet `nlp`.
+- Importe la classe `English` depuis `spacy.lang.en` et crée l'objet `nlp`.
 - Crée un `doc` et affiche son texte.
 
 <codeblock id="01_02_02"></codeblock>
