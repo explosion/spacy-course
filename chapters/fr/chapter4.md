@@ -38,7 +38,7 @@ l'entrainer avec davantage d'exemples est souvent une bonne solution.
 
 </opt>
 
-<opt text="L'apprentissage de nouveaux schémas de classification.">
+<opt text="L’apprentissage de nouveaux schémas de classification.">
 
 Tu peux utiliser l'apprentissage pour apprendre au modèle de nouveaux labels, de
 nouveaux types d'entités ou d'autres schémas de classification.
@@ -265,7 +265,7 @@ Pourquoi ces données et ce schéma d'étiquetage sont-ils problématiques ?
 
 <choice>
 
-<opt text="Déterminer si un lieu est une destination touristique est un jugement subjectif et pas une catégorie certaine. Ce sera très difficile à apprendre pour l'entity recognizer." correct="true">
+<opt text="Déterminer si un lieu est une destination touristique est un jugement subjectif et pas une catégorie certaine. Ce sera très difficile à apprendre pour l’entity recognizer." correct="true">
 
 Il serait bien plus judicieux de labelliser uniquement avec le label `"GPE"`
 (entité géopolitique) ou `"LOCATION"` (lieu) et ensuite d'utiliser un système à
@@ -349,8 +349,7 @@ cela pourrait-il être dû ?
 
 <choice>
 
-<opt text='Il est très difficile pour le modèle d'apprendre plusieurs catégories
-comme <code>"PERSON"</code> et <code>"WEBSITE"</code>.'>
+<opt text='Il est très difficile pour le modèle d’apprendre plusieurs catégories comme <code>"PERSON"</code> et <code>"WEBSITE"</code>.'>
 
 Il est parfaitement possible pour un modèle d'apprendre des catégories très
 différentes. Par exemple, le modèle anglais pré-entrainé de spaCy est capable de
@@ -358,9 +357,7 @@ reconnaitre des personnes, mais aussi des organisations ou des pourcentages.
 
 </opt>
 
-<opt text='Les données d'apprentissage ne comportaient aucun exemple de
-<code>"PERSON"</code>, donc le modèle a appris que ce label est incorrect.'
-correct="true">
+<opt text='Les données d’apprentissage ne comportaient aucun exemple de <code>"PERSON"</code>, donc le modèle a appris que ce label est incorrect.' correct="true">
 
 Si des entités `"PERSON"` sont présentes dans les données d'apprentissage mais
 ne sont pas labellisées, le modèle va apprendre qu'elles ne doivent pas être
@@ -370,7 +367,7 @@ prédire.
 
 </opt>
 
-<opt text="Les hyperparamètres doivent être réglés à nouveau pour que les deux types d'entités puissent être reconnus.">
+<opt text="Les hyperparamètres doivent être réglés à nouveau pour que les deux types d’entités puissent être reconnus.">
 
 Si les hyperparamètres peuvent influer sur la justesse d'un modèle, ils ne sont
 probablement pas le problème ici.

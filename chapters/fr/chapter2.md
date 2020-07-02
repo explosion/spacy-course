@@ -73,9 +73,7 @@ print(nlp_de.vocab.strings[bowie_id])
 
 <choice>
 
-<opt correct="true" text='La chaine <code>"Bowie"</code> n'est pas présente dans
-le vocabulaire allemand, donc le hash ne peut pas être trouvé dans le magasin de
-chaines de caractères.'>
+<opt correct="true" text='La chaine <code>"Bowie"</code> n’est pas présente dans le vocabulaire allemand, donc le hash ne peut pas être trouvé dans le magasin de chaines de caractères.'>
 
 Les hashes ne peuvent pas être inversés. Pour éviter ce problème, ajoute le mot
 au nouveau vocabulaire en traitant un texte ou en cherchant la chaine, ou
@@ -83,15 +81,13 @@ utilise le même vocabulaire pour résoudre le hash vers une chaine.
 
 </opt>
 
-<opt text='<code>"Bowie"</code> n'est pas un mot normal du dictionnaire en
-anglais ou en allemand, donc il ne peut pas être hashé.'>
+<opt text='<code>"Bowie"</code> n’est pas un mot normal du dictionnaire en anglais ou en allemand, donc il ne peut pas être hashé.'>
 
 N'importe quelle chaine de caractères peut être convertie en hash.
 
 </opt>
 
-<opt text="<code>nlp_de</code> n'est pas un nom valide. Le vocabulaire peut
-uniquement être partagé si les objets <code>nlp</code> ont le même nom.">
+<opt text="<code>nlp_de</code> n’est pas un nom valide. Le vocabulaire peut uniquement être partagé si les objets <code>nlp</code> ont le même nom.">
 
 Le nom de variable `nlp` est seulement une convention. Si le code utilisait le
 nom de variable `nlp` au lieu de `nlp_de`, il écraserait l'objet `nlp` existant,
@@ -223,16 +219,14 @@ d'accéder à leurs attributs et leurs relations.
 
 </opt>
 
-<opt correct="true" text="Il utilise uniquement des listes de chaines de caractères au lieu des attributs natifs des tokens. C'est souvent moins efficace, et cela ne permet pas d'exprimer des relations complexes.">
+<opt correct="true" text="Il utilise uniquement des listes de chaines de caractères au lieu des attributs natifs des tokens. C’est souvent moins efficace, et cela ne permet pas d’exprimer des relations complexes.">
 
 Convertis toujours les résultats en chaines le plus tard possible, et essaie
 d'utiliser les attributs natifs des tokens pour garder un code cohérent.
 
 </opt>
 
-<opt text='<code>pos*</code> n'est pas le bon attribut pour extraire des noms
-propres. Tu devrais utiliser <code>tag*</code> et les labels <code>"NNP"</code>
-et <code>"NNS"</code> à la place.'>
+<opt text='<code>pos_</code> n’est pas le bon attribut pour extraire des noms propres. Tu devrais utiliser <code>tag*</code> et les labels <code>"NNP"</code> et <code>"NNS"</code> à la place.'>
 
 L'attribut `.pos_` retourne l'étiquetage grossier de partie de discours et
 `"PROPN"` est le bon label pour chercher des noms propres.
@@ -350,8 +344,7 @@ doc = nlp("Can Silicon Valley workers rein in big tech from within?")
 
 <choice>
 
-<opt text='Les tokens "Silicon" et "Valley" ne sont pas en minuscules, donc
-l'attribut <code>"LOWER"</code> ne correspondra pas.'>
+<opt text='Les tokens "Silicon" et "Valley" ne sont pas en minuscules, donc l’attribut <code>"LOWER"</code> ne correspondra pas.'>
 
 L'attribut `"LOWER"` dans le motif décrit des tokens dont la _forme minuscule_
 correspond à une valeur donnée. Ainsi `{"LOWER": "valley"}` trouvera les tokens
@@ -359,17 +352,14 @@ correspond à une valeur donnée. Ainsi `{"LOWER": "valley"}` trouvera les token
 
 </opt>
 
-<opt correct="true" text='Le tokenizer ne crée pas de tokens pour les espaces
-simples, donc il n'y pas de token dont la valeur est <code>" "</code> au
-milieu.'>
+<opt correct="true" text='Le tokenizer ne crée pas de tokens pour les espaces simples, donc il n’y pas de token dont la valeur est <code>" "</code> au milieu.'>
 
 Le tokenizer effectue déjà la séparation sur la base des espaces et chaque
 dictionnaire du motif contient un token.
 
 </opt>
 
-<opt text='Il manque un opérateur <code>"OP"</code> aux tokens pour indiquer
-qu'ils devraient être trouvés exactement une fois.'>
+<opt text='Il manque un opérateur <code>"OP"</code> aux tokens pour indiquer qu’ils devraient être trouvés exactement une fois.'>
 
 Par défaut, tous les tokens décrits dans un motif doivent être trouvés
 exactement une fois. Les opérateurs sont nécessaires uniquement pour modifier ce

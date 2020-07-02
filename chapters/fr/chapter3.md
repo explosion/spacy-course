@@ -29,7 +29,7 @@ doc = nlp("This is a sentence.")
 
 <choice>
 
-<opt text="Lance le tagger, le parser l'entity recognizer et enfin le tokenizer.">
+<opt text="Lance le tagger, le parser l’entity recognizer et enfin le tokenizer.">
 
 Le tokenizer est toujours exécuté _avant_ tous les autres composants du
 pipeline, parce qu'il transforme une chaine de caractères en objet `Doc`. De
@@ -38,7 +38,7 @@ l'entity recognizer.
 
 </opt>
 
-<opt text="Convertit le texte en tokens et applique chaque composant du pipeline dans l'ordre." correct="true">
+<opt text="Convertit le texte en tokens et applique chaque composant du pipeline dans l’ordre." correct="true">
 
 Le tokenizer transforme une chaine de caractères en un objet `Doc`. spaCy
 applique ensuite chaque composant du pipeline, dans l'ordre.
