@@ -15,4 +15,4 @@ def test():
         pattern[1].get(key) == "PROPN" for key in ["pos", "POS"]
     ), "Recherches-tu la partie du discours du second token en utilisant le bon label pour un nom propre ?"
 
-    __msg__.good("Good job!")
+    __msg__.good("Bien joué !")
