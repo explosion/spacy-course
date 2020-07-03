@@ -9,4 +9,4 @@ def test():
     ), "¿Asignaste get_reversed como el getter?"
     assert "token._.reversed" in __solution__, "¿Estás accediendo al atributo personalizado?"
 
-    __msg__.good("¡Buen trabajo! Ahora crearemos unos atributos más complejos.")
+    __msg__.good("¡Buen trabajo! Ahora crearemos atributos más complejos.")

@@ -1,9 +1,9 @@
 import json
 import spacy
 
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("es_core_news_sm")
 
-with open("exercises/en/tweets.json") as f:
+with open("exercises/es/tweets.json", encoding="utf8") as f:
     TEXTS = json.loads(f.read())
 
 # Procesa los textos e imprime las entidades en pantalla

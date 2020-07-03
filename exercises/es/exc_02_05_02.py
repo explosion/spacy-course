@@ -1,12 +1,12 @@
 import spacy
 
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("es_core_news_sm")
 
 # Importa la clase Doc
 from ____ import ____
 
-# El texto deseado: "Go, get started!"
-words = ["Go", ",", "get", "started", "!"]
+# El texto deseado: "¡Vamos, empieza!"
+words = ["¡", "Vamos", ",", "empieza", "!"]
 spaces = [____, ____, ____, ____, ____]
 
 # Crea un Doc a partir de las palabras y los espacios

@@ -1,10 +1,10 @@
-# Importa la clase de lenguaje "English" y crea el objeto nlp
+# Importa la clase de lenguaje "Spanish" y crea el objeto nlp
 from ____ import ____
 
 nlp = ____
 
 # Procesa el texto
-doc = ____("I like tree kangaroos and narwhals.")
+doc = ____("Me gustan las panteras negras y los leones.")
 
 # Selecciona el primer token
 first_token = doc[____]

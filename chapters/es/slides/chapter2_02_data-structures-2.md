@@ -10,19 +10,19 @@ estudiar las estructuras de datos más importantes: el `Doc` y sus views el
 
 ---
 
-# The Doc object
+# El objeto Doc
 
 ```python
 # Crea un objeto nlp
-from spacy.lang.en import English
-nlp = English()
+from spacy.lang.es import Spanish
+nlp = Spanish()
 
 # Importa la clase Doc
 from spacy.tokens import Doc
 
 # Las palabras y espacios que usaremos para crear el doc
-words = ["Hello", "world", "!"]
-spaces = [True, False, False]
+words = ["¡", "Hola", "Mundo", "!"]
+spaces = [False, True, False, False]
 
 # Crea un doc manualmente
 doc = Doc(nlp.vocab, words=words, spaces=spaces)
@@ -62,17 +62,17 @@ excluyente!
 from spacy.tokens import Doc, Span
 
 # Las palabras y espacios que usaremos para crear el doc
-words = ["Hello", "world", "!"]
-spaces = [True, False, False]
+words = ["¡", "Hola", "Mundo", "!"]
+spaces = [False, True, False, False]
 
 # Crea un doc manualmente
 doc = Doc(nlp.vocab, words=words, spaces=spaces)
 
 # Crea un span manualmente
-span = Span(doc, 0, 2)
+span = Span(doc, 1, 3)
 
 # Crea un span con un label
-span_with_label = Span(doc, 0, 2, label="GREETING")
+span_with_label = Span(doc, 1, 3, label="GREETING")
 
 # Añade el span a los doc.ents
 doc.ents = [span_with_label]
@@ -83,7 +83,7 @@ Notes: Para crear un `Span` manualmente también podemos importar la clase desde
 final, así como un argumento opcional de label.
 
 Los `doc.ents` son escribibles así que podemos añadir entidades manualmente
-sobrescribiendo los con una lista de spans.
+sobrescribiéndolos con una lista de spans.
 
 ---
 
@@ -96,20 +96,20 @@ sobrescribiendo los con una lista de spans.
     `token.i` para el índice del token
 - No olvides pasar el `vocab` compartido
 
-Notes: Unos trucos y tips antes de comenzar:
+Notes: Algunos trucos y tips antes de comenzar:
 
-El `Doc` y el `Span` son muy poderosos y optimizados para desempeño. Te dan
+El `Doc` y el `Span` son muy poderosos y eficientes. Te dan
 acceso a todas las referencias y relaciones de las palabras y las frases.
 
-Si tu aplicación tiene que generar strings asegúrate de que conviertas el doc lo
+Si tu aplicación tiene que generar strings asegúrate de que convertir el doc lo
 más tarde posible. Si lo haces demasiado temprano perderás las relaciones entre
 los tokens.
 
-Para mantener las cosas consistentes intenta usar los atributos incluidos de los
+Para mantener la consistencia intenta usar los atributos incluidos de los
 tokens, siempre que sea posible. Por ejemplo, `token.i` para el índice del
 token.
 
-¡Tampoco te olvides de siempre pasar el vocabulario compartido!
+¡Tampoco te olvides de pasar el vocabulario compartido siempre!
 
 ---
 

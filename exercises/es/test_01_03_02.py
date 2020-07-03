@@ -1,11 +1,11 @@
 def test():
     assert (
-        doc.text == "I like tree kangaroos and narwhals."
+        doc.text == "Me gustan las panteras negras y los leones."
     ), "¿Procesaste el texto correctamente?"
     assert (
-        tree_kangaroos == doc[2:4]
-    ), "¿Seleccionaste el span correcto para 'tree_kangaroos'?"
+        panteras_negras == doc[3:5]
+    ), "¿Seleccionaste el span correcto para 'panteras_negras'?"
     assert (
-        tree_kangaroos_and_narwhals == doc[2:6]
-    ), "¿Seleccionaste el span correcto para 'tree_kangaroos_and_narwhals'?"
+        panteras_negras_y_leones == doc[3:8]
+    ), "¿Seleccionaste el span correcto para 'panteras_negras_y_leones'?"
     __msg__.good("¡Buen trabajo!")

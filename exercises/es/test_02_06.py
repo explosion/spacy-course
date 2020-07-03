@@ -2,7 +2,7 @@ def test():
     assert (
         "import Doc, Span" or "import Span, Doc" in __solution__
     ), "¿Importaste el Doc y el Span correctamente?"
-    assert doc.text == "I like David Bowie", "¿Creaste el Doc correctamente?"
+    assert doc.text == "Me gusta David Bowie", "¿Creaste el Doc correctamente?"
     assert span.text == "David Bowie", "¿Creaste el Span correctamente?"
     assert span.label_ == "PERSON", "¿Añadiste el label PERSON al span?"
     assert "doc.ents =" in __solution__, "¿Sobrescribiste las doc.ents?"

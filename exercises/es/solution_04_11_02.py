@@ -1,15 +1,15 @@
 TRAINING_DATA = [
     (
-        "Reddit partners with Patreon to help creators build communities",
-        {"entities": [(0, 6, "WEBSITE"), (21, 28, "WEBSITE")]},
+        "Reddit hizo una alianza con Patreon para ayudar a los creadores",
+        {"entities": [(0, 6, "WEBSITE"), (28, 35, "WEBSITE")]},
     ),
     (
-        "PewDiePie smashes YouTube record",
-        {"entities": [(0, 9, "PERSON"), (18, 25, "WEBSITE")]},
+        "PewDiePie rompe el record de YouTube",
+        {"entities": [(0, 9, "PER"), (29, 36, "WEBSITE")]},
     ),
     (
-        "Reddit founder Alexis Ohanian gave away two Metallica tickets to fans",
-        {"entities": [(0, 6, "WEBSITE"), (15, 29, "PERSON")]},
+        "El fundador de Reddit, Alexis Ohanian, regaló dos tiquetes de Metallica",
+        {"entities": [(15, 21, "WEBSITE"), (23, 37, "PER")]},
     ),
     # y así sucesivamente...
 ]

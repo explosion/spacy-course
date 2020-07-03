@@ -1,9 +1,9 @@
 def test():
-    assert cat_hash == nlp.vocab.strings["cat"], "¿Asignaste el hash correcto?"
-    assert 'nlp.vocab.strings["cat"]' in __solution__
-    assert cat_string == "cat", "¿Obtuviste el string correcto?"
+    assert gato_hash == nlp.vocab.strings["gato"], "¿Asignaste el hash correcto?"
+    assert 'nlp.vocab.strings["gato"]' in __solution__
+    assert gato_string == "gato", "¿Obtuviste el string correcto?"
     assert (
-        "nlp.vocab.strings[cat_hash]" in __solution__
+        "nlp.vocab.strings[gato_hash]" in __solution__
     ), "¿Obtuviste el string usando el hash?"
 
     __msg__.good("¡Muy buen trabajo!")
