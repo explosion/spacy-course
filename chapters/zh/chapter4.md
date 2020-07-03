@@ -1,26 +1,22 @@
 ---
 title: '第四章：训练神经网络模型'
-description:
-  "本章中，我们要学习更新spaCy的统计模型使其能够为特定的使用场景做出定制化。"
-  "一个例子是我们想要在网络上的评论中抽取一种新的实体。我们将会学到如何从头编"
-  "码自己的模型训练流程，了解模型训练的基本工作原理，以及一些技巧使得我们自己"
-  "的定制化自然语言处理项目能够更加成功。"
+description: '本章中，我们要学习更新spaCy的统计模型使其能够为特定的使用场景做出定制化。一个例子是我们想要在网络上的评论中抽取一种新的实体。我们将会学到如何从头编码自己的模型训练流程，了解模型训练的基本工作原理，以及一些技巧使得我们自己的定制化自然语言处理项目能够更加成功。'
 prev: /chapter3
 next: null
 type: chapter
 id: 4
 ---
 
-<exercise id="1" title="训练和更新模型" type="slides,video">
+<exercise id="1" title="训练和更新模型" type="slides">
 
-<slides source="chapter4_01_training-updating-models" start="35:02" end="38:495">
+<slides source="chapter4_01_training-updating-models">
 </slides>
 
 </exercise>
 
 <exercise id="2" title="模型训练的目的">
 
-spaCy已经预装了一系列预训练好的模型来抽取各种语言学标签，然后我们几乎 _总是_ 
+spaCy已经预装了一系列预训练好的模型来抽取各种语言学标签，然后我们几乎 _总是_
 想要用更多的新例子来优化模型。我们可以用更多的标注数据来训练模型达到这个目的。
 
 模型训练不能达到哪个目标？
@@ -90,9 +86,9 @@ spaCy的基于规则的`Matcher`可以很好地被用来快速创建一些命名
 
 </exercise>
 
-<exercise id="5" title="模型训练过程" type="slides,video">
+<exercise id="5" title="模型训练过程" type="slides">
 
-<slides source="chapter4_02_training-loop" start="39:00" end="42:25">
+<slides source="chapter4_02_training-loop">
 </slides>
 
 </exercise>
@@ -192,9 +188,9 @@ spaCy的基于规则的`Matcher`可以很好地被用来快速创建一些命名
 
 </exercise>
 
-<exercise id="9" title="模型训练最佳实践" type="slides,video">
+<exercise id="9" title="模型训练最佳实践" type="slides">
 
-<slides source="chapter4_03_training-best-practices" start="42:36" end="44:55">
+<slides source="chapter4_03_training-best-practices">
 </slides>
 
 </exercise>
@@ -329,9 +325,9 @@ TRAINING_DATA = [
 
 </exercise>
 
-<exercise id="12" title="总结" type="slides,video">
+<exercise id="12" title="总结" type="slides">
 
-<slides source="chapter4_04_wrapping-up" start="45:01" end="47:195">
+<slides source="chapter4_04_wrapping-up">
 </slides>
 
 </exercise>
