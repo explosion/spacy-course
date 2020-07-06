@@ -46,7 +46,7 @@ export default ({ lang = 'en' }) => {
 const query = graphql`
     {
         allMarkdownRemark(
-            sort: { fields: [frontmatter___title], order: ASC }
+            sort: { fields: [fields___slug], order: ASC }
             filter: { frontmatter: { type: { eq: "chapter" } } }
         ) {
             edges {
