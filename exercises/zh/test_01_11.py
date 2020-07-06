@@ -31,5 +31,5 @@ def test():
 
     __msg__.good(
         "棒极了！你成功找到了一个匹配："
-        '描述"iPhone X"的处于doc[1:3]的词符。'
+        '描述"iPhone X"的词符。'
     )
