@@ -1,14 +1,13 @@
 import spacy
 from spacy.matcher import Matcher
 
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("zh_core_web_sm")
 matcher = Matcher(nlp.vocab)
 
 doc = nlp(
-    "After making the iOS update you won't notice a radical system-wide "
-    "redesign: nothing like the aesthetic upheaval we got with iOS 7. Most of "
-    "iOS 11's furniture remains the same as in iOS 10. But you will discover "
-    "some tweaks once you delve a little deeper."
+    "升级iOS之后，我们并没有发现系统设计有很大的不同，远没有当年iOS 7发布时带来的"
+    "焕然一新的感觉。大部分iOS 11的设计与iOS 10保持一致。但我们仔细试用后也发现了一些"
+    "小的改进。"
 )
 
 # 写一个模板来匹配完整的iOS版本 ("iOS 7", "iOS 11", "iOS 10")

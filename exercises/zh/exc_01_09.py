@@ -1,11 +1,15 @@
 import spacy
 
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("zh_core_web_sm")
 
-text = "Upcoming iPhone X release date leaked as Apple reveals pre-orders"
+text = "苹果公布了预购细节，泄露了即将到来的iPhone X的发布日期。"
 
 # 处理文本
 doc = ____
+
+# 打印token及序号
+for i, token in enumerate(doc):
+    print(i, token.text)
 
 # 遍历实体
 for ____ in ____.____:

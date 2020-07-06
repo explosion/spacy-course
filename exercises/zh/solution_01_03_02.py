@@ -1,15 +1,19 @@
-# 导入英文语言类并创建nlp对象
-from spacy.lang.en import English
+# 导入中文语言类并创建nlp对象
+from spacy.lang.zh import Chinese
 
-nlp = English()
+nlp = Chinese()
 
 # 处理文本
-doc = nlp("I like tree kangaroos and narwhals.")
+doc = nlp("我喜欢老虎和狮子。")
 
-# 截取Doc中"tree kangaroos"的部分
-tree_kangaroos = doc[2:4]
-print(tree_kangaroos.text)
+# 遍历打印doc中的内容
+for i in doc:
+    print(i.text)
 
-# 截取Doc中"tree kangaroos and narwhals"的部分(不包括".")
-tree_kangaroos_and_narwhals = doc[2:6]
-print(tree_kangaroos_and_narwhals.text)
+# 截取Doc中"老虎"的部分
+laohu = doc[2:3]
+print(laohu.text)
+
+# 截取Doc中"老虎和狮子"的部分(不包括"。")
+laohu_he_shizi = doc[2:5]
+print(laohu_he_shizi.text)

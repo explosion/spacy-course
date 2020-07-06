@@ -1,15 +1,19 @@
-# 导入英文语言类并创建nlp对象
+# 导入中文语言类并创建nlp对象
 from ____ import ____
 
 nlp = ____
 
 # 处理文本
-doc = ____("I like tree kangaroos and narwhals.")
+doc = ____("我喜欢老虎和狮子。")
 
-# 截取Doc中"tree kangaroos"的部分
-tree_kangaroos = ____
-print(tree_kangaroos.text)
+# 遍历打印doc中的内容
+for i in doc:
+    print(i.text)
 
-# 截取Doc中"tree kangaroos and narwhals"的部分(不包括".")
-tree_kangaroos_and_narwhals = ____
-print(tree_kangaroos_and_narwhals.text)
+# 截取Doc中"老虎"的部分
+laohu = ____
+print(laohu.text)
+
+# 截取Doc中"老虎和狮子"的部分(不包括"。")
+laohu_he_shizi = ____
+print(laohu_he_shizi.text)
