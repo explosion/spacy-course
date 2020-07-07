@@ -35,13 +35,13 @@ Notes: 很多非常有趣的分析是基于语境的：
 <img src="/package.png" alt="名字为en_core_web_sm的模型包" width="30%" align="right" />
 
 ```bash
-$ python -m spacy download en_core_web_sm
+$ python -m spacy download zh_core_web_sm
 ```
 
 ```python
 import spacy
 
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("zh_core_web_sm")
 ```
 
 - 二进制权重
@@ -49,7 +49,7 @@ nlp = spacy.load("en_core_web_sm")
 - 元信息 (语言、流程)
 
 Notes: spaCy提供了很多预训练好的模型包，我们可以用`spacy download`命令来下载。
-比如"en_core_web_sm"这个模型包就是一个小的英文模型，它有所有核心功能，是从网上的文本训练而来。
+比如"zh_core_web_sm"这个模型包就是一个小的中文模型，它有所有核心功能，是从网上的文本训练而来。
 
 `spacy.load`方法可以通过包名读取一个模型包并返回一个`nlp`实例。
 
@@ -65,10 +65,10 @@ Notes: spaCy提供了很多预训练好的模型包，我们可以用`spacy down
 import spacy
 
 # 读取小版本的英文模型
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("zh_core_web_sm")
 
 # 处理文本
-doc = nlp("She ate the pizza")
+doc = nlp("我吃了个肉夹馍")
 
 # 遍历词符
 for token in doc:
@@ -77,24 +77,25 @@ for token in doc:
 ```
 
 ```out
-She PRON
-ate VERB
-the DET
-pizza NOUN
+我 PRON
+吃 VERB
+了 PART
+个 NUM
+肉夹馍 NOUN
 ```
 
 Notes: 我们来看下模型的预测结果。这个例子中我们使用spaCy来获得词性标注的结果，
 为每个词在其所在语境中标注种类。
 
-首先我们读入小版本的英文模型得到一个`nlp`的实例。
+首先我们读入小版本的中文模型得到一个`nlp`的实例。
 
-然后我们处理"She ate the pizza"这个文本。
+然后我们处理"我吃了个肉夹馍"这个文本。
 
 对于这段文本中的每一个词符我们可以打印其文字和`.pos_`属性，这个属性就是词性标注的结果。
 
 在spaCy中，返回字符串的属性名一般结尾会有下划线；没有下划线的属性会返回一个整型的ID值。
 
-这里我们看到模型正确地标注"ate"为一个动词，而"pizza"为一个名词。
+这里我们看到模型正确地标注"吃"为一个动词，而"肉夹馍"为一个名词。
 
 ---
 
@@ -106,16 +107,16 @@ for token in doc:
 ```
 
 ```out
-She PRON nsubj ate
-ate VERB ROOT ate
-the DET det pizza
-pizza NOUN dobj ate
+我 PRON nsubj 吃
+吃 VERB ROOT 吃
+了 PART aux:asp 吃
+个 NUM nummod 肉夹馍
+肉夹馍 NOUN dobj 吃
 ```
 
 Notes: 除了词性分析以外，我们还可以预测词与词之间的关系。比如一个词是某一个句子或者物体的主语。
 
 `.dep_`属性返回预测的依存关系标注。
-The `.dep_` attribute returns the predicted dependency label.
 
 `.head`属性返回句法头词符。你可以认为这是词在句子中所依附的母词符。
 
@@ -127,17 +128,14 @@ The `.dep_` attribute returns the predicted dependency label.
 
 | Label     | Description          | Example |
 | --------- | -------------------- | ------- |
-| **nsubj** | 名词主语      | She     |
-| **dobj**  | 目的语        | pizza   |
-| **det**   | 限定词 (冠词) | the     |
+| **nsubj** | 名词主语      | 我     |
+| **dobj**  | 目的语        | 肉夹馍   |
 
 Notes: spaCy使用了一系列标准化的标注方法来描述依存关系：
 
-代词"She"是一个依附在动词（这里是"ate"）上的名词主语。
+代词"我"是一个依附在动词（这里是"吃"）上的名词主语。
 
-名词"pizza"是一个依附在动词"ate"上面的目的语。这个披萨被主语"she"吃掉了。
-
-限定词"the"我们也叫做冠词，是依附在名词"pizza"上面的。
+名词"肉夹馍"是一个依附在动词"吃"上面的目的语。这个肉夹馍被主语"我"吃掉了。
 
 ---
 
@@ -147,7 +145,7 @@ Notes: spaCy使用了一系列标准化的标注方法来描述依存关系：
 
 ```python
 # 处理文本
-doc = nlp("Apple is looking at buying U.K. startup for $1 billion")
+doc = nlp("微软准备用十亿美金买下这家英国的创业公司。")
 
 # 遍历识别出的实体
 for ent in doc.ents:
@@ -156,9 +154,9 @@ for ent in doc.ents:
 ```
 
 ```out
-Apple ORG
-U.K. GPE
-$1 billion MONEY
+微软 ORG
+十亿美金 MONEY
+英国 GPE
 ```
 
 Notes: 命名实体是那些被赋予了名字的真实世界的物体，比如一个人、一个组织或者一个国家。
@@ -167,8 +165,8 @@ Notes: 命名实体是那些被赋予了名字的真实世界的物体，比如�
 
 它会返回一个`Span`实例的遍历器，我们可以打印出实体文本和用`.label_`属性来打印出实体标注。
 
-这个例子里模型正确地将"Apple"识别为一个组织，将"U.K."识别为一个地理政治实体，
-将"\$1 billion"预测为钱。
+这个例子里模型正确地将"微软"识别为一个组织，将"英国"识别为一个地理政治实体，
+将"十亿美金"预测为钱。
 
 ---
 
