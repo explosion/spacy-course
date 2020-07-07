@@ -25,9 +25,10 @@ solutions are all in this repo, there's no penalty for clicking "Show hints" or
 | **[German](https://course.spacy.io/de)**   | German                    | [`chapters/de`](chapters/de), [`exercises/de`](exercises/de) | [✓](https://www.youtube.com/watch?v=K1elwpgDdls) | [@ines](https://github.com/ines)                   |
 | **[Spanish](https://course.spacy.io/es)**  | Spanish                   | [`chapters/es`](chapters/es), [`exercises/es`](exercises/es) | [✓](https://www.youtube.com/watch?v=RNiLVCE5d4k) | [@mariacamilagl](https://github.com/mariacamilagl) |
 | **[French](https://course.spacy.io/fr)**   | English<sup>2</sup>       | [`chapters/fr`](chapters/fr), [`exercises/fr`](exercises/fr) |                        ✕                         | [@datakime](https://github.com/datakime)           |
-| **[Japanese](https://course.spacy.io/ja)** | English                   | [`chapters/ja`](chapters/ja), [`exercises/ja`](exercises/ja) |                        ✕                         | [@tamuhey](https://github.com/tamuhey)             |
-| Chinese                                    | Chinese                   | _in progress_                                                |                                                  |                                                    |
+| **[Japanese](https://course.spacy.io/ja)** | English<sup>2</sup>       | [`chapters/ja`](chapters/ja), [`exercises/ja`](exercises/ja) |                        ✕                         | [@tamuhey](https://github.com/tamuhey)             |
+| **[Chinese](https://course.spacy.io/zh)**  | English<sup>2</sup>       | [`chapters/zh`](chapters/zh), [`exercises/zh`](exercises/zh) |                        ✕                         | [@crownpku](https://github.com/crownpku)           |
 | Russian                                    | English                   | _in progress_                                                |                                                  |                                                    |
+| Portuguese                                 | English                   | _in progress_                                                |                                                  |                                                    |
 
 If you spot a mistake, I always appreciate
 [pull requests](https://github.com/ines/spacy-course/pulls)!
