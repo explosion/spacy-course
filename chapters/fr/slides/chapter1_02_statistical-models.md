@@ -163,7 +163,7 @@ Le déterminant "la", également appelé article, est rattaché au nom "pizza".
 
 # Prédiction d'Entités Nommées
 
-<img src="/ner_example.png" alt="Visualisation des entités nommées dans 'Apple is looking at buying U.K. startup for $1 billion'" width="80%" />
+<img src="/ner_example.png" alt="Visualisation des entités nommées dans 'Apple conçoit le nouvel iPhone à Cupertino'" width="80%" />
 
 ```python
 # Traite le texte
@@ -191,8 +191,7 @@ Elle retourne un itérateur d'objets `Span`, donc nous pouvons imprimer le texte
 de l'entité et son label en utilisant l'attribut `.label_`.
 
 Dans notre exemple, le modèle a correctement prédit "Apple" en tant
-qu'organisation, "U.K." comme entité géopolitique et "\$1 billion" comme somme
-d'argent.
+qu'organisation, "iPhone" comme entité diverse et "Cupertino" comme lieu.
 
 ---
 

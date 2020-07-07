@@ -100,7 +100,7 @@ exact du token.
 
 # L'objet Span
 
-<img src="/doc_span.png" width="50%" alt="Illustration d'un objet Doc contenant quatre trois dont deux sont regroupés dans un Span" />
+<img src="/doc_span.png" width="50%" alt="Illustration d'un objet Doc contenant trois tokens dont deux sont regroupés dans un Span" />
 
 ```python
 doc = nlp("Bonjour monde !")
