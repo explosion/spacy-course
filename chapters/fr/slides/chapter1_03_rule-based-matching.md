@@ -16,7 +16,7 @@ dans un texte.
   chaines de caractères
 - Recherche de correspondances sur les tokens et les attributs des tokens
 - Utilisation des prédictions du modèle
-- Exemple: "duck" (verbe) vs. "duck" (nom)
+- Exemple: "capture" (verbe) vs. "capture" (nom)
 
 Notes: par rapport aux expressions régulières, le matcher fonctionne avec des
 objets `Doc` et `Token` et pas simplement avec des chaines de caractères.
@@ -26,7 +26,7 @@ d'autres attributs lexicaux.
 
 Tu peux même écrire des règles qui utilisent les prédictions du modèle.
 
-Par exemple, trouve le mot "duck" seulement si c'est un verbe, pas un nom.
+Par exemple, trouve le mot "capture" seulement si c'est un verbe, pas un nom.
 
 ---
 
@@ -49,7 +49,7 @@ Par exemple, trouve le mot "duck" seulement si c'est un verbe, pas un nom.
 - Recherche de n'importe quel attribut des tokens
 
 ```python
-[{"LEMMA": "buy"}, {"POS": "NOUN"}]
+[{"LEMMA": "acheter"}, {"POS": "NOUN"}]
 ```
 
 Notes: les motifs de correspondance sont des listes de dictionnaires. Chaque
@@ -62,9 +62,9 @@ Nous pouvons aussi rechercher sur d'autres attributs des tokens. Ici, nous
 recherchons deux tokens dont les formes minuscules sont "iphone" et "x".
 
 Nous pouvons même écrire des motifs utilisant des attributs prédits par le
-modèle. Ici, nous recherchons un token avec le lemme "buy", plus un nom. Le
-lemme est la forme de base, donc ce motif trouvera des phrases comme "buying
-milk" ou "bought flowers".
+modèle. Ici, nous recherchons un token avec le lemme "acheter", plus un nom. Le
+lemme est la forme de base, donc ce motif trouvera des phrases comme "achetant
+du lait" ou "acheta des fleurs".
 
 ---
 
@@ -77,17 +77,17 @@ import spacy
 from spacy.matcher import Matcher
 
 # Charge le modèle et crée l'objet nlp
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("fr_core_news_sm")
 
 # Initialise le matcher avec le vocabulaire partagé
 matcher = Matcher(nlp.vocab)
 
 # Ajoute le motif au matcher
-pattern = [{"TEXT": "iPhone"}, {"TEXT": "X"}]
+pattern = [{"TEXT": "iPhone"}, {"TEXT": "12"}]
 matcher.add("IPHONE_PATTERN", None, pattern)
 
 # Traite un texte
-doc = nlp("Upcoming iPhone X release date leaked")
+doc = nlp("La date de sortie du futur iPhone 12 a fuité")
 
 # Appelle le matcher sur le doc
 matches = matcher(doc)
@@ -118,7 +118,7 @@ Ceci nous retournera les correspondances.
 
 ```python
 # Appel du matcher sur le doc
-doc = nlp("Upcoming iPhone X release date leaked")
+doc = nlp("La date de sortie du futur iPhone 12 a fuité")
 matches = matcher(doc)
 
 # Itère sur les correspondances
@@ -129,7 +129,7 @@ for match_id, start, end in matches:
 ```
 
 ```out
-iPhone X
+iPhone 12
 ```
 
 - `match_id`: valeur de hash du nom du motif
@@ -150,34 +150,35 @@ Cela signifie que nous pouvons itérer sur les correspondances et créer un obje
 
 ```python
 pattern = [
-    {"IS_DIGIT": True},
+    {"LOWER": "coupe"},
+    {"LOWER": "du"},
+    {"LOWER": "monde"},
     {"LOWER": "fifa"},
-    {"LOWER": "world"},
-    {"LOWER": "cup"},
+    {"IS_DIGIT": True},
     {"IS_PUNCT": True}
 ]
 ```
 
 ```python
-doc = nlp("2018 FIFA World Cup: France won!")
+doc = nlp("Coupe du Monde FIFA 2018 : la France a gagné !")
 ```
 
 ```out
-2018 FIFA World Cup:
+Coupe du Monde FIFA 2018 :
 ```
 
 Notes: Voici un exemple de motif un peu plus complexe utilisant des attributs
 lexicaux.
 
-Nous recherchons cinq tokens :
+Nous recherchons six tokens :
+
+Quatre tokens insensibles à la casse pour "coupe", "du", "monde" et "fifa".
 
 Un token composé uniquement de valeurs numériques.
 
-Trois tokens insensibles à la casse pour "fifa", "world" et "cup".
-
 Et un token de type ponctuation.
 
-Le motif trouve les "2018 FIFA World Cup:".
+Le motif trouve les "Coupe du Monde FIFA 2018 :".
 
 ---
 
@@ -185,25 +186,26 @@ Le motif trouve les "2018 FIFA World Cup:".
 
 ```python
 pattern = [
-    {"LEMMA": "love", "POS": "VERB"},
+    {"LEMMA": "manger", "POS": "VERB"},
+    {"POS": "DET"},
     {"POS": "NOUN"}
 ]
 ```
 
 ```python
-doc = nlp("I loved dogs but now I love cats more.")
+doc = nlp("Avant elle mangeait des pâtes. Désormais elle mange des légumes.")
 ```
 
 ```out
-loved dogs
-love cats
+mangeait des pâtes
+mange des légumes
 ```
 
 Note : Dans cet exemple, nous recherchons deux tokens :
 
-Un verbe avec le lemme "love", suivi par un nom.
+Un verbe avec le lemme "manger", suivi par un nom.
 
-Ce motif trouvera "loved dogs" et "love cats".
+Ce motif trouvera "mangeait des pâtes" et "mange des légumes".
 
 ---
 
@@ -211,26 +213,27 @@ Ce motif trouvera "loved dogs" et "love cats".
 
 ```python
 pattern = [
-    {"LEMMA": "buy"},
-    {"POS": "DET", "OP": "?"},  # optionnel : trouve 0 or 1 fois
+    {"LEMMA": "acheter", "POS": "VERB"},
+    {"POS": "DET"},
+    {"POS": "ADJ", "OP": "?"}, # optionnel : trouve 0 or 1 fois
     {"POS": "NOUN"}
 ]
 ```
 
 ```python
-doc = nlp("I bought a smartphone. Now I'm buying apps.")
+doc = nlp("J'ai acheté un nouveau smartphone. Maintenant j'achète des applis.")
 ```
 
 ```out
-bought a smartphone
-buying apps
+acheté un nouveau smartphone
+achète des applis
 ```
 
 Notes: Les opérateurs et les quantificateurs te permettent de définir combien de
 fois un token doit être trouvé. Ils peuvent être ajoutés avec la clé "OP".
 
 Ici, l'opérateur "?" rend le token du déterminant optionnel, donc il trouvera un
-token avec le lemme "buy", un article optionnel et un nom.
+token avec le lemme "acheter", un déterminant, un adjectif optionnel et un nom.
 
 ---
 

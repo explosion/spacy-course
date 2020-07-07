@@ -16,11 +16,11 @@ nos premiers pas.
 # L'objet nlp
 
 ```python
-# Importe la classe de langue "English"
-from spacy.lang.en import English
+# Importe la classe de langue "French"
+from spacy.lang.fr import French
 
 # Crée l'objet nlp
-nlp = English()
+nlp = French()
 ```
 
 - contient le pipeline de traitement
@@ -29,8 +29,8 @@ nlp = English()
 Notes: Au coeur de spaCy se trouve l'objet contenant le pipeline de traitement.
 Nous nommons généralement cette variable "nlp".
 
-Par exemple, pour créer un objet `nlp` en langue anglaise, tu peux importer la
-classe de langue `English` depuis `spacy.lang.en` et l'instancier. Tu peux
+Par exemple, pour créer un objet `nlp` en langue française, tu peux importer la
+classe de langue `French` depuis `spacy.lang.fr` et l'instancier. Tu peux
 utiliser l'objet nlp comme une fonction pour analyser le texte.
 
 Il contient l'ensemble des différents composants du pipeline.
@@ -45,7 +45,7 @@ langues qui sont accessibles à partir de `spacy.lang`.
 
 ```python
 # Créé en traitant une chaine de caractères avec l'objet nlp
-doc = nlp("Hello world!")
+doc = nlp("Bonjour monde !")
 
 # Itère sur les tokens dans un Doc
 for token in doc:
@@ -53,8 +53,8 @@ for token in doc:
 ```
 
 ```out
-Hello
-world
+Bonjour
+monde
 !
 ```
 
@@ -70,10 +70,10 @@ reviendrons là dessus plus tard !
 
 # L'objet Token
 
-<img src="/doc.png" alt="Illustration d'un objet Doc contenant quatre tokens" width="50%" />
+<img src="/doc.png" alt="Illustration d'un objet Doc contenant trois tokens" width="50%" />
 
 ```python
-doc = nlp("Hello world!")
+doc = nlp("Bonjour monde !")
 
 # Utilisation d'un indice au sein du Doc pour obtenir un Token unique
 token = doc[1]
@@ -83,7 +83,7 @@ print(token.text)
 ```
 
 ```out
-world
+monde
 ```
 
 Notes: Les objets `Token` représentent les tokens dans un document – par
@@ -100,10 +100,10 @@ exact du token.
 
 # L'objet Span
 
-<img src="/doc_span.png" width="50%" alt="Illustration d'un objet Doc contenant quatre tokens dont trois sont regroupés dans un Span" />
+<img src="/doc_span.png" width="50%" alt="Illustration d'un objet Doc contenant quatre trois dont deux sont regroupés dans un Span" />
 
 ```python
-doc = nlp("Hello world!")
+doc = nlp("Bonjour monde !")
 
 # Une portion du Doc est un objet Span
 span = doc[1:3]
@@ -113,7 +113,7 @@ print(span.text)
 ```
 
 ```out
-world!
+monde !
 ```
 
 Notes: Un objet `Span` est une portion du document composée d'un ou plusieurs
@@ -129,25 +129,24 @@ exemple, `1:3` créera une portion commençant avec le token situé à la positi
 # Attributs lexicaux
 
 ```python
-doc = nlp("It costs $5.")
+doc = nlp("Cela coûte 5 €.")
 ```
 
 ```python
-print("Index:   ", [token.i for token in doc])
-print("Text:    ", [token.text for token in doc])
+print("Index :   ", [token.i for token in doc])
+print("Text :    ", [token.text for token in doc])
 
-print("is_alpha:", [token.is_alpha for token in doc])
-print("is_punct:", [token.is_punct for token in doc])
-print("like_num:", [token.like_num for token in doc])
+print("is_alpha :", [token.is_alpha for token in doc])
+print("is_punct :", [token.is_punct for token in doc])
+print("like_num :", [token.like_num for token in doc])
 ```
 
 ```out
 Index:    [0, 1, 2, 3, 4]
-Text:     ['It', 'costs', '$', '5', '.']
-
+Text:     ['Cela', 'coûte', '5', '€', '.']
 is_alpha: [True, True, False, False, False]
 is_punct: [False, False, False, False, True]
-like_num: [False, False, False, True, False]
+like_num: [False, False, True, False, False]
 ```
 
 Notes: Tu peux voir ici certains des attributs disponibles sur les tokens :
