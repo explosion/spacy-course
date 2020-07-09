@@ -1,12 +1,12 @@
-from spacy.lang.en import English
+from spacy.lang.fr import French
 
-nlp = English()
-doc = nlp("I have a cat")
+nlp = French()
+doc = nlp("J'ai un chat")
 
-# Recherche le hash pour le mot "cat"
-cat_hash = nlp.vocab.strings["cat"]
-print(cat_hash)
+# Recherche le hash pour le mot "chat"
+chat_hash = nlp.vocab.strings["chat"]
+print(chat_hash)
 
-# Recherche cat_hash pour obtenir la chaine
-cat_string = nlp.vocab.strings[cat_hash]
-print(cat_string)
+# Recherche chat_hash pour obtenir la chaine
+chat_string = nlp.vocab.strings[chat_hash]
+print(chat_string)

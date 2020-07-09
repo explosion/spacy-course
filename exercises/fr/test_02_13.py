@@ -3,7 +3,7 @@ def test():
         len(pattern1) == 2
     ), "Le nombre de tokens de pattern1 ne correspond pas au véritable nombre de tokens dans la chaine."
     assert (
-        len(pattern2) == 4
+        len(pattern2) == 2
     ), "Le nombre de tokens de pattern2 ne correspond pas au véritable nombre de tokens dans la chaine."
     # Validation de Pattern 1
     assert (
@@ -24,21 +24,17 @@ def test():
 
     # Validation de Pattern 2
     assert any(
-        pattern2[0].get(attr) == "ad" for attr in ("lower", "LOWER")
+        pattern2[0].get(attr) == "NOUN" for attr in ("pos", "POS")
     ), "Vérifie l'attribut et la valeur du premier token de pattern2."
     assert any(
-        pattern2[2].get(attr) == "free" for attr in ("lower", "LOWER")
+        pattern2[1].get(attr) == "tout-compris" for attr in ("lower", "LOWER")
     ), "Vérifie l'attribut et la valeur du troisième token in pattern2."
-    assert any(
-        pattern2[3].get(attr) == "NOUN" for attr in ("pos", "POS")
-    ), "Vérifie l'attribut et la valeur du quatrième token in pattern2."
-    assert len(matcher(doc)) == 6, "Nombre de correspondances incorrect – attendu 6."
+    assert len(matcher(doc)) == 4, "Nombre de correspondances incorrect – attendu 4."
 
     __msg__.good(
-        "Bien joué ! Pour le token '-', tu peux le rechercher sur l'attribut "
-        "'TEXT', 'LOWER' ou même 'SHAPE'. Ils sont tous corrects. Comme tu "
-        "peux le voir, il est très important de faire bien attention à la "
-        "tokenisation quand tu utilises le 'Matcher' basé sur les tokens."
+        "Bien joué ! Comme tu peux le voir, il est très important de faire "
+        "bien attention à la tokenisation quand tu utilises le 'Matcher' basé "
+        "sur les tokens."
         "Parfois il est bien plus facile de rechercher simplement des chaines "
         "exactes et d'utiliser le 'PhraseMatcher', comme nous allons le faire "
         "dans le prochain exercice."
