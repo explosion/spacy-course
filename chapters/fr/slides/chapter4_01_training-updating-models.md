@@ -108,13 +108,13 @@ l'utiliser dans notre application.
 - Les exemples doivent être fournis avec le contexte
 
 ```python
-("iPhone X is coming", {"entities": [(0, 8, "GADGET")]})
+("L'iPhone 12 arrive bientôt", {"entities": [(2, 8, "GADGET")]})
 ```
 
 - Les textes dépourvus d'entités sont importants aussi
 
 ```python
-("I need a new phone! Any tips?", {"entities": []})
+("Il me faut un nouveau téléphone ! Des suggestions à me faire ?", {"entities": []})
 ```
 
 - **But :** apprendre au modèle à généraliser
