@@ -224,5 +224,49 @@
             "prevChapter": "前章",
             "nextChapter": "次章"
         }
+    },
+    "zh": {
+        "langName": "中文",
+        "title": "使用spaCy做进阶自然语言处理",
+        "slogan": "免费在线课程",
+        "description": "spaCy是一个先进的工业级别自然语言处理Python库。在这个免费的交互性在线课程中，你会学习到如何使用spaCy来打造先进的基于规则或是机器学习方法的自然语言处理系统。",
+        "bio": "我是Ines，我是spaCy的核心开发人员之一，也是Explosion的联合创始人。我专注于构建人工智能、机器学习和自然语言处理的先进开发工具。我也非常喜欢开发一些网络应用。",
+        "footerLinks": [
+            {
+                "text": "spaCy网站",
+                "url": "https://spacy.io"
+            },
+            {
+                "text": "源代码",
+                "url": "https://github.com/ines/spacy-course"
+            },
+            {
+                "text": "在Twitter上面关注我",
+                "url": "https://twitter.com/_inesmontani"
+            }
+        ],
+        "socialImage": "social_zh.jpg",
+        "uiText": {
+            "aboutMe": "关于我",
+            "aboutCourse": "关于这门课程",
+            "markAsCompleted": "标为已完成",
+            "removeFromCompleted": "取消已完成",
+            "completed": "已完成",
+            "submit": "提交",
+            "correct": "正确！",
+            "incorrect": "不正确。",
+            "showSolution": "显示答案",
+            "reset": "重置",
+            "runCode": "跑代码",
+            "next": "下一个",
+            "showHints": "来点提示",
+            "hideHints": "隐藏提示",
+            "loading": "读取中...",
+            "connectingFailed": "连接错误。请刷新再试下。",
+            "launchingDocker": "正在启动Docker容器",
+            "reconnectingDocker": "正在重连Docker容器",
+            "prevChapter": "前一章节",
+            "nextChapter": "后一章节"
+        }
     }
 }
