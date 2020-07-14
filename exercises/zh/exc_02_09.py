@@ -9,6 +9,6 @@ doc = nlp("两只老虎跑得快")
 for token in doc:
     print(token.text)
 
-# 获取词符"bananas"的向量
+# 获取词符"老虎"的向量
 laohu_vector = ____.____
 print(laohu_vector)
