@@ -1,9 +1,9 @@
 import json
 import spacy
 
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("fr_core_news_sm")
 
-with open("exercises/en/tweets.json") as f:
+with open("exercises/fr/tweets.json") as f:
     TEXTS = json.loads(f.read())
 
 # Traite les textes et affiche les adjectifs

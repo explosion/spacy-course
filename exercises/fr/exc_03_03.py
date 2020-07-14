@@ -1,6 +1,6 @@
 import spacy
 
-# Charge le modèle en_core_web_sm
+# Charge le modèle fr_core_news_sm
 nlp = ____
 
 # Affiche les noms des composants du pipeline

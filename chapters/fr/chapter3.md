@@ -24,7 +24,7 @@ id: 3
 Que fait spaCy quand tu appelles `nlp` sur une chaine de caractères ?
 
 ```python
-doc = nlp("This is a sentence.")
+doc = nlp("Ceci est une phrase.")
 ```
 
 <choice>
@@ -64,9 +64,9 @@ _appelles_ l'objet `nlp` sur un texte, le modèle est déjà chargé.
 
 <exercise id="3" title="Inspection du pipeline">
 
-Inspectons le pipeline du petit modèle anglais !
+Inspectons le pipeline du petit modèle français !
 
-- Charge le modèle `en_core_web_sm` et crée l'objet `nlp`.
+- Charge le modèle `fr_core_news_sm` et crée l'objet `nlp`.
 - Affiche les noms des composants du pipeline avec `nlp.pipe_names`.
 - Affiche le pipeline complet de tuples `(name, component)` avec `nlp.pipeline`.
 
@@ -162,7 +162,7 @@ d'un document. Peux-tu le compléter ?
 - Ajoute `length_component` au pipeline existant en tant que **premier**
   composant.
 - Essaie le nouveau pipeline en traitant un texte quelconque avec l'objet `nlp`–
-  par exemple "This is a sentence.".
+  par exemple "Ceci est une phrase.".
 
 <codeblock id="03_06">
 
@@ -219,7 +219,7 @@ Pratiquons l'extension d'attributs.
 
 - Utilise `Token.set_extension` pour déclarer `"is_country"` (valeur par défaut
   `False`).
-- Mets-le à jour pour `"Spain"` et affiche-le pour tous les tokens.
+- Mets-le à jour pour `"Suisse"` et affiche-le pour tous les tokens.
 
 <codeblock id="03_09_01">
 
@@ -245,8 +245,8 @@ Par exemple, `doc._.has_color`.
 
 <exercise id="10" title="Configuration d'attributs étendus (2)">
 
-Essayons de définir des attributs plus complexes en utilisant des getters
-(accesseurs) et des extensions de méthodes.
+Essayons de définir des attributs plus complexes en utilisant des getters et
+des extensions de méthodes.
 
 ### Partie 1
 
