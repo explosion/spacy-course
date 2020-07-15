@@ -4,9 +4,9 @@ nlp = French()
 doc = nlp("J'ai un chat")
 
 # Recherche le hash pour le mot "chat"
-chat_hash = nlp.vocab.strings["chat"]
-print(chat_hash)
+cat_hash = nlp.vocab.strings["chat"]
+print(cat_hash)
 
 # Recherche chat_hash pour obtenir la chaine
-chat_string = nlp.vocab.strings[chat_hash]
-print(chat_string)
+cat_string = nlp.vocab.strings[cat_hash]
+print(cat_string)

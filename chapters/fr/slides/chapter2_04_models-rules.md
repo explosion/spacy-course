@@ -60,7 +60,7 @@ from spacy.matcher import Matcher
 matcher = Matcher(nlp.vocab)
 
 # Les motifs sont des listes de dictionnaires décrivant les tokens
-pattern = [{"LEMMA": "aime", "POS": "VERB"}, {"LOWER": "les"}, {"LOWER": "chats"}]
+pattern = [{"LEMMA": "chérir", "POS": "VERB"}, {"LOWER": "les"}, {"LOWER": "chats"}]
 matcher.add("AIME_CHATS", None, pattern)
 
 # Les opérateurs peuvent spécifier combien de fois un token doit être trouvé
@@ -69,7 +69,7 @@ matcher.add("TRES_HEUREUX", None, pattern)
 
 # L'appel du matcher sur le doc retourne une liste de tuples
 # composés avec (match_id, début, fin)
-doc = nlp("J'aime les chats et je suis très très heureux")
+doc = nlp("Je chéris les chats et je suis très très heureux")
 matches = matcher(doc)
 ```
 

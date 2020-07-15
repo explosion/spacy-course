@@ -4,9 +4,9 @@ nlp = French()
 doc = nlp("J'ai un chat")
 
 # Recherche le hash pour le mot "chat"
-chat_hash = ____.____.____[____]
-print(chat_hash)
+cat_hash = ____.____.____[____]
+print(cat_hash)
 
-# Recherche chat_hash pour obtenir la chaine
-chat_string = ____.____.____[____]
-print(chat_string)
+# Recherche cat_hash pour obtenir la chaine
+cat_string = ____.____.____[____]
+print(cat_string)
