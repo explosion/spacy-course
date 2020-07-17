@@ -3,30 +3,50 @@
 # when updating to a new version of spaCy. This especially includes predictions
 # that some examples assume or depend on.
 import spacy
+from spacy.matcher import Matcher
 import pytest
 
 
 @pytest.fixture
 def nlp():
-    return spacy.load("en_core_web_sm")
+    return spacy.load("fr_core_news_sm")
 
 
 def test_01_08_02_predictions(nlp):
-    text = "It’s official: Apple is the first U.S. public company to reach a $1 trillion market value"
+    text = "Apple a été créée en 1976 par Steve Wozniak, Steve Jobs et Ron Wayne."
     doc = nlp(text)
     ents = [(ent.text, ent.label_) for ent in doc.ents]
     assert len(ents) == 4
     assert ents[0] == ("Apple", "ORG")
-    assert ents[1] == ("first", "ORDINAL")
-    assert ents[2] == ("U.S.", "GPE")
-    assert ents[3] == ("$1 trillion", "MONEY")
+    assert ents[1] == ("Steve Wozniak", "PER")
+    assert ents[2] == ("Steve Jobs", "PER")
+    assert ents[3] == ("Ron Wayne", "PER")
 
 
 def test_01_09_predictions(nlp):
-    text = "Upcoming iPhone X release date leaked as Apple reveals pre-orders"
+    text = "Le constructeur Citröen présente la e-Méhari Courrèges au public."
     doc = nlp(text)
     ents = [(ent.text, ent.label_) for ent in doc.ents]
     assert len(ents) == 1
-    assert ents[0] == ("Apple", "ORG")
-    assert doc[1].ent_type == 0
-    assert doc[2].ent_type == 0
+    assert ents[0] == ("Citröen", "MISC")
+    assert doc[5].ent_type == 0
+    assert doc[6].ent_type == 0
+
+
+def test_slides_01_03(nlp):
+    doc = nlp("Avant elle mangeait des pâtes. Désormais elle mange des légumes.")
+    pattern = [{"LEMMA": "manger", "POS": "VERB"}, {"POS": "DET"}, {"POS": "NOUN"}]
+    matcher = Matcher(nlp.vocab)
+    matcher.add("TEST", None, pattern)
+    matches = [doc[start:end].text for _, start, end in matcher(doc)]
+    assert matches == ["mangeait des pâtes", "mange des légumes"]
+
+
+def test_03_16_02_predictions(nlp):
+    text = (
+        "Le groupe aéronautique Airbus construit des avions et des "
+        "hélicoptères vendus dans le monde entier. Le siège opérationnel du "
+        "groupe est situé en France à Toulouse dans la région Occitanie."
+    )
+    doc = nlp(text)
+    assert [ent.text for ent in doc.ents] == ["Airbus", "France", "Toulouse", "Occitanie"]
