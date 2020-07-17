@@ -11,7 +11,7 @@ def test():
         e == (0, 9, "PERSON") for e in ents[1]
     ), "As-tu utilisé le label pour PERSON correctement ?"
     assert any(
-        e == (23, 37 "PERSON") for e in ents[2]
+        e == (23, 37, "PERSON") for e in ents[2]
     ), "As-tu utilisé le label pour PERSON correctement "
 
     __msg__.good(
