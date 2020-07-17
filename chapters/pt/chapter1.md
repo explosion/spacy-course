@@ -173,7 +173,7 @@ por isso verifique se você está usando o nome correto do modelo.
 Agora vamos experimentar um dos modelos pré-treinados do spaCy e
 ver o resultado de sua predição. Fique à vontade e experimente com seu 
 próprio texto! Use `spacy.explain` para saber o significado de uma determinada 
-tag ou etiqueta. Por exemplo: `spacy.explain("PROPN")` ou `spacy.explain("GPE")`.
+tag ou marcador. Por exemplo: `spacy.explain("PROPN")` ou `spacy.explain("GPE")`.
 
 
 ### Part 1
@@ -192,8 +192,8 @@ Observe que os atributos do token possuem o caractere "sublinhado" no final.
 ### Part 2
 
 - Processe o texto utilizando o objeto `nlp` e crie um `doc`.
-- Construa uma iteração em `doc.ents` e imprima os atributos texto e a
-etiqueta `label_`.
+- Construa uma iteração em `doc.ents` e imprima os atributos texto e o
+marcador `label_`.
 
 <codeblock id="01_08_02">
 
@@ -211,7 +211,7 @@ do modelo depende dos dados nos quais o modelo foi treinado e também dos
 dados que você está processando. Vamos ver um exemplo:
 
  - Processe o texto utilizando o objeto `nlp`.
- - Construa uma iteração nas entidades e imprima o texto e a etiqueta da entidade.
+ - Construa uma iteração nas entidades e imprima o texto e o marcador (label) da entidade.
  - Note que o modelo não previu "iPhone X". Crie manualmente uma partição
  para esses tokens.
 
