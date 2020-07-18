@@ -69,7 +69,7 @@ notre modèle à les reconnaitre en tant que `"GADGET"`.
 - Écris un motif pour deux tokens dont la forme en minuscules correspond à
   `"iphone"` et `"x"`.
 - Écris un motif pour deux tokens : un token dont la forme en minuscules
-  correspond à `"iphone"` et un chiffre en utilisant l'opérateur `"?"`.
+  correspond à `"iphone"` et un chiffre.
 
 <codeblock id="04_03">
 
