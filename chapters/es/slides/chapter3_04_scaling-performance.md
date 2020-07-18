@@ -80,7 +80,7 @@ data = [
 
 for doc, context in nlp.pipe(data, as_tuples=True):
     doc._.id = context["id"]
-    doc._.numero_pagina = context["numero_pagina]
+    doc._.numero_pagina = context["numero_pagina"]
 ```
 
 Notes: Inclusive puedes pasarle metadatos a los atributos personalizados.

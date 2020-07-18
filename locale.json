@@ -98,9 +98,10 @@
     "es": {
         "langName": "Español",
         "title": "NLP avanzado con spaCy",
-        "slogan": " Un curso en línea gratis",
+        "slogan": "Un curso en línea gratis",
         "description": "spaCy es un paquete moderno de Python para hacer Procesamiento de Lenguaje Natural de potencia industrial. En este curso en línea, interactivo y gratuito, aprenderás a usar spaCy para construir sistemas avanzados de comprensión de lenguaje natural usando enfoques basados en reglas y en machine learning.",
         "bio": "Soy Ines, una de las programadoras principales de spaCy y cofundadora de Explosion. Me especializo en herramientas modernas de desarrollo para AI, Machine Learning y NLP. También amo construir cosas para la web.",
+        "video": "RNiLVCE5d4k",
         "footerLinks": [
             { "text": "Website de spaCy", "url": "https://spacy.io" },
             { "text": "Código fuente", "url": "https://github.com/ines/spacy-course" },
@@ -127,7 +128,57 @@
             "launchingDocker": "Launching Docker container en",
             "reconnectingDocker": "Reconectando con el Docker container en",
             "prevChapter": " Capítulo anterior",
-            "nextChapter": "Siguiente capítulo"
+            "nextChapter": "Siguiente capítulo",
+            "start": "Inicio",
+            "video": "Vídeo",
+            "slides": "Diapositivas"
+        }
+    },
+    "fr": {
+        "langName": "Français",
+        "title": "NLP avancé avec spaCy",
+        "slogan": "Un cours en ligne gratuit",
+        "description": "spaCy est une bibliothèque Python moderne pour le Traitement Automatique du Langage Naturel de qualité industrielle. Dans ce cours en ligne gratuit et interactif, tu vas apprendre comment utiliser spaCy pour construire des systèmes avancés de compréhension du langage naturel, utilisant à la fois des approches à base de règles et d'apprentissage automatique.",
+        "bio": "Je m'appelle Inès, je suis l'un des principaux développeurs de spaCy et la co-fondatrice d'Explosion. Je suis spécialisée dans les outils de développement modernes pour l'IA, l'apprentissage automatique et le NLP. J'adore aussi construire des trucs pour le web.",
+        "footerLinks": [
+            {
+                "text": "Site web de spaCy",
+                "url": "https://spacy.io"
+            },
+            {
+                "text": "Source",
+                "url": "https://github.com/ines/spacy-course"
+            },
+            {
+                "text": "Suis-moi sur Twitter",
+                "url": "https://twitter.com/_inesmontani"
+            }
+        ],
+        "socialImage": "social_fr.jpg",
+        "uiText": {
+            "aboutMe": "À propos de moi",
+            "aboutCourse": "À propos de ce cours",
+            "markAsCompleted": "Marquer comme terminé",
+            "removeFromCompleted": "Marquer comme non terminé",
+            "completed": "Terminé",
+            "submit": "Soumettre",
+            "correct": "C'est correct !",
+            "incorrect": "Incorrect.",
+            "showSolution": "Montrer la solution",
+            "reset": "Réinitialiser",
+            "runCode": "Lancer le code",
+            "next": "Suivant",
+            "showHints": "Montrer des indices",
+            "hideHints": "Cacher les indices",
+            "loading": "Chargement...",
+            "connectingFailed": "Échec de la connexion. Merci de recharger et de réessayer.",
+            "launchingDocker": "Lancement du conteneur Docker sur",
+            "reconnectingDocker": "Reconnexion au conteneur Docker sur",
+            "prevChapter": "Chapitre précédent",
+            "nextChapter": "Chapitre suivant",
+            "start": "Début",
+            "video": "Vidéo",
+            "slides": "Diapositives"
         }
     },
     "ja": {
@@ -172,6 +223,50 @@
             "reconnectingDocker": "Dockerコンテナに再接続する",
             "prevChapter": "前章",
             "nextChapter": "次章"
+        }
+    },
+    "zh": {
+        "langName": "中文",
+        "title": "使用spaCy做进阶自然语言处理",
+        "slogan": "免费在线课程",
+        "description": "spaCy是一个先进的工业级别自然语言处理Python库。在这个免费的交互性在线课程中，你会学习到如何使用spaCy来打造先进的基于规则或是机器学习方法的自然语言处理系统。",
+        "bio": "我是Ines，我是spaCy的核心开发人员之一，也是Explosion的联合创始人。我专注于构建人工智能、机器学习和自然语言处理的先进开发工具。我也非常喜欢开发一些网络应用。",
+        "footerLinks": [
+            {
+                "text": "spaCy网站",
+                "url": "https://spacy.io"
+            },
+            {
+                "text": "源代码",
+                "url": "https://github.com/ines/spacy-course"
+            },
+            {
+                "text": "在Twitter上面关注我",
+                "url": "https://twitter.com/_inesmontani"
+            }
+        ],
+        "socialImage": "social_zh.jpg",
+        "uiText": {
+            "aboutMe": "关于我",
+            "aboutCourse": "关于这门课程",
+            "markAsCompleted": "标为已完成",
+            "removeFromCompleted": "取消已完成",
+            "completed": "已完成",
+            "submit": "提交",
+            "correct": "正确！",
+            "incorrect": "不正确。",
+            "showSolution": "显示答案",
+            "reset": "重置",
+            "runCode": "跑代码",
+            "next": "下一个",
+            "showHints": "来点提示",
+            "hideHints": "隐藏提示",
+            "loading": "读取中...",
+            "connectingFailed": "连接错误。请刷新再试下。",
+            "launchingDocker": "正在启动Docker容器",
+            "reconnectingDocker": "正在重连Docker容器",
+            "prevChapter": "前一章节",
+            "nextChapter": "后一章节"
         }
     }
 }
