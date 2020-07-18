@@ -10,7 +10,7 @@ def test():
     ), "你有打印正确的属性吗？"
     assert len(doc.ents) == 2, "貌似这些实体并不正确？"
     assert (
-        doc.ents[0]._.capital == "Prague" and doc.ents[1]._.capital == "Bratislava"
+        doc.ents[0]._.capital == "新加坡" and doc.ents[1]._.capital == "吉隆坡"
     ), "貌似首都这个属性并不工作正常？"
 
     __msg__.good(

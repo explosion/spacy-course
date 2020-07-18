@@ -1,7 +1,7 @@
-from spacy.lang.en import English
+from spacy.lang.zh import Chinese
 from spacy.tokens import Doc
 
-nlp = English()
+nlp = Chinese()
 
 # 定义取值器函数
 def get_has_number(doc):
@@ -13,5 +13,5 @@ def get_has_number(doc):
 Doc.set_extension("has_number", getter=get_has_number)
 
 # 处理文本，检查定制化的has_number属性
-doc = nlp("The museum closed for five years in 2012.")
+doc = nlp("这家博物馆在2012年关了五个月。")
 print("has_number:", doc._.has_number)

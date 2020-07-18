@@ -85,13 +85,13 @@ Notes: 我们可以用下面这些关键字参数来指定在流程的 _什么�
 
 ```python
 # 创建nlp实例
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("zh_core_web_sm")
 
 # 定义一个定制化组件
 def custom_component(doc):
-    # Print the doc's length
+    # 打印doc的长度
     print("Doc length:", len(doc))
-    # Return the doc object
+    # 返回doc
     return doc
 
 # 把组件添加到流程的最前面
@@ -127,26 +127,26 @@ Notes: 我们来看看一个简单的流程组件的例子。
 
 ```python
 # 创建nlp实例
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("zh_core_web_sm")
 
 # 定义一个定制化组件
 def custom_component(doc):
 
-    # Print the doc's length
+    # 打印doc的长度
     print("Doc length:", len(doc))
 
-    # Return the doc object
+    # 返回doc
     return doc
 
 # 把组件添加到流程的最前面
 nlp.add_pipe(custom_component, first=True)
 
 # 处理一段文本
-doc = nlp("Hello world!")
+doc = nlp("这是一个句子。")
 ```
 
 ```out
-Doc length: 3
+Doc length: 4
 ```
 
 Notes: 当我们用`nlp`实例处理一段文本的时候，自定义组件会被应用到doc上，打印出

@@ -1,9 +1,9 @@
 import json
 import spacy
 
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("zh_core_web_sm")
 
-with open("exercises/en/tweets.json") as f:
+with open("exercises/zh/weibo.json") as f:
     TEXTS = json.loads(f.read())
 
 # 处理文本，打印实体

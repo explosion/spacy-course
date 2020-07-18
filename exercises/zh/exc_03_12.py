@@ -1,15 +1,15 @@
 import json
-from spacy.lang.en import English
+from spacy.lang.zh import Chinese
 from spacy.tokens import Span
 from spacy.matcher import PhraseMatcher
 
-with open("exercises/en/countries.json") as f:
+with open("exercises/zh/countries.json") as f:
     COUNTRIES = json.loads(f.read())
 
-with open("exercises/en/capitals.json") as f:
+with open("exercises/zh/capitals.json") as f:
     CAPITALS = json.loads(f.read())
 
-nlp = English()
+nlp = Chinese()
 matcher = PhraseMatcher(nlp.vocab)
 matcher.add("COUNTRY", None, *list(nlp.pipe(COUNTRIES)))
 
@@ -32,5 +32,5 @@ get_capital = lambda span: CAPITALS.get(span.text)
 ____.____(____, ____)
 
 # 处理文本，打印实体文本、标签和首都属性
-doc = nlp("Czech Republic may help Slovakia protect its airspace")
+doc = nlp("新加坡可能会和马来西亚一起建造高铁。")
 print([(____, ____, ____) for ent in doc.ents])
