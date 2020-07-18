@@ -65,7 +65,7 @@ models, so we can create training data to teach a model to recognize them as
 - Write a pattern for two tokens whose lowercase forms match `"iphone"` and
   `"x"`.
 - Write a pattern for two tokens: one token whose lowercase form matches
-  `"iphone"` and a digit using the `"?"` operator.
+  `"iphone"` and a digit using the `"IS_DIGIT"` token attribute.
 
 <codeblock id="04_03">
 
