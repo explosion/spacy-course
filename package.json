@@ -16,6 +16,7 @@
         "gatsby-image": "^2.0.29",
         "gatsby-plugin-manifest": "^2.2.0",
         "gatsby-plugin-offline": "^2.0.23",
+        "gatsby-plugin-plausible": "0.0.6",
         "gatsby-plugin-react-helmet": "^3.0.6",
         "gatsby-plugin-react-svg": "^2.1.1",
         "gatsby-plugin-sass": "^2.0.10",
