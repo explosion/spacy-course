@@ -146,13 +146,13 @@ spaCy的基于规则的`Matcher`可以很好地被用来快速创建一些命名
 
 | 文本                                                                                                              | 实体              |
 | ----------------------------------------------------------------------------------------------------------------- | ---------------------- |
-| Apple is slowing down the iPhone 8 and iPhone X - how to stop it                                                  | `(iPhone 8, iPhone X)` |
-| I finally understand what the iPhone X 'notch' is for                                                             | `(iPhone X,)`          |
-| Everything you need to know about the Samsung Galaxy S9                                                           | `(Samsung Galaxy,)`    |
-| Looking to compare iPad models? Here’s how the 2018 lineup stacks up                                              | `(iPad,)`              |
-| The iPhone 8 and iPhone 8 Plus are smartphones designed, developed, and marketed by Apple                         | `(iPhone 8, iPhone 8)` |
-| what is the cheapest ipad, especially ipad pro???                                                                 | `(ipad, ipad)`         |
-| Samsung Galaxy is a series of mobile computing devices designed, manufactured and marketed by Samsung Electronics | `(Samsung Galaxy,)`    |
+| 苹果已经开始让iPhone 8和iPhone X变得越来越慢了，怎么办                                                              | `(iPhone 8, iPhone X)` |
+| 我终于明白iPhone X的“刘海”是干嘛的了                                                                               | `(iPhone X,)`          |
+| 关于Samsung Galaxy S9你需要了解的一切                                                                              | `(Samsung Galaxy,)`    |
+| 想要比较不同的iPad型号？这里是2020年所有的产品线对比。                                                              | `(iPad,)`              |
+| iPhone 8和iPhone 8 Plus是苹果公司设计、研发和销售的智能手机                                                         | `(iPhone 8, iPhone 8)` |
+| 那个型号ipad是最便宜的，尤其是ipad pro里面的？？                                                                    | `(ipad, ipad)`         |
+| Samsung Galaxy是三星电子公司设计、生产并退出市场的一系列移动计算设备                                                 | `(Samsung Galaxy,)`    |
 
 在模型从文本中抽取的所有实体中，**有多少实体模型的判断是正确的**？
 注意如果实体的跨度span不完整的话也被认为是一个错误！
@@ -203,17 +203,20 @@ spaCy的基于规则的`Matcher`可以很好地被用来快速创建一些命名
 ```python
 TRAINING_DATA = [
     (
-        "i went to amsterdem last year and the canals were beautiful",
-        {"entities": [(10, 19, "TOURIST_DESTINATION")]},
+        "我去年去了西安，那里的城墙很壮观！",
+        {"entities": [(4, 5, "TOURIST_DESTINATION")]},
     ),
     (
-        "You should visit Paris once in your life, but the Eiffel Tower is kinda boring",
-        {"entities": [(17, 22, "TOURIST_DESTINATION")]},
+        "人一辈子一定要去一趟爸黎，但那里的埃菲尔铁塔有点无趣。",
+        {"entities": [(5, 6, "TOURIST_DESTINATION")]},
     ),
-    ("There's also a Paris in Arkansas, lol", {"entities": []}),
     (
-        "Berlin is perfect for summer holiday: lots of parks, great nightlife, cheap beer!",
-        {"entities": [(0, 6, "TOURIST_DESTINATION")]},
+        "深圳也有个巴黎的埃菲尔铁塔，哈哈哈",
+        {"entities": []}
+    ),
+    (
+        "北京很适合暑假去：长城、故宫，还有各种好吃的小吃！",
+        {"entities": [(0, 1, "TOURIST_DESTINATION")]},
     ),
 ]
 ```
@@ -232,14 +235,14 @@ TRAINING_DATA = [
 
 </opt>
 
-<opt text="Paris（巴黎）为了保持一致也应该被标注为游客目的地，不然扰乱模型的判断。">
+<opt text="埃菲尔铁塔为了保持一致也应该被标注为游客目的地，不然扰乱模型的判断。">
 
-虽然Paris, AK确实有可能是一个游客目的地，但这恰恰表明了这种标注的方法有多么主观，
+虽然Paris确实有可能是一个游客目的地，但这恰恰表明了这种标注的方法有多么主观，
 以及决定标签是否符合这个实体有多么困难。结果就是我们的实体识别器也很难学习到这种区别。
 
 </opt>
 
-<opt text="像拼写错误的'amsterdem'这种非常罕见的词库以外的词就不应该被标注为实体。">
+<opt text="像拼写错误的'爸黎'这种非常罕见的词库以外的词就不应该被标注为实体。">
 
 就算是不常见的或者拼写错误的词也是可以被标注为实体的。实际上基于语境来判断拼写错误的文本
 的类别恰恰是统计实体识别模型的一大优势。
@@ -315,7 +318,7 @@ TRAINING_DATA = [
 
 ### 第三部分
 
-- 更新训练数据，加入对`"PERSON"`实体"PewDiePie"和"Alexis Ohanian"的标注。
+- 更新训练数据，加入对`"PERSON"`实体"李子柒"和"马云"的标注。
 
 <codeblock id="04_11_02">
 

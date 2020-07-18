@@ -62,7 +62,7 @@ Notes: 回顾一下：
 
 ```python
 TRAINING_DATA = [
-    ("How to preorder the iPhone X", {"entities": [(20, 28, "GADGET")]})
+    ("如何预定iPhone X", {"entities": [(4, 10, "GADGET")]})
     # 还有很多很多类似的数据...
 ]
 ```
@@ -123,8 +123,8 @@ Notes: spaCy允许我们用更多的数据来更新一个现有的预训练模�
 # 从头设置一个新的流程
 
 ```python
-# 从空的英语模型开始
-nlp = spacy.blank("en")
+# 从空的中文模型开始
+nlp = spacy.blank("zh")
 # 创建一个空的实体识别器加入到流程中
 ner = nlp.create_pipe("ner")
 nlp.add_pipe(ner)
@@ -144,7 +144,7 @@ for itn in range(10):
         nlp.update(texts, annotations)
 ```
 
-Notes: 在这个例子中，我们先用`spacy.blank`方法创建一个空的英文模型。这个空模型
+Notes: 在这个例子中，我们先用`spacy.blank`方法创建一个空的中文模型。这个空模型
 没有任何的模型组件，只有语种信息和分词规则。
 
 我们然后创建一个新的实体识别器加入流程中。

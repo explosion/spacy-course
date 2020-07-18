@@ -16,16 +16,16 @@ def test():
             and "entities" in entry[1]
         ), "貌似例子的格式不对。应该是一个元组，元组里是一段本文和键值是'entities'的字典。"
     assert TRAINING_DATA[0][1]["entities"] == [
-        (20, 28, "GADGET")
+        (4, 12, "GADGET")
     ], "再检查下第一个例子中的实体。"
     assert TRAINING_DATA[1][1]["entities"] == [
         (0, 8, "GADGET")
     ], "再检查下第二个例子中的实体。"
     assert TRAINING_DATA[2][1]["entities"] == [
-        (28, 36, "GADGET")
+        (4, 12, "GADGET")
     ], "再检查下第三个例子中的实体。"
     assert TRAINING_DATA[3][1]["entities"] == [
-        (4, 12, "GADGET")
+        (0, 8, "GADGET")
     ], "再检查下第四个例子中的实体。"
     assert TRAINING_DATA[4][1]["entities"] == [
         (0, 9, "GADGET"),

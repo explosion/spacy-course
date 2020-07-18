@@ -8,10 +8,10 @@ def test():
     ents = [entry[1].get("entities", []) for entry in TRAINING_DATA]
     assert all(len(e) == 2 for e in ents), "所有的例子应该都有两个实体。"
     assert any(
-        e == (0, 9, "PERSON") for e in ents[1]
+        e == (0, 2, "PERSON") for e in ents[1]
     ), "你有把PERSON标注正确吗？"
     assert any(
-        e == (15, 29, "PERSON") for e in ents[2]
+        e == (3, 4, "PERSON") for e in ents[2]
     ), "你有把PERSON标注正确吗？"
 
     __msg__.good(
