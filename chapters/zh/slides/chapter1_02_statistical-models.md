@@ -124,7 +124,7 @@ Notes: 除了词性分析以外，我们还可以预测词与词之间的关系�
 
 # 依存关系的定义
 
-<img src="/dep_example.png" alt="'She ate the pizza'的依存关系可视化" />
+<img src="/dep_example_zh.png" alt="'She ate the pizza'的依存关系可视化" />
 
 | Label     | Description          | Example |
 | --------- | -------------------- | ------- |
@@ -141,7 +141,7 @@ Notes: spaCy使用了一系列标准化的标注方法来描述依存关系：
 
 # 命名实体识别
 
-<img src="/ner_example.png" alt="'Apple is looking at buying U.K. startup for $1 billion'中命名实体的可视化" width="80%" />
+<img src="/ner_example_zh.png" alt="'Apple is looking at buying U.K. startup for $1 billion'中命名实体的可视化" width="80%" />
 
 ```python
 # 处理文本
