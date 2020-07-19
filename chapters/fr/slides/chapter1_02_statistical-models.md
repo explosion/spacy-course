@@ -154,8 +154,8 @@ labellisation standardisé. Voici un exemple avec quelques labels courants :
 
 Le pronom "Elle" est le sujet rattaché au verbe – ici, "mangea".
 
-Le nom "pizza" est un complément d'objet direct rattaché au verbe "mangea".
-Elle est mangée par le sujet, "Elle".
+Le nom "pizza" est un complément d'objet direct rattaché au verbe "mangea". Elle
+est mangée par le sujet, "Elle".
 
 Le déterminant "la", également appelé article, est rattaché au nom "pizza".
 
