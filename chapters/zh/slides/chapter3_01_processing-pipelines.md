@@ -60,7 +60,7 @@ Notes: spaCy原生提供了下面的流程组件：
 
 # 解构后台
 
-<img src="/package_meta.png" alt="标注为en_core_web_sm的包、文件夹、文件及meta.json的图示" />
+<img src="/package_meta_zh.png" alt="标注为zh_core_web_sm的包、文件夹、文件及meta.json的图示" />
 
 - 流程是依次定义在模型的`meta.json`文件里。
 - 原生组件需要二进制数据来做预测。

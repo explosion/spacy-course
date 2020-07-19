@@ -32,7 +32,7 @@ Notes: 很多非常有趣的分析是基于语境的：
 
 # 模型包
 
-<img src="/package.png" alt="名字为en_core_web_sm的模型包" width="30%" align="right" />
+<img src="/package_zh.png" alt="名字为zh_core_web_sm的模型包" width="30%" align="right" />
 
 ```bash
 $ python -m spacy download zh_core_web_sm
