@@ -37,7 +37,7 @@ données.
 
 # Paquets de modèles
 
-<img src="/package.png" alt="Un paquet de modèles avec le label fr_core_news_sm" width="30%" align="right" />
+<img src="/package_fr.png" alt="Un paquet de modèles avec le label fr_core_news_sm" width="30%" align="right" />
 
 ```bash
 $ python -m spacy download fr_core_news_sm
@@ -141,7 +141,7 @@ voir comme le token parent auquel le mot considéré se rattache.
 
 # Schéma de relations de dépendances
 
-<img src="/dep_example.png" alt="Visualisation du graphe de dépendances pour 'Elle mangea la pizza'" />
+<img src="/dep_example_fr.png" alt="Visualisation du graphe de dépendances pour 'Elle mangea la pizza'" />
 
 | Label     | Description               | Exemple |
 | --------- | ------------------------- | ------- |
@@ -163,7 +163,7 @@ Le déterminant "la", également appelé article, est rattaché au nom "pizza".
 
 # Prédiction d'Entités Nommées
 
-<img src="/ner_example.png" alt="Visualisation des entités nommées dans 'Apple conçoit le nouvel iPhone à Cupertino'" width="80%" />
+<img src="/ner_example_fr.png" alt="Visualisation des entités nommées dans 'Apple conçoit le nouvel iPhone à Cupertino'" width="80%" />
 
 ```python
 # Traite le texte
