@@ -27,7 +27,6 @@ for match_id, start, end in matcher(doc):
 
     # 获取这个span的根头词符
     span_root_head = span.root.head
-
     # 打印这个span的根头词符的文本及span的文本
     print(span_root_head.text, "-->", span.text)
 
