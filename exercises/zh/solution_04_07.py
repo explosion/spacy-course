@@ -2,7 +2,7 @@ import spacy
 import random
 import json
 
-with open("exercises/zh/gadgets.json") as f:
+with open("exercises/zh/gadgets.json", encoding="utf8") as f:
     TRAINING_DATA = json.loads(f.read())
 
 nlp = spacy.blank("zh")

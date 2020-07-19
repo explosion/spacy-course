@@ -1,7 +1,7 @@
 import json
 from spacy.lang.zh import Chinese
 
-with open("exercises/zh/countries.json") as f:
+with open("exercises/zh/countries.json", encoding="utf8") as f:
     COUNTRIES = json.loads(f.read())
 
 nlp = Chinese()

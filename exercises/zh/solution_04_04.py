@@ -2,7 +2,7 @@ import json
 from spacy.matcher import Matcher
 from spacy.lang.zh import Chinese
 
-with open("exercises/zh/iphone.json") as f:
+with open("exercises/zh/iphone.json", encoding="utf8") as f:
     TEXTS = json.loads(f.read())
 
 nlp = Chinese()

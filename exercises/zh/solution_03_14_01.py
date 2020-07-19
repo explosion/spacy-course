@@ -3,7 +3,7 @@ import spacy
 
 nlp = spacy.load("zh_core_web_sm")
 
-with open("exercises/zh/weibo.json") as f:
+with open("exercises/zh/weibo.json", encoding="utf8") as f:
     TEXTS = json.loads(f.read())
 
 # 处理文本，打印形容词

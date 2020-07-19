@@ -3,10 +3,10 @@ from spacy.lang.zh import Chinese
 from spacy.tokens import Span
 from spacy.matcher import PhraseMatcher
 
-with open("exercises/zh/countries.json") as f:
+with open("exercises/zh/countries.json", encoding="utf8") as f:
     COUNTRIES = json.loads(f.read())
 
-with open("exercises/zh/capitals.json") as f:
+with open("exercises/zh/capitals.json", encoding="utf8") as f:
     CAPITALS = json.loads(f.read())
 
 nlp = Chinese()
