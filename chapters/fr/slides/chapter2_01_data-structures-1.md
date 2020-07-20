@@ -23,8 +23,8 @@ comment spaCy gère les chaines de caractères.
 - String store : **table de consultation** dans les deux sens
 
 ```python
-coffee_hash = nlp.vocab.strings["café"]
-coffee_string = nlp.vocab.strings[coffee_hash]
+swim_hash = nlp.vocab.strings["nager"]
+swim_string = nlp.vocab.strings[swim_hash]
 ```
 
 - Les hashs ne peuvent pas être inversés – c'est pourquoi nous avons besoin de
@@ -32,7 +32,7 @@ coffee_string = nlp.vocab.strings[coffee_hash]
 
 ```python
 # Génère une erreur si nous n'avons pas déjà vu la chaine avant
-string = nlp.vocab.strings[32833993555699147]
+string = nlp.vocab.strings[4680420005633728953]
 ```
 
 Notes: spaCy stocke toutes les données partagées dans un vocabulaire, le Vocab.
@@ -64,25 +64,25 @@ devons toujours fournir le vocabulaire partagé.
 - Recherche de la chaine et du hash dans `nlp.vocab.strings`
 
 ```python
-doc = nlp("J'adore le café")
-print("hash value:", nlp.vocab.strings["café"])
-print("string value:", nlp.vocab.strings[32833993555699147])
+doc = nlp("Inès aime nager")
+print("hash value :", nlp.vocab.strings["nager"])
+print("string value :", nlp.vocab.strings[4680420005633728953])
 ```
 
 ```out
-hash value: 32833993555699147
-string value: café
+hash value: 4680420005633728953
+string value: nager
 ```
 
 - Le `doc` expose aussi le vocabulaire et les chaines
 
 ```python
-doc = nlp("J'adore le café")
-print("valeur de hash :", doc.vocab.strings["café"])
+doc = nlp("Inès aime nager")
+print("hash value :", doc.vocab.strings["nager"])
 ```
 
 ```out
-hash value: 32833993555699147
+hash value : 4680420005633728953
 ```
 
 Notes: Pour obtenir le hash d'une chaine, nous pouvons le rechercher dans
@@ -100,15 +100,15 @@ Un objet `Doc` expose aussi son vocabulaire et les chaines.
 - Un objet `Lexeme` est un élément du vocabulaire
 
 ```python
-doc = nlp("J'adore le café")
-lexeme = nlp.vocab["café"]
+doc = nlp("Inès aime nager")
+lexeme = nlp.vocab["nager"]
 
 # Affiche les attributs lexicaux
 print(lexeme.text, lexeme.orth, lexeme.is_alpha)
 ```
 
 ```out
-café 32833993555699147 True
+nager 4680420005633728953 True
 ```
 
 - Contient les informations **indépendantes du contexte** à propos d'un mot
@@ -134,12 +134,12 @@ de dépendances. Ceux-ci dépendent du contexte.
 
 # Vocabulaire, hashs et lexèmes
 
-<img src="/vocab_stringstore.png" width="70%" alt="Illustration des mots 'J', 'adore', 'le' et 'café' dans le Doc, Vocab et StringStore" />
+<img src="/vocab_stringstore.png" width="70%" alt="Illustration des mots 'Inès', 'aime' et 'nager' dans le Doc, Vocab et StringStore" />
 
 Notes: Voici un exemple.
 
 Le `Doc` contient les mots dans leur contexte – dans le cas présent, les tokens
-"J", "adore" "le" et "café" avec leurs étiquettes de partie de discours et leurs
+"Inès", "aime" et "nager" avec leurs étiquettes de partie de discours et leurs
 dépendances.
 
 Chaque token fait référence à un lexème, qui connait l'ID de hash du mot. Pour

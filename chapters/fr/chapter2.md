@@ -23,7 +23,7 @@ id: 2
 
 ### Partie 1
 
-- Recherche la chaine de caractères "cat" dans `nlp.vocab.strings` pour obtenir
+- Recherche la chaine de caractères "chat" dans `nlp.vocab.strings` pour obtenir
   le hash.
 - Recherche le hash pour revenir à la chaine de caractères.
 
