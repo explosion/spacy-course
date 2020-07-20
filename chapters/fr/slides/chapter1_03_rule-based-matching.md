@@ -16,7 +16,7 @@ dans un texte.
   chaines de caractères
 - Recherche de correspondances sur les tokens et les attributs des tokens
 - Utilisation des prédictions du modèle
-- Exemple: "capture" (verbe) vs. "capture" (nom)
+- Exemple : "capture" (verbe) vs. "capture" (nom)
 
 Notes: par rapport aux expressions régulières, le matcher fonctionne avec des
 objets `Doc` et `Token` et pas simplement avec des chaines de caractères.
@@ -52,7 +52,7 @@ Par exemple, trouve le mot "capture" seulement si c'est un verbe, pas un nom.
 [{"LEMMA": "acheter"}, {"POS": "NOUN"}]
 ```
 
-Notes: les motifs de correspondance sont des listes de dictionnaires. Chaque
+Notes: Les motifs de correspondance sont des listes de dictionnaires. Chaque
 dictionnaire décrit un token. Les clés sont les noms des attributs des tokens,
 auxquelles sont associées les valeurs recherchées.
 

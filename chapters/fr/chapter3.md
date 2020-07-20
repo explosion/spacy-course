@@ -19,7 +19,7 @@ id: 3
 
 </exercise>
 
-<exercise id="2" title="Que se passe-t-il quand tu appelles nlp?">
+<exercise id="2" title="Que se passe-t-il quand tu appelles nlp ?">
 
 Que fait spaCy quand tu appelles `nlp` sur une chaine de caractères ?
 
@@ -324,7 +324,7 @@ la variable `CAPITALS`.
 
 <codeblock id="03_12">
 
-- La classe `Span` requiert quatre arguments: le `doc`, les indices de token
+- La classe `Span` requiert quatre arguments : le `doc`, les indices de token
   `start` et `end` du span et le `label`.
 - L'appel du `PhraseMatcher` sur un `doc` retourne une liste de tuples
   `(match_id, start, end)`.

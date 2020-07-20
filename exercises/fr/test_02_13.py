@@ -34,7 +34,7 @@ def test():
     __msg__.good(
         "Bien joué ! Comme tu peux le voir, il est très important de faire "
         "bien attention à la tokenisation quand tu utilises le 'Matcher' basé "
-        "sur les tokens."
+        "sur les tokens. "
         "Parfois il est bien plus facile de rechercher simplement des chaines "
         "exactes et d'utiliser le 'PhraseMatcher', comme nous allons le faire "
         "dans le prochain exercice."
