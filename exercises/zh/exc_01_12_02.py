@@ -10,8 +10,8 @@ doc = nlp(
     "解压...我是不是还需要去下载Winzip？"
 )
 
-# 写一个模板来匹配"download"的一种形式加一个代词
-pattern = [{"LEMMA": ____}, {"POS": ____}]
+# 写一个模板来匹配"下载"加一个代词
+pattern = [{"TEXT": ____}, {"POS": ____}]
 
 # 把模板加入到matcher中，然后把matcher应用到doc上面
 matcher.add("DOWNLOAD_THINGS_PATTERN", None, pattern)

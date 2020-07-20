@@ -1,6 +1,6 @@
-from spacy.lang.zh import Chinese
+import spacy
 
-nlp = Chinese()
+nlp = spacy.load("zh_core_web_sm")
 doc = nlp("我养了一只猫。")
 
 # 查找词汇"猫"的哈希值

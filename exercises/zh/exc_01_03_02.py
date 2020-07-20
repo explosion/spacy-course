@@ -7,8 +7,8 @@ nlp = ____
 doc = ____("我喜欢老虎和狮子。")
 
 # 遍历打印doc中的内容
-for i in doc:
-    print(i.text)
+for i, token in enumerate(doc):
+    print(i, token.text)
 
 # 截取Doc中"老虎"的部分
 laohu = ____

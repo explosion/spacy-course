@@ -20,33 +20,26 @@ id: 1
 
 让我们来一起开始使用spaCy吧！这个例子中我们会尝试用到55+个[spaCy支持的语言](https://spacy.io/usage/models#languages)中的一些。
 
-### 第一部分: 英语
+### 第一部分: 中文
+
+- 从`spacy.lang.zh`中导入`Chinese`类然后创建`nlp`对象。
+- 创建`doc`并打印其中的文本。
+
+<codeblock id="01_02_04"></codeblock>
+
+### 第二部分: 英语
 
 - 从`spacy.lang.en`中导入`English`类然后创建`nlp`对象。
 - 创建`doc`并打印其中的文本。
 
 <codeblock id="01_02_01"></codeblock>
 
-### 第二部分: 德语
+### 第三部分: 德语
 
 - 从`spacy.lang.de`中导入`German`类然后创建`nlp`对象。
 - 创建`doc`并打印其中的文本。
 
 <codeblock id="01_02_02"></codeblock>
-
-### 第三部分: 西班牙语
-
-- 从`spacy.lang.es`中导入`Spanish`类然后创建`nlp`对象。
-- 创建`doc`并打印其中的文本。
-
-<codeblock id="01_02_03"></codeblock>
-
-### 第四部分: 中文
-
-- 从`spacy.lang.zh`中导入`Chinese`类然后创建`nlp`对象。
-- 创建`doc`并打印其中的文本。
-
-<codeblock id="01_02_04"></codeblock>
 
 </exercise>
 

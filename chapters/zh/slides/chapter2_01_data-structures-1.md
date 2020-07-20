@@ -19,14 +19,14 @@ Notes: 欢迎回来！现在你已经有一些spaCy实例的实战经验了，
 - 字符串库：双向的**查询表**
 
 ```python
-coffee_hash = nlp.vocab.strings["coffee"]
+coffee_hash = nlp.vocab.strings["咖啡"]
 coffee_string = nlp.vocab.strings[coffee_hash]
 ```
 - 哈希是不能逆求解的，所以我们要提供共享词汇表。
 
 ```python
 # 如果该字符串从未出现过则会报错
-string = nlp.vocab.strings[3197928453018144401]
+string = nlp.vocab.strings[7962530705879205333]
 ```
 
 Notes: spaCy把所有共享数据都存在一个词汇表里，也就是Vocab。
@@ -53,24 +53,24 @@ spaCy内部的信息交流都是通过哈希ID进行的。
 - 在`nlp.vocab.strings`中查找字符串和哈希值
 
 ```python
-doc = nlp("I love coffee")
-print("hash value:", nlp.vocab.strings["coffee"])
-print("string value:", nlp.vocab.strings[3197928453018144401])
+doc = nlp("我爱喝咖啡。")
+print("hash value:", nlp.vocab.strings["咖啡"])
+print("string value:", nlp.vocab.strings[7962530705879205333])
 ```
 
 ```out
-hash value: 3197928453018144401
-string value: coffee
+hash value: 7962530705879205333
+string value: 咖啡
 ```
 - `doc`也会暴露出词汇表和字符串
 
 ```python
-doc = nlp("I love coffee")
-print("hash value:", doc.vocab.strings["coffee"])
+doc = nlp("我爱喝咖啡。")
+print("hash value:", doc.vocab.strings["咖啡"])
 ```
 
 ```out
-hash value: 3197928453018144401
+hash value: 7962530705879205333
 ```
 
 Notes: 要拿到字符串的哈希值，我们要在`nlp.vocab.strings`中查找。
@@ -86,15 +86,15 @@ Notes: 要拿到字符串的哈希值，我们要在`nlp.vocab.strings`中查找
 - 一个`Lexeme`实例是词汇表中的一个元素
 
 ```python
-doc = nlp("I love coffee")
-lexeme = nlp.vocab["coffee"]
+doc = nlp("我爱喝咖啡。")
+lexeme = nlp.vocab["咖啡"]
 
 # 打印词汇的属性
 print(lexeme.text, lexeme.orth, lexeme.is_alpha)
 ```
 
 ```out
-coffee 3197928453018144401 True
+咖啡 7962530705879205333 True
 ```
 
 - 包含了一个词的**和语境无关**的信息
