@@ -64,7 +64,7 @@ devons toujours fournir le vocabulaire partagé.
 - Recherche de la chaine et du hash dans `nlp.vocab.strings`
 
 ```python
-doc = nlp("Inès nage souvent")
+doc = nlp("Ines nage souvent")
 print("valeur de hash :", nlp.vocab.strings["souvent"])
 print("valeur de chaine :", nlp.vocab.strings[821433950267086228])
 ```
@@ -77,7 +77,7 @@ valeur de chaine : souvent
 - Le `doc` expose aussi le vocabulaire et les chaines
 
 ```python
-doc = nlp("Inès nage souvent")
+doc = nlp("Ines nage souvent")
 print("valeur de hash :", doc.vocab.strings["souvent"])
 ```
 
@@ -100,7 +100,7 @@ Un objet `Doc` expose aussi son vocabulaire et les chaines.
 - Un objet `Lexeme` est un élément du vocabulaire
 
 ```python
-doc = nlp("Inès nage souvent")
+doc = nlp("Ines nage souvent")
 lexeme = nlp.vocab["souvent"]
 
 # Affiche les attributs lexicaux
@@ -139,7 +139,7 @@ de dépendances. Ceux-ci dépendent du contexte.
 Notes: Voici un exemple.
 
 Le `Doc` contient les mots dans leur contexte – dans le cas présent, les tokens
-"Inès", "nage" et "souvent" avec leurs étiquettes de partie de discours et leurs
+"Ines", "nage" et "souvent" avec leurs étiquettes de partie de discours et leurs
 dépendances.
 
 Chaque token fait référence à un lexème, qui connait l'ID de hash du mot. Pour

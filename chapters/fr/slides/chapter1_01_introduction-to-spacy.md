@@ -4,7 +4,7 @@ type: slides
 
 # Présentation de spaCy
 
-Notes: Salut, je m'appelle Inès ! Je suis l'un des principaux développeurs de
+Notes: Salut, je m'appelle Ines ! Je suis l'un des principaux développeurs de
 spaCy, une bibliothèque populaire pour le traitement automatique du langage
 naturel en Python.
 
