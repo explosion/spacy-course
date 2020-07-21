@@ -73,7 +73,7 @@ On continue d'appeler `nlp.update` sur chaque lot d'exemples dans les données.
 
 # Comment fonctionne l'apprentissage (2)
 
-<img src="/training.png" alt="Diagramme du processus d'apprentissage" />
+<img src="/training_fr.png" alt="Diagramme du processus d'apprentissage" />
 
 - **Jeu d'apprentissage :** Exemples et leurs annotations.
 - **Texte :** Le texte d'entrée pour lequel le modèle devrait prédire un label.
