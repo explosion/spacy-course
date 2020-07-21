@@ -134,7 +134,7 @@ de dépendances. Ceux-ci dépendent du contexte.
 
 # Vocabulaire, hashs et lexèmes
 
-<img src="/vocab_stringstore.png" width="70%" alt="Illustration des mots 'Inès', 'nage' et 'souvent' dans le Doc, Vocab et StringStore" />
+<img src="/vocab_stringstore_fr.png" width="70%" alt="Illustration des mots 'Ines', 'nage' et 'souvent' dans le Doc, Vocab et StringStore" />
 
 Notes: Voici un exemple.
 
