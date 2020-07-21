@@ -1,6 +1,6 @@
 import spacy
 
-# Crée un modèle "en" vide
+# Crée un modèle "fr" vide
 nlp = ____
 
 # Crée un nouvel entity recognizer et ajoute-le au pipeline

@@ -9,7 +9,7 @@ def test():
         len(pattern[0]) == 1 and len(pattern[1]) == 1
     ), "Chaque élément du motif ne doit comporter qu'une seule clé."
     assert any(
-        pattern[0].get(key) == "download" for key in ["lemma", "LEMMA"]
+        pattern[0].get(key) == "télécharger" for key in ["lemma", "LEMMA"]
     ), "Recherches-tu sur le lemme du premier token ?"
     assert any(
         pattern[1].get(key) == "PROPN" for key in ["pos", "POS"]

@@ -12,7 +12,7 @@ def test():
     ), "Accèdes-tu à l'attribut personnalisé ?"
     assert (
         doc.ents[-1]._.wikipedia_url
-        == "https://en.wikipedia.org/w/index.php?search=David_Bowie"
+        == "https://fr.wikipedia.org/w/index.php?search=David_Bowie"
     ), "Il semble que la valeur de l'attribut soit incorrecte."
 
     __msg__.good(

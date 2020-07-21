@@ -4,13 +4,13 @@ import spacy
 def length_component(doc):
     # Obtiens la longueur du doc
     doc_length = ____
-    print(f"This document is {doc_length} tokens long.")
+    print(f"Ce document comporte {doc_length} tokens.")
     # Retourne le doc
     ____
 
 
-# Charge le petit modèle anglais
-nlp = spacy.load("en_core_web_sm")
+# Charge le petit modèle français
+nlp = spacy.load("fr_core_news_sm")
 
 # Ajoute le composant en premier dans le pipeline
 # et affiche les noms des composants

@@ -19,7 +19,7 @@ chaine de caractères.
 <img src="/pipeline.png" alt="Illustration du pipeline de spaCy pipeline transformant un texte en Doc traité" width="90%" />
 
 ```python
-doc = nlp("This is a sentence.")
+doc = nlp("Ceci est une phrase.")
 ```
 
 Notes: Tu l'as déjà fait de nombreuses fois maintenant : passer une chaine de
@@ -66,7 +66,7 @@ peux l'utiliser pour entrainer ton propre système.
 
 # Sous le capot
 
-<img src="/package_meta.png" alt="Illustration d'un package nommé en_core_web_sm, de dossiers, fichiers et du meta.json" />
+<img src="/package_meta_fr.png" alt="Illustration d'un package nommé fr_core_news_sm, de dossiers, fichiers et du meta.json" />
 
 - L'ordre du pipeline est défini dans le `meta.json` du modèle
 - Les composants intégrés ont besoin de données binaires pour effectuer des

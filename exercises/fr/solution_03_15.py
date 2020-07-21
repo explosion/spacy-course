@@ -1,11 +1,11 @@
 import json
-from spacy.lang.en import English
+from spacy.lang.fr import French
 from spacy.tokens import Doc
 
-with open("exercises/en/bookquotes.json") as f:
+with open("exercises/fr/bookquotes.json") as f:
     DATA = json.loads(f.read())
 
-nlp = English()
+nlp = French()
 
 # Déclare l'extension de Doc "author" (défaut None)
 Doc.set_extension("author", default=None)
@@ -19,4 +19,4 @@ for doc, context in nlp.pipe(DATA, as_tuples=True):
     doc._.author = context["author"]
 
     # Affiche le texte et les données des attributs personnalisés
-    print(f"{doc.text}\n — '{doc._.book}' by {doc._.author}\n")
+    print(f"{doc.text}\n — '{doc._.book}' par {doc._.author}\n")

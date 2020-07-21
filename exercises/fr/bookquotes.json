@@ -1,26 +1,26 @@
 [
     [
-        "One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin.",
-        { "author": "Franz Kafka", "book": "Metamorphosis" }
+        "Si ceux qui disent du mal de moi savaient exactement ce que je pense d'eux, ils en diraient bien davantage !",
+        { "author": "Sacha Guitry", "book": "L'esprit" }
     ],
     [
-        "I know not all that may be coming, but be it what it will, I'll go to it laughing.",
-        { "author": "Herman Melville", "book": "Moby-Dick or, The Whale" }
+        "Tu es responsable pour toujours de ce que tu as apprivoisé.",
+        { "author": "Antoine de Saint-Exupéry", "book": "Le Petit Prince" }
     ],
     [
-        "It was the best of times, it was the worst of times.",
-        { "author": "Charles Dickens", "book": "A Tale of Two Cities" }
+        "C'est justement la possibilité de réaliser un rêve qui rend la vie intéressante.",
+        { "author": "Paulo Coelho", "book": "L'alchimiste" }
     ],
     [
-        "The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.",
-        { "author": "Jack Kerouac", "book": "On the Road" }
+        "Les seuls gens qui existent sont ceux qui ont la démence de vivre, de discourir, d'être sauvés, qui veulent jouir de tout dans un seul instant, ceux qui ne savent pas bâiller.",
+        { "author": "Jack Kerouac", "book": "Sur la route" }
     ],
     [
-        "It was a bright cold day in April, and the clocks were striking thirteen.",
+        "C’est un jour d’avril froid et lumineux et les pendules sonnent 13 heures.",
         { "author": "George Orwell", "book": "1984" }
     ],
     [
-        "Nowadays people know the price of everything and the value of nothing.",
-        { "author": "Oscar Wilde", "book": "The Picture Of Dorian Gray" }
+        "Aujourd'hui, chacun sait le prix de toutes choses, et nul ne connaît la valeur de quoi que ce soit.",
+        { "author": "Oscar Wilde", "book": "Le portrait de Dorian Gray" }
     ]
 ]

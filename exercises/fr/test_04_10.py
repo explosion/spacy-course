@@ -7,14 +7,14 @@ def test():
         entry[1].get("entities") for entry in TRAINING_DATA
     ), "Toutes les annotations des données d'apprentissage doivent comporter des entités."
     assert TRAINING_DATA[0][1]["entities"] == [
-        (10, 19, "GPE")
+        (15, 24, "GPE")
     ], "Vérifie les entités dans le premier exemple."
     assert TRAINING_DATA[1][1]["entities"] == [
-        (17, 22, "GPE")
+        (19, 24, "GPE")
     ], "Vérifie les entités dans le deuxième exemple."
     assert TRAINING_DATA[2][1]["entities"] == [
-        (15, 20, "GPE"),
-        (24, 32, "GPE"),
+        (16, 21, "GPE"),
+        (29, 37, "GPE"),
     ], "Vérifie les entités dans le troisième exemple."
     assert TRAINING_DATA[3][1]["entities"] == [
         (0, 6, "GPE")

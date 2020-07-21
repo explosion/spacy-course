@@ -1,15 +1,15 @@
 import json
-from spacy.lang.en import English
+from spacy.lang.fr import French
 from spacy.tokens import Span
 from spacy.matcher import PhraseMatcher
 
-with open("exercises/en/countries.json") as f:
+with open("exercises/fr/countries.json") as f:
     COUNTRIES = json.loads(f.read())
 
-with open("exercises/en/capitals.json") as f:
+with open("exercises/fr/capitals.json") as f:
     CAPITALS = json.loads(f.read())
 
-nlp = English()
+nlp = French()
 matcher = PhraseMatcher(nlp.vocab)
 matcher.add("COUNTRY", None, *list(nlp.pipe(COUNTRIES)))
 
@@ -34,5 +34,5 @@ Span.set_extension("capital", getter=get_capital)
 
 # Traite le texte et affiche le texte de l'entité,
 # ses attributs label et capitale
-doc = nlp("Czech Republic may help Slovakia protect its airspace")
+doc = nlp("La Tchéquie pourrait aider la Slovaquie à protéger son espace aérien")
 print([(ent.text, ent.label_, ent._.capital) for ent in doc.ents])

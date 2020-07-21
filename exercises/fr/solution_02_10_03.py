@@ -1,10 +1,10 @@
 import spacy
 
-nlp = spacy.load("en_core_web_md")
+nlp = spacy.load("fr_core_news_md")
 
-doc = nlp("This was a great restaurant. Afterwards, we went to a really nice bar.")
+doc = nlp("C'était un super restaurant. Ensuite nous sommes allés dans un bar vraiment sympa.")
 
-# Crée des spans pour "great restaurant" et "really nice bar"
+# Crée des spans pour "super restaurant" et "bar vraiment sympa"
 span1 = doc[3:5]
 span2 = doc[12:15]
 

@@ -51,7 +51,7 @@ C'est également connu sous l'appellation de l'oubli catastrophique.
 
 ```python
 TRAINING_DATA = [
-    ("Reddit is a website", {"entities": [(0, 6, "WEBSITE")]})
+    ("Reddit est un site web", {"entities": [(0, 6, "WEBSITE")]})
 ]
 ```
 
@@ -59,8 +59,8 @@ TRAINING_DATA = [
 
 ```python
 TRAINING_DATA = [
-    ("Reddit is a website", {"entities": [(0, 6, "WEBSITE")]}),
-    ("Obama is a person", {"entities": [(0, 5, "PERSON")]})
+    ("Reddit est un site web", {"entities": [(0, 6, "WEBSITE")]}),
+    ("Obama est une personne", {"entities": [(0, 5, "PERSON")]})
 ]
 ```
 

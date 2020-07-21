@@ -1,7 +1,7 @@
 import spacy
 
 # Crée un modèle "en" vide
-nlp = spacy.blank("en")
+nlp = spacy.blank("fr")
 
 # Crée un nouvel entity recognizer et ajoute-le au pipeline
 ner = nlp.create_pipe("ner")
