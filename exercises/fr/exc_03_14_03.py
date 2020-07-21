@@ -1,6 +1,6 @@
-from spacy.lang.en import English
+from spacy.lang.fr import French
 
-nlp = English()
+nlp = French()
 
 people = ["David Bowie", "Angela Merkel", "Lady Gaga"]
 

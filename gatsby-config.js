@@ -87,6 +87,12 @@ module.exports = {
                 icon: `static/icon.png`,
             },
         },
+        {
+            resolve: `gatsby-plugin-plausible`,
+            options: {
+                domain: meta.domain,
+            },
+        },
         `gatsby-plugin-offline`,
     ],
 }

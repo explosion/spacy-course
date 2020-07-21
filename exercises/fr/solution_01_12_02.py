@@ -1,18 +1,19 @@
 import spacy
 from spacy.matcher import Matcher
 
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("fr_core_news_sm")
 matcher = Matcher(nlp.vocab)
 
 doc = nlp(
-    "i downloaded Fortnite on my laptop and can't open the game at all. Help? "
-    "so when I was downloading Minecraft, I got the Windows version where it "
-    "is the '.zip' folder and I used the default program to unpack it... do "
-    "I also need to download Winzip?"
+    "j'ai téléchargé Fortnite sur mon ordinateur portable et je ne peux pas "
+    "du tout lancer le jeu. Quelqu'un pour m'aider ?"
+    "donc quand je téléchargeais Minecraft j'ai eu la version de Windows dans "
+    "le dossier .zip et j'ai utilisé le programme par défaut pour le "
+    "décompresser... est-ce qu'il faut aussi que je télécharge Winzip ?"
 )
 
-# Écris un motif qui recherche une forme de "download" suivie d'un nom propre
-pattern = [{"LEMMA": "download"}, {"POS": "PROPN"}]
+# Écris un motif qui recherche une forme de "télécharger" suivie d'un nom propre
+pattern = [{"LEMMA": "télécharger"}, {"POS": "PROPN"}]
 
 # Ajoute le motif au matcher et applique le matcher au doc
 matcher.add("DOWNLOAD_THINGS_PATTERN", None, pattern)
@@ -21,4 +22,4 @@ print("Nombre de correspondances trouvées :", len(matches))
 
 # Itère sur les correspondances et affiche la portion de texte
 for match_id, start, end in matches:
-    print("Correspondance trouvée : ", doc[start:end].text)
+    print("Correspondance trouvée:", doc[start:end].text)

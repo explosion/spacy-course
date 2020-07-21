@@ -20,9 +20,9 @@ ton application de NLP.
 - Accepte un autre objet et retourne un score de similarité (de `0` à `1`)
 - **Important :** nécessite un modèle qui inclut les vecteurs de mots, par
   exemple:
-  - ✅ `en_core_web_md` (modèle moyen)
-  - ✅ `en_core_web_lg` (grand modèle)
-  - 🚫 **PAS** `en_core_web_sm` (petit modèle)
+  - ✅ `fr_core_news_md` (modèle moyen)
+  - ✅ `fr_core_news_lg` (grand modèle)
+  - 🚫 **PAS** `fr_core_news_sm` (petit modèle)
 
 Notes: spaCy peut comparer deux objets et prédire à quel point ils sont
 similaires – par exemple, documents, spans ou simples tokens.
@@ -45,45 +45,45 @@ ou par "lg". Tu trouveras de plus amples informations dans la
 
 ```python
 # Charge un plus grand modèle avec les vecteurs
-nlp = spacy.load("en_core_web_md")
+nlp = spacy.load("fr_core_news_md")
 
 # Compare deux documents
-doc1 = nlp("I like fast food")
-doc2 = nlp("I like pizza")
+doc1 = nlp("J'aime la pizza")
+doc2 = nlp("J'aime la quiche lorraine")
 print(doc1.similarity(doc2))
 ```
 
 ```out
-0.8627204117787385
+0.9686798359892211
 ```
 
 ```python
 # Compare deux tokens
-doc = nlp("I like pizza and pasta")
-token1 = doc[2]
-token2 = doc[4]
+doc = nlp("J'aime la pizza et la quiche")
+token1 = doc[3]
+token2 = doc[6]
 print(token1.similarity(token2))
 ```
 
 ```out
-0.7369546
+0.62105
 ```
 
 Notes: Voici un exemple. Disons que nous voulons savoir si deux documents sont
 similaires.
 
-D'abord, nous chargeons le modèle anglais de taille moyenne, "en_core_web_md".
+D'abord, nous chargeons le modèle français de taille moyenne, "fr_core_news_md".
 
 Nous pouvons ensuite créer deux objets doc et utiliser la méthode `similarity`
 du premier doc pour le comparer au second.
 
-Ici, la prédiction est un score plutôt élevé de similarité de 0,86 pour "I like
-fast food" et "I like pizza".
+Ici, la prédiction est un score plutôt élevé de similarité de 0,96 pour "J'aime
+la pizza" et "J'aime la quiche lorraine".
 
 Cela fonctionne aussi avec les tokens.
 
-Selon les vecteurs de mots, les tokens "pizza" et "pasta" sont relativement
-similaires, et obtiennent un score de 0,7.
+Selon les vecteurs de mots, les tokens "pizza" et "quiche" sont relativement
+similaires, et obtiennent un score de 0,62.
 
 ---
 
@@ -91,26 +91,26 @@ similaires, et obtiennent un score de 0,7.
 
 ```python
 # Compare un document avec un token
-doc = nlp("I like pizza")
-token = nlp("soap")[0]
+doc = nlp("J'aime la pizza")
+token = nlp("savon")[0]
 
 print(doc.similarity(token))
 ```
 
 ```out
-0.32531983166759537
+0.12344265753392583
 ```
 
 ```python
 # Compare un span avec un document
-span = nlp("I like pizza and pasta")[2:5]
-doc = nlp("McDonalds sells burgers")
+span = nlp("J'aime la pizza et les pâtes")[3:7]
+doc = nlp("McDonalds vend des hamburgers")
 
 print(span.similarity(doc))
 ```
 
 ```out
-0.619909235817623
+0.6186440160069984
 ```
 
 Notes: Tu peux aussi utiliser les méthodes `similarity` pour comparer des objets
@@ -121,10 +121,10 @@ Par exemple, un document et un token.
 Ici, le score de similarité est assez bas et les deux objets sont considérés
 assez peu similaires.
 
-Voici un autre exemple comparant un span – "pizza and pasta" – à un document
+Voici un autre exemple comparant un span – "pizza et les pâtes" – à un document
 relatif à McDonalds.
 
-Le score retourné ici est 0,61, donc il y a une forme de similarité.
+Le score retourné ici est 0,62, donc il y a une forme de similarité.
 
 ---
 
@@ -166,25 +166,25 @@ des phrases courtes qui comportent moins de mots non pertinents.
 
 ```python
 # Charge un plus grand modèle avec des vecteurs
-nlp = spacy.load("en_core_web_md")
+nlp = spacy.load("fr_core_news_md")
 
-doc = nlp("I have a banana")
+doc = nlp("J'ai une banane")
 # Accède au vecteur via l'attribut token.vector
 print(doc[3].vector)
 ```
 
 ```out
- [2.02280000e-01,  -7.66180009e-02,   3.70319992e-01,
-  3.28450017e-02,  -4.19569999e-01,   7.20689967e-02,
- -3.74760002e-01,   5.74599989e-02,  -1.24009997e-02,
-  5.29489994e-01,  -5.23800015e-01,  -1.97710007e-01,
- -3.41470003e-01,   5.33169985e-01,  -2.53309999e-02,
-  1.73800007e-01,   1.67720005e-01,   8.39839995e-01,
-  5.51070012e-02,   1.05470002e-01,   3.78719985e-01,
-  2.42750004e-01,   1.47449998e-02,   5.59509993e-01,
-  1.25210002e-01,  -6.75960004e-01,   3.58420014e-01,
- -4.00279984e-02,   9.59490016e-02,  -5.06900012e-01,
- -8.53179991e-02,   1.79800004e-01,   3.38669986e-01,
+[ 0.14514    0.02404   -2.4107    -0.065107   1.4499     3.8751
+  0.99248   -0.025606  -1.5564    -0.96526    1.816      1.5542
+  1.9257    -0.21898   -0.62248   -0.12514   -1.4924     0.15898
+  0.55028    0.26447   -1.3465     1.0917    -0.0059614 -0.41609
+ -0.33383   -0.12654   -0.44623    0.90977    0.032714   0.84107
+  2.0505    -1.4368     0.63731   -1.0465     0.40865    0.95406
+ -0.43177    0.54945    0.55856   -1.3008    -0.60014   -1.7091
+ -0.79766    2.2568     2.2223     2.1332    -0.72503    1.3304
+ -1.0363     1.3716     1.4821    -1.2326    -1.4727    -0.43259
+  0.95354    0.15735    2.0788    -0.69058   -0.37      -1.9991
+ -1.9433     0.29023   -0.11225   -1.5691     1.1563     0.88076
   ...
 ```
 
@@ -197,7 +197,7 @@ mots.
 Ensuite, nous pouvons traiter un texte et chercher le vecteur d'un token en
 utilisant l'attribut `.vector`.
 
-Le résultat est un vecteur à 300 dimensions du mot "banana".
+Le résultat est un vecteur à 300 dimensions du mot "banane".
 
 ---
 
@@ -209,14 +209,14 @@ Le résultat est un vecteur à 300 dimensions du mot "banana".
 - Cela dépend du contexte et des besoins de l'application
 
 ```python
-doc1 = nlp("I like cats")
-doc2 = nlp("I hate cats")
+doc1 = nlp("J'aime les chats")
+doc2 = nlp("Je déteste les chats")
 
 print(doc1.similarity(doc2))
 ```
 
 ```out
-0.9501447503553421
+0.6684962278316768
 ```
 
 Notes: Prédire la similarité peut s'avérer utile pour toutes sortes
@@ -229,11 +229,11 @@ de ce qui est similaire et de ce qui ne l'est pas. Cela dépend toujours du
 contexte et des besoins de ton application.
 
 Voici un exemple : les vecteurs de mots de spaCy attribuent par défaut un score
-élevé de similarité entre "I like cats" et "I hate cats". Cela parait logique,
-car les deux textes expriment des sentiments à propos des chats. Mais dans un
-contexte d'application différent, tu pourrais vouloir considérer les phrases
-comme étant très _dissemblables_, parce qu'elles expriment des sentiments
-opposés.
+élevé de similarité entre "J'aime les chats" et "Je déteste les chats". Cela
+parait logique, car les deux textes expriment des sentiments à propos des chats.
+Mais dans un contexte d'application différent, tu pourrais vouloir considérer
+les phrases comme étant très _dissemblables_, parce qu'elles expriment des
+sentiments opposés.
 
 ---
 

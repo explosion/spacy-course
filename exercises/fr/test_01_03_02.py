@@ -1,11 +1,11 @@
 def test():
     assert (
-        doc.text == "I like tree kangaroos and narwhals."
+        doc.text == "La forêt est peuplée de loups gris et renards roux."
     ), "Es-tu certain d'avoir traité correctement le texte ?"
     assert (
-        tree_kangaroos == doc[2:4]
-    ), "Es-tu certain d'avoir sélectionné la bonne portion de tree_kangaroos ?"
+        loups_gris == doc[5:7]
+    ), "Es-tu certain d'avoir sélectionné la bonne portion pour loups gris ?"
     assert (
-        tree_kangaroos_and_narwhals == doc[2:6]
-    ), "Es-tu certain d'avoir sélectionné la bonne portion de tree_kangaroos_and_narwhals ?"
+        loups_gris_et_renards_roux == doc[5:10]
+    ), "Es-tu certain d'avoir sélectionné la bonne portion pour loups gris et renards roux ?"
     __msg__.good("Bon travail !")

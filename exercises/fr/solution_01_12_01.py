@@ -1,14 +1,14 @@
 import spacy
 from spacy.matcher import Matcher
 
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("fr_core_news_sm")
 matcher = Matcher(nlp.vocab)
 
 doc = nlp(
-    "After making the iOS update you won't notice a radical system-wide "
-    "redesign: nothing like the aesthetic upheaval we got with iOS 7. Most of "
-    "iOS 11's furniture remains the same as in iOS 10. But you will discover "
-    "some tweaks once you delve a little deeper."
+    "Après avoir effectué la mise à jour d'iOS vous ne constaterez pas de "
+    "renouveau radical : rien de commun avec le bouleversement que nous "
+    "avions connu avec iOS 7. Globalement iOS 11 reste très semble à iOS 10. "
+    "Mais vous découvrirez quelques changements en approfondissant un peu."
 )
 
 # Écris un motif des versions complètes d'iOS ("iOS 7", "iOS 11", "iOS 10")

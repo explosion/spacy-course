@@ -1,7 +1,7 @@
 import spacy
 
-nlp = spacy.load("en_core_web_sm")
-doc = nlp("Berlin is a nice city")
+nlp = spacy.load("fr_core_news_sm")
+doc = nlp("Berlin est une jolie ville")
 
 # Itère sur les tokens
 for token in doc:
@@ -9,4 +9,4 @@ for token in doc:
     if token.pos_ == "PROPN":
         # Vérifie si le token suivant est un verbe
         if doc[token.i + 1].pos_ == "VERB":
-            print("Found proper noun before a verb:", token.text)
+            print("Trouvé un nom propre avant un verbe :", token.text)

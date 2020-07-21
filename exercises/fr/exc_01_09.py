@@ -1,8 +1,8 @@
 import spacy
 
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("fr_core_news_sm")
 
-text = "Upcoming iPhone X release date leaked as Apple reveals pre-orders"
+text = "Le constructeur Citröen présente la e-Méhari Courrèges au public."
 
 # Traite le texte
 doc = ____
@@ -12,8 +12,8 @@ for ____ in ____.____:
     # Affiche le texte de l'entité et son label
     print(____.____, ____.____)
 
-# Obtiens la portion pour "iPhone X"
-iphone_x = ____
+# Obtiens la portion pour "e-Méhari Courrèges"
+e_mehari_courreges = ____
 
 # Affiche la portion de texte
-print("Entité manquante :", iphone_x.text)
+print("Entité manquante :", e_mehari_courreges.text)

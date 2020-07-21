@@ -1,11 +1,11 @@
-from spacy.lang.en import English
+from spacy.lang.fr import French
 
-nlp = English()
+nlp = French()
 
 # Importe les classes Doc et Span
 from spacy.____ import ____, ____
 
-words = ["I", "like", "David", "Bowie"]
+words = ["Elle", "aime", "David", "Bowie"]
 spaces = [True, True, True, False]
 
 # Crée un doc à partir des mots et des espaces

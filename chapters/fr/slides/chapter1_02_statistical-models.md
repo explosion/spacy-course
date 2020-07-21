@@ -37,16 +37,16 @@ données.
 
 # Paquets de modèles
 
-<img src="/package.png" alt="Un paquet de modèles avec le label en_core_web_sm" width="30%" align="right" />
+<img src="/package_fr.png" alt="Un paquet de modèles avec le label fr_core_news_sm" width="30%" align="right" />
 
 ```bash
-$ python -m spacy download en_core_web_sm
+$ python -m spacy download fr_core_news_sm
 ```
 
 ```python
 import spacy
 
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("fr_core_news_sm")
 ```
 
 - Poids binaires
@@ -55,8 +55,8 @@ nlp = spacy.load("en_core_web_sm")
 
 Notes: spaCy propose un certain nombre de modèles pré-entrainés que tu peux
 télécharger avec la commande `spacy download`. Par exemple, le paquet
-"en_core_web_sm" est un petit modèle pour la langue anglaise qui propose toutes
-les fonctionnalités de base et qui a été entrainé sur des textes du web.
+"en_core_web_sm" est un petit modèle pour la langue française qui propose toutes
+les fonctionnalités de base et qui a été entrainé sur des textes d'actualité.
 
 La méthode `spacy.load` charge un paquet de modèle et retourne un objet `nlp`.
 
@@ -74,11 +74,11 @@ traitements.
 ```python
 import spacy
 
-# Charge le petit modèle en langue anglaise
-nlp = spacy.load("en_core_web_sm")
+# Charge le petit modèle en langue française
+nlp = spacy.load("fr_core_news_sm")
 
 # Traite le texte
-doc = nlp("She ate the pizza")
+doc = nlp("Elle mangea la pizza")
 
 # Itère sur les tokens
 for token in doc:
@@ -87,9 +87,9 @@ for token in doc:
 ```
 
 ```out
-She PRON
-ate VERB
-the DET
+Elle PRON
+mangea VERB
+la DET
 pizza NOUN
 ```
 
@@ -97,10 +97,10 @@ Notes: Jetons un oeil aux prédictions du modèle. Dans cet exemple, nous
 utilisons spaCy pour prédire des étiquettes de partie de discours, les types des
 mots dans leur contexte.
 
-D'abord, nous chargeons le petit modèle en langue anglaise et obtenons un objet
+D'abord, nous chargeons le petit modèle en langue française et obtenons un objet
 `nlp`.
 
-Ensuite, nous traitons le texte "She ate the pizza".
+Ensuite, nous traitons le texte "Elle mangea la pizza".
 
 Pour chaque token dans le doc, nous pouvons afficher le texte et l'attribut
 `.pos_`, l'étiquette de partie de discours prédite.
@@ -109,8 +109,8 @@ Dans spaCy, les attributs qui retournent des chaines de caractères se terminent
 généralement par un tiret bas - les attributs sans tiret bas retournent un ID
 sous forme de valeur entière.
 
-Ici, le modèle a correctement prédit "ate" comme étant un verbe et "pizza" comme
-étant un nom.
+Ici, le modèle a correctement prédit "mangea" comme étant un verbe et "pizza"
+comme étant un nom.
 
 ---
 
@@ -122,10 +122,10 @@ for token in doc:
 ```
 
 ```out
-She PRON nsubj ate
-ate VERB ROOT ate
-the DET det pizza
-pizza NOUN dobj ate
+Elle PRON nsubj mangea
+mangea VERB ROOT mangea
+la DET det pizza
+pizza NOUN obj mangea
 ```
 
 Notes: En plus des étiquettes de partie de discours, nous pouvons aussi prédire
@@ -141,33 +141,33 @@ voir comme le token parent auquel le mot considéré se rattache.
 
 # Schéma de relations de dépendances
 
-<img src="/dep_example.png" alt="Visualisation du graphe de dépendances pour 'She ate the pizza'" />
+<img src="/dep_example_fr.png" alt="Visualisation du graphe de dépendances pour 'Elle mangea la pizza'" />
 
 | Label     | Description               | Exemple |
 | --------- | ------------------------- | ------- |
-| **nsubj** | sujet nominal             | She     |
-| **dobj**  | complément d'objet direct | pizza   |
-| **det**   | déterminant (article)     | the     |
+| **nsubj** | sujet nominal             | Elle    |
+| **obj**   | complément d'objet direct | pizza   |
+| **det**   | déterminant (article)     | la      |
 
 Notes: Pour décrire les dépendances syntaxiques, spaCy utilise un système de
 labellisation standardisé. Voici un exemple avec quelques labels courants :
 
-Le pronom "She" est le sujet rattaché au verbe – ici, "ate".
+Le pronom "Elle" est le sujet rattaché au verbe – ici, "mangea".
 
-Le nom "pizza" est un complément d'objet direct rattaché au verbe "ate". Il est
-mangé par le sujet, "she".
+Le nom "pizza" est un complément d'objet direct rattaché au verbe "mangea". Elle
+est mangée par le sujet, "Elle".
 
-Le déterminant "the", également appelé article, est rattaché au nom "pizza".
+Le déterminant "la", également appelé article, est rattaché au nom "pizza".
 
 ---
 
 # Prédiction d'Entités Nommées
 
-<img src="/ner_example.png" alt="Visualisation des entités nommées dans 'Apple is looking at buying U.K. startup for $1 billion'" width="80%" />
+<img src="/ner_example_fr.png" alt="Visualisation des entités nommées dans 'Apple conçoit le nouvel iPhone à Cupertino'" width="80%" />
 
 ```python
 # Traite le texte
-doc = nlp("Apple is looking at buying U.K. startup for $1 billion")
+doc = nlp("Apple conçoit le nouvel iPhone à Cupertino.")
 
 # Itère sur les entités prédites
 for ent in doc.ents:
@@ -177,8 +177,8 @@ for ent in doc.ents:
 
 ```out
 Apple ORG
-U.K. GPE
-$1 billion MONEY
+iPhone MISC
+Cupertino LOC
 ```
 
 Notes: Les entités nommées sont des "objets du monde réel" auxquels on assigne
@@ -191,8 +191,7 @@ Elle retourne un itérateur d'objets `Span`, donc nous pouvons imprimer le texte
 de l'entité et son label en utilisant l'attribut `.label_`.
 
 Dans notre exemple, le modèle a correctement prédit "Apple" en tant
-qu'organisation, "U.K." comme entité géopolitique et "\$1 billion" comme somme
-d'argent.
+qu'organisation, "iPhone" comme entité diverse et "Cupertino" comme lieu.
 
 ---
 
