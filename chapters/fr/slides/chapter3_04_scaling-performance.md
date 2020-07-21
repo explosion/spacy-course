@@ -51,17 +51,17 @@ liste des docs, rappelle-toi de lui appliquer la méthode `list`.
 
 ```python
 data = [
-    ("This is a text", {"id": 1, "page_number": 15}),
-    ("And another text", {"id": 2, "page_number": 16}),
+    ("Ceci est un texte", {"id": 1, "numero_page": 15}),
+    ("Et un autre texte", {"id": 2, "numero_page": 16}),
 ]
 
 for doc, context in nlp.pipe(data, as_tuples=True):
-    print(doc.text, context["page_number"])
+    print(doc.text, context["numero_page"])
 ```
 
 ```out
-This is a text 15
-And another text 16
+Ceci est un texte 15
+Et un autre texte 16
 ```
 
 Notes: `nlp.pipe` supporte aussi le passage de tuples de texte / contexte si tu
@@ -80,22 +80,22 @@ associé au texte, ou un numéro de page.
 from spacy.tokens import Doc
 
 Doc.set_extension("id", default=None)
-Doc.set_extension("page_number", default=None)
+Doc.set_extension("numero_page", default=None)
 
 data = [
-    ("This is a text", {"id": 1, "page_number": 15}),
-    ("And another text", {"id": 2, "page_number": 16}),
+    ("Ceci est un texte", {"id": 1, "numero_page": 15}),
+    ("Et un autre texte", {"id": 2, "numero_page": 16}),
 ]
 
 for doc, context in nlp.pipe(data, as_tuples=True):
     doc._.id = context["id"]
-    doc._.page_number = context["page_number"]
+    doc._.page_number = context["numero_page"]
 ```
 
 Notes: Tu peux même ajouter les métadonnées de contexte à des attributs
 personnalisés.
 
-Dans cet exemple, nous déclarons deux extensions, `id` et `page_number`, avec
+Dans cet exemple, nous déclarons deux extensions, `id` et `numero_page`, avec
 comme valeur par défaut `None`.
 
 Après avoir traité le texte et en prenant en compte le contexte, nous pouvons
@@ -125,13 +125,13 @@ tas de prédictions par le modèle dont tu n'as pas besoin.
 **MAUVAIS :**
 
 ```python
-doc = nlp("Hello world")
+doc = nlp("Bonjour monde !")
 ```
 
 **BON :**
 
 ```python
-doc = nlp.make_doc("Hello world!")
+doc = nlp.make_doc("Bonjour monde !")
 ```
 
 Notes: Si tu as seulement besoin d'un objet `Doc` tokenisé, tu peux utiliser la

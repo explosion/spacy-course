@@ -1,11 +1,11 @@
 import json
 from spacy.matcher import Matcher
-from spacy.lang.en import English
+from spacy.lang.fr import French
 
-with open("exercises/en/iphone.json") as f:
+with open("exercises/fr/iphone.json", encoding="utf8") as f:
     TEXTS = json.loads(f.read())
 
-nlp = English()
+nlp = French()
 matcher = Matcher(nlp.vocab)
 
 # Deux tokens dont les formes majuscules correspondent à "iphone" et "x"

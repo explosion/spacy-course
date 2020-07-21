@@ -54,7 +54,7 @@ en apprendre davantage sur le `Doc`, ainsi que sur ses vues `Token` et `Span`.
 
 ### Étape 1
 
-- Importe la classe de langue `English` et crée l'objet `nlp`.
+- Importe la classe de langue `French` et crée l'objet `nlp`.
 - Traite le texte et crée un objet `Doc` affecté à une variable `doc`.
 - Sélectionne le premier token du `Doc` et affiche son attribut `text`.
 
@@ -68,10 +68,10 @@ le texte. N'oublie pas qu'en Python le premier indice est 0, et pas 1.
 
 ### Étape 2
 
-- Importe la classe de langue `English` et crée l'objet `nlp`.
+- Importe la classe de langue `French` et crée l'objet `nlp`.
 - Traite le texte et crée un objet `Doc` affecté à une variable `doc`.
-- Crée les portions du `Doc` pour les tokens "tree kangaroos" et "tree kangaroos
-  and narwhals".
+- Crée les portions du `Doc` pour les tokens "loups gris" et "loups gris et
+  renards roux".
 
 <codeblock id="01_03_02">
 
@@ -160,7 +160,7 @@ d'informations sur les modèles statistiques de spaCy et la manière de les
 installer sur ta machine, consulte
 [la documentation](https://spacy.io/usage/models).
 
-- Utilise `spacy.load` pour charger le petit modèle anglais `"en_core_web_sm"`.
+- Utilise `spacy.load` pour charger le petit modèle français `"fr_core_news_sm"`.
 - Traite le texte et affiche le texte du document.
 
 <codeblock id="01_07">
@@ -219,8 +219,8 @@ Voyons cela avec un exemple.
 
 - Traite le texte avec l'objet `nlp`.
 - Itère sur les entités et affiche le texte et le label de chaque entité.
-- Il semble que le modèle n'a pas prédit correctement "iPhone X". Crée un span
-  manuellement pour ces tokens.
+- Il semble que le modèle n'a pas prédit correctement "e-Méhari Courrèges".
+  Crée un span manuellement pour ces tokens.
 
 <codeblock id="01_09">
 
@@ -245,13 +245,13 @@ Voyons cela avec un exemple.
 <exercise id="11" title="Utilisation du Matcher">
 
 Essayons le `Matcher` de spaCy basé sur des règles. Tu vas utiliser l'exemple de
-l'exercice précédent et écrire un motif pour trouver la phrase "iPhone X" dans
-le texte.
+l'exercice précédent et écrire un motif pour trouver l'expression "e-Méhari
+Courrèges" dans le texte.
 
 - Importe le `Matcher` depuis `spacy.matcher`.
 - Initialise-le avec le `vocab` partagé de l'objet `nlp`.
 - Crée un motif qui corresponde avec les valeurs de `"TEXT"` de deux tokens :
-  `"iPhone"` et `"X"`.
+  `"e-Méhari"` et `"Courrèges"`.
 - Utilise la méthode `matcher.add` pour ajouter le motif au matcher.
 - Appelle le matcher sur le `doc` et affecte le résultat à la variable
   `matches`.
@@ -294,15 +294,15 @@ complexes qui utilisent différents attributs des tokens et des opérateurs.
 
 ### Partie 2
 
-- Écris **un** motif qui recherche uniquement des formes de "download" (tokens
-  avec le lemme "download"), suivies par un token avec l'étiquette de partie de
-  discours `"PROPN"` (nom propre).
+- Écris **un** motif qui recherche uniquement des formes de "télécharger"
+  (tokens avec le lemme "télécharger"), suivies par un token avec l'étiquette
+  de partie de discours `"PROPN"` (nom propre).
 
 <codeblock id="01_12_02">
 
 - Pour spécifier un lemme, tu peux utiliser l'attribut `"LEMMA"` dans le motif
-  du token. Par exemple, `{"LEMMA": "be"}` trouvera des tokens comme "is", "was"
-  ou "being".
+  du token. Par exemple, `{"LEMMA": "être"}` trouvera des tokens comme "est",
+  "était" ou "serait".
 - Pour trouver des noms propres, tu pourras chercher tous les tokens dont la
   valeur de `"POS"` est `"PROPN"`.
 
@@ -310,8 +310,8 @@ complexes qui utilisent différents attributs des tokens et des opérateurs.
 
 ### Partie 3
 
-- Écris **un** motif qui recherche des adjectifs (`"ADJ"`) suivis par un ou deux
-  `"NOUN"` (un nom et un nom optionnel).
+- Écris **un** motif qui recherche un nom `"NOUN"` suivi par un ou deux
+ adjectifs (`"ADJ"`), c'est-à-dire un adjectif et un adjectif optionnel.
 
 <codeblock id="01_12_03">
 

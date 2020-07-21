@@ -1,16 +1,17 @@
 import spacy
 from spacy.matcher import Matcher
 
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("fr_core_news_sm")
 matcher = Matcher(nlp.vocab)
 
 doc = nlp(
-    "Features of the app include a beautiful design, smart search, automatic "
-    "labels and optional voice responses."
+    "L'appli se distingue par une interface magnifique, la recherche "
+    "intelligente, la labellisation automatique et les réponses "
+    "vocales fluides."
 )
 
 # Écris un motif pour un adjectif suivi d'un ou deux noms
-pattern = [{"POS": "ADJ"}, {"POS": "NOUN"}, {"POS": "NOUN", "OP": "?"}]
+pattern = [{"POS": "NOUN"}, {"POS": "ADJ"}, {"POS": "ADJ", "OP": "?"}]
 
 # Ajoute le motif au matcher et applique le matcher au doc
 matcher.add("ADJ_NOUN_PATTERN", None, pattern)

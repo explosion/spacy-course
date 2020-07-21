@@ -60,16 +60,16 @@ from spacy.matcher import Matcher
 matcher = Matcher(nlp.vocab)
 
 # Les motifs sont des listes de dictionnaires décrivant les tokens
-pattern = [{"LEMMA": "love", "POS": "VERB"}, {"LOWER": "cats"}]
-matcher.add("LOVE_CATS", None, pattern)
+pattern = [{"LEMMA": "chérir", "POS": "VERB"}, {"LOWER": "les"}, {"LOWER": "chats"}]
+matcher.add("AIME_CHATS", None, pattern)
 
 # Les opérateurs peuvent spécifier combien de fois un token doit être trouvé
-pattern = [{"TEXT": "very", "OP": "+"}, {"TEXT": "happy"}]
-matcher.add("VERY_HAPPY", None, pattern)
+pattern = [{"TEXT": "très", "OP": "+"}, {"TEXT": "heureux"}]
+matcher.add("TRES_HEUREUX", None, pattern)
 
 # L'appel du matcher sur le doc retourne une liste de tuples
 # composés avec (match_id, début, fin)
-doc = nlp("I love cats and I'm very very happy")
+doc = nlp("Je chéris les chats et je suis très très heureux")
 matches = matcher(doc)
 ```
 
@@ -97,24 +97,24 @@ début et de fin dans le document.
 
 ```python
 matcher = Matcher(nlp.vocab)
-matcher.add("DOG", None, [{"LOWER": "golden"}, {"LOWER": "retriever"}])
-doc = nlp("I have a Golden Retriever")
+matcher.add("CHIEN", None, [{"LOWER": "bouvier"}, {"LOWER": "bernois"}])
+doc = nlp("J'ai un Bouvier bernois")
 
 for match_id, start, end in matcher(doc):
     span = doc[start:end]
-    print("Matched span:", span.text)
+    print("Span en correspondance :", span.text)
     # Obtiens le token racine du span et le token de tête de la racine
-    print("Root token:", span.root.text)
-    print("Root head token:", span.root.head.text)
+    print("Token racine :", span.root.text)
+    print("Token de tête de la racine :", span.root.head.text)
     # Obtiens le token précédent et son étiquette de partie de discours
-    print("Previous token:", doc[start - 1].text, doc[start - 1].pos_)
+    print("Token précédent :", doc[start - 1].text, doc[start - 1].pos_)
 ```
 
 ```out
-Matched span: Golden Retriever
-Root token: Retriever
-Root head token: have
-Previous token: a DET
+Span en correspondance : Bouvier bernois
+Token racine : Bouvier
+Token de tête de la racine : ai
+Token précédent : un DET
 ```
 
 Notes: Voici un exemple de règle de matcher pour "golden retriever".
@@ -128,12 +128,12 @@ modèle.
 
 Par exemple, nous pouvons obtenir le token racine du span. Si le span est
 composé de plus d'un token, ce sera le token qui décide la catégorie de la
-phrase. Par exemple, la racine de "Golden Retriever" est "Retriever". Nous
+phrase. Par exemple, la racine de "Bouvier bernois" est "Bouvier". Nous
 pouvons aussi trouver la tête de la racine. C'est le "parent" syntaxique qui
-commande la phrase - dans le cas présent, le verbe "have".
+commande la phrase - dans le cas présent, le verbe "avoir".
 
 Enfin, nous pouvons inspecter le token précédent et ses attributs. Ici c'est un
-déterminant, l'article "a".
+déterminant, l'article "un".
 
 ---
 
@@ -168,19 +168,19 @@ from spacy.matcher import PhraseMatcher
 
 matcher = PhraseMatcher(nlp.vocab)
 
-pattern = nlp("Golden Retriever")
-matcher.add("DOG", None, pattern)
-doc = nlp("I have a Golden Retriever")
+pattern = nlp("Bouvier bernois")
+matcher.add("CHIEN", None, pattern)
+doc = nlp("J'ai un Bouvier bernois")
 
 # Itère sur les correspondances
 for match_id, start, end in matcher(doc):
     # Obtiens le span en correspondance
     span = doc[start:end]
-    print("Matched span:", span.text)
+    print("Span en correspondance :", span.text)
 ```
 
 ```out
-Matched span: Golden Retriever
+Span en correspondance : Bouvier bernois
 ```
 
 Notes: Ceci est un exemple.
@@ -192,8 +192,8 @@ Au lieu d'une liste de dictionnaires, on lui passe un objet `Doc` comme motif.
 
 On peut ensuite itérer sur les correspondances dans le texte, et obtenir l'ID de
 la correspondance, et le début et la fin de la portion en correspondance. Ceci
-nous permet de créer un objet `Span` pour les tokens correspondant à "Golden
-Retriever" afin de les analyser dans leur contexte.
+nous permet de créer un objet `Span` pour les tokens correspondant à "Bouvier
+bernois" afin de les analyser dans leur contexte.
 
 ---
 

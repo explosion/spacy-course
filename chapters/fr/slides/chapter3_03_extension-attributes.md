@@ -16,7 +16,7 @@ personnalisées.
 - Accessible via la propriété `._`
 
 ```python
-doc._.title = "My document"
+doc._.title = "Mon document"
 token._.is_color = True
 span._.has_color = False
 ```
@@ -74,7 +74,7 @@ from spacy.tokens import Token
 # Définis l'extension sur le Token avec une valeur par défaut
 Token.set_extension("is_color", default=False)
 
-doc = nlp("The sky is blue.")
+doc = nlp("Le ciel est bleu.")
 
 # Modifie la valeur de l'attribut étendu
 doc[3]._.is_color = True
@@ -87,7 +87,7 @@ Par exemple, un attribut personnalisé `is_color` sur le token qui possède une
 valeur par défaut définie à `False`.
 
 Sur des tokens individuels, sa valeur peut être modifiée en la remplaçant – dans
-le cas présent, True pour le token "blue".
+le cas présent, True pour le token "bleu".
 
 ---
 
@@ -101,18 +101,18 @@ from spacy.tokens import Token
 
 # Définit la fonction getter
 def get_is_color(token):
-    colors = ["red", "yellow", "blue"]
+    colors = ["rouge", "jaune", "bleu"]
     return token.text in colors
 
 # Définis l'extension de Token avec le getter
 Token.set_extension("is_color", getter=get_is_color)
 
-doc = nlp("The sky is blue.")
+doc = nlp("Le ciel est bleu.")
 print(doc[3]._.is_color, "-", doc[3].text)
 ```
 
 ```out
-True - blue
+Vrai - bleu
 ```
 
 Notes: Les extensions de propriétés fonctionnent comme les propriétés en Python
@@ -142,20 +142,20 @@ from spacy.tokens import Span
 
 # Définis la fonction getter
 def get_has_color(span):
-    colors = ["red", "yellow", "blue"]
+    colors = ["rouge", "jaune", "bleu"]
     return any(token.text in colors for token in span)
 
 # Définis l'extension de Span avec le getter
 Span.set_extension("has_color", getter=get_has_color)
 
-doc = nlp("The sky is blue.")
+doc = nlp("Le ciel est bleu.")
 print(doc[1:4]._.has_color, "-", doc[1:4].text)
 print(doc[0:2]._.has_color, "-", doc[0:2].text)
 ```
 
 ```out
-True - sky is blue
-False - The sky
+True - ciel est bleu
+False - Le ciel
 ```
 
 Notes: Si tu veux définir des attributs étendus sur un span, tu voudras presque
@@ -189,14 +189,14 @@ def has_token(doc, token_text):
 # Définis l'extension du Doc avec la méthode
 Doc.set_extension("has_token", method=has_token)
 
-doc = nlp("The sky is blue.")
-print(doc._.has_token("blue"), "- blue")
-print(doc._.has_token("cloud"), "- cloud")
+doc = nlp("Le ciel est bleu.")
+print(doc._.has_token("bleu"), "- bleu")
+print(doc._.has_token("nuage"), "- nuage")
 ```
 
 ```out
-True - blue
-False - cloud
+True - bleu
+False - nuage
 ```
 
 Notes: Les extensions de méthodes te permettent d'obtenir une extension
@@ -212,8 +212,8 @@ cas présent, le doc. Il est passé automatiquement quand la méthode est appel�
 Tous les autres arguments de la fonction seront des arguments de la méthode
 étendue. Dans le cas présent, `token_text`.
 
-Ici, la méthode personnalisée `._.has_token` retourne `True` pour le mot "blue"
-et `False` pour le mot "cloud".
+Ici, la méthode personnalisée `._.has_token` retourne `True` pour le mot "bleu"
+et `False` pour le mot "nuage".
 
 ---
 

@@ -14,15 +14,15 @@ importantes : le `Doc`, ainsi que ses vues `Token` et `Span`.
 
 ```python
 # Crée un objet nlp
-from spacy.lang.en import English
-nlp = English()
+from spacy.lang.fr import French
+nlp = French()
 
 # Importe la classe Doc
 from spacy.tokens import Doc
 
 # Les mots et les espaces à partir desquels créer le doc
-words = ["Hello", "world", "!"]
-spaces = [True, False, False]
+words = ["Bonjour", "monde", "!"]
+spaces = [True, True, False]
 
 # Crée un doc manuellement
 doc = Doc(nlp.vocab, words=words, spaces=spaces)
@@ -62,8 +62,8 @@ exclu !
 from spacy.tokens import Doc, Span
 
 # Les mots et les espaces à partir desquels créer le doc
-words = ["Hello", "world", "!"]
-spaces = [True, False, False]
+words = ["Bonjour", "monde", "!"]
+spaces = [True, True, False]
 
 # Crée un doc manuellement
 doc = Doc(nlp.vocab, words=words, spaces=spaces)

@@ -23,29 +23,29 @@ id: 2
 
 ### Partie 1
 
-- Recherche la chaine de caractères "cat" dans `nlp.vocab.strings` pour obtenir
+- Recherche la chaine de caractères "chat" dans `nlp.vocab.strings` pour obtenir
   le hash.
 - Recherche le hash pour revenir à la chaine de caractères.
 
 <codeblock id="02_02_01">
 
 - Tu peux utiliser le magasin de chaines de caractères `nlp.vocab.strings` comme
-  un dictionnaire Python normal. Par exemple `nlp.vocab.strings["unicorn"]` va
-  retourner le hash, et la recherche du hash va retourner la chaine `"unicorn"`.
+  un dictionnaire Python normal. Par exemple `nlp.vocab.strings["licorne"]` va
+  retourner le hash, et la recherche du hash va retourner la chaine `"licorne"`.
 
 </codeblock>
 
 ### Partie 2
 
-- Recherche l'étiquette de la chaine "PERSON" dans `nlp.vocab.strings` pour
-  obtenir le hash.
+- Recherche l'étiquette de la chaine "PER" dans `nlp.vocab.strings` pour obtenir
+  le hash.
 - Recherche le hash pour revenir à la chaine de caractères.
 
 <codeblock id="02_02_02">
 
 - Tu peux utiliser le magasin de chaines de caractères `nlp.vocab.strings` comme
-  un dictionnaire Python normal. Par exemple `nlp.vocab.strings["unicorn"]` va
-  retourner le hash, et la recherche du hash va retourner la chaine `"unicorn"`.
+  un dictionnaire Python normal. Par exemple `nlp.vocab.strings["licorne"]` va
+  retourner le hash, et la recherche du hash va retourner la chaine `"licorne"`.
 
 </codeblock>
 
@@ -56,11 +56,11 @@ id: 2
 Pourquoi ce code génère-t-il une erreur ?
 
 ```python
-from spacy.lang.en import English
+from spacy.lang.fr import French
 from spacy.lang.de import German
 
-# Crée un objet nlp pour l'anglais et un pour l'allemand
-nlp = English()
+# Crée un objet nlp pour le français et un pour l'allemand
+nlp = French()
 nlp_de = German()
 
 # Obtiens l'ID pour la chaine 'Bowie'
@@ -81,7 +81,7 @@ utilise le même vocabulaire pour résoudre le hash vers une chaine.
 
 </opt>
 
-<opt text='<code>"Bowie"</code> n’est pas un mot normal du dictionnaire en anglais ou en allemand, donc il ne peut pas être hashé.'>
+<opt text='<code>"Bowie"</code> n’est pas un mot normal du dictionnaire en français ou en allemand, donc il ne peut pas être hashé.'>
 
 N'importe quelle chaine de caractères peut être convertie en hash.
 
@@ -148,7 +148,7 @@ elles doivent être `False`.
 
 Fais attention aux tokens individuels. Pour voir comment spaCy effectue
 normalement cette chaine, tu peux essayer d'afficher les tokens pour
-`nlp("Oh, really?!")`.
+`nlp("Oh, vraiment ?!")`.
 
 </codeblock>
 
@@ -189,8 +189,8 @@ propres qui sont suivis par un verbe.
 ```python
 import spacy
 
-nlp = spacy.load("en_core_web_sm")
-doc = nlp("Berlin is a nice city")
+nlp = spacy.load("fr_core_news_sm")
+doc = nlp("Berlin est une jolie ville")
 
 # Obtiens tous les tokens et les étiquettes de partie de discours
 token_texts = [token.text for token in doc]
@@ -202,7 +202,7 @@ for index, pos in enumerate(pos_tags):
         # Vérifie si le token suivant est un verbe
         if pos_tags[index + 1] == "VERB":
             result = token_texts[index]
-            print("Found proper noun before a verb:", result)
+            print("Trouvé un nom propre avant un verbe :", result)
 ```
 
 ### Partie 1
@@ -267,11 +267,11 @@ L'attribut `.pos_` retourne l'étiquetage grossier de partie de discours et
 <exercise id="9" title="Inspecter des vecteurs de mots">
 
 Dans cet exercice, nous utiliserons un
-[modèle anglais](https://spacy.io/models/en) plus étendu, qui comporte environ
+[modèle français](https://spacy.io/models/fr) plus étendu, qui comporte environ
 20.000 vecteurs de mots. Le modèle est déjà pré-installé.
 
-- Charge le modèle moyen avec vecteurs de mots `"en_core_web_md"`.
-- Affiche le vecteur pour `"bananas"` en utilisant l'attribut `token.vector`.
+- Charge le modèle moyen avec vecteurs de mots `"fr_core_news_md"`.
+- Affiche le vecteur pour `"bananes"` en utilisant l'attribut `token.vector`.
 
 <codeblock id="02_09">
 
@@ -316,7 +316,7 @@ courant doit être comparé.
 
 ### Partie 3
 
-- Crée des spans pour "great restaurant" et "really nice bar".
+- Crée des spans pour "super restaurant" et "bar vraiment sympa".
 - Utilise `span.similarity` pour les comparer et afficher le résultat.
 
 <codeblock id="02_10_03"></codeblock>
@@ -339,7 +339,7 @@ pattern = [{"LOWER": "silicon"}, {"TEXT": " "}, {"LOWER": "valley"}]
 ```
 
 ```python
-doc = nlp("Can Silicon Valley workers rein in big tech from within?")
+doc = nlp("Pourquoi la Silicon Valley est-elle si prisée ?")
 ```
 
 <choice>
@@ -381,13 +381,13 @@ les motifs pour que chaque dictionnaire représente un token.
 - Édite `pattern1` pour qu'il trouve correctement toutes les mentions quelle que
   soit la casse pour `"Amazon"` suivi d'un nom propre commençant par une
   majuscule.
-- Édite `pattern2` pour qu'il trouve correctement toutes les mentions quelle que
-  soit la casse de `"ad-free"`, et d'un nom à la suite.
+- Édite `pattern2` pour qu'il trouve correctement toutes les mentions d'un nom
+  suivi de `"tout-compris"` quelle que soit sa casse.
 
 <codeblock id="02_13">
 
 - Essaie de traiter les chaines qui devraient être trouvées par l'objet `nlp` –
-  par exemple `[token.text for token in nlp("ad-free viewing")]`.
+  par exemple `[token.text for token in nlp("abonnement tout-compris")]`.
 - Inspecte les tokens et vérifie que chaque dictionnaire du motif décrit
   correctement un seul token.
 

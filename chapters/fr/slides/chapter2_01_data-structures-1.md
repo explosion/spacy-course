@@ -23,8 +23,8 @@ comment spaCy gère les chaines de caractères.
 - String store : **table de consultation** dans les deux sens
 
 ```python
-coffee_hash = nlp.vocab.strings["coffee"]
-coffee_string = nlp.vocab.strings[coffee_hash]
+souvent_hash = nlp.vocab.strings["souvent"]
+souvent_string = nlp.vocab.strings[souvent_hash]
 ```
 
 - Les hashs ne peuvent pas être inversés – c'est pourquoi nous avons besoin de
@@ -32,7 +32,7 @@ coffee_string = nlp.vocab.strings[coffee_hash]
 
 ```python
 # Génère une erreur si nous n'avons pas déjà vu la chaine avant
-string = nlp.vocab.strings[3197928453018144401]
+string = nlp.vocab.strings[821433950267086228]
 ```
 
 Notes: spaCy stocke toutes les données partagées dans un vocabulaire, le Vocab.
@@ -64,25 +64,25 @@ devons toujours fournir le vocabulaire partagé.
 - Recherche de la chaine et du hash dans `nlp.vocab.strings`
 
 ```python
-doc = nlp("I love coffee")
-print("hash value:", nlp.vocab.strings["coffee"])
-print("string value:", nlp.vocab.strings[3197928453018144401])
+doc = nlp("Ines nage souvent")
+print("valeur de hash :", nlp.vocab.strings["souvent"])
+print("valeur de chaine :", nlp.vocab.strings[821433950267086228])
 ```
 
 ```out
-hash value: 3197928453018144401
-string value: coffee
+valeur de hash : 821433950267086228
+valeur de chaine : souvent
 ```
 
 - Le `doc` expose aussi le vocabulaire et les chaines
 
 ```python
-doc = nlp("I love coffee")
-print("hash value:", doc.vocab.strings["coffee"])
+doc = nlp("Ines nage souvent")
+print("valeur de hash :", doc.vocab.strings["souvent"])
 ```
 
 ```out
-hash value: 3197928453018144401
+valeur de hash : 821433950267086228
 ```
 
 Notes: Pour obtenir le hash d'une chaine, nous pouvons le rechercher dans
@@ -100,15 +100,15 @@ Un objet `Doc` expose aussi son vocabulaire et les chaines.
 - Un objet `Lexeme` est un élément du vocabulaire
 
 ```python
-doc = nlp("I love coffee")
-lexeme = nlp.vocab["coffee"]
+doc = nlp("Ines nage souvent")
+lexeme = nlp.vocab["souvent"]
 
 # Affiche les attributs lexicaux
 print(lexeme.text, lexeme.orth, lexeme.is_alpha)
 ```
 
 ```out
-coffee 3197928453018144401 True
+souvent 821433950267086228 True
 ```
 
 - Contient les informations **indépendantes du contexte** à propos d'un mot
@@ -134,12 +134,12 @@ de dépendances. Ceux-ci dépendent du contexte.
 
 # Vocabulaire, hashs et lexèmes
 
-<img src="/vocab_stringstore.png" width="70%" alt="Illustration des mots 'I', 'love' and 'coffee' dans le Doc, Vocab et StringStore" />
+<img src="/vocab_stringstore_fr.png" width="70%" alt="Illustration des mots 'Ines', 'nage' et 'souvent' dans le Doc, Vocab et StringStore" />
 
 Notes: Voici un exemple.
 
 Le `Doc` contient les mots dans leur contexte – dans le cas présent, les tokens
-"I", "love" et "coffee" avec leurs étiquettes de partie de discours et leurs
+"Ines", "nage" et "souvent" avec leurs étiquettes de partie de discours et leurs
 dépendances.
 
 Chaque token fait référence à un lexème, qui connait l'ID de hash du mot. Pour
