@@ -16,7 +16,7 @@ def test():
         len(pattern1[1]) == 1
     ), "pattern1中的第二个词符应该有一个属性。"
     assert any(
-        pattern1[1].get(attr) == True for attr in ("text", "TEXT")
+        pattern1[1].get(attr) == "笔记本" for attr in ("text", "TEXT")
     ), "请检查pattern1中的第二个词符的属性和值。"
 
     # Pattern 2 validation

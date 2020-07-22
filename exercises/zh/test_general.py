@@ -16,7 +16,7 @@ def test_01_08_02_predictions(nlp):
     doc = nlp(text)
     ents = [(ent.text, ent.label_) for ent in doc.ents]
     assert len(ents) == 3
-    assert ents[0] == ("美国", "ORG")
+    assert ents[0] == ("美国", "GPE")
     assert ents[1] == ("第一", "ORDINAL")
     assert ents[2] == ("一万亿美元", "MONEY")
 
