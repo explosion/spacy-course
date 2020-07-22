@@ -139,7 +139,7 @@
         "title": "NLP avancé avec spaCy",
         "slogan": "Un cours en ligne gratuit",
         "description": "spaCy est une bibliothèque Python moderne pour le Traitement Automatique du Langage Naturel de qualité industrielle. Dans ce cours en ligne gratuit et interactif, tu vas apprendre comment utiliser spaCy pour construire des systèmes avancés de compréhension du langage naturel, utilisant à la fois des approches à base de règles et d'apprentissage automatique.",
-        "bio": "Je m'appelle Inès, je suis l'un des principaux développeurs de spaCy et la co-fondatrice d'Explosion. Je suis spécialisée dans les outils de développement modernes pour l'IA, l'apprentissage automatique et le NLP. J'adore aussi construire des trucs pour le web.",
+        "bio": "Je m'appelle Ines, je suis l'un des principaux développeurs de spaCy et la co-fondatrice d'Explosion. Je suis spécialisée dans les outils de développement modernes pour l'IA, l'apprentissage automatique et le NLP. J'adore aussi construire des trucs pour le web.",
         "footerLinks": [
             {
                 "text": "Site web de spaCy",
