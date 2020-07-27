@@ -3,8 +3,8 @@ import spacy
 # 导入Matcher
 from spacy.____ import ____
 
-nlp = spacy.load("en_core_web_sm")
-doc = nlp("Upcoming iPhone X release date leaked as Apple reveals pre-orders")
+nlp = spacy.load("zh_core_web_sm")
+doc = nlp("苹果公布了预购细节，泄露了即将到来的iPhone X的发布日期。")
 
 # 用模型分享的词汇表初始化Matcher
 matcher = ____(____.____)

@@ -1,14 +1,14 @@
 import spacy
 
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("zh_core_web_sm")
 text = (
-    "Chick-fil-A is an American fast food restaurant chain headquartered in "
-    "the city of College Park, Georgia, specializing in chicken sandwiches."
+    "在300多年的风雨历程中，历代同仁堂人始终恪守“炮制虽繁必不敢省人工，品味虽贵必不敢减物力”的古训，"
+    "树立“修合无人见，存心有天知”的自律意识，造就了制药过程中兢兢小心、精益求精的严细精神。"
 )
 
-# Disable the tagger and parser
+# 关闭tagger和parser
 with nlp.disable_pipes("tagger", "parser"):
-    # Process the text
+    # 处理文本
     doc = nlp(text)
-    # Print the entities in the doc
+    # 打印doc中的实体
     print(doc.ents)

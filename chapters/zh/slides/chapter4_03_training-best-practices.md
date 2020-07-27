@@ -43,7 +43,7 @@ Notes: 统计模型可以学会很多东西，但这不代表它不会忘记东�
 
 ```python
 TRAINING_DATA = [
-    ("Reddit is a website", {"entities": [(0, 6, "WEBSITE")]})
+    ("阿里巴巴是一个网站", {"entities": [(0, 1, "WEBSITE")]})
 ]
 ```
 
@@ -51,8 +51,8 @@ TRAINING_DATA = [
 
 ```python
 TRAINING_DATA = [
-    ("Reddit is a website", {"entities": [(0, 6, "WEBSITE")]}),
-    ("Obama is a person", {"entities": [(0, 5, "PERSON")]})
+    ("阿里巴巴是一个网站", {"entities": [(0, 1, "WEBSITE")]}),
+    ("马云是一个人", {"entities": [(0, 1, "PERSON")]})
 ]
 ```
 
@@ -86,7 +86,7 @@ spaCy的模型是基于本地语境作出预测，比如对命名实体来说，
 标签种类最好前后一致，也不要过于特殊。
 
 举个例子，可能模型很难学会基于语境预测一段文本是成人服饰还是儿童服饰，但如果
-只是预测“服饰”模型就能表现得好很多。、
+只是预测“服饰”模型就能表现得好很多。
 
 ---
 

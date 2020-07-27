@@ -1,6 +1,6 @@
 import spacy
 
-# 读取en_core_web_sm模型
+# 读取zh_core_web_sm模型
 nlp = ____
 
 # 打印流程组件的名字

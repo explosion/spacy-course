@@ -1,10 +1,10 @@
-from spacy.lang.en import English
+import spacy
 
-nlp = English()
-doc = nlp("I have a cat")
+nlp = spacy.load("zh_core_web_sm")
+doc = nlp("我养了一只猫。")
 
-# 查找词汇"cat"的哈希值
-cat_hash = nlp.vocab.strings["cat"]
+# 查找词汇"猫"的哈希值
+cat_hash = nlp.vocab.strings["猫"]
 print(cat_hash)
 
 # 查找cat_hash来得到字符串

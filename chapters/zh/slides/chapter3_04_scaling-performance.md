@@ -47,8 +47,8 @@ Notes: 如果我们要处理很多段文本然后创建一系列的`Doc`实例�
 
 ```python
 data = [
-    ("This is a text", {"id": 1, "page_number": 15}),
-    ("And another text", {"id": 2, "page_number": 16}),
+    ("这是一段文本", {"id": 1, "page_number": 15}),
+    ("以及另一段文本", {"id": 2, "page_number": 16}),
 ]
 
 for doc, context in nlp.pipe(data, as_tuples=True):
@@ -56,8 +56,8 @@ for doc, context in nlp.pipe(data, as_tuples=True):
 ```
 
 ```out
-This is a text 15
-And another text 16
+这是一段文本 15
+以及另一段文本 16
 ```
 
 Notes: `nlp.pipe`支持传入文本/语境的元组，我们只需要设置`as_tuples`为`True`。
@@ -77,8 +77,8 @@ Doc.set_extension("id", default=None)
 Doc.set_extension("page_number", default=None)
 
 data = [
-    ("This is a text", {"id": 1, "page_number": 15}),
-    ("And another text", {"id": 2, "page_number": 16}),
+    ("这是一段文本", {"id": 1, "page_number": 15}),
+    ("以及另一段文本", {"id": 2, "page_number": 16}),
 ]
 
 for doc, context in nlp.pipe(data, as_tuples=True):

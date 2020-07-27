@@ -42,7 +42,7 @@ on peut alors enregistrer le modèle dans un répertoire et l'utiliser dans spaC
 
 # Récap : Comment fonctionne l'apprentissage
 
-<img src="/training.png" alt="Diagramme du processus d'apprentissage" />
+<img src="/training_fr.png" alt="Diagramme du processus d'apprentissage" />
 
 - **Données d'apprentissage :** Exemples et leurs annotations.
 - **Texte :** Le texte à partir duquel le modèle doit prédire un label.

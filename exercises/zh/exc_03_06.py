@@ -9,8 +9,8 @@ def length_component(doc):
     ____
 
 
-# 读取小规模的英文模型
-nlp = spacy.load("en_core_web_sm")
+# 读取小规模的中文模型
+nlp = spacy.load("zh_core_web_sm")
 
 # 将组件加入到流程的最前面，打印流程组件名
 ____.____(____)

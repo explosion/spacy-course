@@ -1,9 +1,9 @@
 import spacy
 
-# 读取"en_core_web_sm"模型
+# 读取"zh_core_web_sm"模型
 nlp = ____
 
-text = "It’s official: Apple is the first U.S. public company to reach a $1 trillion market value"
+text = "写入历史了：苹果是美国第一家市值超过一万亿美元的上市公司。"
 
 # 处理文本
 doc = ____

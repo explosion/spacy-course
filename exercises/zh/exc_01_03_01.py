@@ -1,10 +1,10 @@
-# 导入英文语言类创建nlp对象
+# 导入中文语言类创建nlp对象
 from ____ import ____
 
 nlp = ____
 
 # 处理文本
-doc = ____("I like tree kangaroos and narwhals.")
+doc = ____("我喜欢老虎和狮子。")
 
 # 选择第一个词符
 first_token = doc[____]

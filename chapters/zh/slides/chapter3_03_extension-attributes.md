@@ -68,17 +68,17 @@ from spacy.tokens import Token
 # 为Token设置一个有默认值的扩展
 Token.set_extension("is_color", default=False)
 
-doc = nlp("The sky is blue.")
+doc = nlp("天空是蓝色的。")
 
 # 覆盖默认扩展特性的值
-doc[3]._.is_color = True
+doc[2]._.is_color = True
 ```
 
 Notes: 特性扩展设置一个可被覆盖的默认值。
 
 举个例子，我们可以为词符设置一个定制化的`is_color`特性，默认值是`False`。
 
-对词符个体，其扩展特性值可以被覆盖重写。在这个例子中，"blue"词符的扩展特性值被写为True。
+对词符个体，其扩展特性值可以被覆盖重写。在这个例子中，"蓝色"词符的扩展特性值被写为True。
 
 ---
 
@@ -92,18 +92,18 @@ from spacy.tokens import Token
 
 # 定义取值器函数
 def get_is_color(token):
-    colors = ["red", "yellow", "blue"]
+    colors = ["红色", "黄色", "蓝色"]
     return token.text in colors
 
 # 为词符设置有取值器的扩展
 Token.set_extension("is_color", getter=get_is_color)
 
-doc = nlp("The sky is blue.")
-print(doc[3]._.is_color, "-", doc[3].text)
+doc = nlp("天空是蓝色的。")
+print(doc[2]._.is_color, "-", doc[2].text)
 ```
 
 ```out
-True - blue
+True - 蓝色
 ```
 
 Notes: 属性扩展的工作方式和Python中的属性（property）一样：它们可以定义一个
@@ -117,7 +117,7 @@ Notes: 属性扩展的工作方式和Python中的属性（property）一样：�
 
 我们注册扩展的时候就可以通过`getter`关键字参数来提供这个函数。
 
-词符"blue"现在调用`._.is_color`就会返回`True`了。
+词符"蓝色"现在调用`._.is_color`就会返回`True`了。
 
 ---
 
@@ -130,20 +130,20 @@ from spacy.tokens import Span
 
 # 定义取值器函数
 def get_has_color(span):
-    colors = ["red", "yellow", "blue"]
+    colors = ["红色", "黄色", "蓝色"]
     return any(token.text in colors for token in span)
 
 # 为Span设置一个带有取值器getter的扩展
 Span.set_extension("has_color", getter=get_has_color)
 
-doc = nlp("The sky is blue.")
+doc = nlp("天空是蓝色的")
 print(doc[1:4]._.has_color, "-", doc[1:4].text)
 print(doc[0:2]._.has_color, "-", doc[0:2].text)
 ```
 
 ```out
-True - sky is blue
-False - The sky
+True - 是蓝色的
+False - 天空是
 ```
 
 Notes: 如果我们想给span设置一个拓展属性，大部分时间我们应该用一个带取值函数
@@ -172,14 +172,14 @@ def has_token(doc, token_text):
 # 在doc上设置方法扩展
 Doc.set_extension("has_token", method=has_token)
 
-doc = nlp("The sky is blue.")
-print(doc._.has_token("blue"), "- blue")
-print(doc._.has_token("cloud"), "- cloud")
+doc = nlp("天空是蓝色的。")
+print(doc._.has_token("蓝色"), "- 蓝色")
+print(doc._.has_token("云朵"), "- 云朵")
 ```
 
 ```out
-True - blue
-False - cloud
+True - 蓝色
+False - 云朵
 ```
 
 Notes: 方法扩展使扩展属性变为一个可调用的方法。
