@@ -64,7 +64,7 @@ Notes: spaCy提供了很多预训练好的模型包，我们可以用`spacy down
 ```python
 import spacy
 
-# 读取小版本的英文模型
+# 读取小版本的中文模型
 nlp = spacy.load("zh_core_web_sm")
 
 # 处理文本
