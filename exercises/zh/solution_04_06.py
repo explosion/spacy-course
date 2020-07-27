@@ -1,7 +1,7 @@
 import spacy
 
-# 创建一个空的"en"模型
-nlp = spacy.blank("en")
+# 创建一个空的"zh"模型
+nlp = spacy.blank("zh")
 
 # 创建一个空的命名实体识别器并加入到流程中
 ner = nlp.create_pipe("ner")

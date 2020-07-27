@@ -1,8 +1,11 @@
 import spacy
 
-nlp = spacy.load("en_core_web_md")
+nlp = spacy.load("zh_core_web_md")
 
-doc = nlp("This was a great restaurant. Afterwards, we went to a really nice bar.")
+doc = nlp("这是一家不错的餐厅。之后我们又去了一家很好的酒吧。")
+
+for i, token in enumerate(doc):
+    print(i, token.text)
 
 # 给"great restaurant"和"really nice bar"分别创建span
 span1 = ____

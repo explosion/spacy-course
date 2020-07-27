@@ -1,8 +1,8 @@
-from spacy.lang.en import English
+from spacy.lang.zh import Chinese
 
-nlp = English()
+nlp = Chinese()
 
-people = ["David Bowie", "Angela Merkel", "Lady Gaga"]
+people = ["周杰伦", "庞麦郎", "诸葛亮"]
 
 # 为PhraseMatcher创建一个模板列表
 patterns = [nlp(person) for person in people]

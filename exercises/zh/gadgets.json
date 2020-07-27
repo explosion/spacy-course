@@ -1,8 +1,9 @@
 [
-    ["How to preorder the iPhone X", { "entities": [[20, 28, "GADGET"]] }],
-    ["iPhone X is coming", { "entities": [[0, 8, "GADGET"]] }],
-    ["Should I pay $1,000 for the iPhone X?", { "entities": [[28, 36, "GADGET"]] }],
-    ["The iPhone 8 reviews are here", { "entities": [[4, 12, "GADGET"]] }],
-    ["Your iPhone goes up to 11 today", { "entities": [[5, 11, "GADGET"]] }],
-    ["I need a new phone! Any tips?", { "entities": [] }]
+    ["如何预定iPhone X", {"entities": [[4, 12, "GADGET"]] }],
+    ["iPhone X就要来了", {"entities": [[0, 8, "GADGET"]] }],
+    ["为买一个iPhone X花上万块钱值得吗？", {"entities": [[4, 12, "GADGET"]] }],
+    ["iPhone 8的评测出来了", {"entities": [[0, 8, "GADGET"]] }],
+    ["最新的iPhone已经到第11代了", {"entities": [[3, 9, "GADGET"]] }],
+    ["我急需一部新手机，给点建议吧！", {"entities": [] }]
 ]
+

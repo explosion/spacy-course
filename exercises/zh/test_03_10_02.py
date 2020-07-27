@@ -7,7 +7,7 @@ def test():
         'span._.to_html("strong")' in __solution__
     ), "你有读取到定制化属性了吗？"
     assert (
-        span._.to_html("strong") == "<strong>Hello world</strong>"
+        span._.to_html("strong") == "<strong>大家好</strong>"
     ), "貌似这个方法返回的值是错误的。"
 
     __msg__.good(

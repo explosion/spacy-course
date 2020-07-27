@@ -9,8 +9,8 @@ def test():
         len(pattern[0]) == 1 and len(pattern[1]) == 1
     ), "模板中的每一项应该只有一个键。"
     assert any(
-        pattern[0].get(key) == "download" for key in ["lemma", "LEMMA"]
-    ), "你有和第一个词符的词根匹配吗？"
+        pattern[0].get(key) == "下载" for key in ["text", "TEXT"]
+    ), "你有和第一个词符的文本匹配吗？"
     assert any(
         pattern[1].get(key) == "PROPN" for key in ["pos", "POS"]
     ), "你有和第二个词符的词性标注匹配吗？你有使用正确的代词符号吗？"

@@ -2,8 +2,8 @@ def test():
     assert (
         "span1.similarity(span2)" or "span2.similarity(span1)" in __solution__
     ), "你有计算两个span之间的相似度吗？"
-    assert span1.text == "great restaurant", "你有正确生成span1吗？"
-    assert span2.text == "really nice bar", "你有正确生成span2吗？"
+    assert span1.text == "不错的餐厅", "你有正确生成span1吗？"
+    assert span2.text == "很好的酒吧", "你有正确生成span2吗？"
     assert (
         0 <= float(similarity) <= 1
     ), "相似度分数是一个浮点数。你确定你计算正确了吗？"

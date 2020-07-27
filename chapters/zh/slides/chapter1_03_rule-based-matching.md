@@ -22,7 +22,6 @@ Notes: 与正则表达式相比，matcher是配合`Doc`和`Token`这样的方法
 同时matcher使用上也更加灵活：我们不只可以搜索文本，也可以搜索其它的词法属性。
 
 我们甚至可以直接调用模型的预测结果来写规则。
-You can even write rules that use the model's predictions.
 
 比如，寻找那些是动词而不是名词的"duck"词汇
 
@@ -70,7 +69,7 @@ import spacy
 from spacy.matcher import Matcher
 
 # 读取一个模型，创建nlp实例
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("zh_core_web_sm")
 
 # 用模型分享出的vocab初始化matcher
 matcher = Matcher(nlp.vocab)
@@ -80,7 +79,7 @@ pattern = [{"TEXT": "iPhone"}, {"TEXT": "X"}]
 matcher.add("IPHONE_PATTERN", None, pattern)
 
 # 处理文本
-doc = nlp("Upcoming iPhone X release date leaked")
+doc = nlp("即将上市的iPhone X发布日期被泄露了")
 
 # 在doc上面调用matcher
 matches = matcher(doc)
@@ -107,7 +106,7 @@ Notes: 要使用模板我们首先从`spacy.matcher`中导入matcher。
 
 ```python
 # 在doc上调用matcher
-doc = nlp("Upcoming iPhone X release date leaked")
+doc = nlp("即将上市的iPhone X发布日期被泄露了")
 matches = matcher(doc)
 
 # 遍历所有的匹配结果
@@ -139,19 +138,19 @@ Notes: 当你对doc调用matcher时会返回一个列表，列表中的每个元
 ```python
 pattern = [
     {"IS_DIGIT": True},
-    {"LOWER": "fifa"},
-    {"LOWER": "world"},
-    {"LOWER": "cup"},
+    {"LOWER": "国际"},
+    {"LOWER": "足联"},
+    {"LOWER": "世界杯"},
     {"IS_PUNCT": True}
 ]
 ```
 
 ```python
-doc = nlp("2018 FIFA World Cup: France won!")
+doc = nlp("2018国际足联世界杯：法国队赢了！")
 ```
 
 ```out
-2018 FIFA World Cup:
+2018国际足联世界杯：
 ```
 
 Notes: 这是一个用到词汇属性的更复杂的匹配模板的例子。
@@ -160,11 +159,11 @@ Notes: 这是一个用到词汇属性的更复杂的匹配模板的例子。
 
 一个只含有数字的词符；
 
-三个对大小写不敏感的匹配到"fifa", "world"和"cup"的词符；
+三个匹配到"国际", "足联"和"世界杯"的词符；
 
 以及一个标点符号词符。
 
-这个模板最后可以匹配到"2018 FIFA World Cup:"。
+这个模板最后可以匹配到"2018国际足联世界杯："。
 
 ---
 
@@ -172,25 +171,25 @@ Notes: 这是一个用到词汇属性的更复杂的匹配模板的例子。
 
 ```python
 pattern = [
-    {"LEMMA": "love", "POS": "VERB"},
+    {"LEMMA": "喜欢", "POS": "VERB"},
     {"POS": "NOUN"}
 ]
 ```
 
 ```python
-doc = nlp("I loved dogs but now I love cats more.")
+doc = nlp("我喜欢狗但我更喜欢猫。")
 ```
 
 ```out
-loved dogs
-love cats
+喜欢狗
+喜欢猫
 ```
 
 Note: 这个例子中我们寻找两个词符：
 
-一个词根是"love"的动词，后面跟着一个名词。
+一个词根是"喜欢"的动词，后面跟着一个名词。
 
-这个模板最后可以匹配到"loved dogs"和"love cats"。
+这个模板最后可以匹配到"喜欢狗"和"喜欢猫"。
 
 ---
 
@@ -198,26 +197,26 @@ Note: 这个例子中我们寻找两个词符：
 
 ```python
 pattern = [
-    {"LEMMA": "buy"},
-    {"POS": "DET", "OP": "?"},  # 可选: 匹配0次或者1次
+    {"LEMMA": "买"},
+    {"POS": "NUM", "OP": "?"},  # 可选: 匹配0次或者1次
     {"POS": "NOUN"}
 ]
 ```
 
 ```python
-doc = nlp("I bought a smartphone. Now I'm buying apps.")
+doc = nlp("我买个肉夹馍。我还要买凉皮。")
 ```
 
 ```out
-bought a smartphone
-buying apps
+买个肉夹馍
+买凉皮
 ```
 
 Notes: 我们可以使用运算符和量词来定义一个词符应该被匹配几次。
 我们可以用"OP"这个关键词来添加它们。
 
 在这里"?"运算符使相应的判断词符变为可选，
-所以我们会匹配到一个词根为"buy"的词符，一个可选的冠词和一个名词。
+所以我们会匹配到一个词根为"买"的词符，一个可选的数词和一个名词。
 
 ---
 

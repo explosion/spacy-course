@@ -1,18 +1,17 @@
 import spacy
 from spacy.matcher import Matcher
 
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("zh_core_web_sm")
 matcher = Matcher(nlp.vocab)
 
 doc = nlp(
-    "Features of the app include a beautiful design, smart search, automatic "
-    "labels and optional voice responses."
+    "这个app的特性包括了优雅设计、快捷搜索、自动标签以及可选声音。"
 )
 
 # 写一个模板是形容词加上一个或者两个名词
 pattern = [{"POS": "ADJ"}, {"POS": "NOUN"}, {"POS": "NOUN", "OP": "?"}]
 
-# 把模板加入到matcher中然后把marcher应用到doc上面
+# 把模板加入到matcher中然后把matcher应用到doc上面
 matcher.add("ADJ_NOUN_PATTERN", None, pattern)
 matches = matcher(doc)
 print("Total matches found:", len(matches))

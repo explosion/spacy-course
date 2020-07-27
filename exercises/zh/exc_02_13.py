@@ -1,21 +1,16 @@
 import spacy
 from spacy.matcher import Matcher
 
-nlp = spacy.load("en_core_web_sm")
-doc = nlp(
-    "Twitch Prime, the perks program for Amazon Prime members offering free "
-    "loot, games and other benefits, is ditching one of its best features: "
-    "ad-free viewing. According to an email sent out to Amazon Prime members "
-    "today, ad-free viewing will no longer be included as a part of Twitch "
-    "Prime for new members, beginning on September 14. However, members with "
-    "existing annual subscriptions will be able to continue to enjoy ad-free "
-    "viewing until their subscription comes up for renewal. Those with "
-    "monthly subscriptions will have access to ad-free viewing until October 15."
-)
+nlp = spacy.load("zh_core_web_sm")
+
+doc = nlp("荣耀将于7月16日发布新一代 MagicBook 锐龙笔记本，显然会配备7nm工艺、Zen2 架构的"
+          "全新锐龙4000系列，但具体采用低功耗的锐龙4000U 系列，还是高性能的锐龙4000H 系列，"
+          "目前还没有官方消息。今天，推特曝料大神公布了全新 MagicBook Pro 锐龙本的配置情况。"
+         )
 
 # 创建匹配模板
-pattern1 = [{"LOWER": "Amazon"}, {"IS_TITLE": True, "POS": "PROPN"}]
-pattern2 = [{"LOWER": "ad-free"}, {"POS": "NOUN"}]
+pattern1 = [{"POS": "ADJ"},{"TEXT": "笔记本"}]
+pattern2 = [{"TEXT": "锐龙"}, {"LIKE_NUM": True}, {"IS_ASCII": True}]
 
 # 初始化matcher并加入模板
 matcher = Matcher(nlp.vocab)

@@ -20,26 +20,26 @@ id: 1
 
 让我们来一起开始使用spaCy吧！这个例子中我们会尝试用到55+个[spaCy支持的语言](https://spacy.io/usage/models#languages)中的一些。
 
-### 第一部分: 英语
+### 第一部分: 中文
+
+- 从`spacy.lang.zh`中导入`Chinese`类然后创建`nlp`对象。
+- 创建`doc`并打印其中的文本。
+
+<codeblock id="01_02_04"></codeblock>
+
+### 第二部分: 英语
 
 - 从`spacy.lang.en`中导入`English`类然后创建`nlp`对象。
 - 创建`doc`并打印其中的文本。
 
 <codeblock id="01_02_01"></codeblock>
 
-### 第二部分: 德语
+### 第三部分: 德语
 
 - 从`spacy.lang.de`中导入`German`类然后创建`nlp`对象。
 - 创建`doc`并打印其中的文本。
 
 <codeblock id="01_02_02"></codeblock>
-
-### 第三部分: 西班牙语
-
-- 从`spacy.lang.es`中导入`Spanish`类然后创建`nlp`对象。
-- 创建`doc`并打印其中的文本。
-
-<codeblock id="01_02_03"></codeblock>
 
 </exercise>
 
@@ -50,7 +50,7 @@ id: 1
 
 ### 第一步
 
-- 导入`English`的语言类然后创建`nlp`的对象
+- 导入`Chinese`的语言类然后创建`nlp`的对象
 - 处理文本，然后在`doc`变量中创建一个`Doc`对象的实例。
 - 选取`Doc`中的第一个词符并打印出它的`text`。
 
@@ -64,9 +64,9 @@ id: 1
 
 ### 第二步
 
-- 导入`English`的语言类然后创建`nlp`的对象
+- 导入`Chinese`的语言类然后创建`nlp`的对象
 - 处理文本，然后在`doc`变量中创建一个`Doc`对象的实例。
-- 从`Doc`中截取其部分的词符"tree kangaroos"和"treekangaroos and narwhals"。
+- 从`Doc`中截取其部分的词符"老虎"和"老虎和狮子"。
 
 <codeblock id="01_03_02">
 
@@ -81,11 +81,11 @@ id: 1
 <exercise id="4" title="词汇属性">
 
 在这个例子中，我们要使用spaCy中的`Doc`和`Token`对象以及一些词汇属性来寻找文本中
-表示百分比的部分。我们要寻找两个相邻的词符：一个数字和一个百分比符号。
+表示百分比的部分。我们要寻找两个相邻的词符：一个人民币符号和一个数字。
 
-- 使用词符属性`like_num`来检查一个`doc`中的词符是否构成一个数字。
+- 检查词符的`text`属性是否是人民币符号"￥"。
 - 获取文档中_紧接着_当前词符的词符。`doc`中下一个词符的索引是`token.i + 1`。
-- 检查下一个词符的`text`属性是否是百分比符号"%"。
+- 使用词符属性`like_num`来检查下一个`doc`中的词符是否构成一个数字。
 
 <codeblock id="01_04">
 
@@ -142,7 +142,7 @@ spaCy可以读入的模型包中**不包含**以下哪项？
 如果你想了解更多关于spaCy的统计模型以及如何在自己的电脑上安装这些模型，
 可以参考[这份文档](https://spacy.io/usage/models)。
 
-- 使用`spacy.load`来调用一个比较小的英文模型`"en_core_web_sm"`。
+- 使用`spacy.load`来调用一个比较小的中文模型`"zh_core_web_sm"`。
 - 处理文档并打印出文档中的文字。
 
 <codeblock id="01_07">
@@ -251,7 +251,7 @@ spaCy可以读入的模型包中**不包含**以下哪项？
 <codeblock id="01_12_01">
 
 - 要精确匹配词符到某一段文字，我们可以使用`TEXT`属性。
-  举个例子，`{"TEXT": "Apple"}`会精确匹配到所有文本是"Apple"的词符。
+  举个例子，`{"TEXT": "苹果"}`会精确匹配到所有文本是"苹果"的词符。
 - 要匹配一个数字的词符，我们可以使用`"IS_DIGIT"`属性，
   该属性当目标词符只含有数字时会返回`True`。
 

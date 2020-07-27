@@ -1,5 +1,5 @@
 def test():
-    assert "for ent in doc.ents" in __solution__, "Are you iterating over the entities?"
+    assert "for ent in doc.ents" in __solution__, "你有遍历所有实体吗？"
     assert (
         "print(ent.text, ent.label_)" in __solution__
     ), "你有打印文本和标注吗？"
