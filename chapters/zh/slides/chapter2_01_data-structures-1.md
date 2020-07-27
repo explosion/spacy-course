@@ -116,7 +116,7 @@ Lexeme中没有词性标注、依存关系或者实体标签这些和语境关�
 
 # Vocab, 哈希值和语素
 
-<img src="/vocab_stringstore.png" width="70%" alt="'I'、'love'和'coffee'三个词在Doc、Vocab和StringStore中的图解" />
+<img src="/vocab_stringstore_zh.png" width="70%" alt="'I'、'love'和'coffee'三个词在Doc、Vocab和StringStore中的图解" />
 
 Notes: 我们来看一个例子。
 
