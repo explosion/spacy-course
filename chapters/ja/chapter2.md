@@ -171,7 +171,7 @@ spaCyが普段どのように文字列をトークン化しているかを見る
 import spacy
 
 nlp = spacy.load("en_core_web_sm")
-doc = nlp("Berlin is a nice city")
+doc = nlp("Berlin looks like a nice city")
 
 # 全てのトークンと品詞タグを取得
 token_texts = [token.text for token in doc]

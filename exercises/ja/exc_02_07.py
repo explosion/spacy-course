@@ -1,7 +1,7 @@
 import spacy
 
 nlp = spacy.load("en_core_web_sm")
-doc = nlp("Berlin is a nice city")
+doc = nlp("Berlin looks like a nice city")
 
 # すべてのトークンの文字列と品詞タグを取得
 token_texts = [token.text for token in doc]
