@@ -41,6 +41,13 @@ id: 1
 
 <codeblock id="01_02_03"></codeblock>
 
+### パート4: 日本語
+
+- `Japanese`クラスを`spacy.lang.ja`からインポートし、`nlp`オブジェクトを作ってください。
+- `doc`オブジェクトを作り、文字列をプリントしてください。
+
+<codeblock id="01_02_04"></codeblock>
+
 </exercise>
 
 <exercise id="3" title="ドキュメントとスパンとトークン">
