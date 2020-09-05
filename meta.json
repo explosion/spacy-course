@@ -6,7 +6,7 @@
     "testTemplate": "from wasabi import msg\nimport warnings\nfrom black import format_str, FileMode\n\nwarnings.filterwarnings('ignore', message=r'\\[W033\\]', category=UserWarning)\nfile_mode = FileMode()\n\ndef blacken(code):\n    try:\n        return format_str(code, mode=file_mode)\n    except:\n        return code\n\n__msg__ = msg\n__solution__ = blacken(\"\"\"${solution}\"\"\")\n\n${solution}\n\n${test}\n\ntry:\n    test()\nexcept AssertionError as e:\n    __msg__.fail(e)",
     "pytestTemplate": "from wasabi import msg\nimport warnings\nfrom black import format_str, FileMode\n\nwarnings.filterwarnings('ignore', message=r'\\[W033\\]', category=UserWarning)\nfile_mode = FileMode()\n\ndef blacken(code):\n    try:\n        return format_str(code, mode=file_mode)\n    except:\n        return code\n\n__msg__ = msg\n__solution__ = blacken(\"\"\"${solution}\"\"\")\n\n${solution}\n\n${test}\n\ntest()",
     "juniper": {
-        "repo": "ines/spacy-course",
+        "repo": "hiroshi-matsuda-rit/spacy-course",
         "branch": "binder",
         "kernelType": "python3",
         "debug": false
