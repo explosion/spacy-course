@@ -83,13 +83,13 @@ Notes: ここに、処理の図を示します。
 - データは文脈に沿ったものである必要があります
 
 ```python
-("iPhone X is coming", {"entities": [(0, 8, "GADGET")]})
+("iPhone Xが発売される", {"entities": [(0, 8, "GADGET")]})
 ```
 
 - 固有表現のないテキストも重要です
 
 ```python
-("I need a new phone! Any tips?", {"entities": []})
+("新しいスマホが欲しい！どうしたらいい？", {"entities": []})
 ```
 
 - **Goal:** モデルを汎化させる
