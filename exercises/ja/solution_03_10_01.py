@@ -1,7 +1,7 @@
-from spacy.lang.en import English
+from spacy.lang.ja import Japanese
 from spacy.tokens import Doc
 
-nlp = English()
+nlp = Japanese()
 
 # ゲッターを定義
 def get_has_number(doc):
@@ -12,6 +12,6 @@ def get_has_number(doc):
 # Docにget_has_number関数を「has_number」拡張プロパティとして登録
 Doc.set_extension("has_number", getter=get_has_number)
 
-# テキストを処理し、has_number属性をプリント
-doc = nlp("The museum closed for five years in 2012.")
-print("has_number:", doc._.has_number)
+# テキストを処理し、has_number属性を表示
+doc = nlp("この博物館は2012年に閉館して5年に経った。")
+print("数値があるか?: ", doc._.has_number)

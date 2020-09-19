@@ -1,14 +1,14 @@
 import spacy
 
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("ja_core_news_sm")
 text = (
-    "Chick-fil-A is an American fast food restaurant chain headquartered in "
-    "the city of College Park, Georgia, specializing in chicken sandwiches."
+    "チックフィレイはジョージア州カレッジパークに本社を置く、"
+    "チキンサンドを専門とするアメリカのファーストフードレストランチェーンです。"
 )
 
-# taggerとparserを無効化する
-with nlp.disable_pipes("tagger", "parser"):
+# parserを無効化
+with nlp.disable_pipes("parser"):
     # テキストを処理する
     doc = nlp(text)
-    # docの固有表現をプリントする
+    # docの固有表現を表示
     print(doc.ents)

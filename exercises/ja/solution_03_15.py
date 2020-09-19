@@ -1,11 +1,11 @@
 import json
-from spacy.lang.en import English
+from spacy.lang.ja import Japanese
 from spacy.tokens import Doc
 
-with open("exercises/en/bookquotes.json") as f:
+with open("exercises/ja/bookquotes.json") as f:
     DATA = json.loads(f.read())
 
-nlp = English()
+nlp = Japanese()
 
 # デフォルト値がNoneのDoc拡張属性「author」を登録
 Doc.set_extension("author", default=None)
@@ -18,5 +18,5 @@ for doc, context in nlp.pipe(DATA, as_tuples=True):
     doc._.book = context["book"]
     doc._.author = context["author"]
 
-    # テキストとカスタム属性をプリント
+    # テキストとカスタム属性を表示
     print(f"{doc.text}\n — '{doc._.book}' by {doc._.author}\n")
