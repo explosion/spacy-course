@@ -1,8 +1,8 @@
 import spacy
 
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("ja_core_news_sm")
 
-text = "Upcoming iPhone X release date leaked as Apple reveals pre-orders"
+text = "宮城県にある松島は日本三景の一つです。"
 
 # テキストを処理
 doc = ____
@@ -12,8 +12,8 @@ for ____ in ____.____:
     # 固有表現の文字列とラベルをプリント
     print(____.____, ____.____)
 
-# iPhone Xのスパンを取得
-iphone_x = ____
+# 松島のスパンを取得
+matsushima = ____
 
 # スパンの文字列をプリント
-print("Missing entity:", iphone_x.text)
+print("Missing entity:", matsushima.text)

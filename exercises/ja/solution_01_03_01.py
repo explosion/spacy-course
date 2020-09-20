@@ -1,10 +1,10 @@
-# Englishクラスをインポートし、nlpオブジェクトを作成
-from spacy.lang.en import English
+# 日本語クラスをインポートし、nlpオブジェクトを作成
+from spacy.lang.ja import Japanese
 
-nlp = English()
+nlp = Japanese()
 
 # テキストを処理
-doc = nlp("I like tree kangaroos and narwhals.")
+doc = nlp("私はカンガルーとイルカが好きです。")
 
 # 最初のトークンを選択
 first_token = doc[0]

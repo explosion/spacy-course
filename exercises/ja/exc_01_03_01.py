@@ -1,10 +1,10 @@
-# Englishクラスをインポートし、nlpオブジェクトを作成
+# 日本語クラスをインポートし、nlpオブジェクトを作成
 from ____ import ____
 
 nlp = ____
 
 # テキストを処理
-doc = ____("I like tree kangaroos and narwhals.")
+doc = ____("私はカンガルーとイルカが好きです。")
 
 # 最初のトークンを選択
 first_token = doc[____]

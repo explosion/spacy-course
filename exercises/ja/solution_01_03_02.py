@@ -1,15 +1,15 @@
-# Englishクラスをインポートし、nlpオブジェクトを作成
-from spacy.lang.en import English
+# 日本語クラスをインポートし、nlpオブジェクトを作成
+from spacy.lang.ja import Japanese
 
-nlp = English()
+nlp = Japanese()
 
 # テキストを処理
-doc = nlp("I like tree kangaroos and narwhals.")
+doc = nlp("私はカンガルーとイルカが好きです。")
 
-# 「tree kangaroors」のスライスを選択
-tree_kangaroos = doc[2:4]
-print(tree_kangaroos.text)
+# 「カンガルー」のスライスを選択
+kangaroos = doc[2:3]
+print(kangaroos.text)
 
-# 「tree kangaroos and narwhals」のスライスを選択（「.」は含まない）
-tree_kangaroos_and_narwhals = doc[2:6]
-print(tree_kangaroos_and_narwhals.text)
+# 「カンガルーとイルカ」のスライスを選択
+kangaroos_and_dolphins = doc[2:5]
+print(kangaroos_and_dolphins.text)
