@@ -4,21 +4,21 @@ type: slides
 
 # ルールベースマッチ
 
-Notes: この演習では、spaCyのmatcherをみていきましょう。
-matcherを使えば、ルールベースで単語やフレーズを見つける処理を書くことができます。
+Notes: この演習では、spaCyのmatcherについて学びます。
+matcherを使えば、単語やフレーズを見つけるルールを書くことができます。
 
 ---
 
 # 正規表現じゃだめなの？
 
-- 単なる文字列ではなく、`Doc`オブジェクトにマッチします
-- トークンや、その属性にマッチします
-- モデルの予測結果も使えます
-- 例："duck"（動詞） vs. "duck"（名詞）
+- 単なる文字列ではなく、`Doc`や`Token`にマッチします
+- トークンの文字列だけでなく、属性を条件にできます
+- (トークンに対する)モデルの予測結果も条件にできます
+  - 例："duck"（動詞） vs. "duck"（名詞）
 
 Notes: 正規表現と異なり、単なる文字列ではなく`Doc`や`Token`にマッチします。
 
-そして正規表現よりも柔軟です。文字列のみならず、語彙属性をベースに検索することができます。
+そして正規表現よりも柔軟です。文字列だけでなくトークンの属性も対象に検索することができます。
 
 さらに、モデルの予測結果をもとにしたルールを書くこともできます。
 
@@ -28,38 +28,38 @@ Notes: 正規表現と異なり、単なる文字列ではなく`Doc`や`Token`�
 
 # マッチのパターン
 
-- トークンごとの辞書のリスト
+トークンに対する条件のリスト
 
-- トークン文字列に完全一致するもののみマッチ　
+1. トークンの文字列に完全一致するもののみマッチ　
 
 ```python
 [{"TEXT": "iPhone"}, {"TEXT": "X"}]
 ```
 
-- 語彙属性にマッチ
+2. トークンの属性にマッチ
 
 ```python
 [{"LOWER": "iphone"}, {"LOWER": "x"}]
 ```
 
-- 色々な属性をもとにマッチ
+3. 様々な属性を使用したマッチ
 
 ```python
-[{"LEMMA": "buy"}, {"POS": "NOUN"}]
+[{"LEMMA": "買う"}, {"POS": "NOUN"}]
 ```
 
-Notes: マッチのパターンは辞書のリストで表します。
-それぞれの辞書は、各トークンを表します。
+Notes: 辞書のリストでマッチのパターンを作成します。
+各辞書が各トークンに対する条件になります。
 辞書のキーはトークンの属性を、辞書の値はマッチする値を表します。
 
-この例では、「iPhone」と「X」の二つのトークンからなるトークン列を探しています。
+1は、文字列がそれぞれ「iPhone」と「X」である二つのトークンからなるトークン列を検索します。
 
-文字列以外の属性にマッチさせることもできます。
-ここでは、小文字化した場合に「iphone」と「x」からなるトークン列を探しています。
+語彙属性に対しマッチさせることもできます。  
+2は、小文字化した場合に「iphone」と「x」からなるトークン列を検索します。
 
-さらに、モデルの予測結果をもとにマッチさせることもできます。
-ここでは、見出し語が「buy」であるトークンに名詞のトークンが続く組を探しています。
-つまり、「buying milk」や「bought flowers」等にマッチします。
+さらに、モデルの予測結果を条件にマッチさせることもできます。  
+3は、基本形が「買う」であるトークンに名詞のトークンが続くトークン列を検索します。
+つまり、「牛乳を買っている」や「花を買った」等にマッチします。
 
 ---
 
@@ -72,7 +72,7 @@ import spacy
 from spacy.matcher import Matcher
 
 # モデルをロードし、nlpオブジェクトを作成
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("ja_core_news_sm")
 
 # matcherを共有語彙データを用いて初期化
 matcher = Matcher(nlp.vocab)
@@ -82,7 +82,7 @@ pattern = [{"TEXT": "iPhone"}, {"TEXT": "X"}]
 matcher.add("IPHONE_PATTERN", None, pattern)
 
 # テキストを処理
-doc = nlp("Upcoming iPhone X release date leaked")
+doc = nlp("これから発売されるiPhone Xの発売日がリークした")
 
 # matcherをdocに対して呼び出し
 matches = matcher(doc)
@@ -97,8 +97,7 @@ Matcherは共有語彙データ`nlp.vocab`を用いて初期化します。
 
 パターンは、`matcher.add`メソッドを用いて登録します。
 第一引数は、それぞれのパターンを識別するためのユニークIDです。
-第二引数は、オプショナルなコールバック関数です。
-今は必要ないので、`None`を与えておきます。
+第二引数は、任意のコールバック関数です。今は必要ないので、`None`を与えておきます。
 第三引数はパターンです。
 
 パターンをマッチさせるには、docオブジェクトに対してmatcherを呼び出します。
@@ -111,7 +110,7 @@ matcherを呼び出すと、マッチの結果が返ってきます。
 
 ```python
 # matcherをdocに対して呼びだす
-doc = nlp("Upcoming iPhone X release date leaked")
+doc = nlp("これから発売されるiPhone Xの発売日がリークした")
 matches = matcher(doc)
 
 # 結果をイテレートする
@@ -126,6 +125,7 @@ iPhone X
 ```
 
 - `match_id`: パターン名のハッシュ値
+  - (整数のハッシュ値になっており`nlp.vocab.strings[match_id]`でUnicode文字列に戻せます)
 - `start`: マッチしたスパンの開始インデックス
 - `end`: マッチしたスパンの終了インデックス
 
@@ -143,14 +143,13 @@ Notes: matcherをdocオブジェクトに対して呼び出すと、タプルの
 pattern = [
     {"IS_DIGIT": True},
     {"LOWER": "fifa"},
-    {"LOWER": "world"},
-    {"LOWER": "cup"},
+    {"LOWER": "world cup"},
     {"IS_PUNCT": True}
 ]
 ```
 
 ```python
-doc = nlp("2018 FIFA World Cup: France won!")
+doc = nlp("2018 FIFA World Cup: フランスが勝った!")
 ```
 
 ```out
@@ -163,7 +162,7 @@ Notes: これは、語彙属性を用いたより複雑なマッチの例です�
 
 数字からなるトークン
 
-3つのトークン「fifa」、「world」、「cup」（ただし大文字小文字を区別しない）
+2つのトークン「fifa」、「world cup」（ただし大文字小文字を区別しない）
 
 句読点記号
 
@@ -175,13 +174,13 @@ Notes: これは、語彙属性を用いたより複雑なマッチの例です�
 
 ```python
 pattern = [
-    {"LEMMA": "love", "POS": "VERB"},
+    {"LEMMA": "好き", "POS": "VERB"},
     {"POS": "NOUN"}
 ]
 ```
 
 ```python
-doc = nlp("I loved dogs but now I love cats more.")
+doc = nlp("犬が好きだったけど、今は猫の方が好き。")
 ```
 
 ```out
