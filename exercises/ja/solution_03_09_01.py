@@ -6,7 +6,7 @@ nlp = Japanese()
 # デフォルト値がFalseである拡張属性「is_country」をトークンに追加
 Token.set_extension("is_country", default=False)
 
-# テキストを処理し、「Spain」のトークンについてis_country属性をTrueにする
+# テキストを処理し、「スペイン」のトークンについてis_country属性をTrueにする
 doc = nlp("私はスペインに住んでいます。")
 doc[2]._.is_country = True
 
