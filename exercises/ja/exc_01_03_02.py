@@ -4,12 +4,12 @@ from ____ import ____
 nlp = ____
 
 # テキストを処理
-doc = ____("私はカンガルーとイルカが好きです。")
+doc = ____("私はツリーカンガルーとイルカが好きです。")
 
-# 「カンガルー」のスライスを選択
-kangaroos = ____
-print(kangaroos.text)
+# 「ツリーカンガルー」のスライスを選択
+tree_kangaroos = ____
+print(tree_kangaroos.text)
 
-# 「カンガルーとイルカ」のスライスを選択
-kangaroos_and_dolphins = ____
-print(kangaroos_and_dolphins.text)
+# 「ツリーカンガルーとイルカ」のスライスを選択
+tree_kangaroos_and_dolphins = ____
+print(tree_kangaroos_and_dolphins.text)

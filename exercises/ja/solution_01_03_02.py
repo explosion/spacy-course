@@ -4,12 +4,12 @@ from spacy.lang.ja import Japanese
 nlp = Japanese()
 
 # テキストを処理
-doc = nlp("私はカンガルーとイルカが好きです。")
+doc = nlp("私はツリーカンガルーとイルカが好きです。")
 
-# 「カンガルー」のスライスを選択
-kangaroos = doc[2:3]
-print(kangaroos.text)
+# 「ツリーカンガルー」のスライスを選択
+tree_kangaroos = doc[2:4]
+print(tree_kangaroos.text)
 
-# 「カンガルーとイルカ」のスライスを選択
-kangaroos_and_dolphins = doc[2:5]
-print(kangaroos_and_dolphins.text)
+# 「ツリーカンガルーとイルカ」のスライスを選択
+tree_kangaroos_and_dolphins = doc[2:6]
+print(tree_kangaroos_and_dolphins.text)

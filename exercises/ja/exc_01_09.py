@@ -2,7 +2,7 @@ import spacy
 
 nlp = spacy.load("ja_core_news_sm")
 
-text = "宮城県にある松島は日本三景の一つです。"
+text = "静岡県にある三保の松原は世界遺産の一部です。"
 
 # テキストを処理
 doc = ____
@@ -13,7 +13,7 @@ for ____ in ____.____:
     print(____.____, ____.____)
 
 # 松島のスパンを取得
-matsushima = ____
+mihonomatsubara = ____
 
 # スパンの文字列をプリント
-print("Missing entity:", matsushima.text)
+print("Missing entity:", mihonomatsubara.text)

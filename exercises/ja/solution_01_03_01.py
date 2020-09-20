@@ -4,7 +4,7 @@ from spacy.lang.ja import Japanese
 nlp = Japanese()
 
 # テキストを処理
-doc = nlp("私はカンガルーとイルカが好きです。")
+doc = nlp("私はツリーカンガルーとイルカが好きです。")
 
 # 最初のトークンを選択
 first_token = doc[0]
