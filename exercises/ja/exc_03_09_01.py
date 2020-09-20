@@ -6,7 +6,7 @@ nlp = Japanese()
 # デフォルト値がFalseである拡張属性「is_country」をトークンに追加
 ____.____(____, ____=____)
 
-# テキストを処理し、「Spain」のトークンについてis_country属性をTrueにする
+# テキストを処理し、「スペイン」のトークンについてis_country属性をTrueにする
 doc = nlp("私はスペインに住んでいます。")
 ____ = True
 
