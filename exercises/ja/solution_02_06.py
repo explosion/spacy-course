@@ -1,19 +1,19 @@
-from spacy.lang.en import English
+from spacy.lang.ja import Japanese
 
-nlp = English()
+nlp = Japanese()
 
 # DocとSpanクラスをインポート
 from spacy.tokens import Doc, Span
 
-words = ["I", "like", "David", "Bowie"]
-spaces = [True, True, True, False]
+words = ["私", "は", "デヴィッド", "・", "ボウイ", "が", "好き"]
+spaces = [False, False, False, False, False, False, False]
 
 # docをwordsとspacesから作成
 doc = Doc(nlp.vocab, words=words, spaces=spaces)
 print(doc.text)
 
-# docから「David Bowie」というスパンを作成し、「PERSON」ラベルを付ける
-span = Span(doc, 2, 4, label="PERSON")
+# docから「デヴィッド・ボウイ」というスパンを作成し、「PERSON」ラベルを付ける
+span = Span(doc, 2, 5, label="PERSON")
 print(span.text, span.label_)
 
 # docの固有表現リストにspanを追加

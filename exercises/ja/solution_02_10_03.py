@@ -1,12 +1,12 @@
 import spacy
 
-nlp = spacy.load("en_core_web_md")
+nlp = spacy.load("ja_core_news_md")
 
-doc = nlp("This was a great restaurant. Afterwards, we went to a really nice bar.")
+doc = nlp("素晴らしいレストランでした。その後、私達はとても素敵なバーに行きました。")
 
-# 「great restaurant」と「really nice bar」のスパンを作る
-span1 = doc[3:5]
-span2 = doc[12:15]
+# 「素晴らしいレストラン」と「とても素敵なバー」のスパンを作る
+span1 = doc[0:2]
+span2 = doc[11:15]
 
 # スパンの類似度をはかる
 similarity = span1.similarity(span2)
