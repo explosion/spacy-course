@@ -1,7 +1,7 @@
-from spacy.lang.en import English
+from spacy.lang.ja import Japanese
 
-nlp = English()
-doc = nlp("David Bowie is a PERSON")
+nlp = Japanese()
+doc = nlp("デヴィッド・ボウイはPERSONです")
 
 # ラベル「PERSON」のハッシュを引く
 person_hash = ____.____.____[____]

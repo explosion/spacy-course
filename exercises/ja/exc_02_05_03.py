@@ -1,11 +1,11 @@
-from spacy.lang.en import English
+from spacy.lang.ja import Japanese
 
-nlp = English()
+nlp = Japanese()
 
 # Docクラスをインポート
 from ____ import ____
 
-# 作成したいテキスト：「Oh, really?!」
+# 作成したいテキスト：「本当ですか？！」
 words = [____, ____, ____, ____, ____]
 spaces = [____, ____, ____, ____, ____]
 

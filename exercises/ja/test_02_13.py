@@ -11,7 +11,7 @@ def test():
         pattern1[1].get(attr) == True for attr in ("is_title", "IS_TITLE")
     ), "pattern2の最初のトークンのキーと値をチェックしてください"
     assert any(
-        pattern1[1].get(attr) == "PROPN" for attr in ("pos", "POS")
+        pattern1[1].get(attr) == "NOUN" for attr in ("pos", "POS")
     ), "pattern2の最初のトークンのキーと値をチェックしてください"
 
     # Pattern 2 validation

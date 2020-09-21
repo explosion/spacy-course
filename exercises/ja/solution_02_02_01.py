@@ -1,10 +1,10 @@
-from spacy.lang.en import English
+from spacy.lang.ja import Japanese
 
-nlp = English()
-doc = nlp("I have a cat")
+nlp = Japanese()
+doc = nlp("私はネコを飼っています")
 
-# 単語「cat」のハッシュを引く
-cat_hash = nlp.vocab.strings["cat"]
+# 単語「ネコ」のハッシュを引く
+cat_hash = nlp.vocab.strings["ネコ"]
 print(cat_hash)
 
 # cat_hashを使って文字列を引く
