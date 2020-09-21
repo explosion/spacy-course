@@ -32,5 +32,5 @@ get_capital = lambda span: CAPITALS.get(span.text)
 Span.set_extension("capital", getter=get_capital)
 
 # テキストを処理し、固有表現テキスト、ラベル、capital属性を表示
-doc = nlp("チェコはスロバキアが領空を守るのを手助けするかもしれない。")
+doc = nlp("チェコ共和国はスロバキアが領空を守るのを手助けするかもしれない。")
 print([(ent.text, ent.label_, ent._.capital) for ent in doc.ents])
