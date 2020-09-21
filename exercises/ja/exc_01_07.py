@@ -1,9 +1,9 @@
 import spacy
 
-# 「en_core_web_sm」モデルをロード
+# 「ja_core_news_sm」モデルをロード
 nlp = ____
 
-text = "It’s official: Apple is the first U.S. public company to reach a $1 trillion market value"
+text = "公式発表：Appleが米国の上場企業として初めて時価評価額1兆ドルに到達しました。"
 
 # テキストを処理
 doc = ____
