@@ -1,10 +1,10 @@
 import spacy
 
-# en_core_web_sm モデルをロード
-nlp = spacy.load("en_core_web_sm")
+# ja_core_news_sm モデルを読み込む
+nlp = spacy.load("ja_core_news_sm")
 
-# パイプラインの名前をプリント
+# パイプラインの名前を出力
 print(nlp.pipe_names)
 
-# (name, component) のタプルからなるパイプライン情報をプリント
+# (name, component) のタプルからなるパイプライン情報を表示
 print(nlp.pipeline)

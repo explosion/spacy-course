@@ -5,7 +5,6 @@ def test():
     assert "first=True" in __solution__, "パイプラインの最初にコンポーネントを追加しましたか？"
     assert nlp.pipe_names == [
         "length_component",
-        "tagger",
         "parser",
         "ner",
     ], "パイプラインの名前が正しくないようです！"

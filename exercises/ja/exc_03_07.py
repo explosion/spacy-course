@@ -2,10 +2,10 @@ import spacy
 from spacy.matcher import PhraseMatcher
 from spacy.tokens import Span
 
-nlp = spacy.load("en_core_web_sm")
-animals = ["Golden Retriever", "cat", "turtle", "Rattus norvegicus"]
+nlp = spacy.load("ja_core_news_sm")
+animals = ["ゴールデンレトリバー", "ネコ", "カメ", "ドブネズミ"]
 animal_patterns = list(nlp.pipe(animals))
-print("animal_patterns:", animal_patterns)
+print("動物の一覧: ", animal_patterns)
 matcher = PhraseMatcher(nlp.vocab)
 matcher.add("ANIMAL", None, *animal_patterns)
 
@@ -24,6 +24,6 @@ def animal_component(doc):
 ____.____(____, ____=____)
 print(nlp.pipe_names)
 
-# テキストを処理し、doc.entsの文字列とラベルをプリント
-doc = nlp("I have a cat and a Golden Retriever")
+# テキストを処理し、doc.entsの文字列とラベルを表示
+doc = nlp("私はネコとゴールデンレトリバーを飼っている。")
 print([(____, ____) for ent in ____])
