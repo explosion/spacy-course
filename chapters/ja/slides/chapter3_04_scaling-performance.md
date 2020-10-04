@@ -132,8 +132,8 @@ Notes:
 - パイプを一時的に無効にするには `nlp.disable_pipes` を使います。
 
 ```python
-# タガーとパーサを無効化
-with nlp.disable_pipes("tagger", "parser"):
+# パーサを無効化
+with nlp.disable_pipes("parser"):
     # テキストを処理し、固有表現をプリントする
     doc = nlp(text)
     print(doc.ents)
@@ -151,7 +151,7 @@ Notes: spaCy では、`nlp.disable_pipes` コンテキストマネージャを�
 
 `with` ブロックでは、 spaCy は残りのコンポーネントのみを実行します。
 
-（v2.3現在、日本語モデルには `tagger` コンポーネントが含まれていないため、左記コードは正常に動作しません。`nlp.disable_pipes("parser")` とすることでコードを実行することができます。）
+（v2.3現在、日本語モデルには `tagger` コンポーネントが含まれていないため、左記コードでは `"tagger"` を指定していません。）
 
 ---
 
