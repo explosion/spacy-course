@@ -1,12 +1,12 @@
 import json
 import spacy
 
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("ja_core_news_sm")
 
-with open("exercises/en/tweets.json") as f:
+with open("exercises/ja/tweets.json") as f:
     TEXTS = json.loads(f.read())
 
-# テキストを処理し、固有表現をプリント
+# テキストを処理し、固有表現を表示
 docs = [nlp(text) for text in TEXTS]
 entities = [doc.ents for doc in docs]
 print(*entities)

@@ -8,7 +8,7 @@ def test():
     assert "(ent.text, ent._.wikipedia_url)" in __solution__, "カスタム属性にアクセスしましたか？"
     assert (
         doc.ents[-1]._.wikipedia_url
-        == "https://en.wikipedia.org/w/index.php?search=David_Bowie"
+        == "https://ja.wikipedia.org/wiki/デヴィッド・ボウイ"
     ), "ゲッター属性の値が誤っているようです"
 
     __msg__.good(

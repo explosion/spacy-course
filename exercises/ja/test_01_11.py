@@ -17,4 +17,4 @@ def test():
     assert 'matcher.add("IPHONE_X_PATTERN"' in __solution__, "パターンをmatcherにきちんと追加しましたか？"
     assert "matches = matcher(doc)" in __solution__, "matcherをdocに対して呼び出しましたか？"
 
-    __msg__.good("よくできました！doc[1:3]からなるパターン「iPhone X」を見つけることに成功しました。")
+    __msg__.good("よくできました！doc[2:4]からなるパターン「iPhone X」を見つけることに成功しました。")

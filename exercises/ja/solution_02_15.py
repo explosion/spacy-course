@@ -3,12 +3,12 @@ from spacy.matcher import PhraseMatcher
 from spacy.tokens import Span
 import json
 
-with open("exercises/en/countries.json") as f:
+with open("exercises/ja/countries.json") as f:
     COUNTRIES = json.loads(f.read())
-with open("exercises/en/country_text.txt") as f:
+with open("exercises/ja/country_text.txt") as f:
     TEXT = f.read()
 
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("ja_core_news_sm")
 matcher = PhraseMatcher(nlp.vocab)
 patterns = list(nlp.pipe(COUNTRIES))
 matcher.add("COUNTRY", None, *patterns)

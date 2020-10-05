@@ -1,10 +1,10 @@
 import spacy
 
-nlp = spacy.load("en_core_web_md")
+nlp = spacy.load("ja_core_news_md")
 
-doc = nlp("TV and books")
+doc = nlp("テレビと本")
 token1, token2 = doc[0], doc[2]
 
-# 「TV」と「books」の類似度を取得
+# 「テレビ」と「本」の類似度を取得
 similarity = token1.similarity(token2)
 print(similarity)
