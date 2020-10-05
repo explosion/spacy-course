@@ -1,7 +1,7 @@
 def test():
-    assert doc.text == "I like tree kangaroos and narwhals.", "テキストをちゃんと処理しましたか？"
-    assert tree_kangaroos == doc[2:4], "tree_kangaroosのスパンを選択しましたか？"
+    assert doc.text == "私はツリーカンガルーとイルカが好きです。", "テキストをちゃんと処理しましたか？"
+    assert tree_kangaroos == doc[2:4], "ツリーカンガルーのスパンを選択しましたか？"
     assert (
-        tree_kangaroos_and_narwhals == doc[2:6]
-    ), "tree_kangaroos_and_narwhalsのスパンをせんたくしましたか？"
-    __msg__.good("Good job!")
+        tree_kangaroos_and_dolphins == doc[2:6]
+    ), "ツリーカンガルーとイルカのスパンを選択しましたか？"
+    __msg__.good("よくできました!")

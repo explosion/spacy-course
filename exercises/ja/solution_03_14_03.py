@@ -1,8 +1,8 @@
-from spacy.lang.en import English
+from spacy.lang.ja import Japanese
 
-nlp = English()
+nlp = Japanese()
 
-people = ["David Bowie", "Angela Merkel", "Lady Gaga"]
+people = ["デヴィッド・ボウイ", "アンゲラ・メルケル", "レディー・ガガ"]
 
 # PhraseMatcherのパターンのリストを作成
 patterns = list(nlp.pipe(people))

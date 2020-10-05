@@ -1,21 +1,24 @@
 import spacy
 from spacy.matcher import Matcher
 
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("ja_core_news_sm")
 matcher = Matcher(nlp.vocab)
 
 doc = nlp(
-    "i downloaded Fortnite on my laptop and can't open the game at all. Help? "
-    "so when I was downloading Minecraft, I got the Windows version where it "
-    "is the '.zip' folder and I used the default program to unpack it... do "
-    "I also need to download Winzip?"
+    "松島、天橋立、宮島は日本三景として知られています。"
+    "松島は宮城県、天橋立は京都府、宮島は広島県にそれぞれあります。"
 )
 
-# 「download + 固有名詞」からなるパターンを書きます
-pattern = [{"LEMMA": "download"}, {"POS": "PROPN"}]
+# v2.3現在、日本語モデルではdoc.is_taggedが正しく設定されないので、
+# 明示的に設定
+# 参考: https://github.com/explosion/spaCy/issues/5802
+doc.is_tagged = True
+
+# 「固有名詞 + 県」からなるパターンを書きます
+pattern = [{"POS": "PROPN"}, {"LEMMA": "県"}]
 
 # パターンをmatcherに追加し、docに対してmatcherを適用します
-matcher.add("DOWNLOAD_THINGS_PATTERN", None, pattern)
+matcher.add("PREFECTURE_PATTERN", None, pattern)
 matches = matcher(doc)
 print("Total matches found:", len(matches))
 

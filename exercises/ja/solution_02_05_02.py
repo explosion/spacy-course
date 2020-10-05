@@ -1,13 +1,13 @@
-from spacy.lang.en import English
+from spacy.lang.ja import Japanese
 
-nlp = English()
+nlp = Japanese()
 
 # Docクラスをインポート
 from spacy.tokens import Doc
 
-# 作りたいテキスト：「Go, get started!」
-words = ["Go", ",", "get", "started", "!"]
-spaces = [False, True, True, False, False]
+# 作りたいテキスト：「さあ、始めよう！」
+words = ["さあ", "、", "始めよう", "！"]
+spaces = [False, False, False, False]
 
 # wordsとspacesからDocを作成
 doc = Doc(nlp.vocab, words=words, spaces=spaces)

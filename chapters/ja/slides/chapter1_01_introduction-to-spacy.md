@@ -13,11 +13,11 @@ Notes: こんにちは、私はInesです！spaCyはPythonの先進的な自然�
 # nlpオブジェクト
 
 ```python
-# 英語の言語クラスをインポート
-from spacy.lang.en import English
+# 日本語の言語クラスをインポート
+from spacy.lang.ja import Japanese
 
 # nlpオブジェクトを作成
-nlp = English()
+nlp = Japanese()
 ```
 
 - 言語処理パイプラインを管理
@@ -25,12 +25,12 @@ nlp = English()
 
 Notes: `nlp`はspaCyの中心的なオブジェクトで、言語処理のパイプラインを管理します。
 
-例えば、英語の`nlp`オブジェクトを作成するには、`spacy.lang.en`から`English`クラスをインポートし、
+例えば、日本語の`nlp`オブジェクトを作成するには、`spacy.lang.ja`から`Japanese`クラスをインポートし、
 インスタンス化します。インスタンス化した「nlp」は普通の関数のように使ってテキストを解析できます。
 
 `nlp`は全ての言語処理コンポーネントをパイプライン上に保持しています。
 
-また、`nlp`は単語分割のルールや句読点等、言語依存のデータも持っています。英語以外にも、日本語やドイツ語等、
+また、`nlp`は単語分割のルールや句読点等、言語依存のデータも持っています。日本語以外にも、英語やドイツ語等、
 様々な言語クラスが`spacy.lang`に実装されています。
 
 ---
@@ -39,7 +39,7 @@ Notes: `nlp`はspaCyの中心的なオブジェクトで、言語処理のパイ
 
 ```python
 # nlpを用いて、テキストを処理することで作成
-doc = nlp("Hello world!")
+doc = nlp("おはようございます!")
 
 # Docからtokenを取り出す
 for token in doc:
@@ -47,8 +47,9 @@ for token in doc:
 ```
 
 ```out
-Hello
-world
+おはよう
+ござい
+ます
 !
 ```
 
@@ -66,7 +67,7 @@ Notes: `nlp`を用いてテキストを処理すると、`Doc`オブジェクト
 <img src="/doc.png" alt="Illustration of a Doc object containing four tokens" width="50%" />
 
 ```python
-doc = nlp("Hello world!")
+doc = nlp("おはようございます!")
 
 # インデックスでトークンを取得
 token = doc[1]
@@ -76,7 +77,7 @@ print(token.text)
 ```
 
 ```out
-world
+ござい
 ```
 
 Notes: `Token`オブジェクトは、単語や句読点等、テキストのトークンの情報を持っています。
@@ -93,7 +94,7 @@ Notes: `Token`オブジェクトは、単語や句読点等、テキストのト
 <img src="/doc_span.png" width="50%" alt="Illustration of a Doc object containing four tokens and three of them wrapped in a Span" />
 
 ```python
-doc = nlp("Hello world!")
+doc = nlp("おはようございます!")
 
 # `Doc`オブジェクトからスライスで`Span`オブジェクトを取得
 span = doc[1:3]
@@ -103,7 +104,7 @@ print(span.text)
 ```
 
 ```out
-world!
+ございます
 ```
 
 Notes: `Span`オブジェクトは`Doc`オブジェクトのスライスで、複数の`Token`からなります。
@@ -117,7 +118,7 @@ Notes: `Span`オブジェクトは`Doc`オブジェクトのスライスで、�
 # 語彙の属性
 
 ```python
-doc = nlp("It costs $5.")
+doc = nlp("果汁100%のジュース。")
 ```
 
 ```python
@@ -130,12 +131,12 @@ print("like_num:", [token.like_num for token in doc])
 ```
 
 ```out
-Index:    [0, 1, 2, 3, 4]
-Text:     ['It', 'costs', '$', '5', '.']
+Index:    [0, 1, 2, 3, 4, 5]
+Text:     ['果汁', '100', '%', 'の', 'ジュース', '。']
 
-is_alpha: [True, True, False, False, False]
-is_punct: [False, False, False, False, True]
-like_num: [False, False, False, True, False]
+is_alpha: [True, False, False, True, True, False]
+is_punct: [False, False, True, False, False, True]
+like_num: [False, True, False, False, False, False]
 ```
 
 Notes: ここでは、いくつかのトークンの属性を紹介します。
@@ -144,7 +145,7 @@ Notes: ここでは、いくつかのトークンの属性を紹介します。
 
 `text`はトークンの文字列です。
 
-`is_alpha`はトークンの文字列がアルファベットからなるかどうか、`is_punct`は句読点かどうか、`like_num`は数字に似ているか（例えば"10"や"ten"）を表すブール値です。
+`is_alpha`はトークンの文字列が文字(ひらがな・カタカナ・漢字、アルファベット等)からなるかどうか、`is_punct`は句読点かどうか、`like_num`は数字に似ているか（例えば"10"や"ten"）を表すブール値です。
 
 これらの属性は語彙のエントリを参照しており、文脈に依存しないため、語彙属性（lexical attributes）と呼ばれます。
 

@@ -3,8 +3,8 @@ import spacy
 # Matcherをインポート
 from spacy.matcher import Matcher
 
-nlp = spacy.load("en_core_web_sm")
-doc = nlp("Upcoming iPhone X release date leaked as Apple reveals pre-orders")
+nlp = spacy.load("ja_core_news_sm")
+doc = nlp("AppleはiPhone Xの予約受付開始を発表しました。")
 
 # 共有語彙データを用いてMatcherを初期化
 matcher = Matcher(nlp.vocab)

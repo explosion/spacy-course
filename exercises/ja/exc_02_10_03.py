@@ -1,10 +1,10 @@
 import spacy
 
-nlp = spacy.load("en_core_web_md")
+nlp = spacy.load("ja_core_news_md")
 
-doc = nlp("This was a great restaurant. Afterwards, we went to a really nice bar.")
+doc = nlp("素晴らしいレストランでした。その後、私達はとても素敵なバーに行きました。")
 
-# 「great restaurant」と「really nice bar」のスパンを作る
+# 「素晴らしいレストラン」と「とても素敵なバー」のスパンを作る
 span1 = ____
 span2 = ____
 

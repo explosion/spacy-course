@@ -1,26 +1,26 @@
 [
     [
-        "One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin.",
-        { "author": "Franz Kafka", "book": "Metamorphosis" }
+        "ある朝、グレゴール・サムサが悩ましい夢から覚めると、彼はベッドの中で恐ろしい害虫に変身していた。",
+        { "author": "フランツ・カフカ", "book": "変身" }
     ],
     [
-        "I know not all that may be coming, but be it what it will, I'll go to it laughing.",
-        { "author": "Herman Melville", "book": "Moby-Dick or, The Whale" }
+        "これから何が起こるか全てを知っているわけではないが、それが何であろうと私は笑いながら行きます。",
+        { "author": "ハーマン・メルヴィル", "book": "白鯨" }
     ],
     [
-        "It was the best of times, it was the worst of times.",
-        { "author": "Charles Dickens", "book": "A Tale of Two Cities" }
+        "それは最良の時代でもあり、最悪の時代でもあった。",
+        { "author": "チャールズ・ディケンズ", "book": "二都物語" }
     ],
     [
-        "The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved, desirous of everything at the same time, the ones who never yawn or say a commonplace thing, but burn, burn, burn like fabulous yellow roman candles exploding like spiders across the stars.",
-        { "author": "Jack Kerouac", "book": "On the Road" }
+        "私にとって唯一の人々は、生きることに狂い、話すことに狂い、救われることに狂い、同時に全てのことを熱望し、ありふれたことを言わない。しかし星を横切る蜘蛛のように爆発する素晴らしい黄色のローマキャンドルのように燃えて、燃えて、燃える人々だ。",
+        { "author": "ジャック・ケルアック", "book": "路上" }
     ],
     [
-        "It was a bright cold day in April, and the clocks were striking thirteen.",
-        { "author": "George Orwell", "book": "1984" }
+        "4月の明るい寒い朝、時刻は13時をまわっていた。",
+        { "author": "ジョージ・オーウェル", "book": "1984年" }
     ],
     [
-        "Nowadays people know the price of everything and the value of nothing.",
-        { "author": "Oscar Wilde", "book": "The Picture Of Dorian Gray" }
+        "最近の人々は、物の値段は知っているが、その価値については何も知らない。",
+        { "author": "オスカー・ワイルド", "book": "ドリアン・グレイの肖像" }
     ]
 ]

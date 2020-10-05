@@ -1,6 +1,6 @@
 def test():
     assert "in doc.ents" in __solution__, "固有表現をイテレートしましたか？"
-    assert iphone_x.text == "iPhone X", "iphone_x変数は正しいスライスですか？"
+    assert mihonomatsubara.text == "三保の松原", "mihonomatsubara変数は正しいスライスですか？"
 
     __msg__.good(
         "完璧です！もちろん、いつもこのように手動でやる必要はありません。"

@@ -20,14 +20,14 @@ id: 2
 
 ### パート1
 
-- `nlp.vocab.strings`から「cat」のハッシュ値を取得してください。
+- `nlp.vocab.strings`から「ネコ」のハッシュ値を取得してください。
 - 逆に、ハッシュ値から文字列を取得してください。
 
 <codeblock id="02_02_01">
 
 - 文字列のデータベース`nlp.vocab.strings`は、Pythonの辞書のように使うことができます。
-  例えば、`nlp.vocab.strings["unicorn"]`とすればハッシュ値を取得でき、逆にハッシュ値を使うと
-  `"unicorn"`を再取得することができます。
+  例えば、`nlp.vocab.strings["ユニコーン"]`とすればハッシュ値を取得でき、逆にハッシュ値を使うと
+  `"ユニコーン"`を再取得することができます。
 
 </codeblock>
 
@@ -39,8 +39,8 @@ id: 2
 <codeblock id="02_02_02">
 
 - 文字列のデータベース`nlp.vocab.strings`は、Pythonの辞書のように使うことができます。
-  例えば、`nlp.vocab.strings["unicorn"]`とすればハッシュ値を取得でき、逆にハッシュ値を使うと
-  `"unicorn"`を再取得することができます。
+  例えば、`nlp.vocab.strings["ユニコーン"]`とすればハッシュ値を取得でき、逆にハッシュ値を使うと
+  `"ユニコーン"`を再取得することができます。
 
 </codeblock>
 
@@ -51,30 +51,30 @@ id: 2
 さて、なぜこのコードはエラーとなるでしょうか？
 
 ```python
-from spacy.lang.en import English
+from spacy.lang.ja import Japanese
 from spacy.lang.de import German
 
-# 英語とドイツ語のnlpオブジェクトを作る
-nlp = English()
+# 日本語とドイツ語のnlpオブジェクトを作る
+nlp = Japanese()
 nlp_de = German()
 
-# 「Bowie」のIDを取得
-bowie_id = nlp.vocab.strings["Bowie"]
+# 「ボウイ」のIDを取得
+bowie_id = nlp.vocab.strings["ボウイ"]
 print(bowie_id)
 
-# vocabから、IDを用いて「Bowie」を取得
+# vocabから、IDを用いて「ボウイ」を取得
 print(nlp_de.vocab.strings[bowie_id])
 ```
 
 <choice>
 
-<opt correct="true" text='文字列<code>"Bowie"</code>はドイツ語の語彙データに存在しないため、文字列ストアから取得することができないから。'>
+<opt correct="true" text='文字列<code>"ボウイ"</code>はドイツ語の語彙データに存在しないため、文字列ストアから取得することができないから。'>
 
 ハッシュ値は復号できません。そのため、テキストを処理したり、文字列をルックアップしたり、同じvocabオブジェクトを使ってハッシュ値から文字列を取得します。
 
 </opt>
 
-<opt text='<code>"Bowie"</code>は英語とドイツ語の語彙ではなく、ハッシュ化できないから。'>
+<opt text='<code>"ボウイ"</code>は日本語とドイツ語の語彙ではなく、ハッシュ化できないから。'>
 
 いかなる文字列もハッシュ化できます。
 
@@ -135,7 +135,7 @@ print(nlp_de.vocab.strings[bowie_id])
 
 
 各トークンを注意深くみてください。
-spaCyが普段どのように文字列をトークン化しているかを見るには、試しに `nlp("Oh, really?!")` のトークンをプリントしてみましょう。
+spaCyが普段どのように文字列をトークン化しているかを見るには、試しに `nlp("本当ですか？！")` のトークンをプリントしてみましょう。
 
 </codeblock>
 
@@ -149,8 +149,8 @@ spaCyが普段どのように文字列をトークン化しているかを見る
 
 - `Doc`と`Span`クラスを`spacy.tokens`からインポートしてください。
 - `Doc`クラスから直接、単語とスペースリストを用いて`doc`オブジェクトを作ってください。
-- 「David Bowie」の`Span`オブジェクトを`doc`から作り、`"PERSON"`ラベルをつけてください。
-- `doc.ents`を「David Bowie」の`span`からなる固有表現のリストで上書きしてください。
+- 「デヴィッド・ボウイ」の`Span`オブジェクトを`doc`から作り、`"PERSON"`ラベルをつけてください。
+- `doc.ents`を「デヴィッド・ボウイ」の`span`からなる固有表現のリストで上書きしてください。
 
 <codeblock id="02_06">
 
@@ -170,8 +170,8 @@ spaCyが普段どのように文字列をトークン化しているかを見る
 ```python
 import spacy
 
-nlp = spacy.load("en_core_web_sm")
-doc = nlp("Berlin is a nice city")
+nlp = spacy.load("ja_core_news_sm")
+doc = nlp("ベルリンはいい街だと思う")
 
 # 全てのトークンと品詞タグを取得
 token_texts = [token.text for token in doc]
@@ -180,10 +180,10 @@ pos_tags = [token.pos_ for token in doc]
 for index, pos in enumerate(pos_tags):
     # 現在のトークンが固有名詞かどうかをチェックする
     if pos == "PROPN":
-        # 次のトークンが動詞かどうかを調べる
-        if pos_tags[index + 1] == "VERB":
+        # 次のトークンが設置詞(Adposition)かどうかを調べる
+        if pos_tags[index + 1] == "ADP":
             result = token_texts[index]
-            print("Found proper noun before a verb:", result)
+            print("設置詞の前の固有名詞が見つかりました:", result)
 ```
 
 ### パート1
@@ -239,11 +239,11 @@ for index, pos in enumerate(pos_tags):
 
 <exercise id="9" title="単語ベクトルの検査">
 
-この演習では、20,000個の単語ベクトルが含まれている大サイズの[英語モデル](https://spacy.io/models/en)を使います。
+この演習では、35,000個の単語ベクトルが含まれている中サイズの[日本語モデル](https://spacy.io/models/ja)を使います。
 このモデルは既にインストールされています。
 
-- 単語ベクトルの入っている中サイズモデル`"en_core_web_md"`をロードしてください。
-- `token.vector`属性を使って、`"bananas"`の単語ベクトルをプリントしてください。
+- 単語ベクトルの入っている中サイズモデル`"ja_core_news_md"`をロードしてください。
+- `token.vector`属性を使って、`"バナナ"`の単語ベクトルをプリントしてください。
 
 <codeblock id="02_09">
 
@@ -280,7 +280,7 @@ for index, pos in enumerate(pos_tags):
 
 ### パート3
 
-- 「great restaurant」と「really nice bar」のスパンを作ってください。
+- 「素晴らしいレストラン」と「とても素敵なバー」のスパンを作ってください。
 - `span.similarity`を使ってこれらを比較し、結果をプリントしてください。
 
 <codeblock id="02_10_03"></codeblock>
@@ -303,7 +303,7 @@ pattern = [{'LOWER': 'silicon'}, {'TEXT': ' '}, {'LOWER': 'valley'}]
 ```
 
 ```python
-doc = nlp("Can Silicon Valley workers rein in big tech from within?")
+doc = nlp("Silicon Valleyの労働者は内部からビッグテックを抑制することができるか？")
 ```
 
 <choice>
@@ -344,7 +344,7 @@ doc = nlp("Can Silicon Valley workers rein in big tech from within?")
 
 <codeblock id="02_13">
 
-- `nlp`オブジェクトにマッチする文字列を処理してみてください。例えば、`[token.text for token in nlp("ad-free viewing")]`のように。
+- `nlp`オブジェクトにマッチする文字列を処理してみてください。例えば、`[token.text for token in nlp("ad-free視聴")]`のように。
 - トークンを検査し、パターン内の各辞書が1つのトークンを正しく記述していることを確認してください。
 
 </codeblock>

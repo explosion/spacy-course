@@ -44,8 +44,8 @@ Notes: 大量のテキストを処理して大量の `Doc` オブジェクトを
 
 ```python
 data = [
-    ("This is a text", {"id": 1, "page_number": 15}),
-    ("And another text", {"id": 2, "page_number": 16}),
+    ("これは例文です", {"id": 1, "page_number": 15}),
+    ("これは別の例文です", {"id": 2, "page_number": 16}),
 ]
 
 for doc, context in nlp.pipe(data, as_tuples=True):
@@ -53,13 +53,13 @@ for doc, context in nlp.pipe(data, as_tuples=True):
 ```
 
 ```out
-This is a text 15
-And another text 16
+これは例文です 15
+これは別の例文です 16
 ```
 
 Notes: `nlp.pipe` は、`as_tuples` を `True` に設定した場合、テキストとコンテキストのタプルを渡すことができます。
 
-このメソッドはdocとコンテキストのタプルを返します。
+このメソッドは `Doc` とコンテキストのタプルを返します。
 
 これは、テキストに関連付けられたIDやページ番号のような追加のメタデータを渡すのに便利です。
 
@@ -74,8 +74,8 @@ Doc.set_extension("id", default=None)
 Doc.set_extension("page_number", default=None)
 
 data = [
-    ("This is a text", {"id": 1, "page_number": 15}),
-    ("And another text", {"id": 2, "page_number": 16}),
+    ("これは例文です", {"id": 1, "page_number": 15}),
+    ("これは別の例文です", {"id": 2, "page_number": 16}),
 ]
 
 for doc, context in nlp.pipe(data, as_tuples=True):
@@ -87,7 +87,7 @@ Notes: コンテキストのメタデータを拡張属性に追加すること�
 
 この例では、`id` と `page_number` という2つの拡張子を登録しており、デフォルトは `None` です。
 
-テキストを処理した後、コンテキストのメタデータでdocの拡張属性を上書きすることができます。
+テキストを処理した後、コンテキストのメタデータで `doc` の拡張属性を上書きすることができます。
 
 ---
 
@@ -110,20 +110,20 @@ Notes: もう一つの一般的なシナリオをみていきます。他の処�
 **悪い例:**
 
 ```python
-doc = nlp("Hello world")
+doc = nlp("こんにちは！")
 ```
 
 **良い例:**
 
 ```python
-doc = nlp.make_doc("Hello world!")
+doc = nlp.make_doc("こんにちは！")
 ```
 
 Notes: 
 トークン化された `Doc` オブジェクトだけが必要な場合は、代わりに `nlp.make_doc` メソッドを使うことができます。
 
 これは、spaCyが裏側でどのようにトークン化を行うかを示しています。
-`nlp.make_doc`は、パイプラインコンポーネントを呼び出す前に、テキストをdocに変換しています。
+`nlp.make_doc`は、パイプラインコンポーネントを呼び出す前に、テキストを `Doc` に変換しています。
 
 ---
 
@@ -132,8 +132,8 @@ Notes:
 - パイプを一時的に無効にするには `nlp.disable_pipes` を使います。
 
 ```python
-# タガーとパーサを無効化
-with nlp.disable_pipes("tagger", "parser"):
+# パーサを無効化
+with nlp.disable_pipes("parser"):
     # テキストを処理し、固有表現をプリントする
     doc = nlp(text)
     print(doc.ents)
@@ -145,11 +145,13 @@ with nlp.disable_pipes("tagger", "parser"):
 Notes: spaCy では、`nlp.disable_pipes` コンテキストマネージャを使用してパイプラインコンポーネントを一時的に無効にすることもできます。
 
 無効にするパイプラインコンポーネントの文字列名を1つ以上指定します。
-例えば、固有表現抽出機能だけを使ってDocを処理したい場合は、一時的にタガーとパーサを無効にします。
+例えば、固有表現抽出機能だけを使って `Doc` を処理したい場合は、一時的にタガーとパーサを無効にします。
 
 `with` ブロックの後、無効化されたパイプラインコンポーネントは自動的に復元されます。
 
 `with` ブロックでは、 spaCy は残りのコンポーネントのみを実行します。
+
+（v2.3現在、日本語モデルには `tagger` コンポーネントが含まれていないため、左記コードでは `"tagger"` を指定していません。）
 
 ---
 

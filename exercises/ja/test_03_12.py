@@ -8,7 +8,7 @@ def test():
     assert "(ent.text, ent.label_, ent._.capital)" in __solution__, "正しい属性をプリントしましたか？"
     assert len(doc.ents) == 2, "固有表現が正く登録されていないようです"
     assert (
-        doc.ents[0]._.capital == "Prague" and doc.ents[1]._.capital == "Bratislava"
+        doc.ents[0]._.capital == "プラハ" and doc.ents[1]._.capital == "ブラチスラヴァ"
     ), "capital属性がちゃんと働いていないようです"
 
     __msg__.good("Well done！これは構造化されたデータをspaCyのパイプラインに追加する非常に良い例です。")
