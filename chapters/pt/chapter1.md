@@ -176,7 +176,7 @@ próprio texto! Use `spacy.explain` para saber o significado de uma determinada
 tag ou marcador. Por exemplo: `spacy.explain("PROPN")` ou `spacy.explain("GPE")`.
 
 
-### Part 1
+### Parte 1
 
 - Processe o texto utilizando o objeto `nlp` e crie um `doc`.
 - Para cada token, imprima seu texto, sua classe gramatical  `.pos_` e seu
@@ -189,7 +189,7 @@ Observe que os atributos do token possuem o caractere "sublinhado" no final.
 
 </codeblock>
 
-### Part 2
+### Parte 2
 
 - Processe o texto utilizando o objeto `nlp` e crie um `doc`.
 - Construa uma iteração em `doc.ents` e imprima os atributos texto e o

@@ -7,5 +7,5 @@ nlp = ____
 ner = ____
 ____
 
-# Adicionar o rótulo "GADGET" ao identificador de entidades
+# Adicionar o marcador "GADGET" ao identificador de entidades
 ____.____

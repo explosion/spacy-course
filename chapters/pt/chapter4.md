@@ -40,7 +40,7 @@ treiná-lo com mais exemplos é sempre uma boa solução.
 
 <opt text="Aprende novos esquemas de classificação.">
 
-Através do treinamento é possível ensinar o modelo sobre novos rótulos,
+Através do treinamento é possível ensinar o modelo sobre novos marcadores,
 entidades ou categorias de classificação.
 
 </opt>
@@ -49,7 +49,7 @@ entidades ou categorias de classificação.
 
 Os componentes do spaCy são modelos _supervisionados_ baseados em anotações de
 texto, o que quer dizer que eles aprendem a reproduzir exemplos já aprendidos
-e não adivinhar novos rótulos a partir de dados sem tratamento.
+e não adivinhar novos marcadores a partir de dados sem tratamento.
 </opt>
 
 </choice>
@@ -91,7 +91,7 @@ de dados de treinamento. Uma lista de frases está disponível na variável `TEX
 - Crie um objeto doc para cada frase usando `nlp.pipe`.
 - Faça a correspondência ao doc usando o matcher e crie uma lista das partições 
   com correspondência.
-- Obtenha as tuplas `(caracter inicial, caracter final, rótulo)` das partições.
+- Obtenha as tuplas `(caracter inicial, caracter final, marcador)` das partições.
 - Formate cada exemplo como uma tupla com o texto e um dicionário, mapeando `"entities"`. 
 - Adicione o exemplo a `TRAINING_DATA` e imprima em seguida.
 
@@ -122,7 +122,7 @@ exemplo: "iPhone X".
 - Crie um modelo vazio do idioma `"en"`, usando o método `spacy.blank`.
 - Crie um novo identificador de entidades usando `nlp.create_pipe` e o adicione
 ao fluxo de processamento.
-- Adicione o rótulo `"GADGET"` ao identificador de entidades, usando o método
+- Adicione o marcador `"GADGET"` ao identificador de entidades, usando o método
 `add_label` do componente do fluxo.
 
 <codeblock id="04_06">
@@ -132,7 +132,7 @@ ao fluxo de processamento.
 - Para adicionar um componente ao fluxo, use o método `nlp.add_pipe`.
 - O método `add_label` é um método do componente identificador de entidades do
   fluxo de processamento que você armazenou na variável `ner`. Para adicionar
-  um rótulo a ele, use `ner.add_label` com o nome do rótulo. Por exemplo: 
+  um marcador a ele, use `ner.add_label` com o nome do marcador. Por exemplo: 
   `ner.add_label("UM_NOME_DO_ROTULO")`.
 
 </codeblock>
@@ -144,10 +144,10 @@ ao fluxo de processamento.
 Vamos agora criar um ciclo de treinamento simples, a partir do zero!
 
 O fluxo de processamento que você criou no exercício anterior está disponível
-como um objeto `nlp`. Ele já contem um identificador de entidades com o rótulo
+como um objeto `nlp`. Ele já contem um identificador de entidades com o marcador
 adicionado: `"GADGET"`.
 
-O pequeno conjunto de exemplos com rótulos que você também criou está disponível
+O pequeno conjunto de exemplos com marcadores que você também criou está disponível
 como `TRAINING_DATA`. Para ver alguns exemplos você pode imprimi-los em seu
 código.
 
@@ -175,7 +175,7 @@ código.
 <exercise id="8" title="Explorando o modelo">
 
 Vamos agora avaliar como o modelo se comporta com novos dados. Para agilizar,
-já treinamos um modelo para o rótulo `"GADGET"` com algumas frases. Aqui está
+já treinamos um modelo para o marcador `"GADGET"` com algumas frases. Aqui está
 o resultado:
 
 | Text                                                                                                              | Entities               |
@@ -258,7 +258,7 @@ TRAINING_DATA = [
 
 ### Part 1
 
-Por que esses dados e seus rótulos são problemáticos?
+Por que esses dados e seus marcadores são problemáticos?
 
 <choice>
 
@@ -294,14 +294,14 @@ contexto do texto é uma das grandes vantagens dos modelos estatísticos prediti
 
 ### Parte 2
 
-- Rescreva o `TRAINING_DATA` para usar apenas os rótulos (cidades, estados, países) 
+- Rescreva o `TRAINING_DATA` para usar apenas o marcador `"GPE"` (cidades, estados, países) 
 ao invés de `"TOURIST_DESTINATION"`. 
 - Não se esqueça de adicionar as tuplas à entidade `"GPE"` que não estavam identificadas
 nos dados antigos.
 
 <codeblock id="04_10">
 
-- Para as partições que já estavam rotuladas, você só precisa alterar o rótulo de
+- Para as partições que já estavam rotuladas, você só precisa alterar o marcador de
   `"TOURIST_DESTINATION"` para `"GPE"`. 
 - Uma frase contém uma cidade e um estado que não tinha sido rotulado. Para
   adicionar a partição da entidade, identifique a posição do início e do final
@@ -311,11 +311,11 @@ nos dados antigos.
 
 </exercise>
 
-<exercise id="11" title="Treinando múltiplos rótulos">
+<exercise id="11" title="Treinando múltiplos marcadores">
 
 Aqui está um pequeno exemplo de um conjunto de dados criado para treinar a entidade
 `"WEBSITE"`. O conjunto de dados original contém algumas centenas de frases.
-Neste exercício, você criará os rótulos manualmente. Na vida real, você provavelmente
+Neste exercício, você criará os marcadores manualmente. Na vida real, você provavelmente
 irá automatizar este processo e utilizará uma ferramenta de anotação, como por exemplo:
 [Brat](http://brat.nlplab.org/), uma solução de código aberto, ou 
 [Prodigy](https://prodi.gy), nossa ferramenta de anotação integrada ao spaCy.
@@ -352,7 +352,7 @@ identificar pessoas, e também organizações e até percentuais.
 
 </opt>
 
-<opt text='Os dados de treinamento não incluíram exemplos de <code>"PERSON"</code>, portanto o modelo aprendeu que esse rótulo é incorreto.' correct="true">
+<opt text='Os dados de treinamento não incluíram exemplos de <code>"PERSON"</code>, portanto o modelo aprendeu que esse marcador é incorreto.' correct="true">
 
 Se exemplos de entidades `"PERSON"`aparecerem nos dados de treinamento e não estiverem 
 rotuladas, o modelo aprenderá que essas entidades não deverm ser identificadas. 

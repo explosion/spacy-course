@@ -177,17 +177,17 @@ Neste exercício você escreverá um componente customizado que usará o
 reconhecidas ao `doc.ents`. O `PhraseMatcher` será criado como a variável `matcher`.
 
 - Defina o componente customizado e aplique o `matcher` ao `doc`.
-- Crie uma partição `Span` para cada correspondência, atribua o rótulo `"ANIMAL"`
+- Crie uma partição `Span` para cada correspondência, atribua o marcador `"ANIMAL"`
   e sobrescreva `doc.ents` com as novas correspondências.
 - Adicione o novo componente ao fluxo _após_ o componente `"ner"`.
-- Processe o texto e imprima o texto e os rótulos das entidades em `doc.ents`.
+- Processe o texto e imprima o texto e os marcadores das entidades em `doc.ents`.
 
 
 <codeblock id="03_07">
 
 - Observe que as correspondências são uma lista de tuplas `(match_id, start, end)`.
 - A classe `Span` tem 4 argumentos: o `doc` pai, o índice inicial, índice final e
-  o rótulo.
+  o marcador.
 - Para adicionar um componente após o outro, use o argumento `after` em
   `nlp.add_pipe`.
 
@@ -276,15 +276,15 @@ predições do modelo e criará um método extendido que retornará o endereço 
 de busca na Wikipedia se a partição for uma pessoa, organização ou localidade.
 
 - Defina a função `get_wikipedia_url` que só retornará uma URL da Wikipedia
-  caso o rótulo da partição seja igual ao valor de uma lista de rótulos.
+  caso o marcador da partição seja igual ao valor de uma lista de marcadores.
 - Defina a propriedade extendida `"wikipedia_url"` para a partição `Span` com
   o atributo getter igual a `get_wikipedia_url`.
 - Itere nas entidades do `doc` e imprima a URL da Wikipedia.
 
 <codeblock id="03_11">
 
-- Para obter o rótulo (label) de uma partição span, use a propriedade `span.label_`. 
-  Este é o rótulo previsto pelo identificador de entidades caso o texto seja uma
+- Para obter o marcador (label) de uma partição span, use a propriedade `span.label_`. 
+  Este é o marcador previsto pelo identificador de entidades caso o texto seja uma
   entidade.
 - Observe que as propriedades extendidas estão disponíveis através da propriedade `._`.
   Por exemplo: `doc._.has_color`.
@@ -304,18 +304,18 @@ Um comparador com todos os países deverá ser disponibilizado na variável
 `matcher`. Um dicionário que mapeie os países e suas capitais deverá ser 
 disponibilizado na variável `CAPITALS`.
 
-- Complete a função `countries_component` que defina um rótulo `"GPE"`
+- Complete a função `countries_component` que defina um marcador `"GPE"`
   (geopolitical entity) para todas as correspondências.
 - Adicione o componente ao fluxo de processamento.
 - Defina uma propriedade extendida `"capital"` para a partição Span com o 
   argumento getter como `get_capital`.
-- Processe o texto e imprima o texto da entidade, o rótulo (label) e a
+- Processe o texto e imprima o texto da entidade, o marcador (label) e a
   propriedade extendida capital para cada partição em `doc.ents`.
 
 <codeblock id="03_12">
 
 - A classe `Span` tem quatro argumentos: o `doc`, o índice iníciial `start` e o  
-  índice final `end` do token e o seu rótulo `label`.
+  índice final `end` do token e o seu marcador `label`.
 - Use o `PhraseMatcher` com argumento `doc`, que retornará uma lista de tuplas: 
   `(match_id, start, end)`.
 - Para definir uma nova propriedade extendida, use o método  `set_extension` na

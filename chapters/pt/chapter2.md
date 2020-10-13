@@ -226,7 +226,7 @@ usar atributos nativos para manter a consistência da informação.
 <opt text='O atributo <code>pos_</code> não é o correto para extrair substantivos próprios. Você deve utilizar  <code>tag_</code> e os marcadores   <code>"NNP"</code> e <code>"NNS"</code>.'>
 
 O atributo `.pos_` retorna a classe gramatical genérica enquanto `"PROPN"` é a forma correta
-de verificar se é trata-se de um substantivo próprio.
+de verificar se trata-se de um substantivo próprio.
 
 </opt>
 

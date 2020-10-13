@@ -7,5 +7,5 @@ nlp = spacy.blank("en")
 ner = nlp.create_pipe("ner")
 nlp.add_pipe(ner)
 
-# Adicionar o rótulo "GADGET" ao identificador de entidades
+# Adicionar o marcador "GADGET" ao identificador de entidades
 ner.add_label("GADGET")
