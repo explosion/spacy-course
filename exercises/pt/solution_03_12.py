@@ -15,7 +15,7 @@ matcher.add("COUNTRY", None, *list(nlp.pipe(COUNTRIES)))
 
 
 def countries_component(doc):
-    # Criar uma partição com a etiqueta "GPE" para todas as correspondências 
+    # Criar uma partição com o rótulo "GPE" para todas as correspondências 
     matches = matcher(doc)
     doc.ents = [Span(doc, start, end, label="GPE") for match_id, start, end in matches]
     return doc
@@ -31,6 +31,6 @@ get_capital = lambda span: CAPITALS.get(span.text)
 # Definir a propriedade extendida "capital" com o atributo getter get_capital
 Span.set_extension("capital", getter=get_capital)
 
-# Processar o texto e imprimir o texto da entidade, etiqueta (label) e a propriedade extendida capital
+# Processar o texto e imprimir o texto da entidade, rótulo (label) e a propriedade extendida capital
 doc = nlp("Czech Republic may help Slovakia protect its airspace")
 print([(ent.text, ent.label_, ent._.capital) for ent in doc.ents])

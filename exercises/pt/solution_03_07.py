@@ -13,7 +13,7 @@ matcher.add("ANIMAL", None, *animal_patterns)
 def animal_component(doc):
     # Aplicar o matcher ao doc
     matches = matcher(doc)
-    # Criar uma partição para cada correspondência e atribuir a etiqueta "ANIMAL"
+    # Criar uma partição para cada correspondência e atribuir o rótulo "ANIMAL"
     spans = [Span(doc, start, end, label="ANIMAL") for match_id, start, end in matches]
     # Sobrescrever doc.ents com as correspondências 
     doc.ents = spans
@@ -24,6 +24,6 @@ def animal_component(doc):
 nlp.add_pipe(animal_component, after="ner")
 print(nlp.pipe_names)
 
-# Processar o texto e imprimir o texto e etiqueta de doc.ents
+# Processar o texto e imprimir o texto e rótulo de doc.ents
 doc = nlp("I have a cat and a Golden Retriever")
 print([(ent.text, ent.label_) for ent in doc.ents])
