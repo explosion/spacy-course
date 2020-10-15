@@ -3,7 +3,7 @@ title: 'Chapter 2: Análise da dados em larga escala usando spaCy'
 description:
   "Neste capítulo você desenvolverá novas habilidades ao extrair informações
   específicas de um grande volume de texto. Você vai aprender a otimizar o uso
-  das estruturas de dados do spaCy e como criar estratégias combinadas de 
+  das estruturas de dados do spaCy e como criar estratégias combinadas de
   estatística e regras para efetuar análises de textos de maneira eficiente."
 prev: /chapter1
 next: /chapter3
@@ -11,9 +11,9 @@ type: chapter
 id: 2
 ---
 
-<exercise id="1" title="Estruturas de Dados (1)" type="slides,video">
+<exercise id="1" title="Estruturas de Dados (1)" type="slides">
 
-<slides source="chapter2_01_data-structures-1" start="11:06" end="13:37">
+<slides source="chapter2_01_data-structures-1">
 </slides>
 
 </exercise>
@@ -87,7 +87,7 @@ Qualquer palavra pode ser mapeada para um código hash.
 <opt text="<code>nlp_de</code> não é um nome válido. O vocabulário só pode ser compartilhado se o objeto <code>nlp</code> tiver o mesmo nome.">
 
 O nome da variável `nlp` é apenas uma convenção. Se no código fosse feita a atribuição
-da variável `nlp` ao invés de `nlp_de`, ele teria sobrescrito a variável `nlp` existente 
+da variável `nlp` ao invés de `nlp_de`, ele teria sobrescrito a variável `nlp` existente
 e o seu vocabulário.
 
 </opt>
@@ -96,9 +96,9 @@ e o seu vocabulário.
 
 </exercise>
 
-<exercise id="4" title="Estruturas de Dados (2)" type="slides,video">
+<exercise id="4" title="Estruturas de Dados (2)" type="slides">
 
-<slides source="chapter2_02_data-structures-2" start="13:475" end="15:47">
+<slides source="chapter2_02_data-structures-2">
 </slides>
 
 </exercise>
@@ -116,8 +116,8 @@ Vamos criar objetos `Doc` a partir do zero!
 <codeblock id="02_05_01">
 
 A classe `Doc` tem 3 argumentos: o vocabulário compartilhado, geralmente
-`nlp.vocab`, a lista de palavras `words` e espaçamento `spaces` formado por valores 
-booleanos que indicam se a palavra é ou não seguida de um espaço em branco. 
+`nlp.vocab`, a lista de palavras `words` e espaçamento `spaces` formado por valores
+booleanos que indicam se a palavra é ou não seguida de um espaço em branco.
 
 </codeblock>
 
@@ -160,20 +160,20 @@ o spaCy faz nos bastidores. Um objeto `nlp` deve ser previamente criado.
 espaçamento.
 - Crie uma partição `Span` para "David Bowie" a partir do `doc` e atribua a ela
 o marcador  `"PERSON"`.
-- Sobrescreva o `doc.ents` com uma lista contendo uma entidade: a partição 
+- Sobrescreva o `doc.ents` com uma lista contendo uma entidade: a partição
 `span` com "David Bowie"
 
 
 <codeblock id="02_06">
 
-- O `Doc` é inicializado com três parametros: o vocabulário compartilhado, 
-  por exemplo: `nlp.vocab`, uma lista de palavras e uma lista de valores 
+- O `Doc` é inicializado com três parametros: o vocabulário compartilhado,
+  por exemplo: `nlp.vocab`, uma lista de palavras e uma lista de valores
   booleanos que indicam se uma palavra é seguida de um espaço em branco.
-- A classe `Span` tem dois parâmetros: a referência ao `doc`, os índices do 
+- A classe `Span` tem dois parâmetros: a referência ao `doc`, os índices do
   token inicial e do token final e opcionalmente um marcador.
 - A propriedade `doc.ents` é sobrescrevível, e por isso você pode atribuir a ela
   qualquer objeto iterável do tipo `Span`.
-  
+
 
 </codeblock>
 
@@ -190,12 +190,12 @@ import spacy
 nlp = spacy.load("en_core_web_sm")
 doc = nlp("Berlin is a nice city")
 
-# Seleciona os textos dos tokens e os marcadores com as classes gramaticais 
+# Seleciona os textos dos tokens e os marcadores com as classes gramaticais
 token_texts = [token.text for token in doc]
 pos_tags = [token.pos_ for token in doc]
 
 for index, pos in enumerate(pos_tags):
-    # Verifica se o token atual é um substantivo próprio 
+    # Verifica se o token atual é um substantivo próprio
     if pos == "PROPN":
         # Check if the next token is a verb
         if pos_tags[index + 1] == "VERB":
@@ -234,36 +234,36 @@ de verificar se trata-se de um substantivo próprio.
 
 ### Parte 2
 
-- Rescreva o código utilizando diretamente os atributos nativos dos tokens 
+- Rescreva o código utilizando diretamente os atributos nativos dos tokens
   ao invés de criar uma lista de `token_texts` e `pos_tags`.
 - Crie um loop (laço) e para cada `token` no `doc` verifique o atributo
   `token.pos_`.
-- Use `doc[token.i + 1]` para referenciar o próximo token e verifique seu 
+- Use `doc[token.i + 1]` para referenciar o próximo token e verifique seu
   atributo `.pos_`.
 
 <codeblock id="02_07">
 
-- Não é necessário gerar uma lista de strings antecipadamente: remova 
+- Não é necessário gerar uma lista de strings antecipadamente: remova
   `token_texts` e `pos_tags`.
-- Ao invés de iterar em `pos_tags`, crie um loop (laço) e para cada `token` 
+- Ao invés de iterar em `pos_tags`, crie um loop (laço) e para cada `token`
   em `doc`, verifique o atributo `token.pos_`.
 - Para verificar se o próximo token é um verbo, use: `doc[token.i + 1].pos_`.
- 
+
 
 </codeblock>
 
 </exercise>
 
-<exercise id="8" title="Vetores das palavras e similaridade semântica" type="slides,video">
+<exercise id="8" title="Vetores das palavras e similaridade semântica" type="slides">
 
-<slides source="chapter2_03_word-vectors-similarity" start="15:58" end="19:47">
+<slides source="chapter2_03_word-vectors-similarity">
 </slides>
 
 </exercise>
 
 <exercise id="9" title="Inspeção dos vetores das palavras">
 
-Neste exercício vamos usar o [Modelo Inglês Grande](https://spacy.io/models/en) que inclui 
+Neste exercício vamos usar o [Modelo Inglês Grande](https://spacy.io/models/en) que inclui
 cerca de 20.000 vetores das palavras. Esse modelo já está instalado.
 
 - Carregue o modelo médio `"en_core_web_md"`com seus vetores das palavras.
@@ -317,9 +317,9 @@ ao objeto atual.
 
 </exercise>
 
-<exercise id="11" title="Combinando modelos e regras" type="slides,video">
+<exercise id="11" title="Combinando modelos e regras" type="slides">
 
-<slides source="chapter2_04_models-rules" start="19:58" end="23:25">
+<slides source="chapter2_04_models-rules">
 </slides>
 
 </exercise>
@@ -348,7 +348,7 @@ corresponderão a um valor. Então a expressão `{"LOWER": "valley"}` correspond
 
 <opt correct="true" text='O toquenizador não cria tokens para espaço em branco, portanto não existe token com o valor <code>" "</code> entre as palavras.'>
 
-O toquenizador automaticamente retira os espaços em branco entre as palavras, e cada 
+O toquenizador automaticamente retira os espaços em branco entre as palavras, e cada
 dicionário na expressão deve ser um token.
 
 
@@ -357,7 +357,7 @@ dicionário na expressão deve ser um token.
 <opt text='Está faltando o operador <code>"OP"</code> que indica que os tokens devem corresponder somente uma vez.'>
 
 Por padrão (default) os tokens em uma expressão irão corresponder somente uma vez.
-Operadores são necessários para alterar esse comportamento padrão, como por 
+Operadores são necessários para alterar esse comportamento padrão, como por
 exemplo, corresponder uma ou mais vezes.
 
 </opt>
@@ -374,7 +374,7 @@ para entender como o texto será quebrado e ajuste a expressão de forma que cad
 dicionário represente um token.
 
 - Edite `pattern1` de forma que ele faça a correspondência de todas as combinações
-  de maiúscula e minúsculas de `"Amazon"` seguido de um substantivo próprio 
+  de maiúscula e minúsculas de `"Amazon"` seguido de um substantivo próprio
   iniciado com letra maiúscula.
 
 - Edite `pattern2` de forma que ele faça a correspondência de todas as combinações
@@ -395,8 +395,8 @@ dicionário represente um token.
 
 Muitas vezes é mais eficiente fazer a correspondência exata de textos ao invés
 de escrever expressões descrevendo os tokens individualmente. Esso é o caso
-de categorias finitas, como por exemplo, lista dos países do mundo. Nós já temos 
-uma lista de países, então vamos usá-la como base para o nosso roteiro. A lista 
+de categorias finitas, como por exemplo, lista dos países do mundo. Nós já temos
+uma lista de países, então vamos usá-la como base para o nosso roteiro. A lista
 com os nomes está disponível na variável `COUNTRIES`.
 
 - Importe o `PhraseMatcher`, inicializando-o com o vocabulário compartilhado
@@ -418,7 +418,7 @@ para localizar nomes de países no texto. Vamos usar esse comparador em
 um texto maior, fazer a análise sintática e atualizar as entidades do documento
 com os países encontrados.
 
-- Itere nos resultados do comparador e crie uma partição `Span` 
+- Itere nos resultados do comparador e crie uma partição `Span`
   com o marcador `"GPE"` (entidade geopolítica).
  - Sobrescreva `doc.ents` com as entidades encontradas.
  - Identifique o token inicial da partição dos resultados encontrados.
@@ -427,10 +427,9 @@ com os países encontrados.
 <codeblock id="02_15">
 
 - Lembre-se que o texto está disponível na variável `text`.
-- A referência ao token está no atributo `span.root`. O início do token 
+- A referência ao token está no atributo `span.root`. O início do token
   está no atributo `token.head`.
 
 </codeblock>
 
 </exercise>
-

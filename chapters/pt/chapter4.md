@@ -5,7 +5,7 @@ description:
   spaCy de maneira a adequá-los aos seus casos de uso, como por exemplo,
   prever um novo tipo de entidade em textos de comentários. Vocẽ escreverá
   sua rotina de treinamento a partir do zero, e entenderá o ciclo de
-  treinamento, bem como aprenderá algumas dicas de como ter sucesso 
+  treinamento, bem como aprenderá algumas dicas de como ter sucesso
   nos seus projetos de processamento de linguagem natural (NLP)."
 prev: /chapter3
 next: null
@@ -13,17 +13,17 @@ type: chapter
 id: 4
 ---
 
-<exercise id="1" title="Treinando e atualizando os modelos" type="slides,video">
+<exercise id="1" title="Treinando e atualizando os modelos" type="slides">
 
-<slides source="chapter4_01_training-updating-models" start="35:02" end="38:495">
+<slides source="chapter4_01_training-updating-models">
 </slides>
 
 </exercise>
 
 <exercise id="2" title="O propósito do treinamento">
 
-Embora o spaCy já venha com modelos pré-treinados para prever anotações linguísticas, 
-na _maioria das vezes_ você desejará fazer um ajuste fino no modelo, adicionando 
+Embora o spaCy já venha com modelos pré-treinados para prever anotações linguísticas,
+na _maioria das vezes_ você desejará fazer um ajuste fino no modelo, adicionando
 alguns exemplos específicos. Você conseguirá essa calibragem final após
 adicionar mais dados rotulados e treinar o modelo.
 
@@ -66,7 +66,7 @@ então vamos criar dados de treinamento para o modelo reconhecer esses exemplos 
 `"GADGET"`.
 
 
-- Escreva uma expressão para que dois tokens correspondam as palavras em minúsculas 
+- Escreva uma expressão para que dois tokens correspondam as palavras em minúsculas
   `"iphone"` e `"x"`.
 - Escreva uma expressão com dois tokens : um token cujo formato em minúscula corresponda a
   `"iphone"` e o outro corresponda a um dígito usando o operador `"?"`.
@@ -75,7 +75,7 @@ então vamos criar dados de treinamento para o modelo reconhecer esses exemplos 
 
 - Para ter correspondência a um token no formato minúsculo, você pode usar o atributo
  `"LOWER"`. Por exemplo: `{"LOWER": "apple"}`.
-  
+
 - Para um token com um dígito, você pode usar o sinalizador `"IS_DIGIT"`. Por exemplo:
   `{"IS_DIGIT": True}`.
 
@@ -89,10 +89,10 @@ Vamos usar as expressões criadas no exercício anterior para alavancar um conju
 de dados de treinamento. Uma lista de frases está disponível na variável `TEXTS`.
 
 - Crie um objeto doc para cada frase usando `nlp.pipe`.
-- Faça a correspondência ao doc usando o matcher e crie uma lista das partições 
+- Faça a correspondência ao doc usando o matcher e crie uma lista das partições
   com correspondência.
 - Obtenha as tuplas `(caracter inicial, caracter final, marcador)` das partições.
-- Formate cada exemplo como uma tupla com o texto e um dicionário, mapeando `"entities"`. 
+- Formate cada exemplo como uma tupla com o texto e um dicionário, mapeando `"entities"`.
 - Adicione o exemplo a `TRAINING_DATA` e imprima em seguida.
 
 <codeblock id="04_04">
@@ -106,9 +106,9 @@ de dados de treinamento. Uma lista de frases está disponível na variável `TEX
 
 </exercise>
 
-<exercise id="5" title="O ciclo de treinamento" type="slides,video">
+<exercise id="5" title="O ciclo de treinamento" type="slides">
 
-<slides source="chapter4_02_training-loop" start="39:00" end="42:25">
+<slides source="chapter4_02_training-loop">
 </slides>
 
 </exercise>
@@ -132,7 +132,7 @@ ao fluxo de processamento.
 - Para adicionar um componente ao fluxo, use o método `nlp.add_pipe`.
 - O método `add_label` é um método do componente identificador de entidades do
   fluxo de processamento que você armazenou na variável `ner`. Para adicionar
-  um marcador a ele, use `ner.add_label` com o nome do marcador. Por exemplo: 
+  um marcador a ele, use `ner.add_label` com o nome do marcador. Por exemplo:
   `ner.add_label("UM_NOME_DO_ROTULO")`.
 
 </codeblock>
@@ -157,13 +157,13 @@ código.
   faça a iteração nos lotes.
 - Converta as tuplas `(text, annotations)` do lote para listas de `texts` e
   `annotations`.
-- Para cada lote (batch), use `nlp.update` para atualizar o modelo com os `texts` 
+- Para cada lote (batch), use `nlp.update` para atualizar o modelo com os `texts`
   e `annotations`.
 
 
 <codeblock id="04_07">
 
-- Para iniciar o treinamento e reiniciar os pesos do modelo, use o método 
+- Para iniciar o treinamento e reiniciar os pesos do modelo, use o método
   `nlp.begin_training()`
 - Para dividir os dados de treinamento em lotes, use a função `spacy.util.minibatch`
   com parâmetro a lista de exemplos de treinamento.
@@ -226,9 +226,9 @@ total de entidades que o modelo _deveria_ ter identificado.
 
 </exercise>
 
-<exercise id="9" title="Melhores práticas de treinamento" type="slides,video">
+<exercise id="9" title="Melhores práticas de treinamento" type="slides">
 
-<slides source="chapter4_03_training-best-practices" start="42:36" end="44:55">
+<slides source="chapter4_03_training-best-practices">
 </slides>
 
 </exercise>
@@ -267,7 +267,7 @@ Por que esses dados e seus marcadores são problemáticos?
 
 Uma abordagem melhor seria identificar as entidades geopolíticas `"GPE"` ou
 localidades `"LOCATION"` e em seguida utilizar um sistema baseado em regras para
-determinar se a entidade é um destino turístico neste contexto. Por exemplo, 
+determinar se a entidade é um destino turístico neste contexto. Por exemplo,
 você poderia comparar esssas entidades identificadas com uma base de conhecimento
 ou uma wiki sobre viagens.
 
@@ -276,8 +276,8 @@ ou uma wiki sobre viagens.
 <opt text="Paris  deveria ter sido rotulada como um destino turístico para ser consistente. Senão o modelo irá se confundir.">
 
 Embora seja possível que Paris, AK seja uma atração turística, este exemplo só
-ressalta a subjetividade da definição dessa estratégia e como o processo de 
-rotulagem será complexo. Como resultado, a distinção desta entidade será bem difícil 
+ressalta a subjetividade da definição dessa estratégia e como o processo de
+rotulagem será complexo. Como resultado, a distinção desta entidade será bem difícil
 para o modelo.
 
 </opt>
@@ -294,15 +294,15 @@ contexto do texto é uma das grandes vantagens dos modelos estatísticos prediti
 
 ### Parte 2
 
-- Rescreva o `TRAINING_DATA` para usar apenas o marcador `"GPE"` (cidades, estados, países) 
-ao invés de `"TOURIST_DESTINATION"`. 
+- Rescreva o `TRAINING_DATA` para usar apenas o marcador `"GPE"` (cidades, estados, países)
+ao invés de `"TOURIST_DESTINATION"`.
 - Não se esqueça de adicionar as tuplas à entidade `"GPE"` que não estavam identificadas
 nos dados antigos.
 
 <codeblock id="04_10">
 
 - Para as partições que já estavam rotuladas, você só precisa alterar o marcador de
-  `"TOURIST_DESTINATION"` para `"GPE"`. 
+  `"TOURIST_DESTINATION"` para `"GPE"`.
 - Uma frase contém uma cidade e um estado que não tinha sido rotulado. Para
   adicionar a partição da entidade, identifique a posição do início e do final
   da partição. Em seguida, adicione a tupla `(start, end, label)` à entidade.
@@ -317,7 +317,7 @@ Aqui está um pequeno exemplo de um conjunto de dados criado para treinar a enti
 `"WEBSITE"`. O conjunto de dados original contém algumas centenas de frases.
 Neste exercício, você criará os marcadores manualmente. Na vida real, você provavelmente
 irá automatizar este processo e utilizará uma ferramenta de anotação, como por exemplo:
-[Brat](http://brat.nlplab.org/), uma solução de código aberto, ou 
+[Brat](http://brat.nlplab.org/), uma solução de código aberto, ou
 [Prodigy](https://prodi.gy), nossa ferramenta de anotação integrada ao spaCy.
 
 
@@ -329,8 +329,8 @@ irá automatizar este processo e utilizará uma ferramenta de anotação, como p
 <codeblock id="04_11_01">
 
 - o início e fim de uma partição para uma entidade são ao localização no texto.
-  Por exemplo, se uma entidade se iniciar na posição 5, significa que o início 
-  é `5`. Lembre-se que o fim é _exclusivo_, ou seja, `10` significa **até** 
+  Por exemplo, se uma entidade se iniciar na posição 5, significa que o início
+  é `5`. Lembre-se que o fim é _exclusivo_, ou seja, `10` significa **até**
   o caracter 10.
 
 </codeblock>
@@ -339,7 +339,7 @@ irá automatizar este processo e utilizará uma ferramenta de anotação, como p
 
 Um modelo foi treinado com os dados que você acaba de rotular, com mais alguns
 milhares de exemplos similares. Depois do treinamento, ele está performando muito
-bem para `"WEBSITE"`, mas parece não estar mais reconhecendo a entidade `"PERSON"`. 
+bem para `"WEBSITE"`, mas parece não estar mais reconhecendo a entidade `"PERSON"`.
 O que pode estar acontecendo?
 
 <choice>
@@ -354,9 +354,9 @@ identificar pessoas, e também organizações e até percentuais.
 
 <opt text='Os dados de treinamento não incluíram exemplos de <code>"PERSON"</code>, portanto o modelo aprendeu que esse marcador é incorreto.' correct="true">
 
-Se exemplos de entidades `"PERSON"`aparecerem nos dados de treinamento e não estiverem 
-rotuladas, o modelo aprenderá que essas entidades não deverm ser identificadas. 
-Similarmente, se exemplos da entidade **não** estiverem presentes nos dados de treinamento, 
+Se exemplos de entidades `"PERSON"`aparecerem nos dados de treinamento e não estiverem
+rotuladas, o modelo aprenderá que essas entidades não deverm ser identificadas.
+Similarmente, se exemplos da entidade **não** estiverem presentes nos dados de treinamento,
 o modelo poderá \"esquecer\" e parar de identificá-la.
 
 </opt>
@@ -372,7 +372,7 @@ deste exemplo.
 
 ### Parte 3
 
-- Atualize os dados de treinamento para incluir as anotações "PewDiePie" e 
+- Atualize os dados de treinamento para incluir as anotações "PewDiePie" e
   "Alexis Ohanian" pra a entidade `"PERSON"`.
 
 <codeblock id="04_11_02">
@@ -383,9 +383,9 @@ deste exemplo.
 
 </exercise>
 
-<exercise id="12" title="Finalizando..." type="slides,video">
+<exercise id="12" title="Finalizando..." type="slides">
 
-<slides source="chapter4_04_wrapping-up" start="45:01" end="47:195">
+<slides source="chapter4_04_wrapping-up">
 </slides>
 
 </exercise>

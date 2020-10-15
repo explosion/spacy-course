@@ -1,18 +1,18 @@
 ---
 title: 'Capítulo 1: Selecionando palavras, frases, nomes e alguns conceitos'
 description:
-  "Neste capítulo vamos apresentar os conceitos básicos de processamento de texto utilizando Spacy.
-  Você vai aprender sobre as estruturas de dados, como trabalhar com modelos estatísticos e como 
-  usá-los para prever atributos linguísticos do seu texto.
+  "Neste capítulo vamos apresentar os conceitos básicos de processamento de texto utilizando spaCy.
+  Você vai aprender sobre as estruturas de dados, como trabalhar com modelos estatísticos e como
+  usá-los para prever atributos linguísticos do seu texto."
 prev: null
 next: /chapter2
 type: chapter
 id: 1
 ---
 
-<exercise id="1" title="Introdução ao spaCy" type="slides,video">
+<exercise id="1" title="Introdução ao spaCy" type="slides">
 
-<slides source="chapter1_01_introduction-to-spacy" start="0:165" end="3:01">
+<slides source="chapter1_01_introduction-to-spacy">
 </slides>
 
 </exercise>
@@ -47,8 +47,8 @@ experimentos com alguns dos mais de 55 [idiomas disponíveis](https://spacy.io/u
 
 <exercise id="3" title="Documentos, partições e tokens">
 
-Quando você chama o objeto `nlp` passando uma string como parâmetro, o spaCy 
-faz a toquenização do texto e cria um objeto do tipo documento. Neste exercício, você 
+Quando você chama o objeto `nlp` passando uma string como parâmetro, o spaCy
+faz a toquenização do texto e cria um objeto do tipo documento. Neste exercício, você
 vai aprender mais sobre o documento `Doc`, assim como os objetos `Token` e
 partição `Span`.
 
@@ -60,7 +60,7 @@ partição `Span`.
 
 <codeblock id="01_03_01">
 
-Você pode indexar um `Doc` da mesma maneira que você indexa uma lista em Python. 
+Você pode indexar um `Doc` da mesma maneira que você indexa uma lista em Python.
 Por exemplo, `doc[4]` irá retornar o token com índice 4, que é o quinto token do texto.
 Lembre-se que em Python o primeiro índice é 0 e não 1.
 
@@ -70,7 +70,7 @@ Lembre-se que em Python o primeiro índice é 0 e não 1.
 
 - Faça a importação da classe `English` e crie um objeto `nlp`.
 - Processe o texto e instancie um objeto `Doc` na variável `doc`.
-- Crie uma partição do `Doc` para os tokens "tree kangaroos" e 
+- Crie uma partição do `Doc` para os tokens "tree kangaroos" e
 "tree kangaroos and narwhals".
 
 <codeblock id="01_03_02">
@@ -89,24 +89,24 @@ Neste exemplo, você poderá usar os objetos `Doc` e `Token` combinados com
 atributos léxicos para encontrar referências percentuais em seu texto. Vocẽ irá procurar
 por dois elementos (tokens) sequenciais: um número e um sinal de porcentagem.
 
-- Use o atributo `like_num` para identificar se algum token no documento 
+- Use o atributo `like_num` para identificar se algum token no documento
 `doc` se assemelha a um número.
-- Selecione o token _seguinte_ ao token atual no documento. O índice para o 
+- Selecione o token _seguinte_ ao token atual no documento. O índice para o
 próximo token no `doc` é `token.i + 1`.
 - Verifique se o atributo `text` do próximo token é o sinal de porcentagem "%".
 
 <codeblock id="01_04">
 
-Para obter o token em uma determinada posição no texto, você pode indexar diretamente 
+Para obter o token em uma determinada posição no texto, você pode indexar diretamente
 a variável `doc`. Por exemplo, para obter o token na posição 5 escreva `doc[5]`.
 
 </codeblock>
 
 </exercise>
 
-<exercise id="5" title="Modelos estatísticos" type="slides,video">
+<exercise id="5" title="Modelos estatísticos" type="slides">
 
-<slides source="chapter1_02_statistical-models" start="3:12" end="7:01">
+<slides source="chapter1_02_statistical-models">
 </slides>
 
 </exercise>
@@ -118,7 +118,7 @@ O que **não** está incluído nos modelos que você pode carregar no spaCy?
 <choice>
 <opt text="Um arquivo com metadados do idioma, pipeline e licença.">
 
-Todos modelos incluem um `meta.json` que apresenta o idioma, os nomes dos 
+Todos modelos incluem um `meta.json` que apresenta o idioma, os nomes dos
 componentes do pipeline de processamento que serão carregados e metadados
 do modelo, como nome, versão, licença, fontes de dados, autor e acurácia (se disponível).
 
@@ -134,14 +134,14 @@ pesos binários.
 
 Os modelos estatísticos permitem a generalização a partir de um conjunto de
 exemplos de treinamento. Uma vez treinados, os modelos usam os pesos binários
-para fazer as predições. É por este motivo que não é necessário que os dados de 
+para fazer as predições. É por este motivo que não é necessário que os dados de
 treinamento sejam incluídos nos modelos.
 
 </opt>
 <opt text="O vocabulário do modelo e seus códigos indexadores (hashes).">
 
 As bibliotecas de modelos incluem um arquivo `strings.json` que armazena o mapeamento
-do vocabulário para códigos indexadores (hash). Isso permite que o spaCy utilize apenas os 
+do vocabulário para códigos indexadores (hash). Isso permite que o spaCy utilize apenas os
 códigos hash e faça a consulta da palavra correspondente, se necessário.
 
 </opt>
@@ -171,8 +171,8 @@ por isso verifique se você está usando o nome correto do modelo.
 <exercise id="8" title="Predizendo anotações linguísticas">
 
 Agora vamos experimentar um dos modelos pré-treinados do spaCy e
-ver o resultado de sua predição. Fique à vontade e experimente com seu 
-próprio texto! Use `spacy.explain` para saber o significado de uma determinada 
+ver o resultado de sua predição. Fique à vontade e experimente com seu
+próprio texto! Use `spacy.explain` para saber o significado de uma determinada
 tag ou marcador. Por exemplo: `spacy.explain("PROPN")` ou `spacy.explain("GPE")`.
 
 
@@ -206,7 +206,7 @@ Observe que os atributos do token possuem o caractere "sublinhado" no final.
 
 <exercise id="9" title="Predizendo entidades em um contexto">
 
-Os modelos são estatísticos e por isso não acertam 100% dos casos.  A acurácia 
+Os modelos são estatísticos e por isso não acertam 100% dos casos.  A acurácia
 do modelo depende dos dados nos quais o modelo foi treinado e também dos
 dados que você está processando. Vamos ver um exemplo:
 
@@ -227,9 +227,9 @@ dados que você está processando. Vamos ver um exemplo:
 
 </exercise>
 
-<exercise id="10" title="Correspondência de texto baseado em regras" type="slides,video">
+<exercise id="10" title="Correspondência de texto baseado em regras" type="slides">
 
-<slides source="chapter1_03_rule-based-matching" start="7:118" end="10:55">
+<slides source="chapter1_03_rule-based-matching">
 </slides>
 
 </exercise>
@@ -241,7 +241,7 @@ regras. Você vai usar o exemplo do exercício anterior e escrever um padrão
 que faça a correspondência para a frase "iPhone X" no texto.
 
 - Importe o `Matcher` de `spacy.matcher`.
-- Inicialize o comparador com o objeto compartilhado `vocab`do `nlp`. 
+- Inicialize o comparador com o objeto compartilhado `vocab`do `nlp`.
 - Crie um padrão que faça a correspondência dos valores em `"TEXT"` para dois tokens:
   `"iPhone"` e `"X"`.
 - Use o método `matcher.add` e adicione esse padrão ao comparador.
@@ -254,10 +254,10 @@ que faça a correspondência para a frase "iPhone X" no texto.
 <codeblock id="01_11">
 
 - O vocabulário compartilhado está disponível no atributo `nlp.vocab`.
-- Um padrão é composto por uma lista de dicionários cuja chave é o nome do 
+- Um padrão é composto por uma lista de dicionários cuja chave é o nome do
   atributo. Por exemplo:  `[{"TEXT": "Hello"}]` fará a correspondência do atributo
   texto (TEXT) para o texto exatamente igual a "Hello".
-- Os atributos `start` e `end` de cada resultado da correspondência são os 
+- Os atributos `start` e `end` de cada resultado da correspondência são os
   índices no `doc` da partição de texto equivalente. Para retornar o resultado da
   correspondência, basta criar uma partição no `doc` usando os indices `start` e `end`.
 
@@ -272,14 +272,14 @@ correspondência, usando atributos dos tokens e operadores.
 
 ### Parte 1
 
-- Escreva **um** padrão que corresponda às menções da versão IOS  _completa_: 
+- Escreva **um** padrão que corresponda às menções da versão IOS  _completa_:
   "iOS 7", "iOS 11" e "iOS 10".
 
 <codeblock id="01_12_01">
 
 - Para indicar a correspondência exata de um texto, você deve usar o atributo
 `TEXT`. Por exemplo,  `{"TEXT": "Apple"}` fará a correspondência exata do
-texto "Apple". 
+texto "Apple".
 - Para indicar a correspondência de um token com números, use o atributo
 `"IS_DIGIT"`, que retornará `True` se o token tiver somente caracteres numéricos.
 
@@ -290,7 +290,7 @@ texto "Apple".
 - Escreva **um** padrão que corresponda às variações de "download" (tokens
 que tenham "download" como lema), seguido de um token da classe gramatical
 substativo próprio `"PROPN"`.
-   
+
 <codeblock id="01_12_02">
 
 - Para indicar um lema, use o atributo `"LEMMA"` como padrão para o token.

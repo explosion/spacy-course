@@ -1,20 +1,20 @@
 ---
 title: 'Chapter 3: Fluxos de processamento (pipelines)'
 description:
-  "Neste capítulo você vai aprender tudo sobre os fluxos de processamento 
+  "Neste capítulo você vai aprender tudo sobre os fluxos de processamento
   (pipelines) do spaCy. Você irá aprender sobre o que acontece nos bastidores
   quando você processa um texto. Vai aprender a escrever seus próprios
   componentes e adicioná-los ao fluxo, e também a usar atributos customizados
-  para adicionar metadados próprios aos seus documentos, partições e tokens".
+  para adicionar metadados próprios aos seus documentos, partições e tokens"
 prev: /chapter2
 next: /chapter4
 type: chapter
 id: 3
 ---
 
-<exercise id="1" title="Fluxos de processamento (pipelines)" type="slides,video">
+<exercise id="1" title="Fluxos de processamento (pipelines)" type="slides">
 
-<slides source="chapter3_01_processing-pipelines" start="23:36" end="26:12">
+<slides source="chapter3_01_processing-pipelines">
 </slides>
 
 </exercise>
@@ -33,7 +33,7 @@ doc = nlp("This is a sentence.")
 
 O toquenizador sempre é executado _antes_ de qualquer componente do fluxo, pois
 ele é responsável por transformar uma string de texto em um objeto `Doc`. O fluxo
-de processamento (pipeline) não é obrigatoriamente composto por um tagueador (tagger), 
+de processamento (pipeline) não é obrigatoriamente composto por um tagueador (tagger),
 um analisador (parser) e um identificador de entidades.
 
 </opt>
@@ -41,7 +41,7 @@ um analisador (parser) e um identificador de entidades.
 <opt text="Toqueniza o texto e aplica os componentes do fluxo (pipeline) sequencialmente." correct="true">
 
 O toquenizador transforma uma string de texto em um objeto `Doc`. O spaCy
-então aplica cada componente do fluxo de processamento (pipeline) ao documento, 
+então aplica cada componente do fluxo de processamento (pipeline) ao documento,
 sequencialmente.
 
 </opt>
@@ -72,7 +72,7 @@ Vamos examinar o fluxo de processamento do modelo pequeno do idioma inglês!
 
 <codeblock id="03_03">
 
-A lista de componentes do fluxo está disponível no atributo `nlp.pipe_names`. A 
+A lista de componentes do fluxo está disponível no atributo `nlp.pipe_names`. A
 lista completa dos componentes na forma de tuplas `(name, component)` está
 disponível em `nlp.pipeline`.
 
@@ -80,16 +80,16 @@ disponível em `nlp.pipeline`.
 
 </exercise>
 
-<exercise id="4" title="Customizando os componentes de um fluxo (pipeline)" type="slides,video">
+<exercise id="4" title="Customizando os componentes de um fluxo (pipeline)" type="slides">
 
-<slides source="chapter3_02_custom-pipeline-components" start="26:235" end="29:05">
+<slides source="chapter3_02_custom-pipeline-components">
 </slides>
 
 </exercise>
 
 <exercise id="5" title="Casos de uso de componentes customizados">
 
-Qual ou quais desses problemas pode ser solucionado utilizando um componente customizado? 
+Qual ou quais desses problemas pode ser solucionado utilizando um componente customizado?
 
 1. Atualizar um modelo pré-treinado e melhorar suas predições.
 2. Calcular alguns valores utilizando os tokens e seus atributos.
@@ -123,7 +123,7 @@ são adequados para adicionar novos idiomas.
 
 <opt text="2 and 3." correct="true">
 
-Componentes customizados são ótimos para adicionar informações customizadas aos 
+Componentes customizados são ótimos para adicionar informações customizadas aos
 documentos, tokens e partições e também para customizar as entidades `doc.ents`.
 </opt>
 
@@ -195,9 +195,9 @@ reconhecidas ao `doc.ents`. O `PhraseMatcher` será criado como a variável `mat
 
 </exercise>
 
-<exercise id="8" title="Propriedades extendidas" type="slides,video">
+<exercise id="8" title="Propriedades extendidas" type="slides">
 
-<slides source="chapter3_03_extension-attributes" start="29:16" end="32:23">
+<slides source="chapter3_03_extension-attributes">
 </slides>
 
 </exercise>
@@ -213,20 +213,20 @@ Vamos exercitar a criação de propriedades extendidas.
 
 <codeblock id="03_09_01">
 
-Observe que as propriedades extendidas estão disponíveis através da propriedade `._` . 
+Observe que as propriedades extendidas estão disponíveis através da propriedade `._` .
 Por exemplo: `doc._.has_color`.
 
 </codeblock>
 
 ### Passo 2
 
-- Use `Token.set_extension` para criar a propriedade `"reversed"` (com o argumento getter 
+- Use `Token.set_extension` para criar a propriedade `"reversed"` (com o argumento getter
   sendo a função `get_reversed`).
 - Imprima o valor da nova propriedade para cada token.
 
 <codeblock id="03_09_02">
 
-- Observe que as propriedades extendidas estão disponíveis através da propriedade `._` . 
+- Observe que as propriedades extendidas estão disponíveis através da propriedade `._` .
   Por exemplo: `doc._.has_color`.
 
 </codeblock>
@@ -246,9 +246,9 @@ e a extensão de métodos.
 
 <codeblock id="03_10_01">
 
-- Observe que as propriedades extendidas estão disponíveis através da propriedade `._` . 
+- Observe que as propriedades extendidas estão disponíveis através da propriedade `._` .
   Por exemplo: `doc._.has_color`.
-- A função `get_has_number` deve retornar verdadeiro (True) se algum token do `doc`  
+- A função `get_has_number` deve retornar verdadeiro (True) se algum token do `doc`
   se parecer com um número (`token.like_num`).
 
 </codeblock>
@@ -262,7 +262,7 @@ e a extensão de métodos.
 
 - Métodos extendidos podem ter um ou mais argumentos. Por exemplo:
   `doc._.algum_metodo("argumento")`.
-- O primeiro argumento a ser passado é sempre o objeto `Doc`, `Token` 
+- O primeiro argumento a ser passado é sempre o objeto `Doc`, `Token`
   ou `Span`.
 
 </codeblock>
@@ -283,7 +283,7 @@ de busca na Wikipedia se a partição for uma pessoa, organização ou localidad
 
 <codeblock id="03_11">
 
-- Para obter o marcador (label) de uma partição span, use a propriedade `span.label_`. 
+- Para obter o marcador (label) de uma partição span, use a propriedade `span.label_`.
   Este é o marcador previsto pelo identificador de entidades caso o texto seja uma
   entidade.
 - Observe que as propriedades extendidas estão disponíveis através da propriedade `._`.
@@ -300,23 +300,23 @@ customizados do fluxo de processamento. Neste exercício, você escreverá um
 componente do fluxo de processamento para identificar nomes de países e
 definirá uma propriedade que retornará a capital do país, se houver.
 
-Um comparador com todos os países deverá ser disponibilizado na variável 
-`matcher`. Um dicionário que mapeie os países e suas capitais deverá ser 
+Um comparador com todos os países deverá ser disponibilizado na variável
+`matcher`. Um dicionário que mapeie os países e suas capitais deverá ser
 disponibilizado na variável `CAPITALS`.
 
 - Complete a função `countries_component` que defina um marcador `"GPE"`
   (geopolitical entity) para todas as correspondências.
 - Adicione o componente ao fluxo de processamento.
-- Defina uma propriedade extendida `"capital"` para a partição Span com o 
+- Defina uma propriedade extendida `"capital"` para a partição Span com o
   argumento getter como `get_capital`.
 - Processe o texto e imprima o texto da entidade, o marcador (label) e a
   propriedade extendida capital para cada partição em `doc.ents`.
 
 <codeblock id="03_12">
 
-- A classe `Span` tem quatro argumentos: o `doc`, o índice iníciial `start` e o  
+- A classe `Span` tem quatro argumentos: o `doc`, o índice iníciial `start` e o
   índice final `end` do token e o seu marcador `label`.
-- Use o `PhraseMatcher` com argumento `doc`, que retornará uma lista de tuplas: 
+- Use o `PhraseMatcher` com argumento `doc`, que retornará uma lista de tuplas:
   `(match_id, start, end)`.
 - Para definir uma nova propriedade extendida, use o método  `set_extension` na
   classe global (`Doc`, `Token` ou `Span`). Para definir o argumento getter, use o
@@ -328,27 +328,27 @@ disponibilizado na variável `CAPITALS`.
 
 </exercise>
 
-<exercise id="13" title="Escalonamento e desempenho" type="slides,video">
+<exercise id="13" title="Escalonamento e desempenho" type="slides">
 
-<slides source="chapter3_04_scaling-performance" start="32:335" end="34:515">
+<slides source="chapter3_04_scaling-performance">
 </slides>
 
 </exercise>
 
 <exercise id="14" title="Fluxos de processamento">
 
-Neste exercício, você usará `nlp.pipe` para processar texto de maneira mais 
+Neste exercício, você usará `nlp.pipe` para processar texto de maneira mais
 eficiente. O objeto `nlp` já terá sido criado. Uma lista de tweets sobre uma rede
 popular de lanchonetes americana está disponível na variável TEXTS`.
 
 ### Parte 1
 
 - Reescreva o exemplo usando `nlp.pipe`. Ao invés de iterar os textos e processá-los,
-  itere o objetos `doc` disponíveis através de `nlp.pipe`. 
+  itere o objetos `doc` disponíveis através de `nlp.pipe`.
 
 <codeblock id="03_14_01">
 
-- A função `nlp.pipe` permite que você substitua as 2 primeiras linhas de comandos por 
+- A função `nlp.pipe` permite que você substitua as 2 primeiras linhas de comandos por
 apenas 1 linha.
 - `nlp.pipe` recebe como argumento `TEXTS` e retorna objetos `doc` para você fazer a iteração.
 
@@ -388,7 +388,7 @@ textos são citações de livros famosos, e o contexto são dicionários com as 
 
 <codeblock id="03_15">
 
-- O método `Doc.set_extension` tem dois parâmetros: uma string com o nome da 
+- O método `Doc.set_extension` tem dois parâmetros: uma string com o nome da
   propriedade, e os descritores default, getter, setter ou method indicando
   esses valores. Por exemplo: `default=True`.
 - Se o argumento `as_tuples` for `True`, o método `nlp.pipe` receberá uma lista
@@ -409,21 +409,21 @@ executar componentes específicos durante o processamento do texto.
 
 <codeblock id="03_16_01">
 
-O método `nlp.make_doc` pode ser usado em um texto e retornará um objeto `Doc`, 
+O método `nlp.make_doc` pode ser usado em um texto e retornará um objeto `Doc`,
 de maneira similar à função `nlp`.
 
 </codeblock>
 
 ### Parte 2
 
-- Desabilite o tagueador (tagger) e o interpretador (parser) através do método 
+- Desabilite o tagueador (tagger) e o interpretador (parser) através do método
   `nlp.disable_pipes`.
 - Processe o texto e imprima todas as entidades do `doc`.
 
 <codeblock id="03_16_02">
 
 O método `nlp.disable_pipes` pode receber diversos parâmetros: os nomes dos componentes
-do fluxo de processamento que devem ser desabilitados. 
+do fluxo de processamento que devem ser desabilitados.
 Por exemplo: `nlp.disable_pipes("ner")` irá desabilitar o identificador de entidades nomeadas.
 
 </codeblock>
