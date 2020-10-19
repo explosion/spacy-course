@@ -3,7 +3,7 @@ title: 'Capítulo 1: Selecionando palavras, frases, nomes e alguns conceitos'
 description:
   "Neste capítulo vamos apresentar os conceitos básicos de processamento de texto utilizando spaCy.
   Você vai aprender sobre as estruturas de dados, como trabalhar com modelos estatísticos e como
-  usá-los para prever atributos linguísticos do seu texto."
+  usá-los para prever anotações linguísticas do seu texto."
 prev: null
 next: /chapter2
 type: chapter
@@ -19,7 +19,7 @@ id: 1
 
 <exercise id="2" title="Primeiros passos">
 
-Vamos começar colocando a mão na massa! Neste exercício você vai poder fazer
+Vamos começar colocando a mão na massa! Neste exercício você fará
 experimentos com alguns dos mais de 55 [idiomas disponíveis](https://spacy.io/usage/models#languages).
 
 ### Parte 1: Inglês
@@ -86,7 +86,7 @@ a notação `:`. Lembre-se que essa indexação exclui o segundo índice, por ex
 <exercise id="4" title="Atributos léxicos">
 
 Neste exemplo, você poderá usar os objetos `Doc` e `Token` combinados com
-atributos léxicos para encontrar referências percentuais em seu texto. Vocẽ irá procurar
+atributos léxicos para encontrar referências percentuais em seu texto. Você irá procurar
 por dois elementos (tokens) sequenciais: um número e um sinal de porcentagem.
 
 - Use o atributo `like_num` para identificar se algum token no documento
@@ -111,30 +111,30 @@ a variável `doc`. Por exemplo, para obter o token na posição 5 escreva `doc[5
 
 </exercise>
 
-<exercise id="6" title="Biblioteca dos Modelos" type="choice">
+<exercise id="6" title="Biblioteca dos modelos" type="choice">
 
-O que **não** está incluído nos modelos que você pode carregar no spaCy?
+O que **NÃO** está incluído nos modelos que você pode carregar no spaCy?
 
 <choice>
 <opt text="Um arquivo com metadados do idioma, pipeline e licença.">
 
-Todos modelos incluem um `meta.json` que apresenta o idioma, os nomes dos
+Todos modelos incluem um arquivo `meta.json` que apresenta o idioma, os nomes dos
 componentes do pipeline de processamento que serão carregados e metadados
 do modelo, como nome, versão, licença, fontes de dados, autor e acurácia (se disponível).
 
 </opt>
-<opt text="Pesos binários para efetuar as predições estatísticas.">
+<opt text="Pesos binários para efetuar as previsões estatísticas.">
 
-Para fazer a predição de características linguísticas como o tagueamento de classes
+Para fazer a previsão de anotações linguísticas como o tagueamento de classes
 gramaticais, termos sintáticos e reconhecimento de entidades, os modelos incluem
-pesos binários.
+os pesos binários.
 
 </opt>
 <opt correct="true" text="Os dados nos quais o modelo foi treinado.">
 
 Os modelos estatísticos permitem a generalização a partir de um conjunto de
 exemplos de treinamento. Uma vez treinados, os modelos usam os pesos binários
-para fazer as predições. É por este motivo que não é necessário que os dados de
+para fazer as previsões. É por este motivo que não é necessário que os dados de
 treinamento sejam incluídos nos modelos.
 
 </opt>
@@ -168,12 +168,12 @@ por isso verifique se você está usando o nome correto do modelo.
 
 </exercise>
 
-<exercise id="8" title="Predizendo anotações linguísticas">
+<exercise id="8" title="Prevendo anotações linguísticas">
 
 Agora vamos experimentar um dos modelos pré-treinados do spaCy e
-ver o resultado de sua predição. Fique à vontade e experimente com seu
-próprio texto! Use `spacy.explain` para saber o significado de uma determinada
-tag ou marcador. Por exemplo: `spacy.explain("PROPN")` ou `spacy.explain("GPE")`.
+ver o resultado de sua previsão. Fique à vontade e experimente com seu
+próprio texto! Use `spacy.explain` para saber o significado de um determinado
+marcador. Por exemplo: `spacy.explain("PROPN")` ou `spacy.explain("GPE")`.
 
 
 ### Parte 1
@@ -204,7 +204,7 @@ Observe que os atributos do token possuem o caractere "sublinhado" no final.
 
 </exercise>
 
-<exercise id="9" title="Predizendo entidades em um contexto">
+<exercise id="9" title="Prevendo Entidades em um contexto">
 
 Os modelos são estatísticos e por isso não acertam 100% dos casos.  A acurácia
 do modelo depende dos dados nos quais o modelo foi treinado e também dos
@@ -227,7 +227,7 @@ dados que você está processando. Vamos ver um exemplo:
 
 </exercise>
 
-<exercise id="10" title="Correspondência de texto baseado em regras" type="slides">
+<exercise id="10" title="Correspondência de texto baseada em regras" type="slides">
 
 <slides source="chapter1_03_rule-based-matching">
 </slides>
@@ -237,14 +237,14 @@ dados que você está processando. Vamos ver um exemplo:
 <exercise id="11" title="Usando o comparador Matcher">
 
 Vamos agora testar o comparador de expressões  `Matcher` baseado em
-regras. Você vai usar o exemplo do exercício anterior e escrever um padrão
+regras. Você vai usar o exemplo do exercício anterior e escrever uma expressão
 que faça a correspondência para a frase "iPhone X" no texto.
 
 - Importe o `Matcher` de `spacy.matcher`.
 - Inicialize o comparador com o objeto compartilhado `vocab`do `nlp`.
-- Crie um padrão que faça a correspondência dos valores em `"TEXT"` para dois tokens:
+- Crie uma expressão que faça a correspondência dos valores em `"TEXT"` para dois tokens:
   `"iPhone"` e `"X"`.
-- Use o método `matcher.add` e adicione esse padrão ao comparador.
+- Use o método `matcher.add` e adicione essa expressão ao comparador.
 - Chame o comparador passando como parâmetro o `doc` e armazene o resultado
   na variável `matches`.
 - Itere nos resultados e selecione a partição de texto com o índice `start` até
@@ -254,7 +254,7 @@ que faça a correspondência para a frase "iPhone X" no texto.
 <codeblock id="01_11">
 
 - O vocabulário compartilhado está disponível no atributo `nlp.vocab`.
-- Um padrão é composto por uma lista de dicionários cuja chave é o nome do
+- Uma expressão é composta por uma lista de dicionários cuja chave é o nome do
   atributo. Por exemplo:  `[{"TEXT": "Hello"}]` fará a correspondência do atributo
   texto (TEXT) para o texto exatamente igual a "Hello".
 - Os atributos `start` e `end` de cada resultado da correspondência são os
@@ -265,14 +265,14 @@ que faça a correspondência para a frase "iPhone X" no texto.
 
 </exercise>
 
-<exercise id="12" title="Escrevendo padrões de correspondência">
+<exercise id="12" title="Escrevendo expressões de correspondência">
 
-Neste exercício, você vai escrever alguns padrões mais complexos de
-correspondência, usando atributos dos tokens e operadores.
+Neste exercício, você vai escrever algumas expressões mais complexas de
+correspondência, usando os atributos dos tokens e operadores.
 
 ### Parte 1
 
-- Escreva **um** padrão que corresponda às menções da versão IOS  _completa_:
+- Escreva **uma** expressão que corresponda às menções da versão IOS  _completa_:
   "iOS 7", "iOS 11" e "iOS 10".
 
 <codeblock id="01_12_01">
@@ -287,13 +287,13 @@ texto "Apple".
 
 ### Parte 2
 
-- Escreva **um** padrão que corresponda às variações de "download" (tokens
+- Escreva **uma** expressão que corresponda às variações de "download" (tokens
 que tenham "download" como lema), seguido de um token da classe gramatical
 substativo próprio `"PROPN"`.
 
 <codeblock id="01_12_02">
 
-- Para indicar um lema, use o atributo `"LEMMA"` como padrão para o token.
+- Para indicar um lema, use o atributo `"LEMMA"` como expressão para o token.
   Por exemplo, `{"LEMMA": "be"}` fará a correspondência para "is", "was" ou "being".
 - Para encontrar substativos próprios, você deve fazer a correspondência dos
   tokens cujo atributo `"POS"` seja `"PROPN"`.
@@ -302,14 +302,14 @@ substativo próprio `"PROPN"`.
 
 ### Part 3
 
-- Escreva **um** padrão que corresponda a adjetivos (`"ADJ"`) seguidos por um
+- Escreva **uma** expressão que corresponda a adjetivos (`"ADJ"`) seguidos por um
   ou dois substantivos. (um substantivo obrigatório e um seguinte opcional).
 
 <codeblock id="01_12_03">
 
 - Para identificar adjetivos, procure por tokens cujo atributo `"POS"` seja `"ADJ"`.
   Para substantivos procure por `"NOUN"`.
-- Operadores podem ser adicionados ao padrão utilizando a chave `"OP"`.
+- Operadores podem ser adicionados à expressão utilizando a chave `"OP"`.
   Por exemplo: `"OP": "?"` para comparar zero ou uma vez.
 
 </codeblock>

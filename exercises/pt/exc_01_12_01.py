@@ -11,10 +11,10 @@ doc = nlp(
     "some tweaks once you delve a little deeper."
 )
 
-# Escreva um padrão que corresponda às versões completas do IOS ("iOS 7", "iOS 11", "iOS 10")
+# Escreva uma expressão que corresponda às versões completas do IOS ("iOS 7", "iOS 11", "iOS 10")
 pattern = [{"TEXT": ____}, {"IS_DIGIT": ____}]
 
-# Adicione o padrão ao combinador matcher e aplique o matcher ao doc
+# Adicione a expressão ao comparador matcher e aplique o matcher ao doc
 matcher.add("IOS_VERSION_PATTERN", None, pattern)
 matches = matcher(doc)
 print("Total matches found:", len(matches))

@@ -9,10 +9,10 @@ doc = nlp(
     "labels and optional voice responses."
 )
 
-# Escreva um padrão que corresponda a um adjetivo seguido de um ou dois substantivos
+# Escreva uma expressão que corresponda a um adjetivo seguido de um ou dois substantivos
 pattern = [{"POS": "ADJ"}, {"POS": "NOUN"}, {"POS": "NOUN", "OP": "?"}]
 
-# Adicione o padrão ao combinador matcher e aplique o matcher ao doc
+# Adicione uma expressão ao comparador matcher e aplique o matcher ao doc
 matcher.add("ADJ_NOUN_PATTERN", None, pattern)
 matches = matcher(doc)
 print("Total matches found:", len(matches))

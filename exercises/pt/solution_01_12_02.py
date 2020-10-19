@@ -11,11 +11,11 @@ doc = nlp(
     "I also need to download Winzip?"
 )
 
-# Escreva um padrão que corresponda às variações de "download" seguido de um
+# Escreva uma expressão que corresponda às variações de "download" seguido de um
 # substatantivo próprio
 pattern = [{"LEMMA": "download"}, {"POS": "PROPN"}]
 
-# Adicione o padrão ao combinador matcher e aplique o matcher ao doc
+# Adicione a expressão ao comparador matcher e aplique o matcher ao doc
 matcher.add("DOWNLOAD_THINGS_PATTERN", None, pattern)
 matches = matcher(doc)
 print("Total matches found:", len(matches))

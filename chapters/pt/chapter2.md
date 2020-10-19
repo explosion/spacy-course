@@ -3,8 +3,8 @@ title: 'Chapter 2: Análise da dados em larga escala usando spaCy'
 description:
   "Neste capítulo você desenvolverá novas habilidades ao extrair informações
   específicas de um grande volume de texto. Você vai aprender a otimizar o uso
-  das estruturas de dados do spaCy e como criar estratégias combinadas de
-  estatística e regras para efetuar análises de textos de maneira eficiente."
+  das estruturas de dados do spaCy e como criar estratégias combinadas de estatística
+  e baseadas em regras para efetuar análises de textos de maneira eficiente."
 prev: /chapter1
 next: /chapter3
 type: chapter
@@ -50,7 +50,7 @@ id: 2
 
 <exercise id="3" title="Vocabulários, códigos hash e lexemas">
 
-Por que esse código dá erro?
+Por que o código abaixo dá erro?
 
 ```python
 from spacy.lang.en import English
@@ -149,10 +149,10 @@ pode tentar imprimir os tokens de `nlp("Oh, really?!")`.
 
 </exercise>
 
-<exercise id="6" title="Docs, partições span e entidades a partir do zero">
+<exercise id="6" title="Docs, partições Span e Entidades a partir do zero">
 
 Neste exercício você criará os objetos `Doc` e `Span` manualmente e
-atualizará as entidades nomeadas (named entities), da mesma maneira que
+atualizará as Entidades Nomeadas (named entities), da mesma maneira que
 o spaCy faz nos bastidores. Um objeto `nlp` deve ser previamente criado.
 
 - Importe as classes `Doc` e `Span` de `spacy.tokens`.
@@ -197,7 +197,7 @@ pos_tags = [token.pos_ for token in doc]
 for index, pos in enumerate(pos_tags):
     # Verifica se o token atual é um substantivo próprio
     if pos == "PROPN":
-        # Check if the next token is a verb
+        # Verifica se o próximo token é um verbo
         if pos_tags[index + 1] == "VERB":
             result = token_texts[index]
             print("Found proper noun before a verb:", result)
@@ -263,7 +263,7 @@ de verificar se trata-se de um substantivo próprio.
 
 <exercise id="9" title="Inspeção dos vetores das palavras">
 
-Neste exercício vamos usar o [Modelo Inglês Grande](https://spacy.io/models/en) que inclui
+Neste exercício vamos usar um [modelo do Inglês maior](https://spacy.io/models/en) que inclui
 cerca de 20.000 vetores das palavras. Esse modelo já está instalado.
 
 - Carregue o modelo médio `"en_core_web_md"`com seus vetores das palavras.

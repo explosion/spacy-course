@@ -1,11 +1,11 @@
 ---
 title: 'Chapter 3: Fluxos de processamento (pipelines)'
 description:
-  "Neste capítulo você vai aprender tudo sobre os fluxos de processamento
-  (pipelines) do spaCy. Você irá aprender sobre o que acontece nos bastidores
+  "Neste capítulo você conhecer melhor os fluxos de processamento
+  (pipelines) do spaCy. Você entenderá o que acontece nos bastidores
   quando você processa um texto. Vai aprender a escrever seus próprios
   componentes e adicioná-los ao fluxo, e também a usar atributos customizados
-  para adicionar metadados próprios aos seus documentos, partições e tokens"
+  para adicionar metadados próprios aos seus documentos, partições e tokens."
 prev: /chapter2
 next: /chapter4
 type: chapter
@@ -89,7 +89,7 @@ disponível em `nlp.pipeline`.
 
 <exercise id="5" title="Casos de uso de componentes customizados">
 
-Qual ou quais desses problemas pode ser solucionado utilizando um componente customizado?
+Quais desses problemas pode ser solucionado utilizando um componente customizado?
 
 1. Atualizar um modelo pré-treinado e melhorar suas predições.
 2. Calcular alguns valores utilizando os tokens e seus atributos.
@@ -186,7 +186,7 @@ reconhecidas ao `doc.ents`. O `PhraseMatcher` será criado como a variável `mat
 <codeblock id="03_07">
 
 - Observe que as correspondências são uma lista de tuplas `(match_id, start, end)`.
-- A classe `Span` tem 4 argumentos: o `doc` pai, o índice inicial, índice final e
+- A classe `Span` tem 4 argumentos: o `doc` pai, o índice inicial, o índice final e
   o marcador.
 - Para adicionar um componente após o outro, use o argumento `after` em
   `nlp.add_pipe`.
@@ -328,7 +328,7 @@ disponibilizado na variável `CAPITALS`.
 
 </exercise>
 
-<exercise id="13" title="Escalonamento e desempenho" type="slides">
+<exercise id="13" title="Aumentando a escala e o desempenho" type="slides">
 
 <slides source="chapter3_04_scaling-performance">
 </slides>
@@ -348,7 +348,7 @@ popular de lanchonetes americana está disponível na variável TEXTS`.
 
 <codeblock id="03_14_01">
 
-- A função `nlp.pipe` permite que você substitua as 2 primeiras linhas de comandos por
+- A função `nlp.pipe` permite que você substitua as 2 primeiras linhas de comando por
 apenas 1 linha.
 - `nlp.pipe` recebe como argumento `TEXTS` e retorna objetos `doc` para você fazer a iteração.
 

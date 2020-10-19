@@ -1,12 +1,12 @@
 ---
 title: 'Chapter 4: Treinando um modelo de rede neural'
 description:
-  "Neste capítulo, você irá aprender a atualizar os modelos estatísticos do
+  "Neste capítulo, você aprenderá a atualizar os modelos estatísticos do
   spaCy de maneira a adequá-los aos seus casos de uso, como por exemplo,
-  prever um novo tipo de entidade em textos de comentários. Vocẽ escreverá
+  prever um novo tipo de entidade em textos de comentários. Você escreverá
   sua rotina de treinamento a partir do zero, e entenderá o ciclo de
-  treinamento, bem como aprenderá algumas dicas de como ter sucesso
-  nos seus projetos de processamento de linguagem natural (NLP)."
+  treinamento, bem como aprenderá algumas dicas sobre como ter sucesso
+  em seus projetos de processamento de linguagem natural (PLN)."
 prev: /chapter3
 next: null
 type: chapter
