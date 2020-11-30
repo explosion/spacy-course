@@ -11,7 +11,7 @@ def get_wikipedia_url(span):
         return "https://en.wikipedia.org/w/index.php?search=" + entity_text
 
 
-# Set the Span extension wikipedia_url using get getter get_wikipedia_url
+# Set the Span extension wikipedia_url using the getter get_wikipedia_url
 ____.____(____, ____=____)
 
 doc = nlp(
