@@ -256,7 +256,7 @@ TRAINING_DATA = [
 ]
 ```
 
-### Part 1
+### Parte 1
 
 Por que esses dados e seus marcadores são problemáticos?
 

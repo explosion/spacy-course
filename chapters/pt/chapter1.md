@@ -86,7 +86,7 @@ a notação `:`. Lembre-se que essa indexação exclui o segundo índice, por ex
 <exercise id="4" title="Atributos léxicos">
 
 Neste exemplo, você poderá usar os objetos `Doc` e `Token` combinados com
-atributos léxicos para encontrar referências percentuais em seu texto. Você irá procurar
+atributos léxicos para encontrar referências de porcentagem em seu texto. Você irá procurar
 por dois elementos (tokens) sequenciais: um número e um sinal de porcentagem.
 
 - Use o atributo `like_num` para identificar se algum token no documento
