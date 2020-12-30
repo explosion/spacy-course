@@ -2,51 +2,51 @@
 type: slides
 ---
 
-# Scaling and performance
+# Aumentando a escala e o desempenho
 
-Notes: In this lesson, I'll show you a few tips and tricks to make your spaCy
-pipelines run as fast as possible, and process large volumes of text
-efficiently.
+Notes: Nesta lição, vou te mostrar algumas dicas e truques para fazer seus
+fluxos de processamento do spaCy rodarem o mais rápido possível e processarem
+grandes volumes de texto de maneira eficiente.
 
 ---
 
-# Processing large volumes of text
+# Processando grandes volumes de texto
 
-- Use `nlp.pipe` method
-- Processes texts as a stream, yields `Doc` objects
-- Much faster than calling `nlp` on each text
+- Use o método `nlp.pipe`
+- Processa textos com um fluxo (stream), produzindo objetos `Doc`
+- Muito mais rápido que usar `nlp` para cada texto
 
-**BAD:**
+**RUIM:**
 
 ```python
 docs = [nlp(text) for text in LOTS_OF_TEXTS]
 ```
 
-**GOOD:**
+**BOM:**
 
 ```python
 docs = list(nlp.pipe(LOTS_OF_TEXTS))
 ```
 
-Notes: If you need to process a lot of texts and create a lot of `Doc` objects
-in a row, the `nlp.pipe` method can speed this up significantly.
+Notes: Se você precisa processar um grande volume de textos e criar vários
+objetos `Doc` de uma só vez, o método `nlp.pipe` pode acelerar o processamento
+de maneira significativa.
 
-It processes the texts as a stream and yields `Doc` objects.
+Ele processa os textos como um fluxo e produz objetos `Doc`.
 
-It is much faster than just calling nlp on each text, because it batches up the
-texts.
+É muito mais rápido que ir chamando nlp em cada texto, pois neste caso
+os textos são tratados em lotes.
 
-`nlp.pipe` is a generator that yields `Doc` objects, so in order to get a list
-of docs, remember to call the `list` method around it.
+O `nlp.pipe` é um gerador que produz objetos `Doc`, então para obter uma
+lista de documentos, lembre-se de incluir `list`.
 
 ---
 
-# Passing in context (1)
+# Passando o contexto (1)
 
-- Setting `as_tuples=True` on `nlp.pipe` lets you pass in `(text, context)`
-  tuples
-- Yields `(doc, context)` tuples
-- Useful for associating metadata with the `doc`
+- Definir `as_tuples=True` em `nlp.pipe` permite você passar as tuplas `(text, context)`
+- Produz tuplas `(doc, context)` 
+- Útil para associar metadados ao documento `doc`
 
 ```python
 data = [
@@ -63,17 +63,17 @@ This is a text 15
 And another text 16
 ```
 
-Notes: `nlp.pipe` also supports passing in tuples of text / context if you set
-`as_tuples` to `True`.
+Notes: `nlp.pipe` também suporta passar tuplas de texto / contexto se você definir
+`as_tuples` como `True`.
 
-The method will then yield doc / context tuples.
+O método vai produzir tuplas documento / contexto.
 
-This is useful for passing in additional metadata, like an ID associated with
-the text, or a page number.
+Isso é útil para passar metadados adicionais, como um ID associado ao texto, ou o
+número de uma página.
 
 ---
 
-# Passing in context (2)
+# Passando o contexto (2)
 
 ```python
 from spacy.tokens import Doc
@@ -91,85 +91,87 @@ for doc, context in nlp.pipe(data, as_tuples=True):
     doc._.page_number = context["page_number"]
 ```
 
-Notes: You can even add the context metadata to custom attributes.
+Notes: Você pode até adicionar metadados de contexto para personalizar atributos.
 
-In this example, we're registering two extensions, `id` and `page_number`, which
-default to `None`.
+Neste exemplo, estamos registrando duas extensões: `id` e `page_number`, com
+valor padrão como `None`.
 
-After processing the text and passing through the context, we can overwrite the
-doc extensions with our context metadata.
-
----
-
-# Using only the tokenizer (1)
-
-<img src="/pipeline.png" width="90%" alt="Illustration of the spaCy pipeline">
-
-- don't run the whole pipeline!
-
-Notes: Another common scenario: Sometimes you already have a model loaded to do
-other processing, but you only need the tokenizer for one particular text.
-
-Running the whole pipeline is unnecessarily slow, because you'll be getting a
-bunch of predictions from the model that you don't need.
+Após processar o texto e passar o contexto, podemos sobrescrever as extensões do
+documento com os metadados do contexto.
 
 ---
 
-# Using only the tokenizer (2)
+# Usando o toquenizador (1)
 
-- Use `nlp.make_doc` to turn a text into a `Doc` object
+<img src="/pipeline.png" width="90%" alt="Ilustracao do fluxo de processamento do spaCy">
 
-**BAD:**
+- não processe o fluxo de processamento (pipeline) completo!
+
+Notes: Outro cenário comum é que muitas vezes você já tem um modelo carregado para
+fazer o processamento, mas você só precisa do toquenizador para um texto 
+específico.
+
+Rodar o fluxo de processamento completo será muito ineficiente, uma vez que você
+processará previsões que não serão utilizadas.
+
+---
+
+# Usando o toquenizador (2)
+
+- Use `nlp.make_doc` para converter um texto em um objeto `Doc`
+
+**RUIM:**
 
 ```python
 doc = nlp("Hello world")
 ```
 
-**GOOD:**
+**BOM:**
 
 ```python
 doc = nlp.make_doc("Hello world!")
 ```
 
-Notes: If you only need a tokenized `Doc` object, you can use the `nlp.make_doc`
-method instead, which takes a text and returns a doc.
+Notes: Se você apenas precisa de um objeto `Doc` toquenizado, você pode usar o método
+`nlp.make_doc`, que recebe um texto e retorna um objeto doc.
 
-This is also how spaCy does it behind the scenes: `nlp.make_doc` turns the text
-into a doc before the pipeline components are called.
+Isso é exatamente o que o spaCy faz: `nlp.make_doc` transforma o texto em um documento
+doc antes de chamar os componentes do fluxo de processamento.
 
 ---
 
-# Disabling pipeline components
+# Desabilitando componentes do fluxo de processamento
 
-- Use `nlp.disable_pipes` to temporarily disable one or more pipes
+- Use `nlp.disable_pipes` para temporariamente desabilitar um ou mais componentes
 
 ```python
-# Disable tagger and parser
+# Desabilitar o tagueador tagger e o analisador parser
 with nlp.disable_pipes("tagger", "parser"):
-    # Process the text and print the entities
+    # Processar o texto e imprimir as entidades
     doc = nlp(text)
     print(doc.ents)
 ```
 
-- Restores them after the `with` block
-- Only runs the remaining components
+- Restaura os componentes após o bloco `with`
+- Apenas roda os componentes remanescentes 
 
-Notes: spaCy also allows you to temporarily disable pipeline components using
-the `nlp.disable_pipes` context manager.
+Notes: O spaCy também permite que você desabilite temporariamente componentes
+do fluxo de processamento usando o comando gerenciador de contexto 
+`nlp.disable_pipes`. 
 
-It takes a variable number of arguments, the string names of the pipeline
-components to disable. For example, if you only want to use the entity
-recognizer to process a document, you can temporarily disable the tagger and
-parser.
+Ele recebe uma alguns parâmetros, como o nome dos componentes
+que devem ser desabilitados. Por exemplo, se você deseja usar o identificador
+de entidades para processar o documento, você pode temporariamente desabilitar
+o tagueador e o analisador.
 
-After the `with` block, the disabled pipeline components are automatically
-restored.
+Após o bloco `with`, os componentes desabilitados são automaticamente 
+reabilitados.
 
-In the `with` block, spaCy will only run the remaining components.
+No bloco `with`, o spaCy vai apenas rodar os componentes remanescentes.
 
 ---
 
-# Let's practice!
+# Vamos praticar!
 
-Notes: Now it's your turn. Let's try out the new methods and optimize some code
-to be faster and more efficient.
+Notes: Agora é a sua vez ! Vamos testar novos métodos e otimizar um código
+para ser mais rápido e eficiente.

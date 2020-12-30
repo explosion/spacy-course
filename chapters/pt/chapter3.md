@@ -256,13 +256,13 @@ e a extensão de métodos.
 ### Parte 2
 
 - Use `Span.set_extension` para definir `"to_html"` (método `to_html`).
-- Aplique em `doc[0:2]` com o argumento `"strong"`.
+- Aplique em `doc[0:2]` com o parâmetro `"strong"`.
 
 <codeblock id="03_10_02">
 
-- Métodos extendidos podem ter um ou mais argumentos. Por exemplo:
-  `doc._.algum_metodo("argumento")`.
-- O primeiro argumento a ser passado é sempre o objeto `Doc`, `Token`
+- Métodos extendidos podem ter um ou mais parâmetros. Por exemplo:
+  `doc._.algum_metodo("parametro")`.
+- O primeiro parâmetro a ser passado é sempre o objeto `Doc`, `Token`
   ou `Span`.
 
 </codeblock>
@@ -271,8 +271,8 @@ e a extensão de métodos.
 
 <exercise id="11" title="Entidades e extensões">
 
-Neste exercício você combinará propriedades extendidas customizadas com as
-predições do modelo e criará um método extendido que retornará o endereço (URL)
+Neste exercício você combinará propriedades extendidas personalizadas com as
+previsões do modelo e criará um método extendido que retornará o endereço (URL)
 de busca na Wikipedia se a partição for uma pessoa, organização ou localidade.
 
 - Defina a função `get_wikipedia_url` que só retornará uma URL da Wikipedia

@@ -2,114 +2,118 @@
 type: slides
 ---
 
-# Custom pipeline components
+# Componentes personalizados do fluxo de processamento
 
-Notes: Now that you know how spaCy's pipeline works, let's take a look at
-another very powerful feature: custom pipeline components.
+Notes: Agora que você já sabe como o fluxo de processamento do spaCy funciona,
+vamos dar uma olhada em outro recurso muito poderoso: componentes personalizados
+do fluxo de processamento.
 
-Custom pipeline components let you add your own function to the spaCy pipeline
-that is executed when you call the `nlp` object on a text – for example, to
-modify the doc and add more data to it.
-
----
-
-# Why custom components?
-
-<img src="/pipeline.png" alt="Illustration of the spaCy pipeline" width="90%" />
-
-- Make a function execute automatically when you call `nlp`
-- Add your own metadata to documents and tokens
-- Updating built-in attributes like `doc.ents`
-
-Notes: After the text is tokenized and a `Doc` object has been created, pipeline
-components are applied in order. spaCy supports a range of built-in components,
-but also lets you define your own.
-
-Custom components are executed automatically when you call the `nlp` object on a
-text.
-
-They're especially useful for adding your own custom metadata to documents and
-tokens.
-
-You can also use them to update built-in attributes, like the named entity
-spans.
+Componentes personalizados permitem que você adicione uma função feita por você ao
+fluxo de processamento que é executado quando você chama `nlp` em um texto. Por 
+exemplo: você pode modificar o documento e adicionar mais dados a ele.
 
 ---
 
-# Anatomy of a component (1)
+# Por que personalizar componentes ?
 
-- Function that takes a `doc`, modifies it and returns it
-- Can be added using the `nlp.add_pipe` method
+<img src="/pipeline.png" alt="Ilustracao do fluxo de processamento do spaCy" width="90%" />
+
+- Permite que uma função seja executada automaticamente quando você chamar `nlp`
+- Adiciona metadados personalizados ao documentos e aos tokens
+- Atualiza atributos padrão como por exemplo entidades `doc.ents`
+
+Notes: Após o texto ser toquenizado e o objeto  ser criado, os componentes do 
+fluxo de processamento são aplicados sequencialmente. O spaCy suporta uma
+grande variedade de componentes pré-existentes, mas também permite que você
+crie seu próprio componente.
+
+Componentes personalizados são executados automaticamente quando você chamar
+o objeto `Doc` em um texto.
+
+Eles são especialmente úteis para você adicionar metadados personalizados 
+aos documentos e tokens.
+
+Você também pode usá-los para atualizar os atributos já existentes, como
+as partições com entidades nomeadas.
+
+---
+
+# Anatomia de um componente (1)
+
+- Função que recebe um `doc`, o modifica e em seguida o retorna
+- Pode ser adicionado ao fluxo de processamento através do método `nlp.add_pipe`
 
 ```python
 def custom_component(doc):
-    # Do something to the doc here
+    # Faz alguma coisa com o documento
     return doc
 
 nlp.add_pipe(custom_component)
 ```
 
-Notes: Fundamentally, a pipeline component is a function or callable that takes
-a doc, modifies it and returns it, so it can be processed by the next component
-in the pipeline.
+Notes: Fundamentalmente, o componente de um fluxo de processamento é uma função
+ou um objeto que recebe um documento, o modifica e em seguida retorna este objeto,
+que pode ser processado em seguida pelo próximo componente do fluxo de processamento.
 
-Components can be added to the pipeline using the `nlp.add_pipe` method. The
-method takes at least one argument: the component function.
+Componentes podem ser adicionados ao fluxo de processamento através do método `nlp.add_pipe`. 
+O método recebe pelo menos um parâmetro: a função do componente.
+
 
 ---
 
-# Anatomy of a component (2)
+# Anatomia de um componente (2)
 
 ```python
 def custom_component(doc):
-    # Do something to the doc here
+    # Faz alguma coisa com o documento
     return doc
 
 nlp.add_pipe(custom_component)
 ```
 
-| Argument | Description          | Example                                   |
-| -------- | -------------------- | ----------------------------------------- |
-| `last`   | If `True`, add last  | `nlp.add_pipe(component, last=True)`      |
-| `first`  | If `True`, add first | `nlp.add_pipe(component, first=True)`     |
-| `before` | Add before component | `nlp.add_pipe(component, before="ner")`   |
-| `after`  | Add after component  | `nlp.add_pipe(component, after="tagger")` |
+|Parâmetro | Descrição                      | Exemplo                                   |
+| -------- | ------------------------------ | ----------------------------------------- |
+| `last`   | Se `True`, adicionar no final  | `nlp.add_pipe(component, last=True)`      |
+| `first`  | Se `True`, adicionar no início | `nlp.add_pipe(component, first=True)`     |
+| `before` | Adicionar antes do componente  | `nlp.add_pipe(component, before="ner")`   |
+| `after`  | Adicionar depois do componente | `nlp.add_pipe(component, after="tagger")` |
 
-Notes: To specify _where_ to add the component in the pipeline, you can use the
-following keyword arguments:
+Notes: Para definir _onde_ o componente será adicionado ao fluxo de processamento,
+você pode usar os seguintes argumentos:
 
-Setting `last` to `True` will add the component last in the pipeline. This is
-the default behavior.
+Definir `last` como `True` vai adicionar o componente ao final do fluxo de processamento.
+Esse é o comportamento padrão.
 
-Setting `first` to `True` will add the component first in the pipeline, right
-after the tokenizer.
+Definir `first` como `True` vai adicionar o componente ao início do fluxo de processamento,
+logo após o toquenizador.
 
-The `before` and `after` arguments let you define the name of an existing
-component to add the new component before or after. For example, `before="ner"`
-will add it before the named entity recognizer.
+Os argumentos `before` e `after` permitem definir o nome de um componente existente de tal
+forma que o novo componente seja adicionado antes ou depois dele. Por exemplo: `before="ner"`
+vai adicionar o novo componente antes do identificador de entidados nomeadas.
 
-The other component to add the new component before or after needs to exist,
-though – otherwise, spaCy will raise an error.
+O componente existente ao qual o novo componente deve ser adicionado antes ou depois precisa
+existir, senão o spaCy gerará um erro.
+
 
 ---
 
-# Example: a simple component (1)
+# Exemplo: um componente simples (1)
 
 ```python
-# Create the nlp object
+# Criar um objeto nlp
 nlp = spacy.load("en_core_web_sm")
 
-# Define a custom component
+# Definir um componente personalizado
 def custom_component(doc):
-    # Print the doc's length
+    # Imprimir o tamanho do documento
     print("Doc length:", len(doc))
-    # Return the doc object
+    # Retornar o objeto doc
     return doc
 
-# Add the component first in the pipeline
+# Adicionar o componente como primeiro no fluxo de processamento
 nlp.add_pipe(custom_component, first=True)
 
-# Print the pipeline component names
+# Imprimir o nome dos componentes do fluxo de processamento
 print("Pipeline:", nlp.pipe_names)
 ```
 
@@ -117,47 +121,50 @@ print("Pipeline:", nlp.pipe_names)
 Pipeline: ['custom_component', 'tagger', 'parser', 'ner']
 ```
 
-Notes: Here's an example of a simple pipeline component.
+Notes: Aqui está mais um exemplo de um componente simples do fluxo de processamento
 
-We start off with the small English model.
+Começamos com o modelo pequeno da língua inglesa.
 
-We then define the component – a function that takes a `Doc` object and returns
-it.
+Em seguida definimos o componente: uma função que recebe um objeto `Doc` e o 
+retorna.
 
-Let's do something simple and print the length of the doc that passes through
-the pipeline.
+Vamos fazer algo simples e imprimir o tamanho do documento recebido.
 
-Don't forget to return the doc so it can be processed by the next component in
-the pipeline! The doc created by the tokenizer is passed through all components,
-so it's important that they all return the modified doc.
+Não se esqueça de retornar o documento para que ele seja processado pelo
+próximo componente no fluxo de processamento! O documento criado pelo
+toquenizador é passado para todos os componentes, portanto é essencial
+retornar o documento modificado.
 
-We can now add the component to the pipeline. Let's add it to the very beginning
-right after the tokenizer by setting `first=True`.
+Agora podemos adicionar o componente ao fluxo de processamento. Vamos
+adicioná-lo logo no início, após o toquenizador, definindo o atributo 
+`first=True`.
 
-When we print the pipeline component names, the custom component now shows up at
-the start. This means it will be applied first when we process a doc.
+Quando imprimimos os nomes dos componentes do fluxo de processamento, o
+componente personalizado agora aparece no início. Isso significa que ele
+será aplicado logo no início do processamento do documento.
+
 
 ---
 
-# Example: a simple component (2)
+# Exemplo: um componente simples (2)
 
 ```python
-# Create the nlp object
+# Criar um objeto nlp
 nlp = spacy.load("en_core_web_sm")
 
-# Define a custom component
+# Definir um componente customizado
 def custom_component(doc):
 
-    # Print the doc's length
+    # Imprimir o tamanho do documento
     print("Doc length:", len(doc))
 
-    # Return the doc object
+    # Retornar o objeto doc
     return doc
 
-# Add the component first in the pipeline
+# Adicionar o componente no inicio do fluxo de processamento
 nlp.add_pipe(custom_component, first=True)
 
-# Process a text
+# Processar o texto
 doc = nlp("Hello world!")
 ```
 
@@ -165,11 +172,12 @@ doc = nlp("Hello world!")
 Doc length: 3
 ```
 
-Notes: Now when we process a text using the `nlp` object, the custom component
-will be applied to the doc and the length of the document will be printed.
+Notes: Agora quando processarmos um texto usando o objeto `nlp`, o 
+componente customizado será aplicado ao documento e o tamanho do documento
+será impresso.
 
 ---
 
-# Let's practice!
+# Vamos praticar!
 
-Notes: Time to put this into practice and write your first pipeline component!
+Notes: Agora é sua hora de praticar! Escreva seu primeiro componente personalizado do fluxo de processamento!
