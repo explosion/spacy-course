@@ -74,7 +74,7 @@ print(nlp_de.vocab.strings[bowie_id])
 
 Códigos hash não pode ser revertidos. Para prevenir este problema, adicione a
 palavra ao vocabulário processando um texto ou consultando a palavra, ou use
-o mesmo vocabulário para resolver o código hash de volta para a palavra.
+o mesmo vocabulário para mapear o código hash de volta para a palavra.
 
 </opt>
 

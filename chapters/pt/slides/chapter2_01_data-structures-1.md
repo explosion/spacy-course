@@ -2,59 +2,57 @@
 type: slides
 ---
 
-# Data Structures (1): Vocab, Lexemes and StringStore
+# Estruturas de dados (1): Vocabulário, Lexemas e armazenamento de Strings
 
-Notes: Welcome back! Now that you've had some real experience using spaCy's
-objects, it's time for you to learn more about what's actually going on under
-spaCy's hood.
+Notes: Bem-vindo de volta! Agora que você já teve uma experiência real com o spaCy em ação, é hora de aprender um pouco mais sobre o que acontece nos bastidores.
 
-In this lesson, we'll take a look at the shared vocabulary and how spaCy deals
-with strings.
+Nesta lição, vamos dar uma olhada no vocabulário compartilhado (Vocab) e como o spaCy lida com strings.
+
 
 ---
 
-# Shared vocab and string store (1)
+# Vocabulário compartilhado e armazenamento de strings (1)
 
-- `Vocab`: stores data shared across multiple documents
-- To save memory, spaCy encodes all strings to **hash values**
-- Strings are only stored once in the `StringStore` via `nlp.vocab.strings`
-- String store: **lookup table** in both directions
+- `Vocab`: armazena informações compartilhadas entre diversos documentos
+- Para economizar memória, o spaCy mapeia as strings em **códigos hash**
+- Strings são armazenadas apenas uma vez na `StringStore` via `nlp.vocab.strings`
+- Armazenamento de String: **tabelas de consultas** que funcionam em ambos sentidos
 
 ```python
 coffee_hash = nlp.vocab.strings["coffee"]
 coffee_string = nlp.vocab.strings[coffee_hash]
 ```
 
-- Hashes can't be reversed – that's why we need to provide the shared vocab
+- Códigos hash não podem ser revertidos - por isso é preciso sempre prover o vocabulário compartilhado
 
 ```python
-# Raises an error if we haven't seen the string before
+# Gera um erro se a string não foi mapeada anteriomente
 string = nlp.vocab.strings[3197928453018144401]
 ```
 
-Notes: spaCy stores all shared data in a vocabulary, the Vocab.
+Notes: O spaCy armazena todos os dados compartilhados em um vocabulário: o **Vocab**.
 
-This includes words, but also the labels schemes for tags and entities.
+Ele inclui palavras e também esquemas para marcadores e entidades. 
 
-To save memory, all strings are encoded to hash IDs. If a word occurs more than
-once, we don't need to save it every time.
+Para economizar memória, todas as strings são mapedas em códigos hash. Se uma palavra
+ocorre mais de uma vez, só é necessário salvá-la uma vez.
 
-Instead, spaCy uses a hash function to generate an ID and stores the string only
-once in the string store. The string store is available as `nlp.vocab.strings`.
+O spaCy usa uma função hash para gerar um identificador (ID) e armazena a string apenas
+uma vez. As strings armazenadas estão disponíveis em `nlp.vocab.strings`.
 
-It's a lookup table that works in both directions. You can look up a string and
-get its hash, and look up a hash to get its string value. Internally, spaCy only
-communicates in hash IDs.
+Trata-se de uma tabela de consulta que pode ser utilizada nos dois sentidos. Você pode
+pesquisar uma string e obter o seu código hash, ou pode pesquisar um código hash e obter
+a string correspondente. Internamente, o spaCy só lida com códigos hash.
 
-Hash IDs can't be reversed, though. If a word is not in the vocabulary, there's
-no way to get its string. That's why we always need to pass around the shared
-vocab.
+Mas os códigos hash não podem ser revertidos diretamente. Isso quer dizer que se uma palavra 
+não estiver registrada no vocabulário, não será possível obter sua string. Por isso 
+é sempre necessário fazer o registro no vocabulário compartilhado.
 
 ---
 
-# Shared vocab and string store (2)
+# Vocabulário compartilhado e armazenamento de strings (2)
 
-- Look up the string and hash in `nlp.vocab.strings`
+- Consultar as strings e códigos hash no `nlp.vocab.strings`
 
 ```python
 doc = nlp("I love coffee")
@@ -67,7 +65,7 @@ hash value: 3197928453018144401
 string value: coffee
 ```
 
-- The `doc` also exposes the vocab and strings
+- O objeto `doc` também expõe o vocabulário compartilhado com as strings e códigos hash
 
 ```python
 doc = nlp("I love coffee")
@@ -78,23 +76,23 @@ print("hash value:", doc.vocab.strings["coffee"])
 hash value: 3197928453018144401
 ```
 
-Notes: To get the hash for a string, we can look it up in `nlp.vocab.strings`.
+Notes: Para obter o código hash de uma string, podemos fazer a consulta em `nlp.vocab.strings`.
 
-To get the string representation of a hash, we can look up the hash.
+Para obter a string que representa um código hash, fazemos a consulta com o hash.
 
-A `Doc` object also exposes its vocab and strings.
+O objeto `Doc` também expõe o vocabulário compartilhados e suas strings e códigos hash.
 
 ---
 
-# Lexemes: entries in the vocabulary
+# Lexemas: entradas do vocabulário 
 
-- A `Lexeme` object is an entry in the vocabulary
+- Um objeto `Lexeme` corresponde a uma entrada do vocabulário.
 
 ```python
 doc = nlp("I love coffee")
 lexeme = nlp.vocab["coffee"]
 
-# Print the lexical attributes
+# Imprimir os atributos léxicos
 print(lexeme.text, lexeme.orth, lexeme.is_alpha)
 ```
 
@@ -102,40 +100,41 @@ print(lexeme.text, lexeme.orth, lexeme.is_alpha)
 coffee 3197928453018144401 True
 ```
 
-- Contains the **context-independent** information about a word
-  - Word text: `lexeme.text` and `lexeme.orth` (the hash)
-  - Lexical attributes like `lexeme.is_alpha`
-  - **Not** context-dependent part-of-speech tags, dependencies or entity labels
+- Contém as informações **independentes de contexto** de cada palavra:
+  - Texto da palavra: `lexeme.text` e `lexeme.orth` (o código hash)
+  - Atributos léxicos, como por exemplo `lexeme.is_alpha`
+  - **Não incluem** marcadores que dependem do contexto, como classe gramatical, dependência ou entidade.
 
-Notes: Lexemes are context-independent entries in the vocabulary.
+Notes: Lexemas são entradas do vocabulário que independem do contexto.
 
-You can get a lexeme by looking up a string or a hash ID in the vocab.
+Você obtém um lexema a partir da consulta de uma string ou código hash no vocabulário.
 
-Lexemes expose attributes, just like tokens.
+Lexemas possuem atributos, assim como os tokens.
 
-They hold context-independent information about a word, like the text, or
-whether the word consists of alphabetic characters.
+Eles armazenam informações de uma palavra que são independentes de contexto: texto,
+se a palavra é composta por apenas caracteres alfabéticos, etc.
 
-Lexemes don't have part-of-speech tags, dependencies or entity labels. Those
-depend on the context.
-
----
-
-# Vocab, hashes and lexemes
-
-<img src="/vocab_stringstore.png" width="70%" alt="Illustration of the words 'I', 'love' and 'coffee' across the Doc, Vocab and StringStore" />
-
-Notes: Here's an example.
-
-The `Doc` contains words in context – in this case, the tokens "I", "love" and
-"coffee" with their part-of-speech tags and dependencies.
-
-Each token refers to a lexeme, which knows the word's hash ID. To get the string
-representation of the word, spaCy looks up the hash in the string store.
+Lexemas não armazenam marcadores de classe gramatical, dependência ou entidade. Elas dependem
+do contexto no qual a palavra está inserida.
 
 ---
 
-# Let's practice!
+# Vocabulário, códigos hash e lexemas
 
-Notes: This all sounds a bit abstract – so let's take a look at the vocabulary
-and string store in practice.
+<img src="/vocab_stringstore.png" width="70%" alt="Ilustracao das palavras 'I', 'love' e 'coffee' no Doc, Vocab e StringStore" />
+
+Notes: Aqui está um exemplo:
+
+O `Doc` contém palavras em seu contexto - neste caso, os tokens "I", "love" e
+"coffee"- com seus marcadores de classe gramatical e dependência sintática.
+
+Cada token está mapeado a um lexema, e também ao código hash da palavra. Para obter
+a string que representa uma palavra, o spaCy faz a consulta do código hash nas strings 
+armazenadas.
+
+---
+
+# Vamos praticar!
+
+Notes: Tudo isso está soando um pouco abstrato... então vamos ver o vocabulários e as strings
+armazenadas na prática.

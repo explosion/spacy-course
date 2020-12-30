@@ -10,7 +10,7 @@ Nesta lição você irá aprender sobre os modelos estatísticos do spaCy.
 
 ---
 
-# O que são models estatísticos?
+# O que são modelos estatísticos?
 
 - Permitem que o spaCy faça previsões de atributos linguísticos _em contextos_.
   - Marcadores das classes gramaticais

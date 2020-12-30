@@ -2,115 +2,124 @@
 type: slides
 ---
 
-# Data Structures (2): Doc, Span and Token
+# Estruturas de dados (2): Doc, partição Span e Token
 
-Notes: Now that you know all about the vocabulary and string store, we can take
-a look at the most important data structure: the `Doc`, and its views `Token`
-and `Span`.
+Notes: Agora que vocÊ já conhece o vocabulário e o armazenamento das strings, podemos
+dar uma olhada nas estruturas de dados mais importantes do spaCy: o documento `Doc` e 
+as visões `Token` e partição `Span`.
 
 ---
 
-# The Doc object
+# O objeto Doc
 
 ```python
-# Create an nlp object
+# Criar um objeto nlp
 from spacy.lang.en import English
 nlp = English()
 
-# Import the Doc class
+# Importar a classe Doc 
 from spacy.tokens import Doc
 
-# The words and spaces to create the doc from
+# As palavras e espaços em branco necessários para criar um doc:
 words = ["Hello", "world", "!"]
 spaces = [True, False, False]
 
-# Create a doc manually
+# Criar um doc manualmente
 doc = Doc(nlp.vocab, words=words, spaces=spaces)
 ```
 
-Notes: The `Doc` is one of the central data structures in spaCy. It's created
-automatically when you process a text with the `nlp` object. But you can also
-instantiate the class manually.
+Notes: O objeto `Doc` é uma das estruturas de dados centrais do spaCy.
+Ele é criado automaticamente quando você processa um texto com o objeto 
+`nlp`. Mas você também pode instanciar o objeto manualmente.
 
-After creating the `nlp` object, we can import the `Doc` class from
+Após criar o objeto `nlp`, podemos importar a classe `Doc` a partir de
 `spacy.tokens`.
 
-Here we're creating a doc from three words. The spaces are a list of boolean
-values indicating whether the word is followed by a space. Every token includes
-that information – even the last one!
+Aqui estamos criando um doc a partir de três palavras. Os espaços em branco
+são representados por uma lista de valores boleanos que indicam se a palavra
+é seguida por um espaço em branco ou não. Todos os tokens incluem essa informação, 
+inclusive o último!
 
-The `Doc` class takes three arguments: the shared vocab, the words and the
-spaces.
-
----
-
-# The Span object (1)
-
-<img src="/span_indices.png" width="65%" alt="Illustration of a Span object within a Doc with token indices" />
-
-Notes: A `Span` is a slice of a doc consisting of one or more tokens. The `Span`
-takes at least three arguments: the doc it refers to, and the start and end
-index of the span. Remember that the end index is exclusive!
+O objeto `Doc` tem três parâmetros: o vocabulário compartilhado, as palavras e os
+espaços em branco.
 
 ---
 
-# The Span object (2)
+# O objeto partição Span (1)
+
+<img src="/span_indices.png" width="65%" alt="Ilustracao de um objeto Span em um Doc com indices dos tokens" />
+
+Notes: Um objeto `Span` é uma partição do documento consistindo de um ou mais tokens.
+Ele necessita de pelo menos três parâmetros: o doc ao qual a partição se refere,
+os índices do início e do fim da partição. Lembre-se que o índice final não é
+incluso na partição!
+
+---
+
+# O objeto partição Span (2)
 
 ```python
-# Import the Doc and Span classes
+# Importar as classes Doc e Span
 from spacy.tokens import Doc, Span
 
-# The words and spaces to create the doc from
+# As palavras e espaços em branco necessários para criar o doc
 words = ["Hello", "world", "!"]
 spaces = [True, False, False]
 
-# Create a doc manually
+# Criar um doc manualmente 
 doc = Doc(nlp.vocab, words=words, spaces=spaces)
 
-# Create a span manually
+# Criar uma particção span manualmente
 span = Span(doc, 0, 2)
 
-# Create a span with a label
+# Criar uma partição span com um marcador
 span_with_label = Span(doc, 0, 2, label="GREETING")
 
-# Add span to the doc.ents
+# Adicionar a partição a doc.ents
 doc.ents = [span_with_label]
 ```
 
-Notes: To create a `Span` manually, we can also import the class from
-`spacy.tokens`. We can then instantiate it with the doc and the span's start and
-end index, and an optional label argument.
+Notes: Também é possível criar uma partição `Span` manualmente a partir da 
+importação da classe `spacy.tokens`. Em seguida, deve-se instanciar o objeto
+com o doc e os índices de início e fim da particão, e opcionalmente um marcador.
 
-The `doc.ents` are writable, so we can add entities manually by overwriting it
-with a list of spans.
+O atributo `doc.ents` pode ser atualizado, sendo possível adicionar manualmente
+novas entidades a partir de uma lista de partições.
 
 ---
 
-# Best practices
+# Melhores práticas
 
-- `Doc` and `Span` are very powerful and hold references and relationships of
-  words and sentences
-  - **Convert result to strings as late as possible**
-  - **Use token attributes if available** – for example, `token.i` for the token
-    index
-- Don't forget to pass in the shared `vocab`
+- `Doc` e `Span` são recursos bastente poderosos e armazenam referencias e relações
+entre palavras e sentenças:
+  - **Converta os resultados para strings o mais tarde possível**
+  - **Use os atributos dos tokens, se estiverem disponíveis.** – por exemplo: `token.i` para o
+  índice do token
+- Não se esqueça de passar o parâmetro do vocabulário compartilhado `vocab`
 
-Notes: A few tips and tricks before we get started:
+Notes: Algumas dicas e segredos antes de começar:
 
-The `Doc` and `Span` are very powerful and optimized for performance. They give
+Os objetos `Doc` e `Span` são bastante poderosoe e foram otimizados para melhor performance.
+Eles te dão acesso a todas as referências e relações entre as palavras e as sentenças.
+
+Se sua aplicação necessita de saídas em texto (strings), faça as conversões
+para texto o mais tarde possível. Se você fizer isso muito cedo, você 
+corre o risco de perder todas as relações entre os tokens.
+
+Para que seu projeto seja consistente, use os atributos dos tokens já existentes sempre
+que possível
+
+are very powerful and optimized for performance. They give
 you access to all references and relationships of the words and sentences.
 
 If your application needs to output strings, make sure to convert the doc as
 late as possible. If you do it too early, you'll lose all relationships between
-the tokens.
+the tokens. Por exemplo: `token.i` para o índice do token.
 
-To keep things consistent, try to use built-in token attributes wherever
-possible. For example, `token.i` for the token index.
-
-Also, don't forget to always pass in the shared vocab!
+E também é preciso sempre passar o vocabulário compartilhado como parâmetro!
 
 ---
 
-# Let's practice!
+# Vamos praticar!
 
-Notes: Now let's try this out and create some docs and spans from scratch.
+Notes: Vamos agora experimentar isso tudo e criar alguns docs e partições do zero.
