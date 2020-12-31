@@ -4,7 +4,7 @@ type: slides
 
 # Componentes personalizados do fluxo de processamento
 
-Notes: Agora que você já sabe como o fluxo de processamento do spaCy funciona,
+Notes: Agora que você já sabe como o fluxo de processamento da spaCy funciona,
 vamos dar uma olhada em outro recurso muito poderoso: componentes personalizados
 do fluxo de processamento.
 
@@ -16,14 +16,14 @@ exemplo: você pode modificar o documento e adicionar mais dados a ele.
 
 # Por que personalizar componentes ?
 
-<img src="/pipeline.png" alt="Ilustracao do fluxo de processamento do spaCy" width="90%" />
+<img src="/pipeline.png" alt="Ilustracao do fluxo de processamento da spaCy" width="90%" />
 
 - Permite que uma função seja executada automaticamente quando você chamar `nlp`
 - Adiciona metadados personalizados ao documentos e aos tokens
 - Atualiza atributos padrão como por exemplo entidades `doc.ents`
 
 Notes: Após o texto ser toquenizado e o objeto  ser criado, os componentes do 
-fluxo de processamento são aplicados sequencialmente. O spaCy suporta uma
+fluxo de processamento são aplicados sequencialmente. A spaCy suporta uma
 grande variedade de componentes pré-existentes, mas também permite que você
 crie seu próprio componente.
 
@@ -92,7 +92,7 @@ forma que o novo componente seja adicionado antes ou depois dele. Por exemplo: `
 vai adicionar o novo componente antes do identificador de entidados nomeadas.
 
 O componente existente ao qual o novo componente deve ser adicionado antes ou depois precisa
-existir, senão o spaCy gerará um erro.
+existir, senão a spaCy gerará um erro.
 
 
 ---

@@ -1,9 +1,9 @@
 ---
-title: 'Chapter 2: Análise da dados em larga escala usando spaCy'
+title: 'Chapter 2: Análise da dados em larga escala usanda spaCy'
 description:
   "Neste capítulo você desenvolverá novas habilidades ao extrair informações
   específicas de um grande volume de texto. Você vai aprender a otimizar o uso
-  das estruturas de dados do spaCy e como criar estratégias combinadas de estatística
+  das estruturas de dados da spaCy e como criar estratégias combinadas de estatística
   e baseadas em regras para efetuar análises de textos de maneira eficiente."
 prev: /chapter1
 next: /chapter3
@@ -142,7 +142,7 @@ desejado. Em seguida crie o `doc`.
 
 <codeblock id="02_05_03">
 
-Preste atenção nos tokens. Para ver como o spaCy toqueniza uma string, você
+Preste atenção nos tokens. Para ver como a spaCy toqueniza uma string, você
 pode tentar imprimir os tokens de `nlp("Oh, really?!")`.
 
 </codeblock>
@@ -153,7 +153,7 @@ pode tentar imprimir os tokens de `nlp("Oh, really?!")`.
 
 Neste exercício você criará os objetos `Doc` e `Span` manualmente e
 atualizará as Entidades Nomeadas (named entities), da mesma maneira que
-o spaCy faz nos bastidores. Um objeto `nlp` deve ser previamente criado.
+a spaCy faz nos bastidores. Um objeto `nlp` deve ser previamente criado.
 
 - Importe as classes `Doc` e `Span` de `spacy.tokens`.
 - Use a classe `Doc` para criar diretamente um `doc` a partir das palavras e
@@ -209,7 +209,7 @@ Por que esse código não é eficiente?
 
 <choice>
 
-<opt text="O token em <code>result</code> deve ser convertido de volta para um objeto <code>Token</code>. Isso permitirá seu reuso no spaCy.">
+<opt text="O token em <code>result</code> deve ser convertido de volta para um objeto <code>Token</code>. Isso permitirá seu reuso na spaCy.">
 
 Não é necessário converter string para objetos `Token`. Evite converter tokens
 para strings se você ainda precisar acessar seus atributos e relações.

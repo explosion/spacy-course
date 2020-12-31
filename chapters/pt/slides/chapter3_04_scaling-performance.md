@@ -5,7 +5,7 @@ type: slides
 # Aumentando a escala e o desempenho
 
 Notes: Nesta lição, vou te mostrar algumas dicas e truques para fazer seus
-fluxos de processamento do spaCy rodarem o mais rápido possível e processarem
+fluxos de processamento da spaCy rodarem o mais rápido possível e processarem
 grandes volumes de texto de maneira eficiente.
 
 ---
@@ -103,7 +103,7 @@ documento com os metadados do contexto.
 
 # Usando o toquenizador (1)
 
-<img src="/pipeline.png" width="90%" alt="Ilustracao do fluxo de processamento do spaCy">
+<img src="/pipeline.png" width="90%" alt="Ilustracao do fluxo de processamento da spaCy">
 
 - não processe o fluxo de processamento (pipeline) completo!
 
@@ -135,7 +135,7 @@ doc = nlp.make_doc("Hello world!")
 Notes: Se você apenas precisa de um objeto `Doc` toquenizado, você pode usar o método
 `nlp.make_doc`, que recebe um texto e retorna um objeto doc.
 
-Isso é exatamente o que o spaCy faz: `nlp.make_doc` transforma o texto em um documento
+Isso é exatamente o que a spaCy faz: `nlp.make_doc` transforma o texto em um documento
 doc antes de chamar os componentes do fluxo de processamento.
 
 ---
@@ -155,7 +155,7 @@ with nlp.disable_pipes("tagger", "parser"):
 - Restaura os componentes após o bloco `with`
 - Apenas roda os componentes remanescentes 
 
-Notes: O spaCy também permite que você desabilite temporariamente componentes
+Notes: A spaCy também permite que você desabilite temporariamente componentes
 do fluxo de processamento usando o comando gerenciador de contexto 
 `nlp.disable_pipes`. 
 
@@ -167,7 +167,7 @@ o tagueador e o analisador.
 Após o bloco `with`, os componentes desabilitados são automaticamente 
 reabilitados.
 
-No bloco `with`, o spaCy vai apenas rodar os componentes remanescentes.
+No bloco `with`, a spaCy vai apenas rodar os componentes remanescentes.
 
 ---
 

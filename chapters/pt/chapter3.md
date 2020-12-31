@@ -2,7 +2,7 @@
 title: 'Chapter 3: Fluxos de processamento (pipelines)'
 description:
   "Neste capítulo você conhecer melhor os fluxos de processamento
-  (pipelines) do spaCy. Você entenderá o que acontece nos bastidores
+  (pipelines) da spaCy. Você entenderá o que acontece nos bastidores
   quando você processa um texto. Vai aprender a escrever seus próprios
   componentes e adicioná-los ao fluxo, e também a usar atributos customizados
   para adicionar metadados próprios aos seus documentos, partições e tokens."
@@ -21,7 +21,7 @@ id: 3
 
 <exercise id="2" title="O que acontece quando você usa nlp()?">
 
-O que o spaCy faz quando você usa `nlp` em uma sequência de texto?
+O que a spaCy faz quando você usa `nlp` em uma sequência de texto?
 
 ```python
 doc = nlp("This is a sentence.")
@@ -40,21 +40,21 @@ um analisador (parser) e um identificador de entidades.
 
 <opt text="Toqueniza o texto e aplica os componentes do fluxo (pipeline) sequencialmente." correct="true">
 
-O toquenizador transforma uma string de texto em um objeto `Doc`. O spaCy
+O toquenizador transforma uma string de texto em um objeto `Doc`. a spaCy
 então aplica cada componente do fluxo de processamento (pipeline) ao documento,
 sequencialmente.
 
 </opt>
 
-<opt text="Conecta ao servidor do spaCy para processar o texto e retorna o resultados.">
+<opt text="Conecta ao servidor da spaCy para processar o texto e retorna o resultados.">
 
-O spaCy processa tudo localmente e não se conecta a nenhum servidor externo.
+a spaCy processa tudo localmente e não se conecta a nenhum servidor externo.
 
 </opt>
 
 <opt text="Inicializa o idioma, adiciona o fluxo de processamento (pipeline) e carrega os pesos binários dos modelos.">
 
-Quando você usa `spacy.load()` para carregar um modelo, o spaCy irá inicializar o
+Quando você usa `spacy.load()` para carregar um modelo, a spaCy irá inicializar o
 idioma, adicionar o fluxo de processamento (pipeline) e carregar os pesos binários do modelo.
 Quando você _usar_ o objeto `nlp` em um texto, o modelo já estará carregado.
 

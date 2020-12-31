@@ -1,7 +1,7 @@
 ---
 title: 'Capítulo 1: Selecionando palavras, frases, nomes e alguns conceitos'
 description:
-  "Neste capítulo vamos apresentar os conceitos básicos de processamento de texto utilizando spaCy.
+  "Neste capítulo vamos apresentar os conceitos básicos de processamento de texto utilizanda spaCy.
   Você vai aprender sobre as estruturas de dados, como trabalhar com modelos estatísticos e como
   usá-los para prever anotações linguísticas do seu texto."
 prev: null
@@ -10,7 +10,7 @@ type: chapter
 id: 1
 ---
 
-<exercise id="1" title="Introdução ao spaCy" type="slides">
+<exercise id="1" title="Introdução a spaCy" type="slides">
 
 <slides source="chapter1_01_introduction-to-spacy">
 </slides>
@@ -47,7 +47,7 @@ experimentos com alguns dos mais de 55 [idiomas disponíveis](https://spacy.io/u
 
 <exercise id="3" title="Documentos, partições e tokens">
 
-Quando você chama o objeto `nlp` passando uma string como parâmetro, o spaCy
+Quando você chama o objeto `nlp` passando uma string como parâmetro, a spaCy
 faz a toquenização do texto e cria um objeto do tipo documento. Neste exercício, você
 vai aprender mais sobre o documento `Doc`, assim como os objetos `Token` e
 partição `Span`.
@@ -113,7 +113,7 @@ a variável `doc`. Por exemplo, para obter o token na posição 5 escreva `doc[5
 
 <exercise id="6" title="Biblioteca dos modelos" type="choice">
 
-O que **NÃO** está incluído nos modelos que você pode carregar no spaCy?
+O que **NÃO** está incluído nos modelos que você pode carregar na spaCy?
 
 <choice>
 <opt text="Um arquivo com metadados do idioma, pipeline e licença.">
@@ -141,7 +141,7 @@ treinamento sejam incluídos nos modelos.
 <opt text="O vocabulário do modelo e seus códigos indexadores (hashes).">
 
 As bibliotecas de modelos incluem um arquivo `strings.json` que armazena o mapeamento
-do vocabulário para códigos indexadores (hash). Isso permite que o spaCy utilize apenas os
+do vocabulário para códigos indexadores (hash). Isso permite que a spaCy utilize apenas os
 códigos hash e faça a consulta da palavra correspondente, se necessário.
 
 </opt>
@@ -170,7 +170,7 @@ por isso verifique se você está usando o nome correto do modelo.
 
 <exercise id="8" title="Prevendo anotações linguísticas">
 
-Agora vamos experimentar um dos modelos pré-treinados do spaCy e
+Agora vamos experimentar um dos modelos pré-treinados da spaCy e
 ver o resultado de sua previsão. Fique à vontade e experimente com seu
 próprio texto! Use `spacy.explain` para saber o significado de um determinado
 marcador. Por exemplo: `spacy.explain("PROPN")` ou `spacy.explain("GPE")`.

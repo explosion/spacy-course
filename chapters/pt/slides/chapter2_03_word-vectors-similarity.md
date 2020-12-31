@@ -4,7 +4,7 @@ type: slides
 
 # Vetores de palavras e similaridades semânticas
 
-Notes: Nesta lição você irá aprender a usar o spaCy para prever o quão dois
+Notes: Nesta lição você irá aprender a usar a spaCy para prever o quão dois
 documentos, partições ou tokens são similares entre si.
 
 Você também irá aprender a usar vetores de palavras e como tirar vantagem
@@ -23,7 +23,7 @@ como por exemplo:
   - ✅ `en_core_web_lg` ( modelo de tamanho grande )
   - 🚫 **NÃO USE** `en_core_web_sm` ( modelo de tamanho pequeno )
 
-Notes: O spaCy consegue comparar dois objetos e prever o quão similares eles são
+Notes: A spaCy consegue comparar dois objetos e prever o quão similares eles são
 entre si. Por exemplo: documentos, partições e tokens.
 
 Os objetos `Doc`, `Token` e `Span` possuem o método `.similarity` que recebe
@@ -126,18 +126,18 @@ O score foi 0.61, que significa que são um pouco similares.
 
 ---
 
-# Como o spaCy prevê similaridades?
+# Como a spaCy prevê similaridades?
 
 - A similaridade é determinada usando os **vetores de palavras**
 - Representações multi dimensionais das palavras
 - São gerados utilizando algoritmos similares a 
   [Word2Vec](https://en.wikipedia.org/wiki/Word2vec) e uma enorme quantidade de textos.
-- Podem ser adicionados aos modelos estatísticos do spaCy.
+- Podem ser adicionados aos modelos estatísticos da spaCy.
 - Algoritmo padrão: similaridade por cosseno, mas pode ser alterado
 - Os vetores de `Doc` e `Span` são a média dos vetores de seus tokens.
 - Frases curtas são melhores que grandes documentos com palavras irrelevantes.
 
-Notes: Mas como o spaCy faz esse cálculo de similaridade?
+Notes: Mas como a spaCy faz esse cálculo de similaridade?
 
 A similaridade é determinada utilizando-se vetores de palavras, que são representações
 multi dimensionais do significado de cada palavra.
@@ -145,9 +145,9 @@ multi dimensionais do significado de cada palavra.
 Você deve ter ouvido falar do Word2Vec, um algoritmo que é usado com frequencia para
 treinar vetores de palavras a partir de textos.
 
-Os vetores podem ser adicionados aos modelos estatísticos do spaCy.
+Os vetores podem ser adicionados aos modelos estatísticos da spaCy.
 
-Por padrão, a similaridade calculada pelo spaCy é a similaridade cosseno entre os
+Por padrão, a similaridade calculada pela spaCy é a similaridade cosseno entre os
 dois vetores, mas isso pode ser alterado se necessário.
 
 O vetor de um objeto consistido de vários tokens, como o `Doc` e o `Span`, é calculado 
@@ -158,7 +158,7 @@ palavras irrelevantes.
 
 ---
 
-# Vetores de palavras no spaCy
+# Vetores de palavras na spaCy
 
 ```python
 # Carregar um modelo maior com vetores
@@ -222,7 +222,7 @@ Contudo é importante ter em mente que não existe uma definição objetiva daqu
 que é similar ou não. Isso sempre vai depender do contexto e do que precisa 
 ser feito em sua aplicação.
 
-Aqui está um exemplo: os vetores de palavras padrão do spaCy atribuem um score
+Aqui está um exemplo: os vetores de palavras padrão da spaCy atribuem um score
 de alta similaridade entre "I like cats" e "I hate cats". Isso faz sentido,
 pois os dois textos expressam sentimentos relacionados a gatos. Mas no contexto
 de uma aplicação, você pode considerar que as duas frases são _pouco similares_, 
@@ -232,5 +232,5 @@ pois expressam sentimentos opostos.
 
 # Vamos praticar!
 
-Notes: Agora é a sua vez. Vamos dar uma olhada nos vetores de palavras do spaCy
+Notes: Agora é a sua vez. Vamos dar uma olhada nos vetores de palavras da spaCy
 e usá-los para prever similaridades.

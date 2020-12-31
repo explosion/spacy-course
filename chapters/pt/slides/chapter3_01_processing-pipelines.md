@@ -9,7 +9,7 @@ uma série de funções que são aplicadas sequencialmente no documento para
 adicionar atributos como classes gramaticais,  marcadores sintáticos e
 entidades nomeadas.
 
-Nesta lição, você conhecerá os componentes do fluxo de processamento do spaCy
+Nesta lição, você conhecerá os componentes do fluxo de processamento da spaCy
 e o que acontece nos bastidores quando você chama nlp em um texto.
 
 ---
@@ -44,7 +44,7 @@ ele.
 | **ner**     | Identificador de entidades (named entity recognizer)     | `Doc.ents`, `Token.ent_iob`, `Token.ent_type`             |
 | **textcat** | Classificador de texto (text classifier)                 | `Doc.cats`                                                |
 
-Notes: Como padrão, o spaCy tem os seguintes componentes no fluxo de processamento:
+Notes: Como padrão, a spaCy tem os seguintes componentes no fluxo de processamento:
 
 O tagueador de classes gramaticais cria os atributos `token.tag` e `token.pos`.
 
@@ -72,11 +72,11 @@ pré-treinados. Mas você pode utilizá-lo em seu projeto.
 - O Fluxo de processamento ocorre sequencialmente conforme definido no `meta.json` do modelo 
 - Os componentes padrão usam dados binários para fazer as previsões
 
-Notes: Todos os modelos que você pode importar no spaCy incluem vários arquivos,
+Notes: Todos os modelos que você pode importar na spaCy incluem vários arquivos,
 dentre eles um `meta.json`.
 
 O arquivo meta define o idioma e o fluxo de processamento. Ele indica quais componentes
-precisam ser instanciados pelo spaCy.
+precisam ser instanciados pela spaCy.
 
 Os componentes internos que fazem as previsões necessitam de dados binários. Esses
 dados estão inclusos no pacote do modelo e são carregados nos componentes quando
@@ -122,4 +122,4 @@ gramatical, marcadores sintáticos e de entidades.
 
 # Vamos praticar!
 
-Notes: Vamos agora dar uma olhada em alguns fluxos de processamento do spaCy !
+Notes: Vamos agora dar uma olhada em alguns fluxos de processamento da spaCy !

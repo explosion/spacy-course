@@ -7,7 +7,7 @@ type: slides
 Notes: Combinar modelos estatísticos com sistemas baseados em regras é um dos truques
 mais poderosos que você pode encontrar em uma ferramenta de PLN.
 
-Nesta lição, vamos dar uma olhada em como fazer isso no spaCy.
+Nesta lição, vamos dar uma olhada em como fazer isso na spaCy.
 
 ---
 
@@ -17,7 +17,7 @@ Nesta lição, vamos dar uma olhada em como fazer isso no spaCy.
 | -------------------------- | ----------------------------------------------------------------------| -------------------------------|
 | **Casos de uso**           | aplicação precisa _generalizar_ a partir de exemplos                  |             ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀|
 | **Exemplos do mundo real** | nomes de produtos, nomes de pessoas, relações sujeito/objeto          |                                |
-| **Recursos do spaCy**      | reconhec. de entidades, análise sintática, tag. de classes gramaticais|                                |
+| **Recursos da spaCy**      | reconhec. de entidades, análise sintática, tag. de classes gramaticais|                                |
 
 Notes: Modelos estatísticos são úteis se sua aplicação necessita precisa generalizar a partir de alguns exemplos.
 
@@ -26,7 +26,7 @@ estatístico. Ao invés de prover uma lista de todos os possíveis nomes de pess
 sua aplicação poderá prever se uma partição de tokens é um nome próprio. De maneira similar, 
 é possível prever termos sintáticos e identificar relações entre sujeito e objeto.
 
-Para alcançar esse objetivo você pode usar as recursos do spaCy: reconhecimento de entidades,
+Para alcançar esse objetivo você pode usar as recursos da spaCy: reconhecimento de entidades,
 analisador sintático e o tagueador de classes gramaticais.
 
 ---
@@ -38,14 +38,14 @@ analisador sintático e o tagueador de classes gramaticais.
 | -------------------------- | ----------------------------------------------------------------------| -------------------------------|
 | **Casos de uso**           | aplicação precisa _generalizar_ a partir de exemplos                  | dicionário com número finito de exemplos|
 | **Exemplos do mundo real** | nomes de produtos, nomes de pessoas, relações sujeito/objeto          | países do mundo, cidades, nomes de remédios, raças caninas |
-| **Recursos do spaCy**      | reconhec. de entidades, análise sintática, tag. de classes gramaticais| toquenizador, `Matcher`, `PhraseMatcher`|
+| **Recursos da spaCy**      | reconhec. de entidades, análise sintática, tag. de classes gramaticais| toquenizador, `Matcher`, `PhraseMatcher`|
 
 
 Notes: Por outro lado, estratégias baseadas em regras são úteis se há um 
 número finito de ocorrências que você deseja identificar. Por exemplo,
 todos os países ou cidades do mundo, nomes de remédios ou raças de cachorros.
 
-No spaCy, você pode alcançar esse objetivo com regras de toquenização customizadas,
+Na spaCy, você pode alcançar esse objetivo com regras de toquenização customizadas,
 bem como usando o comparador e o comparador de frases.
 
 ---

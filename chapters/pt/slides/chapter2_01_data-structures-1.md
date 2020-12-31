@@ -4,9 +4,9 @@ type: slides
 
 # Estruturas de dados (1): Vocabulário, Lexemas e armazenamento de Strings
 
-Notes: Bem-vindo de volta! Agora que você já teve uma experiência real com o spaCy em ação, é hora de aprender um pouco mais sobre o que acontece nos bastidores.
+Notes: Bem-vindo de volta! Agora que você já teve uma experiência real com a spaCy em ação, é hora de aprender um pouco mais sobre o que acontece nos bastidores.
 
-Nesta lição, vamos dar uma olhada no vocabulário compartilhado (Vocab) e como o spaCy lida com strings.
+Nesta lição, vamos dar uma olhada no vocabulário compartilhado (Vocab) e como a spaCy lida com strings.
 
 
 ---
@@ -14,7 +14,7 @@ Nesta lição, vamos dar uma olhada no vocabulário compartilhado (Vocab) e como
 # Vocabulário compartilhado e armazenamento de strings (1)
 
 - `Vocab`: armazena informações compartilhadas entre diversos documentos
-- Para economizar memória, o spaCy mapeia as strings em **códigos hash**
+- Para economizar memória, a spaCy mapeia as strings em **códigos hash**
 - Strings são armazenadas apenas uma vez na `StringStore` via `nlp.vocab.strings`
 - Armazenamento de String: **tabelas de consultas** que funcionam em ambos sentidos
 
@@ -30,19 +30,19 @@ coffee_string = nlp.vocab.strings[coffee_hash]
 string = nlp.vocab.strings[3197928453018144401]
 ```
 
-Notes: O spaCy armazena todos os dados compartilhados em um vocabulário: o **Vocab**.
+Notes: A spaCy armazena todos os dados compartilhados em um vocabulário: o **Vocab**.
 
 Ele inclui palavras e também esquemas para marcadores e entidades. 
 
 Para economizar memória, todas as strings são mapedas em códigos hash. Se uma palavra
 ocorre mais de uma vez, só é necessário salvá-la uma vez.
 
-O spaCy usa uma função hash para gerar um identificador (ID) e armazena a string apenas
+A spaCy usa uma função hash para gerar um identificador (ID) e armazena a string apenas
 uma vez. As strings armazenadas estão disponíveis em `nlp.vocab.strings`.
 
 Trata-se de uma tabela de consulta que pode ser utilizada nos dois sentidos. Você pode
 pesquisar uma string e obter o seu código hash, ou pode pesquisar um código hash e obter
-a string correspondente. Internamente, o spaCy só lida com códigos hash.
+a string correspondente. Internamente, a spaCy só lida com códigos hash.
 
 Mas os códigos hash não podem ser revertidos diretamente. Isso quer dizer que se uma palavra 
 não estiver registrada no vocabulário, não será possível obter sua string. Por isso 
@@ -129,7 +129,7 @@ O `Doc` contém palavras em seu contexto - neste caso, os tokens "I", "love" e
 "coffee"- com seus marcadores de classe gramatical e dependência sintática.
 
 Cada token está mapeado a um lexema, e também ao código hash da palavra. Para obter
-a string que representa uma palavra, o spaCy faz a consulta do código hash nas strings 
+a string que representa uma palavra, a spaCy faz a consulta do código hash nas strings 
 armazenadas.
 
 ---

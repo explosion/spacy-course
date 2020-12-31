@@ -2,180 +2,187 @@
 type: slides
 ---
 
-# The training loop
+# O laço (loop) de treinamento
 
-Notes: While some other libraries give you one method that takes care of
-training a model, spaCy gives you full control over the training loop.
-
----
-
-# The steps of a training loop
-
-1. **Loop** for a number of times.
-2. **Shuffle** the training data.
-3. **Divide** the data into batches.
-4. **Update** the model for each batch.
-5. **Save** the updated model.
-
-Notes: The training loop is a series of steps that's performed to train or
-update a model.
-
-We usually need to perform it several times, for multiple iterations, so that
-the model can learn from it effectively. If we want to train for 10 iterations,
-we need to loop 10 times.
-
-To prevent the model from getting stuck in a suboptimal solution, we randomly
-shuffle the data for each iteration. This is a very common strategy when doing
-stochastic gradient descent.
-
-Next, we divide the training data into batches of several examples, also known
-as minibatching. This increases the reliability of the gradient estimates.
-
-Finally, we update the model for each batch, and start the loop again until
-we've reached the last iteration.
-
-We can then save the model to a directory and use it in spaCy.
+Notes: Enquanto outras bibiotecas entregam um método responsável pelo
+treinamento completo de um modelo, a spaCy te entrega controle total de todas 
+as etapas envolvidas no treinamento de um modelo.
 
 ---
 
-# Recap: How training works
+# Os passos do laço (loop) de treinamento:
 
-<img src="/training.png" alt="Diagram of the training process" />
+1. **Repita** uma série de vezes.
+2. **Embaralhe** os dados de treinamento.
+3. **Divida** os dados em lotes.
+4. **Atualize** o modelo para cada lote.
+5. **Salve** o modelo atualizado.
 
-- **Training data:** Examples and their annotations.
-- **Text:** The input text the model should predict a label for.
-- **Label:** The label the model should predict.
-- **Gradient:** How to change the weights.
+Notes: O loop de treinamento engloba uma série de passos que são executados
+para treinar ou atualizar um modelo.
 
-Notes: To recap:
+Normalmente precisamos executar esses passos diversas vezes, em múltiplas iterações,
+de forma que o modelo aprenda eficientemente. Se desejarmos treinar o modelo
+por 10 iterações, precisamos executar o loop 10 vezes.
 
-The training data are the examples we want to update the model with.
+Para prevenir que o modelo convirja para uma solução sub-ótima, nós embaralhamos
+os dados aleatoriamente a cada iteração. Essa é uma estratégia bastente comum
+quando se usa o algorimo de gradiente descendente estocástico.
 
-The text should be a sentence, paragraph or longer document. For the best
-results, it should be similar to what the model will see at runtime.
+Em seguida, dividimos os dados de treinamento em lotes com alguns exemplos,
+também conhecido como "minibatching". Isso aumenta a confiança das estimativas
+do gradiente.
 
-The label is what we want the model to predict. This can be a text category, or
-an entity span and its type.
+Finalmente, atualizamos o modelo após processar cada lote, e reiniciamos o loop
+até finalizarmos a última iteração.
 
-The gradient is how we should change the model to reduce the current error. It's
-computed when we compare the predicted label to the true label.
+Então podemos salvar o modelo em um diretório e usá-lo na spaCy.
 
 ---
 
-# Example loop
+# Recapitulando: Como o treinamento funciona
+
+<img src="/training.png" alt="Diagrama do processo de treinamento" />
+
+- **Dados de treinamento:** Exemplos e suas anotações.
+- **Texto:** O texto de entrada que o modelo deve prever um rótulo associado.
+- **Rótulo:** O rótulo que o modelo deve prever.
+- **Gradiente:** Como mudar os pesos do modelo.
+
+Notes: Recapitulando:
+
+Os dados de treinamento são os exemplos que desejamos utilizar para atualizar
+o modelo.
+
+O texto pode ser uma frase, parágrafo ou documento. Para melhores resultados,
+ele deve ser similar aos textos que o modelo encontrará quando rodar suas
+previsões.
+
+O rótulo é o resultado que desejamos obter com a previsão do modelo. Pode ser a categoria
+do texto, ou identificação de entidades e seus tipos.
+
+O gradiente define como o modelo deve alterar seus pesos para reduzir o erro atual, 
+que é calculado quando comparamos os dados previstos com os resultados esperados 
+(reais).
+
+---
+
+# Exemplo de um loop
 
 ```python
 TRAINING_DATA = [
     ("How to preorder the iPhone X", {"entities": [(20, 28, "GADGET")]})
-    # And many more examples...
+    # E muitos outros exemplos...
 ]
 ```
 
 ```python
-# Loop for 10 iterations
+# Loop por 10 iterações
 for i in range(10):
-    # Shuffle the training data
+    # Embaralhar os dados de treinamento
     random.shuffle(TRAINING_DATA)
-    # Create batches and iterate over them
+    # Criar lotes e iterar 
     for batch in spacy.util.minibatch(TRAINING_DATA):
-        # Split the batch in texts and annotations
+        # Dividir o lote em textos e anotações
         texts = [text for text, annotation in batch]
         annotations = [annotation for text, annotation in batch]
-        # Update the model
+        # Atualizar o modelo
         nlp.update(texts, annotations)
 
-# Save the model
+# Salvar o modelo 
 nlp.to_disk(path_to_model)
 ```
 
-Notes: Here's an example.
+Notes: Aqui está um exemplo:
 
-Let's imagine we have a list of training examples consisting of texts and entity
-annotations.
+Vamos imaginar que temos uma lista de exemplos de treinamento consistindo de
+texto e anotações de entidades.
 
-We want to loop for 10 iterations, so we're iterating over a `range` of 10.
+Queremos executar o laço (loop) por 10 vezes, portanto nossa iteração terá um
+alcance (`range`) de 10.
 
-Next, we use the `random` module to randomly shuffle the training data.
+Em seguida , usamos o módulo `random` para embaralhar os dados de treinamento
+aleatoriamente.
 
-We then use spaCy's `minibatch` utility function to divide the examples into
-batches.
+Então usamos a função da spaCy `minibatch` para agrupar os exemplos em lotes.
 
-For each batch, we get the texts and annotations and call the `nlp.update`
-method to update the model.
+Para cada lote, obtemos os textos e anotações e chamamos o método `nlp.update`
+para atualizar o modelo.
 
-Finally, we call the `nlp.to_disk` method to save the trained model to a
-directory.
-
----
-
-# Updating an existing model
-
-- Improve the predictions on new data
-- Especially useful to improve existing categories, like `"PERSON"`
-- Also possible to add new categories
-- Be careful and make sure the model doesn't "forget" the old ones
-
-Notes: spaCy lets you update an existing pre-trained model with more data – for
-example, to improve its predictions on different texts.
-
-This is especially useful if you want to improve categories the model already
-knows, like "person" or "organization".
-
-You can also update a model to add new categories.
-
-Just make sure to always update it with examples of the new category _and_
-examples of the other categories it previously predicted correctly. Otherwise
-improving the new category might hurt the other categories.
+Por fim, usamos `nlp.to_disk` para salvar o modelo treinado em um diretório.
 
 ---
 
-# Setting up a new pipeline from scratch
+# Atualizando um modelo existente
+
+- Melhora as previsões para novos dados
+- Muito útil para extender categorias existentes, como `"PERSON"`
+- Também é possível adicionar novas categorias.
+- Cuidado e garanta que o modelo não irá "esquecer" a classificação já aprendida.
+
+Notes: A spaCy permite que você atualize um modelo pré-treinado com mais
+dados, para por exemplo, melhorar as previsões em diferentes textos.
+
+Isso é especialmente útil se você deseja adicionar exemplos a um modelo
+existente, como "person" ou "organization".
+
+E você também pode atualizar um modelo existente com novas categorias.
+
+Mas tenha cuidado e garanta que seus dados de treinamento contenham 
+exemplos das novas categorias _e_ exemplos das categorias previamente
+aprendidas, senão você corre o risco de prejudicar o que já foi aprendido
+anteriormente.
+
+---
+
+# Definindo um novo fluxo de processamento a partir do zero
 
 ```python
-# Start with blank English model
+# Começar com o modelo vazio da língua inglesa
 nlp = spacy.blank("en")
-# Create blank entity recognizer and add it to the pipeline
+# Criar identificador de entidades vazio, e adicionar ao fluxo de processamento
 ner = nlp.create_pipe("ner")
 nlp.add_pipe(ner)
-# Add a new label
+# Adicionar um novo rótulo
 ner.add_label("GADGET")
 
-# Start the training
+# Iniciar o treinamento
 nlp.begin_training()
-# Train for 10 iterations
+# Treinar por 10 iterações
 for itn in range(10):
     random.shuffle(examples)
-    # Divide examples into batches
+    # Dividir os exemplos em lotes
     for batch in spacy.util.minibatch(examples, size=2):
         texts = [text for text, annotation in batch]
         annotations = [annotation for text, annotation in batch]
-        # Update the model
+        # Atualizar o modelo
         nlp.update(texts, annotations)
 ```
 
-Notes: In this example, we start off with a blank English model using the
-`spacy.blank` method. The blank model doesn't have any pipeline components, only
-the language data and tokenization rules.
+Notes: Neste exemplo, começamos com o modelo da língua inglesa vazio, através
+do comando `spacy.blank`. O modelo vazio não tem nenhum componente no fluxo
+de processamento apenas os dados do idioma e as regras de toquenização.
 
-We then create a blank entity recognizer and add it to the pipeline.
+Então criamos um identificador de entidades e o adicionamos ao fluxo de
+processamento.
 
-Using the `add_label` method, we can add new string labels to the model.
+Utilizando o método `add_label`, podemos adicionar novos rótulos ao modelo.
 
-We can now call `nlp.begin_training` to initialize the model with random
-weights.
+Em seguida chamamos `nlp.begin_training` para inicializar o modelo com pesos 
+aleatórios.
 
-To get better accuracy, we want to loop over the examples more than once and
-randomly shuffle the data on each iteration.
+Para obter uma melhor acurácia, desejamos iterar nos exemplos mais de uma
+vez e embaralhar aleatoriamente os dados a cada iteração.
 
-On each iteration, we divide the examples into batches using spaCy's `minibatch`
-utility function. Each example consists of a text and its annotations.
+A cada iteração, agrupamos os exemplos em lotes usando a função da spaCy
+`spacy.util.minibatch`. Cada exemplo consiste no texto e suas anotações.
 
-Finally, we update the model with the texts and annotations and continue the
-loop.
+Por último, atualizamos o modelo com os textos e anotações e seguimos com
+o loop.
 
 ---
 
-# Let's practice!
+# Vamos praticar!
 
-Notes: Time to practice! Now that you've seen the training loop, let's use the
-data created in the previous exercise to update a model.
+Notes: É hora de praticar! Agora que você já conhece o loop de treinamento, vamos
+usar os dados criados no exercício anterior para atualizar um modelo.

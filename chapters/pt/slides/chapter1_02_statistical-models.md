@@ -6,13 +6,13 @@ type: slides
 
 Notes: Agora vamos adicionar alguns poderes ao objeto `nlp`!
 
-Nesta lição você irá aprender sobre os modelos estatísticos do spaCy.
+Nesta lição você irá aprender sobre os modelos estatísticos da spaCy.
 
 ---
 
 # O que são modelos estatísticos?
 
-- Permitem que o spaCy faça previsões de atributos linguísticos _em contextos_.
+- Permitem que a spaCy faça previsões de atributos linguísticos _em contextos_.
   - Marcadores das classes gramaticais
   - Dependências sintáticas
   - Entidades nomeadas
@@ -21,7 +21,7 @@ Nesta lição você irá aprender sobre os modelos estatísticos do spaCy.
 
 Notes: Algumas das análises mais interessantes são aquelas específicas a um contexto. Por exemplo: se uma palavra é um verbo ou se uma palavra é o nome de uma pessoa.
 
-Os modelos estatísticos permite que o spaCy faça previsões dentro de um contexto. Isso normalmente inclui marcadores de classes gramaticais, dependências sintáticas e entidades nomeadas.
+Os modelos estatísticos permite que a spaCy faça previsões dentro de um contexto. Isso normalmente inclui marcadores de classes gramaticais, dependências sintáticas e entidades nomeadas.
 
 Os modelos são treinados em grandes conjuntos de dados com textos de exemplos já rotulados.
 
@@ -47,11 +47,11 @@ nlp = spacy.load("en_core_web_sm")
 - Vocabulário
 - Metadados (idioma, fluxo de processamento)
 
-Notes: O spaCy oferece vários pacotes de modelos que você pode baixar usando o comando `spacy download`. Por exemplo, o pacote "en_core_web_sm" é um modelo pequeno em inglês que tem todas as capacidades e foi treinado com texto da internet. 
+Notes: a spaCy oferece vários pacotes de modelos que você pode baixar usando o comando `spacy download`. Por exemplo, o pacote "en_core_web_sm" é um modelo pequeno em inglês que tem todas as capacidades e foi treinado com texto da internet. 
 
 O método `spacy.load` carrega o pacote de um modelo a partir do seu nome e retorna um objeto `nlp`.
 
-O pacote contém os pesos binários que permitem que o spaCy faça as previsões.
+O pacote contém os pesos binários que permitem que a spaCy faça as previsões.
 
 Também inclui o vocabulário e metadados com informações sobre o idioma e como configurar o fluxo de processamento.
 
@@ -81,7 +81,7 @@ the DET
 pizza NOUN
 ```
 
-Notes: Vamos dar uma olhada nas previsões do modelo. Neste exemplo, estamos usando o spaCy para prever as classes gramaticais, que são os tipos de palavras em seu contexto.
+Notes: Vamos dar uma olhada nas previsões do modelo. Neste exemplo, estamos usando a spaCy para prever as classes gramaticais, que são os tipos de palavras em seu contexto.
 
 Primeiramente, carregamos o modelo pequeno do Inglês no objeto `nlp`.
 
@@ -89,7 +89,7 @@ Em seguida, processamos o texto: "She ate the pizza".
 
 Para cada token no doc, podemos imprimir o texto e o atributo `.pos_`, que é a classe gramatical prevista.
 
-No spaCy, atributos que retornam strings normalmente terminam com um underscore (sublinhado) e atributos sem o underscore retornam um inteiro.
+Na spaCy, atributos que retornam strings normalmente terminam com um underscore (sublinhado) e atributos sem o underscore retornam um inteiro.
 
 Neste exemplo, o modelo previu corretamente "ate" como um verbo e "pizza" como um substantivo.
 
@@ -127,7 +127,7 @@ O atributo `.head` retorna o índice do token principal. Você pode pensar nele 
 | **dobj**  | direct object (objeto direto)      | pizza   |
 | **det**   | determiner (adjunto adnominal) | the     |
 
-Notes: Para descrever as dependências sintáticas, o spaCy usa um esquema com marcadores padronizados. Esse é um exemplo dos marcadores mais comuns:
+Notes: Para descrever as dependências sintáticas, a spaCy usa um esquema com marcadores padronizados. Esse é um exemplo dos marcadores mais comuns:
 
 O pronome (pronoun) "She" é um sujeito simples (nominal subject) relacionado com um verbo (verb), neste exemplo "ate".
 
@@ -205,4 +205,4 @@ O mesmo vale para marcadores de classes gramaticais e termos sintáticos.
 
 # Vamos praticar!
 
-Notes: Agora é a sua vez. Vamos dar uma olhada nos modelos estatísticos do spaCy e suas predições.
+Notes: Agora é a sua vez. Vamos dar uma olhada nos modelos estatísticos da spaCy e suas predições.

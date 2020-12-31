@@ -4,7 +4,7 @@ type: slides
 
 # Comparador baseado em regras
 
-Notes: Nesta lição, vamos dar uma olhada no Comparador (Matcher) do spaCy, que permite a criação de regras para encontrar palavras e frases no texto.
+Notes: Nesta lição, vamos dar uma olhada no Comparador (Matcher) da spaCy, que permite a criação de regras para encontrar palavras e frases no texto.
 
 ---
  

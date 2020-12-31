@@ -22,7 +22,7 @@ id: 4
 
 <exercise id="2" title="O propósito do treinamento">
 
-Embora o spaCy já venha com modelos pré-treinados para prever anotações linguísticas,
+Embora a spaCy já venha com modelos pré-treinados para prever anotações linguísticas,
 na _maioria das vezes_ você desejará fazer um ajuste fino no modelo, adicionando
 alguns exemplos específicos. Você conseguirá essa calibragem final após
 adicionar mais dados rotulados e treinar o modelo.
@@ -47,7 +47,7 @@ entidades ou categorias de classificação.
 
 <opt text="Descobre padrões de dados não rotulados." correct="true">
 
-Os componentes do spaCy são modelos _supervisionados_ baseados em anotações de
+Os componentes da spaCy são modelos _supervisionados_ baseados em anotações de
 texto, o que quer dizer que eles aprendem a reproduzir exemplos já aprendidos
 e não adivinhar novos marcadores a partir de dados sem tratamento.
 </opt>
@@ -58,7 +58,7 @@ e não adivinhar novos marcadores a partir de dados sem tratamento.
 
 <exercise id="3" title="Criando dados para treinamento (1)">
 
-Através do `Matcher` do spaCy, um algoritmo baseado em regras, é possível criar
+Através do `Matcher` da spaCy, um algoritmo baseado em regras, é possível criar
 rapidamente dados de treinamento para modelos de entidades. Uma lista de frases
 fica disponível através da variável `TEXTS`. Você pode imprimi-la para inspecionar
 o conteúdo. Queremos encontrar todas as menções aos diferentes modelos de iPhone,
@@ -318,7 +318,7 @@ Aqui está um pequeno exemplo de um conjunto de dados criado para treinar a enti
 Neste exercício, você criará os marcadores manualmente. Na vida real, você provavelmente
 irá automatizar este processo e utilizará uma ferramenta de anotação, como por exemplo:
 [Brat](http://brat.nlplab.org/), uma solução de código aberto, ou
-[Prodigy](https://prodi.gy), nossa ferramenta de anotação integrada ao spaCy.
+[Prodigy](https://prodi.gy), nossa ferramenta de anotação integrada à spaCy.
 
 
 ### Parte 1
@@ -347,7 +347,7 @@ O que pode estar acontecendo?
 <opt text='É muito difícil um modelo aprender a diferenciar várias categorias diferentes, como <code>"PERSON"</code> e <code>"WEBSITE"</code>.'>
 
 É claro que é possível um modelo aprender a identificar diferentes categorias.
-Por exemplo, o modelo pré-treinado do spaCy para a língua inglesa consegue
+Por exemplo, o modelo pré-treinado da spaCy para a língua inglesa consegue
 identificar pessoas, e também organizações e até percentuais.
 
 </opt>

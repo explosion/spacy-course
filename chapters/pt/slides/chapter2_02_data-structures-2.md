@@ -5,7 +5,7 @@ type: slides
 # Estruturas de dados (2): Doc, partição Span e Token
 
 Notes: Agora que vocÊ já conhece o vocabulário e o armazenamento das strings, podemos
-dar uma olhada nas estruturas de dados mais importantes do spaCy: o documento `Doc` e 
+dar uma olhada nas estruturas de dados mais importantes da spaCy: o documento `Doc` e 
 as visões `Token` e partição `Span`.
 
 ---
@@ -28,7 +28,7 @@ spaces = [True, False, False]
 doc = Doc(nlp.vocab, words=words, spaces=spaces)
 ```
 
-Notes: O objeto `Doc` é uma das estruturas de dados centrais do spaCy.
+Notes: O objeto `Doc` é uma das estruturas de dados centrais da spaCy.
 Ele é criado automaticamente quando você processa um texto com o objeto 
 `nlp`. Mas você também pode instanciar o objeto manualmente.
 

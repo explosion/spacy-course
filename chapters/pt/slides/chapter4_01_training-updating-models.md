@@ -2,71 +2,73 @@
 type: slides
 ---
 
-# Training and updating models
+# Treinando e atualizando modelos
 
-Notes: Welcome to the final chapter, which is about one of the most exciting
-aspects of modern NLP: training your own models!
+Notes: Bem-vindo ao capítulo final, que vai tratar de um dos aspectos mais
+entusiasmantes do processamento de linguagem natural moderno: treinar seus modelos!
 
-In this lesson, you'll learn about training and updating spaCy's neural network
-models and the data you need for it – focusing specifically on the named entity
-recognizer.
-
----
-
-# Why updating the model?
-
-- Better results on your specific domain
-- Learn classification schemes specifically for your problem
-- Essential for text classification
-- Very useful for named entity recognition
-- Less critical for part-of-speech tagging and dependency parsing
-
-Notes: Before we get starting with explaining _how_, it's worth taking a second
-to ask ourselves: Why would we want to update the model with our own examples?
-Why can't we just rely on pre-trained models?
-
-Statistical models make predictions based on the examples they were trained on.
-
-You can usually make the model more accurate by showing it examples from your
-domain.
-
-You often also want to predict categories specific to your problem, so the model
-needs to learn about them.
-
-This is essential for text classification, very useful for entity recognition
-and a little less critical for tagging and parsing.
+Nesta lição, você irá aprender sobre o treinamento e a atualização dos modelos
+de redes neurais da spaCy e os dados necessários para isso - com foco principal
+no identificador de entidades nomeadas.
 
 ---
 
-# How training works (1)
+# Por que atualizar o modelo?
 
-1. **Initialize** the model weights randomly with `nlp.begin_training`
-2. **Predict** a few examples with the current weights by calling `nlp.update`
-3. **Compare** prediction with true labels
-4. **Calculate** how to change weights to improve predictions
-5. **Update** weights slightly
-6. Go back to 2.
+- Resultados melhores para seu domínio específico
+- Aprende esquemas de classificação adequados ao seu problema
+- Essencial para classificação de textos
+- Muito útil para reconhecimento de entidades nomeadas
+- Menos crítico para tagueamento de classes gramaticas e análise sintática
 
-Notes: spaCy supports updating existing models with more examples, and training
-new models.
 
-If we're not starting with a pre-trained model, we first initialize the weights
-randomly.
+Notes: Antes de entrarmos nos detalhes do _como_, vale a pena fazermos uma pergunta
+para nós mesmos: Para que queremos atualizar o modelo com nossos próprios exemplos?
+Por que não podemos simplesmente confiar nos modelos que já foram treinados ?
 
-Next, we call `nlp.update`, which predicts a batch of examples with the current
-weights.
+Modelos estatísticos fazem previsões baseadas nos exemplos nos quais foram treinados.
 
-The model then checks the predictions against the correct answers, and decides
-how to change the weights to achieve better predictions next time.
+Normalmente você poderá fazer um modelo com melhor acurácia ao apresentar exemplos
+do seu próprio domínio.
 
-Finally, we make a small correction to the current weights and move on to the
-next batch of examples.
+Na maioria das vezes você também deseja categorizar os textos de acordo com o seu
+problema, portanto o modelo precisa aprender isso também.
 
-We continue calling `nlp.update` for each batch of examples in the data.
+Esse passo é essencial para a classificação de textos muito útil para identificadores
+de entidades e bem menos crítico para tagueamento debclasses gramaticas e análise 
+sintática.
 
 ---
 
-# How training works (2)
+# Como o treinamento funciona (1)
+
+1. **Inicializa** os pesos do modelo com valores aleatórios com `nlp.begin_training`
+2. **Prevê** alguns exemplos utilizando os pesos atuais com `nlp.update`
+3. **Compara** previsões com os resultados reais
+4. **Calcula** como alterar os pesos para melhorar as previsões
+5. **Atualiza** ligeiramente os pesos do modelo
+6. Volte para 2.
+
+Notes: A spaCy dá suporte para atualizar os modelos existentes com mais exemplos, e
+treinar novos modelos.
+
+Se não estamos iniciando com um modelo pré-treinado, o primeiro passo é inicializar
+os pesos do modelo com valores aleatórios.
+
+Em seguida, chamamos `nlp.update`, que fará a previsão de um lote de exemplos utilizando
+os pesos atuais.
+
+O modelo então compara as previsões com os valores corretos, e decide como alterar
+os modelos de forma a obter melhores previsões na próxima rodada.
+
+Finalmente, fazemos uma pequena alteração nos pesos do modelo e seguimos para a 
+próxima rodada de exemplos.
+
+Continuamos chamando `nlp.update` para cada lote de exemplos dos dados.
+
+---
+
+# Como o treinamento funciona (2)
 
 <img src="/training.png" alt="Diagram of the training process" />
 
@@ -93,7 +95,7 @@ application.
 
 ---
 
-# Example: Training the entity recognizer
+# Exemplo: Treinando o identificador de entidades
 
 - The entity recognizer tags words and phrases in context
 - Each token can only be part of one entity
@@ -109,7 +111,7 @@ application.
 ("I need a new phone! Any tips?", {"entities": []})
 ```
 
-- **Goal:** teach the model to generalize
+- **Objetivo:** teach the model to generalize
 
 Notes: Let's look at an example for a specific component: the entity recognizer.
 
@@ -135,7 +137,7 @@ even if they weren't in the training data.
 
 ---
 
-# The training data
+# Os dados de treinamento
 
 - Examples of what we want the model to predict in context
 - Update an **existing model**: a few hundred to a few thousand examples
@@ -163,7 +165,7 @@ This is a lot of work, but can be semi-automated – for example, using spaCy's
 
 ---
 
-# Let's practice!
+# Vamos praticar!
 
 Notes: Now it's time to get started and prepare the training data. Let's look at
 some examples and create a small dataset for a new entity type.

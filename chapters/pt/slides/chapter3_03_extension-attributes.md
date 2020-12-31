@@ -38,7 +38,7 @@ calculados dinamicamente.
 
 Atributos personalizados ficam disponíveis através da propriedade `._` 
 (ponto sublinhado). Isso deixa claro que foram adicionados pelo usuário
-e não são padrão do spaCy, como por exemplo `token.text`.
+e não são padrão da spaCy, como por exemplo `token.text`.
 
 Esses atributos devem ser registrados nas classes globais `Doc`, `Token` e `Span`,
 que podem ser importadas de `spacy.tokens`. Você já trabalhou com essas

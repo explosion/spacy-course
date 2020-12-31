@@ -2,11 +2,11 @@
 type: slides
 ---
 
-# Introdução ao spaCy
+# Introdução à spaCy
 
-Notes: Olá, eu sou a Ines! Sou uma das programadoras principais do spaCy, uma biblioteca popular para o Processamento de Linguagem Natural avançado em Pyhton.
+Notes: Olá, eu sou a Ines! Sou uma das programadoras principais da spaCy, uma biblioteca popular para o Processamento de Linguagem Natural avançado em Pyhton.
 
-Nesta lição, vamos dar uma olhada nos principais conceitos do spaCy e percorrer nossos primeiros passos.
+Nesta lição, vamos dar uma olhada nos principais conceitos da spaCy e percorrer nossos primeiros passos.
 
 ---
 
@@ -23,13 +23,13 @@ nlp = English()
 - contém o fluxo de processamento
 - inclui regras específicas da linguagem, como toquenização etc.
 
-Notes: No cerne do spaCy está o objeto nlp, que contém o fluxo de processamento. Normalmente chamamos essa variável de "nlp".
+Notes: No cerne da spaCy está o objeto nlp, que contém o fluxo de processamento. Normalmente chamamos essa variável de "nlp".
 
 Por exemplo, para criar o objeto `nlp` em inglês, importamos a classe `English` de `spacy.lang.en` e criamos uma instância desta classe. Podemos utilizar o objeto nlp como se chamássemos uma função para analisar algum texto.
 
 O objeto contém os diferentes componentes do fluxo de processamento do texto.
 
-Ele também contém regras específicas de cada idioma para a toquenização do texto em palavras e pontuação. O spaCy oferece suporte para diversos idiomas, que estão disponíveis em `spacy.lang`.
+Ele também contém regras específicas de cada idioma para a toquenização do texto em palavras e pontuação. A spaCy oferece suporte para diversos idiomas, que estão disponíveis em `spacy.lang`.
 
 ---
 
@@ -50,7 +50,7 @@ world
 !
 ```
 
-Notes: Quando você processa um texto com o objeto `nlp`, o spaCy cria um objeto `Doc`- abreviação de "documento". Através do Doc é possível acessar informações do texto de uma maneira estruturada, e nenhuma informação é perdida.
+Notes: Quando você processa um texto com o objeto `nlp`, a spaCy cria um objeto `Doc`- abreviação de "documento". Através do Doc é possível acessar informações do texto de uma maneira estruturada, e nenhuma informação é perdida.
 
 O Doc se comporta de maneira semelhante a uma sequência do Python, permitindo a iteração nos tokens e o acesso a um token através do seu índice. Mas falaremos disso mais tarde!
 
@@ -145,4 +145,4 @@ Esses atributos são também chamados de atributos léxicos: referem-se ao token
 
 # Vamos praticar!
 
-Notes: Vamos agora ver isso tudo em ação e processar seu primeiro texto com o spaCy.
+Notes: Vamos agora ver isso tudo em ação e processar seu primeiro texto com a spaCy.
