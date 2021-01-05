@@ -1,10 +1,10 @@
-# Importe la classe de langue "English" et crée l'objet nlp
-from spacy.lang.en import English
+# Importe la classe de langue "Français" et crée l'objet nlp
+from spacy.lang.fr import French
 
-nlp = English()
+nlp = French()
 
 # Traite le texte
-doc = nlp("I like tree kangaroos and narwhals.")
+doc = nlp("La forêt est peuplée de loups gris et renards roux.")
 
 # Sélectionne le premier token
 first_token = doc[0]

@@ -1,7 +1,7 @@
-from spacy.lang.en import English
+from spacy.lang.ja import Japanese
 from spacy.tokens import Token
 
-nlp = English()
+nlp = Japanese()
 
 # トークンを受け取り、文字列を反転させたものを返すゲッターを定義
 def get_reversed(token):
@@ -11,7 +11,7 @@ def get_reversed(token):
 # トークンの「reversed」プロパティ属性にget_reversedをゲッターとして登録
 Token.set_extension("reversed", getter=get_reversed)
 
-# テキストを処理し、それぞれのトークンについてreversed属性をプリント
-doc = nlp("All generalizations are false, including this one.")
+# テキストを処理し、それぞれのトークンについてreversed属性を表示
+doc = nlp("あらゆる一般化は間違っている。これも含めて。")
 for token in doc:
-    print("reversed:", token._.reversed)
+    print("反転:", token._.reversed)

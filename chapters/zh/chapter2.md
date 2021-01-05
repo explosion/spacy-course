@@ -20,14 +20,14 @@ id: 2
 
 ### Part 1
 
-- 在`nlp.vocab.strings`中查找字符串"cat"来得到哈希值。
+- 在`nlp.vocab.strings`中查找字符串"猫"来得到哈希值。
 - 查找这个哈希值来返回原先的字符串。
 
 <codeblock id="02_02_01">
 
 - 你可以像使用一个普通的Python字典一样使用`nlp.vocab.strings`中存储的字符串。
-  举个例子，`nlp.vocab.strings["unicorn"]`会返回哈希值，再查找这个哈希值
-  就会返回字符串`"unicorn"`。
+  举个例子，`nlp.vocab.strings["独角兽"]`会返回哈希值，再查找这个哈希值
+  就会返回字符串`"独角兽"`。
 
 </codeblock>
 
@@ -39,8 +39,8 @@ id: 2
 <codeblock id="02_02_02">
 
 - 你可以像使用一个普通的Python字典一样使用`nlp.vocab.strings`中存储的字符串。
-  举个例子，`nlp.vocab.strings["unicorn"]`会返回哈希值，再查找这个哈希值
-  就会返回字符串`"unicorn"`。
+  举个例子，`nlp.vocab.strings["独角兽"]`会返回哈希值，再查找这个哈希值
+  就会返回字符串`"独角兽"`。
 
 </codeblock>
 
@@ -172,8 +172,8 @@ print(nlp_de.vocab.strings[bowie_id])
 ```python
 import spacy
 
-nlp = spacy.load("en_core_web_sm")
-doc = nlp("Berlin is a nice city")
+nlp = spacy.load("zh_core_web_sm")
+doc = nlp("北京是一座美丽的城市")
 
 # 获取所有的词符和词性标注
 token_texts = [token.text for token in doc]
@@ -244,11 +244,11 @@ for index, pos in enumerate(pos_tags):
 
 <exercise id="9" title="检查词向量">
 
-在这个练习中我们要用到一个更大的[英文模型](https://spacy.io/models/en)，
+在这个练习中我们要用到一个更大的[中文模型](https://spacy.io/models/zh)，
 该模型有大概两万个词向量。这里模型已经提前安装好了。
 
-- 读取中等大小的`"en_core_web_md"`模型，该模型含有词向量
-- 用`token.vector`属性来打印`"bananas"`的向量。
+- 读取中等大小的`"zh_core_web_md"`模型，该模型含有词向量
+- 用`token.vector`属性来打印`"老虎"`的向量。
 
 <codeblock id="02_09">
 
@@ -286,7 +286,7 @@ for index, pos in enumerate(pos_tags):
 
 ### 第三部分
 
-- 为"great restaurant"/"really nice bar"创建跨度(span)。
+- 为"不错的餐厅"/"很好的酒吧"创建跨度(span)。
 - 使用`span.similarity`来比较它们并打印结果。
 
 <codeblock id="02_10_03"></codeblock>
@@ -345,12 +345,12 @@ doc = nlp("Can Silicon Valley workers rein in big tech from within?")
 你能改正它们吗？要是你卡住了，可以尝试把`doc`中的词符打印出来，
 看看这些文本应该怎样被分割，然后调整你的模板保证每个字典表示一个词符。
 
-- 编辑`pattern1`使其可以正确匹配到所有无论大小写的`"Amazon"`加上一个首字母大写的专有名词。
-- 编辑`pattern2`使其可以正确匹配到所有无论大小写的`"ad-free"`加上后面的名词。
+- 编辑`pattern1`使其可以正确匹配到所有的形容词后面跟着`"笔记本"`。
+- 编辑`pattern2`使其可以正确匹配到`"锐龙"`加上后面的数字 (LIKE_NUM) 和符号 (IS_ASCII) 。
 
 <codeblock id="02_13">
 
-- 试着处理那些能匹配到`nlp`实例的字符串，比如`[token.text for token in nlp("ad-free viewing")]`。
+- 试着处理那些能匹配到`nlp`实例的字符串，比如`[token.text for token in nlp("锐龙4000U")]`。
 - 检查这些词符，确保模板中的每个字典正确描述了一个词符。
 
 </codeblock>

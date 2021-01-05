@@ -1,9 +1,9 @@
 import spacy
 
-# Charge le modèle "en_core_web_sm"
-nlp = spacy.load("en_core_web_sm")
+# Charge le modèle "fr_core_news_sm"
+nlp = spacy.load("fr_core_news_sm")
 
-text = "It’s official: Apple is the first U.S. public company to reach a $1 trillion market value"
+text = "Apple a été créée en 1976 par Steve Wozniak, Steve Jobs et Ron Wayne."
 
 # Traite le texte
 doc = nlp(text)

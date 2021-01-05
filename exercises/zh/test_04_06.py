@@ -1,7 +1,7 @@
 def test():
     assert (
-        'spacy.blank("en")' in __solution__
-    ), "你有创建空的英文模型吗？"
+        'spacy.blank("zh")' in __solution__
+    ), "你有创建空的中文模型吗？"
     assert (
         len(nlp.pipe_names) == 1 and nlp.pipe_names[0] == "ner"
     ), "你有把命名实体识别器加入到流程中吗？"

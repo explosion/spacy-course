@@ -1,7 +1,7 @@
 def test():
     assert (
-        'spacy.blank("en")' in __solution__
-    ), "As-tu créé le modèle anglais vide ?"
+        'spacy.blank("fr")' in __solution__
+    ), "As-tu créé le modèle français vide ?"
     assert (
         len(nlp.pipe_names) == 1 and nlp.pipe_names[0] == "ner"
     ), "As-tu ajouté l'entity recognizer au pipeline ?"

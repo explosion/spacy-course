@@ -1,7 +1,7 @@
 import spacy
 
 nlp = spacy.load("en_core_web_sm")
-doc = nlp("Berlin is a nice city")
+doc = nlp("Berlin looks like a nice city")
 
 # Iterate over the tokens
 for token in doc:

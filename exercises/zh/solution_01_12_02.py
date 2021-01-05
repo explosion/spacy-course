@@ -1,18 +1,17 @@
 import spacy
 from spacy.matcher import Matcher
 
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("zh_core_web_sm")
 matcher = Matcher(nlp.vocab)
 
 doc = nlp(
-    "i downloaded Fortnite on my laptop and can't open the game at all. Help? "
-    "so when I was downloading Minecraft, I got the Windows version where it "
-    "is the '.zip' folder and I used the default program to unpack it... do "
-    "I also need to download Winzip?"
+    "我之前有去下载Dota到电脑上面，但是根本打不开游戏，怎么办？"
+    "我下载Minecraft，是Windows的版本，下载后是一个'.zip'的文件夹，然后我用了默认软件做了"
+    "解压...我是不是还需要去下载Winzip？"
 )
 
-# 写一个模板来匹配"download"的一种形式加一个代词
-pattern = [{"LEMMA": "download"}, {"POS": "PROPN"}]
+# 写一个模板来匹配"下载"加一个代词
+pattern = [{"TEXT": "下载"}, {"POS": "PROPN"}]
 
 # 把模板加入到matcher中，然后把matcher应用到doc上面
 matcher.add("DOWNLOAD_THINGS_PATTERN", None, pattern)

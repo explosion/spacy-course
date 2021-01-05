@@ -1,11 +1,11 @@
 def test():
     assert (
-        doc.text == "I like tree kangaroos and narwhals."
+        doc.text == "我喜欢老虎和狮子。"
     ), "你确定你正确处理文本了吗？"
     assert (
-        tree_kangaroos == doc[2:4]
-    ), "你确定你选择了tree_kangaroos的正确跨度吗？"
+        laohu == doc[2:3]
+    ), "你确定你选择了老虎的正确跨度吗？"
     assert (
-        tree_kangaroos_and_narwhals == doc[2:6]
-    ), "你确定你选择了tree_kangaroos_and_narwhals的正确跨度吗？"
+        laohu_he_shizi == doc[2:5]
+    ), "你确定你选择了老虎和狮子的正确跨度吗？"
     __msg__.good("好样的！")

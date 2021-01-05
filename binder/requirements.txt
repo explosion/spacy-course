@@ -9,3 +9,9 @@ https://github.com/explosion/spacy-models/releases/download/en_core_web_md-2.3.0
 https://github.com/explosion/spacy-models/releases/download/de_core_news_sm-2.3.0/de_core_news_sm-2.3.0.tar.gz#egg=de_core_news_sm==2.3.0
 https://github.com/explosion/spacy-models/releases/download/es_core_news_sm-2.3.0/es_core_news_sm-2.3.0.tar.gz#egg=es_core_news_sm==2.3.0
 https://github.com/explosion/spacy-models/releases/download/es_core_news_md-2.3.0/es_core_news_md-2.3.0.tar.gz#egg=es_core_news_md==2.3.0
+https://github.com/explosion/spacy-models/releases/download/fr_core_news_sm-2.3.0/fr_core_news_sm-2.3.0.tar.gz#egg=fr_core_news_sm==2.3.0
+https://github.com/explosion/spacy-models/releases/download/fr_core_news_md-2.3.0/fr_core_news_md-2.3.0.tar.gz#egg=fr_core_news_md==2.3.0
+https://github.com/explosion/spacy-models/releases/download/zh_core_web_sm-2.3.1/zh_core_web_sm-2.3.1.tar.gz#egg=zh_core_web_sm==2.3.1
+https://github.com/explosion/spacy-models/releases/download/zh_core_web_md-2.3.1/zh_core_web_md-2.3.1.tar.gz#egg=zh_core_web_md==2.3.1
+https://github.com/explosion/spacy-models/releases/download/ja_core_news_sm-2.3.2/ja_core_news_sm-2.3.2.tar.gz#egg=ja_core_news_sm==2.3.2
+https://github.com/explosion/spacy-models/releases/download/ja_core_news_md-2.3.2/ja_core_news_md-2.3.2.tar.gz#egg=ja_core_news_md==2.3.2

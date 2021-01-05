@@ -2,10 +2,10 @@ import spacy
 import random
 import json
 
-with open("exercises/en/gadgets.json") as f:
+with open("exercises/zh/gadgets.json", encoding="utf8") as f:
     TRAINING_DATA = json.loads(f.read())
 
-nlp = spacy.blank("en")
+nlp = spacy.blank("zh")
 ner = nlp.create_pipe("ner")
 nlp.add_pipe(ner)
 ner.add_label("GADGET")

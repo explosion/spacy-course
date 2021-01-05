@@ -1,15 +1,18 @@
 TRAINING_DATA = [
     (
-        "i went to amsterdem last year and the canals were beautiful",
-        {"entities": [(10, 19, "TOURIST_DESTINATION")]},
+        "我去年去了西安，那里的城墙很壮观！",
+        {"entities": [(4, 5, "TOURIST_DESTINATION")]},
     ),
     (
-        "You should visit Paris once in your life, but the Eiffel Tower is kinda boring",
-        {"entities": [(17, 22, "TOURIST_DESTINATION")]},
+        "人一辈子一定要去一趟巴黎，但那里的埃菲尔铁塔有点无趣。",
+        {"entities": [(5, 6, "TOURIST_DESTINATION")]},
     ),
-    ("There's also a Paris in Arkansas, lol", {"entities": []}),
     (
-        "Berlin is perfect for summer holiday: lots of parks, great nightlife, cheap beer!",
-        {"entities": [(0, 6, "TOURIST_DESTINATION")]},
+        "深圳也有个巴黎的埃菲尔铁塔，哈哈哈",
+        {"entities": []}
+    ),
+    (
+        "北京很适合暑假去：长城、故宫，还有各种好吃的小吃！",
+        {"entities": [(0, 1, "TOURIST_DESTINATION")]},
     ),
 ]

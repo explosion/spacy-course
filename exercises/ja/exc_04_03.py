@@ -1,11 +1,11 @@
 import json
 from spacy.matcher import Matcher
-from spacy.lang.en import English
+from spacy.lang.ja import Japanese
 
-with open("exercises/en/iphone.json") as f:
+with open("exercises/ja/iphone.json") as f:
     TEXTS = json.loads(f.read())
 
-nlp = English()
+nlp = Japanese()
 matcher = Matcher(nlp.vocab)
 
 # 小文字が"iphone"と"x"にマッチする2つのトークン

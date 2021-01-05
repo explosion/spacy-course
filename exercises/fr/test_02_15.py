@@ -9,7 +9,7 @@ def test():
         "print(span_root_head.text" in __solution__
     ), "Affiches-tu le texte de la tête de la racine du span ?"
     ents = [ent for ent in doc.ents if ent.label_ == "GPE"]
-    assert len(ents) == 16, "Nombre incorrect d'entités. Attendu 16."
+    assert len(ents) == 19, "Nombre incorrect d'entités. Attendu 19."
     __msg__.good(
         "Bien joué ! Maintenant que tu as pratiqué la combinaison de "
         "prédictions avec des extractions basées sur des règles, tu es prêt "

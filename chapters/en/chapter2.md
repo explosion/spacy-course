@@ -184,7 +184,7 @@ nouns that are followed by a verb.
 import spacy
 
 nlp = spacy.load("en_core_web_sm")
-doc = nlp("Berlin is a nice city")
+doc = nlp("Berlin looks like a nice city")
 
 # Get all tokens and part-of-speech tags
 token_texts = [token.text for token in doc]

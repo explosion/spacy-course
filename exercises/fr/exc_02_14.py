@@ -1,11 +1,11 @@
 import json
-from spacy.lang.en import English
+from spacy.lang.fr import French
 
-with open("exercises/en/countries.json") as f:
+with open("exercises/fr/countries.json", encoding="utf8") as f:
     COUNTRIES = json.loads(f.read())
 
-nlp = English()
-doc = nlp("Czech Republic may help Slovakia protect its airspace")
+nlp = French()
+doc = nlp("La Tchéquie pourrait aider la Slovaquie à protéger son espace aérien")
 
 # Importe le PhraseMatcher et initialise-le
 from spacy.____ import ____

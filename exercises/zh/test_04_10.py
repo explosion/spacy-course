@@ -7,17 +7,17 @@ def test():
         entry[1].get("entities") for entry in TRAINING_DATA
     ), "训练数据中的所有标注应该包括实体。"
     assert TRAINING_DATA[0][1]["entities"] == [
-        (10, 19, "GPE")
+        (4, 5, "GPE")
     ], "再检查下第一个例子中的实体。"
     assert TRAINING_DATA[1][1]["entities"] == [
-        (17, 22, "GPE")
+        (5, 6, "GPE")
     ], "再检查下第二个例子中的实体。"
     assert TRAINING_DATA[2][1]["entities"] == [
-        (15, 20, "GPE"),
-        (24, 32, "GPE"),
+        (0, 1, "GPE"),
+        (4, 5, "GPE"),
     ], "再检查下第三个例子中的实体。"
     assert TRAINING_DATA[3][1]["entities"] == [
-        (0, 6, "GPE")
+        (0, 1, "GPE")
     ], "再检查下第四个例子中的实体。"
 
     __msg__.good(

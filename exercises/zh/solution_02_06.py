@@ -1,18 +1,18 @@
-from spacy.lang.en import English
+from spacy.lang.zh import Chinese
 
-nlp = English()
+nlp = Chinese()
 
 # 导入Doc和Span类
 from spacy.tokens import Doc, Span
 
-words = ["I", "like", "David", "Bowie"]
-spaces = [True, True, True, False]
+words = ["我", "喜欢", "周", "杰伦"]
+spaces = [False, False, False, False]
 
 # 用words和spaces创建一个doc
 doc = Doc(nlp.vocab, words=words, spaces=spaces)
 print(doc.text)
 
-# 为doc中的"David Bowie"创建一个span，并赋予其"PERSON"的标签
+# 为doc中的"周杰伦"创建一个span，并赋予其"PERSON"的标签
 span = Span(doc, 2, 4, label="PERSON")
 print(span.text, span.label_)
 

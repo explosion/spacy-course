@@ -1,9 +1,9 @@
-from spacy.lang.en import English
+import spacy
 
-nlp = English()
-doc = nlp("I have a cat")
+nlp = spacy.load("zh_core_web_sm")
+doc = nlp("我养了一只猫。")
 
-# 查找词汇"cat"的哈希值
+# 查找词汇"猫"的哈希值
 cat_hash = ____.____.____[____]
 print(cat_hash)
 

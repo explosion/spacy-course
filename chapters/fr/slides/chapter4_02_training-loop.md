@@ -42,7 +42,7 @@ on peut alors enregistrer le modèle dans un répertoire et l'utiliser dans spaC
 
 # Récap : Comment fonctionne l'apprentissage
 
-<img src="/training.png" alt="Diagramme du processus d'apprentissage" />
+<img src="/training_fr.png" alt="Diagramme du processus d'apprentissage" />
 
 - **Données d'apprentissage :** Exemples et leurs annotations.
 - **Texte :** Le texte à partir duquel le modèle doit prédire un label.
@@ -71,7 +71,7 @@ les vrais labels.
 
 ```python
 TRAINING_DATA = [
-    ("How to preorder the iPhone X", {"entities": [(20, 28, "GADGET")]})
+    ("Comment précommander l'iPhone 12 ?", {"entities": [(23, 32, "GADGET")]})
     # Et bien d'autres exemples...
 ]
 ```
@@ -140,8 +140,8 @@ autres catégories.
 # Etablissement d'un nouveau pipeline à partir de zéro
 
 ```python
-# Commence avec un modèle anglais vide
-nlp = spacy.blank("en")
+# Commence avec un modèle français vide
+nlp = spacy.blank("fr")
 # Crée un entity recognizer vide et l'ajoute au pipeline
 ner = nlp.create_pipe("ner")
 nlp.add_pipe(ner)
@@ -161,7 +161,7 @@ for itn in range(10):
         nlp.update(texts, annotations)
 ```
 
-Notes: Dans cet exemple, nous commençons avec un modèle anglais vide en
+Notes: Dans cet exemple, nous commençons avec un modèle français vide en
 utilisant la méthode `spacy.blank`. Le modèle vide n'a aucun composant de
 pipeline, uniquement les données de la langue et les règles de tokenisation.
 

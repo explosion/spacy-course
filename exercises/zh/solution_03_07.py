@@ -2,8 +2,8 @@ import spacy
 from spacy.matcher import PhraseMatcher
 from spacy.tokens import Span
 
-nlp = spacy.load("en_core_web_sm")
-animals = ["Golden Retriever", "cat", "turtle", "Rattus norvegicus"]
+nlp = spacy.load("zh_core_web_sm")
+animals = ["金毛犬", "猫", "乌龟", "老鼠"]
 animal_patterns = list(nlp.pipe(animals))
 print("animal_patterns:", animal_patterns)
 matcher = PhraseMatcher(nlp.vocab)
@@ -25,5 +25,5 @@ nlp.add_pipe(animal_component, after="ner")
 print(nlp.pipe_names)
 
 # 处理文本，打印doc.ents的文本和标签
-doc = nlp("I have a cat and a Golden Retriever")
+doc = nlp("我养了一只猫和一条金毛犬。")
 print([(ent.text, ent.label_) for ent in doc.ents])

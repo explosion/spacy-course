@@ -1,11 +1,11 @@
 import spacy
 
-# en_core_web_mdモデルをロード
-nlp = spacy.load("en_core_web_md")
+# ja_core_news_mdモデルをロード
+nlp = spacy.load("ja_core_news_md")
 
 # テキストを処理
-doc = nlp("Two bananas in pyjamas")
+doc = nlp("パジャマを着た2つのバナナ")
 
-# 「bananas」のベクトルを取得
-bananas_vector = doc[1].vector
+# 「バナナ」のベクトルを取得
+bananas_vector = doc[7].vector
 print(bananas_vector)

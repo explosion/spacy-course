@@ -9,12 +9,12 @@ def length_component(doc):
     return doc
 
 
-# 读取小规模的英文模型
-nlp = spacy.load("en_core_web_sm")
+# 读取小规模的中文模型
+nlp = spacy.load("zh_core_web_sm")
 
 # 将组件加入到流程的最前面，打印流程组件名
 nlp.add_pipe(length_component, first=True)
 print(nlp.pipe_names)
 
 # 处理一段文本
-doc = nlp("This is a sentence.")
+doc = nlp("这是一个句子。")

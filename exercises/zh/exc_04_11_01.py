@@ -1,11 +1,11 @@
 TRAINING_DATA = [
     (
-        "Reddit partners with Patreon to help creators build communities",
+        "哔哩哔哩与阿里巴巴合作为博主们建立社群",
         {"entities": [(____, ____, "WEBSITE"), (____, ____, "WEBSITE")]},
     ),
-    ("PewDiePie smashes YouTube record", {"entities": [(____, ____, "WEBSITE")]}),
+    ("李子柒打破了Youtube的记录", {"entities": [(____, ____, "WEBSITE")]}),
     (
-        "Reddit founder Alexis Ohanian gave away two Metallica tickets to fans",
+        "阿里巴巴的创始人马云提供了一千万购物优惠券",
         {"entities": [(____, ___, "WEBSITE")]},
     ),
     # 以及更多类似的数据。。。

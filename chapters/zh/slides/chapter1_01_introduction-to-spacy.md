@@ -14,11 +14,11 @@ spaCy是一个先进且广受欢迎的自然语言处理Python库。
 # nlp对象
 
 ```python
-# 导入英语的语言类
-from spacy.lang.en import English
+# 导入中文的语言类
+from spacy.lang.zh import Chinese
 
 # 创建nlp对象
-nlp = English()
+nlp = Chinese()
 ```
 
 - 包含了自然语言处理的流程
@@ -26,7 +26,7 @@ nlp = English()
 
 Notes: spaCy的核心就是包含了自然语言处理流程的对象。我们通常把这个变量叫做`nlp`。 
 
-举个例子，要创造一个英文的`nlp`的对象，我们要从`spacy.lang.en`中导入`English`这个语言类
+举个例子，要创造一个中文的`nlp`的对象，我们要从`spacy.lang.zh`中导入`Chinese`这个语言类
 并创建一个实例。我们可以像一个函数一样使用nlp对象来分析文本。
 
 这个nlp对象包含了流程中的所有不同组件。
@@ -40,7 +40,7 @@ spaCy支持多种不同语言，包含在`spacy.lang`中。
 
 ```python
 # 使用nlp对象处理一段文本并生成doc实例
-doc = nlp("Hello world!")
+doc = nlp("这是一个句子。")
 
 # 遍历doc实例中的词符
 for token in doc:
@@ -48,9 +48,10 @@ for token in doc:
 ```
 
 ```out
-Hello
-world
-!
+这是
+一个
+句子
+。
 ```
 
 Notes: 当我们用`nlp`对象来处理文本时，spaCy会创建一个`Doc`的对象，这是"document"的缩写。
@@ -66,7 +67,7 @@ Doc用起来就像一个正常的Python序列，我们可以遍历它的词符�
 <img src="/doc.png" alt="一个含有四个词符的Doc实例" width="50%" />
 
 ```python
-doc = nlp("Hello world!")
+doc = nlp("这是一个句子。")
 
 # 使用Doc索引读取单个词符
 token = doc[1]
@@ -76,7 +77,7 @@ print(token.text)
 ```
 
 ```out
-world
+一个
 ```
 
 Notes: `Token`实例代表了一个文本中的词符，比如一个词或者一个标点符号。 
@@ -94,7 +95,7 @@ Notes: `Token`实例代表了一个文本中的词符，比如一个词或者一
 <img src="/doc_span.png" width="50%" alt="一个含有四个词符且其中三个被包装成一个跨度的Doc实例" />
 
 ```python
-doc = nlp("Hello world!")
+doc = nlp("这是一个句子。")
 
 # 截取Doc的一部分就成为了Span实例
 span = doc[1:3]
@@ -104,7 +105,7 @@ print(span.text)
 ```
 
 ```out
-world!
+一个句子
 ```
 
 Notes: 一个`Span`实例是文本包含了一个或更多的词符的一段截取。
@@ -119,7 +120,7 @@ Notes: 一个`Span`实例是文本包含了一个或更多的词符的一段截�
 # 词汇的属性
 
 ```python
-doc = nlp("It costs $5.")
+doc = nlp("这个肉夹馍花了￥5。")
 ```
 
 ```python
@@ -132,12 +133,12 @@ print("like_num:", [token.like_num for token in doc])
 ```
 
 ```out
-Index:    [0, 1, 2, 3, 4]
-Text:     ['It', 'costs', '$', '5', '.']
+Index:    [0, 1, 2, 3, 4, 5, 6]
+Text:     ['这个', '肉夹馍', '花', '了', '￥', '5', '。']
 
-is_alpha: [True, True, False, False, False]
-is_punct: [False, False, False, False, True]
-like_num: [False, False, False, True, False]
+is_alpha: [True, True, True, True, False, False, False]
+is_punct: [False, False, False, False, False, False, True]
+like_num: [False, False, False, False, False, True, False]
 ```
 
 Notes: 我们可以看到一些可用的词符属性：

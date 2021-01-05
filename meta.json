@@ -1,5 +1,6 @@
 {
     "siteUrl": "https://course.spacy.io",
+    "domain": "course.spacy.io",
     "twitter": "spacy_io",
     "fonts": "IBM+Plex+Mono:500|IBM+Plex+Sans:700|Lato:400,400i,700,700i",
     "testTemplate": "from wasabi import msg\nimport warnings\nfrom black import format_str, FileMode\n\nwarnings.filterwarnings('ignore', message=r'\\[W033\\]', category=UserWarning)\nfile_mode = FileMode()\n\ndef blacken(code):\n    try:\n        return format_str(code, mode=file_mode)\n    except:\n        return code\n\n__msg__ = msg\n__solution__ = blacken(\"\"\"${solution}\"\"\")\n\n${solution}\n\n${test}\n\ntry:\n    test()\nexcept AssertionError as e:\n    __msg__.fail(e)",

@@ -24,9 +24,9 @@ solutions are all in this repo, there's no penalty for clicking "Show hints" or
 | **[English](https://course.spacy.io/en)**  | English                   | [`chapters/en`](chapters/en), [`exercises/en`](exercises/en) | [✓](https://www.youtube.com/watch?v=THduWAnG97k) | [@ines](https://github.com/ines)                   |
 | **[German](https://course.spacy.io/de)**   | German                    | [`chapters/de`](chapters/de), [`exercises/de`](exercises/de) | [✓](https://www.youtube.com/watch?v=K1elwpgDdls) | [@ines](https://github.com/ines)                   |
 | **[Spanish](https://course.spacy.io/es)**  | Spanish                   | [`chapters/es`](chapters/es), [`exercises/es`](exercises/es) | [✓](https://www.youtube.com/watch?v=RNiLVCE5d4k) | [@mariacamilagl](https://github.com/mariacamilagl) |
-| **[French](https://course.spacy.io/fr)**   | English<sup>2</sup>       | [`chapters/fr`](chapters/fr), [`exercises/fr`](exercises/fr) |                        ✕                         | [@datakime](https://github.com/datakime)           |
-| **[Japanese](https://course.spacy.io/ja)** | English<sup>2</sup>       | [`chapters/ja`](chapters/ja), [`exercises/ja`](exercises/ja) |                        ✕                         | [@tamuhey](https://github.com/tamuhey)             |
-| **[Chinese](https://course.spacy.io/zh)**  | English<sup>2</sup>       | [`chapters/zh`](chapters/zh), [`exercises/zh`](exercises/zh) |                        ✕                         | [@crownpku](https://github.com/crownpku)           |
+| **[French](https://course.spacy.io/fr)**   | French                    | [`chapters/fr`](chapters/fr), [`exercises/fr`](exercises/fr) |                        ✕                         | [@datakime](https://github.com/datakime)           |
+| **[Japanese](https://course.spacy.io/ja)** | Japanese       | [`chapters/ja`](chapters/ja), [`exercises/ja`](exercises/ja) |                        ✕                         | [@tamuhey](https://github.com/tamuhey), [@hiroshi-matsuda-rit](https://github.com/hiroshi-matsuda-rit), [@icoxfog417](https://github.com/icoxfog417), [@akirakubo](https://github.com/akirakubo), [@forest1988](https://github.com/forest1988), [@ao9mame](https://github.com/ao9mame), [@matsurih](https://github.com/matsurih), [@HiromuHota](https://github.com/HiromuHota), [@mei28](https://github.com/mei28) |
+| **[Chinese](https://course.spacy.io/zh)**  | Chinese                   | [`chapters/zh`](chapters/zh), [`exercises/zh`](exercises/zh) |                        ✕                         | [@crownpku](https://github.com/crownpku)           |
 | Russian                                    | English                   | _in progress_                                                |                                                  |                                                    |
 | Portuguese                                 | English                   | _in progress_                                                |                                                  |                                                    |
 
@@ -37,8 +37,6 @@ If you spot a mistake, I always appreciate
 exercises. For example, the German version of the course also uses German text
 examples and models. It's not always possible to translate all code examples, so
 some translations may still use and analyze English text as part of the course.
-
-**2.** Full translation of text examples is currently in progress.
 
 ### Related resources
 

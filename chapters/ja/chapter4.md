@@ -54,13 +54,13 @@ spaCyのルールベースの `Matcher` は、固有表現抽出の学習デー�
 文章のリストが変数 `TEXTS` として用意されており、プリントすると、中身を見ることができます。
 iPhoneのモデルが言及されている箇所を見つけるため、それらを `"GADGET"` として認識するようにモデルに教えるための学習データを作成します。
 
-- 小文字が `"iphone"` と `"x"` に一致する2つのトークンのパターンを書きます。
-- 小文字が `"iphone"` にマッチするトークンと、`"?"` 演算子を使った数字の2つのトークンのパターンを書きます。
+- 小文字が `"iphone"` にマッチするトークン、小文字が `"x"` にマッチするトークン、合計2つのトークンのパターンを書きます。
+- 小文字が `"iphone"` にマッチするトークン、数字のトークン、合計2つのトークンのパターンを書きます。
 
 <codeblock id="04_03">
 
-- トークンの小文字を一致させるには、`"LOWER"`属性を使用します。例えば、`{"LOWER". "apple"}`のようにします。
-- 数字のトークンを見つけるには、`"IS_DIGIT"` フラグを用います。例えば、 `{"IS_DIGIT". True}`のようになります。
+- トークンの小文字を一致させるには、`"LOWER"`属性を使用します。例えば、`{"LOWER": "apple"}`のようにします。
+- 数字のトークンを見つけるには、`"IS_DIGIT"` フラグを用います。例えば、 `{"IS_DIGIT": True}`のようになります。
 
 </codeblock>
 
@@ -68,7 +68,7 @@ iPhoneのモデルが言及されている箇所を見つけるため、それ�
 
 <exercise id="4" title="学習データを作る(2)">
 
-前の演習で作成したマッチパターンを使って、学習データを作っていきましょう。文章のリストは変数 `texts` として用意されています。
+前の演習で作成したマッチパターンを使って、学習データを作っていきましょう。文章のリストは変数 `TEXTS` として用意されています。
 
 - `nlp.pipe`を使って各テキストに対応するdocオブジェクトを作成します。
 - `doc`にmatcherを適用し、マッチしたスパンのリストを作成します。
@@ -95,15 +95,15 @@ iPhoneのモデルが言及されている箇所を見つけるため、それ�
 
 <exercise id="6" title="パイプラインの設定">
 
-この演習では、テキスト中の `"GADGET"` 固有表現を認識するための固有表現抽出器を訓練するためのspaCyパイプラインを準備します。
+この演習では、spaCyパイプラインを用いて、テキスト中の `"GADGET"` 固有表現を認識するように固有表現抽出器を訓練していきます。
 
-- `spacy.blank` メソッドを用いて、何も入っていない`"en"`モデルを作成します。
+- `spacy.blank` メソッドを用いて、何も入っていない`"ja"`モデルを作成します。
 - `nlp.create_pipe` を使って新しい固有表現抽出器を作成し、パイプラインに追加します。
 - パイプラインコンポーネントの `add_label` メソッドを使って新しいラベル `"GADGET"` を固有表現抽出器に追加します。
 
 <codeblock id="04_06">
 
-- 新しい固有表現抽出器を作成するには、文字列 `"ner"` を指定して `nlp.create_pipe` を呼び出します。
+- 新しい固有表現抽出器を作成するには、文字列 `"ner"` を引数にして `nlp.create_pipe` を呼び出します。作成した固有表現抽出器は変数`ner`に代入します。
 - コンポーネントをパイプラインに追加するには、`nlp.add_pipe`メソッドを用います。
 - `add_label` メソッドは固有表現抽出器のメソッドで、変数 `ner` からアクセスできます。ラベルを追加するには、`ner.add_label` にラベル名を指定して `ner.add_label("SOME_LABEL")` という様に呼び出します。
 
@@ -140,13 +140,13 @@ iPhoneのモデルが言及されている箇所を見つけるため、それ�
 
 | Text                                                                                                              | Entities               |
 | ----------------------------------------------------------------------------------------------------------------- | ---------------------- |
-| Apple is slowing down the iPhone 8 and iPhone X - how to stop it                                                  | `(iPhone 8, iPhone X)` |
-| I finally understand what the iPhone X 'notch' is for                                                             | `(iPhone X,)`          |
-| Everything you need to know about the Samsung Galaxy S9                                                           | `(Samsung Galaxy,)`    |
-| Looking to compare iPad models? Here’s how the 2018 lineup stacks up                                              | `(iPad,)`              |
-| The iPhone 8 and iPhone 8 Plus are smartphones designed, developed, and marketed by Apple                         | `(iPhone 8, iPhone 8)` |
-| what is the cheapest ipad, especially ipad pro???                                                                 | `(ipad, ipad)`         |
-| Samsung Galaxy is a series of mobile computing devices designed, manufactured and marketed by Samsung Electronics | `(Samsung Galaxy,)`    |
+| アップルはiPhone 8とiPhone Xの性能を制限している - 回避方法はこちら                                               | `(iPhone 8, iPhone X)` |
+| iPhone Xの“ノッチ”の役割をようやく理解した                                                                        | `(iPhone X,)`          |
+| Samsung Galaxy S9について知っておく必要があるすべて                                                               | `(Samsung Galaxy,)`    |
+| iPadのモデル比較？これが2018年モデルのラインナップだ！                                                            | `(iPad,)`              |
+| iPhone 8とiPhone 8 Plusは、Appleが設計、開発、販売しているスマートフォンです                                      | `(iPhone 8, iPhone 8)` |
+| 一番安いipad、特にipad pro、はどれですか？                                                                        | `(ipad, ipad)`         |
+| Samsung Galaxyは、サムスン電子が設計、製造、販売しているモバイルコンピューティングデバイスのシリーズです          | `(Samsung Galaxy,)`    |
 
 文章中のすべての固有表現の中で、**モデルの予測の正解数はいくつでしょう**？
 スパンの間違いも、誤りとしてカウントとします！
@@ -196,17 +196,17 @@ iPhoneのモデルが言及されている箇所を見つけるため、それ�
 ```python
 TRAINING_DATA = [
     (
-        "i went to amsterdem last year and the canals were beautiful",
-        {"entities": [(10, 19, "TOURIST_DESTINATION")]},
+        "去年アスムテルダムに行った。運河がきれいだった。",
+        {"entities": [(2, 9, "TOURIST_DESTINATION")]},
     ),
     (
-        "You should visit Paris once in your life, but the Eiffel Tower is kinda boring",
-        {"entities": [(17, 22, "TOURIST_DESTINATION")]},
+        "人生で一度はパリに行くべきだけど、エッフェル塔はちょっとつまらないな。",
+        {"entities": [(6, 8, "TOURIST_DESTINATION")]},
     ),
-    ("There's also a Paris in Arkansas, lol", {"entities": []}),
+    ("アーカンソーにもパリはあるｗ", {"entities": []}),
     (
-        "Berlin is perfect for summer holiday: lots of parks, great nightlife, cheap beer!",
-        {"entities": [(0, 6, "TOURIST_DESTINATION")]},
+        "ベルリンは夏が最高！公園がたくさんあって、夜遊びが充実していて、ビールが安い！",
+        {"entities": [(0, 4, "TOURIST_DESTINATION")]},
     ),
 ]
 ```
@@ -217,21 +217,21 @@ TRAINING_DATA = [
 
 <choice>
 
-<opt text="場所が観光地かどうかは主観的な判断であり、確定的なカテゴリーではないので、固有表現抽出器が学習するのは非常に難しいから" correct="true">
+<opt text="ある場所が観光地かどうかは主観的な判断であり、確定的なカテゴリーではないので、固有表現抽出器が学習するのは非常に難しいから" correct="true">
 
 より良いアプローチは、`"GPE"`(地政学的実体)または`"LOCATION"`というラベルだけを付け、ルールベースのシステムを使って、その実体が観光地であるかどうかを判断することです。
 例えば、知識ベースを用いたり、トラベルウィキで調べたりすることができます。
 
 </opt>
 
-<opt text="パリは一貫性を保つためにも観光地と表記すべきであるから。そうしないとモデルが混乱してしまいます">
+<opt text="一貫性を保つためにもパリは観光地と表記すべきであるから。そうしないとモデルが混乱してしまいます">
 
-パリ、AKは観光地である可能性もありますが、これはラベルスキームがいかに主観的であり、ラベルが適用されるかどうかを判断することがいかに難しいかを浮き彫りにするだけです。
+米アーカンソー州のパリは観光地である可能性もありますが、これはラベルスキームがいかに主観的であり、ラベルを付けるかどうかを判断することがいかに難しいかを浮き彫りにするだけです。
 結果として、この区別を固有表現抽出器が学習するのは非常に困難になります。
 
 </opt>
 
-<opt text="誤字脱字の「amsterdem」のような珍しい単語を固有表現としてラベル付けすべきでないから">
+<opt text="スペルミスのある「アスムテルダム」のような（正しくは「アムステルダム」）、珍しい単語を固有表現としてラベル付けすべきでないから">
 
 非常に珍しい単語やスペルミスであっても、固有表現としてラベル付けすることができます。
 実際、文脈に基づいてスペルミスのあるテキストのカテゴリを予測できることは、機械学習ベースの固有表現抽出器の強みの一つです。
@@ -269,7 +269,7 @@ TRAINING_DATA = [
 <codeblock id="04_11_01">
 
 - 固有表現スパンの開始オフセットと終了オフセットは、テキストへの文字オフセットです。
-  例えば、ある固有表現が5の位置から始まる場合、開始オフセットは `5` となります。末尾オフセットは、その位置の文字を含まないことに注意してください。
+  例えば、ある固有表現が5の位置から始まる場合、開始オフセットは `5` となります。終了オフセットは、その位置の文字を含まないことに注意してください。
 
 </codeblock>
 
@@ -303,7 +303,7 @@ TRAINING_DATA = [
 
 ### パート3
 
-- `"PERSON"`の固有表現「PewDiePie」と「Alexis Ohanian」のアノテーションを含むように学習データを更新します。
+- `"PERSON"`の固有表現「ピューディパイ」と「アレクシス・オハニアン」のアノテーションを含むように学習データを更新します。
 
 <codeblock id="04_11_02">
 

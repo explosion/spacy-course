@@ -98,12 +98,12 @@ exister, toutefois – sinon, spaCy génèrera une erreur.
 
 ```python
 # Crée l'objet nlp
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("fr_core_news_sm")
 
 # Définis un composant personnalisé
 def custom_component(doc):
     # Affiche la longueur du doc
-    print("Doc length:", len(doc))
+    print("Longueur du Doc :", len(doc))
     # Retourne l'objet doc
     return doc
 
@@ -111,16 +111,16 @@ def custom_component(doc):
 nlp.add_pipe(custom_component, first=True)
 
 # Affiche les noms des composants du pipeline
-print("Pipeline:", nlp.pipe_names)
+print("Pipeline :", nlp.pipe_names)
 ```
 
 ```out
-Pipeline: ['custom_component', 'tagger', 'parser', 'ner']
+Pipeline : ['custom_component', 'tagger', 'parser', 'ner']
 ```
 
 Notes: Voici un exemple de composant simple de pipeline.
 
-On commence avec le petit modèle anglais.
+On commence avec le petit modèle français.
 
 On définit ensuite le composant – une fonction qui prend un objet `Doc` et qui
 le retourne.
@@ -145,13 +145,13 @@ nous traiterons un doc.
 
 ```python
 # Crée l'objet nlp
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("fr_core_news_sm")
 
 # Définis un composant personnalisé
 def custom_component(doc):
 
     # Affiche la longueur du doc
-    print("Doc length:", len(doc))
+    print("Longueur du Doc :", len(doc))
 
     # Retourne l'objet doc
     return doc
@@ -160,11 +160,11 @@ def custom_component(doc):
 nlp.add_pipe(custom_component, first=True)
 
 # Traite un texte
-doc = nlp("Hello world!")
+doc = nlp("Bonjour monde !")
 ```
 
 ```out
-Doc length: 3
+Longueur du Doc : 3
 ```
 
 Notes: Maintenant quand nous traitons un texte en utilisant l'objet `nlp`, le

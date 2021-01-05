@@ -1,11 +1,14 @@
 import spacy
 
-# 读取en_core_web_md模型
-nlp = spacy.load("en_core_web_md")
+# 读取zh_core_web_md模型
+nlp = spacy.load("zh_core_web_md")
 
 # 处理文本
-doc = nlp("Two bananas in pyjamas")
+doc = nlp("两只老虎跑得快")
 
-# 获取词符"bananas"的向量
-bananas_vector = doc[1].vector
-print(bananas_vector)
+for token in doc:
+    print(token.text)
+
+# 获取词符"老虎"的向量
+laohu_vector = doc[2].vector
+print(laohu_vector)

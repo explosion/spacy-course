@@ -16,7 +16,7 @@ Notes: 実験を始めると、多くのことが自分の思い通りにいか�
 
 # 問題点1: モデルは忘れ得る
 
-- 既存のモデルは新しいデータにオーバーフィット可能です
+- 既存のモデルは新しいデータにオーバーフィットしてしまうことがあります
   - 例：`"WEBSITE"`を学習し、`"PERSON"`が何であるかを「忘れてしまう」ことがあります
 - 別名「壊滅的な物忘れ（catastrophic forgetting）」問題
 
@@ -39,7 +39,7 @@ Notes: 機械学習モデルは多くのことを学習することができま�
 
 ```python
 TRAINING_DATA = [
-    ("Reddit is a website", {"entities": [(0, 6, "WEBSITE")]})
+    ("Redditはウェブサイトです", {"entities": [(0, 6, "WEBSITE")]})
 ]
 ```
 
@@ -47,8 +47,8 @@ TRAINING_DATA = [
 
 ```python
 TRAINING_DATA = [
-    ("Reddit is a website", {"entities": [(0, 6, "WEBSITE")]}),
-    ("Obama is a person", {"entities": [(0, 5, "PERSON")]})
+    ("Redditはウェブサイトです", {"entities": [(0, 6, "WEBSITE")]}),
+    ("Obamaは人物です", {"entities": [(0, 5, "PERSON")]})
 ]
 ```
 

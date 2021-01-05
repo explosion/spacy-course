@@ -1,9 +1,10 @@
 import spacy
 
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("fr_core_news_sm")
 text = (
-    "Chick-fil-A is an American fast food restaurant chain headquartered in "
-    "the city of College Park, Georgia, specializing in chicken sandwiches."
+    "Le groupe aéronautique Airbus construit des avions et des "
+    "hélicoptères vendus dans le monde entier. Le siège opérationnel du "
+    "groupe est situé en France à Toulouse dans la région Occitanie."
 )
 
 # Désactive le tagger et le parser

@@ -68,7 +68,7 @@ erstellen und einem Modell beibringen können, diese als `"GADGET"` zu erkennnen
 - Schreibe ein Pattern für zwei Tokens, deren kleingeschriebene Form mit
   `"iphone"` und `"x"` übereinstimmt.
 - Schreibe ein Pattern für zwei Tokens: ein Token, dessen kleingeschriebene Form
-  mit `"iphone"` übereinstimmt, und eine Ziffer mithilfe des Operators `"?"`.
+  mit `"iphone"` übereinstimmt, und eine Ziffer.
 
 <codeblock id="04_03">
 

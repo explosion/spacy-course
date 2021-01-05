@@ -1,11 +1,11 @@
-from spacy.lang.en import English
+from spacy.lang.ja import Japanese
 
-nlp = English()
+nlp = Japanese()
 
 # テキストを処理
 doc = nlp(
-    "In 1990, more than 60% of people in East Asia were in extreme poverty. "
-    "Now less than 4% are."
+    "1990年には東アジアの60%以上の人々が極度の貧困状態に陥っていました。"
+    "今では4%以下になっています。"
 )
 
 # docに含まれるトークンを処理

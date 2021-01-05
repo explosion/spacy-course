@@ -22,7 +22,7 @@ id: 3
 当我们在一个文本的字符串上面调用`nlp`时spaCy会做什么？
 
 ```python
-doc = nlp("This is a sentence.")
+doc = nlp("这是一个句子。")
 ```
 
 <choice>
@@ -58,9 +58,9 @@ spaCy的所有运算都在本机，并不需要连接任何远端服务器。
 
 <exercise id="3" title="流程的检查">
 
-让我们一起检查一下小英文模型的流程。
+让我们一起检查一下中文小模型的流程。
 
-- 读取`en_core_web_sm`模型并创建`nlp`实例。
+- 读取`zh_core_web_sm`模型并创建`nlp`实例。
 - 用`nlp.pipe_names`来打印流程组件的名字。
 - 用`nlp.pipeline`来打印`(name, component)`元组的完整流程。
 
@@ -143,7 +143,7 @@ spaCy的所有运算都在本机，并不需要连接任何远端服务器。
 
 - 用`doc`长度来完成组件函数。
 - 加入`length_component`到现有的流程中，作为其**第一个**组件。
-- 试用这个新的流程，用`nlp`实例来处理一段任意的文本，比如"This is a sentence."。
+- 试用这个新的流程，用`nlp`实例来处理一段任意的文本，比如"这是一个句子。"。
 
 <codeblock id="03_06">
 

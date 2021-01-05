@@ -1,11 +1,11 @@
-from spacy.lang.en import English
+from spacy.lang.fr import French
 
-nlp = English()
+nlp = French()
 
 # Traite le texte
 doc = nlp(
-    "In 1990, more than 60% of people in East Asia were in extreme poverty. "
-    "Now less than 4% are."
+    "En 1990, plus de 60 % de la population d'Asie orientale vivait dans une pauvreté extrême. "
+    "Actuellement c'est moins de 4 %."
 )
 
 # Itère sur les tokens du doc
@@ -16,4 +16,4 @@ for token in doc:
         next_token = ____[____]
         # Vérifie si le texte du token suivant est égal à "%"
         if next_token.____ == "%":
-            print("Percentage found:", token.text)
+            print("Pourcentage trouvé :", token.text)

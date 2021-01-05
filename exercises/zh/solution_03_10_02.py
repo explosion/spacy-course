@@ -1,7 +1,7 @@
-from spacy.lang.en import English
+from spacy.lang.zh import Chinese
 from spacy.tokens import Span
 
-nlp = English()
+nlp = Chinese()
 
 # 定义这个方法
 def to_html(span, tag):
@@ -13,6 +13,6 @@ def to_html(span, tag):
 Span.set_extension("to_html", method=to_html)
 
 # 处理文本，在span上调用to_html方法及其标签名"strong"
-doc = nlp("Hello world, this is a sentence.")
+doc = nlp("大家好，这是一个句子。")
 span = doc[0:2]
 print(span._.to_html("strong"))

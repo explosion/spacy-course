@@ -69,7 +69,7 @@ notre modèle à les reconnaitre en tant que `"GADGET"`.
 - Écris un motif pour deux tokens dont la forme en minuscules correspond à
   `"iphone"` et `"x"`.
 - Écris un motif pour deux tokens : un token dont la forme en minuscules
-  correspond à `"iphone"` et un chiffre en utilisant l'opérateur `"?"`.
+  correspond à `"iphone"` et un chiffre.
 
 <codeblock id="04_03">
 
@@ -121,7 +121,7 @@ Dans cet exercice, tu vas préparer un pipeline spaCy pour entrainer l'entity
 recognizer à reconnaitre des entités `"GADGET"` dans un texte – par exemple,
 "iPhone X".
 
-- Crée un modèle vide `"en"`, par exemple avec la méthode `spacy.blank`.
+- Crée un modèle vide `"fr"`, par exemple avec la méthode `spacy.blank`.
 - Crée un nouvel entity recognizer en utilisant `nlp.create_pipe` et ajoute-le
   au pipeline.
 - Ajoute le nouveau label `"GADGET"` à l'entity recognizer en utilisant la
@@ -181,13 +181,13 @@ un peu les choses, nous avons déjà fait tourner un modèle entrainé pour le l
 
 | Text                                                                                                              | Entities               |
 | ----------------------------------------------------------------------------------------------------------------- | ---------------------- |
-| Apple is slowing down the iPhone 8 and iPhone X - how to stop it                                                  | `(iPhone 8, iPhone X)` |
-| I finally understand what the iPhone X 'notch' is for                                                             | `(iPhone X,)`          |
-| Everything you need to know about the Samsung Galaxy S9                                                           | `(Samsung Galaxy,)`    |
-| Looking to compare iPad models? Here’s how the 2018 lineup stacks up                                              | `(iPad,)`              |
-| The iPhone 8 and iPhone 8 Plus are smartphones designed, developed, and marketed by Apple                         | `(iPhone 8, iPhone 8)` |
-| what is the cheapest ipad, especially ipad pro???                                                                 | `(ipad, ipad)`         |
-| Samsung Galaxy is a series of mobile computing devices designed, manufactured and marketed by Samsung Electronics | `(Samsung Galaxy,)`    |
+| Apple ralentit l'iPhone 8 et l'iPhone X - comment arrêter ça                                                      | `(iPhone 8, iPhone X)` |
+| J'ai enfin compris à quoi servait l'encoche sur l'iPhone X                                                                                                                   | `(iPhone X,)`          |
+| Tout ce que vous devez savoir à propos du Samsung Galaxy S9                                                                                                                  | `(Samsung Galaxy,)`    |
+| Vous voulez comparer les modèles d'iPad ? Voici comment se présente la gamme 2020                                                                                                                | `(iPad,)`              |
+| L'iPhone 8 et l'iPhone 8 Plus sont des smartphones conçus, développés et vendus by Apple                          | `(iPhone 8, iPhone 8)` |
+| quel est l'ipad le moins cher, parmi les ipad pro ???                                                                                                                 | `(ipad, ipad)`         |
+| Les Samsung Galaxy sont une série d'appareils informatiques mobiles  conçus, fabriqués et vendus par Samsung Electronics                                                                                                         | `(Samsung Galaxy,)`    |
 
 Parmi toutes les entités présentes dans les textes, **combien le modèle en
 a-t-il identifiées correctement** ? Rappelle-toi que que les spans d'entités
@@ -244,16 +244,16 @@ Voici un extrait d'un jeu d'apprentissage qui labellise le type d'entité
 ```python
 TRAINING_DATA = [
     (
-        "i went to amsterdem last year and the canals were beautiful",
-        {"entities": [(10, 19, "TOURIST_DESTINATION")]},
+        "je suis allé à amsterdem l'an dernier et les canaux étaient magnifiques",
+        {"entities": [(15, 24, "TOURIST_DESTINATION")]},
     ),
     (
-        "You should visit Paris once in your life, but the Eiffel Tower is kinda boring",
-        {"entities": [(17, 22, "TOURIST_DESTINATION")]},
+        "Tu devrais visiter Paris au moins une fois dans ta vie, mais la Tour Eiffel ce n'est pas terrible",
+        {"entities": [(19, 24, "TOURIST_DESTINATION")]},
     ),
     ("There's also a Paris in Arkansas, lol", {"entities": []}),
     (
-        "Berlin is perfect for summer holiday: lots of parks, great nightlife, cheap beer!",
+        "Berlin est la destination parfaite pour les vacances d'été : beaucoup de parcs, une vie nocturne trépidante et de la bière pas chère !",
         {"entities": [(0, 6, "TOURIST_DESTINATION")]},
     ),
 ]

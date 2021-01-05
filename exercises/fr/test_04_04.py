@@ -16,20 +16,20 @@ def test():
             and "entities" in entry[1]
         ), "Il semble que le format des exemples soit erroné. Ce doit être un tuple avec un texte et un dict avec la clé 'entities'."
     assert TRAINING_DATA[0][1]["entities"] == [
-        (20, 28, "GADGET")
+        (25, 33, "GADGET")
     ], "Vérifie les entités dans l'exemple 1."
     assert TRAINING_DATA[1][1]["entities"] == [
-        (0, 8, "GADGET")
+        (2, 10, "GADGET")
     ], "Vérifie les entités dans l'exemple 2."
     assert TRAINING_DATA[2][1]["entities"] == [
-        (28, 36, "GADGET")
+        (32, 40, "GADGET")
     ], "Vérifie les entités dans l'exemple 3."
     assert TRAINING_DATA[3][1]["entities"] == [
-        (4, 12, "GADGET")
+        (15, 23, "GADGET")
     ], "Vérifie les entités dans l'exemple 4."
     assert TRAINING_DATA[4][1]["entities"] == [
         (0, 9, "GADGET"),
-        (13, 21, "GADGET"),
+        (17, 25, "GADGET"),
     ], "Vérifie les entités dans l'exemple 5."
     assert (
         TRAINING_DATA[5][1]["entities"] == []
