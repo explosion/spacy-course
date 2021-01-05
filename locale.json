@@ -181,6 +181,53 @@
             "slides": "Diapositives"
         }
     },
+    "pt": {
+        "langName": "Português",
+        "title": "PLN avançado com spaCy",
+        "slogan": "Curso online e gratuito",
+        "description": "Spacy é uma biblioteca moderna em Python para Processamento de Linguagem Natural (PLN) em escala profissional. Neste curso online grátis e interativo, você aprenderá a utilizar o spaCy para construir sistemas avançados de entendimento de linguagem natural, usando tanto estratégias baseadas em regras como aprendizado de máquina.",
+        "bio": "Sou Ines, uma programadora principal do spaCy e co-fundadora da Explosion. Sou especialista em ferramentas modernas de Inteligência Artificial, Aprendizado de Máquina e Processamento de Linguagem Natural (PLN). E também amo construir coisas para a Internet.",
+        "footerLinks": [
+            {
+                "text": "Website do spaCy",
+                "url": "https://spacy.io"
+            },
+            {
+                "text": "Código fonte",
+                "url": "https://github.com/ines/spacy-course"
+            },
+            {
+                "text": "Siga-me no Twitter",
+                "url": "https://twitter.com/_inesmontani"
+            }
+        ],
+        "socialImage": "social_pt.jpg",
+        "uiText": {
+            "aboutMe": "Sobre mim",
+            "aboutCourse": "Sobre o curso",
+            "markAsCompleted": "Marcar como finalizado",
+            "removeFromCompleted": "Desmarcar como finalizado",
+            "completed": "Finalizado",
+            "submit": "Enviar",
+            "correct": "Correto!",
+            "incorrect": "Incorreto.",
+            "showSolution": "Mostrar a solução",
+            "reset": "Reiniciar",
+            "runCode": "Executar código",
+            "next": "Próximo",
+            "showHints": "Mostrar dicas",
+            "hideHints": "Esconder dicas",
+            "loading": "Carregando...",
+            "connectingFailed": "Falha na conexão. Recarregue e tente novamente.",
+            "launchingDocker": "Iniciando o contêiner Docker",
+            "reconnectingDocker": "Reconectando ao contêiner Docker",
+            "prevChapter": "Capítulo Anterior",
+            "nextChapter": "Próximo Capítulo",
+            "start": "Iniciar",
+            "video": "Video",
+            "slides": "Slides"
+        }
+    },
     "ja": {
         "langName": "日本語",
         "title": "spaCyを使った先進的な自然言語処理",
