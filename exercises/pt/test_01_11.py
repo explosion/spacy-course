@@ -3,33 +3,33 @@ def test():
 
     assert isinstance(
         matcher, spacy.matcher.Matcher
-    ), "Are you initializing the matcher correctly?"
+    ), "Você está inicializando o Comparador corretamente?"
     assert (
         "Matcher(nlp.vocab)" in __solution__
-    ), "Are you initializing the matcher correctly with the shared vocab?"
+    ), "Você está inicializando o Comparador corretamente com o vocabulário compartilhado?"
     assert (
         len(pattern) == 2
-    ), "The pattern should describe two tokens (two dictionaries)."
+    ), "A expressão deve descrever dois tokens (dois dicionários)."
     assert isinstance(pattern[0], dict) and isinstance(
         pattern[1], dict
-    ), "Each entry in a pattern should be a dictionary."
+    ), "Cada item da expressão deve conter um dicionário."
     assert (
         len(pattern[0]) == 1 and len(pattern[1]) == 1
-    ), "Each entry in the pattern should have only one key."
+    ), "Cada item na expressão deve conter apenas uma chave."
     assert any(
         pattern[0].get(key) == "iPhone" for key in ["text", "TEXT"]
-    ), "Are you matching on the token text?"
+    ), "Você está fazendo a comparação com o texto do token?"
     assert any(
         pattern[1].get(key) == "X" for key in ["text", "TEXT"]
-    ), "Are you matching on the token text?"
+    ), "Você está fazendo a comparação com o texto do token?"
     assert (
         'matcher.add("IPHONE_X_PATTERN"' in __solution__
-    ), "Are you adding the match pattern correctly?"
+    ), "Você está adicionando a expressão corretamente?"
     assert (
         "matches = matcher(doc)" in __solution__
-    ), "Are you calling the matcher on the doc?"
+    ), "Você está chamando o Comparador passando o doc como parâmetro?"
 
     __msg__.good(
-        "Well done! You successfully found one match: the tokens at doc[1:3] "
-        'describing the span for "iPhone X".'
+        "Parabéns! Você identificou uma correspondência com sucesso: dois tokens "
+        "em doc[1:3] que correspondem a partição 'iPhone X'. "
     )

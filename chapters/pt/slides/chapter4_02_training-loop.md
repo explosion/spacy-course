@@ -5,7 +5,7 @@ type: slides
 # O laço (loop) de treinamento
 
 Notes: Enquanto outras bibiotecas entregam um método responsável pelo
-treinamento completo de um modelo, a spaCy te entrega controle total de todas 
+treinamento completo de um modelo, a biblioteca spaCy te entrega controle total de todas 
 as etapas envolvidas no treinamento de um modelo.
 
 ---
@@ -118,7 +118,7 @@ Por fim, usamos `nlp.to_disk` para salvar o modelo treinado em um diretório.
 - Melhora as previsões para novos dados
 - Muito útil para extender categorias existentes, como `"PERSON"`
 - Também é possível adicionar novas categorias.
-- Cuidado e garanta que o modelo não irá "esquecer" a classificação já aprendida.
+- Atenção! Garanta que o modelo não irá "esquecer" a classificação já aprendida.
 
 Notes: A spaCy permite que você atualize um modelo pré-treinado com mais
 dados, para por exemplo, melhorar as previsões em diferentes textos.
@@ -161,7 +161,7 @@ for itn in range(10):
 
 Notes: Neste exemplo, começamos com o modelo da língua inglesa vazio, através
 do comando `spacy.blank`. O modelo vazio não tem nenhum componente no fluxo
-de processamento apenas os dados do idioma e as regras de toquenização.
+de processamento, apenas os dados do idioma e as regras de toquenização.
 
 Então criamos um identificador de entidades e o adicionamos ao fluxo de
 processamento.

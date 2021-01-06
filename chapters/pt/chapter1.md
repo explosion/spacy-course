@@ -1,16 +1,16 @@
 ---
 title: 'Capítulo 1: Selecionando palavras, frases, nomes e alguns conceitos'
 description:
-  "Neste capítulo vamos apresentar os conceitos básicos de processamento de texto utilizanda spaCy.
-  Você vai aprender sobre as estruturas de dados, como trabalhar com modelos estatísticos e como
-  usá-los para prever anotações linguísticas do seu texto."
+  "Neste capítulo vamos apresentar os conceitos básicos de processamento de texto utilizando a 
+  biblioteca spaCy. Você vai aprender sobre as estruturas de dados, como trabalhar com modelos 
+  estatísticos e como usá-los para prever anotações linguísticas do seu texto."
 prev: null
 next: /chapter2
 type: chapter
 id: 1
 ---
 
-<exercise id="1" title="Introdução a spaCy" type="slides">
+<exercise id="1" title="Introdução a biblioteca spaCy" type="slides">
 
 <slides source="chapter1_01_introduction-to-spacy">
 </slides>

@@ -1,8 +1,8 @@
 def test():
     assert (
         "token1.similarity(token2)" or "token2.similarity(token1)" in __solution__
-    ), "Are you comparing the similarity of the two tokens?"
+    ), "Você está comparando a similaridade entre os dois tokens?"
     assert (
         0 <= float(similarity) <= 1
-    ), "The value of similarity needs to be a float. Did you calculate it correctly?"
-    __msg__.good("Nicely done!")
+    ), "O valor da similaridade deve ser um número de ponto flutuante. Você fez este cálculo corretamente?"
+    __msg__.good("Bom!")

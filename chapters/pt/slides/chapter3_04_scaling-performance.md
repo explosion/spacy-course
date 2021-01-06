@@ -5,7 +5,7 @@ type: slides
 # Aumentando a escala e o desempenho
 
 Notes: Nesta lição, vou te mostrar algumas dicas e truques para fazer seus
-fluxos de processamento da spaCy rodarem o mais rápido possível e processarem
+fluxos de processamento da biblioteca spaCy rodarem o mais rápido possível e processarem
 grandes volumes de texto de maneira eficiente.
 
 ---
@@ -105,7 +105,7 @@ documento com os metadados do contexto.
 
 <img src="/pipeline.png" width="90%" alt="Ilustracao do fluxo de processamento da spaCy">
 
-- não processe o fluxo de processamento (pipeline) completo!
+- não processa o fluxo de processamento (pipeline) completo!
 
 Notes: Outro cenário comum é que muitas vezes você já tem um modelo carregado para
 fazer o processamento, mas você só precisa do toquenizador para um texto 
@@ -159,7 +159,7 @@ Notes: A spaCy também permite que você desabilite temporariamente componentes
 do fluxo de processamento usando o comando gerenciador de contexto 
 `nlp.disable_pipes`. 
 
-Ele recebe uma alguns parâmetros, como o nome dos componentes
+Ele recebe alguns parâmetros, como o nome dos componentes
 que devem ser desabilitados. Por exemplo, se você deseja usar o identificador
 de entidades para processar o documento, você pode temporariamente desabilitar
 o tagueador e o analisador.
@@ -167,7 +167,7 @@ o tagueador e o analisador.
 Após o bloco `with`, os componentes desabilitados são automaticamente 
 reabilitados.
 
-No bloco `with`, a spaCy vai apenas rodar os componentes remanescentes.
+No bloco `with`, a biblioteca spaCy vai apenas rodar os componentes remanescentes.
 
 ---
 

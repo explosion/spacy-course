@@ -1,16 +1,16 @@
 def test():
     assert (
         "span1.similarity(span2)" or "span2.similarity(span1)" in __solution__
-    ), "Are you comparing the similarity of the two spans?"
-    assert span1.text == "great restaurant", "Did you generate span1 correctly?"
-    assert span2.text == "really nice bar", "Did you generate span2 correctly?"
+    ), "Você está comparando a similaridade entre as duas partições?"
+    assert span1.text == "great restaurant", "Você gerou a partição corretamente?"
+    assert span2.text == "really nice bar", "Você gerou a partição corretamente?"
     assert (
         0 <= float(similarity) <= 1
-    ), "The value of similarity needs to be a float. Did you calculate it correctly?"
+    ), "O valor da similaridade deve ser um número de ponto flutuante. Você fez este cálculo corretamente?"
     __msg__.good(
-        "Well done! Feel free to experiment with comparing more objects, if "
-        "you like. The similarities are not *always* this conclusive. Once "
-        "you're getting serious about developing NLP applications that "
-        "leverage semantic similarity, you might want to train vectors on "
-        "your own data, or tweak the similarity algorithm."
+        "Muito bem feito! Experimente comparar outros objetos, se desejar. "
+        "As similaridades *nem sempre* são conclusivas. Ao aprofundar seus "
+        "projetos com PLN você provavelmente criará aplicações que utilizam "
+        "similaridade semântica, e neste caso você desejará treinar seus "
+        "vetores com seus próprios dados, ou fazer um ajuste fino no algoritmo."
     )

@@ -7,5 +7,5 @@ nlp = ____
 # Processe o texto (equivalente ao português: "Atenciosamente")
 doc = nlp("Liebe Grüße!")
 
-# Print the document text
+# Imprima o texto do documento
 print(____.text)

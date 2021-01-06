@@ -1,7 +1,7 @@
 ---
 title: 'Chapter 4: Treinando um modelo de rede neural'
 description:
-  "Neste capítulo, você aprenderá a atualizar os modelos estatísticos do
+  "Neste capítulo, você aprenderá a atualizar os modelos estatísticos da
   spaCy de maneira a adequá-los aos seus casos de uso, como por exemplo,
   prever um novo tipo de entidade em textos de comentários. Você escreverá
   sua rotina de treinamento a partir do zero, e entenderá o ciclo de
@@ -85,7 +85,7 @@ então vamos criar dados de treinamento para o modelo reconhecer esses exemplos 
 
 <exercise id="4" title="Criando dados para treinamento (2)">
 
-Vamos usar as expressões criadas no exercício anterior para alavancar um conjunto
+Vamos usar as expressões criadas no exercício anterior para gerar um conjunto
 de dados de treinamento. Uma lista de frases está disponível na variável `TEXTS`.
 
 - Crie um objeto doc para cada frase usando `nlp.pipe`.
@@ -113,7 +113,7 @@ de dados de treinamento. Uma lista de frases está disponível na variável `TEX
 
 </exercise>
 
-<exercise id="6" title="Definindo o fluxo de processamento">
+<exercise id="6" title="Definindo o fluxo de processamento (pipeline)">
 
 Neste exercício, você criará um fluxo de processamento para treinar o identificador
 de entidades para reconhecer as entidades `"GADGET"` de uma frase, como por
@@ -147,7 +147,7 @@ O fluxo de processamento que você criou no exercício anterior está disponíve
 como um objeto `nlp`. Ele já contem um identificador de entidades com o marcador
 adicionado: `"GADGET"`.
 
-O pequeno conjunto de exemplos com marcadores que você também criou está disponível
+O pequeno conjunto de exemplos com rótulos (marcadores) que você também criou está disponível
 como `TRAINING_DATA`. Para ver alguns exemplos você pode imprimi-los em seu
 código.
 

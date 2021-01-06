@@ -1,7 +1,7 @@
 def test():
     assert (
         "from spacy.tokens import Doc" in __solution__
-    ), "Are you importing the Doc class correctly?"
-    assert doc.text == "spaCy is cool!", "Are you sure you created the Doc correctly?"
-    assert "print(doc.text)" in __solution__, "Are you printing the Doc's text?"
-    __msg__.good("Well done!")
+    ), "Você fez a importação da classe Doc corretamente?"
+    assert doc.text == "spaCy is cool!", "Você tem certeza que criou o Doc corretamente?"
+    assert "print(doc.text)" in __solution__, "Você está imprimindo o texto do Doc?"
+    __msg__.good("Muito bom!")
