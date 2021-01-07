@@ -3,10 +3,10 @@ from spacy.lang.ja import Japanese
 from spacy.tokens import Span
 from spacy.matcher import PhraseMatcher
 
-with open("exercises/ja/countries.json") as f:
+with open("exercises/ja/countries.json", encoding="utf8") as f:
     COUNTRIES = json.loads(f.read())
 
-with open("exercises/ja/capitals.json") as f:
+with open("exercises/ja/capitals.json", encoding="utf8") as f:
     CAPITALS = json.loads(f.read())
 
 nlp = Japanese()

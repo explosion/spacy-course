@@ -3,9 +3,9 @@ from spacy.matcher import PhraseMatcher
 from spacy.tokens import Span
 import json
 
-with open("exercises/en/countries.json") as f:
+with open("exercises/en/countries.json", encoding="utf8") as f:
     COUNTRIES = json.loads(f.read())
-with open("exercises/en/country_text.txt") as f:
+with open("exercises/en/country_text.txt", encoding="utf8") as f:
     TEXT = f.read()
 
 nlp = spacy.load("en_core_web_sm")
@@ -17,7 +17,7 @@ matcher.add("COUNTRY", None, *patterns)
 doc = nlp(TEXT)
 doc.ents = []
 
-# Iterar nos resultados do combinador 
+# Iterar nos resultados do combinador
 for match_id, start, end in matcher(doc):
     # Criar uma partição Span com o marcador para "GPE"
     span = Span(doc, start, end, label="GPE")
