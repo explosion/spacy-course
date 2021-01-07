@@ -3,10 +3,10 @@ from spacy.lang.en import English
 from spacy.tokens import Span
 from spacy.matcher import PhraseMatcher
 
-with open("exercises/en/countries.json") as f:
+with open("exercises/en/countries.json", encoding="utf8") as f:
     COUNTRIES = json.loads(f.read())
 
-with open("exercises/en/capitals.json") as f:
+with open("exercises/en/capitals.json", encoding="utf8") as f:
     CAPITALS = json.loads(f.read())
 
 nlp = English()
@@ -15,7 +15,7 @@ matcher.add("COUNTRY", None, *list(nlp.pipe(COUNTRIES)))
 
 
 def countries_component(doc):
-    # Criar uma partição com o rótulo "GPE" para todas as correspondências 
+    # Criar uma partição com o rótulo "GPE" para todas as correspondências
     matches = matcher(doc)
     doc.ents = [____(____, ____, ____, label=____) for match_id, start, end in matches]
     return doc
