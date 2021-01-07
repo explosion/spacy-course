@@ -185,7 +185,7 @@
         "langName": "Português",
         "title": "PLN avançado com spaCy",
         "slogan": "Curso online e gratuito",
-        "description": "Spacy é uma biblioteca moderna em Python para Processamento de Linguagem Natural (PLN) em escala profissional. Neste curso online, gratuito e interativo, você aprenderá a utilizar a biblioteca spaCy para construir sistemas avançados de entendimento de linguagem natural, usando tanto estratégias baseadas em regras como aprendizado de máquina.",
+        "description": "spaCy é uma biblioteca moderna em Python para Processamento de Linguagem Natural (PLN) em escala profissional. Neste curso online, gratuito e interativo, você aprenderá a utilizar a biblioteca spaCy para construir sistemas avançados de entendimento de linguagem natural, usando tanto estratégias baseadas em regras como aprendizado de máquina.",
         "bio": "Sou Ines, uma desenvolvedora principal da spaCy e co-fundadora da Explosion. Sou especialista em ferramentas modernas de Inteligência Artificial, Aprendizado de Máquina e Processamento de Linguagem Natural (PLN). E também amo construir coisas para a Internet.",
         "footerLinks": [
             {
