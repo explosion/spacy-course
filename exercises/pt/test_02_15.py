@@ -1,17 +1,18 @@
 def test():
     assert (
         "list(doc.ents) + [span]" in __solution__
-    ), "Did you add the span to the doc.ents?"
+    ), "Você adicionou a partição a doc.ents?"
     assert (
         "span_root_head = span.root.head" in __solution__
-    ), "Are you getting the head of the span's root token?"
+    ), "Você está selecionando o 'head' do token raiz da partição?"
     assert (
         "print(span_root_head.text" in __solution__
-    ), "Are you printing the text of the span's root head?"
+    ), "Você está imprimindo o texto do inicio 'head' da partição?"
     ents = [ent for ent in doc.ents if ent.label_ == "GPE"]
-    assert len(ents) == 16, "Incorrect number of entities. Expected 16."
+    assert len(ents) == 16, "Quantidade incorreta de entidades. Esperado: 16."
     __msg__.good(
-        "Well done! Now that you've practiced combining predictions with "
-        "rule-based information extraction, you're ready for chapter 3, "
-        "which will teach you everything about spaCy's processing pipelines."
+        "Parabéns! Agora que você já exercitou a combinação de previsões com "
+        "regras para extração das informações, você está pronto para o capítulo 3, "
+        "onde você aprenderá tudo sobre o fluxo de processamento (pipeline) da "
+        "biblioteca spaCy." 
     )

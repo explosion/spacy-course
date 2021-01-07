@@ -1,30 +1,30 @@
 def test():
     assert Doc.has_extension(
         "author"
-    ), "Did you set up the author extension on the Doc?"
+    ), "Você definiu a propriedade extendida author no Doc?"
     ext = Doc.get_extension("author")
     assert all(
         v is None for v in ext
-    ), "Did you assign the default value to the author extension?"
-    assert Doc.has_extension("book"), "Did you set up the book extension on the Doc?"
+    ), "Você definiu um valor padrão para a propriedade extendida author?"
+    assert Doc.has_extension("book"), "ocê definiu a propriedade extendida book no Doc?"
     ext = Doc.get_extension("book")
     assert all(
         v is None for v in ext
-    ), "Did you assign the default value to the book extension?"
+    ), "Você definiu um valor padrão para a propriedade extendida book?"
     assert (
         "nlp.pipe(DATA, as_tuples=True)" in __solution__
-    ), "Did you use nlp.pipe with as_tuples=True?"
+    ), "Você usou o comando nlp.pipe com as_tuples=True?"
     assert (
         'doc._.book = context["book"]' in __solution__
-    ), "Did you overwrite the doc._.book extension with the context value of 'book'?"
+    ), "Você sobrescreveu a propriedade extendida doc._.book com o valor 'context' de 'book'?"
     assert (
         'doc._.author = context["author"]' in __solution__
-    ), "Did you overwrite the doc._.author extension with the context value of 'author'?"
+    ), "Você sobrescreveu a propriedade extendida doc._.author com o valor 'context' de 'author'?"
 
     __msg__.good(
-        "Well done! The same technique is useful for a variety of tasks. For "
-        "example, you could pass in page or paragraph numbers to relate the "
-        "processed Doc back to the position in a larger document. Or you "
-        "could pass in other structured data like IDs referring to a "
-        "knowledge base."
+        "Muito bom! Essa técnica é muito útil para uma variedade de tarefas. Por "
+        "exemplo, você poderia adicionar a informação do número da página ou parágrafo "
+        "para relacionar o documento processado em sua posição no texto original. Ou "
+        "você poderia adicionar outra estrutura de dados como identificadores referenciando "
+        "uma base de conhecimento."
     )

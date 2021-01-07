@@ -1,10 +1,10 @@
 def test():
     assert (
         "from spacy.matcher import PhraseMatcher" in __solution__
-    ), "Did you import the PhraseMatcher correctly?"
+    ), "Você importou corretamente o PhraseMatcher?"
     assert (
         "PhraseMatcher(nlp.vocab)" in __solution__
-    ), "Did you initialize the PhraseMatcher correctly?"
-    assert "matcher(doc)" in __solution__, "Did you call the matcher on the doc?"
-    assert len(matches) == 2, "Incorrect number of matches – expected 2."
-    __msg__.good("Well done! Let's use this matcher to add some custom entities.")
+    ), "Você inicializou corretamente o PhraseMatcher?"
+    assert "matcher(doc)" in __solution__, "Você chamou o Comparador passando o doc como parâmetro?"
+    assert len(matches) == 2, "Quantidade incorreta de correspondências. Esperado: 2."
+    __msg__.good("Bom! Vamos usar este Comparador e adicionar algumas entidades personalizadas.")

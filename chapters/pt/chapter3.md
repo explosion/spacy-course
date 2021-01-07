@@ -1,11 +1,11 @@
 ---
 title: 'Chapter 3: Fluxos de processamento (pipelines)'
 description:
-  "Neste capítulo você conhecer melhor os fluxos de processamento
+  "Neste capítulo você conhecerá melhor os fluxos de processamento
   (pipelines) da spaCy. Você entenderá o que acontece nos bastidores
   quando você processa um texto. Vai aprender a escrever seus próprios
-  componentes e adicioná-los ao fluxo, e também a usar atributos customizados
-  para adicionar metadados próprios aos seus documentos, partições e tokens."
+  componentes e adicioná-los ao fluxo de processamento, e também a usar atributos 
+  personalizados para adicionar metadados aos seus documentos, partições e tokens."
 prev: /chapter2
 next: /chapter4
 type: chapter
@@ -80,16 +80,16 @@ disponível em `nlp.pipeline`.
 
 </exercise>
 
-<exercise id="4" title="Customizando os componentes de um fluxo (pipeline)" type="slides">
+<exercise id="4" title="Personalizando os componentes de um fluxo (pipeline)" type="slides">
 
 <slides source="chapter3_02_custom-pipeline-components">
 </slides>
 
 </exercise>
 
-<exercise id="5" title="Casos de uso de componentes customizados">
+<exercise id="5" title="Casos de uso de componentes personalizados">
 
-Quais desses problemas pode ser solucionado utilizando um componente customizado?
+Quais desses problemas pode ser solucionado utilizando um componente personalizado?
 
 1. Atualizar um modelo pré-treinado e melhorar suas predições.
 2. Calcular alguns valores utilizando os tokens e seus atributos.
@@ -98,46 +98,46 @@ Quais desses problemas pode ser solucionado utilizando um componente customizado
 
 <choice>
 
-<opt text="1 and 2.">
+<opt text="1 e 2.">
 
-Componentes customizados podem apenas alterar o objeto `Doc` e não podem ser usados
+Componentes personalizados podem apenas alterar o objeto `Doc` e não podem ser usados
 para atualizar pesos ou outros componentes diretamente.
 
 </opt>
 
-<opt text="1 and 3.">
+<opt text="1 e 3.">
 
-Componentes customizados podem apenas alterar o objeto `Doc` e não podem ser usados
+Componentes personalizados podem apenas alterar o objeto `Doc` e não podem ser usados
 para atualizar pesos ou outros componentes diretamente.
 
 </opt>
 
-<opt text="1 and 4.">
+<opt text="1 e 4.">
 
-Componentes customizados podem apenas alterar o objeto `Doc` e não podem ser usados
+Componentes personalizados podem apenas alterar o objeto `Doc` e não podem ser usados
 para atualizar pesos ou outros componentes diretamente. Eles são adicionados ao fluxo
 de processamento após o idioma ser carregado e depois da toquenização, portanto não
 são adequados para adicionar novos idiomas.
 
 </opt>
 
-<opt text="2 and 3." correct="true">
+<opt text="2 e 3." correct="true">
 
-Componentes customizados são ótimos para adicionar informações customizadas aos
+Componentes personalizados são ótimos para adicionar informações customizadas aos
 documentos, tokens e partições e também para customizar as entidades `doc.ents`.
 </opt>
 
-<opt text="2 and 4.">
+<opt text="2 e 4.">
 
-Componentes customizados são adicionados ao fluxo de processamento após o idioma
+Componentes personalizados são adicionados ao fluxo de processamento após o idioma
 ser carregado e depois da toquenização, portanto não são adequados para adicionar
 novos idiomas.
 
 </opt>
 
-<opt text="3 and 4.">
+<opt text="3 e 4.">
 
-Componentes customizados são adicionados ao fluxo de processamento após o idioma
+Componentes personalizados são adicionados ao fluxo de processamento após o idioma
 ser carregado e depois da toquenização, portanto não são adequados para adicionar
 novos idiomas.
 
@@ -149,7 +149,7 @@ novos idiomas.
 
 <exercise id="6" title="Componentes simples">
 
-Este exemplo mostra um componente customizado que imprime o número de tokens
+Este exemplo mostra um componente personalizado que imprime o número de tokens
 em um documento. Você consegue completar o código?
 
 - Complete a função para calcular o tamanho do objeto `doc`.
@@ -172,11 +172,11 @@ em um documento. Você consegue completar o código?
 
 <exercise id="7" title="Componentes complexos">
 
-Neste exercício você escreverá um componente customizado que usará o
+Neste exercício você escreverá um componente personalizado que usará o
 `PhraseMatcher` para identificar nomes de animais no documento e adicionar as partições
 reconhecidas ao `doc.ents`. O `PhraseMatcher` será criado como a variável `matcher`.
 
-- Defina o componente customizado e aplique o `matcher` ao `doc`.
+- Defina o componente personalizado e aplique o `matcher` ao `doc`.
 - Crie uma partição `Span` para cada correspondência, atribua o marcador `"ANIMAL"`
   e sobrescreva `doc.ents` com as novas correspondências.
 - Adicione o novo componente ao fluxo _após_ o componente `"ner"`.
@@ -195,14 +195,14 @@ reconhecidas ao `doc.ents`. O `PhraseMatcher` será criado como a variável `mat
 
 </exercise>
 
-<exercise id="8" title="Propriedades extendidas" type="slides">
+<exercise id="8" title="Extensões de atributos" type="slides">
 
 <slides source="chapter3_03_extension-attributes">
 </slides>
 
 </exercise>
 
-<exercise id="9" title="Definindo propriedades extendidas (1)">
+<exercise id="9" title="Definindo extensões de propriedades (1)">
 
 Vamos exercitar a criação de propriedades extendidas.
 
@@ -233,7 +233,7 @@ Por exemplo: `doc._.has_color`.
 
 </exercise>
 
-<exercise id="10" title="Definindo propriedades extendidas (2)">
+<exercise id="10" title="Definindo extensões de propriedades (2)">
 
 Vamos agora tentar definir propriedades mais complexas usando o argumento getter
 e a extensão de métodos.
@@ -296,17 +296,17 @@ de busca na Wikipedia se a partição for uma pessoa, organização ou localidad
 <exercise id="12" title="Componentes com extensões">
 
 Propriedades extendidas podem ser poderosas quando combinadas com componentes
-customizados do fluxo de processamento. Neste exercício, você escreverá um
+personalizados do fluxo de processamento. Neste exercício, você escreverá um
 componente do fluxo de processamento para identificar nomes de países e
 definirá uma propriedade que retornará a capital do país, se houver.
 
-Um comparador com todos os países deverá ser disponibilizado na variável
+Um Comparador com todos os países deverá ser disponibilizado na variável
 `matcher`. Um dicionário que mapeie os países e suas capitais deverá ser
 disponibilizado na variável `CAPITALS`.
 
 - Complete a função `countries_component` que defina um marcador `"GPE"`
   (geopolitical entity) para todas as correspondências.
-- Adicione o componente ao fluxo de processamento.
+- Adicione o componente ao fluxo de processamento (pipeline).
 - Defina uma propriedade extendida `"capital"` para a partição Span com o
   argumento getter como `get_capital`.
 - Processe o texto e imprima o texto da entidade, o marcador (label) e a
@@ -372,14 +372,14 @@ apenas 1 linha.
 
 <exercise id="15" title="Processando dados em contextos">
 
-Neste exercício você utilizará propriedades customizadas para adicionar metadados
+Neste exercício você utilizará propriedades personalizadas para adicionar metadados
 de autor e livro para as citações.
 
 Uma lista de exemplos `[text, context]` está disponível na variável `DATA`. Os
 textos são citações de livros famosos, e o contexto são dicionários com as chaves
 `"author"` e `"book"`.
 
-- Use o método `set_extension` para definir as propriedades customizadas `"author"`
+- Use o método `set_extension` para definir as propriedades personalizadas `"author"`
   e `"book"` no `Doc`, com o valor padrão (default) `None`.
 - Processe os pares `[text, context]` em `DATA` usando `nlp.pipe` com o argumento
   `as_tuples=True`.

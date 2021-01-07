@@ -1,11 +1,11 @@
 def test():
     assert (
         "token_text = token.text" in __solution__
-    ), "Are you getting the token's text correctly?"
+    ), "Você está atribuindo o texto to token corretamente?"
     assert (
         "token_pos = token.pos_" in __solution__
-    ), "Are you getting the token's part-of-speech tag correctly? Remember to use the underscore attribute."
+    ), "Você está atribuindo a classe gramatical do token corretamente? Lembre-se de usar o atributo com sublinhado (underscore)."
     assert (
         "token_dep = token.dep_" in __solution__
-    ), "Are you getting the token's dependency label correctly? Remember to use the underscore attribute."
-    __msg__.good("Perfect!")
+    ), "Você está atribuindo o termo sintático do token corretamente? Lembre-se de usar o atributo com sublinhado (underscore)."
+    __msg__.good("Perfeito!")

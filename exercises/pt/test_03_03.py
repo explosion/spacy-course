@@ -1,9 +1,9 @@
 def test():
-    assert nlp.meta["name"] == "core_web_sm", "Are you loading the correct model?"
-    assert "print(nlp.pipe_names)" in __solution__, "Are you printing the pipe names?"
-    assert "print(nlp.pipeline)" in __solution__, "Are you printing the pipeline?"
+    assert nlp.meta["name"] == "core_web_sm", "Você está carregando o modelo correto?"
+    assert "print(nlp.pipe_names)" in __solution__, "Você está imprimindo o nome dos componentes?"
+    assert "print(nlp.pipeline)" in __solution__, "Você está imprimindo o pipeline?"
 
     __msg__.good(
-        "Well done! Whenever you're unsure about the current pipeline, you "
-        "can inspect it by printing nlp.pipe_names or nlp.pipeline."
+        "Muito bom! Quando não estiver seguro sobre o fluxo de processamento vigente, você "
+        "pode consultá-lo através das propriedades nlp.pipe_names ou nlp.pipeline."
     )

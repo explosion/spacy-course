@@ -4,20 +4,20 @@ type: slides
 
 # Comparador baseado em regras
 
-Notes: Nesta lição, vamos dar uma olhada no Comparador (Matcher) da spaCy, que permite a criação de regras para encontrar palavras e frases no texto.
+Notes: Nesta lição, vamos dar uma olhada no Comparador (Matcher) da biblioteca spaCy, que permite a criação de regras para encontrar palavras e frases no texto.
 
 ---
  
-# Por que não usar somente expressões regulares?
+# Por que usar o Comparador e não somente expressões regulares?
 
-- Compare com objetos `Doc` e não apenas texto (strings)
-- Compare com os tokens e seus atributos
-- Use a previsão do modelo
+- Compara com objetos `Doc` e não apenas texto (strings)
+- Compara com os tokens e seus atributos
+- Utiliza a previsão do modelo
 - Exemplo: "duck" (verbo) vs. "duck" (substantivo)
 
 Notes: Além de comparar com texto (strings), que é o caso das expressões regulares, o Comparador (Matcher) também analisa os objetos `Doc` e `Token`.
 
-Ele é bem mais flexível: você pode buscar no texto mas também em seus atributos léxicos.
+Ele é bem mais flexível: você pode fazer a comparaão no texto mas também nos seus atributos léxicos.
 
 Vocẽ pode até criar regras que usam previsões dos modelos.
 
@@ -25,24 +25,21 @@ Por exemplo, você pode procurar a palavra "duck" (em inglês) somente se for um
 
 ---
 
-# Expressões para correspondência
+# Expressões de correspondência
 
 - Listas de dicionários, uma por token
 
-- Corresponda exatamente ao texto de um token
-
+- Corresponde exatamente ao texto de um token:
 ```python
 [{"TEXT": "iPhone"}, {"TEXT": "X"}]
 ```
 
-- Corresponda a atributos léxicos
-
+- Corresponde a atributos léxicos:
 ```python
 [{"LOWER": "iphone"}, {"LOWER": "x"}]
 ```
 
-- Corresponda a qualquer atributo de um token
-
+- Corresponde a qualquer atributo de um token:
 ```python
 [{"LEMMA": "buy"}, {"POS": "NOUN"}]
 ```
@@ -88,7 +85,7 @@ Notes: Para usar uma expressão, devemos importar o comparador `spacy.matcher`.
 
 O comparador será inicializado com o vocabulário `nlp.vocab`. Você irá aprender sobre isso em breve. Por enquanto, lembre-se que esta etapa é necessária.
 
-O método `matcher.add` permite adicionar uma expressão ao comparador. O primeiro argumento é o identificador único da expresssão que terá correspondência no texto. O segundo argumento é uma chamada de retorno (callback) opcional. Neste exemplo isso não será necessário, então definimos este valor como `None`. O terceiro argumento é a expressão.
+O método `matcher.add` permite adicionar uma expressão ao comparador. O primeiro argumento é o identificador único da expresssão que terá correspondência no texto. O segundo argumento é uma chamada de retorno (callback) opcional. Neste exemplo isso não será necessário, então definimos este valor como `None`. O terceiro argumento é a expressão de correspondência.
 
 Para fazer a correspondência de uma expressão em um texto, chame o comparador (matcher) e passe o texto como parâmetro.
 
@@ -122,7 +119,7 @@ Notes: Quando você usa o comparador em um documento (doc), ele retorna uma list
 
 Cada tupla consiste em três valores: o ID a expressão, o índice inicial e o índice final da partição em que houve correspondência.
 
-Desta forma é possível iterar nas correspondência e criar um objeto partição `Span` : a parte do texto correspondente (do índice inicial até o índice final).
+Desta forma é possível iterar nas correspondências e criar um objeto partição `Span` : a parte do texto correspondente (do índice inicial até o índice final).
 
 ---
 

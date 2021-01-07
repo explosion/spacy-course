@@ -1,20 +1,21 @@
 def test():
-    assert "nlp.begin_training()" in __solution__, "Did you call nlp.begin_training?"
+    assert "nlp.begin_training()" in __solution__, "Você usou nlp.begin_training?"
     assert (
         "range(10)" in __solution__
-    ), "Are you training for the right number of iterations?"
+    ), "Você está treinando com o número correto de iterações?"
     assert (
         "spacy.util.minibatch(TRAINING_DATA" in __solution__
-    ), "Are you using the minibatch helper to batch the training data?"
+    ), "Você está usando a funcionalidade minibatch para gerar os lotes de dados de treinamento?"
     assert (
         "text for text" in __solution__ and "entities for text" in __solution__
-    ), "Are you separating the texts and annotations correctly?"
-    assert "nlp.update" in __solution__, "Are you updating the model?"
+    ), "Você está separando os textos e anotações corretamente?"
+    assert "nlp.update" in __solution__, "Você está atualizando o modelo?"
 
     __msg__.good(
-        "Good job – you've successfully trained your first spaCy model. The "
-        "numbers printed to the shell represent the loss on each iteration, "
-        "the amount of work left for the optimizer. The lower the number, the "
-        "better. In real life, you normally want to use *a lot* more data than "
-        "this, ideally at least a few hundred or a few thousand examples."
+        " Bom trabalho - você treinou o seu primeiro modela da biblioteca spaCy "
+        "com sucesso. Os números que aparecem no resultado do comando representam "
+        "o erro do modelo a cada iteração, e o volume de trabalho que ainda precisa "
+        "ser feito pelo otimizador. Quanto menor o número, melhor. Na vida real, "
+        "você normalmente desejará trabalhar com um *número muito maior* de dados "
+        "do que deste exemplo, idealmente centenas a milhares de exemplos."
     )

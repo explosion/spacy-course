@@ -4,28 +4,28 @@ type: slides
 
 # Modelos estatísticos
 
-Notes: Agora vamos adicionar alguns poderes ao objeto `nlp`!
+Notes: Agora vamos adicionar alguns poderes especiais ao objeto `nlp`!
 
-Nesta lição você irá aprender sobre os modelos estatísticos da spaCy.
+Nesta lição você irá aprender mais sobre os modelos estatísticos da spaCy.
 
 ---
 
 # O que são modelos estatísticos?
 
-- Permitem que a spaCy faça previsões de atributos linguísticos _em contextos_.
-  - Marcadores das classes gramaticais
+- Permitem que a spaCy faça previsões de atributos linguísticos _em contextos_:
+  - Marcadores de classes gramaticais
   - Dependências sintáticas
   - Entidades nomeadas
-- Treinados com exemplos de textos rotulados.
+- São treinados com exemplos de textos rotulados.
 - Podem ser atualizados com mais exemplos para um ajuste fino das previsões.
 
 Notes: Algumas das análises mais interessantes são aquelas específicas a um contexto. Por exemplo: se uma palavra é um verbo ou se uma palavra é o nome de uma pessoa.
 
-Os modelos estatísticos permite que a spaCy faça previsões dentro de um contexto. Isso normalmente inclui marcadores de classes gramaticais, dependências sintáticas e entidades nomeadas.
+Os modelos estatísticos permitem que a spaCy faça previsões dentro de um contexto. Isso normalmente inclui marcadores de classes gramaticais, dependências sintáticas e entidades nomeadas.
 
 Os modelos são treinados em grandes conjuntos de dados com textos de exemplos já rotulados.
 
-Os modelos podem ser atualizados com mais exemplos para fazer um ajuste fino nas predições, como por exemplo, melhorar os resultados em um conjunto de dados específico.
+Os modelos podem ser atualizados com mais exemplos para fazer um ajuste fino nas previsões, como por exemplo, melhorar os resultados em um conjunto de dados específico.
 
 ---
 
@@ -47,13 +47,13 @@ nlp = spacy.load("en_core_web_sm")
 - Vocabulário
 - Metadados (idioma, fluxo de processamento)
 
-Notes: a spaCy oferece vários pacotes de modelos que você pode baixar usando o comando `spacy download`. Por exemplo, o pacote "en_core_web_sm" é um modelo pequeno em inglês que tem todas as capacidades e foi treinado com texto da internet. 
+Notes: A biblioteca spaCy oferece vários pacotes de modelos que você pode baixar usando o comando `spacy download`. Por exemplo, o pacote "en_core_web_sm" é um modelo pequeno em inglês que foi treinado com texto da internet e possui diversos recursos. 
 
 O método `spacy.load` carrega o pacote de um modelo a partir do seu nome e retorna um objeto `nlp`.
 
 O pacote contém os pesos binários que permitem que a spaCy faça as previsões.
 
-Também inclui o vocabulário e metadados com informações sobre o idioma e como configurar o fluxo de processamento.
+Também inclui o vocabulário e metadados com informações sobre o idioma e como configurar o fluxo de processamento (pipeline).
 
 ---
 
@@ -89,13 +89,13 @@ Em seguida, processamos o texto: "She ate the pizza".
 
 Para cada token no doc, podemos imprimir o texto e o atributo `.pos_`, que é a classe gramatical prevista.
 
-Na spaCy, atributos que retornam strings normalmente terminam com um underscore (sublinhado) e atributos sem o underscore retornam um inteiro.
+Na spaCy, atributos que retornam strings normalmente terminam com um sublinhado (underscore) e atributos sem o sublinhado retornam um inteiro.
 
 Neste exemplo, o modelo previu corretamente "ate" como um verbo e "pizza" como um substantivo.
 
 ---
 
-# Previsão de dependências sintáticas
+# Previsão de termos sintáticos
 
 ```python
 for token in doc:

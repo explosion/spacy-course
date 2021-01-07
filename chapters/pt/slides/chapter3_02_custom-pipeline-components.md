@@ -9,7 +9,7 @@ vamos dar uma olhada em outro recurso muito poderoso: componentes personalizados
 do fluxo de processamento.
 
 Componentes personalizados permitem que você adicione uma função feita por você ao
-fluxo de processamento que é executado quando você chama `nlp` em um texto. Por 
+fluxo de processamento (pipeline), que é executado quando você chama `nlp` em um texto. Por 
 exemplo: você pode modificar o documento e adicionar mais dados a ele.
 
 ---
@@ -23,7 +23,7 @@ exemplo: você pode modificar o documento e adicionar mais dados a ele.
 - Atualiza atributos padrão como por exemplo entidades `doc.ents`
 
 Notes: Após o texto ser toquenizado e o objeto  ser criado, os componentes do 
-fluxo de processamento são aplicados sequencialmente. A spaCy suporta uma
+fluxo de processamento (pipeline) são aplicados sequencialmente. A biblioteca spaCy suporta uma
 grande variedade de componentes pré-existentes, mas também permite que você
 crie seu próprio componente.
 
@@ -40,7 +40,7 @@ as partições com entidades nomeadas.
 
 # Anatomia de um componente (1)
 
-- Função que recebe um `doc`, o modifica e em seguida o retorna
+- Função que recebe um `doc`, o modifica, e em seguida o retorna
 - Pode ser adicionado ao fluxo de processamento através do método `nlp.add_pipe`
 
 ```python
@@ -55,7 +55,7 @@ Notes: Fundamentalmente, o componente de um fluxo de processamento é uma funç�
 ou um objeto que recebe um documento, o modifica e em seguida retorna este objeto,
 que pode ser processado em seguida pelo próximo componente do fluxo de processamento.
 
-Componentes podem ser adicionados ao fluxo de processamento através do método `nlp.add_pipe`. 
+Componentes podem ser adicionados ao fluxo de processamento (pipeline) através do método `nlp.add_pipe`. 
 O método recebe pelo menos um parâmetro: a função do componente.
 
 
@@ -81,15 +81,15 @@ nlp.add_pipe(custom_component)
 Notes: Para definir _onde_ o componente será adicionado ao fluxo de processamento,
 você pode usar os seguintes argumentos:
 
-Definir `last` como `True` vai adicionar o componente ao final do fluxo de processamento.
+Definir `last` como `True` irá adicionar o componente ao final do fluxo de processamento.
 Esse é o comportamento padrão.
 
-Definir `first` como `True` vai adicionar o componente ao início do fluxo de processamento,
+Definir `first` como `True` irá adicionar o componente ao início do fluxo de processamento,
 logo após o toquenizador.
 
 Os argumentos `before` e `after` permitem definir o nome de um componente existente de tal
 forma que o novo componente seja adicionado antes ou depois dele. Por exemplo: `before="ner"`
-vai adicionar o novo componente antes do identificador de entidados nomeadas.
+irá adicionar o novo componente antes do identificador de entidados nomeadas.
 
 O componente existente ao qual o novo componente deve ser adicionado antes ou depois precisa
 existir, senão a spaCy gerará um erro.

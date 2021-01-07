@@ -201,7 +201,7 @@ ser chamado.
 Você pode passar um ou mais parâmetros para o método extendido, e calcular valores
 de atributos dinamicamente. Por exemplo, baseado em algum argumento ou configuração.
 
-Neste exemplo, a função do método verifica se o documento contém um token com
+Neste exemplo, a função verifica se o documento contém um token com
 um dado texto. O primeiro parâmetro do método é sempre o objeto em si, neste caso,
 o documento. Ele é passado automaticamente quando o método é chamado. Todos os
 outros parâmetros serão passados à função extendida, neste caso, `token_text`.

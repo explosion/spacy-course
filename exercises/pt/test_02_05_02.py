@@ -1,11 +1,11 @@
 def test():
     assert (
         "from spacy.tokens import Doc" in __solution__
-    ), "Are you importing the Doc class correctly?"
+    ), "Você fez a importação da classe Doc corretamente?"
     assert (
         len(spaces) == 5
-    ), "Looks like the number of spaces doesn't match the number of words."
-    assert all(isinstance(s, bool) for s in spaces), "The spaces need to be booleans."
-    assert [int(s) for s in spaces] == [0, 1, 1, 0, 0], "Are the spaces correct?"
-    assert doc.text == "Go, get started!", "Are you sure you created the Doc correctly?"
-    __msg__.good("Nice!")
+    ), "Parece que o número de espaços não coincide com o número de palavras..."
+    assert all(isinstance(s, bool) for s in spaces), "Os espaços devem ser boleanos."
+    assert [int(s) for s in spaces] == [0, 1, 1, 0, 0], "Os espaços estão corretos?"
+    assert doc.text == "Go, get started!", "Tem certeza que você criou o Doc corretamente?"
+    __msg__.good("Bom!")

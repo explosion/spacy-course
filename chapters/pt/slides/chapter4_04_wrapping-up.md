@@ -2,7 +2,7 @@
 type: slides
 ---
 
-# Recapitulando
+# Recapitulando...
 
 Notes: Parabéns – você conseguiu e chegou ao final do curso!
 

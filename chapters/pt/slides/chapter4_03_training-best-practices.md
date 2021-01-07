@@ -14,7 +14,7 @@ Nesta lição, vou dividir com vocês algumas das melhores práticas de treiname
 e apontar algumas coisas que você precisa ter em mente quando estiver
 treinando seus próprios modelos.
 
-Vamos dar uma olhada nos possíveis problemas que você irá se deparar.
+Vamos dar uma olhada nos possíveis problemas que você provavelmente irá se deparar.
 
 ---
 
@@ -42,7 +42,7 @@ Isso é conhecido como o problema do esquecimento catastrófico.
 
 - Por exemplo, se você estiver treinando com dados de `"WEBSITE"`, também inclua
   exemplos de `"PERSON"`
-- Rode o modelo existente da spaCy e extraia todas as outras entidades relevantes.
+- Rode o modelo existente da biblioteca spaCy e extraia todas as outras entidades relevantes.
 
 **RUIM:**
 
@@ -90,11 +90,11 @@ você deseja.
 Os modelos da spaCy fazem previsões baseados no contexto local. Por exemplo:
 para entidades nomeadas, as palavras ao seu redor são bastante importantes.
 
-Se a decisão que precisa ser tomada é difícil de ser feita baseada no contexto,
+Se a decisão que precisa ser tomada é difícil e deve ser feita baseada no contexto,
 o modelo pode ter muita dificuldade para treinar corretamente.
 
 A estratégia de definição dos rótulos também precisa ser consistente e não 
-dever ser muito específica.
+deve ser muito específica.
 
 Por exemplo, será difícil ensinar um modelo a prever se alguma coisa é uma
 roupa de adulto ou roupa de criança baseando-se no contexto local. Por outro

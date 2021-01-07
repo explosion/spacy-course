@@ -1,32 +1,32 @@
 def test():
-    assert len(pattern1) == 2, "pattern1 should describe two tokens."
-    assert len(pattern2) == 2, "pattern2 should describe two tokens."
+    assert len(pattern1) == 2, "pattern1 deve conter dois tokens."
+    assert len(pattern2) == 2, "pattern2 deve conter dois tokens."
     assert (
         len(pattern1[0]) == 1
-    ), "The first token of pattern1 only needs one attribute."
+    ), "O primeiro token de pattern1 necessita de um atributo apenas."
     assert any(
         pattern1[0].get(l) == "iphone" for l in ("LOWER", "lower")
-    ), "The first token of pattern1 should match lowercase 'iphone'."
+    ), "O primeiro token de pattern1 deve corresponder a 'iphone' em letras minúsculas."
     assert (
         len(pattern1[1]) == 1
-    ), "The second token of pattern1 only needs one attribute."
+    ), "O segundo token de pattern1 necessita apenas de um atributo."
     assert any(
         pattern1[1].get(l) == "x" for l in ("LOWER", "lower")
-    ), "The second token of pattern1 should match lowercase 'x'."
+    ), "O segundo token de pattern1 deve corresponder a 'x' em letras minúsculas."
     assert (
         len(pattern2[0]) == 1
-    ), "The first token of pattern2 only needs one attribute."
+    ), "O primeiro token de pattern2 necessita apenas de um atributo."
     assert any(
         pattern2[0].get(l) == "iphone" for l in ("LOWER", "lower")
-    ), "The first token of pattern2 should match lowercase 'iphone'."
+    ), "O primeiro token de pattern2 deve corresponder a 'iphone' em letras minúsculas."
     assert (
         len(pattern2[1]) == 1
-    ), "The second token of pattern2 should have one attribute."
+    ), "O segundo token de pattern2 deve ter apenas de um atributo."
     assert any(
         pattern2[1].get(l) == True for l in ("IS_DIGIT", "is_digit")
-    ), "The second token of pattern2 should match a digit."
+    ), "O segundo token de pattern2 deve corresponder a um dígito."
 
     __msg__.good(
-        "Nice! Now let's use those patterns to quickly bootstrap some training "
-        "data for our model."
+        "Muito bem! Agora vamos usar essas expressões para turbinar os dados de "
+        "treinamento do seu modelo."
     )

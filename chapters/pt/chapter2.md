@@ -1,5 +1,5 @@
 ---
-title: 'Chapter 2: Análise da dados em larga escala usanda spaCy'
+title: 'Chapter 2: Análise da dados em larga escala usando a biblioteca spaCy'
 description:
   "Neste capítulo você desenvolverá novas habilidades ao extrair informações
   específicas de um grande volume de texto. Você vai aprender a otimizar o uso
@@ -129,7 +129,7 @@ booleanos que indicam se a palavra é ou não seguida de um espaço em branco.
 
 <codeblock id="02_05_02">
 
-Observe cada palavra no texto desejado e verifique se ela é seguida por um
+Observe cada palavra no texto desejado e verifique se ela é seguida de um
 espaço. Se sim, o valor em `spaces` deve ser `True`. Se não, deve ser `False`.
 
 </codeblock>
@@ -142,7 +142,7 @@ desejado. Em seguida crie o `doc`.
 
 <codeblock id="02_05_03">
 
-Preste atenção nos tokens. Para ver como a spaCy toqueniza uma string, você
+Preste atenção nos tokens. Para entender como a spaCy toqueniza uma string, você
 pode tentar imprimir os tokens de `nlp("Oh, really?!")`.
 
 </codeblock>
@@ -166,7 +166,7 @@ o marcador  `"PERSON"`.
 
 <codeblock id="02_06">
 
-- O `Doc` é inicializado com três parametros: o vocabulário compartilhado,
+- O `Doc` é inicializado com três parâmetros: o vocabulário compartilhado,
   por exemplo: `nlp.vocab`, uma lista de palavras e uma lista de valores
   booleanos que indicam se uma palavra é seguida de um espaço em branco.
 - A classe `Span` tem dois parâmetros: a referência ao `doc`, os índices do
@@ -368,8 +368,8 @@ exemplo, corresponder uma ou mais vezes.
 
 <exercise id="13" title="Depurando expressões (padrões) (2)">
 
-As expressões neste exercício contem erros e não haverá correspondência com o texto.
-Você consegue corrigi-las? Se tiver dificuldade, tente imprimir os tokens do `doc`
+As expressões neste exercício contêm erros e não haverá correspondência com o texto.
+Você consegue corrigí-las? Se tiver dificuldade, tente imprimir os tokens do `doc`
 para entender como o texto será quebrado e ajuste a expressão de forma que cada
 dicionário represente um token.
 
@@ -393,7 +393,7 @@ dicionário represente um token.
 
 <exercise id="14" title="Correspondência eficiente de frases">
 
-Muitas vezes é mais eficiente fazer a correspondência exata de textos ao invés
+Muitas vezes é mais eficiente fazer a correspondência exata dos textos ao invés
 de escrever expressões descrevendo os tokens individualmente. Esso é o caso
 de categorias finitas, como por exemplo, lista dos países do mundo. Nós já temos
 uma lista de países, então vamos usá-la como base para o nosso roteiro. A lista

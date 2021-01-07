@@ -4,7 +4,7 @@ type: slides
 
 # Vetores de palavras e similaridades semânticas
 
-Notes: Nesta lição você irá aprender a usar a spaCy para prever o quão dois
+Notes: Nesta lição você irá aprender a usar a biblioteca spaCy para prever o quão dois
 documentos, partições ou tokens são similares entre si.
 
 Você também irá aprender a usar vetores de palavras e como tirar vantagem
@@ -14,7 +14,7 @@ de seu uso em aplicações de PLN.
 
 # Comparando similaridades semânticas
 
-- O `spaCy` pode comparar dois objetos e prever a sua similaridade.
+- A biblioteca `spaCy` pode comparar dois objetos e prever a sua similaridade.
 - `Doc.similarity()`, `Span.similarity()` e `Token.similarity()`
 - Recebem outro objeto e retornam um score de similaridade ( entre `0` e `1` )
 - **Importante:** é necessário incluir um modelo que tenha vetores de palavras incluso,
@@ -116,8 +116,8 @@ objetos diferentes.
 
 Por exemplo: um documento e um token.
 
-No primeiro exemplo, o score de similaridade é bem baixo e podemos considerar esses
-objetos não similares.
+No primeiro exemplo, o score de similaridade é bem baixo e podemos considerar que esses
+objetos não são similares.
 
 No outro exemplo comparamos uma partição "pizza and pasta" com um documento
 sobre McDonalds.
@@ -219,10 +219,10 @@ Também pode ser usado para identificar conteúdos duplicados, como publicaçõe
 em plataformas online.
 
 Contudo é importante ter em mente que não existe uma definição objetiva daquilo
-que é similar ou não. Isso sempre vai depender do contexto e do que precisa 
-ser feito em sua aplicação.
+que é similar ou não. Isso sempre vai depender do contexto e do objetivo da
+sua aplicação.
 
-Aqui está um exemplo: os vetores de palavras padrão da spaCy atribuem um score
+Aqui está um exemplo: os vetores padrão das palavras da biblioteca spaCy atribuem um score
 de alta similaridade entre "I like cats" e "I hate cats". Isso faz sentido,
 pois os dois textos expressam sentimentos relacionados a gatos. Mas no contexto
 de uma aplicação, você pode considerar que as duas frases são _pouco similares_, 

@@ -1,16 +1,16 @@
 def test():
-    assert Span.has_extension("to_html"), "Did you register the extension on the span?"
+    assert Span.has_extension("to_html"), "Você registrou a extensão na partição?"
     ext = Span.get_extension("to_html")
-    assert ext[1] is not None, "Did you set the method correctly?"
-    assert "method=to_html" in __solution__, "Did you assign to_html as the method?"
+    assert ext[1] is not None, "Você definiu o método corretamente?"
+    assert "method=to_html" in __solution__, "Você atribuiu to_html como sendo o método?"
     assert (
         'span._.to_html("strong")' in __solution__
-    ), "Are you accessing the custom attribute?"
+    ), "Você está acessando o atributo personalizado?"
     assert (
         span._.to_html("strong") == "<strong>Hello world</strong>"
-    ), "Looks like the method is returning the wrong value."
+    ), "Parece que o método está retornando o valor errado."
 
     __msg__.good(
-        "Perfect! In the next exercise, you'll get to combine custom "
-        "attributes with custom pipeline components."
+        "Perfeito! No próximo exercício você combinará atributos personalizados "
+        "com componentes personalizados do fluxo de processamento (pipeline)."
     )

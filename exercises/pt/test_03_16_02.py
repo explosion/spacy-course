@@ -2,10 +2,10 @@ def test():
     assert (
         'with nlp.disable_pipes("tagger", "parser")' in __solution__
         or 'with nlp.disable_pipes("parser", "tagger")' in __solution__
-    ), "Are you using nlp.disable_pipes with the correct components?"
+    ), "Você está usando nlp.disable_pipes com os componentes corretos?"
 
     __msg__.good(
-        "Perfect! Now that you've practiced the performance tips and tricks, "
-        "you're ready for the next chapter and training spaCy's neural "
-        "network models."
+        "Perfeito! Agora que você já praticou as dicas e truques para melhorar "
+        "a performance dos seus projetos, estamos prontos para o próximo capítulo "
+        "onde vamos treinar modelos de redes neurais da biblioteca spaCy."
     )

@@ -4,7 +4,7 @@ type: slides
 
 # Estruturas de dados (1): Vocabulário, Lexemas e armazenamento de Strings
 
-Notes: Bem-vindo de volta! Agora que você já teve uma experiência real com a spaCy em ação, é hora de aprender um pouco mais sobre o que acontece nos bastidores.
+Notes: Bem-vindo de volta! Agora que você já teve uma experiência real com a biblioteca spaCy em ação, é hora de aprender um pouco mais sobre o que acontece nos bastidores.
 
 Nesta lição, vamos dar uma olhada no vocabulário compartilhado (Vocab) e como a spaCy lida com strings.
 
@@ -16,7 +16,7 @@ Nesta lição, vamos dar uma olhada no vocabulário compartilhado (Vocab) e como
 - `Vocab`: armazena informações compartilhadas entre diversos documentos
 - Para economizar memória, a spaCy mapeia as strings em **códigos hash**
 - Strings são armazenadas apenas uma vez na `StringStore` via `nlp.vocab.strings`
-- Armazenamento de String: **tabelas de consultas** que funcionam em ambos sentidos
+- Armazenamento de Strings: **tabelas de consultas** que funcionam em ambos sentidos
 
 ```python
 coffee_hash = nlp.vocab.strings["coffee"]
@@ -86,7 +86,7 @@ O objeto `Doc` também expõe o vocabulário compartilhados e suas strings e có
 
 # Lexemas: entradas do vocabulário 
 
-- Um objeto `Lexeme` corresponde a uma entrada do vocabulário.
+- Um objeto lexema `Lexeme` corresponde a uma entrada do vocabulário.
 
 ```python
 doc = nlp("I love coffee")
@@ -103,7 +103,7 @@ coffee 3197928453018144401 True
 - Contém as informações **independentes de contexto** de cada palavra:
   - Texto da palavra: `lexeme.text` e `lexeme.orth` (o código hash)
   - Atributos léxicos, como por exemplo `lexeme.is_alpha`
-  - **Não incluem** marcadores que dependem do contexto, como classe gramatical, dependência ou entidade.
+  - **Não incluem** marcadores que dependem do contexto, como classe gramatical, termo sintático ou entidade.
 
 Notes: Lexemas são entradas do vocabulário que independem do contexto.
 
@@ -114,7 +114,7 @@ Lexemas possuem atributos, assim como os tokens.
 Eles armazenam informações de uma palavra que são independentes de contexto: texto,
 se a palavra é composta por apenas caracteres alfabéticos, etc.
 
-Lexemas não armazenam marcadores de classe gramatical, dependência ou entidade. Elas dependem
+Lexemas não armazenam marcadores de classe gramatical, termo sintático ou entidade. Eles dependem
 do contexto no qual a palavra está inserida.
 
 ---
@@ -136,5 +136,5 @@ armazenadas.
 
 # Vamos praticar!
 
-Notes: Tudo isso está soando um pouco abstrato... então vamos ver o vocabulários e as strings
-armazenadas na prática.
+Notes: Tudo isso está soando um pouco abstrato... então vamos dar uma olhada no vocabulário e suas strings
+armazenadas.

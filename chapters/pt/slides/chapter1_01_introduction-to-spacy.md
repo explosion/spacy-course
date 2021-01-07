@@ -2,9 +2,9 @@
 type: slides
 ---
 
-# Introdução à spaCy
+# Introdução a biblioteca spaCy
 
-Notes: Olá, eu sou a Ines! Sou uma das programadoras principais da spaCy, uma biblioteca popular para o Processamento de Linguagem Natural avançado em Pyhton.
+Notes: Olá, eu sou a Ines! Sou uma desenvolvedora pricipal da spaCy, uma biblioteca bastante popular para o Processamento de Linguagem Natural avançado em Python.
 
 Nesta lição, vamos dar uma olhada nos principais conceitos da spaCy e percorrer nossos primeiros passos.
 
@@ -23,9 +23,9 @@ nlp = English()
 - contém o fluxo de processamento
 - inclui regras específicas da linguagem, como toquenização etc.
 
-Notes: No cerne da spaCy está o objeto nlp, que contém o fluxo de processamento. Normalmente chamamos essa variável de "nlp".
+Notes: No cerne da spaCy está o objeto nlp, que contém o fluxo de processamento. Por convenção, normalmente chamamos essa variável de "nlp".
 
-Por exemplo, para criar o objeto `nlp` em inglês, importamos a classe `English` de `spacy.lang.en` e criamos uma instância desta classe. Podemos utilizar o objeto nlp como se chamássemos uma função para analisar algum texto.
+Como exemplo, para criar o objeto `nlp` em inglês, importamos a classe `English` de `spacy.lang.en` e criamos uma instância desta classe. Podemos utilizar o objeto nlp como se chamássemos uma função para analisar algum texto.
 
 O objeto contém os diferentes componentes do fluxo de processamento do texto.
 
@@ -50,7 +50,7 @@ world
 !
 ```
 
-Notes: Quando você processa um texto com o objeto `nlp`, a spaCy cria um objeto `Doc`- abreviação de "documento". Através do Doc é possível acessar informações do texto de uma maneira estruturada, e nenhuma informação é perdida.
+Notes: Quando você processa um texto com o objeto `nlp`, a spaCy cria um objeto `Doc`- abreviação de "documento". Através do Doc é possível acessar informações do texto de uma maneira estruturada, sendo que nenhuma informação é perdida.
 
 O Doc se comporta de maneira semelhante a uma sequência do Python, permitindo a iteração nos tokens e o acesso a um token através do seu índice. Mas falaremos disso mais tarde!
 
@@ -75,9 +75,9 @@ print(token.text)
 world
 ```
 
-Notes: Os objetos `Token` representam as partes do texto, por exemplo: uma palavra ou um caracter de pontuação.
+Notes: O objeto `Token` representa uma parte do texto: uma palavra ou um caracter de pontuação.
 
-Para acessar um token em uma posição específica, você pode indexar o objeto doc.
+Para acessar um token em uma posição específica, você pode indexar o objeto Doc.
 
 Os objetos `Token` também contêm vários atributos que permitem acessar mais informações sobre os tokens. Por exemplo: o atributo `.text` retorna o texto _verbatim_.
 
