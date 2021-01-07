@@ -13,7 +13,7 @@ def test():
 
     __msg__.good(
         " Bom trabalho - você treinou o seu primeiro modela da biblioteca spaCy "
-        "com sucesso. Os números que aparecem no resultado do comando representam ".
+        "com sucesso. Os números que aparecem no resultado do comando representam "
         "o erro do modelo a cada iteração, e o volume de trabalho que ainda precisa "
         "ser feito pelo otimizador. Quanto menor o número, melhor. Na vida real, "
         "você normalmente desejará trabalhar com um *número muito maior* de dados "
