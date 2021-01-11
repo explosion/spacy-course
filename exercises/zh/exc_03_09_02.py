@@ -1,4 +1,4 @@
-from spacy.lang.en import Chinese
+from spacy.lang.zh import Chinese
 from spacy.tokens import Token
 
 nlp = Chinese()
