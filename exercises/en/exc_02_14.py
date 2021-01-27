@@ -15,7 +15,7 @@ matcher = ____(____)
 # Create pattern Doc objects and add them to the matcher
 # This is the faster version of: [nlp(country) for country in COUNTRIES]
 patterns = list(nlp.pipe(COUNTRIES))
-matcher.add("COUNTRY", None, *patterns)
+matcher.add("COUNTRY", patterns)
 
 # Call the matcher on the test document and print the result
 matches = ____(____)

@@ -7,7 +7,7 @@ text = (
 )
 
 # Disable the tagger and parser
-with nlp.disable_pipes("tagger", "parser"):
+with nlp.select_pipes(disable=["tagger", "parser"]):
     # Process the text
     doc = nlp(text)
     # Print the entities in the doc

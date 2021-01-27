@@ -1,4 +1,5 @@
 import spacy
+from spacy.training import Example
 import random
 import json
 
@@ -6,12 +7,11 @@ with open("exercises/en/gadgets.json", encoding="utf8") as f:
     TRAINING_DATA = json.loads(f.read())
 
 nlp = spacy.blank("en")
-ner = nlp.create_pipe("ner")
-nlp.add_pipe(ner)
+ner = nlp.add_pipe("ner")
 ner.add_label("GADGET")
 
 # Start the training
-nlp.begin_training()
+nlp.initialize()
 
 # Loop for 10 iterations
 for itn in range(10):
@@ -21,9 +21,10 @@ for itn in range(10):
 
     # Batch the examples and iterate over them
     for batch in spacy.util.minibatch(TRAINING_DATA, size=2):
-        texts = [text for text, entities in batch]
-        annotations = [entities for text, entities in batch]
+        examples = []
+        for text, annotations in batch:
+            examples.append(Example.from_dict(nlp.make_doc(text), annotations))
 
         # Update the model
-        nlp.update(texts, annotations, losses=losses)
+        nlp.update(examples, losses=losses)
     print(losses)

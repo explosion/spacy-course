@@ -40,7 +40,7 @@ and a little less critical for tagging and parsing.
 
 # How training works (1)
 
-1. **Initialize** the model weights randomly with `nlp.begin_training`
+1. **Initialize** the model weights randomly with `nlp.initialize`
 2. **Predict** a few examples with the current weights by calling `nlp.update`
 3. **Compare** prediction with true labels
 4. **Calculate** how to change weights to improve predictions

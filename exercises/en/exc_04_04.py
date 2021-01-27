@@ -9,7 +9,7 @@ nlp = English()
 matcher = Matcher(nlp.vocab)
 pattern1 = [{"LOWER": "iphone"}, {"LOWER": "x"}]
 pattern2 = [{"LOWER": "iphone"}, {"IS_DIGIT": True}]
-matcher.add("GADGET", None, pattern1, pattern2)
+matcher.add("GADGET", [pattern1, pattern2])
 
 TRAINING_DATA = []
 

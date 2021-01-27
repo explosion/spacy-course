@@ -135,13 +135,12 @@ improving the new category might hurt the other categories.
 # Start with blank English model
 nlp = spacy.blank("en")
 # Create blank entity recognizer and add it to the pipeline
-ner = nlp.create_pipe("ner")
-nlp.add_pipe(ner)
+nlp.add_pipe("ner")
 # Add a new label
 ner.add_label("GADGET")
 
 # Start the training
-nlp.begin_training()
+nlp.initialize()
 # Train for 10 iterations
 for itn in range(10):
     random.shuffle(examples)
@@ -161,7 +160,7 @@ We then create a blank entity recognizer and add it to the pipeline.
 
 Using the `add_label` method, we can add new string labels to the model.
 
-We can now call `nlp.begin_training` to initialize the model with random
+We can now call `nlp.initialize` to initialize the model with random
 weights.
 
 To get better accuracy, we want to loop over the examples more than once and

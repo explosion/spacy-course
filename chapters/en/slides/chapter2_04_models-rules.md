@@ -59,11 +59,11 @@ matcher = Matcher(nlp.vocab)
 
 # Patterns are lists of dictionaries describing the tokens
 pattern = [{"LEMMA": "love", "POS": "VERB"}, {"LOWER": "cats"}]
-matcher.add("LOVE_CATS", None, pattern)
+matcher.add("LOVE_CATS", [pattern])
 
 # Operators can specify how often a token should be matched
 pattern = [{"TEXT": "very", "OP": "+"}, {"TEXT": "happy"}]
-matcher.add("VERY_HAPPY", None, pattern)
+matcher.add("VERY_HAPPY", [pattern])
 
 # Calling matcher on doc returns list of (match_id, start, end) tuples
 doc = nlp("I love cats and I'm very very happy")
@@ -92,7 +92,7 @@ document.
 
 ```python
 matcher = Matcher(nlp.vocab)
-matcher.add("DOG", None, [{"LOWER": "golden"}, {"LOWER": "retriever"}])
+matcher.add("DOG", [[{"LOWER": "golden"}, {"LOWER": "retriever"}]])
 doc = nlp("I have a Golden Retriever")
 
 for match_id, start, end in matcher(doc):
@@ -161,7 +161,7 @@ from spacy.matcher import PhraseMatcher
 matcher = PhraseMatcher(nlp.vocab)
 
 pattern = nlp("Golden Retriever")
-matcher.add("DOG", None, pattern)
+matcher.add("DOG", [pattern])
 doc = nlp("I have a Golden Retriever")
 
 # Iterate over the matches

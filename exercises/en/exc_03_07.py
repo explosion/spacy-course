@@ -7,7 +7,7 @@ animals = ["Golden Retriever", "cat", "turtle", "Rattus norvegicus"]
 animal_patterns = list(nlp.pipe(animals))
 print("animal_patterns:", animal_patterns)
 matcher = PhraseMatcher(nlp.vocab)
-matcher.add("ANIMAL", None, *animal_patterns)
+matcher.add("ANIMAL", animal_patterns)
 
 # Define the custom component
 def animal_component(doc):

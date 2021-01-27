@@ -145,7 +145,7 @@ object. It already contains the entity recognizer with the added label
 The small set of labelled examples that you've created previously is available
 as `TRAINING_DATA`. To see the examples, you can print them in your script.
 
-- Call `nlp.begin_training`, create a training loop for 10 iterations and
+- Call `nlp.initialize`, create a training loop for 10 iterations and
   shuffle the training data.
 - Create batches of training data using `spacy.util.minibatch` and iterate over
   the batches.
@@ -156,7 +156,7 @@ as `TRAINING_DATA`. To see the examples, you can print them in your script.
 
 <codeblock id="04_07">
 
-- To start the training and reset the weights call, the `nlp.begin_training()`
+- To start the training and reset the weights call, the `nlp.initialize()`
   method.
 - To divide the training data into batches, call the `spacy.util.minibatch`
   function on the list of training examples.

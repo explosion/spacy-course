@@ -81,7 +81,7 @@ matcher = Matcher(nlp.vocab)
 
 # Add the pattern to the matcher
 pattern = [{"TEXT": "iPhone"}, {"TEXT": "X"}]
-matcher.add("IPHONE_PATTERN", None, pattern)
+matcher.add("IPHONE_PATTERN", [pattern])
 
 # Process some text
 doc = nlp("Upcoming iPhone X release date leaked")
@@ -98,9 +98,7 @@ The matcher is initialized with the shared vocabulary, `nlp.vocab`. You'll learn
 more about this later – for now, just remember to always pass it in.
 
 The `matcher.add` method lets you add a pattern. The first argument is a unique
-ID to identify which pattern was matched. The second argument is an optional
-callback. We don't need one here, so we set it to `None`. The third argument is
-the pattern.
+ID to identify which pattern was matched. The second argument is a list of patterns.
 
 To match the pattern on a text, we can call the matcher on any doc.
 

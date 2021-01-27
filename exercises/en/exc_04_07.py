@@ -6,8 +6,7 @@ with open("exercises/en/gadgets.json", encoding="utf8") as f:
     TRAINING_DATA = json.loads(f.read())
 
 nlp = spacy.blank("en")
-ner = nlp.create_pipe("ner")
-nlp.add_pipe(ner)
+ner = nlp.add_pipe("ner")
 ner.add_label("GADGET")
 
 # Start the training

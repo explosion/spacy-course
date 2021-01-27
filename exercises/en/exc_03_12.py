@@ -11,7 +11,7 @@ with open("exercises/en/capitals.json", encoding="utf8") as f:
 
 nlp = English()
 matcher = PhraseMatcher(nlp.vocab)
-matcher.add("COUNTRY", None, *list(nlp.pipe(COUNTRIES)))
+matcher.add("COUNTRY", list(nlp.pipe(COUNTRIES)))
 
 
 def countries_component(doc):

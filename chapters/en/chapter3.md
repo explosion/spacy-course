@@ -402,7 +402,7 @@ texts are quotes from famous books, and the contexts dictionaries with the keys
 
 <exercise id="16" title="Selective processing">
 
-In this exercise, you'll use the `nlp.make_doc` and `nlp.disable_pipes` methods
+In this exercise, you'll use the `nlp.make_doc` and `nlp.select_pipes` methods
 to only run selected components when processing a text.
 
 ### Part 1
@@ -418,14 +418,14 @@ the `nlp` object.
 
 ### Part 2
 
-- Disable the tagger and parser using the `nlp.disable_pipes` method.
+- Disable the tagger and parser using the `nlp.select_pipes` method.
 - Process the text and print all entities in the `doc`.
 
 <codeblock id="03_16_02">
 
-The `nlp.disable_pipes` method takes a variable number of arguments: the string
-names of the pipeline components to disable. For example,
-`nlp.disable_pipes("ner")` will disable the named entity recognizer.
+The `nlp.select_pipes` method accepts the keyword arguments `enable` or
+`disable` that take a list of component names to enable or disable. For example,
+`nlp.select_pipes(disable="ner")` will disable the named entity recognizer.
 
 </codeblock>
 
