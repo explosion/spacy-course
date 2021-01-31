@@ -11,8 +11,9 @@ import '../styles/index.sass'
 import classes from '../styles/layout.module.sass'
 import locale from '../../locale.json'
 
-const Layout = ({ isHome, title, description, lang, pageName, children }) => {
+const Layout = ({ isHome, title, description, lang, pageName, logo, children }) => {
     const localeData = locale[lang] || {}
+    const alert = localeData.uiText.alert
     const langs = Object.keys(locale).map(c => ({ langCode: c, langName: locale[c].langName }))
     const handleChangeLang = useCallback(
         ({ target }) => {
@@ -58,6 +59,15 @@ const Layout = ({ isHome, title, description, lang, pageName, children }) => {
                                 )}
                             </header>
                         )}
+                        {logo}
+                        {alert && (
+                                <aside className={classes.alert}>
+                                    <strong>{alert.title}</strong> {alert.text}{' '}
+                                    <Link to="https://spacy.io/usage/v3">
+                                        {alert.button} &rarr;
+                                    </Link>
+                                </aside>
+                            )}
                         {children}
                     </div>
 
