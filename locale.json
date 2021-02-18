@@ -345,9 +345,9 @@
             "prevChapter": "前一章节",
             "nextChapter": "后一章节",
             "alert": {
-                "title": "This course uses spaCy v2.",
-                "text": "An updated version for the new spaCy v3 is coming soon. Luckily, the usage and API hasn't changed much, so everything you'll learn in this course is still relevant.",
-                "button": "See what's new in v3"
+                "title": "本课程使用 spaCy v2.",
+                "text": "spaCy v3 更新即将到来。我们并没有对使用方法和API进行大规模改动，所以当前课程依然可以为您的学习计划提供帮助。"
+                 "button": "查看 v3 变化 ->"
             }
         }
     }
