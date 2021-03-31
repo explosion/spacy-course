@@ -22,6 +22,7 @@ spaCy mit Strings umgeht.
 - String-Speicher: **Zuordnungstabelle** in beide Richtungen
 
 ```python
+nlp.vocab.strings.add("Kaffee")
 kaffee_hash = nlp.vocab.strings["Kaffee"]
 kaffee_string = nlp.vocab.strings[kaffee_hash]
 ```

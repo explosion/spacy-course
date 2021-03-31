@@ -17,6 +17,7 @@ Notes: Welcome back！さて、いくつかのspaCyのオブジェクトを扱�
 - String store: 双方向ルックアップテーブル
 
 ```python
+nlp.vocab.strings.add("コーヒー")
 coffee_hash = nlp.vocab.strings["コーヒー"]
 coffee_string = nlp.vocab.strings[coffee_hash]
 ```

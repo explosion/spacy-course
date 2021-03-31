@@ -23,6 +23,7 @@ comment spaCy gère les chaines de caractères.
 - String store : **table de consultation** dans les deux sens
 
 ```python
+nlp.vocab.strings.add("souvent")
 souvent_hash = nlp.vocab.strings["souvent"]
 souvent_string = nlp.vocab.strings[souvent_hash]
 ```
