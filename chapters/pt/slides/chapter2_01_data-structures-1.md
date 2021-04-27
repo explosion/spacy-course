@@ -19,6 +19,7 @@ Nesta lição, vamos dar uma olhada no vocabulário compartilhado (Vocab) e como
 - Armazenamento de Strings: **tabelas de consultas** que funcionam em ambos sentidos
 
 ```python
+nlp.vocab.strings.add("coffee")
 coffee_hash = nlp.vocab.strings["coffee"]
 coffee_string = nlp.vocab.strings[coffee_hash]
 ```
