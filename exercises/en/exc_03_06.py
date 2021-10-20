@@ -1,7 +1,9 @@
 import spacy
+from spacy.language import Language
 
 # Define the custom component
-def length_component(doc):
+@Language.component("length_component")
+def length_component_function(doc):
     # Get the doc's length
     doc_length = ____
     print(f"This document is {doc_length} tokens long.")
@@ -9,7 +11,7 @@ def length_component(doc):
     ____
 
 
-# Load the small English model
+# Load the small English pipeline
 nlp = spacy.load("en_core_web_sm")
 
 # Add the component first in the pipeline and print the pipe names

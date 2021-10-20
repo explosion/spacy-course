@@ -12,16 +12,16 @@ type: chapter
 id: 4
 ---
 
-<exercise id="1" title="Training and updating models" type="slides,video">
+<exercise id="1" title="Training and updating models" type="slides">
 
-<slides source="chapter4_01_training-updating-models" start="35:02" end="38:495">
+<slides source="chapter4_01_training-updating-models">
 </slides>
 
 </exercise>
 
 <exercise id="2" title="Purpose of training">
 
-While spaCy comes with a range of pre-trained models to predict linguistic
+While spaCy comes with a range of trained pipelines to predict linguistic
 annotations, you almost _always_ want to fine-tune them with more examples. You
 can do this by training them with more labelled data.
 
@@ -31,7 +31,7 @@ What does training **not** help with?
 
 <opt text="Improve model accuracy on your data.">
 
-If a pre-trained model doesn't perform well on your data, training it with more
+If a trained pipeline doesn't perform well on your data, training it with more
 examples is often a good solution.
 
 </opt>
@@ -54,7 +54,39 @@ only learn to reproduce examples, not guess new labels from raw text.
 
 </exercise>
 
-<exercise id="3" title="Creating training data (1)">
+<exercise id="3" title="Creating a training corpus" type="slides">
+
+<slides source="chapter4_02_training-corpus">
+</slides>
+
+</exercise>
+
+<exercise id="4" title="Evaluation data">
+
+To train a model, you typically need training data _and_ a development for for
+evaluation. What is this evaluation data used for?
+
+<choice>
+
+<opt text="Provide more training examples as a fallback if the training data isn't enough.">
+
+During training, the model will only be updated from the training data. The
+development data is used to check the model's predictions on unseen data and
+calculate the accuracy score.
+
+</opt>
+
+<opt text="Check predictions on unseen examples and calculate the accuracy score." correct="true">
+
+...
+
+</opt>
+
+</choice>
+
+</exercise>
+
+<exercise id="5" title="Creating training data (1)">
 
 spaCy's rule-based `Matcher` is a great way to quickly create training data for
 named entity models. A list of sentences is available as the variable `TEXTS`.
@@ -67,7 +99,7 @@ models, so we can create training data to teach a model to recognize them as
 - Write a pattern for two tokens: one token whose lowercase form matches
   `"iphone"` and a digit.
 
-<codeblock id="04_03">
+<codeblock id="04_05">
 
 - To match the lowercase form of a token, you can use the `"LOWER"` attribute.
   For example: `{"LOWER": "apple"}`.
@@ -78,97 +110,54 @@ models, so we can create training data to teach a model to recognize them as
 
 </exercise>
 
-<exercise id="4" title="Creating training data (2)">
+<exercise id="5" title="Creating training data (2)">
 
-Let's use the match patterns we've created in the previous exercise to bootstrap
-a set of training examples. A list of sentences is available as the variable
-`TEXTS`.
+After creating the data for our corpus, we need to save it out to a `.spacy`
+file. The code from the previous example is already available.
 
-- Create a doc object for each text using `nlp.pipe`.
-- Match on the `doc` and create a list of matched spans.
-- Get `(start character, end character, label)` tuples of matched spans.
-- Format each example as a tuple of the text and a dict, mapping `"entities"` to
-  the entity tuples.
-- Append the example to `TRAINING_DATA` and inspect the printed data.
+- Instantiate the `DocBin` with the list of `docs`.
+- Save the `DocBin` to a file called `train.spacy`.
 
-<codeblock id="04_04">
+<codeblock id="04_06">
 
-- To find matches, call the `matcher` on a `doc`.
-- The returned matches are `(match_id, start, end)` tuples.
-- To add an example to the list of training examples, you can use
-  `TRAINING_DATA.append()`.
+- You can initialize the `DocBin` with a list of docs by passing them in as the
+  keyword argument `docs`.
+- The `DocBin`'s `to_disk` method takes one argument: the path of the file to
+  save the binary data to. Make sure to use the file extension `.spacy`.
 
 </codeblock>
 
 </exercise>
 
-<exercise id="5" title="The training loop" type="slides,video">
+<exercise id="6" title="Configuring and running the training" type="slides">
 
-<slides source="chapter4_02_training-loop" start="39:00" end="42:25">
+<slides source="chapter4_03_running-training">
 </slides>
 
 </exercise>
 
-<exercise id="6" title="Setting up the pipeline">
+<exercise id="7" title="The training config">
 
-In this exercise, you'll prepare a spaCy pipeline to train the entity recognizer
-to recognize `"GADGET"` entities in a text – for example, "iPhone X".
-
-- Create a blank `"en"` model, for example using the `spacy.blank` method.
-- Create a new entity recognizer using `nlp.create_pipe` and add it to the
-  pipeline.
-- Add the new label `"GADGET"` to the entity recognizer using the `add_label`
-  method on the pipeline component.
-
-<codeblock id="04_06">
-
-- To create a blank entity recognizer, you can call `nlp.create_pipe` with the
-  string `"ner"`.
-- To add the component to the pipeline, use the `nlp.add_pipe` method.
-- The `add_label` method is a method of the entity recognizer pipeline
-  component, which you've stored in the variable `ner`. To add a label to it,
-  you can call `ner.add_label` with the string name of the label, for example
-  `ner.add_label("SOME_LABEL")`.
-
-</codeblock>
+TODO
 
 </exercise>
 
-<exercise id="7" title="Building a training loop">
+<exercise id="8" title="Generating a config file">
 
-Let's write a simple training loop from scratch!
-
-The pipeline you've created in the previous exercise is available as the `nlp`
-object. It already contains the entity recognizer with the added label
-`"GADGET"`.
-
-The small set of labelled examples that you've created previously is available
-as `TRAINING_DATA`. To see the examples, you can print them in your script.
-
-- Call `nlp.initialize`, create a training loop for 10 iterations and
-  shuffle the training data.
-- Create batches of training data using `spacy.util.minibatch` and iterate over
-  the batches.
-- Convert the `(text, annotations)` tuples in the batch to lists of `texts` and
-  `annotations`.
-- For each batch, use `nlp.update` to update the model with the texts and
-  annotations.
-
-<codeblock id="04_07">
-
-- To start the training and reset the weights call, the `nlp.initialize()`
-  method.
-- To divide the training data into batches, call the `spacy.util.minibatch`
-  function on the list of training examples.
-
-</codeblock>
+TODO
 
 </exercise>
 
-<exercise id="8" title="Exploring the model">
+<exercise id="9" title="Using the training CLI">
+
+TODO
+
+</exercise>
+
+<exercise id="10" title="Exploring the model">
 
 Let's see how the model performs on unseen data! To speed things up a little, we
-already ran a trained model for the label `"GADGET"` over some text. Here are
+already ran a trained pipeline for the label `"GADGET"` over some text. Here are
 some of the results:
 
 | Text                                                                                                              | Entities               |
@@ -220,9 +209,9 @@ number of total correct entities the model _should_ have predicted.
 
 </exercise>
 
-<exercise id="9" title="Training best practices" type="slides,video">
+<exercise id="11" title="Training best practices" type="slides">
 
-<slides source="chapter4_03_training-best-practices" start="42:36" end="44:55">
+<slides source="chapter4_04_training-best-practices" start="42:36" end="44:55">
 </slides>
 
 </exercise>
@@ -291,7 +280,7 @@ of the big advantages of statistical named entity recognition.
 - Don't forget to add tuples for the `"GPE"` entities that weren't labeled in
   the old data.
 
-<codeblock id="04_10">
+<codeblock id="04_11">
 
 - For the spans that are already labelled, you'll only need to change the label
   name from `"TOURIST_DESTINATION"` to `"GPE"`.
@@ -303,7 +292,7 @@ of the big advantages of statistical named entity recognition.
 
 </exercise>
 
-<exercise id="11" title="Training multiple labels">
+<exercise id="12" title="Training multiple labels">
 
 Here's a small sample of a dataset created to train a new entity type
 `"WEBSITE"`. The original dataset contains a few thousand sentences. In this
@@ -317,7 +306,7 @@ to automate this and use an annotation tool – for example,
 - Complete the entity offsets for the `"WEBSITE"` entities in the data. Feel
   free to use `len()` if you don't want to count the characters.
 
-<codeblock id="04_11_01">
+<codeblock id="04_12_01">
 
 - The start and end offset of an entity span are the character offsets into the
   text. For example, if an entity starts at position 5, the start offset is `5`.
@@ -365,7 +354,7 @@ the problem here.
 - Update the training data to include annotations for the `"PERSON"` entities
   "PewDiePie" and "Alexis Ohanian".
 
-<codeblock id="04_11_02">
+<codeblock id="04_12_02">
 
 - To add more entities, append another `(start, end, label)` tuple to the list.
 
@@ -373,9 +362,9 @@ the problem here.
 
 </exercise>
 
-<exercise id="12" title="Wrapping up" type="slides,video">
+<exercise id="13" title="Wrapping up" type="slides">
 
-<slides source="chapter4_04_wrapping-up" start="45:01" end="47:195">
+<slides source="chapter4_05_wrapping-up" start="45:01" end="47:195">
 </slides>
 
 </exercise>

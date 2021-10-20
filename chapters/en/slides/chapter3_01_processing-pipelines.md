@@ -42,7 +42,8 @@ processed doc is returned, so you can work with it.
 | **ner**     | Named entity recognizer | `Doc.ents`, `Token.ent_iob`, `Token.ent_type`             |
 | **textcat** | Text classifier         | `Doc.cats`                                                |
 
-Notes: spaCy ships with the following built-in pipeline components.
+Notes: spaCy ships with a variety of built-in pipeline components. Here are some
+of the most common ones that you'll want to use in your projects.
 
 The part-of-speech tagger sets the `token.tag` and `token.pos` attributes.
 
@@ -58,8 +59,8 @@ Finally, the text classifier sets category labels that apply to the whole text,
 and adds them to the `doc.cats` property.
 
 Because text categories are always very specific, the text classifier is not
-included in any of the pre-trained models by default. But you can use it to
-train your own system.
+included in any of the trained pipelines by default. But you can use it to train
+your own system.
 
 ---
 
@@ -67,18 +68,18 @@ train your own system.
 
 <img src="/package_meta.png" alt="Illustration of a package labelled en_core_web_sm, folders and file and the meta.json" />
 
-- Pipeline defined in model's `meta.json` in order
+- Pipeline defined in model's `config.cfg` in order
 - Built-in components need binary data to make predictions
 
-Notes: All models you can load into spaCy include several files and a
-`meta.json`.
+Notes: All pipeline packages you can load into spaCy include several files and a
+`config.cfg`.
 
-The meta defines things like the language and pipeline. This tells spaCy which
-components to instantiate.
+The config defines things like the language and pipeline. This tells spaCy which
+components to instantiate and how they should be configured.
 
 The built-in components that make predictions also need binary data. The data is
-included in the model package and loaded into the component when you load the
-model.
+included in the pipeline package and loaded into the component when you load the
+pipeline.
 
 ---
 
@@ -91,7 +92,7 @@ print(nlp.pipe_names)
 ```
 
 ```out
-['tagger', 'parser', 'ner']
+['tok2vec', 'tagger', 'parser', 'ner', 'attribute_ruler', 'lemmatizer']
 ```
 
 - `nlp.pipeline`: list of `(name, component)` tuples
@@ -101,9 +102,12 @@ print(nlp.pipeline)
 ```
 
 ```out
-[('tagger', <spacy.pipeline.Tagger>),
+[('tagger', <spacy.pipeline.Tok2Vec>),
+ ('tagger', <spacy.pipeline.Tagger>),
  ('parser', <spacy.pipeline.DependencyParser>),
- ('ner', <spacy.pipeline.EntityRecognizer>)]
+ ('ner', <spacy.pipeline.EntityRecognizer>),
+ ('attribute_ruler', <spacy.pipeline.AttributeRuler>),
+ ('lemmatizer', <spacy.pipeline.Lemmatizer>)]
 ```
 
 Notes: To see the names of the pipeline components present in the current nlp

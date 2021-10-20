@@ -7,9 +7,9 @@ type: slides
 Notes: Welcome to the final chapter, which is about one of the most exciting
 aspects of modern NLP: training your own models!
 
-In this lesson, you'll learn about training and updating spaCy's neural network
-models and the data you need for it – focusing specifically on the named entity
-recognizer.
+In this lesson, you'll learn about training and updating spaCy's pipeline
+components and their neural network models, and the data you need for it –
+focusing specifically on the named entity recognizer.
 
 ---
 
@@ -23,7 +23,7 @@ recognizer.
 
 Notes: Before we get starting with explaining _how_, it's worth taking a second
 to ask ourselves: Why would we want to update the model with our own examples?
-Why can't we just rely on pre-trained models?
+Why can't we just rely on pre-trained pipelines?
 
 Statistical models make predictions based on the examples they were trained on.
 
@@ -40,8 +40,8 @@ and a little less critical for tagging and parsing.
 
 # How training works (1)
 
-1. **Initialize** the model weights randomly with `nlp.initialize`
-2. **Predict** a few examples with the current weights by calling `nlp.update`
+1. **Initialize** the model weights randomly
+2. **Predict** a few examples with the current weights
 3. **Compare** prediction with true labels
 4. **Calculate** how to change weights to improve predictions
 5. **Update** weights slightly
@@ -50,7 +50,7 @@ and a little less critical for tagging and parsing.
 Notes: spaCy supports updating existing models with more examples, and training
 new models.
 
-If we're not starting with a pre-trained model, we first initialize the weights
+If we're not starting with a trained pipeline, we first initialize the weights
 randomly.
 
 Next, we call `nlp.update`, which predicts a batch of examples with the current
@@ -100,13 +100,15 @@ application.
 - Examples need to come with context
 
 ```python
-("iPhone X is coming", {"entities": [(0, 8, "GADGET")]})
+doc = nlp("iPhone X is coming")
+doc.ents = [Span(doc, 0, 1, label="GADGET")]
 ```
 
 - Texts with no entities are also important
 
 ```python
-("I need a new phone! Any tips?", {"entities": []})
+doc = nlp("I need a new phone! Any tips?")
+doc.ents = []
 ```
 
 - **Goal:** teach the model to generalize
@@ -122,9 +124,10 @@ Entities can't overlap, so each token can only be part of one entity.
 Because the entity recognizer predicts entities _in context_, it also needs to
 be trained on entities _and_ their surrounding context.
 
-The easiest way to do this is to show the model a text and a list of character
-offsets. For example, "iPhone X" is a gadget, starts at character 0 and ends at
-character 8.
+The easiest way to do this is to show the model a text and entity spans. spaCy
+can be updated from regular `Doc` objects with entities annotated as the
+`doc.ents`. For example, "iPhone X" is a gadget, starts at token 0 and ends at
+token 1.
 
 It's also very important for the model to learn words that _aren't_ entities.
 
@@ -153,7 +156,7 @@ examples.
 
 To train a new category we may need up to a million.
 
-spaCy's pre-trained English models for instance were trained on 2 million words
+spaCy's trained English pipelines for instance were trained on 2 million words
 labelled with part-of-speech tags, dependencies and named entities.
 
 Training data is usually created by humans who assign labels to texts.
@@ -165,5 +168,4 @@ This is a lot of work, but can be semi-automated – for example, using spaCy's
 
 # Let's practice!
 
-Notes: Now it's time to get started and prepare the training data. Let's look at
-some examples and create a small dataset for a new entity type.
+Notes: TODO

@@ -12,7 +12,7 @@ type: chapter
 id: 3
 ---
 
-<exercise id="1" title="Processing pipelines" type="slides,video">
+<exercise id="1" title="Processing pipelines" type="slides">
 
 <slides source="chapter3_01_processing-pipelines" start="23:36" end="26:12">
 </slides>
@@ -53,9 +53,9 @@ server.
 
 <opt text="Initialize the language, add the pipeline and load in the binary model weights.">
 
-When you call `spacy.load()` to load a model, spaCy will initialize the
+When you call `spacy.load()` to load a pipeline, spaCy will initialize the
 language, add the pipeline and load in the binary model weights. When you _call_
-the `nlp` object on a text, the model is already loaded.
+the `nlp` object on a text, the pipeline is already loaded.
 
 </opt>
 
@@ -63,9 +63,9 @@ the `nlp` object on a text, the model is already loaded.
 
 <exercise id="3" title="Inspecting the pipeline">
 
-Let's inspect the small English model's pipeline!
+Let's inspect the small English pipeline!
 
-- Load the `en_core_web_sm` model and create the `nlp` object.
+- Load the `en_core_web_sm` pipeline and create the `nlp` object.
 - Print the names of the pipeline components using `nlp.pipe_names`.
 - Print the full pipeline of `(name, component)` tuples using `nlp.pipeline`.
 
@@ -79,7 +79,7 @@ full pipeline consisting of `(name, component)` tuples is available as
 
 </exercise>
 
-<exercise id="4" title="Custom pipeline components" type="slides,video">
+<exercise id="4" title="Custom pipeline components" type="slides">
 
 <slides source="chapter3_02_custom-pipeline-components" start="26:235" end="29:05">
 </slides>
@@ -91,7 +91,7 @@ full pipeline consisting of `(name, component)` tuples is available as
 Which of these problems can be solved by custom pipeline components? Choose all
 that apply!
 
-1. Updating the pre-trained models and improving their predictions
+1. Updating the trained pipelines and improving their predictions
 2. Computing your own values based on tokens and their attributes
 3. Adding named entities, for example based on a dictionary
 4. Implementing support for an additional language
@@ -154,7 +154,7 @@ The example shows a custom component that prints the number of tokens in a
 document. Can you complete it?
 
 - Complete the component function with the `doc`'s length.
-- Add the `length_component` to the existing pipeline as the **first**
+- Add the `"length_component"` to the existing pipeline as the **first**
   component.
 - Try out the new pipeline and process any text with the `nlp` object – for
   example "This is a sentence.".
@@ -164,8 +164,8 @@ document. Can you complete it?
 - To get the length of a `Doc` object, you can call Python's built-in `len()`
   method on it.
 - Use the `nlp.add_pipe` method to add the component to the pipeline. Remember
-  to set the `first` keyword argument to `True` to make sure it's added before
-  all other components.
+  to use the string name of the component and to set the `first` keyword
+  argument to `True` to make sure it's added before all other components.
 - To process a text, call the `nlp` object on it.
 
 </codeblock>
@@ -192,13 +192,13 @@ created as the variable `matcher`.
 - The `Span` class takes 4 arguments: the parent `doc`, the start index, the end
   index and the label.
 - To add a component after another, use the `after` keyword argument on
-  `nlp.add_pipe`.
+  `nlp.add_pipe`. Remember to use the string name of the component to add it.
 
 </codeblock>
 
 </exercise>
 
-<exercise id="8" title="Extension attributes" type="slides,video">
+<exercise id="8" title="Extension attributes" type="slides">
 
 <slides source="chapter3_03_extension-attributes" start="29:16" end="32:23">
 </slides>
@@ -275,9 +275,9 @@ extensions.
 
 <exercise id="11" title="Entities and extensions">
 
-In this exercise, you'll combine custom extension attributes with the model's
-predictions and create an attribute getter that returns a Wikipedia search URL
-if the span is a person, organization, or location.
+In this exercise, you'll combine custom extension attributes with the
+statistical predictions and create an attribute getter that returns a Wikipedia
+search URL if the span is a person, organization, or location.
 
 - Complete the `get_wikipedia_url` getter so it only returns the URL if the
   span's label is in the list of labels.
@@ -307,8 +307,8 @@ A phrase matcher with all countries is available as the variable `matcher`. A
 dictionary of countries mapped to their capital cities is available as the
 variable `CAPITALS`.
 
-- Complete the `countries_component` and create a `Span` with the label `"GPE"`
-  (geopolitical entity) for all matches.
+- Complete the `countries_component_function` and create a `Span` with the label
+  `"GPE"` (geopolitical entity) for all matches.
 - Add the component to the pipeline.
 - Register the Span extension attribute `"capital"` with the getter
   `get_capital`.
@@ -331,7 +331,7 @@ variable `CAPITALS`.
 
 </exercise>
 
-<exercise id="13" title="Scaling and performance" type="slides,video">
+<exercise id="13" title="Scaling and performance" type="slides">
 
 <slides source="chapter3_04_scaling-performance" start="32:335" end="34:515">
 </slides>

@@ -13,7 +13,7 @@ write rules to find words and phrases in text.
 
 - Match on `Doc` objects, not just strings
 - Match on tokens and token attributes
-- Use the model's predictions
+- Use a model's predictions
 - Example: "duck" (verb) vs. "duck" (noun)
 
 Notes: Compared to regular expressions, the matcher works with `Doc` and `Token`
@@ -22,7 +22,7 @@ objects instead of only strings.
 It's also more flexible: you can search for texts but also other lexical
 attributes.
 
-You can even write rules that use the model's predictions.
+You can even write rules that use a model's predictions.
 
 For example, find the word "duck" only if it's a verb, not a noun.
 
@@ -59,7 +59,7 @@ In this example, we're looking for two tokens with the text "iPhone" and "X".
 We can also match on other token attributes. Here, we're looking for two tokens
 whose lowercase forms equal "iphone" and "x".
 
-We can even write patterns using attributes predicted by the model. Here, we're
+We can even write patterns using attributes predicted by a model. Here, we're
 matching a token with the lemma "buy", plus a noun. The lemma is the base form,
 so this pattern would match phrases like "buying milk" or "bought flowers".
 
@@ -73,7 +73,7 @@ import spacy
 # Import the Matcher
 from spacy.matcher import Matcher
 
-# Load a model and create the nlp object
+# Load a pipeline and create the nlp object
 nlp = spacy.load("en_core_web_sm")
 
 # Initialize the matcher with the shared vocab
@@ -92,13 +92,14 @@ matches = matcher(doc)
 
 Notes: To use a pattern, we first import the matcher from `spacy.matcher`.
 
-We also load a model and create the `nlp` object.
+We also load a pipeline and create the `nlp` object.
 
 The matcher is initialized with the shared vocabulary, `nlp.vocab`. You'll learn
 more about this later – for now, just remember to always pass it in.
 
 The `matcher.add` method lets you add a pattern. The first argument is a unique
-ID to identify which pattern was matched. The second argument is a list of patterns.
+ID to identify which pattern was matched. The second argument is a list of
+patterns.
 
 To match the pattern on a text, we can call the matcher on any doc.
 

@@ -11,7 +11,7 @@ type: chapter
 id: 2
 ---
 
-<exercise id="1" title="Data Structures (1)" type="slides,video">
+<exercise id="1" title="Data Structures (1)" type="slides">
 
 <slides source="chapter2_01_data-structures-1" start="11:06" end="13:37">
 </slides>
@@ -53,12 +53,11 @@ id: 2
 Why does this code throw an error?
 
 ```python
-from spacy.lang.en import English
-from spacy.lang.de import German
+import spacy
 
 # Create an English and German nlp object
-nlp = English()
-nlp_de = German()
+nlp = spacy.blank("en")
+nlp_de = spacy.blank("de")
 
 # Get the ID for the string 'Bowie'
 bowie_id = nlp.vocab.strings["Bowie"]
@@ -96,7 +95,7 @@ the vocab.
 
 </exercise>
 
-<exercise id="4" title="Data Structures (2)" type="slides,video">
+<exercise id="4" title="Data Structures (2)" type="slides">
 
 <slides source="chapter2_02_data-structures-2" start="13:475" end="15:47">
 </slides>
@@ -249,7 +248,7 @@ The `.pos_` attribute returns the coarse-grained part-of-speech tag and
 
 </exercise>
 
-<exercise id="8" title="Word vectors and semantic similarity" type="slides,video">
+<exercise id="8" title="Word vectors and semantic similarity" type="slides">
 
 <slides source="chapter2_03_word-vectors-similarity" start="15:58" end="19:47">
 </slides>
@@ -259,15 +258,15 @@ The `.pos_` attribute returns the coarse-grained part-of-speech tag and
 <exercise id="9" title="Inspecting word vectors">
 
 In this exercise, you'll use a larger
-[English model](https://spacy.io/models/en), which includes around 20.000 word
-vectors. The model is already pre-installed.
+[English pipeline](https://spacy.io/models/en), which includes around 20.000
+word vectors. The pipeline package is already pre-installed.
 
-- Load the medium `"en_core_web_md"` model with word vectors.
+- Load the medium `"en_core_web_md"` pipeline with word vectors.
 - Print the vector for `"bananas"` using the `token.vector` attribute.
 
 <codeblock id="02_09">
 
-- To load a statistical model, call `spacy.load` with its string name.
+- To load a trained pipeline, call `spacy.load` with its string name.
 - To access a token in a doc, you can index into it. For example, `doc[4]`.
 
 </codeblock>
@@ -312,7 +311,7 @@ current object to.
 
 </exercise>
 
-<exercise id="11" title="Combining models and rules" type="slides,video">
+<exercise id="11" title="Combining predictions and rules" type="slides">
 
 <slides source="chapter2_04_models-rules" start="19:58" end="23:25">
 </slides>

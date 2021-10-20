@@ -2,10 +2,10 @@
 type: slides
 ---
 
-# Combining models and rules
+# Combining predictions and rules
 
-Notes: Combining statistical models with rule-based systems is one of the most
-powerful tricks you should have in your NLP toolbox.
+Notes: Combining predictions from statistical models with rule-based systems is
+one of the most powerful tricks you should have in your NLP toolbox.
 
 In this lesson, we'll take a look at how to do it with spaCy.
 
@@ -22,11 +22,10 @@ In this lesson, we'll take a look at how to do it with spaCy.
 Notes: Statistical models are useful if your application needs to be able to
 generalize based on a few examples.
 
-For instance, detecting product or person names usually benefits from a
-statistical model. Instead of providing a list of all person names ever, your
-application will be able to predict whether a span of tokens is a person name.
-Similarly, you can predict dependency labels to find subject/object
-relationships.
+For instance, detecting product or person names usually benefits from a trained
+model. Instead of providing a list of all person names ever, your application
+will be able to predict whether a span of tokens is a person name. Similarly,
+you can predict dependency labels to find subject/object relationships.
 
 To do this, you would use spaCy's entity recognizer, dependency parser or
 part-of-speech tagger.
@@ -117,7 +116,7 @@ Notes: Here's an example of a matcher rule for "golden retriever".
 If we iterate over the matches returned by the matcher, we can get the match ID
 and the start and end index of the matched span. We can then find out more about
 it. `Span` objects give us access to the original document and all other token
-attributes and linguistic features predicted by the model.
+attributes and linguistic features predicted by a model.
 
 For example, we can get the span's root token. If the span consists of more than
 one token, this will be the token that decides the category of the phrase. For
@@ -191,4 +190,4 @@ matched tokens "Golden Retriever" to analyze it in context.
 # Let's practice!
 
 Notes: Let's try out some of the new techniques for combining rules with
-statistical models.
+predictions.
