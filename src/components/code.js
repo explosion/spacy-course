@@ -131,6 +131,7 @@ class CodeBlock extends React.Component {
                                                         button: classes.button,
                                                         output: classes.output,
                                                     }}
+                                                    lineWrapping={isCommand}
                                                     repo={repo}
                                                     branch={branch}
                                                     kernelType={kernelType}

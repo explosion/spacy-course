@@ -27,14 +27,12 @@
             text-transform: uppercase
             z-index: 5
 
-.cell-cmd > div:first-child:before
-    content: "Terminal"
+.cell-cmd
+    padding-top: 3.5rem
 
     & > div:first-child:before
-        content: "$"
-        position: absolute
-        left: -1em
-        z-index: 10
+        content: "Terminal"
+        top: -2rem
 
 .output
     padding: 2rem 9rem 2rem 3rem
