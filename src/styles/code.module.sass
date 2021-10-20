@@ -3,7 +3,8 @@
     width: calc(100% + 4rem)
     margin-bottom: 5rem
 
-.cell
+.cell,
+.cell-cmd
     background: var(--syntax-background)
     border-top: 1px solid var(--color-subtle-medium)
 
@@ -25,6 +26,15 @@
             font-weight: bold
             text-transform: uppercase
             z-index: 5
+
+.cell-cmd > div:first-child:before
+    content: "Terminal"
+
+    & > div:first-child:before
+        content: "$"
+        position: absolute
+        left: -1em
+        z-index: 10
 
 .output
     padding: 2rem 9rem 2rem 3rem

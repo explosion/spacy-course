@@ -138,19 +138,66 @@ file. The code from the previous example is already available.
 
 <exercise id="7" title="The training config">
 
-TODO
+TODO (multiple choice)
 
 </exercise>
 
 <exercise id="8" title="Generating a config file">
 
-TODO
+The [`init-config` command](https://spacy.io/api/cli#init-config) auto-generates
+a config file for training with the default settings. We want to train a named
+entity recognizer, so we'll generate a config file for one pipeline component,
+`ner`. Because we're executing the command in a Jupyter environment in this
+course, we're using the prefix `!`. If you're running the command in your local
+terminal, you can leave this out.
+
+### Part 1
+
+- Use spaCy's `init-config` command to auto-generate a config and print it to
+  the terminal.
+- Use the `--pipeline` argument to specify one pipeline component, `ner`.
+
+<codeblock id="04_08_01"></codeblock>
+
+### Part 2
+
+- Use spaCy's `init-config` command to auto-generate a config.
+- Save the config to a file `config.cfg`.
+- Use the `--pipeline` argument to specify one pipeline component, `ner`.
+
+<codeblock id="04_08_02">
+
+- The `spacy init-config` command lets you specify the path to the output file
+  as its first argument.
+- Config files should have the file extension `.cfg`.
+
+</codeblock>
 
 </exercise>
 
 <exercise id="9" title="Using the training CLI">
 
-TODO
+Let's use the config file generated in the previous exercise and the training
+corpus we've created to train a named entity recognizer!
+
+The [`train`](https://spacy.io/api/cli#train) command lets you train a model
+from a training config file. A file `config.cfg` is already available in the
+current working directory, as well as a file `train.spacy` containing the
+training examples, and a file `dev.spacy` containing the evaluation examples.
+Because we're executing the command in a Jupyter environment in this course,
+we're using the prefix `!`. If you're running the command in your local
+terminal, you can leave this out.
+
+- Call the `train` command with the `config.cfg`.
+- Save the trained pipeline to a directory `output`.
+- Pass in the `train.spacy` and `dev.spacy` paths.
+
+<codeblock id="04_09">
+
+- The first argument of the `spacy train` command is the path to the config
+  file.
+
+</codeblock>
 
 </exercise>
 
@@ -222,21 +269,17 @@ Here's an excerpt from a training set that labels the entity type
 `TOURIST_DESTINATION` in traveler reviews.
 
 ```python
-TRAINING_DATA = [
-    (
-        "i went to amsterdem last year and the canals were beautiful",
-        {"entities": [(10, 19, "TOURIST_DESTINATION")]},
-    ),
-    (
-        "You should visit Paris once in your life, but the Eiffel Tower is kinda boring",
-        {"entities": [(17, 22, "TOURIST_DESTINATION")]},
-    ),
-    ("There's also a Paris in Arkansas, lol", {"entities": []}),
-    (
-        "Berlin is perfect for summer holiday: lots of parks, great nightlife, cheap beer!",
-        {"entities": [(0, 6, "TOURIST_DESTINATION")]},
-    ),
-]
+doc1 = nlp("i went to amsterdem last year and the canals were beautiful")
+doc1.ents = [Span(doc1, 3, 4, label="TOURIST_DESTINATION")]
+
+doc2 = nlp("You should visit Paris once, but the Eiffel Tower is kinda boring")
+doc2.ents = [Span(doc2, 3, 4, label="TOURIST_DESTINATION")]
+
+doc3 = nlp("There's also a Paris in Arkansas, lol")
+doc3.ents = []
+
+doc4 = nlp("Berlin is perfect for summer holiday: great nightlife and cheap beer!")
+doc4.ents = [Span(doc4, 0, 1, label="TOURIST_DESTINATION")]
 ```
 
 ### Part 1
@@ -275,18 +318,19 @@ of the big advantages of statistical named entity recognition.
 
 ### Part 2
 
-- Rewrite the `TRAINING_DATA` to only use the label `"GPE"` (cities, states,
-  countries) instead of `"TOURIST_DESTINATION"`.
-- Don't forget to add tuples for the `"GPE"` entities that weren't labeled in
-  the old data.
+- Rewrite the `doc.ents` to only use spans of the the label `"GPE"` (cities,
+  states, countries) instead of `"TOURIST_DESTINATION"`.
+- Don't forget to add spans for the `"GPE"` entities that weren't labeled in the
+  old data.
 
 <codeblock id="04_11">
 
 - For the spans that are already labelled, you'll only need to change the label
   name from `"TOURIST_DESTINATION"` to `"GPE"`.
 - One text includes a city and a state that aren't labeled yet. To add the
-  entity spans, count the characters to find out where the entity span starts
-  and where it ends. Then add `(start, end, label)` tuples to the entities.
+  entity spans, count the tokens to find out where the entity span starts and
+  where it ends. Keep in mind that the last token index is _exclusive_! Then add
+  a new `Span` to the `doc.ents`.
 
 </codeblock>
 
@@ -304,14 +348,13 @@ to automate this and use an annotation tool – for example,
 ### Part 1
 
 - Complete the entity offsets for the `"WEBSITE"` entities in the data. Feel
-  free to use `len()` if you don't want to count the characters.
+  free to use `len(doc1)` etc. if you don't want to count the tokens.
 
 <codeblock id="04_12_01">
 
-- The start and end offset of an entity span are the character offsets into the
-  text. For example, if an entity starts at position 5, the start offset is `5`.
-  Remember that the end offsets are _exclusive_ – so `10` means _up to_
-  character 10.
+- Keep in mind that the end token of a span is exclusive. So an entity that
+  starts at token 2 and ends at token 3 will have a start of `2` and an end of
+  `3`.
 
 </codeblock>
 
@@ -356,7 +399,10 @@ the problem here.
 
 <codeblock id="04_12_02">
 
-- To add more entities, append another `(start, end, label)` tuple to the list.
+- To add more entities, add another `Span` to the `doc.ents`.
+- - Keep in mind that the end token of a span is exclusive. So an entity that
+    starts at token 2 and ends at token 3 will have a start of `2` and an end of
+    `3`.
 
 </codeblock>
 

@@ -11,14 +11,22 @@ function getFiles({ allCode }, lang) {
         {},
         ...allCode.edges
             .filter(({ node }) => node.lang === lang)
-            .map(({ node }) => ({
-                [node.name]: node.code,
-            }))
+            .map(({ node }) => {
+                const isCommand = node.extension === 'sh'
+                const code = isCommand ? `!${node.code}` : node.code
+                return { [node.name]: { code, isCommand } }
+            })
     )
 }
 
-function makeTest(template, testFile, solution) {
-    return template.replace(/\${solution}/g, solution).replace(/\${test}/g, testFile)
+function makeTest(template, testFile, solution, isCommand) {
+    if (isCommand) {
+        // If it's a shell script and command, we don't add it to the test
+        // template for execution in Python
+        return template.replace(/\${solution}/g, solution).replace(/\${test}/g, '')
+    } else {
+        return template.replace(/\${solution}/g, solution).replace(/\${test}/g, testFile)
+    }
 }
 
 class CodeBlock extends React.Component {
@@ -62,12 +70,6 @@ class CodeBlock extends React.Component {
         const sourceId = source || `exc_${id}`
         const solutionId = solution || `solution_${id}`
         const testId = test || `test_${id}`
-        const juniperClassNames = {
-            cell: classes.cell,
-            input: classes.input,
-            button: classes.button,
-            output: classes.output,
-        }
         return (
             <ChapterContext.Consumer>
                 {({ lang }) => (
@@ -91,6 +93,7 @@ class CodeBlock extends React.Component {
                                             name
                                             code
                                             lang
+                                            extension
                                         }
                                     }
                                 }
@@ -105,9 +108,10 @@ class CodeBlock extends React.Component {
                                 debug,
                             } = data.site.siteMetadata.juniper
                             const files = getFiles(data, lang)
-                            const sourceFile = files[sourceId]
-                            const solutionFile = files[solutionId]
-                            const testFile = files[testId]
+                            const sourceFile = files[sourceId] && files[sourceId].code
+                            const solutionFile = files[solutionId] && files[solutionId].code
+                            const testFile = files[testId] && files[testId].code
+                            const isCommand = files[sourceId] && files[sourceId].isCommand
                             return (
                                 <LocaleContext.Consumer>
                                     {({ uiText }) => (
@@ -119,7 +123,14 @@ class CodeBlock extends React.Component {
                                                     msgError={uiText.connectingFailed}
                                                     msgLaunchDocker={uiText.launchingDocker}
                                                     msgReconnectDocker={uiText.reconnectingDocker}
-                                                    classNames={juniperClassNames}
+                                                    classNames={{
+                                                        cell: isCommand
+                                                            ? classes.cellCmd
+                                                            : classes.cell,
+                                                        input: classes.input,
+                                                        button: classes.button,
+                                                        output: classes.output,
+                                                    }}
                                                     repo={repo}
                                                     branch={branch}
                                                     kernelType={kernelType}
@@ -127,7 +138,9 @@ class CodeBlock extends React.Component {
                                                     actions={({ runCode }) => (
                                                         <>
                                                             <Button onClick={() => runCode()}>
-                                                                {uiText.runCode}
+                                                                {isCommand
+                                                                    ? uiText.runCommand
+                                                                    : uiText.runCode}
                                                             </Button>
                                                             {testFile && (
                                                                 <Button
@@ -137,7 +150,8 @@ class CodeBlock extends React.Component {
                                                                             makeTest(
                                                                                 testTemplate,
                                                                                 testFile,
-                                                                                value
+                                                                                value,
+                                                                                isCommand
                                                                             )
                                                                         )
                                                                     }

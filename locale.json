@@ -33,6 +33,7 @@
             "showSolution": "Show solution",
             "reset": "Reset",
             "runCode": "Run code",
+            "runCommand": "Run command",
             "next": "Next",
             "showHints": "Show hints",
             "hideHints": "Hide hints",

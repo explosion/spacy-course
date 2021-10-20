@@ -24,7 +24,7 @@ async function onCreateNode({
         const slug = createFilePath({ node, getNode, basePath: 'chapters', trailingSlash: false })
         createNodeField({ name: 'slug', node, value: slug })
         createNodeField({ name: 'lang', node, value: lang })
-    } else if (node.extension === 'py') {
+    } else if (node.extension === 'py' || node.extension == 'sh') {
         // Load the contents of the Python file and make it available via GraphQL
         // https://www.gatsbyjs.org/docs/creating-a-transformer-plugin/
         const content = await loadNodeContent(node)
@@ -37,6 +37,7 @@ async function onCreateNode({
             children: [],
             code: content,
             lang: node.relativeDirectory,
+            extension: node.extension,
             name: node.name,
             internal,
         }
