@@ -12,7 +12,7 @@ type: chapter
 id: 4
 ---
 
-<exercise id="1" title="Modelle trainieren und aktualisieren" type="slides,video">
+<exercise id="1" title="Modelle trainieren und aktualisieren" type="slides">
 
 <slides source="chapter4_01_training-updating-models" start="38:01" end="42:175">
 </slides>
@@ -109,7 +109,7 @@ Sätzen ist verfügbar als Variable `TEXTS`.
 
 </exercise>
 
-<exercise id="5" title="Die Trainingsschleife" type="slides,video">
+<exercise id="5" title="Die Trainingsschleife" type="slides">
 
 <slides source="chapter4_02_training-loop" start="42:29" end="46:29">
 </slides>
@@ -231,7 +231,7 @@ Anzahl der Entitäten, die das Modell hätte vorhersagen _sollen_.
 
 </exercise>
 
-<exercise id="9" title="Training Best Practices" type="slides,video">
+<exercise id="9" title="Training Best Practices" type="slides">
 
 <slides source="chapter4_03_training-best-practices" start="46:40" end="49:30">
 </slides>
@@ -396,7 +396,7 @@ haben können, sind sie hier wahrscheinlich nicht das Problem.
 
 </exercise>
 
-<exercise id="12" title="Abschluss" type="slides,video">
+<exercise id="12" title="Abschluss" type="slides">
 
 <slides source="chapter4_04_wrapping-up" start="49:40" end="52:21">
 </slides>

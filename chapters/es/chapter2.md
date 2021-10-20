@@ -11,7 +11,7 @@ type: chapter
 id: 2
 ---
 
-<exercise id="1" title="Estructuras de datos (1)" type="slides,video">
+<exercise id="1" title="Estructuras de datos (1)" type="slides">
 
 <slides source="chapter2_01_data-structures-1" start="13:48" end="15:55">
 </slides>
@@ -96,7 +96,7 @@ existente, incluyendo el vocabulario.
 
 </exercise>
 
-<exercise id="4" title="Estructuras de datos (2)" type="slides,video">
+<exercise id="4" title="Estructuras de datos (2)" type="slides">
 
 <slides source="chapter2_02_data-structures-2" start="16:06" end="17:56">
 </slides>
@@ -253,7 +253,7 @@ correcto para revisar los nombres propios.
 
 </exercise>
 
-<exercise id="8" title="Word vectors y similitud semántica" type="slides,video">
+<exercise id="8" title="Word vectors y similitud semántica" type="slides">
 
 <slides source="chapter2_03_word-vectors-similarity" start="18:075" end="21:508">
 </slides>
@@ -317,7 +317,7 @@ En este ejercicio usarás el método `similarity` de spaCy para comparar objetos
 
 </exercise>
 
-<exercise id="11" title="Combinando modelos y reglas" type="slides,video">
+<exercise id="11" title="Combinando modelos y reglas" type="slides">
 
 <slides source="chapter2_04_models-rules" start="22:015" end="25:308">
 </slides>

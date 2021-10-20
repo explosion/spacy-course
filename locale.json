@@ -5,7 +5,6 @@
         "slogan": "A free online course",
         "description": "spaCy is a modern Python library for industrial-strength Natural Language Processing. In this free and interactive online course, you'll learn how to use spaCy to build advanced natural language understanding systems, using both rule-based and machine learning approaches.",
         "bio": "I'm Ines, one of the core developers of spaCy and the co-founder of Explosion. I specialize in modern developer tools for AI, Machine Learning and NLP. I also really love building stuff for the web.",
-        "video": "THduWAnG97k",
         "footerLinks": [
             {
                 "text": "spaCy Website",
@@ -54,7 +53,6 @@
         "slogan": "Ein Gratis-Onlinekurs",
         "description": "spaCy ist eine moderne Python-Bibliothek für industriestarkes Natural Language Processing. In diesem kostenlosen und interaktiven Onlinekurs lernst du, mithilfe von spaCy fortgeschrittene Systeme für die Analyse natürlicher Sprache zu entwickeln und dabei sowohl regelbasierte Verfahren, als auch moderne Machine-Learning-Technologie einzusetzen.",
         "bio": "Ich bin Ines, eine Hauptentwicklerin von spaCy und Gründerin von Explosion. Mein Spezialgebiet sind moderne Entwicklertools für KI, Machine Learning und NLP. Ich baue außerdem supergern Dinge fürs Web.",
-        "video": "K1elwpgDdls",
         "footerLinks": [
             {
                 "text": "spaCy Website",
@@ -82,6 +80,7 @@
             "showSolution": "Lösung zeigen",
             "reset": "Zurücksetzen",
             "runCode": "Code testen",
+            "runCommand": "Befehl testen",
             "next": "Weiter",
             "showHints": "Tipps zeigen",
             "hideHints": "Tipps verstecken",
@@ -102,7 +101,6 @@
         "slogan": "Un curso en línea gratis",
         "description": "spaCy es un paquete moderno de Python para hacer Procesamiento de Lenguaje Natural de potencia industrial. En este curso en línea, interactivo y gratuito, aprenderás a usar spaCy para construir sistemas avanzados de comprensión de lenguaje natural usando enfoques basados en reglas y en machine learning.",
         "bio": "Soy Ines, una de las programadoras principales de spaCy y cofundadora de Explosion. Me especializo en herramientas modernas de desarrollo para AI, Machine Learning y NLP. También amo construir cosas para la web.",
-        "video": "RNiLVCE5d4k",
         "footerLinks": [
             { "text": "Website de spaCy", "url": "https://spacy.io" },
             { "text": "Código fuente", "url": "https://github.com/ines/spacy-course" },

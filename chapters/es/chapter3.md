@@ -12,7 +12,7 @@ type: chapter
 id: 3
 ---
 
-<exercise id="1" title="Pipelines de procesamiento" type="slides,video">
+<exercise id="1" title="Pipelines de procesamiento" type="slides">
 
 <slides source="chapter3_01_processing-pipelines" start="25:409" end="28:095">
 </slides>
@@ -81,7 +81,7 @@ La lista de los nombres de los componentes está disponible como el atributo
 
 </exercise>
 
-<exercise id="4" title="Componentes personalizados del pipeline" type="slides,video">
+<exercise id="4" title="Componentes personalizados del pipeline" type="slides">
 
 <slides source="chapter3_02_custom-pipeline-components" start="28:211" end="31:06">
 </slides>
@@ -201,7 +201,7 @@ spans resultantes a los `doc.ents`. En la variable `matcher` ya se creó un
 
 </exercise>
 
-<exercise id="8" title="Extensión de atributos" type="slides,video">
+<exercise id="8" title="Extensión de atributos" type="slides">
 
 <slides source="chapter3_03_extension-attributes" start="31:167" end="34:21">
 </slides>
@@ -335,7 +335,7 @@ disponible como la variable `CAPITALS`.
 
 </exercise>
 
-<exercise id="13" title="Aumentando la escala y el desempeño" type="slides,video">
+<exercise id="13" title="Aumentando la escala y el desempeño" type="slides">
 
 <slides source="chapter3_04_scaling-performance" start="34:313" end="36:552">
 </slides>

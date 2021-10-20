@@ -13,7 +13,7 @@ type: chapter
 id: 4
 ---
 
-<exercise id="1" title="Entrenando y actualizando modelos" type="slides,video">
+<exercise id="1" title="Entrenando y actualizando modelos" type="slides">
 
 <slides source="chapter4_01_training-updating-models" start="37:0565" end="41:14">
 </slides>
@@ -107,7 +107,7 @@ ejemplos de entrenamiento. Una lista de frases está disponible en la variable
 
 </exercise>
 
-<exercise id="5" title="El loop de entrenamiento" type="slides,video">
+<exercise id="5" title="El loop de entrenamiento" type="slides">
 
 <slides source="chapter4_02_training-loop" start="41:25" end="45:05">
 </slides>
@@ -229,7 +229,7 @@ predicho.
 
 </exercise>
 
-<exercise id="9" title="Buenas prácticas de entrenamiento" type="slides,video">
+<exercise id="9" title="Buenas prácticas de entrenamiento" type="slides">
 
 <slides source="chapter4_03_training-best-practices" start="45:153" end="47:415">
 </slides>
@@ -391,7 +391,7 @@ es probable que este no sea el problema aquí.
 
 </exercise>
 
-<exercise id="12" title="Cerrando el curso" type="slides,video">
+<exercise id="12" title="Cerrando el curso" type="slides">
 
 <slides source="chapter4_04_wrapping-up" start="47:5175" end="50:21">
 </slides>

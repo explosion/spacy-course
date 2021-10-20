@@ -13,7 +13,7 @@ type: chapter
 id: 3
 ---
 
-<exercise id="1" title="Pipelines für Textverarbeitung" type="slides,video">
+<exercise id="1" title="Pipelines für Textverarbeitung" type="slides">
 
 <slides source="chapter3_01_processing-pipelines" start="25:14" end="28:03">
 </slides>
@@ -82,7 +82,7 @@ ist verfügbar als `nlp.pipeline`.
 
 </exercise>
 
-<exercise id="4" title="Benutzerdefinierte Pipeline-Komponenten" type="slides,video">
+<exercise id="4" title="Benutzerdefinierte Pipeline-Komponenten" type="slides">
 
 <slides source="chapter3_02_custom-pipeline-components" start="28:14" end="31:272">
 </slides>
@@ -207,7 +207,7 @@ wurde bereits für dich als Variable `matcher` erstellt.
 
 </exercise>
 
-<exercise id="8" title="Erweiterte Attribute" type="slides,video">
+<exercise id="8" title="Erweiterte Attribute" type="slides">
 
 <slides source="chapter3_03_extension-attributes" start="31:38" end="35:015">
 </slides>
@@ -347,7 +347,7 @@ ist als Variable `CAPITALS` verfügbar.
 
 </exercise>
 
-<exercise id="13" title="Skalieren und Performance" type="slides,video">
+<exercise id="13" title="Skalieren und Performance" type="slides">
 
 <slides source="chapter3_04_scaling-performance" start="35:12" end="37:51">
 </slides>

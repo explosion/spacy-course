@@ -11,7 +11,7 @@ type: chapter
 id: 2
 ---
 
-<exercise id="1" title="Datenstrukturen (1)" type="slides,video">
+<exercise id="1" title="Datenstrukturen (1)" type="slides">
 
 <slides source="chapter2_01_data-structures-1" start="11:452" end="14:205">
 </slides>
@@ -101,7 +101,7 @@ Der Name der Variable `nlp` ist nur einen Konvention. Wenn der Code die Variable
 
 </exercise>
 
-<exercise id="4" title="Datenstrukturen (2)" type="slides,video">
+<exercise id="4" title="Datenstrukturen (2)" type="slides">
 
 <slides source="chapter2_02_data-structures-2" start="14:31" end="16:43">
 </slides>
@@ -262,7 +262,7 @@ korrekte Tag für Eigennamen.
 
 </exercise>
 
-<exercise id="8" title="Wortvektoren und sematische Ähnlichkeit" type="slides,video">
+<exercise id="8" title="Wortvektoren und sematische Ähnlichkeit" type="slides">
 
 <slides source="chapter2_03_word-vectors-similarity" start="16:535" end="21:04">
 </slides>
@@ -333,7 +333,7 @@ das aktuelle Objekt verglichen werden soll.
 
 </exercise>
 
-<exercise id="11" title="Modelle und Regeln kombinieren" type="slides,video">
+<exercise id="11" title="Modelle und Regeln kombinieren" type="slides">
 
 <slides source="chapter2_04_models-rules" start="21:145" end="25:035">
 </slides>

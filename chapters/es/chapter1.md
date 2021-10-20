@@ -12,7 +12,7 @@ type: chapter
 id: 1
 ---
 
-<exercise id="1" title="Introducción a spaCy" type="slides,video">
+<exercise id="1" title="Introducción a spaCy" type="slides">
 
 <slides source="chapter1_01_introduction-to-spacy" start="0:18" end="3:51">
 </slides>
@@ -114,7 +114,7 @@ ejemplo, `doc[5]` es el token en el índice 5.
 
 </exercise>
 
-<exercise id="5" title="Modelos estadísticos" type="slides,video">
+<exercise id="5" title="Modelos estadísticos" type="slides">
 
 <slides source="chapter1_02_statistical-models" start="4:03" end="8:35">
 </slides>
@@ -243,7 +243,7 @@ procesando. Veamos un ejemplo.
 
 </exercise>
 
-<exercise id="10" title="Encontrando patrones basados en reglas" type="slides,video">
+<exercise id="10" title="Encontrando patrones basados en reglas" type="slides">
 
 <slides source="chapter1_03_rule-based-matching" start="8:472" end="13:375">
 </slides>
