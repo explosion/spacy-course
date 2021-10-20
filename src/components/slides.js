@@ -9,7 +9,7 @@ import '../styles/reveal.css'
 import '../styles/plyr.css'
 import classes from '../styles/slides.module.sass'
 
-const CODE_LANGS = ['python']
+const CODE_LANGS = ['python', 'ini', 'bash']
 
 function getFiles({ allMarkdownRemark }, lang) {
     return Object.assign(

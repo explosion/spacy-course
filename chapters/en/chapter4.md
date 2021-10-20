@@ -144,7 +144,7 @@ TODO (multiple choice)
 
 <exercise id="8" title="Generating a config file">
 
-The [`init-config` command](https://spacy.io/api/cli#init-config) auto-generates
+The [`init config` command](https://spacy.io/api/cli#init-config) auto-generates
 a config file for training with the default settings. We want to train a named
 entity recognizer, so we'll generate a config file for one pipeline component,
 `ner`. Because we're executing the command in a Jupyter environment in this
@@ -153,15 +153,16 @@ terminal, you can leave this out.
 
 ### Part 1
 
-- Use spaCy's `init-config` command to auto-generate a config and print it to
-  the terminal.
+- Use spaCy's `init config` command to auto-generate a config. We're setting the
+  output file to `-` to print the generated config to the terminal so we can
+  look at it.
 - Use the `--pipeline` argument to specify one pipeline component, `ner`.
 
 <codeblock id="04_08_01"></codeblock>
 
 ### Part 2
 
-- Use spaCy's `init-config` command to auto-generate a config.
+- Use spaCy's `init config` command to auto-generate a config.
 - Save the config to a file `config.cfg`.
 - Use the `--pipeline` argument to specify one pipeline component, `ner`.
 

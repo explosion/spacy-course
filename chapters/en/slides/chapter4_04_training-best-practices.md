@@ -43,23 +43,6 @@ This is also known as the catastrophic forgetting problem.
   `"PERSON"`
 - Run existing spaCy model over data and extract all other relevant entities
 
-**BAD:**
-
-```python
-TRAINING_DATA = [
-    ("Reddit is a website", {"entities": [(0, 6, "WEBSITE")]})
-]
-```
-
-**GOOD:**
-
-```python
-TRAINING_DATA = [
-    ("Reddit is a website", {"entities": [(0, 6, "WEBSITE")]}),
-    ("Obama is a person", {"entities": [(0, 5, "PERSON")]})
-]
-```
-
 Note: To prevent this, make sure to always mix in examples of what the model
 previously got correct.
 

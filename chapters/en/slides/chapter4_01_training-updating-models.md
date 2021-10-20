@@ -48,13 +48,11 @@ and a little less critical for tagging and parsing.
 6. Go back to 2.
 
 Notes: spaCy supports updating existing models with more examples, and training
-new models.
+new models. If we're not starting with a trained pipeline, we first initialize
+the weights randomly.
 
-If we're not starting with a trained pipeline, we first initialize the weights
-randomly.
-
-Next, we call `nlp.update`, which predicts a batch of examples with the current
-weights.
+Next, spaCy calls `nlp.update`, which predicts a batch of examples with the
+current weights.
 
 The model then checks the predictions against the correct answers, and decides
 how to change the weights to achieve better predictions next time.
@@ -62,7 +60,9 @@ how to change the weights to achieve better predictions next time.
 Finally, we make a small correction to the current weights and move on to the
 next batch of examples.
 
-We continue calling `nlp.update` for each batch of examples in the data.
+spaCy then continues calling `nlp.update` for each batch of examples in the
+data. During training, you usually want to make multiple passes over the data
+and train until the model stops improving.
 
 ---
 
