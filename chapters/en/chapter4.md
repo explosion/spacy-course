@@ -46,10 +46,11 @@ change the weights.
 
 </opt>
 
-<opt text="...">
+<opt text="Training data, development data and test data.">
 
 To train a model, you need a config file defining the pipeline and training
-settings, as well as training and evaluation data.
+settings, as well as training and evaluation data. Test data is always nice to
+have, but it's not required.
 
 </opt>
 
