@@ -19,34 +19,37 @@ id: 4
 
 </exercise>
 
-<exercise id="2" title="Purpose of training">
+<exercise id="2" title="Training requirements">
 
 While spaCy comes with a range of trained pipelines to predict linguistic
 annotations, you almost _always_ want to fine-tune them with more examples. You
 can do this by training them with more labelled data.
 
-What does training **not** help with?
+What are typically the **minimum requirements** for training?
 
 <choice>
 
-<opt text="Improve model accuracy on your data.">
+<opt text="A config file, training data and evaluation data." correct="true">
 
-If a trained pipeline doesn't perform well on your data, training it with more
-examples is often a good solution.
-
-</opt>
-
-<opt text="Learn new classification schemes.">
-
-You can use training to teach the model new labels, entity types or other
-classification schemes.
+To train a model, you need a config file defining the pipeline and training
+settings, as well as training and evaluation data.
 
 </opt>
 
-<opt text="Discover patterns in unlabelled data." correct="true">
+<opt text="A config file, a <code>DocBin</code> and a gradient.">
 
-spaCy's components are supervised models for text annotations, meaning they can
-only learn to reproduce examples, not guess new labels from raw text.
+To train a model, you need a config file defining the pipeline and training
+settings, as well as training and evaluation data. A `DocBin` is a container for
+serialized `Doc` objects and it's used under the hood to save the training and
+evaluation data. The gradient is calculated during training and describes how to
+change the weights.
+
+</opt>
+
+<opt text="...">
+
+To train a model, you need a config file defining the pipeline and training
+settings, as well as training and evaluation data.
 
 </opt>
 
@@ -54,43 +57,7 @@ only learn to reproduce examples, not guess new labels from raw text.
 
 </exercise>
 
-<exercise id="4" title="Evaluation data">
-
-To train a model, you typically need training data _and_ a development for for
-evaluation. What is this evaluation data used for?
-
-<choice>
-
-<opt text="Provide more training examples as a fallback if the training data isn't enough.">
-
-During training, the model will only be updated from the training data. The
-development data is used to evaluate the model by comparing its predictions on
-unseen examples to the correct annotations. This is then reflected in the
-accuracy score.
-
-</opt>
-
-<opt text="Check predictions on unseen examples and calculate the accuracy score." correct="true">
-
-The development data is used to evaluate the model by comparing its predictions
-on unseen examples to the correct annotations. This is then reflected in the
-accuracy score.
-
-</opt>
-
-<opt text="TODO: ...">
-
-The development data is used to evaluate the model by comparing its predictions
-on unseen examples to the correct annotations. This is then reflected in the
-accuracy score.
-
-</opt>
-
-</choice>
-
-</exercise>
-
-<exercise id="5" title="Creating training data (1)">
+<exercise id="3" title="Creating training data (1)">
 
 spaCy's rule-based `Matcher` is a great way to quickly create training data for
 named entity models. A list of sentences is available as the variable `TEXTS`.
@@ -103,7 +70,7 @@ models, so we can create training data to teach a model to recognize them as
 - Write a pattern for two tokens: one token whose lowercase form matches
   `"iphone"` and a digit.
 
-<codeblock id="04_05">
+<codeblock id="04_03">
 
 - To match the lowercase form of a token, you can use the `"LOWER"` attribute.
   For example: `{"LOWER": "apple"}`.
@@ -114,7 +81,7 @@ models, so we can create training data to teach a model to recognize them as
 
 </exercise>
 
-<exercise id="6" title="Creating training data (2)">
+<exercise id="4" title="Creating training data (2)">
 
 After creating the data for our corpus, we need to save it out to a `.spacy`
 file. The code from the previous example is already available.
@@ -122,7 +89,7 @@ file. The code from the previous example is already available.
 - Instantiate the `DocBin` with the list of `docs`.
 - Save the `DocBin` to a file called `train.spacy`.
 
-<codeblock id="04_06">
+<codeblock id="04_04">
 
 - You can initialize the `DocBin` with a list of docs by passing them in as the
   keyword argument `docs`.
@@ -133,20 +100,20 @@ file. The code from the previous example is already available.
 
 </exercise>
 
-<exercise id="7" title="Configuring and running the training" type="slides">
+<exercise id="5" title="Configuring and running the training" type="slides">
 
 <slides source="chapter4_02_running-training">
 </slides>
 
 </exercise>
 
-<exercise id="8" title="The training config">
+<exercise id="6" title="The training config">
 
 TODO (multiple choice)
 
 </exercise>
 
-<exercise id="9" title="Generating a config file">
+<exercise id="7" title="Generating a config file">
 
 The [`init config` command](https://spacy.io/api/cli#init-config) auto-generates
 a config file for training with the default settings. We want to train a named
@@ -162,7 +129,7 @@ terminal, you can leave this out.
   look at it.
 - Use the `--pipeline` argument to specify one pipeline component, `ner`.
 
-<codeblock id="04_09_01"></codeblock>
+<codeblock id="04_07_01"></codeblock>
 
 ### Part 2
 
@@ -170,7 +137,7 @@ terminal, you can leave this out.
 - Save the config to a file `config.cfg`.
 - Use the `--pipeline` argument to specify one pipeline component, `ner`.
 
-<codeblock id="04_09_02">
+<codeblock id="04_07_02">
 
 - The `spacy init-config` command lets you specify the path to the output file
   as its first argument.
@@ -180,7 +147,7 @@ terminal, you can leave this out.
 
 </exercise>
 
-<exercise id="10" title="Using the training CLI">
+<exercise id="8" title="Using the training CLI">
 
 Let's use the config file generated in the previous exercise and the training
 corpus we've created to train a named entity recognizer!
@@ -197,7 +164,7 @@ terminal, you can leave this out.
 - Save the trained pipeline to a directory `output`.
 - Pass in the `train.spacy` and `dev.spacy` paths.
 
-<codeblock id="04_10">
+<codeblock id="04_08">
 
 - The first argument of the `spacy train` command is the path to the config
   file.
@@ -206,7 +173,7 @@ terminal, you can leave this out.
 
 </exercise>
 
-<exercise id="11" title="Exploring the model">
+<exercise id="9" title="Exploring the model">
 
 Let's see how the model performs on unseen data! To speed things up a little, we
 already ran a trained pipeline for the label `"GADGET"` over some text. Here are
@@ -261,14 +228,14 @@ number of total correct entities the model _should_ have predicted.
 
 </exercise>
 
-<exercise id="12" title="Training best practices" type="slides">
+<exercise id="10" title="Training best practices" type="slides">
 
 <slides source="chapter4_03_training-best-practices" start="42:36" end="44:55">
 </slides>
 
 </exercise>
 
-<exercise id="13" title="Good data vs. bad data">
+<exercise id="11" title="Good data vs. bad data">
 
 Here's an excerpt from a training set that labels the entity type
 `TOURIST_DESTINATION` in traveler reviews.
@@ -328,7 +295,7 @@ of the big advantages of statistical named entity recognition.
 - Don't forget to add spans for the `"GPE"` entities that weren't labeled in the
   old data.
 
-<codeblock id="04_13">
+<codeblock id="04_11">
 
 - For the spans that are already labelled, you'll only need to change the label
   name from `"TOURIST_DESTINATION"` to `"GPE"`.
@@ -341,7 +308,7 @@ of the big advantages of statistical named entity recognition.
 
 </exercise>
 
-<exercise id="14" title="Training multiple labels">
+<exercise id="12" title="Training multiple labels">
 
 Here's a small sample of a dataset created to train a new entity type
 `"WEBSITE"`. The original dataset contains a few thousand sentences. In this
@@ -355,7 +322,7 @@ to automate this and use an annotation tool – for example,
 - Complete the entity offsets for the `"WEBSITE"` entities in the data. Feel
   free to use `len(doc1)` etc. if you don't want to count the tokens.
 
-<codeblock id="04_14_01">
+<codeblock id="04_12_01">
 
 - Keep in mind that the end token of a span is exclusive. So an entity that
   starts at token 2 and ends at token 3 will have a start of `2` and an end of
@@ -402,7 +369,7 @@ the problem here.
 - Update the training data to include annotations for the `"PERSON"` entities
   "PewDiePie" and "Alexis Ohanian".
 
-<codeblock id="04_14_02">
+<codeblock id="04_12_02">
 
 - To add more entities, add another `Span` to the `doc.ents`.
 - - Keep in mind that the end token of a span is exclusive. So an entity that
@@ -413,7 +380,7 @@ the problem here.
 
 </exercise>
 
-<exercise id="15" title="Wrapping up" type="slides">
+<exercise id="13" title="Wrapping up" type="slides">
 
 <slides source="chapter4_04_wrapping-up" start="45:01" end="47:195">
 </slides>
