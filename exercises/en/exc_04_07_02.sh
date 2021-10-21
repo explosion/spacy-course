@@ -1,1 +1,1 @@
-python -m spacy ____ ____ ____ --____ ____
+cat ./config.cfg

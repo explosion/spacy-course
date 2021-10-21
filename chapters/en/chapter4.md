@@ -125,26 +125,18 @@ terminal, you can leave this out.
 
 ### Part 1
 
-- Use spaCy's `init config` command to auto-generate a config. We're setting the
-  output file to `-` to print the generated config to the terminal so we can
-  look at it.
+- Use spaCy's `init config` command to auto-generate a config.
+- Save the config to a file `config.cfg`.
 - Use the `--pipeline` argument to specify one pipeline component, `ner`.
 
 <codeblock id="04_07_01"></codeblock>
 
 ### Part 2
 
-- Use spaCy's `init config` command to auto-generate a config.
-- Save the config to a file `config.cfg`.
-- Use the `--pipeline` argument to specify one pipeline component, `ner`.
+Let's take a look at the config spaCy just generated! You can run the command
+below to print the config to the terminal and inspect it.
 
-<codeblock id="04_07_02">
-
-- The `spacy init-config` command lets you specify the path to the output file
-  as its first argument.
-- Config files should have the file extension `.cfg`.
-
-</codeblock>
+<codeblock id="04_07_02"></codeblock>
 
 </exercise>
 

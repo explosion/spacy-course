@@ -1,1 +1,1 @@
-python -m spacy ____ ____ - --pipeline ____
+python -m spacy ____ ____ ____ --____ ____

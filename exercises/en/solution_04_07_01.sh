@@ -1,1 +1,1 @@
-python -m spacy init config - --pipeline ner
+python -m spacy init config ./config.cfg --pipeline ner
