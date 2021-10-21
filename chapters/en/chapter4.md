@@ -54,13 +54,6 @@ only learn to reproduce examples, not guess new labels from raw text.
 
 </exercise>
 
-<exercise id="3" title="Creating a training corpus" type="slides">
-
-<slides source="chapter4_02_training-corpus">
-</slides>
-
-</exercise>
-
 <exercise id="4" title="Evaluation data">
 
 To train a model, you typically need training data _and_ a development for for
@@ -142,7 +135,7 @@ file. The code from the previous example is already available.
 
 <exercise id="7" title="Configuring and running the training" type="slides">
 
-<slides source="chapter4_03_running-training">
+<slides source="chapter4_02_running-training">
 </slides>
 
 </exercise>
@@ -270,7 +263,7 @@ number of total correct entities the model _should_ have predicted.
 
 <exercise id="12" title="Training best practices" type="slides">
 
-<slides source="chapter4_04_training-best-practices" start="42:36" end="44:55">
+<slides source="chapter4_03_training-best-practices" start="42:36" end="44:55">
 </slides>
 
 </exercise>
@@ -422,7 +415,7 @@ the problem here.
 
 <exercise id="15" title="Wrapping up" type="slides">
 
-<slides source="chapter4_05_wrapping-up" start="45:01" end="47:195">
+<slides source="chapter4_04_wrapping-up" start="45:01" end="47:195">
 </slides>
 
 </exercise>
