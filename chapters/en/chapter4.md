@@ -296,6 +296,8 @@ of the big advantages of statistical named entity recognition.
   entity spans, count the tokens to find out where the entity span starts and
   where it ends. Keep in mind that the last token index is _exclusive_! Then add
   a new `Span` to the `doc.ents`.
+- Keep an eye on the tokenization! Print the tokens in the `Doc` if you're not
+  sure.
 
 </codeblock>
 
