@@ -1,4 +1,5 @@
 const path = require('path')
+const fs = require('fs-extra')
 const { createFilePath } = require('gatsby-source-filesystem')
 
 const chapterTemplate = path.resolve('src/templates/chapter.js')
@@ -7,14 +8,7 @@ function replacePath(pagePath) {
     return pagePath === `/` ? pagePath : pagePath.replace(/\/$/, ``)
 }
 
-async function onCreateNode({
-    node,
-    actions,
-    getNode,
-    loadNodeContent,
-    createNodeId,
-    createContentDigest,
-}) {
+async function onCreateNode({ node, actions, getNode, createNodeId, createContentDigest }) {
     const { createNodeField, createNode, createParentChildLink } = actions
     if (node.internal.type === 'MarkdownRemark') {
         const parentDir = getNode(node.parent).relativeDirectory
@@ -24,13 +18,16 @@ async function onCreateNode({
         const slug = createFilePath({ node, getNode, basePath: 'chapters', trailingSlash: false })
         createNodeField({ name: 'slug', node, value: slug })
         createNodeField({ name: 'lang', node, value: lang })
-    } else if (node.extension === 'py' || node.extension == 'sh') {
+    } else if (node.extension === 'py' || node.extension === 'sh') {
         // Load the contents of the Python file and make it available via GraphQL
         // https://www.gatsbyjs.org/docs/creating-a-transformer-plugin/
-        const content = await loadNodeContent(node)
+        // Had to add a workaround to load the node from a file because Gatsby
+        // otherwise tried to load it as a module
+        if (!node.absolutePath) return
+        const content = await fs.readFile(String(node.absolutePath), 'utf-8')
+        node.internal.content = content
         const contentDigest = createContentDigest(content)
         const id = createNodeId(`${node.id}-code`)
-        const internal = { type: 'Code', contentDigest }
         const codeNode = {
             id,
             parent: node.id,
@@ -39,7 +36,7 @@ async function onCreateNode({
             lang: node.relativeDirectory,
             extension: node.extension,
             name: node.name,
-            internal,
+            internal: { type: 'Code', contentDigest },
         }
         createNode(codeNode)
         createParentChildLink({ parent: node, child: codeNode })
