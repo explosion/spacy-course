@@ -10,7 +10,7 @@ doc1.ents = [
 ]
 
 doc2 = nlp("PewDiePie smashes YouTube record")
-doc2.ents = [Span(doc2, 0, 1, label="WEBSITE")]
+doc2.ents = [Span(doc2, 2, 3, label="WEBSITE")]
 
 doc3 = nlp("Reddit founder Alexis Ohanian gave away two Metallica tickets to fans")
 doc3.ents = [Span(doc3, 0, 1, label="WEBSITE")]
