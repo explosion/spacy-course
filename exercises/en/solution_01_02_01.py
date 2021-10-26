@@ -1,7 +1,7 @@
 # Import spaCy
 import spacy
 
-# Create the nlp object
+# Create the English nlp object
 nlp = spacy.blank("en")
 
 # Process a text
