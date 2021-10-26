@@ -15,7 +15,7 @@ def length_component_function(doc):
 nlp = spacy.load("en_core_web_sm")
 
 # Add the component first in the pipeline and print the pipe names
-____.____(____)
+____.____(____, ____=____)
 print(nlp.pipe_names)
 
 # Process a text

@@ -1,6 +1,6 @@
 import spacy
 
-# Load the en_core_web_md model
+# Load the en_core_web_md pipeline
 nlp = spacy.load("en_core_web_md")
 
 # Process a text

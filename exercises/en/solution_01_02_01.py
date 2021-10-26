@@ -1,11 +1,12 @@
-# Import the English language class
-from spacy.lang.en import English
+# Import spaCy
+import spacy
 
 # Create the nlp object
-nlp = English()
+nlp = spacy.blank("en")
 
 # Process a text
 doc = nlp("This is a sentence.")
 
 # Print the document text
 print(doc.text)
+

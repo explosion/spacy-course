@@ -1,7 +1,7 @@
-from spacy.lang.en import English
+import spacy
 from spacy.tokens import Token
 
-nlp = English()
+nlp = spacy.blank("en")
 
 # Register the Token extension attribute "is_country" with the default value False
 Token.set_extension("is_country", default=False)

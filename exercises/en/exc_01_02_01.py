@@ -1,7 +1,7 @@
 # Import spaCy
 import ____
 
-# Create the English nlp object
+# Create the nlp object
 nlp = ____
 
 # Process a text

@@ -16,7 +16,7 @@ how to get started.
 
 ```python
 # Import spaCy
-from spacy
+import spacy
 
 # Create a blank English nlp object
 nlp = spacy.blank("en")
