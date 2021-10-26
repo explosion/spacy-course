@@ -1,6 +1,6 @@
 def test():
     assert (
-        "import Doc, Span" or "import Span, Doc" in __solution__
+        "import Doc, Span" in __solution__ or "import Span, Doc" in __solution__
     ), "Did you import the Doc and Span correctly?"
     assert doc.text == "I like David Bowie", "Did you create the Doc correctly?"
     assert span.text == "David Bowie", "Did you create the span correctly?"

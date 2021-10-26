@@ -1,6 +1,6 @@
 import spacy
 
-nlp = spacy.blank("en)
+nlp = spacy.blank("en")
 
 # Import the Doc class
 from ____ import ____

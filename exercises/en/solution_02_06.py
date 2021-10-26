@@ -1,6 +1,6 @@
-from spacy.lang.en import English
+import spacy
 
-nlp = English()
+nlp = spacy.blank("en")
 
 # Import the Doc and Span classes
 from spacy.tokens import Doc, Span
