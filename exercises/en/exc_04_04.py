@@ -9,7 +9,7 @@ with open("exercises/en/iphone.json", encoding="utf8") as f:
 nlp = spacy.blank("en")
 matcher = Matcher(nlp.vocab)
 # Add patterns to the matcher
-pattern1 = ([{"LOWER": "iphone"}, {"LOWER": "x"}],)
+pattern1 = ([{"LOWER": "iphone"}, {"LOWER": "x"}])
 pattern2 = [{"LOWER": "iphone"}, {"IS_DIGIT": True}]
 matcher.add("GADGET", [pattern1, pattern2])
 docs = []
