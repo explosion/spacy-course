@@ -15,7 +15,7 @@ pattern1 = [{"LOWER": "iphone"}, {"LOWER": "x"}]
 # Token whose lowercase form matches "iphone" and a digit
 pattern2 = [{"LOWER": "iphone"}, {"IS_DIGIT": True}]
 
-# Add patterns to the matcher and check the result
+# Add patterns to the matcher and create docs with matched entities
 matcher.add("GADGET", [pattern1, pattern2])
 docs = []
 for doc in nlp.pipe(TEXTS):
