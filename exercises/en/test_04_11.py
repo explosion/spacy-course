@@ -1,7 +1,7 @@
 def test():
     assert [(ent.text, ent.label_) for ent in doc1.ents] == [
         ("amsterdem", "GPE")
-   ], "Double-check the entities in the first example."
+    ], "Double-check the entities in the first example."
     assert [(ent.text, ent.label_) for ent in doc2.ents] == [
         ("Paris", "GPE")
     ], "Double-check the entities in the second example."
