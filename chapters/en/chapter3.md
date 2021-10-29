@@ -418,7 +418,7 @@ the `nlp` object.
 
 ### Part 2
 
-- Disable the tagger and parser using the `nlp.select_pipes` method.
+- Disable the tagger and lemmatizer using the `nlp.select_pipes` method.
 - Process the text and print all entities in the `doc`.
 
 <codeblock id="03_16_02">
