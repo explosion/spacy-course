@@ -171,7 +171,7 @@ This is a lot of work, but can be semi-automated – for example, using spaCy's
 - **Training data:** used to update the model
 - **Evaluation data:**
   - data the model hasn't seen during training
-  - used to calculate how accurate model is
+  - used to calculate how accurate the model is
   - should be representative of the data the model will see at runtime
 
 Notes: When training your model, it's important to know how it's doing and
