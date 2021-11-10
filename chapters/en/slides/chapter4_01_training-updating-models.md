@@ -13,7 +13,7 @@ focusing specifically on the named entity recognizer.
 
 ---
 
-# Why updating the model?
+# Why update the model?
 
 - Better results on your specific domain
 - Learn classification schemes specifically for your problem
