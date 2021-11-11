@@ -19,38 +19,35 @@ id: 4
 
 </exercise>
 
-<exercise id="2" title="Training requirements">
+<exercise id="2" title="Training and evaluation data">
 
-While spaCy comes with a range of trained pipelines to predict linguistic
-annotations, you almost _always_ want to fine-tune them with more examples. You
-can do this by training them with more labelled data.
-
-What are typically the **minimum requirements** for training?
+To train a model, you typically need training data _and_ a development for for
+evaluation. What is this evaluation data used for?
 
 <choice>
 
-<opt text="A config file, training data and evaluation data." correct="true">
+<opt text="Provide more training examples as a fallback if the training data isn't enough.">
 
-To train a model, you need a config file defining the pipeline and training
-settings, as well as training and evaluation data.
-
-</opt>
-
-<opt text="A config file, a <code>DocBin</code> and a gradient.">
-
-To train a model, you need a config file defining the pipeline and training
-settings, as well as training and evaluation data. A `DocBin` is a container for
-serialized `Doc` objects and it's used under the hood to save the training and
-evaluation data. The gradient is calculated during training and describes how to
-change the weights.
+During training, the model will only be updated from the training data. The
+development data is used to evaluate the model by comparing its predictions on
+unseen examples to the correct annotations. This is then reflected in the
+accuracy score.
 
 </opt>
 
-<opt text="Training data, development data and test data.">
+<opt text="Check predictions on unseen examples and calculate the accuracy score." correct="true">
 
-To train a model, you need a config file defining the pipeline and training
-settings, as well as training and evaluation data. Test data is always nice to
-have, but it's not required.
+The development data is used to evaluate the model by comparing its predictions
+on unseen examples to the correct annotations. This is then reflected in the
+accuracy score.
+
+</opt>
+
+<opt text="TODO: ...">
+
+The development data is used to evaluate the model by comparing its predictions
+on unseen examples to the correct annotations. This is then reflected in the
+accuracy score.
 
 </opt>
 
