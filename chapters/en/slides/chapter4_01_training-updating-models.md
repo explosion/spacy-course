@@ -212,7 +212,7 @@ chapter 2.
 
 In this example, we're creating two `Doc` objects for our corpus: one that
 contains an entity and another one that doesn't contain any entities. To set the
-entities on the `Doc`, we can write add a `Span` to the `doc.ents`.
+entities on the `Doc`, we can add a `Span` to the `doc.ents`.
 
 Of course, you'll need a lot more examples to effectively train your model to
 generalize and predict similar entities in context. Depending on the task, you
@@ -262,7 +262,7 @@ objects. You can instantiate it with a list of `Doc` objects and call its
 `to_disk` method to save it to a binary file. We typically use the file
 extension `.spacy` for these files.
 
-Compared to other binary serializatipn protocols like `pickle`, the `DocBin` is
+Compared to other binary serialization protocols like `pickle`, the `DocBin` is
 faster and produces smaller file sizes because it only stores the shared
 vocabulary once. You can read more about how it works in the
 [documentation](https://spacy.io/api/docbin).
