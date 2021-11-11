@@ -21,7 +21,7 @@ id: 4
 
 <exercise id="2" title="Training and evaluation data">
 
-To train a model, you typically need training data _and_ a development for for
+To train a model, you typically need training data _and_ a development for
 evaluation. What is this evaluation data used for?
 
 <choice>
