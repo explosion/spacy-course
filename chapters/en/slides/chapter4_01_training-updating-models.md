@@ -115,14 +115,11 @@ doc.ents = []
 
 Notes: Let's look at an example for a specific component: the entity recognizer.
 
-The entity recognizer takes a document and predicts phrases and their labels.
-This means that the training data needs to include texts, the entities they
-contain, and the entity labels.
+The entity recognizer takes a document and predicts phrases and their labels _in
+context_. This means that the training data needs to include texts, the entities
+they contain, and the entity labels.
 
 Entities can't overlap, so each token can only be part of one entity.
-
-Because the entity recognizer predicts entities _in context_, it also needs to
-be trained on entities _and_ their surrounding context.
 
 The easiest way to do this is to show the model a text and entity spans. spaCy
 can be updated from regular `Doc` objects with entities annotated as the
@@ -148,8 +145,8 @@ even if they weren't in the training data.
 - Can be semi-automated – for example, using spaCy's `Matcher`!
 
 Notes: The training data tells the model what we want it to predict. This could
-be texts and named entities we want to recognize, or tokens and their correct
-part-of-speech tags.
+be texts and named entities we want to recognize, tokens and their correct
+part-of-speech tags or anything else the model should predict.
 
 To update an existing model, we can start with a few hundred to a few thousand
 examples.
