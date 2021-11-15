@@ -18,7 +18,7 @@ Notes: TODO
 - configures the training process and hyperparameters
 - makes your training more reproducible
 
-Notes: spaCy uses a config file, usually called `config.cfg` as the "single
+Notes: spaCy uses a config file, usually called `config.cfg`, as the "single
 source of truth" for all settings. The config file defines how to initialize the
 `nlp` object, which pipeline components to add and how their internal model
 implementations should be configured. It also includes all settings for the
@@ -65,7 +65,7 @@ the settings for the named entity recognizer's model implementation.
 Config files can also reference Python functions using the `@` notation. For
 example, the tokenizer defines a registered tokenizer function. You can use this
 to customize different parts of the `nlp` object and training – from plugging in
-your own tokenizer, all the way to implementing your own model architetures. But
+your own tokenizer, all the way to implementing your own model architectures. But
 let's not worry about this for now – what you'll learn in this chapter will
 simply use the defaults spaCy provides out-of-the-box!
 
@@ -90,7 +90,7 @@ $ python -m spacy init config ./config.cfg --pipeline ner
 
 Notes: Of course, you don't have to write the config files by hand, and in a lot
 of cases, you won't even need to customize it at all. spaCy can auto-generate a
-config file for you
+config file for you.
 
 The quickstart widget in the documentation lets you generate a config
 interactively by selecting the language and pipeline components you need, as
@@ -224,7 +224,7 @@ Notes: To make it easy to deploy your pipelines, spaCy provides a handy command
 to package them as Python packages. The `spacy package` command takes the path
 to your exported pipeline and an output directory. It then generates a Python
 package containing your pipeline. The Python package is a `.tar.gz` file and can
-be installed into your environment
+be installed into your environment.
 
 You can also provide an optional name and version on the command. This lets you
 manage multiple different versions of a pipeline, for example, if you decide to
@@ -232,7 +232,7 @@ customize your pipeline later or train it with more data.
 
 The package behaves just like any other Python package. After installation, you
 can load your pipeline using its name. Note that spaCy will automatically add
-the language code to name. So your pipeline `my_pipeline` will become
+the language code to the name. So your pipeline `my_pipeline` will become
 `en_my_pipeline`.
 
 ---
