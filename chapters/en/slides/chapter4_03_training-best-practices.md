@@ -30,8 +30,8 @@ them.
 If you're updating an existing model with new data, especially new labels, it
 can overfit and adjust _too much_ to the new examples.
 
-For instance, if you're only updating it with examples of "website", it may
-"forget" other labels it previously predicted correctly – like "person".
+For instance, if you're only updating it with examples of `"WEBSITE"`, it may
+"forget" other labels it previously predicted correctly – like `"PERSON"`.
 
 This is also known as the catastrophic forgetting problem.
 
