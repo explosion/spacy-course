@@ -43,7 +43,7 @@ accuracy score.
 
 </opt>
 
-<opt text="TODO: ...">
+<opt text="Define training examples without annotations.">
 
 The development data is used to evaluate the model by comparing its predictions
 on unseen examples to the correct annotations. This is then reflected in the
@@ -107,7 +107,42 @@ file. The code from the previous example is already available.
 
 <exercise id="6" title="The training config">
 
-TODO (multiple choice)
+The `config.cfg` file is the "single source of truth" for training a pipeline
+with spaCy. Which of the following is **not true** about the config?
+
+<choice>
+
+<opt text="It allows you to configure the training process and hyperparameters.">
+
+The config file includes all settings for the training process, including
+hyperparameters.
+
+</opt>
+
+<opt text="It helps make your training more reproducible.">
+
+Because the config includes _all_ settings and no hidden defaults, it can help
+make your training experiments more reproducible and others will be able to
+re-run your experiments with the exact same settings.
+
+</opt>
+
+<opt text="It creates an installable Python package with your pipeline." correct="true">
+
+The config file includes all settings related to training and how to set up the
+pipeline, but it doesn't package your pipeline. To create an installable Python
+package, you can use the `spacy package` command.
+
+</opt>
+
+<opt text="It defines the pipeline's components and their settings.">
+
+The `[components]` block of the config file includes all pipeline components and
+their settings, including the model implementations used.
+
+</opt>
+
+</choice>
 
 </exercise>
 

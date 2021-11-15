@@ -4,7 +4,11 @@ type: slides
 
 # Configuring and running the training
 
-Notes: TODO
+Notes: Now that you've learned how to create training data, let's take a look at
+training your pipeline and configuring the training. In this lesson, you'll
+learn all about spaCy's training config system, how to generate your own
+training config, how to use the CLI to train a model and how to explore your
+trained pipeline afterwards.
 
 ---
 
@@ -65,8 +69,8 @@ the settings for the named entity recognizer's model implementation.
 Config files can also reference Python functions using the `@` notation. For
 example, the tokenizer defines a registered tokenizer function. You can use this
 to customize different parts of the `nlp` object and training – from plugging in
-your own tokenizer, all the way to implementing your own model architectures. But
-let's not worry about this for now – what you'll learn in this chapter will
+your own tokenizer, all the way to implementing your own model architectures.
+But let's not worry about this for now – what you'll learn in this chapter will
 simply use the defaults spaCy provides out-of-the-box!
 
 ---
