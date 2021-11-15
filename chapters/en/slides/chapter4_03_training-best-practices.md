@@ -24,8 +24,8 @@ Let's take a look at some of the problems you may come across.
     `"PERSON"` is
 - Also known as "catastrophic forgetting" problem
 
-Notes: Statistical models can learn lots of things – but it doesn't mean that
-they won't unlearn them.
+Notes: Statistical models can learn lots of things – but they can also unlearn
+them.
 
 If you're updating an existing model with new data, especially new labels, it
 can overfit and adjust _too much_ to the new examples.

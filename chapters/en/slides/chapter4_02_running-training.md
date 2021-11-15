@@ -59,8 +59,8 @@ hidden_width = 64
 
 Notes: Here's an excerpt from a config file used to train a pipeline with a
 named entity recognizer. The config is grouped into sections, and nested
-sections are defined using a dot. For example, `[components.ner]` defines the
-settings for the pipeline’s named entity recognizer.
+sections are defined using a dot. For example, `[components.ner.model]` defines
+the settings for the named entity recognizer's model implementation.
 
 Config files can also reference Python functions using the `@` notation. For
 example, the tokenizer defines a registered tokenizer function. You can use this
@@ -172,7 +172,8 @@ column. It reflects how accurately your model predicted the correct answers in
 the evaluation data.
 
 The training runs until the model stops improving and exits automatically. At
-the end, the pipeline with the best score is saved to the output directory.
+the end, the last trained pipeline and the pipeline with the best score is saved
+to the output directory.
 
 ---
 
@@ -184,7 +185,7 @@ the end, the pipeline with the best score is saved to the output directory.
 ```python
 import spacy
 
-nlp = spacy.load("/path/to/output/model-last")
+nlp = spacy.load("/path/to/output/model-best")
 doc = nlp("iPhone 11 vs iPhone 8: What's the difference?")
 print(doc.ents)
 ```
@@ -205,7 +206,7 @@ then use it to process and analyze text.
 - easy to version and deploy
 
 ```bash
-$ python -m spacy package /path/to/output/model-last ./packages --name my_pipeline --version 1.0.0
+$ python -m spacy package /path/to/output/model-best ./packages --name my_pipeline --version 1.0.0
 ```
 
 ```bash
