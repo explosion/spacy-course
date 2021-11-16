@@ -179,15 +179,16 @@ corpus we've created to train a named entity recognizer!
 
 The [`train`](https://spacy.io/api/cli#train) command lets you train a model
 from a training config file. A file `config_gadget.cfg` is already available in
-the current working directory, as well as a file `train_gadget.spacy` containing
+the directory `exercises/en`, as well as a file `train_gadget.spacy` containing
 the training examples, and a file `dev_gadget.spacy` containing the evaluation
 examples. Because we're executing the command in a Jupyter environment in this
 course, we're using the prefix `!`. If you're running the command in your local
 terminal, you can leave this out.
 
-- Call the `train` command with the `config_gadget.cfg`.
+- Call the `train` command with the file `exercises/en/config_gadget.cfg`.
 - Save the trained pipeline to a directory `output`.
-- Pass in the `train_gadget.spacy` and `dev_gadget.spacy` paths.
+- Pass in the `exercises/en/train_gadget.spacy` and
+  `exercises/en/dev_gadget.spacy` paths.
 
 <codeblock id="04_08">
 
