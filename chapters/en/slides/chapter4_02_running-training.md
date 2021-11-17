@@ -175,15 +175,15 @@ The most interesting score to keep an eye on is the combined score in the last
 column. It reflects how accurately your model predicted the correct answers in
 the evaluation data.
 
-The training runs until the model stops improving and exits automatically. At
-the end, the last trained pipeline and the pipeline with the best score is saved
-to the output directory.
+The training runs until the model stops improving and exits automatically.
 
 ---
 
 # Loading a trained pipeline
 
 - output after training is a regular loadable spaCy pipeline
+  - `model-last`: last trained pipeline
+  - `model-best`: best trained pipeline
 - load it with `spacy.load`
 
 ```python
@@ -196,6 +196,9 @@ print(doc.ents)
 
 Notes: The pipeline saved after training is a regular loadable spaCy pipeline –
 just like the trained pipelines provided by spaCy, for example `en_core_web_sm`.
+At the end, the last trained pipeline and the pipeline with the best score is
+saved to the output directory.
+
 You can load your trained pipeline by passing the path to `spacy.load`. You can
 then use it to process and analyze text.
 
