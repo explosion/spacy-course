@@ -1,27 +1,23 @@
 import json
+import spacy
 from spacy.matcher import Matcher
-from spacy.lang.de import German
+from spacy.tokens import Span, DocBin
 
 with open("exercises/de/iphone.json", encoding="utf8") as f:
     TEXTS = json.loads(f.read())
 
-nlp = German()
+nlp = spacy.blank("de")
 matcher = Matcher(nlp.vocab)
+# Füge Pattern zum Matcher hinzu
 pattern1 = [{"LOWER": "iphone"}, {"LOWER": "x"}]
 pattern2 = [{"LOWER": "iphone"}, {"IS_DIGIT": True}]
 matcher.add("GADGET", None, pattern1, pattern2)
+docs = []
+for doc in nlp.pipe(TEXTS):
+    matches = matcher(doc)
+    spans = [Span(doc, start, end, label=match_id) for match_id, start, end in matches]
+    doc.ents = spans
+    docs.append(doc)
 
-TRAINING_DATA = []
-
-# Erstelle ein Doc-Objekt für jeden Text aus TEXTS
-for ____ in ____:
-    # Wende den Matcher an und erstelle eine Liste der gefundenen Spans
-    spans = [____[____:____] for match_id, start, end in matcher(doc)]
-    # Erstelle (Start-Buchstabe, End-Buchstabe, Label) Tuples für die gefundenen Spans
-    entities = [(span.start_char, span.end_char, "GADGET") for span in spans]
-    # Formatiere die Resultate als (doc.text, entities) Tuple
-    training_example = (____, {"entities": ____})
-    # Füge das Beispiel zur Liste TRAINING_DATA hinzu
-    ____.____(____)
-
-print(*TRAINING_DATA, sep="\n")
+doc_bin = ____(____=____)
+doc_bin.____(____)
