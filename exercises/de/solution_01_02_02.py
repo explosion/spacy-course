@@ -1,8 +1,8 @@
-# Importiere die Klasse German
-from spacy.lang.de import German
+# Importiere spaCy
+import spacy
 
-# Erstelle das nlp-Objekt
-nlp = German()
+# Erstelle ein deutsches nlp-Objekt
+nlp = spacy.blank("de")
 
 # Verarbeite einen Text
 doc = nlp("Liebe Grüße!")

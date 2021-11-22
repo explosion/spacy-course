@@ -14,10 +14,10 @@ doc = nlp(
 pattern = [{"TEXT": "iOS"}, {"IS_DIGIT": True}]
 
 # Füge das Pattern zum Matcher hinzu und wende den Matcher auf das Doc an
-matcher.add("IOS_VERSION_PATTERN", None, pattern)
+matcher.add("IOS_VERSION_PATTERN", [pattern])
 matches = matcher(doc)
 print("Anzahl an Resultaten:", len(matches))
 
 # Iteriere über die Resultate und drucke den Text der Span
 for match_id, start, end in matches:
-    print("Resultat gefunden", doc[start:end].text)
+    print("Resultat gefunden:", doc[start:end].text)

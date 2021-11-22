@@ -13,7 +13,7 @@ matcher = Matcher(nlp.vocab)
 pattern = [{"TEXT": "iPhone"}, {"TEXT": "X"}]
 
 # Füge das Pattern zum Matcher hinzu
-matcher.add("IPHONE_X_PATTERN", None, pattern)
+matcher.add("IPHONE_X_PATTERN", [pattern])
 
 # Wende den Matcher auf das Doc an
 matches = matcher(doc)
