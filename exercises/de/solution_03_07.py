@@ -1,4 +1,5 @@
 import spacy
+from spacy.language import Language
 from spacy.matcher import PhraseMatcher
 from spacy.tokens import Span
 
@@ -10,7 +11,8 @@ matcher = PhraseMatcher(nlp.vocab)
 matcher.add("ANIMAL", None, *animal_patterns)
 
 # Definiere die benutzerdefinierte Komponente
-def animal_component(doc):
+@Language.component("animal_component")
+def animal_component_function(doc):
     # Wende den Matcher auf das Doc an
     matches = matcher(doc)
     # Erstelle eine Span für jedes Resultat und weise das Label "ANIMAL" zu

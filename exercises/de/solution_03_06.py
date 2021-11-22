@@ -1,7 +1,9 @@
 import spacy
+from spacy.language import Language
 
 # Definiere die benutzerdefinierte Komponente
-def length_component(doc):
+@Language.component("length_component")
+def length_component_function(doc):
     # Berechne die Länge des Dokuments
     doc_length = len(doc)
     print(f"Dieses Dokument ist {doc_length} Tokens lang.")

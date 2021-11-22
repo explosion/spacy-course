@@ -3,7 +3,7 @@ def test():
         "reversed"
     ), "Hast du die Token-Erweiterung korrekt registriert?"
     ext = Token.get_extension("reversed")
-    assert ext[2] is not None, "Hast du die Getter-Funktion korreekt angegeben?"
+    assert ext[2] is not None, "Hast du die Getter-Funktion korrekt angegeben?"
     assert (
         "getter=get_reversed" in __solution__
     ), "Hast du die Funktion get_reversed als Getter-Funktion angegeben?"
