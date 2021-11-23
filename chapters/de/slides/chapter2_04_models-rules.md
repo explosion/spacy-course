@@ -22,7 +22,7 @@ In dieser Lektion schauen wir uns an, wie das mit spaCy funktioniert.
 Notes: Statistische Modelle sind nützlich, wenn deine Anwendung in der Lage sein
 soll, auf der Basis von einigen Beispielen zu generalisieren.
 
-Zum Beispiel, das Erkennen von Produkt- und Personennamen profitiert
+Das Erkennen von Produkt- und Personennamen zum Beispiel profitiert
 typischerweise von einem statistischen Modell. Statt lediglich eine Liste aller
 Personennamen zu verwenden, ist deine Anwendung so in der Lage, vorherzusagen,
 ob eine Span aus Tokens ein Personenname ist. Ebenso kannst du
@@ -46,7 +46,7 @@ Notes: Regelbasierte Ansätze hingegen sind nützlich, wenn die Anzahl der zu
 erkennenden Begriffe mehr oder weniger begrenzt ist. Zum Beispiel, alle Länder
 oder Städte der Welt, Namen von Medikamenten, oder sogar Hunderassen.
 
-In spaCy kannst du dies mit benutzerdefinierten Tokenisierungsregeln, sowie mit
+In spaCy kannst du dies mit benutzerdefinierten Tokenisierungsregeln sowie mit
 dem Matcher und PhraseMatcher umsetzen.
 
 ---
@@ -60,11 +60,11 @@ matcher = Matcher(nlp.vocab)
 
 # Patterns sind Listen von Dictionaries, die Tokens beschreiben
 pattern = [{"LEMMA": "mögen", "POS": "VERB"}, {"LOWER": "katzen"}]
-matcher.add("KATZEN", None, pattern)
+matcher.add("KATZEN", [pattern])
 
 # Operatoren können festlegen, wie oft ein Token gefunden werden soll
 pattern = [{"TEXT": "sehr", "OP": "+"}, {"TEXT": "glücklich"}]
-matcher.add("SEHR_GLUECKLICH", None, pattern)
+matcher.add("SEHR_GLUECKLICH", [pattern])
 
 # Anwendung des Matchers auf ein Doc gibt Liste von (match_id, start, end) Tuples zurück
 doc = nlp("Ich mag Katzen und bin sehr sehr glücklich")
@@ -82,11 +82,11 @@ Patterns sind Listen von Dictionaries und jedes Dictionary beschreibt einen
 Token und seine Attribute. Patterns können mit der Methode `matcher.add` zum
 Matcher hinzugefügt werden.
 
-Mit Operatoren kannst du angeben, wie oft ein Token gefunden werden soll. Zum
-Beispiel, "+" findet einen Token einmal oder öfter.
+Mit Operatoren kannst du angeben, wie oft ein Token gefunden werden soll. "+" zum
+Beispiel findet einen Token einmal oder öfter.
 
 Wird der Matcher mit einem `Doc`-Objekt als Argument aufgerufen, gibt er eine
-Liste der Resultate zurück. Jedes Resultat ist ein Tuple, das aus einer ID und
+Liste der Resultate zurück. Jedes Resultat ist ein Tupel, das aus einer ID und
 dem gefundenen Start- und End-Token-Index im Dokument besteht.
 
 ---
@@ -95,7 +95,7 @@ dem gefundenen Start- und End-Token-Index im Dokument besteht.
 
 ```python
 matcher = Matcher(nlp.vocab)
-matcher.add("HUND", None, [{"LEMMA": "deutsch"}, {"LOWER": "kurzhaardackel"}])
+matcher.add("HUND", [[{"LEMMA": "deutsch"}, {"LOWER": "kurzhaardackel"}]])
 doc = nlp("Ich habe einen deutschen Kurzhaardackel")
 
 for match_id, start, end in matcher(doc):
@@ -127,10 +127,10 @@ mehr als einem Token besteht, ist dies der Token, der über die Art des Ausdruck
 entscheidet. Zum Beispiel, der Root-Token von "deutscher Kurzhaardackel" ist
 "Kurzhaardackel". Wir können außerdem den Kopf-Token (head) des Root-Tokens
 finden. Dies ist das syntaktische "Elternteil", das über den Ausdruck bestimmt –
-in diesem Fall, das Verb "habe".
+in diesem Fall das Verb "habe".
 
 Schließlich können wir uns ebenfalls den vorherigen Token und seine Attribute
-anschauen. In diesem Fall ist es ein Determinativ, der Artikel "einen".
+anschauen. In diesem Fall ist es ein Determinativ: der Artikel "einen".
 
 ---
 
@@ -153,7 +153,7 @@ Er erwartet `Doc`-Objekte als Patterns.
 Er ist außerdem sehr schnell.
 
 Somit ist er sehr nützlich für das Finden von großen Lexika und Wordlisten in
-großen Mengen Text.
+großen Textmengen.
 
 ---
 
@@ -165,7 +165,7 @@ from spacy.matcher import PhraseMatcher
 matcher = PhraseMatcher(nlp.vocab)
 
 pattern = nlp("Golden Retriever")
-matcher.add("HUND", None, pattern)
+matcher.add("HUND", [pattern])
 doc = nlp("Ich habe einen Golden Retriever")
 
 # Iteriere über die Resultate
