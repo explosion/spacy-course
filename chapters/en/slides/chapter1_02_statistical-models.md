@@ -6,7 +6,7 @@ type: slides
 
 Notes: Let's add some more power to the `nlp` object!
 
-In this lesson, you'll learn about spaCy's statistical models.
+In this lesson, you'll learn about spaCy's trained pipelines.
 
 ---
 

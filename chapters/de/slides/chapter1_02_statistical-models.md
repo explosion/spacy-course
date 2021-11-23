@@ -2,15 +2,15 @@
 type: slides
 ---
 
-# Statistische Modelle
+# Trainierte Pipelines
 
 Notes: Lass uns dem `nlp`-Objekt ein bisschen mehr Power geben!
 
-In dieser Lektion lernst du mehr über spaCys statistische Modelle.
+In dieser Lektion lernst du mehr über spaCys trainierte Pipelines.
 
 ---
 
-# Was sind statistische Modelle?
+# Was sind trainierte Pipelines?
 
 - Ermöglichen spaCy, linguistische Attribute _im Kontext_ vorherzusagen
   - Wortarten
@@ -21,17 +21,17 @@ In dieser Lektion lernst du mehr über spaCys statistische Modelle.
 
 Notes: Einige der interessantesten Dinge, die man analysieren kann, sind
 kontextabhängig. So zum Beispiel, ob ein Wort ein Verb ist, oder ob ein
-Textabschnitt ein Personenname ist.
+Textabschnitt ein Name einer Person ist.
 
-Statistische Modell ermöglichen es spaCy, Vorhersagen im Kontext zu treffen.
-Diese umfassen typischerweise die Vorhersage von Wortarten, Dependenzrelationen
-und Entitäten.
+Komponenten einer trainierten Pipeline enthalten statistische Modelle, die es
+spaCy ermöglichen, Vorhersagen im Kontext zu treffen. Diese umfassen typischerweise 
+die Vorhersage von Wortarten, Dependenzrelationen und Entitäten.
 
-Modelle werden anhand von großen Datensets von annotierten Beispieltexten
-trainiert
+Pipelines werden anhand von großen Datensätzen mit annotierten Beispieltexten
+trainiert.
 
 Sie können mit mehr Beispielen aktualisiert werden, um ihre Vorhersagen zu
-verfeinern und zu verbessern – zum Beispiel, um bessere Ergenisse bei der
+verfeinern und zu verbessern – zum Beispiel, um bessere Ergebnisse bei der
 Analyse von deinen Daten zu erzielen.
 
 ---
@@ -53,22 +53,23 @@ nlp = spacy.load("de_core_news_sm")
 - Binäre Gewichte
 - Vokabular
 - Meta-Information (Sprache, Pipeline)
+- Konfigurationsdatei
 
-Notes: spaCy stellt eine Vielzahl von vortrainierten Modellpaketen zur
+Notes: spaCy stellt eine Vielzahl von vortrainierten Pipeline-Paketen zur
 Verfügung, die du mithilfe des Befehls `spacy download` herunterladen kannst.
-Das "de_core_news_sm"-Paket zum Beispiel ist ein kleines deutsches Modell, das
+Das "de_core_news_sm"-Paket zum Beispiel ist eine kleine deutsche Pipeline, die
 alle Kernfähigkeiten unterstützt und anhand von Nachrichtentexten trainiert
 wurde.
 
-Die Methode `spacy.load` lädt ein Modellpaket eines bestimmten Namens und gibt
+Die Methode `spacy.load` lädt ein Pipeline-Paket eines bestimmten Namens und gibt
 ein `nlp`-Objekt zurück.
 
 Das Paket enthält die binären Gewichte, die spaCy ermöglichen, Vorhersagen zu
 treffen.
 
-Es beinhaltet außerdem das Vokabular und Meta-Informationen, die spaCy sagen,
-welche Sprach-Klasse zu benutzen ist und wie die Verarbeitungs-Pipeline
-konfiguriert werden soll.
+Es beinhaltet außerdem das Vokabular, Meta-Informationen über die Pipeline und die
+Konfigurationsdatei, die zum Trainieren genutzt wurde. Dadurch weiß spaCy, welche 
+Sprachklasse zu nutzen ist und wie die Verarbeitungs-Pipeline konfiguriert werden soll.
 
 ---
 
@@ -100,10 +101,10 @@ Notes: Lass uns nun einmal die Vorhersagen anschauen. In diesem Beispiel
 benutzen wir spaCy, um Wortarten im Kontext, auch "part-of-speech tags" genannt,
 vorherzusagen.
 
-Zuerst laden wir das kleine deutsche Modell und erhalten ein `nlp`-Objekt
+Zuerst laden wir die kleine deutsche Pipeline und erhalten ein `nlp`-Objekt
 zurück.
 
-Als nächstes verarbeiten wir den Text "Sie aß die Pizza".
+Als Nächstes verarbeiten wir den Text "Sie aß die Pizza".
 
 Für jeden Token im Doc können wir nun den Text und das Attribut `.pos_`, die
 vorhergesagte Wortart, drucken.
@@ -153,7 +154,7 @@ Wort verbunden ist.
 | **oa** | Akkusativobjekt | Pizza    |
 
 Notes: Um Dependenzrelationen zu beschreiben, verwendet spaCy ein
-standardisiertes Labelsystem. Hier einige Beispiele für die verwendete Labels im
+standardisiertes Labelsystem. Hier zwei Beispiele für verwendete Labels im
 Deutschen:
 
 Das Pronomen "Sie" ist ein Subjekt und verbunden mit dem Verb, in diesem Fall
@@ -162,8 +163,6 @@ Das Pronomen "Sie" ist ein Subjekt und verbunden mit dem Verb, in diesem Fall
 Das Nomen "Pizza" ist ein Akkusativobjekt, verbunden mit dem Verb "aß". Die
 Pizza wird gegessen vom Subjekt, "Sie".
 
-Der Determinativ "die", auch Artikel genannt, ist mit dem Nomen "Pizza"
-verbunden.
 
 ---
 
@@ -194,11 +193,11 @@ Land.
 Über die Property `doc.ents` kannst du auf die vom Modell vorhergesagten
 Entitäten zugreifen.
 
-Sie gibt einen Iterator von `Span`-Objekten zurück und wir können also den Text
+Sie gibt einen Iterator von `Span`-Objekten zurück und wir können dadurch den Text
 der Entität, sowie das Label, verfügbar über das Attribut `.label_` drucken.
 
 In diesem Fall hat das Modell korrekt "Apple" als Organisation, "Cupertino" als
-Location, also Ort, und "iPhone" als sonstige Entität vorhergesagt, welche unter
+Location, also Ort, und "iPhone" als sonstige Entität vorhergesagt, die unter
 anderem Produkte beinhaltet.
 
 Verschiedene Modelle verwenden verschiedene Labels je nach Daten, mit denen das
@@ -248,4 +247,4 @@ Gleiches funktioniert für Wortarten und Entitäten.
 # Los geht's!
 
 Notes: Jetzt bist du dran. Lass uns einen genaueren Blick auf spaCys
-statistische Modelle und ihre Vorhersagen werfen.
+trainierte Pipelines und ihre Vorhersagen werfen.

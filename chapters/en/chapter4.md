@@ -354,7 +354,7 @@ to automate this and use an annotation tool – for example,
 
 - Keep in mind that the end token of a span is exclusive. So an entity that
   starts at token 2 and ends at token 3 will have a start of `2` and an end of
-  `3`.
+  `4`.
 
 </codeblock>
 
@@ -402,7 +402,7 @@ the problem here.
 - To add more entities, add another `Span` to the `doc.ents`.
 - Keep in mind that the end token of a span is exclusive. So an entity that
   starts at token 2 and ends at token 3 will have a start of `2` and an end of
-  `3`.
+  `4`.
 
 </codeblock>
 
