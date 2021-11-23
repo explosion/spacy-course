@@ -316,7 +316,7 @@ of the big advantages of statistical named entity recognition.
 
 ### Part 2
 
-- Rewrite the `doc.ents` to only use spans of the the label `"GPE"` (cities,
+- Rewrite the `doc.ents` to only use spans of the label `"GPE"` (cities,
   states, countries) instead of `"TOURIST_DESTINATION"`.
 - Don't forget to add spans for the `"GPE"` entities that weren't labeled in the
   old data.
@@ -400,9 +400,9 @@ the problem here.
 <codeblock id="04_12_02">
 
 - To add more entities, add another `Span` to the `doc.ents`.
-- - Keep in mind that the end token of a span is exclusive. So an entity that
-    starts at token 2 and ends at token 3 will have a start of `2` and an end of
-    `3`.
+- Keep in mind that the end token of a span is exclusive. So an entity that
+  starts at token 2 and ends at token 3 will have a start of `2` and an end of
+  `3`.
 
 </codeblock>
 

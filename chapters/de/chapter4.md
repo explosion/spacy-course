@@ -3,9 +3,9 @@ title: 'Kapitel 4: Trainieren eines neuronalen Netzwerks'
 description:
   'In diesem Kapitel lernst du, wie du spaCys statistische Modelle aktualisieren
   und für deine spezielle Anwendung anpassen kannst – zum Beispiel, um eine neue
-  Art von Entität in Online-Kommentaren vorherzusagen. Du wirst deine eigene
-  Trainingsschleife schreiben und die Grundlagen des Trainingsprozesses
-  verstehen, samt Tipps und Tricks, die deine NLP-Projekte erfolgreicher machen.'
+  Art von Entität in Online-Kommentaren vorherzusagen. Du wirst dein eigenes Modell
+  von Grund auf trainieren und verstehen, wie die Grundladen des Trainings funktionieren,
+  samt Tipps und Tricks, die deine NLP-Projekte erfolgreicher machen.'
 prev: /chapter3
 next: null
 type: chapter
@@ -19,37 +19,35 @@ id: 4
 
 </exercise>
 
-<exercise id="2" title="Ziel des Trainings">
+<exercise id="2" title="Trainings- und Evaluierungsdaten">
 
-spaCy bietet zwar eine Reihe an vortrainierten Modellen, um linguistische
-Eigenschaften vorherzusagen. Jedoch möchte man Modelle eigentlich fast _immer_
-mit mehr Beispielen anpassen. Dies kannst du tun, indem du sie mit mehr
-annotierten Daten trainierst.
-
-Womit kann Training **nicht** helfen?
+Um ein Modell zu trainieren, brauchst du in der Regel Trainings- _und_ Entwicklungsdaten
+für die Evaluation. Wofür werden diese Evaluierungsdaten benötigt?
 
 <choice>
 
-<opt text="Verbessern der Modell-Vorhersagen über deine Daten.">
+<opt text="Um mehr Trainingsbeispiele zur Sicherheit bereitzustellen, falls die Trainingsdaten nicht ausreichen.">
 
-Wenn ein vortrainiertes Modell keine guten Ergebnisse mit deinen Daten erzielt,
-ist es oft eine gute Lösung, das Modell mit mehr speziellen Beispielen zu
-trainieren.
-
-</opt>
-
-<opt text="Lernen von neuen Labels und Klassifizierungen.">
-
-Mithilfe von Training kannst du einem Modell neue Labels, Entitäten und andere
-Klassifizierungssysteme beibringen.
+Während des Trainings wird das Modell nur mithilfe der Trainingsdaten aktualisiert. Die
+Entwicklungsdaten werden genutzt, um das Modell zu evaluieren. Dabei werden dessen Vorhersagen
+für bisher unbekannten Beispiele mit den korrekten Annotationen verglichen. Dies wird 
+daraufhin mithilfe des Genauigkeitswertes widergespiegelt.
 
 </opt>
 
-<opt text="Entdecken von Mustern in unannotierten Daten." correct="true">
+<opt text="Zum Überprüfen von Vorhersagen für unbekannte Beispiele und zum Berechnen des Genauigkeitswertes." correct="true">
 
-spaCys Komponenten sind überwachte Modelle für Textannotationen, was bedeutet,
-dass sie nur lernen können, Beispiele zu reproduzieren, nicht jedoch neue Labels
-auf Basis von rohem Text zu erraten.
+Die Entwicklungsdaten werden genutzt, um das Modell zu evaluieren. Dabei werden dessen 
+Vorhersagen für bisher unbekannten Beispiele mit den korrekten Annotationen verglichen. 
+Dies wird daraufhin mithilfe des Genauigkeitswertes widergespiegelt.
+
+</opt>
+
+<opt text="Zum Definieren von Trainingsdaten ohne Annotation.">
+
+Die Entwicklungsdaten werden genutzt, um das Modell zu evaluieren. Dabei werden dessen 
+Vorhersagen für bisher unbekannten Beispiele mit den korrekten Annotationen verglichen. 
+Dies wird daraufhin mithilfe des Genauigkeitswertes widergespiegelt.
 
 </opt>
 
@@ -60,7 +58,7 @@ auf Basis von rohem Text zu erraten.
 <exercise id="3" title="Trainingsdaten erstellen (1)">
 
 spaCys regelbasierter `Matcher` eignet sich super dazu, schnell Trainingsdaten
-für Entitäten zu erstellen. Eine Liste mit Sätzen ist verfügbar als die Variable
+für Entitäten zu erstellen. Eine Liste mit Sätzen ist verfügbar als Variable
 `TEXTS`. Du kannst sie ausdrucken, um sie zu begutachten. Wir wollen alle
 Erwähnungen verschiedener iPhone-Modelle finden, damit wir Trainingsdaten
 erstellen und einem Modell beibringen können, diese als `"GADGET"` zu erkennnen.
@@ -75,7 +73,7 @@ erstellen und einem Modell beibringen können, diese als `"GADGET"` zu erkennnen
 - Um die kleingeschriebene Form eines Tokens zu beschreiben, kannst du das
   Attribut `"LOWER"` verwenden. Zum Beispiel: `{"LOWER": "apple"}`.
 - Um einen Ziffer-Token zu finden, kannst du das Attribut `"IS_DIGIT"`
-  verwenden. Zum Beispiel: `{"IS_DIGIT": True}`.
+  verwenden, zum Beispiel `{"IS_DIGIT": True}`.
 
 </codeblock>
 
@@ -83,27 +81,20 @@ erstellen und einem Modell beibringen können, diese als `"GADGET"` zu erkennnen
 
 <exercise id="4" title="Trainingsdaten erstellen (2)">
 
-Lass uns die Patterns, die wir in der vorherigen Übung gerade erstellt haben,
-verwenden, um schnell ein paar Trainingsdaten zu erstellen. Eine Liste mit
-Sätzen ist verfügbar als Variable `TEXTS`.
+Nachdem die Daten für unseren Korpus erstellt wurden, müssen wir sie in einer 
+`.spacy`-Datei speichern. Der Code der vorherigen Aufgabe wurde hier bereits
+zur Verfügung gestellt.
 
-- Erstelle ein `Doc`-Objekt für jeden Text und benutze dafür `nlp.pipe`.
-- Wende den Matcher auf das `doc` an und erstelle eine Liste der gefundenen
-  Spans.
-- Erstelle `(Start-Buchstabe, End-Buchstabe, Label)` Tuples für die gefundenen
-  Spans.
-- Formatiere alle Beispiele als Tuple bestehend aus Text und einem Dictionary
-  mit dem Schlüssel `"entities"` und den Entitäts-Tuples als Wert.
-- Füge die Beispiele zu `TRAINING_DATA` hinzu und begutachte die gedruckten
-  Daten.
+- Instanziiere das `DocBin` mithilfe der Liste von `docs`. 
+- Speichere das `DocBin` in einer Datei mit dem Namen `train.spacy`.
 
 <codeblock id="04_04">
 
-- Um Resultate der Patterns zu finden, rufe den `matcher` mit einem `doc` als
-  Argument auf.
-- Die Resultate des Matchers sind `(match_id, start, end)` Tuples.
-- Um ein Beispiel zur Liste der Trainingsdaten hinzuzufügen, kannst du die
-  Methode `TRAINING_DATA.append()` verwenden.
+- Du kannst das `DocBin` mit einer Liste von docs instanziieren, indem du diese Liste
+  im Argument `docs` übergibst.
+- Die Methode `to_disk` von `DocBin` benötigt ein Argument: den Pfad der Datei in der die
+  binären Daten gespeichert werden. Überprüfe hierbei, dass die Datei die Endung`.spacy`
+  nutzt.
 
 </codeblock>
 
@@ -111,71 +102,108 @@ Sätzen ist verfügbar als Variable `TEXTS`.
 
 <exercise id="5" title="Die Trainingsschleife" type="slides">
 
-<slides source="chapter4_02_training-loop" start="42:29" end="46:29">
+<slides source="chapter4_02_running-training" start="42:29" end="46:29">
 </slides>
 
 </exercise>
 
-<exercise id="6" title="Vorbereitung der Pipeline">
+<exercise id="6" title="Die Training-config">
 
-In dieser Übung wirst du eine spaCy-Pipeline vorbereiten, um dem Entity
-Recognizer beizubringen, `"GADGET"`-Entitäten im Text zu erkennen – zum
-Beispiel, "iPhone X".
+Die `config.cfg`-Datei ist die "alleinige Quelle der Wahrheit", wenn es ums Trainieren
+einer Pipeline in spaCy geht. Welche der folgenden Aussagen ist **nicht wahr**?
 
-- Erstelle ein leeres `"de"`-Modell, zum Beispiel mit der Methode `spacy.blank`.
-- Erstelle einen neuen Entity Recognizer mithilfe der Methode `nlp.create_pipe`
-  und füge ihn zur Pipeline hinzu.
-- Füge das neue Label `"GADGET"` zum Entity Recognizer hinzu und verwende
-  hierfür die Methode `add_label` des Pipeline-Komponenten.
+<choice>
 
-<codeblock id="04_06">
+<opt text="Es erlaubt die den Trainingsprozess und die Hyperparameter zu konfigurieren.">
 
-- Um einen leeren Entity Recognizer zu erstellen, kannst du die Methode
-  `nlp.create_pipe` mit dem String `"ner"` als Argument aufrufen.
-- Um eine Komponente zur Pipeline hinzuzufügen, benutze die Methode
-  `nlp.add_pipe`.
-- Die Methode `add_label` ist eine Methode der Entity Recognizer
-  Pipeline-Komponente, welche du in der Variable `ner` gespeichert hast. Um ein
-  Label hinzuzufügen, kannst du `ner.add_label` mit dem String-Namen des Labels
-  aufrufen, zum Beispiel `ner.add_label("EIN_LABEL")`.
+Die config-Datei enthält alle Einstellungen für den Trainingsprozess, einschließlich der
+Hyperparameter.
+
+</opt>
+
+<opt text="Es hilft dabei, das Training reproduzierbar zu machen.">
+
+Da die config-Datei _alle_ Einstellungen und keine versteckten default-Werte enthält,
+kann es dabei helfen deine Trainingsexperimente reproduzierbarer zu machen. Anderen Nutzern
+ist es dadurch möglich, deine Experimente mit den genau gleichen Einstellungen zu
+wiederholen.
+
+</opt>
+
+<opt text="Es erstellt ein installierbares Python-Package, das deine Pipeline enthält." correct="true">
+
+Die config-Datei enthält alle Einstellungen, die mit dem Training zusammenhängen, und 
+Informationen darüber, wie die Pipeline erstellt wird, aber es erstellt kein Package.
+Um ein installierbares Python-Package zu erzeugen, kannst du den Befehl `spacy package`
+verwenden.
+
+</opt>
+
+<opt text="Es definiert die Pipeline-Komponenten und ihre Einstellungen.">
+
+Der Block `[components]` in der config-Datei enthält alle Pipeline-Komponenten und ihre
+Einstellungen, inklusive der genutzten Implementierung des Modells.
+
+</opt>
+
+</choice>
+
+</exercise>
+
+<exercise id="7" title="Erstellen einer config-Datei">
+
+Der [`init config`-Befehl](https://spacy.io/api/cli#init-config) generiert automatisch
+eine config-Datei zum Trainieren mit default-Werten. Nun möchten wir einen Entity Recognizer
+trainieren. Also generieren wir eine config-Datei für eine Pipeline-Komponente: `ner`. Da 
+wir diesen Befehl innerhalb dieses Kurses in einer Jupyter-Umgebung ausführen, nutzen wir
+den Präfix `!`. Wenn du den Befehl jedoch in deiner Kommandozeile auf deinem Computer ausführst,
+kannst du diesen Präfix weglassen.
+
+### Part 1
+
+- Nutze den `init config`-Befehl von spaCy um eine config automatisch zu generieren.
+- Speichere die config als Datei `config.cfg`.
+- Nutze das `--pipeline`-Argument um eine Pipeline-Komponente zu spezifizieren: `ner`.
+
+<codeblock id="04_07_01"></codeblock>
+
+### Part 2
+
+Lass uns nun die config anschauen, die spaCy gerade generiert hat. Du kannst den unten 
+stehenden Befehl ausführen, um die config im Terminal ausgeben zu lassen und um sie zu 
+anzuschauen.
+
+<codeblock id="04_07_02"></codeblock>
+
+</exercise>
+
+<exercise id="8" title="Nutzen der Trainings-CLI">
+
+Lass uns nun einen Entity Recognizer trainieren, indem wir die eben generierte config-Datei
+sowie den erstellten Trainingskorpus nutzen!
+
+Der Befehl [`train`](https://spacy.io/api/cli#train) lässt dich ein Modell mithilfe einer
+config-Datei trainieren. Eine Datei namens `config_gadget.cfg` ist bereits verfügbar im 
+Ordner `exercises/de`, ebenso wie eine Datei `train_gadget.spacy`, die Trainingsbeispiele
+enthält, und eine Datei `dev_gadget.spacy`, die die Evaluierungsdaten enthält. Da wir 
+innerhalb des Kurses die Befehle in einer Jupyter-Umgebung ausführen, nutzen wir hier den
+Präfix `!`. Wenn du den Befehl jedoch in deiner Kommandozeile auf deinem Computer ausführst,
+kannst du diesen Präfix weglassen.
+
+- Ruf den `train`-Befehl mit der Datei `exercises/de/config_gadget.cfg` auf.
+- Speichere die trainierte Pipeline in den Ordner `output`.
+- Übergebe weiterhin die Pfade `exercises/en/train_gadget.spacy` und
+  `exercises/en/dev_gadget.spacy`.
+
+<codeblock id="04_08">
+
+- Das erste Argument des Befehls `spacy train` ist der Pfad der config-Datei.
 
 </codeblock>
 
 </exercise>
 
-<exercise id="7" title="Aufbau der Trainingsschleife">
-
-Lass uns eine einfache Trainingsschleife erstellen!
-
-Die Pipeline, die du in der vorherigen Übung erstellt hast, ist bereits als das
-`nlp`-Objekt verfügbar. Es enthält den Entity Recognizer mit dem neuen Label
-`"GADGET"`.
-
-Die kleine Anzahl an Trainingsdaten, die du bereits erstellt hast, ist als
-`TRAINING_DATA` verfügbar. Um dir ein paar Beispiele anzusehen, kannst du sie in
-deinem Skript drucken.
-
-- Rufe `nlp.begin_training` auf, erstelle eine Trainingsschleife mit 10
-  Iterationen und mische die Trainingsdaten.
-- Erstelle Batches von Trainingsdaten mithilfe von `spacy.util.minibatch` und
-  iteriere über die Batches.
-- Wandle die `(text, annotations)` Tuples im Batch in Listen von `texts` und
-  `annotations` um.
-- Verwende `nlp.update`, um das Modell mit den Texten und Annotationen aus dem
-  Batch zu aktualisieren.
-
-<codeblock id="04_07">
-
-- Um das Training zu beginnen und die Gewichte zurückzusetzen, kannst du die
-  Methode `nlp.begin_training` aufrufen.
-- Um die Trainingsdaten in Batches aufzuteilen, rufe die Funktion
-  `spacy.util.minibatch` mit der Liste der Trainingsdaten als Argument auf.
-
-</codeblock>
-
-</exercise>
-
-<exercise id="8" title="Erkunden des Modells">
+<exercise id="9" title="Erkunden des Modells">
 
 Mal gucken, wie das Modell abschneidet, wenn es neue Daten zu sehen bekommt. Um
 das Ganze ein bisschen zu beschleunigen, haben wir schon einmal ein Modell mit
@@ -194,7 +222,7 @@ Hier sind ein paar der Ergebnisse:
 
 Im Vergleich zu allen korrekten Entitäten im Text, **wie oft lag das Modell
 richtig**? Denke daran, dass unvollständige Entitäten-Spans auch als Fehler
-zählen! Tip: Zähle die Entitäten, die das Modell hätte vorhersagen _sollen_.
+zählen! Tipp: Zähle die Entitäten, die das Modell hätte vorhersagen _sollen_.
 Zähle dann die Entitäten, die es _tatsächlich_ korrekt vorhergesagt hat, und
 teile das Ergebnis durch die Anzahl der gesamten korrekten Entitäten.
 
@@ -231,35 +259,32 @@ Anzahl der Entitäten, die das Modell hätte vorhersagen _sollen_.
 
 </exercise>
 
-<exercise id="9" title="Training Best Practices" type="slides">
+<exercise id="10" title="Training Best Practices" type="slides">
 
 <slides source="chapter4_03_training-best-practices" start="46:40" end="49:30">
 </slides>
 
 </exercise>
 
-<exercise id="10" title="Gute Daten, schlechte Daten">
+<exercise id="11" title="Gute Daten, schlechte Daten">
 
 Hier ist ein Auszug aus einem Trainingsdatenset, das die Entität
 `"TOURISTENZIEL"` in Reiseberichten annotiert.
 
 ```python
-TRAINING_DATA = [
-    (
-        "ich war letztes jahr in amsterdem und die kanäle warn superschön",
-        {"entities": [(24, 33, "TOURISTENZIEL")]},
-    ),
-    (
-        "Du solltest einmal im Leben Paris besuchen, aber der Eiffelturm ist relativ langweilig",
-        {"entities": [(28, 33, "TOURISTENZIEL")]},
-    ),
-    ("Es gibt auch ein Paris in Arkansas lol", {"entities": []}),
-    (
-        "Berlin ist perfekt für einen Sommerurlaub: viele Parks, tolles Nachleben, günstiges Bier!",
-        {"entities": [(0, 6, "TOURISTENZIEL")]},
-    ),
-]
+doc1 = nlp("ich war letztes jahr in amsterdem und die kanäle warn superschön")
+doc1.ents = [Span(doc1, 5, 6, label="TOURISTENZIEL")]
+
+doc2 = nlp("Du solltest einmal im Leben Paris besuchen, aber der Eiffelturm ist relativ langweilig")
+doc2.ents = [Span(doc2, 5, 6, label="TOURISTENZIEL")]
+
+doc3 = nlp("Es gibt auch ein Paris in Arkansas lol")
+doc3.ents = []
+
+doc4 = nlp("Berlin ist perfekt für einen Sommerurlaub: viele Parks, tolles Nachleben, günstiges Bier!")
+doc4.ents = [Span(doc4, 0, 1, label="TOURISTENZIEL")]
 ```
+
 
 ### Teil 1
 
@@ -267,19 +292,19 @@ Warum sind diese Daten und das Labelsystem problematisch?
 
 <choice>
 
-<opt text="Ob ein Ort ein Touristenziel ist, ist eine subjektive Beurteilung und keine festgelegte Kategorie. Es wird für den Entity Regognizer vermutlich schwer zu lernen sein." correct="true">
+<opt text="Ob ein Ort ein Touristenziel ist, ist eine subjektive Beurteilung und keine festgelegte Kategorie. Es wird für den Entity Recognizer vermutlich schwer zu lernen sein." correct="true">
 
 Ein besserer Ansatz wäre, lediglich `"LOC"` für "Location" zu annotieren und
 dann z.B. ein regelbasiertes System zu verwenden, um zu erkennen, ob die Entität
 in diesem Kontext als Touristenziel erwählt wird. So könnte man die Entitäten
-beispielsweise in einer Wissensdatenback oder einem Reise-Wiki nachschlagen.
+beispielsweise in einer Wissensdatenbank oder einem Reise-Wiki nachschlagen.
 
 </opt>
 
 <opt text="Paris sollte der Einheitlichkeit halber ebenfalls als Touristenziele annotiert werden. Ansonsten wird das Modell verwirrt sein.">
 
-Es ist zwar durchaus möglich, dass Paris, AR ebenfalls ein beliebtes Reiseziel
-für Touristen ist. Dies macht deutlich, wie subjektiv das Labelsystem ist und
+Da es durchaus möglich ist, dass Paris, AR ebenfalls ein beliebtes Reiseziel
+für Touristen ist, macht dies deutlich, wie subjektiv das Labelsystem ist und
 wie schwierig es sein wird, zu entscheiden, ob das Label zutrifft oder nicht.
 Aufgrund dessen wird es ebenfalls schwierig für den Entitiy Recognizer sein,
 diese Unterscheidung zu lernen.
@@ -301,55 +326,55 @@ Named Entity Recognition.
 
 ### Part 2
 
-- Schreibe die Liste `TRAINING_DATA` um, sodass sie nur das Label `"LOC"`
-  (Location, Label verwendet für alle Orte im deutschen Modell) statt
+- Schreibe `doc.ents` um, sodass sie nur das Label `"LOC"`
+  (Location, Label wird für alle Orte im deutschen Modell verwendet) statt
   `"TOURISTENZIEL"` verwendet.
-- Vergiss nicht, Tuples für die `"LOC"`-Entitäten hinzuzufügen, die vorher nicht
+- Vergiss nicht, die Tupel für die `"LOC"`-Entitäten hinzuzufügen, die vorher nicht
   annotiert waren.
 
-<codeblock id="04_10">
+<codeblock id="04_11">
 
 - Bei den Spans, die bereits annotiert sind, musst du lediglich den Namen des
   Labels von `"TOURISTENZIEL"` auf `"LOC"` ändern.
 - Ein Text enthält eine Stadt und einen Bundesstaat, die noch nicht annotiert
-  sind. Um die Spans für die Entitäten hinzuzufügen, zähle die Zeichen und finde
-  den Anfang und das Ende der Span. Füge dann `(start, end, label)` Tuples zu
-  den Entitäten hinzu.
+  sind. Um die Spans für die Entitäten hinzuzufügen, zähle die Tokens, um 
+  den Anfang und das Ende der Span zu finden. Beachte hierbei, dass der letzte Token
+  _exkludiert_ wird. Füge daraufhin `(start, end, label)`-Tupel zu den Entitäten hinzu.
+- Behalte die Tokenisierung im Auge! Drucke die Tokens im `Doc`, solltest du dir nicht 
+  sicher sein.
 
 </codeblock>
 
 </exercise>
 
-<exercise id="11" title="Mehrere Labels trainieren">
+<exercise id="12" title="Mehrere Labels trainieren">
 
-Hier siehst du eine kleine Auswahl aus einem Trainingsdatenset für eine neue
-Entität `"WEBSITE"`. Das komplette Datenset enthält ein paar Tausend Sätze. In
+Hier siehst du eine kleine Auswahl aus einem Trainingsdatensatz für eine neue
+Entität `"WEBSITE"`. Der komplette Datensatz enthält ein paar tausend Sätze. In
 dieser Übung wirst du die Annotation von Hand durchführen. Im echten Leben
-würdest du das wahrscheinlich automatisieren und ein Annotations-Tool verwenden
-– zum Beispiel, [Brat](http://brat.nlplab.org/), eine beliebte
+würdest du das wahrscheinlich automatisieren und ein Annotations-Tool verwenden, zum Beispiel
+[Brat](http://brat.nlplab.org/), eine beliebte
 Open-Source-Lösung, oder [Prodigy](https://prodi.gy), unser eigenes
 Annotations-Tool, das zusammen mit spaCy verwendet werden kann.
 
 ### Teil 1
 
 - Vervollständige die Zeichen-Offsets für die `"WEBSITE"`-Entitäten in den
-  Daten. Du kannst auch gerne `len()` verwenden, wenn du keine Lust hast, die
+  Daten. Du kannst auch gerne `len(doc1)` usw. verwenden, wenn du keine Lust hast, die
   Zeichen zu zählen.
 
-<codeblock id="04_11_01">
+<codeblock id="04_12_01">
 
-- Die Start- und End-Zeichen-Offsets einer Entitäts-Span beschreiben die
-  Position der Zeichen, an denen die Span anfängt und endet. Zum Beispiel, wenn
-  eine Entität an Position 5 beginnt, beträgt der Start-Zeichen-Offset `5`.
-  Denke daran, dass die End-Offsets _ausschließend_ sind – das heißt, `10`
-  bedeutet _bis hin zu_ Zeichen 10.
+- Behalte im Hinterkopf, dass der End-Token einer Span exkludiert wird. Eine Entität,
+  die beim zweiten Token startet und beim dritten aufhört, wird einen Anfang bei `2` 
+  und ein Ende bei `4` haben.
 
 </codeblock>
 
 ### Teil 2
 
 Die Daten, die du gerade annotiert hast, wurden nun zusammen mit ein paar
-Tausend ähnlichen Beispielen dazu verwendet, ein Modell zu trainieren. Nach dem
+tausend ähnlichen Beispielen dazu verwendet, ein Modell zu trainieren. Nach dem
 Training erzielt das Modell super Ergebnisse für das Label `"WEBSITE"`, aber es
 erkennt keine Entitäten mit dem Label `"PER"` mehr. Warum könnte das passiert
 sein?
@@ -366,7 +391,7 @@ können sowohl Personen als auch Organisationen oder Prozentzahlen erkennen.
 
 <opt text='Die Trainingsdaten enthielten keine Beispiele für <code>"PER"</code>, das heißt, das Modell hat gelernt, dass dieses Label nicht zutrifft.' correct="true">
 
-Wenn `"PER"`-Entities in den Trainingsdaten vorkommen, aber nicht annotiert
+Wenn `"PER"`-Entitäten in den Trainingsdaten vorkommen, aber nicht annotiert
 sind, lernt das Modell, dass diese nicht vorhersagt werden sollen. Ebenso kann
 das Modell eine Kategorie "vergessen" und sie nicht mehr vorhersagen, wenn diese
 nicht in den Trainingsdaten vorhanden ist.
@@ -389,14 +414,17 @@ haben können, sind sie hier wahrscheinlich nicht das Problem.
 
 <codeblock id="04_11_02">
 
-- Um zusätzliche Entitäten zu annotieren, füge ein weiteres Tuple mit
-  `(start, end, label)` zur Liste der Entitäten hinzu.
+- Um zusätzliche Entitäten zu annotieren, füge eine weitere `Span` zu `doc.ents`
+  hinzu.
+- Behalte im Hinterkopf, dass der End-Token einer Span exkludiert wird. Eine Entität,
+  die beim zweiten Token startet und beim dritten aufhört, wird einen Anfang bei `2` 
+  und ein Ende bei `4` haben.
 
 </codeblock>
 
 </exercise>
 
-<exercise id="12" title="Abschluss" type="slides">
+<exercise id="13" title="Abschluss" type="slides">
 
 <slides source="chapter4_04_wrapping-up" start="49:40" end="52:21">
 </slides>
