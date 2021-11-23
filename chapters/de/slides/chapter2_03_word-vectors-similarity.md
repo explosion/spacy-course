@@ -14,29 +14,29 @@ in deiner NLP-Anwendung nutzen kannst.
 
 # Semantische Ähnlichkeit vergleichen
 
-- spaCy kann zwei Objekte vergleichen und ihne Ähnlichkeit vorhersagen
+- spaCy kann zwei Objekte vergleichen und ihre Ähnlichkeit vorhersagen
 - `Doc.similarity()`, `Span.similarity()` und `Token.similarity()`
-- Akzeptieren ein anderes Objekt und geben Ähnlichkeits-Score zurück (`0` bis
+- Akzeptieren ein weiteres Objekt und geben einen Ähnlichkeitswert zurück (`0` bis
   `1`)
-- **Wichtig:** benötigt ein Modell, das Wortvektoren enthält, zum Beispiel:
+- **Wichtig:** Benötigt eine Pipeline, die Wortvektoren enthält, zum Beispiel:
   - ✅ `en_core_web_md` (mittelgroßes Modell)
   - ✅ `en_core_web_lg` (großes Modell)
-  - 🚫 **NICHT** `en_core_web_sm` oder `de_core_news_sm` (kleines Modell)
+  - 🚫 **NICHT** `en_core_web_sm` oder `de_core_news_sm` (kleine Pipeline)
 
 Notes: spaCy kann zwei Objekte vergleichen und vorhersagen, wie ähnlich sie sich
 sind – zum Beispiel, Dokumente, Spans oder einzelne Tokens.
 
 Die Objekte `Doc`, `Token` und `Span` haben eine Methode `.similarity`, die ein
 zweites Objekt als Argument erwartet und eine Fließkommazahl zwischen 0 und 1
-zurückgibt, die bezeichnet, wie ähnlich die beiden Objekte sind.
+zurückgibt, die angibt, wie ähnlich die beiden Objekte sind.
 
 Eine Sache ist allerdings sehr wichtig: Um die `similarity`-Methode zu
-verwenden, benötigst du ein größeres spaCy-Modell, das Wortvektoren enhält.
+verwenden, benötigst du eine größere spaCy-Pipeline, die Wortvektoren enthält.
 
-Zum Beispiel, das mittelgroße oder große englische Modell – aber _nicht_ das
-kleine. Wenn du also Wortvektoren verwenden willst, wähle ein Modell aus, das
-auf "md" oder "lg" endet. Du findest mehr Details hierzu in der Dokumentation
-zum Thema Modelle.
+Zum Beispiel, die mittelgroße oder große englische Pipeline – aber _nicht_ die
+kleine. Wenn du also Wortvektoren verwenden willst, wähle eine Pipeline aus, das
+auf "md" oder "lg" endet. Du findest mehr Details hierzu in der 
+[Dokumentation](https://spacy.io/models).
 
 ---
 
@@ -71,7 +71,7 @@ print(token1.similarity(token2))
 Notes: Hier ist ein Beispiel. Angenommen, wir wollen herausfinden, ob zwei
 Dokumente ähnlich sind.
 
-Zuerst laden wir das mittelgroße englische Modell, "en_core_web_md".
+Zuerst laden wir die mittelgroße englische Pipeline, "en_core_web_md".
 
 Wir können nun zwei Doc-Objekte erstellen und die `similarity`-Methode des
 ersten Docs verwenden, um es mit dem zweiten Doc zu vergleichen.
@@ -79,7 +79,7 @@ ersten Docs verwenden, um es mit dem zweiten Doc zu vergleichen.
 In diesem Fall wird ein relativ hoher Ähnlichkeitswert für "I like fast food"
 und "I like pizza" vorhergesagt.
 
-Das gleiche funktioniert auch bei Tokens.
+Das Gleiche funktioniert auch bei Tokens.
 
 Laut den Wortvektoren sind die Tokens "pizza" und "pasta" ziemlich ähnlich und
 erhalten einen Ähnlichkeitswert von 0,7.
@@ -113,9 +113,7 @@ print(span.similarity(doc))
 ```
 
 Notes: Du kannst die `similarity`-Methoden auch verwenden, um verschiedene Arten
-von Objekten zu vergleichen.
-
-Zum Beispiel, ein Dokument und einen Token.
+von Objekten zu vergleichen, zum Beispiel ein Dokument und einen Token.
 
 Hier ist der Ähnlichkeitswert sehr niedrig und die beiden Objekte werden als
 ziemlich unähnlich angesehen.
@@ -134,9 +132,9 @@ bisschen ähnlich angesehen.
 - Multi-dimensionale Repräsentationen der Wortbedeutungen
 - Generiert mit einem Algorithmus wie
   [Word2Vec](https://en.wikipedia.org/wiki/Word2vec) und sehr viel Text
-- Können zu spaCy's statistischen Modellen hinzugefügt werden
+- Können zu spaCys Pipelines hinzugefügt werden
 - Standardmäßig: Kosinus-Ähnlichkeit, kann jedoch angepasst werden
-- `Doc`- und `Span`-Vektoren sind standardmäßig Durchschnitt von Token-Vektoren
+- `Doc`- und `Span`-Vektoren sind standardmäßig der Durchschnitt der Token-Vektoren
 - Kurze Ausdrücke sind geeigneter als lange Dokumente mit vielen irrelevanten
   Wörtern
 
@@ -150,11 +148,11 @@ verwendet wird, um Wortvektoren anhand von rohem Text zu trainieren.
 
 Vektoren können zu spaCy's statistischen Modellen hinzugefügt werden.
 
-Die Ähnlichkeit, die spaCy zurückgibt ist standardmäßig die Kosinus-Ähnlichkeit
-– dies kann jedoch angepasst werden, falls nötig.
+Die Ähnlichkeit, die spaCy zurückgibt ist standardmäßig die Kosinus-Ähnlichkeit;
+dies kann jedoch angepasst werden, falls nötig.
 
 Vektoren für Objekte, die aus mehreren Tokens bestehen, wie z.B. `Doc` und
-`Span`, werden standardmäßig als Durchschnitt ihrer Token-Vektoren berechnet.
+`Span`, werden standardmäßig aus dem Durchschnitt ihrer Token-Vektoren berechnet.
 
 Das ist auch der Grund, weshalb man typischerweise aufschlussreichere Ergebnisse
 erzielt, wenn man Ausdrücke vergleicht, die kürzer sind und weniger irrelevante
@@ -188,12 +186,12 @@ print(doc[3].vector)
   ...
 ```
 
-Notes: Hier ein Beispiel, damit du eine Vorstellung hast, wie diese Vektoren
+Notes: Hier ist ein Beispiel, damit du eine Vorstellung hast, wie diese Vektoren
 aussehen.
 
-Zuerst laden wir wieder das mittelgroße Modell, das Wortvektoren enhält.
+Zuerst laden wir wieder das mittelgroße Modell, das Wortvektoren enthält.
 
-Als nächstes können wir einen Text verarbeiten und uns über das Attribut
+Als Nächstes können wir einen Text verarbeiten und uns über das Attribut
 `token.vector` den Vektor eines Tokens ansehen.
 
 Das Ergebnis ist ein 300-dimensionaler Vektor des Wortes "banana".
@@ -218,17 +216,17 @@ print(doc1.similarity(doc2))
 ```
 
 Notes: Das Vorhersagen von Ähnlichkeiten ist nützlich für viele Arten von
-Anwendungen. Zum Beispiel, um einem Nutzer ähnliche Texte vorzuschlagen,
-basierend auf den Texten, die er bereits gelesen hat. Es kann außerdem dabei
-helfen, Duplikate in Inhalten zu finden, wie beispielweise Beiträge auf einer
+Anwendungen. Zum Beispiel, um einem Nutzer basierend auf Texten, die er bereits
+gelesen hat, ähnliche Texte vorzuschlagen. Es kann außerdem dabei
+helfen, Duplikate in Inhalten zu finden, wie beispielsweise Beiträge auf einer
 Onlineplattform.
 
-Es ist allerding sehr wichtig zu beachten, dass keine objektive Definition davon
+Es ist allerdings sehr wichtig zu beachten, dass keine objektive Definition davon
 existiert, was ähnlich ist und was nicht. Es hängt immer davon ab, was eine
 Anwendung tun soll und in welchem Kontext sie eingesetzt wird.
 
-Hier ist ein Beispiel: spaCy's Standard-Wortvektoren sagen einen sehr hohen
-Ähnlichkeitswert für "I like cats" und "I hate cats" vorher. Das macht Sinn, da
+Hier ist ein Beispiel: spaCys Standard-Wortvektoren sagen einen sehr hohen
+Ähnlichkeitswert für "I like cats" und "I hate cats" vorher. Das ergibt Sinn, da
 beide Texte eine Empfindung gegenüber Katzen ausdrücken. In einem anderen
 Anwendungskontext könnte man jedoch beide Ausdrücke als sehr _unähnlich_
 betrachten wollen, da sie komplett unterschiedliche Empfindungen ausdrücken.
