@@ -115,7 +115,7 @@ eine config mit einer Pipeline-Komponente: dem Entity Recognizer.
 
 # Trainieren einer Pipeline (1)
 
-- Alles was du brauchst ist die `config.cfg` sowie Trainings und
+- alles was du brauchst ist die `config.cfg` sowie Trainings und
   Entwicklungsdaten
 - config-Einstellungen können in der Kommandozeile überschrieben werden
 
@@ -126,8 +126,8 @@ $ python -m spacy train ./config.cfg --output ./output --paths.train train.spacy
 - `train`: zu startender Befehl
 - `config.cfg`: der Pfad zur config-Datei
 - `--output`: der Pfad zum Ausgabeordner, zum Speichern der trainierten Pipeline
-- `--paths.train`: Überschreibe den Pfad zu den Trainingsdaten
-- `--paths.dev`: Überschreibe den Pfad zu den Evaluierungsdaten
+- `--paths.train`: überschreibt den Pfad zu den Trainingsdaten
+- `--paths.dev`: überschreibt den Pfad zu den Evaluierungsdaten
 
 Notes: Alles, was du zum Trainieren einer Pipeline brauchst, ist die config-Datei
 sowie Trainings- und Evaluierungsdaten. Diese sind die `.spacy`-Dateien mit denen
@@ -218,21 +218,21 @@ Daraufhin kannst du sie zur Verarbeitung und Analyse von Texten nutzen.
 
 - [`spacy package`](https://spacy.io/api/cli#package): erstellt ein installierbares
   Python-Package, das deine Pipeline enthält
-- Einfach zu Versionieren und einzusetzen
+- einfach zu versionieren und einzusetzen
 
 ```bash
-$ python -m spacy package /path/to/output/model-best ./packages --name my_pipeline --version 1.0.0
+$ python -m spacy package /path/to/output/model-best ./packages --name meine_pipeline --version 1.0.0
 ```
 
 ```bash
-$ cd ./packages/en_my_pipeline-1.0.0
-$ pip install dist/en_my_pipeline-1.0.0.tar.gz
+$ cd ./packages/de_meine_pipeline-1.0.0
+$ pip install dist/de_meine_pipeline-1.0.0.tar.gz
 ```
 
 Laden und nutzen der Pipeline nach Installation:
 
 ```python
-nlp = spacy.load("en_my_pipeline")
+nlp = spacy.load("de_meine_pipeline")
 ```
 
 Notes: Um den Einsatz deiner Pipeline zu vereinfachen, stellt spaCy einen nützlichen

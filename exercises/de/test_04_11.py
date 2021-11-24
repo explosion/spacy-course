@@ -14,10 +14,10 @@ def test():
     ], "Überprüfe nochmal die Enitäten im vierten Beispiel."
 
     __msg__.good(
-        "Gute Arbeit! Sobald das Modell gute Resultate im Erkennen von"
-        "LOC-Entitäten in den Reise-Bewertungen erzielt, könntest du"
+        "Gute Arbeit! Sobald das Modell gute Resultate im Erkennen von "
+        "LOC-Entitäten in den Reise-Bewertungen erzielt, könntest du "
         "eine regelbasierte Komponente hinzufügen, um zu entscheiden ob eine "
-        "Entität ein Touristenziel beschreibt. Du könntest zum Beispiel die"
-        "Enitäten mit einer Wissensdatenbank vergleichen oder du schlägst sie"
+        "Entität ein Touristenziel beschreibt. Du könntest zum Beispiel die "
+        "Enitäten mit einer Wissensdatenbank vergleichen oder du schlägst sie "
         "in einem Reise-Wiki nach."
     )

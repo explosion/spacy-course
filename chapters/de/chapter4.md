@@ -107,7 +107,7 @@ zur Verfügung gestellt.
 
 </exercise>
 
-<exercise id="6" title="Die Training-config">
+<exercise id="6" title="Die Trainingsconfig">
 
 Die `config.cfg`-Datei ist die "alleinige Quelle der Wahrheit", wenn es ums Trainieren
 einer Pipeline in spaCy geht. Welche der folgenden Aussagen ist **nicht wahr**?
@@ -192,8 +192,8 @@ kannst du diesen Präfix weglassen.
 
 - Ruf den `train`-Befehl mit der Datei `exercises/de/config_gadget.cfg` auf.
 - Speichere die trainierte Pipeline in den Ordner `output`.
-- Übergebe weiterhin die Pfade `exercises/en/train_gadget.spacy` und
-  `exercises/en/dev_gadget.spacy`.
+- Übergebe weiterhin die Pfade `exercises/de/train_gadget.spacy` und
+  `exercises/de/dev_gadget.spacy`.
 
 <codeblock id="04_08">
 
@@ -412,7 +412,7 @@ haben können, sind sie hier wahrscheinlich nicht das Problem.
 - Aktualisiere die Trainingsdaten, sodass sie außerdem Annotationen für die
   `"PER"`-Entitäten "PewDiePie" und "Alexis Ohanian" enthalten.
 
-<codeblock id="04_11_02">
+<codeblock id="04_12_02">
 
 - Um zusätzliche Entitäten zu annotieren, füge eine weitere `Span` zu `doc.ents`
   hinzu.

@@ -53,10 +53,8 @@ etwas weniger wichtig für die Vorhersage von Wortarten und Dependenzrelationen.
 6. Fange wieder bei 2. an
 
 Notes: Mit spaCy kannst du sowohl vorhandene Modelle aktualisieren, als auch
-komplett neue Modelle trainieren.
-
-Wenn wir nicht mit einer vortrainierten Pipeline beginnen, initialisieren wir 
-die Gewichte zuerst zufällig.
+komplett neue Modelle trainieren. Wenn wir nicht mit einer trainierten Pipeline 
+beginnen, initialisieren wir die Gewichte zuerst zufällig.
 
 Als Nächstes ruft spaCy `nlp.update` auf, was Vorhersagen über einen Batch an
 Beispielen mit den aktuellen Gewichten trifft.
@@ -136,7 +134,7 @@ einer einzigen Entität sein.
 
 Die einfachste Lösung ist, dem Modell einen Text und Entitäten-Spans
 zu zeigen. "iPhone X" ist zum Beispiel ein Gadget, beginnt bei Token 0 und
-ended bei Token 2.
+ended bei Token 1.
 
 Es ist außerdem sehr wichtig, dass das Modell lernt, welche Wörter _keine_
 Entitäten sind.
@@ -154,7 +152,7 @@ erkennen, auch wenn diese nicht in den Trainingsdaten vorhanden waren.
 - Für ein **vorhandenes Modell**: ein paar Hundert bis ein paar Tausend
   Beispiele
 - Für eine **neue Kategorie**: ein paar Tausend bis eine Million Beispiele
-  - spaCys englische Modelle: 2 Millionen Wörter
+  - spaCys englische Pipelines: 2 Millionen Wörter
 - Typischerweise von menschlichen Annotatoren von Hand erstellt
 - Kann teilautomatisiert werden – zum Beispiel mit spaCys `Matcher`!
 
@@ -168,7 +166,7 @@ ein paar tausend Beispielen anfangen.
 Um eine neue Kategorie zu trainieren, kann man unter Umständen bis zu einer
 Million Beispiele benötigen.
 
-spaCys vortrainierte englische Modelle wurden beispielsweise auf Basis von 2
+spaCys trainierte englische Pipelines wurden beispielsweise auf Basis von 2
 Millionen Wörtern trainiert, die mit Wortarten, Dependenzrelationen und
 Entitäten annotiert waren.
 
@@ -298,7 +296,7 @@ $ python -m spacy convert ./train.gold.conll ./corpus
 ```
 
 Notes: Manchmal hast du bereits Trainings- und Entwicklungsdaten in einem
-gebräuchlichen Format, beispielsweise CoNLL oder IOB. spaCy `convert`-Befehl
+gebräuchlichen Format, beispielsweise CoNLL oder IOB. spaCys `convert`-Befehl
 wandelt diese Dateien automatisch in spaCys binären Dateiformat um. Es kann
 außerdem auch Dateien konvertieren, die im JSON-Format von spaCy v2 sind.
 
