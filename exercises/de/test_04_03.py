@@ -25,6 +25,7 @@ def test():
     assert any(
         pattern2[1].get(l) == True for l in ("IS_DIGIT", "is_digit")
     ), "Der zweite Token von pattern2 sollte eine Ziffer beschreiben."
+
     __msg__.good(
         "Super! Lass uns nun diese Patterns verwenden, um schnell ein paar "
         "Trainingsdaten für unser Modell zu erstellen."

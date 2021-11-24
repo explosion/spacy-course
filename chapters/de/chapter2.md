@@ -3,7 +3,7 @@ title: 'Kapitel 2: Großangelegte Datenanalyse mit spaCy'
 description:
   'In diesem Kapitel verwendest du deine neuen Skills, um konkrete Informationen
   aus großen Textmengen zu extrahieren. Du lernst außerdem, spaCys
-  Datenstrukturen optimal zu nutzen und statistische und regelbasierte
+  Datenstrukturen optimal zu nutzen sowie statistische und regelbasierte
   Strategien für Textanalyse effektiv zu kombinieren.'
 prev: /chapter1
 next: /chapter3
@@ -29,7 +29,7 @@ id: 2
 <codeblock id="02_02_01">
 
 - Du kannst den String-Speicher in `nlp.vocab.strings` wie ein reguläres
-  Python-Dictionary verwenden. Zum Beispiel, `nlp.vocab.strings["Einhorn"]` gibt
+  Python-Dictionary verwenden. `nlp.vocab.strings["Einhorn"]` zum Beispiel gibt
   den Hash zurück. Und das Nachschlagen des Hashes gibt wiederum den String
   zurück.
 
@@ -44,7 +44,7 @@ id: 2
 <codeblock id="02_02_02">
 
 - Du kannst den String-Speicher in `nlp.vocab.strings` wie ein reguläres
-  Python-Dictionary verwenden. Zum Beispiel, `nlp.vocab.strings["Einhorn"]` gibt
+  Python-Dictionary verwenden. `nlp.vocab.strings["Einhorn"]` zum Beispiel gibt
   den Hash zurück. Und das Nachschlagen des Hashes gibt wiederum den String
   zurück.
 
@@ -57,12 +57,11 @@ id: 2
 Warum führt dieser Code zu einer Fehlermeldung?
 
 ```python
-from spacy.lang.en import English
-from spacy.lang.de import German
+import spacy
 
 # Erstelle ein englisches und deutsches nlp-Objekt
-nlp = English()
-nlp_de = German()
+nlp = spacy.blank("en")
+nlp_de = spacy.blank("de")
 
 # Schlage die ID für den String "Bowie" nach
 bowie_id = nlp.vocab.strings["Bowie"]
@@ -120,7 +119,7 @@ Lass uns ein paar `Doc`-Objekte manuell erstellen!
 
 <codeblock id="02_05_01">
 
-Die Klasse `Doc` akzeptiert drei argumente: das gemeinsame Vokabular,
+Die Klasse `Doc` akzeptiert drei Argumente: das gemeinsame Vokabular,
 typischerweise `nlp.vocab`, eine Liste von `words` und eine Liste von `spaces`,
 boolesche Werte, die angeben, ob auf das Wort ein Leerzeichen folgt.
 
@@ -143,7 +142,7 @@ dieser Stelle `True` sein. Wenn nicht, sollte er `False` sein.
 ### Teil 3
 
 - Importiere das `Doc` von `spacy.tokens`.
-- Ergänze die `words` und `spaces`, um den gewünschten Text zu erziehlen und
+- Ergänze die `words` und `spaces`, um den gewünschten Text zu erzielen und
   erstelle ein `doc`.
 
 <codeblock id="02_05_03">
@@ -167,7 +166,7 @@ Ein gemeinsames `nlp`-Objekt wurde bereits für dich erstellt.
   Leerzeichen zu erstellen.
 - Erstelle eine `Span` für "David Bowie", basierend auf dem `doc`, und weise ihm
   das Label `"PER"` ("Person") zu.
-- Überschreibe die `doc.ents` mit einer Liste mit einer Entität, die `span`
+- Überschreibe die `doc.ents` mit einer Liste einer Entität: die `span`
   "David Bowie".
 
 <codeblock id="02_06">
@@ -271,19 +270,19 @@ korrekte Tag für Eigennamen.
 
 <exercise id="9" title="Wortvektoren inspizieren">
 
-In dieser Übung wirst du ein größeres
-[englisches Modell](https://spacy.io/models/en) verwenden, das ca. 20.000
-Wortvektoren enthält. Das Modell ist bereits vorinstalliert.
+In dieser Übung wirst du eine größere
+[englische Pipeline](https://spacy.io/models/en) verwenden, die ca. 20.000
+Wortvektoren enthält. Das Pipeline-Package ist bereits vorinstalliert.
 
-- Lade das mittelgroße Modell `"en_core_web_md"` mit Wortvektoren.
+- Lade die mittelgroße Pipeline `"en_core_web_md"` mit Wortvektoren.
 - Drucke den Vektor für `"bananas"` mithilfe des Attributs `token.vector`.
 
 <codeblock id="02_09">
 
-- Um ein statistisches Modell zu laden, rufe `spacy.load` mit dem String-Namen
-  des Modells auf.
-- Um auf einen Token in einem Doc zuzugreifen, kannst du seinen Index verwenden.
-  Zum Beispiel, `doc[4]`.
+- Um eine Pipeline zu laden, rufe `spacy.load` mit dem String-Namen
+  der Pipeline auf.
+- Um auf einen Token in einem Doc zuzugreifen, kannst du seinen Index verwenden,
+  zum Beispiel `doc[4]`.
 
 </codeblock>
 
@@ -416,8 +415,8 @@ alle Länder der Welt. Es gibt bereits eine Liste aller Länder, die wir als Bas
 für unser Skript zum Extrahieren von Informationen verwenden können. Eine Liste
 von String-Namen ist verfügbar als Variable `COUNTRIES`.
 
-- Importiere den `PhraseMatcher` und initialisier ihn mit dem gemeinsamen
-  `vocab` als die Variable `matcher`.
+- Importiere den `PhraseMatcher` und initialisiere ihn mit dem gemeinsamen
+  `vocab` als Variable `matcher`.
 - Füge die `patterns` hinzu und wende den Matcher auf das `doc` an.
 
 <codeblock id="02_14">

@@ -49,23 +49,6 @@ Dies ist auch als das "Catastrophic Forgetting"-Problem bekannt.
 - Wende vorhandenes spaCy-Modell auf Daten an und extrahiere alle anderen
   relevanten Entitäten
 
-**SCHLECHT:**
-
-```python
-TRAINING_DATA = [
-    ("Reddit ist eine Website", {"entities": [(0, 6, "WEBSITE")]})
-]
-```
-
-**GUT:**
-
-```python
-TRAINING_DATA = [
-    ("Reddit ist eine Website", {"entities": [(0, 6, "WEBSITE")]}),
-    ("Obama ist eine Person", {"entities": [(0, 5, "PER")]})
-]
-```
-
 Notes: Um dies zu vermeiden, solltest du die neuen Beispiele stets mit
 Beispielen mischen, die das Modell bereits zuvor korrekt vorhergesagt hat.
 
@@ -113,7 +96,7 @@ funktionieren.
 - Wähle Kategorien, die sich im lokalen Kontext widerspiegeln
 - Allgemeiner ist besser als zu spezifisch
 - Verwende Regeln, um von allgemeinen Labels zu spezifischen Kategorien zu
-  gelanden
+  gelangen
 
 **SCHLECHT:**
 
@@ -128,10 +111,10 @@ LABELS = ["KLEIDUNG", "BAND"]
 ```
 
 Notes: Bevor du anfängst, Modelle zu trainieren und zu aktualisieren, lohnt es
-sich, noch einmal kurz Abstand zu nehmen und dein Labelsystem zu planen.
+sich, noch einmal kurz innezuhalten und dein Labelsystem zu planen.
 
 Versuche, Kategorien zu wählen, die sich im lokalen Kontext widerspiegeln und
-gestalte sie allgemeiner, wenn möglich.
+gestalte sie wenn möglich allgemeiner.
 
 Du kannst später immer noch ein regelbasiertes System hinzufügen, um die
 allgemeineren Kategorien spezifischer zu machen.

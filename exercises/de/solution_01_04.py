@@ -1,6 +1,6 @@
-from spacy.lang.de import German
+import spacy
 
-nlp = German()
+nlp = spacy.blank("de")
 
 # Verarbeite den Text
 doc = nlp(
@@ -14,6 +14,6 @@ for token in doc:
     if token.like_num:
         # Wähle den nächsten Token im Doc aus
         next_token = doc[token.i + 1]
-        # Überprüfe ob der Text des nächsten Tokens "%"" ist
+        # Überprüfe ob der Text des nächsten Tokens "%" ist
         if next_token.text == "%":
             print("Prozentzahl gefunden:", token.text)

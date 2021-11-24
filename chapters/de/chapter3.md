@@ -45,7 +45,7 @@ alle Pipeline-Komponenten der Reihe nach aus und wendet sie auf das Dokument an.
 
 </opt>
 
-<opt text="Stellt eine Verbindung zum spaCy-Server her, berechnet das Ergebnis und gebe es zurück.">
+<opt text="Stellt eine Verbindung zum spaCy-Server her, berechnet das Ergebnis und gibt es zurück.">
 
 spaCy berechnet alles auf deinem Computer und muss sich nicht mit einem Server
 verbinden.
@@ -54,9 +54,9 @@ verbinden.
 
 <opt text="Initialisiert die Sprache, fügt die Pipeline hinzu und lädt die binären Gewichte des Modells.">
 
-Wenn du `spacy.load()` aufrufst, um ein Modell zu laden, initialisiert spaCy die
+Wenn du `spacy.load()` aufrufst, um eine Pipeline zu laden, initialisiert spaCy die
 Sprache, fügt die Pipeline hinzu und lädt die binären Gewichte des Modells. Wenn
-du das `nlp`-Objekt mit einem Text _ausführst_, ist das Modell allerdings
+du das `nlp`-Objekt mit einem Text _ausführst_, ist die Pipeline allerdings
 bereits geladen.
 
 </opt>
@@ -65,18 +65,18 @@ bereits geladen.
 
 <exercise id="3" title="Pipeline inspizieren">
 
-Lass uns die Pipeline des kleinen deutschen Modells genauer anschauen!
+Lass uns die kleine deutsche Pipeline genauer anschauen!
 
-- Lade das Modell `de_core_news_sm` und erstelle das `nlp`-Objekt.
+- Lade die Pipeline `de_core_news_sm` und erstelle das `nlp`-Objekt.
 - Drucke die Namen der Pipeline-Komponenten mithilfe von `nlp.pipe_names`.
-- Drucke die `(name, component)` Tuples der gesamten Pipeline mit
+- Drucke die `(name, component)`-Tupel der gesamten Pipeline mit
   `nlp.pipeline`.
 
 <codeblock id="03_03">
 
-Die Liste der Namen der Komponenten ist verfügbar als das Attribut
-`nlp.pipe_names`. Die gesamte Pipeline, bestehend aus `(name, component)` Tuples
-ist verfügbar als `nlp.pipeline`.
+Die Liste der Namen der Komponenten ist verfügbar als Attribut
+`nlp.pipe_names`. Die gesamte Pipeline, bestehend aus `(name, component)`-Tupeln,
+ist verfügbar unter `nlp.pipeline`.
 
 </codeblock>
 
@@ -94,7 +94,7 @@ ist verfügbar als `nlp.pipeline`.
 Welche dieser Probleme können mit benutzerdefinierten Pipeline-Komponenten
 gelöst werden? Wähle alle Optionen aus, die zutreffen.
 
-1. Vortrainierte Modelle aktualisieren und ihre Vorhersagen verbessern
+1. Trainierte Pipelines aktualisieren und ihre Vorhersagen verbessern
 2. Eigene Werte auf der Basis von Tokens und ihren Attributen berechnen
 3. Entitäten hinzufügen, zum Beispiel basierend auf einem Lexikon
 4. Unterstützung für eine zusätzliche Sprache implementieren
@@ -104,7 +104,7 @@ gelöst werden? Wähle alle Optionen aus, die zutreffen.
 <opt text="1 und 2.">
 
 Benutzerdefinierte Komponenten können lediglich das `Doc` bearbeiten und daher
-nicht dazu genutzt werden, die Gewichte des Modells anderer Komponenten direkt
+nicht dazu genutzt werden, die Gewichte anderer Komponenten direkt
 zu verändern.
 
 </opt>
@@ -112,7 +112,7 @@ zu verändern.
 <opt text="1 und 3.">
 
 Benutzerdefinierte Komponenten können lediglich das `Doc` bearbeiten und daher
-nicht dazu genutzt werden, die Gewichte des Modells anderer Komponenten direkt
+nicht dazu genutzt werden, die Gewichte anderer Komponenten direkt
 zu verändern.
 
 </opt>
@@ -120,9 +120,9 @@ zu verändern.
 <opt text="1 und 4.">
 
 Benutzerdefinierte Komponenten können lediglich das `Doc` bearbeiten und daher
-nicht dazu genutzt werden, die Gewichte des Modells anderer Komponenten direkt
+nicht dazu genutzt werden, die Gewichte anderer Komponenten direkt
 zu verändern. Sie werden außerdem zur Pipeline hinzugefügt, nachdem die
-Sprach-Klasse bereits initialisiert und der Text tokenisiert ist. Sie sind daher
+Sprachklasse bereits initialisiert und der Text tokenisiert ist. Sie sind daher
 nicht geeignet, um neue Sprachen hinzuzufügen.
 
 </opt>
@@ -138,7 +138,7 @@ bearbeiten.
 <opt text="2 und 4.">
 
 Benutzerdefinierte Komponenten werden zur Pipeline hinzugefügt, nachdem die
-Sprach-Klasse bereits initialisiert und der Text tokenisiert ist. Sie sind daher
+Sprachklasse bereits initialisiert und der Text tokenisiert ist. Sie sind daher
 nicht geeignet, um neue Sprachen hinzuzufügen.
 
 </opt>
@@ -146,7 +146,7 @@ nicht geeignet, um neue Sprachen hinzuzufügen.
 <opt text="3 und 4.">
 
 Benutzerdefinierte Komponenten werden zur Pipeline hinzugefügt, nachdem die
-Sprach-Klasse bereits initialisiert und der Text tokenisiert ist. Sie sind daher
+Sprachklasse bereits initialisiert und der Text tokenisiert ist. Sie sind daher
 nicht geeignet, um neue Sprachen hinzuzufügen.
 
 </opt>
@@ -168,11 +168,12 @@ Tokens eines Dokuments druckt. Kannst du den Code vervollständigen?
 
 <codeblock id="03_06">
 
-- Um die Länge eines `Doc`-Objekts zu berechnen, kannst du Python's eingebaute
+- Um die Länge eines `Doc`-Objekts zu berechnen, kannst du Pythons eingebaute
   Methode `len()` verwenden und sie mit dem `Doc` aufrufen.
 - Verwende die Methode `nlp.add_pipe`, um eine Komponente zur Pipeline
   hinzuzufügen. Denke daran, das Keyword-Argument `first` auf `True` zu setzen,
-  damit die Komponente vor allen anderen hinzugefügt wird.
+  damit die Komponente vor allen anderen hinzugefügt wird, und dass der Stringname
+  der Komponente genutzt werden muss.
 - Um einen Text zu verarbeiten, rufe das `nlp`-Objekt mit dem Text als Argument
   auf.
 
@@ -192,7 +193,7 @@ wurde bereits für dich als Variable `matcher` erstellt.
 - Erstelle eine `Span` für jedes Resultat, weise ihr das label `"ANIMAL"` zu und
   überschreibe die `doc.ents` mit den neuen Spans.
 - Füge die neue Komponente _nach_ der Komponente `"ner"` zur Pipeline hinzu.
-- Verarbeite den Text und drucke Text und Label der Entitäten in den `doc.ents`.
+- Verarbeite den Text und drucke Text und Label der Entitäten in `doc.ents`.
 
 <codeblock id="03_07">
 
@@ -201,7 +202,8 @@ wurde bereits für dich als Variable `matcher` erstellt.
 - Die Klasse `Span` akzeptiert vier Argumente: das `doc`-Objekt, auf das sich
   die Span bezieht, den Start-Index, den End-Index und das Label.
 - Um eine Komponente nach einer anderen hinzuzufügen, kannst du das
-  Keyword-Argument `after` verwenden, wenn du `nlp.add_pipe` aufrufst.
+  Keyword-Argument `after` verwenden, wenn du `nlp.add_pipe` aufrufst. Beachte hierbei,
+  dass du den Namen der anderen Komponente als String angeben musst.
 
 </codeblock>
 
@@ -227,8 +229,8 @@ Lass uns üben, ein paar benutzerdefinierte Attribute festzulegen.
 
 <codeblock id="03_09_01">
 
-Denke daran, dass Erweiterungen über die Property `._` abrufbar sind. Zum
-Beispiel, `doc._.has_color`.
+Denke daran, dass Erweiterungen über die Property `._` abrufbar sind, zum
+Beispiel `doc._.has_color`.
 
 </codeblock>
 
@@ -236,12 +238,12 @@ Beispiel, `doc._.has_color`.
 
 - Verwende `Token.set_extension`, um die Erweiterung `"reversed"` (mit
   Getter-Funktion `get_reversed`) zu registrieren.
-- Drucke ihren Wert für alle Tokens.
+- Drucke für alle Tokens den Wert der Erweiterung.
 
 <codeblock id="03_09_02">
 
-Denke daran, dass Erweiterungen über die Property `._` abrufbar sind. Zum
-Beispiel, `doc._.has_color`.
+Denke daran, dass Erweiterungen über die Property `._` abrufbar sind, zum
+Beispiel `doc._.has_color`.
 
 </codeblock>
 
@@ -255,13 +257,13 @@ definieren.
 ### Teil 1
 
 - Vervollständige die Funktion `get_has_number`.
-- Verwende `Doc.set_extension`, um die Erweiterung `has_number` (mit
+- Verwende `Doc.set_extension`, um die Erweiterung `has_number` (mit der
   Getter-Funktion `get_has_number`) zu registrieren und drucke ihren Wert.
 
 <codeblock id="03_10_01">
 
-- Denke daran, dass Erweiterungen über die Property `._` abrufbar sind. Zum
-  Beispiel, `doc._.has_color`.
+- Denke daran, dass Erweiterungen über die Property `._` abrufbar sind, zum
+  Beispiel `doc._.has_color`.
 - Die `get_has_number`-Funktion sollte zurückgeben, ob einer der Tokens im `doc`
   für `token.like_num` den Wert `True` zurückgibt (ob der Token einer Zahl
   ähnelt).
@@ -272,7 +274,7 @@ definieren.
 
 - Verwende `Span.set_extension`, um die Erweiterung `"to_html"` (mit der Methode
   `to_html`) zu registrieren.
-- Rufe die Methode der Span `doc[0:2]` mit dem Tag `"strong"` auf.
+- Rufe die Methode auf der Span `doc[0:2]` mit dem Tag `"strong"` auf.
 
 <codeblock id="03_10_02">
 
@@ -287,8 +289,8 @@ definieren.
 
 <exercise id="11" title="Entitäten und Erweiterungen">
 
-In dieser Übung wirst du benutzerdefinierte Erweiterungen mit den Vorhersagen
-des Modells kombinieren und einen Attribut-Getter erstellen, der eine
+In dieser Übung wirst du benutzerdefinierte Erweiterungen mit statistischen
+Vorhersagen kombinieren und einen Attribut-Getter erstellen, der eine
 Wikipedia-Such-URL zurückgibt, wenn die Span eine Person, Organisation oder ein
 Ort ist.
 
@@ -300,11 +302,11 @@ Ort ist.
 
 <codeblock id="03_11">
 
-- Um das String-Label einer Span zu erhalten kannst du das Attribut
+- Um das String-Label einer Span zu erhalten, kannst du das Attribut
   `span.label_` verwenden. Dies ist das Label, das vom Entity Recognizer
   vorhergesagt wurde, wenn die Span eine Entität ist.
-- Denke daran, dass Erweiterungen über die Property `._` abrufbar sind. Zum
-  Beispiel, `doc._.has_color`.
+- Denke daran, dass Erweiterungen über die Property `._` abrufbar sind, zum
+  Beispiel `doc._.has_color`.
 
 </codeblock>
 
@@ -340,8 +342,8 @@ ist als Variable `CAPITALS` verfügbar.
   `set_extension` der globalen Klasse verwenden, z.B. `Doc`, `Token` oder
   `Span`. Um eine Getter-Funktion festzulegen, verwende das Keyword-Argument
   `getter`.
-- Denke daran, dass Erweiterungen über die Property `._` abrufbar sind. Zum
-  Beispiel, `doc._.has_color`.
+- Denke daran, dass Erweiterungen über die Property `._` abrufbar sind, zum
+  Beispiel `doc._.has_color`.
 
 </codeblock>
 
@@ -363,16 +365,16 @@ Variable `TEXTS`.
 
 ### Teil 1
 
-- Schreibe den Code um, sodass er `nlp.pipe` verwendet. Statt über die Texts zu
+- Schreibe den Code um, sodass er `nlp.pipe` verwendet. Statt über die Texte zu
   iterieren und sie einzeln zu verarbeiten, iteriere über die `doc`-Objekte, die
-  per yield von `nlp.pipe` zurückgegeben werden.
+  von `nlp.pipe` zurückgegeben werden.
 
 <codeblock id="03_14_01">
 
 - Mit `nlp.pipe` kannst du die ersten beiden Zeilen des Codes in eine
   zusammenfügen.
-- `nlp.pipe` erhält `TEXTS` als Argument und gibt `doc`-Objekte per yield
-  zurück, über die du iterieren kannst.
+- `nlp.pipe` erhält `TEXTS` als Argument und gibt `doc`-Objekte per `yield` zurück, 
+  über die du iterieren kannst.
 
 </codeblock>
 
@@ -397,27 +399,27 @@ Variable `TEXTS`.
 <exercise id="15" title="Verarbeitung von Daten mit Kontext">
 
 In dieser Übung wirst du benutzerdefinierte Attribute verwenden, um
-Meta-Informationen über Autor und Buch zu den Zitaten hinzuzufügen.
+Meta-Informationen über Autor und Buch zu Zitaten hinzuzufügen.
 
 Eine Liste mit `[text, context]` Beispielen ist verfügbar als Variable `DATA`.
-Die Texte sind Zitate aus berühmten Büchern, und der Kontext is jeweils ein
-Dictionary mit den Schlüsseln `"author"` und `"book"`.
+Die Texte sind Zitate aus berühmten Büchern, und der Kontext ist jeweils ein
+Dictionary mit den Schlüsseln `"autor"` und `"buch"`.
 
-- Verwende die Methode `set_extension`, um die Doc-Erweiterungen `"author"` und
-  `"book"` mit `default`-Wert `None` zu registrieren.
+- Verwende die Methode `set_extension`, um die Doc-Erweiterungen `"autor"` und
+  `"buch"` mit `default`-Wert `None` zu registrieren.
 - Verarbeite die `[text, context]` Paare in `DATA` und verwende hierzu
   `nlp.pipe` mit `as_tuples=True`.
-- Überschreibe die Attribute `doc._.book` und `doc._.author` mit den
+- Überschreibe die Attribute `doc._.buch` und `doc._.autor` mit den
   entsprechenden Informationen, die als Kontext durchgereicht werden.
 
 <codeblock id="03_15">
 
 - Die Methode `Doc.set_extension` erwartet zwei Argumente: der String-Name des
   Attributs und ein Keyword-Argument, das entweder den default-Wert, Getter- und
-  Setter-Funktion, oder die Methode angibt. Zum Beispiel, `default=True`.
+  Setter-Funktion, oder die Methode angibt, zum Beispiel `default=True`.
 - Wenn `as_tuples` auf `True` gesetzt ist, erwartet die Methode `nlp.pipe` eine
-  Liste von `(text, context)` Tuples und gibt per yield `(doc, context)` Tuples
-  zurück.
+  Liste von `(text, context)` Tuples und gibt `(doc, context)` Tuples 
+  per `yield` zurück.
 
 </codeblock>
 
@@ -425,7 +427,7 @@ Dictionary mit den Schlüsseln `"author"` und `"book"`.
 
 <exercise id="16" title="Selektive Verarbeitung">
 
-In dieser Übung wirst du die Methoden `nlp.make_doc` und `nlp.disable_pipes`
+In dieser Übung wirst du die Methoden `nlp.make_doc` und `nlp.select_pipes`
 verwenden, um bei der Verarbeitung des Texts nur ausgewählte Komponenten
 auszuführen.
 
@@ -443,14 +445,15 @@ auszuführen.
 
 ### Teil 2
 
-- Deaktiviere den Tagger und Parser mithilfe der Methode `nlp.disable_pipes`.
+- Deaktiviere den Tagger und Lemmatizer mithilfe der Methode `nlp.select_pipes`.
 - Verarbeite den Text und drucke alle Entitäten im `doc`.
 
 <codeblock id="03_16_02">
 
-Die Methode `nlp.disable_pipes` akzeptiert eine variable Anzahl an Argumenten:
-die String-Namen der Pipeline-Komponenten, die deaktivert werden sollen. Zum
-Beispiel, `nlp.disable_pipes("ner")` deaktiviert den Entity Recognizer.
+Die Methode `nlp.select_pipes` akzeptiert die Argumente `enable` oder
+`disable`, die beide eine Liste von Komponentennamen akzeptieren, die daraufhin
+aktiviert oder deaktiviert werden. `nlp.select_pipes(disable="ner")` deaktiviert zum 
+Beispiel den Entity Recognizer.
 
 </codeblock>
 

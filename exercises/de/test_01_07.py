@@ -1,7 +1,7 @@
 def test():
     assert "spacy.load" in __solution__, "Rufst du spacy.load auf?"
-    assert nlp.meta["lang"] == "de", "Lädst du das korrekte Modell?"
-    assert nlp.meta["name"] == "core_news_sm", "Lädst du das korrekte Modell?"
+    assert nlp.meta["lang"] == "de", "Lädst du die korrekte Pipeline?"
+    assert nlp.meta["name"] == "core_news_sm", "Lädst du die korrekte Pipeline?"
     assert "nlp(text)" in __solution__, "Verarbeitest du den Text korrekt?"
     assert "print(doc.text)" in __solution__, "Druckst du den Text des Doc?"
 

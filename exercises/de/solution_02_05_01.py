@@ -1,6 +1,6 @@
-from spacy.lang.de import German
+import spacy
 
-nlp = German()
+nlp = spacy.blank("de")
 
 # Importiere die Klasse Doc
 from spacy.tokens import Doc

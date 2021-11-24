@@ -15,10 +15,11 @@ doc = nlp(
 pattern = [{"LEMMA": "download"}, {"POS": "PROPN"}]
 
 # Füge das Pattern zum Matcher hinzu und wende den Matcher auf das Doc an
-matcher.add("DOWNLOAD_THINGS_PATTERN", None, pattern)
+matcher.add("DOWNLOAD_THINGS_PATTERN", [pattern])
 matches = matcher(doc)
-print("Total matches found:", len(matches))
+print("Anzahl an Resultaten:", len(matches))
 
 # Iteriere über die Resultate und drucke den Text der Span
 for match_id, start, end in matches:
-    print("Match found:", doc[start:end].text)
+    print("Resultat gefunden:", doc[start:end].text)
+

@@ -15,11 +15,11 @@ machen die ersten Schritte.
 # Das nlp-Objekt
 
 ```python
-# Importiere die Sprach-Klasse "German"
-from spacy.lang.de import German
+# Importiere spaCy
+import spacy
 
-# Erstelle das nlp-Objekt
-nlp = German()
+# Erstelle ein leeres deutsches nlp-Objekt
+nlp = spacy.blank("de")
 ```
 
 - enthält die Verarbeitungspipeline
@@ -28,15 +28,14 @@ nlp = German()
 Notes: Im Zentrum von spaCy steht das Objekt, das die Verarbeitungspipeline
 enthält. Wir nennen diese Variable typischerweise "nlp".
 
-Um beispielsweise ein deutschsprachiges `nlp`-Objekt zu erstellen, kannst du die
-Sprach-Klasse `German` von `spacy.lang.de` importieren und initialisieren. Du
-kannst das `nlp`-Objekt wie eine Funktion benutzen und damit Text analysieren.
+Um beispielsweise ein deutschsprachiges `nlp`-Objekt zu erstellen, kannst du `spacy`
+importieren und die Methode `spacy.blank` nutzen, um eine leere deutsche Pipeline zu
+erstellen. Du kannst das `nlp`-Objekt wie eine Funktion benutzen und damit Text analysieren.
 
 Es enthält alle verschiedenen Komponenten der Pipeline.
 
-Es beinhaltet außerdem sprach-spezifische Regeln, um den Text in Wörter und
-Satzzeichen zu tokenisieren. spaCy unterstützt eine Vielzahl an Sprachen, die
-über `spacy.lang` verfügbar sind.
+Es beinhaltet außerdem sprachspezifische Regeln, um den Text in Wörter und
+Satzzeichen zu tokenisieren. spaCy unterstützt eine Vielzahl an Sprachen.
 
 ---
 
@@ -70,7 +69,7 @@ dazu später mehr!
 
 # Das Token-Objekt
 
-<img src="/doc.png" alt="Illustration eines Doc-Objekts mit vier Tokens" width="50%" />
+<img src="/doc.png" alt="Illustration eines Doc-Objekts mit drei Tokens" width="50%" />
 
 ```python
 doc = nlp("Hallo Welt!")
@@ -100,7 +99,7 @@ den wortwörtlichen Text des Tokens zurück.
 
 # Das Span-Objekt
 
-<img src="/doc_span.png" width="50%" alt="Illustration eines Doc-Objekts mit vier Tokens und drei davon innerhalb einer Span" />
+<img src="/doc_span.png" width="50%" alt="Illustration eines Doc-Objekts mit drei Tokens, wobei zwei davon innerhalb einer Span sind" />
 
 ```python
 doc = nlp("Hallo Welt!")
@@ -116,13 +115,13 @@ print(span.text)
 Welt!
 ```
 
-Notes: Ein `Span`-Objekt ist ein Abschnitt des Dokuments, der aus einem oder
-mehreren Tokens besteht. Es ist lediglich eine Ansicht des `Doc`-Objekts und
-enhält selbst keine Daten.
+Notes: Ein `Span`-Objekt, das aus einem oder mehreren Tokens besteht, ist ein Abschnitt 
+des Dokuments. Es ist lediglich eine Ansicht des `Doc`-Objekts und
+enthält selbst keine Daten.
 
-Um eine Span zu erstellen kannst du Pythons Slice-Notation verwenden. `1:3` zum
+Um eine Span zu erstellen, kannst du Pythons Slice-Notation verwenden. `1:3` zum
 Beispiel erstellt eine Span ab dem Token an Position 1, bis zu – aber nicht
-enschließend! - dem Token an Position 3.
+einschließlich! - dem Token an Position 3.
 
 ---
 
@@ -158,10 +157,10 @@ Notes: Hier siehst du einige der verfügbaren Token-Attribute:
 
 `is_alpha`, `is_punct` und `like_num` geben boolesche Werte zurück, die angeben,
 ob der Token aus alphabetischen Zeichen besteht, ob er ein Satzzeichen ist oder
-ob er einer Zahl _ähnelt_. Zum Beispiel, ein Token "10" – Eins, Null, oder das
+ob er einer Zahl _ähnelt_, zum Beispiel ein Token "10" – Eins, Null – oder das
 Wort "zehn" – Z, E, H, N.
 
-Diese Attribute werden auch lexikalische Attribute genannt: sie beziehen sich
+Diese Attribute werden auch lexikalische Attribute genannt: Sie beziehen sich
 auf Einträge im Vokabular und richten sich nicht nach dem Kontext des Tokens.
 
 ---

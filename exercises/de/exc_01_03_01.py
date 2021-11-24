@@ -1,5 +1,5 @@
-# Importiere die Klasse German und erstelle das nlp-Objekt
-from ____ import ____
+# Importiere spaCy und erstelle ein deutsches nlp-Objekt
+import ____
 
 nlp = ____
 
