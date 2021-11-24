@@ -32,7 +32,7 @@ Notes: Wenn du große Mengen Text verarbeiten und viele `Doc`-Objekte
 hintereinander erstellen musst, kann die Methode `nlp.pipe` dies deutlich
 beschleunigen.
 
-Sie verarbeitet die Texte als Stream und gibt `Doc`-Objekte zurück.
+Sie verarbeitet die Texte als Stream und gibt `Doc`-Objekte per `yield` zurück.
 
 Dies ist viel schneller, als das `nlp`-Objekt mit jedem Text aufzurufen, da es
 die Texte in Batches aufteilt.
@@ -47,7 +47,7 @@ musst, um eine Liste von `Doc`-Objekten zu erhalten.
 
 - Mit `as_tuples=True` als Argument von `nlp.pipe` kannst du `(text, context)`
   Tuples verarbeiten
-- Gibt per `yield` `(doc, context)` Tuples zurück
+- Gibt per `yield` `(doc, context)`-Tupel zurück
 - Nützlich, um Metadaten mit einem Doc zu verbinden
 
 ```python
@@ -65,10 +65,10 @@ Dies ist ein Text 15
 Und noch ein Text 16
 ```
 
-Notes: Mit `nlp.pipe` kannst du außerdem Tuples mit Text und Kontext
+Notes: Mit `nlp.pipe` kannst du außerdem Tupel mit Text und Kontext
 verarbeiten, wenn du das Argument `as_tuples` auf `True` setzt.
 
-Die Methode gibt dann per `yield` Tuples bestehend aus einem Doc und dem Kontext
+Die Methode gibt dann per `yield` Tupel bestehend aus einem Doc und dem Kontext
 zurück.
 
 Dies ist nützlich, um zusätzliche Metadaten zu verarbeiten, zum Beispiel eine
@@ -164,7 +164,7 @@ with nlp.select_pipes(disable=["tagger", "parser"]):
 Notes: spaCy ermöglicht es ebenfalls, Pipeline-Komponenten mithilfe des
 Context-Managers `nlp.select_pipes` vorübergehend zu deaktivieren.
 
-Es akzeptiert die Argumente `enable` und `disable`, die eine Liste von
+Es akzeptiert die Argumente `enable` oder `disable`, die eine Liste von
 Stringnamen akzeptieren, die beschreiben welche Pipeline-Komponenten deaktiviert
 werden sollen. Wenn du beispielsweise nur den Entity Recognizer verwenden willst, 
 um das Dokument zu verarbeiten, kannst du vorübergehend den Tagger und Parser deaktivieren.

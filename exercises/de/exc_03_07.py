@@ -8,7 +8,7 @@ animals = ["Golden Retriever", "Katze", "Schildkröte", "Rattus norvegicus"]
 animal_patterns = list(nlp.pipe(animals))
 print("animal_patterns:", animal_patterns)
 matcher = PhraseMatcher(nlp.vocab)
-matcher.add("ANIMAL", None, *animal_patterns)
+matcher.add("ANIMAL", animal_patterns)
 
 # Definiere die benutzerdefinierte Komponente
 @Language.component("animal_component")

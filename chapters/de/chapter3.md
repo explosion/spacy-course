@@ -54,9 +54,9 @@ verbinden.
 
 <opt text="Initialisiert die Sprache, fügt die Pipeline hinzu und lädt die binären Gewichte des Modells.">
 
-Wenn du `spacy.load()` aufrufst, um ein Modell zu laden, initialisiert spaCy die
+Wenn du `spacy.load()` aufrufst, um eine Pipeline zu laden, initialisiert spaCy die
 Sprache, fügt die Pipeline hinzu und lädt die binären Gewichte des Modells. Wenn
-du das `nlp`-Objekt mit einem Text _ausführst_, ist das Modell allerdings
+du das `nlp`-Objekt mit einem Text _ausführst_, ist die Pipeline allerdings
 bereits geladen.
 
 </opt>
@@ -76,7 +76,7 @@ Lass uns die kleine deutsche Pipeline genauer anschauen!
 
 Die Liste der Namen der Komponenten ist verfügbar als Attribut
 `nlp.pipe_names`. Die gesamte Pipeline, bestehend aus `(name, component)`-Tupeln,
-ist verfügbar als `nlp.pipeline`.
+ist verfügbar unter `nlp.pipeline`.
 
 </codeblock>
 
@@ -94,7 +94,7 @@ ist verfügbar als `nlp.pipeline`.
 Welche dieser Probleme können mit benutzerdefinierten Pipeline-Komponenten
 gelöst werden? Wähle alle Optionen aus, die zutreffen.
 
-1. Vortrainierte Modelle aktualisieren und ihre Vorhersagen verbessern
+1. Trainierte Pipelines aktualisieren und ihre Vorhersagen verbessern
 2. Eigene Werte auf der Basis von Tokens und ihren Attributen berechnen
 3. Entitäten hinzufügen, zum Beispiel basierend auf einem Lexikon
 4. Unterstützung für eine zusätzliche Sprache implementieren
@@ -104,7 +104,7 @@ gelöst werden? Wähle alle Optionen aus, die zutreffen.
 <opt text="1 und 2.">
 
 Benutzerdefinierte Komponenten können lediglich das `Doc` bearbeiten und daher
-nicht dazu genutzt werden, die Gewichte des Modells anderer Komponenten direkt
+nicht dazu genutzt werden, die Gewichte anderer Komponenten direkt
 zu verändern.
 
 </opt>
@@ -112,7 +112,7 @@ zu verändern.
 <opt text="1 und 3.">
 
 Benutzerdefinierte Komponenten können lediglich das `Doc` bearbeiten und daher
-nicht dazu genutzt werden, die Gewichte des Modells anderer Komponenten direkt
+nicht dazu genutzt werden, die Gewichte anderer Komponenten direkt
 zu verändern.
 
 </opt>
@@ -120,9 +120,9 @@ zu verändern.
 <opt text="1 und 4.">
 
 Benutzerdefinierte Komponenten können lediglich das `Doc` bearbeiten und daher
-nicht dazu genutzt werden, die Gewichte des Modells anderer Komponenten direkt
+nicht dazu genutzt werden, die Gewichte anderer Komponenten direkt
 zu verändern. Sie werden außerdem zur Pipeline hinzugefügt, nachdem die
-Sprach-Klasse bereits initialisiert und der Text tokenisiert ist. Sie sind daher
+Sprachklasse bereits initialisiert und der Text tokenisiert ist. Sie sind daher
 nicht geeignet, um neue Sprachen hinzuzufügen.
 
 </opt>
@@ -138,7 +138,7 @@ bearbeiten.
 <opt text="2 und 4.">
 
 Benutzerdefinierte Komponenten werden zur Pipeline hinzugefügt, nachdem die
-Sprach-Klasse bereits initialisiert und der Text tokenisiert ist. Sie sind daher
+Sprachklasse bereits initialisiert und der Text tokenisiert ist. Sie sind daher
 nicht geeignet, um neue Sprachen hinzuzufügen.
 
 </opt>
@@ -146,7 +146,7 @@ nicht geeignet, um neue Sprachen hinzuzufügen.
 <opt text="3 und 4.">
 
 Benutzerdefinierte Komponenten werden zur Pipeline hinzugefügt, nachdem die
-Sprach-Klasse bereits initialisiert und der Text tokenisiert ist. Sie sind daher
+Sprachklasse bereits initialisiert und der Text tokenisiert ist. Sie sind daher
 nicht geeignet, um neue Sprachen hinzuzufügen.
 
 </opt>
@@ -172,7 +172,8 @@ Tokens eines Dokuments druckt. Kannst du den Code vervollständigen?
   Methode `len()` verwenden und sie mit dem `Doc` aufrufen.
 - Verwende die Methode `nlp.add_pipe`, um eine Komponente zur Pipeline
   hinzuzufügen. Denke daran, das Keyword-Argument `first` auf `True` zu setzen,
-  damit die Komponente vor allen anderen hinzugefügt wird.
+  damit die Komponente vor allen anderen hinzugefügt wird, und dass der Stringname
+  der Komponente genutzt werden muss.
 - Um einen Text zu verarbeiten, rufe das `nlp`-Objekt mit dem Text als Argument
   auf.
 
@@ -288,8 +289,8 @@ definieren.
 
 <exercise id="11" title="Entitäten und Erweiterungen">
 
-In dieser Übung wirst du benutzerdefinierte Erweiterungen mit den Vorhersagen
-des Modells kombinieren und einen Attribut-Getter erstellen, der eine
+In dieser Übung wirst du benutzerdefinierte Erweiterungen mit statistischen
+Vorhersagen kombinieren und einen Attribut-Getter erstellen, der eine
 Wikipedia-Such-URL zurückgibt, wenn die Span eine Person, Organisation oder ein
 Ort ist.
 
@@ -372,7 +373,7 @@ Variable `TEXTS`.
 
 - Mit `nlp.pipe` kannst du die ersten beiden Zeilen des Codes in eine
   zusammenfügen.
-- `nlp.pipe` erhält `TEXTS` als Argument und gibt `doc`-Objekte zurück, 
+- `nlp.pipe` erhält `TEXTS` als Argument und gibt `doc`-Objekte per `yield` zurück, 
   über die du iterieren kannst.
 
 </codeblock>
@@ -417,7 +418,8 @@ Dictionary mit den Schlüsseln `"autor"` und `"buch"`.
   Attributs und ein Keyword-Argument, das entweder den default-Wert, Getter- und
   Setter-Funktion, oder die Methode angibt, zum Beispiel `default=True`.
 - Wenn `as_tuples` auf `True` gesetzt ist, erwartet die Methode `nlp.pipe` eine
-  Liste von `(text, context)` Tuples und gibt `(doc, context)` Tuples zurück.
+  Liste von `(text, context)` Tuples und gibt `(doc, context)` Tuples 
+  per `yield` zurück.
 
 </codeblock>
 

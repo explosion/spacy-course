@@ -49,7 +49,7 @@ from spacy.language import Language
 
 @Language.component("custom_component")
 def custom_component_function(doc):
-    # Mache etwas mit dem Doc hier
+    # Mache hier etwas mit dem Doc
     return doc
 
 nlp.add_pipe("custom_component")
@@ -63,9 +63,9 @@ Um spaCy mitzuteilen, wo deine benutzerdefinierte Komponente gefunden werden kan
 wie sie aufgerufen werden soll, kannst du sie mithilfe des `@Language.component`-Decorators
 kennzeichnen. Füge diese Zeile dazu einfach direkt über dem Funktionskopf ein. 
 
-Komponenten können über die Methode `nlp.add_pipe` zur Pipeline hinzugefügt
-werden. Die Methode benötigt mindestens ein Argument: den Namen der Funktion der
-Komponente als String.
+Sobald eine Komponente registriert ist, kann sie über die Methode `nlp.add_pipe`
+zur Pipeline hinzugefügt werden. Die Methode benötigt mindestens ein Argument: 
+den Namen der Funktion der Komponente als String.
 
 ---
 
@@ -74,7 +74,7 @@ Komponente als String.
 ```python
 @Language.component("custom_component")
 def custom_component_function(doc):
-    # Mache etwas mit dem Doc hier
+    # Mache hier etwas mit dem Doc
     return doc
 
 nlp.add_pipe("custom_component")
@@ -97,7 +97,7 @@ Wenn `first` auf `True` gesetzt wird, wird die Komponente am Anfang der Pipeline
 als erstes Element hinzugefügt, direkt nach dem Tokenizer.
 
 Die Argumente `before` und `after` ermöglichen es, den Namen einer vorhandenen
-Komponente anzugeben, vor oder nach welcher die neue Komponente eingefügt werden
+Komponente anzugeben, vor oder nach der die neue Komponente eingefügt werden
 soll. Wird `before` beispielsweise auf `"ner"` gesetzt, wird die Komponente vor
 dem Named Entity Recognizer eingefügt.
 
@@ -114,7 +114,7 @@ nlp = spacy.load("de_core_news_sm")
 
 # Definiere eine benutzerdefinierte Komponente
 @Language.component("custom_component")
-def custom_component(doc):
+def custom_component_function(doc):
     # Drucke die Länge des Docs
     print("Doc-Länge:", len(doc))
     # Gebe das Doc-Objekt zurück

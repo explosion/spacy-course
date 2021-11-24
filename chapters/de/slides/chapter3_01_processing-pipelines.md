@@ -62,7 +62,7 @@ Am Ende legt Text Classifier Kategorien fest, die auf den gesamten Text zutreffe
 und fügt diese zur Property `doc.cats` hinzu.
 
 Da Text-Kategorien immer sehr spezifisch sind, ist der Text Classifier nicht
-standardmäßig Teil der verfügbaren vortrainierten Pipelines. Du kannst ihn jedoch
+standardmäßig Teil der verfügbaren trainierten Pipelines. Du kannst ihn jedoch
 verwenden, um deine eigenen Systeme zu trainieren.
 
 ---
@@ -78,7 +78,7 @@ Notes: Alle Pipeline-Packages, die du mit spaCy laden kannst, enthalten verschie
 Dateien und eine `config.cfg`-Datei.
 
 Die config-Datei definiert Dinge wie die Sprache und Pipeline. So weiß spaCy,
-welche Komponenten erstellt werden sollen.
+welche Komponenten erstellt und wie sie konfiguriert werden sollen.
 
 Die eingebauten Komponenten, die Vorhersagen treffen, benötigen außerdem binäre
 Daten. Die Daten sind im Pipeline-Package enthalten und werden in die Komponenten

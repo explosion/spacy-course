@@ -11,7 +11,7 @@ def length_component_function(doc):
     ____
 
 
-# Lade das kleine deutsche Modell
+# Lade die kleine deutsche Pipeline
 nlp = spacy.load("de_core_news_sm")
 
 # Füge die Komponente am Anfang der Pipeline hinzu und drucke die Namen der Komponenten

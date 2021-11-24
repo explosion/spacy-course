@@ -135,7 +135,7 @@ Der Token "blau" gibt nun für `._.is_color` den Wert `True` zurück.
 
 # Property-Erweiterungen (2)
 
-- `Span`-Erweiterungen sollten so gut wie immer eine Getter-Function verwenden
+- `Span`-Erweiterungen sollten so gut wie immer eine Getter-Funktion verwenden
 
 ```python
 from spacy.tokens import Span

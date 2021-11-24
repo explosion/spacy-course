@@ -7,7 +7,7 @@ from spacy.matcher import PhraseMatcher
 with open("exercises/de/countries.json", encoding="utf8") as f:
     COUNTRIES = json.loads(f.read())
 
-with open("exercises/en/capitals.json", encoding="utf8") as f:
+with open("exercises/de/capitals.json", encoding="utf8") as f:
     CAPITALS = json.loads(f.read())
 
 nlp = spacy.blank("de")
@@ -24,7 +24,7 @@ def countries_component_function(doc):
 
 
 # Füge die Komponente zur Pipeline hinzu
-nlp.add_pipe(countries_component)
+nlp.add_pipe("countries_component")
 print(nlp.pipe_names)
 
 # Getter-Funktion, die den Text der Span im Lexikon der Hauptstädte nachschlägt

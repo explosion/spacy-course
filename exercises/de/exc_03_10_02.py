@@ -1,5 +1,5 @@
 import spacy
-from spacy.tokens import Doc
+from spacy.tokens import Span
 
 nlp = spacy.blank("de")
 

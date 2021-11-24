@@ -7,7 +7,7 @@ from spacy.matcher import PhraseMatcher
 with open("exercises/de/countries.json", encoding="utf8") as f:
     COUNTRIES = json.loads(f.read())
 
-with open("exercises/en/capitals.json", encoding="utf8") as f:
+with open("exercises/de/capitals.json", encoding="utf8") as f:
     CAPITALS = json.loads(f.read())
 
 nlp = spacy.blank("de")
