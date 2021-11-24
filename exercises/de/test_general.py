@@ -24,7 +24,7 @@ def test_01_08_02_predictions(nlp):
 
 
 def test_01_09_predictions(nlp):
-    text = "Apple: Modell IPhone SE kommt im Sommer"
+    text = "Apple: neues Modell X Pro kommt im Sommer"
     doc = nlp(text)
     ents = [(ent.text, ent.label_) for ent in doc.ents]
     assert len(ents) == 1
