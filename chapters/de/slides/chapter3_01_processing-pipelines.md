@@ -23,15 +23,16 @@ Text mit dem `nlp`-Objekt verarbeitest.
 doc = nlp("Dies ist ein Satz.")
 ```
 
-Notes: Das Folgende hast du mittlerweile schon sehr oft geschrieben und ausgeführt:
-rufe das `nlp`-Objekt mit einem Text-String auf, und erhalte ein Doc-Objekt zurück.
+Notes: Das Folgende hast du mittlerweile schon sehr oft geschrieben und
+ausgeführt: rufe das `nlp`-Objekt mit einem Text-String auf, und erhalte ein
+Doc-Objekt zurück.
 
 Aber was macht das `nlp`-Objekt eigentlich?
 
 Zuerst wendet spaCy den Tokenizer an, um den Text-String in ein `Doc`-Objekt
-umzuwandeln. Danach werden verschiedene Pipeline-Komponenten der Reihe
-nach auf das Doc angewendet. In diesem Fall zuerst der Part-of-speech Tagger,
-dann der Dependency Parser und danach der Entity Recognizer. Am Ende wird das
+umzuwandeln. Danach werden verschiedene Pipeline-Komponenten der Reihe nach auf
+das Doc angewendet. In diesem Fall zuerst der Part-of-speech Tagger, dann der
+Dependency Parser und danach der Entity Recognizer. Am Ende wird das
 verarbeitete Doc zurückgegeben, damit du mit ihm arbeiten kannst.
 
 ---
@@ -45,8 +46,9 @@ verarbeitete Doc zurückgegeben, damit du mit ihm arbeiten kannst.
 | **ner**     | Named Entity Recognizer | `Doc.ents`, `Token.ent_iob`, `Token.ent_type`             |
 | **textcat** | Text Classifier         | `Doc.cats`                                                |
 
-Notes: spaCy liefert eine Vielzahl von verschiedenen integrierten Pipeline-Komponenten mit.
-Hier sind einige der häufigsten, die du in deinem Projekt wahrscheinlich verwenden willst.
+Notes: spaCy liefert eine Vielzahl von verschiedenen integrierten
+Pipeline-Komponenten mit. Hier sind einige der häufigsten, die du in deinem
+Projekt wahrscheinlich verwenden willst.
 
 Der Part-of-speech Tagger legt die Attribute `Token.tag` und `Token.pos` fest.
 
@@ -58,8 +60,8 @@ Der Named Entity Recognizer fügt die erkannten Entitäten zur Property `doc.ent
 hinzu. Er legt außerdem Attribute für Entität-Typen der Tokens fest, die
 angeben, ob der Token Teil einer Entität ist.
 
-Am Ende legt Text Classifier Kategorien fest, die auf den gesamten Text zutreffen,
-und fügt diese zur Property `doc.cats` hinzu.
+Am Ende legt Text Classifier Kategorien fest, die auf den gesamten Text
+zutreffen, und fügt diese zur Property `doc.cats` hinzu.
 
 Da Text-Kategorien immer sehr spezifisch sind, ist der Text Classifier nicht
 standardmäßig Teil der verfügbaren trainierten Pipelines. Du kannst ihn jedoch
@@ -71,18 +73,18 @@ verwenden, um deine eigenen Systeme zu trainieren.
 
 <img src="/package_meta_de.png" alt="Ein Paket mit dem Label de_core_news_sm mit Ordner und config.cfg" />
 
-- Definiert die Pipeline-Reihenfolge in der `config.cfg` des Modells 
+- Definiert die Pipeline-Reihenfolge in der `config.cfg` des Modells
 - Eingebaute Komponenten benötigen binäre Daten, um Vorhersagen zu treffen
 
-Notes: Alle Pipeline-Packages, die du mit spaCy laden kannst, enthalten verschiedene
-Dateien und eine `config.cfg`-Datei.
+Notes: Alle Pipeline-Packages, die du mit spaCy laden kannst, enthalten
+verschiedene Dateien und eine `config.cfg`-Datei.
 
-Die config-Datei definiert Dinge wie die Sprache und Pipeline. So weiß spaCy,
+Die Config-Datei definiert Dinge wie die Sprache und Pipeline. So weiß spaCy,
 welche Komponenten erstellt und wie sie konfiguriert werden sollen.
 
 Die eingebauten Komponenten, die Vorhersagen treffen, benötigen außerdem binäre
-Daten. Die Daten sind im Pipeline-Package enthalten und werden in die Komponenten
-hineingeladen, wenn du die Pipeline lädst.
+Daten. Die Daten sind im Pipeline-Package enthalten und werden in die
+Komponenten hineingeladen, wenn du die Pipeline lädst.
 
 ---
 

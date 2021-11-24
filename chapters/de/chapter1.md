@@ -25,22 +25,24 @@ Lass uns loslegen mit spaCy! In dieser Übung kannst du ein paar der 60+
 
 ### Teil 1: Deutsch
 
-- Nutze `spacy.blank`, um ein leeres deutsches (`"de"`) `nlp`-Objekt zu erstellen.
+- Nutze `spacy.blank`, um ein leeres deutsches (`"de"`) `nlp`-Objekt zu
+  erstellen.
 - Erstelle ein `doc` und drucke seinen Text.
 
 <codeblock id="01_02_01"></codeblock>
 
 ### Teil 2: Englisch
 
-- Nutze `spacy.blank`, um ein leeres englisches (`"en"`) `nlp`-Objekt zu erstellen.
+- Nutze `spacy.blank`, um ein leeres englisches (`"en"`) `nlp`-Objekt zu
+  erstellen.
 - Erstelle ein `doc` und drucke seinen Text.
 
 <codeblock id="01_02_02"></codeblock>
 
-
 ### Teil 3: Spanisch
 
-- Nutze `spacy.blank`, um ein leeres spanisches (`"es"`) `nlp`-Objekt zu erstellen.
+- Nutze `spacy.blank`, um ein leeres spanisches (`"es"`) `nlp`-Objekt zu
+  erstellen.
 - Erstelle ein `doc` und drucke seinen Text.
 
 <codeblock id="01_02_03"></codeblock>
@@ -56,33 +58,33 @@ den Text und erstellt ein `Doc`-Objekt. In dieser Übung lernst du mehr über da
 ### Schritt 1
 
 - Nutze `spacy.blank` um ein deutsches `nlp`-Objekt zu erstellen.
-- Verarbeite den Text und erstelle ein `Doc`-Objekt, das in der Variable `doc` 
-gespeichert wird.
+- Verarbeite den Text und erstelle ein `Doc`-Objekt, das in der Variable `doc`
+  gespeichert wird.
 - Wähle den ersten Token des `Doc`-Objekts aus und drucke seinen `text`.
 
 <codeblock id="01_03_01">
 
 Du kannst bei einem `Doc` genauso auf einen Index zugreifen, wie bei einer Liste
-in Python. Zum Beispiel gibt `doc[4]` den Token mit dem Index 4 zurück, also
-den fünften Token im Text. Vergiss nicht, dass der erste Index in Python 0 und
-nicht 1 ist.
+in Python. Zum Beispiel gibt `doc[4]` den Token mit dem Index 4 zurück, also den
+fünften Token im Text. Vergiss nicht, dass der erste Index in Python 0 und nicht
+1 ist.
 
 </codeblock>
 
 ### Schritt 2
 
 - Nutze `spacy.blank` um ein deutsches `nlp`-Objekt zu erstellen.
-- Verarbeite den Text und erstelle ein `Doc`-Objekt, das in der Variable `doc` 
-gespeichert wird.
-- Erstelle einen Abschnitt des `Doc`-Objekts für die Tokens "niedliche Katzen" und
-  "niedliche Katzen und Faultiere".
+- Verarbeite den Text und erstelle ein `Doc`-Objekt, das in der Variable `doc`
+  gespeichert wird.
+- Erstelle einen Abschnitt des `Doc`-Objekts für die Tokens "niedliche Katzen"
+  und "niedliche Katzen und Faultiere".
 
 <codeblock id="01_03_02">
 
 Einen Abschnitt eines `Doc`s kannst du genauso erstellen, wie einen Abschnitt
-einer Liste in Python, indem du die `:`-Notation nutzt. Denke daran, dass der Index des
-letzten Tokens _ausschließend_ ist – `0:4` zum Beispiel beschreibt Token 0 _bis
-hin zu_ Token 4, aber nicht einschließlich Token 4.
+einer Liste in Python, indem du die `:`-Notation nutzt. Denke daran, dass der
+Index des letzten Tokens _ausschließend_ ist – `0:4` zum Beispiel beschreibt
+Token 0 _bis hin zu_ Token 4, aber nicht einschließlich Token 4.
 
 </codeblock>
 
@@ -122,11 +124,12 @@ von `doc` zugreifen. `doc[5]` ist zum Beispiel der Token mit dem Index 5.
 Was ist **nicht** in Pipeline-Paketen enthalten, die du mit spaCy laden kannst?
 
 <choice>
-<opt text="Eine config-Datei, die beschreibt wie die Pipeline erstellt werden kann.">
+<opt text="Eine Config-Datei, die beschreibt wie die Pipeline erstellt werden kann.">
 
-Alle gespeicherten Pipelines enthalten eine `config.cfg`, die die zu initialisierende
-Sprache und die Namen der zu ladenden Pipeline-Komponenten festlegt. Des Weiteren enthält
-sie Details dazu, wie die Pipeline trainiert wurde und welche Einstellungen genutzt wurden.
+Alle gespeicherten Pipelines enthalten eine `config.cfg`, die die zu
+initialisierende Sprache und die Namen der zu ladenden Pipeline-Komponenten
+festlegt. Des Weiteren enthält sie Details dazu, wie die Pipeline trainiert
+wurde und welche Einstellungen genutzt wurden.
 
 </opt>
 <opt text="Binäre Gewichte, um statistische Vorhersagen zu treffen.">
@@ -138,9 +141,9 @@ vorherzusagen, enthalten Pipeline-Pakete binäre Gewichte.
 <opt correct="true" text="Die annotierten Daten mit denen das Modell trainiert wurde.">
 
 Trainierte Pipelines ermöglichen es, basierend auf einer Auswahl an
-Trainingsbeispielen zu generalisieren. Sobald sie einmal trainiert sind, verwenden
-sie binäre Gewichte, um Vorhersagen zu treffen. Daher ist es nicht erforderlich,
-die Trainingsdaten zusammen mit der Pipeline zu speichern.
+Trainingsbeispielen zu generalisieren. Sobald sie einmal trainiert sind,
+verwenden sie binäre Gewichte, um Vorhersagen zu treffen. Daher ist es nicht
+erforderlich, die Trainingsdaten zusammen mit der Pipeline zu speichern.
 
 </opt>
 <opt text="Strings des Vokabulars der Pipeline und ihre Hashes.">
@@ -158,8 +161,9 @@ nachzuschlagen, wenn er gebraucht wird.
 <exercise id="7" title="Pipelines laden">
 
 Die Pipelines, die wir in diesem Kurs verwenden, sind bereits vorinstalliert. Um
-mehr Details über die trainierten Pipelines von spaCy und ihren Installationsprozess zu
-erfahren, schau dir die [Dokumentation](https://spacy.io/usage/models) an.
+mehr Details über die trainierten Pipelines von spaCy und ihren
+Installationsprozess zu erfahren, schau dir die
+[Dokumentation](https://spacy.io/usage/models) an.
 
 - Benutze `spacy.load`, um das kleine deutsche Modell `"de_core_news_sm"` zu
   laden.
@@ -167,10 +171,10 @@ erfahren, schau dir die [Dokumentation](https://spacy.io/usage/models) an.
 
 <codeblock id="01_07">
 
-Um eine Pipeline zu laden, rufe `spacy.load` mit dem String-Namen der Pipeline als
-Argument auf. Pipeline-Namen unterscheiden sich in Hinblick auf die Sprachdaten
-und die Daten, mit denen sie trainiert wurden. Vergewissere dich daher, dass du
-den korrekten Namen verwendest.
+Um eine Pipeline zu laden, rufe `spacy.load` mit dem String-Namen der Pipeline
+als Argument auf. Pipeline-Namen unterscheiden sich in Hinblick auf die
+Sprachdaten und die Daten, mit denen sie trainiert wurden. Vergewissere dich
+daher, dass du den korrekten Namen verwendest.
 
 </codeblock>
 
@@ -179,16 +183,16 @@ den korrekten Namen verwendest.
 <exercise id="8" title="Linguistische Attribute vorhersagen">
 
 Du darfst nun eines der von spaCys trainierten Pipeline-Paketen ausprobieren und
-seine Vorhersagen in Aktion sehen. Probiere das auch gern mit deinem eigenen Text
-aus! Um mehr über die Bedeutung eines Tags oder Labels zu erfahren, kannst du
-`spacy.explain` in der Schleife aufrufen, zum Beispiel `spacy.explain("PROPN")`
-oder `spacy.explain("ORG")`.
+seine Vorhersagen in Aktion sehen. Probiere das auch gern mit deinem eigenen
+Text aus! Um mehr über die Bedeutung eines Tags oder Labels zu erfahren, kannst
+du `spacy.explain` in der Schleife aufrufen, zum Beispiel
+`spacy.explain("PROPN")` oder `spacy.explain("ORG")`.
 
 ### Teil 1
 
 - Verarbeite den Text mithilfe des `nlp`-Objekts und erstelle ein `doc`.
-- Drucke nun für jeden einzelnen Token seinen Text und seine Attribute `.pos_` 
-(Wortart) und `.dep_` (Dependenzrelation).
+- Drucke nun für jeden einzelnen Token seinen Text und seine Attribute `.pos_`
+  (Wortart) und `.dep_` (Dependenzrelation).
 
 <codeblock id="01_08_01">
 
@@ -255,8 +259,8 @@ der vorherigen Übung verwenden und ein Pattern erstellen, das den Ausdruck
 - Erstelle ein Pattern, das den `"TEXT"`-Wert von zwei Tokens findet: `"iPhone"`
   und `"X"`.
 - Benutze die Methode `matcher.add`, um das Pattern zum Matcher hinzuzufügen.
-- Iteriere über die Resultate und drucke die gefundenen Spans vom `start`- 
-  bis zum `end`-Index.
+- Iteriere über die Resultate und drucke die gefundenen Spans vom `start`- bis
+  zum `end`-Index.
 
 <codeblock id="01_11">
 

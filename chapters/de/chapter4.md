@@ -3,9 +3,10 @@ title: 'Kapitel 4: Trainieren eines neuronalen Netzwerks'
 description:
   'In diesem Kapitel lernst du, wie du spaCys statistische Modelle aktualisieren
   und für deine spezielle Anwendung anpassen kannst – zum Beispiel, um eine neue
-  Art von Entität in Online-Kommentaren vorherzusagen. Du wirst dein eigenes Modell
-  von Grund auf trainieren und verstehen, wie die Grundladen des Trainings funktionieren,
-  samt Tipps und Tricks, die deine NLP-Projekte erfolgreicher machen.'
+  Art von Entität in Online-Kommentaren vorherzusagen. Du wirst dein eigenes
+  Modell von Grund auf trainieren und verstehen, wie die Grundladen des
+  Trainings funktionieren, samt Tipps und Tricks, die deine NLP-Projekte
+  erfolgreicher machen.'
 prev: /chapter3
 next: null
 type: chapter
@@ -21,33 +22,37 @@ id: 4
 
 <exercise id="2" title="Trainings- und Evaluierungsdaten">
 
-Um ein Modell zu trainieren, brauchst du in der Regel Trainings- _und_ Entwicklungsdaten
-für die Evaluation. Wofür werden diese Evaluierungsdaten benötigt?
+Um ein Modell zu trainieren, brauchst du in der Regel Trainings- _und_
+Entwicklungsdaten für die Evaluation. Wofür werden diese Evaluierungsdaten
+benötigt?
 
 <choice>
 
 <opt text="Um mehr Trainingsbeispiele zur Sicherheit bereitzustellen, falls die Trainingsdaten nicht ausreichen.">
 
-Während des Trainings wird das Modell nur mithilfe der Trainingsdaten aktualisiert. Die
-Entwicklungsdaten werden genutzt, um das Modell zu evaluieren. Dabei werden dessen Vorhersagen
-für bisher unbekannten Beispiele mit den korrekten Annotationen verglichen. Dies wird 
-daraufhin mithilfe des Genauigkeitswertes widergespiegelt.
+Während des Trainings wird das Modell nur mithilfe der Trainingsdaten
+aktualisiert. Die Entwicklungsdaten werden genutzt, um das Modell zu evaluieren.
+Dabei werden dessen Vorhersagen für bisher unbekannten Beispiele mit den
+korrekten Annotationen verglichen. Dies wird daraufhin mithilfe des
+Genauigkeitswertes widergespiegelt.
 
 </opt>
 
 <opt text="Zum Überprüfen von Vorhersagen für unbekannte Beispiele und zum Berechnen des Genauigkeitswertes." correct="true">
 
-Die Entwicklungsdaten werden genutzt, um das Modell zu evaluieren. Dabei werden dessen 
-Vorhersagen für bisher unbekannten Beispiele mit den korrekten Annotationen verglichen. 
-Dies wird daraufhin mithilfe des Genauigkeitswertes widergespiegelt.
+Die Entwicklungsdaten werden genutzt, um das Modell zu evaluieren. Dabei werden
+dessen Vorhersagen für bisher unbekannten Beispiele mit den korrekten
+Annotationen verglichen. Dies wird daraufhin mithilfe des Genauigkeitswertes
+widergespiegelt.
 
 </opt>
 
 <opt text="Zum Definieren von Trainingsdaten ohne Annotation.">
 
-Die Entwicklungsdaten werden genutzt, um das Modell zu evaluieren. Dabei werden dessen 
-Vorhersagen für bisher unbekannten Beispiele mit den korrekten Annotationen verglichen. 
-Dies wird daraufhin mithilfe des Genauigkeitswertes widergespiegelt.
+Die Entwicklungsdaten werden genutzt, um das Modell zu evaluieren. Dabei werden
+dessen Vorhersagen für bisher unbekannten Beispiele mit den korrekten
+Annotationen verglichen. Dies wird daraufhin mithilfe des Genauigkeitswertes
+widergespiegelt.
 
 </opt>
 
@@ -81,20 +86,20 @@ erstellen und einem Modell beibringen können, diese als `"GADGET"` zu erkennnen
 
 <exercise id="4" title="Trainingsdaten erstellen (2)">
 
-Nachdem die Daten für unseren Korpus erstellt wurden, müssen wir sie in einer 
-`.spacy`-Datei speichern. Der Code der vorherigen Aufgabe wurde hier bereits
-zur Verfügung gestellt.
+Nachdem die Daten für unseren Korpus erstellt wurden, müssen wir sie in einer
+`.spacy`-Datei speichern. Der Code der vorherigen Aufgabe wurde hier bereits zur
+Verfügung gestellt.
 
-- Instanziiere das `DocBin` mithilfe der Liste von `docs`. 
+- Instanziiere das `DocBin` mithilfe der Liste von `docs`.
 - Speichere das `DocBin` in einer Datei mit dem Namen `train.spacy`.
 
 <codeblock id="04_04">
 
-- Du kannst das `DocBin` mit einer Liste von docs instanziieren, indem du diese Liste
-  im Argument `docs` übergibst.
-- Die Methode `to_disk` von `DocBin` benötigt ein Argument: den Pfad der Datei in der die
-  binären Daten gespeichert werden. Überprüfe hierbei, dass die Datei die Endung`.spacy`
-  nutzt.
+- Du kannst das `DocBin` mit einer Liste von docs instanziieren, indem du diese
+  Liste im Argument `docs` übergibst.
+- Die Methode `to_disk` von `DocBin` benötigt ein Argument: den Pfad der Datei
+  in der die binären Daten gespeichert werden. Überprüfe hierbei, dass die Datei
+  die Endung`.spacy` nutzt.
 
 </codeblock>
 
@@ -109,40 +114,41 @@ zur Verfügung gestellt.
 
 <exercise id="6" title="Die Trainingsconfig">
 
-Die `config.cfg`-Datei ist die "alleinige Quelle der Wahrheit", wenn es ums Trainieren
-einer Pipeline in spaCy geht. Welche der folgenden Aussagen ist **nicht wahr**?
+Die `config.cfg`-Datei ist die "alleinige Quelle der Wahrheit", wenn es ums
+Trainieren einer Pipeline in spaCy geht. Welche der folgenden Aussagen ist
+**nicht wahr**?
 
 <choice>
 
 <opt text="Es erlaubt die den Trainingsprozess und die Hyperparameter zu konfigurieren.">
 
-Die config-Datei enthält alle Einstellungen für den Trainingsprozess, einschließlich der
-Hyperparameter.
+Die Config-Datei enthält alle Einstellungen für den Trainingsprozess,
+einschließlich der Hyperparameter.
 
 </opt>
 
 <opt text="Es hilft dabei, das Training reproduzierbar zu machen.">
 
-Da die config-Datei _alle_ Einstellungen und keine versteckten default-Werte enthält,
-kann es dabei helfen deine Trainingsexperimente reproduzierbarer zu machen. Anderen Nutzern
-ist es dadurch möglich, deine Experimente mit den genau gleichen Einstellungen zu
-wiederholen.
+Da die Config-Datei _alle_ Einstellungen und keine versteckten default-Werte
+enthält, kann es dabei helfen deine Trainingsexperimente reproduzierbarer zu
+machen. Anderen Nutzern ist es dadurch möglich, deine Experimente mit den genau
+gleichen Einstellungen zu wiederholen.
 
 </opt>
 
 <opt text="Es erstellt ein installierbares Python-Package, das deine Pipeline enthält." correct="true">
 
-Die config-Datei enthält alle Einstellungen, die mit dem Training zusammenhängen, und 
-Informationen darüber, wie die Pipeline erstellt wird, aber es erstellt kein Package.
-Um ein installierbares Python-Package zu erzeugen, kannst du den Befehl `spacy package`
-verwenden.
+Die Config-Datei enthält alle Einstellungen, die mit dem Training
+zusammenhängen, und Informationen darüber, wie die Pipeline erstellt wird, aber
+es erstellt kein Package. Um ein installierbares Python-Package zu erzeugen,
+kannst du den Befehl `spacy package` verwenden.
 
 </opt>
 
 <opt text="Es definiert die Pipeline-Komponenten und ihre Einstellungen.">
 
-Der Block `[components]` in der config-Datei enthält alle Pipeline-Komponenten und ihre
-Einstellungen, inklusive der genutzten Implementierung des Modells.
+Der Block `[components]` in der Config-Datei enthält alle Pipeline-Komponenten
+und ihre Einstellungen, inklusive der genutzten Implementierung des Modells.
 
 </opt>
 
@@ -150,28 +156,31 @@ Einstellungen, inklusive der genutzten Implementierung des Modells.
 
 </exercise>
 
-<exercise id="7" title="Erstellen einer config-Datei">
+<exercise id="7" title="Erstellen einer Config-Datei">
 
-Der [`init config`-Befehl](https://spacy.io/api/cli#init-config) generiert automatisch
-eine config-Datei zum Trainieren mit default-Werten. Nun möchten wir einen Entity Recognizer
-trainieren. Also generieren wir eine config-Datei für eine Pipeline-Komponente: `ner`. Da 
-wir diesen Befehl innerhalb dieses Kurses in einer Jupyter-Umgebung ausführen, nutzen wir
-den Präfix `!`. Wenn du den Befehl jedoch in deiner Kommandozeile auf deinem Computer ausführst,
-kannst du diesen Präfix weglassen.
+Der [`init config`-Befehl](https://spacy.io/api/cli#init-config) generiert
+automatisch eine Config-Datei zum Trainieren mit default-Werten. Nun möchten wir
+einen Entity Recognizer trainieren. Also generieren wir eine Config-Datei für
+eine Pipeline-Komponente: `ner`. Da wir diesen Befehl innerhalb dieses Kurses in
+einer Jupyter-Umgebung ausführen, nutzen wir den Präfix `!`. Wenn du den Befehl
+jedoch in deiner Kommandozeile auf deinem Computer ausführst, kannst du diesen
+Präfix weglassen.
 
 ### Part 1
 
-- Nutze den `init config`-Befehl von spaCy um eine config automatisch zu generieren.
+- Nutze den `init config`-Befehl von spaCy um eine config automatisch zu
+  generieren.
 - Speichere die config als Datei `config.cfg`.
-- Nutze das `--pipeline`-Argument um eine Pipeline-Komponente zu spezifizieren: `ner`.
+- Nutze das `--pipeline`-Argument um eine Pipeline-Komponente zu spezifizieren:
+  `ner`.
 
 <codeblock id="04_07_01"></codeblock>
 
 ### Part 2
 
-Lass uns nun die config anschauen, die spaCy gerade generiert hat. Du kannst den unten 
-stehenden Befehl ausführen, um die config im Terminal ausgeben zu lassen und um sie zu 
-anzuschauen.
+Lass uns nun die config anschauen, die spaCy gerade generiert hat. Du kannst den
+unten stehenden Befehl ausführen, um die config im Terminal ausgeben zu lassen
+und um sie zu anzuschauen.
 
 <codeblock id="04_07_02"></codeblock>
 
@@ -179,16 +188,17 @@ anzuschauen.
 
 <exercise id="8" title="Nutzen der Trainings-CLI">
 
-Lass uns nun einen Entity Recognizer trainieren, indem wir die eben generierte config-Datei
-sowie den erstellten Trainingskorpus nutzen!
+Lass uns nun einen Entity Recognizer trainieren, indem wir die eben generierte
+Config-Datei sowie den erstellten Trainingskorpus nutzen!
 
-Der Befehl [`train`](https://spacy.io/api/cli#train) lässt dich ein Modell mithilfe einer
-config-Datei trainieren. Eine Datei namens `config_gadget.cfg` ist bereits verfügbar im 
-Ordner `exercises/de`, ebenso wie eine Datei `train_gadget.spacy`, die Trainingsbeispiele
-enthält, und eine Datei `dev_gadget.spacy`, die die Evaluierungsdaten enthält. Da wir 
-innerhalb des Kurses die Befehle in einer Jupyter-Umgebung ausführen, nutzen wir hier den
-Präfix `!`. Wenn du den Befehl jedoch in deiner Kommandozeile auf deinem Computer ausführst,
-kannst du diesen Präfix weglassen.
+Der Befehl [`train`](https://spacy.io/api/cli#train) lässt dich ein Modell
+mithilfe einer Config-Datei trainieren. Eine Datei namens `config_gadget.cfg`
+ist bereits verfügbar im Ordner `exercises/de`, ebenso wie eine Datei
+`train_gadget.spacy`, die Trainingsbeispiele enthält, und eine Datei
+`dev_gadget.spacy`, die die Evaluierungsdaten enthält. Da wir innerhalb des
+Kurses die Befehle in einer Jupyter-Umgebung ausführen, nutzen wir hier den
+Präfix `!`. Wenn du den Befehl jedoch in deiner Kommandozeile auf deinem
+Computer ausführst, kannst du diesen Präfix weglassen.
 
 - Ruf den `train`-Befehl mit der Datei `exercises/de/config_gadget.cfg` auf.
 - Speichere die trainierte Pipeline in den Ordner `output`.
@@ -197,7 +207,7 @@ kannst du diesen Präfix weglassen.
 
 <codeblock id="04_08">
 
-- Das erste Argument des Befehls `spacy train` ist der Pfad der config-Datei.
+- Das erste Argument des Befehls `spacy train` ist der Pfad der Config-Datei.
 
 </codeblock>
 
@@ -285,7 +295,6 @@ doc4 = nlp("Berlin ist perfekt für einen Sommerurlaub: viele Parks, tolles Nach
 doc4.ents = [Span(doc4, 0, 1, label="TOURISTENZIEL")]
 ```
 
-
 ### Teil 1
 
 Warum sind diese Daten und das Labelsystem problematisch?
@@ -303,9 +312,9 @@ beispielsweise in einer Wissensdatenbank oder einem Reise-Wiki nachschlagen.
 
 <opt text="Paris sollte der Einheitlichkeit halber ebenfalls als Touristenziele annotiert werden. Ansonsten wird das Modell verwirrt sein.">
 
-Da es durchaus möglich ist, dass Paris, AR ebenfalls ein beliebtes Reiseziel
-für Touristen ist, macht dies deutlich, wie subjektiv das Labelsystem ist und
-wie schwierig es sein wird, zu entscheiden, ob das Label zutrifft oder nicht.
+Da es durchaus möglich ist, dass Paris, AR ebenfalls ein beliebtes Reiseziel für
+Touristen ist, macht dies deutlich, wie subjektiv das Labelsystem ist und wie
+schwierig es sein wird, zu entscheiden, ob das Label zutrifft oder nicht.
 Aufgrund dessen wird es ebenfalls schwierig für den Entitiy Recognizer sein,
 diese Unterscheidung zu lernen.
 
@@ -326,22 +335,23 @@ Named Entity Recognition.
 
 ### Part 2
 
-- Schreibe `doc.ents` um, sodass sie nur das Label `"LOC"`
-  (Location, Label wird für alle Orte im deutschen Modell verwendet) statt
-  `"TOURISTENZIEL"` verwendet.
-- Vergiss nicht, die Tupel für die `"LOC"`-Entitäten hinzuzufügen, die vorher nicht
-  annotiert waren.
+- Schreibe `doc.ents` um, sodass sie nur das Label `"LOC"` (Location, Label wird
+  für alle Orte im deutschen Modell verwendet) statt `"TOURISTENZIEL"`
+  verwendet.
+- Vergiss nicht, die Tupel für die `"LOC"`-Entitäten hinzuzufügen, die vorher
+  nicht annotiert waren.
 
 <codeblock id="04_11">
 
 - Bei den Spans, die bereits annotiert sind, musst du lediglich den Namen des
   Labels von `"TOURISTENZIEL"` auf `"LOC"` ändern.
 - Ein Text enthält eine Stadt und einen Bundesstaat, die noch nicht annotiert
-  sind. Um die Spans für die Entitäten hinzuzufügen, zähle die Tokens, um 
-  den Anfang und das Ende der Span zu finden. Beachte hierbei, dass der letzte Token
-  _exkludiert_ wird. Füge daraufhin `(start, end, label)`-Tupel zu den Entitäten hinzu.
-- Behalte die Tokenisierung im Auge! Drucke die Tokens im `Doc`, solltest du dir nicht 
-  sicher sein.
+  sind. Um die Spans für die Entitäten hinzuzufügen, zähle die Tokens, um den
+  Anfang und das Ende der Span zu finden. Beachte hierbei, dass der letzte Token
+  _exkludiert_ wird. Füge daraufhin `(start, end, label)`-Tupel zu den Entitäten
+  hinzu.
+- Behalte die Tokenisierung im Auge! Drucke die Tokens im `Doc`, solltest du dir
+  nicht sicher sein.
 
 </codeblock>
 
@@ -352,22 +362,22 @@ Named Entity Recognition.
 Hier siehst du eine kleine Auswahl aus einem Trainingsdatensatz für eine neue
 Entität `"WEBSITE"`. Der komplette Datensatz enthält ein paar tausend Sätze. In
 dieser Übung wirst du die Annotation von Hand durchführen. Im echten Leben
-würdest du das wahrscheinlich automatisieren und ein Annotations-Tool verwenden, zum Beispiel
-[Brat](http://brat.nlplab.org/), eine beliebte
-Open-Source-Lösung, oder [Prodigy](https://prodi.gy), unser eigenes
-Annotations-Tool, das zusammen mit spaCy verwendet werden kann.
+würdest du das wahrscheinlich automatisieren und ein Annotations-Tool verwenden,
+zum Beispiel [Brat](http://brat.nlplab.org/), eine beliebte Open-Source-Lösung,
+oder [Prodigy](https://prodi.gy), unser eigenes Annotations-Tool, das zusammen
+mit spaCy verwendet werden kann.
 
 ### Teil 1
 
 - Vervollständige die Zeichen-Offsets für die `"WEBSITE"`-Entitäten in den
-  Daten. Du kannst auch gerne `len(doc1)` usw. verwenden, wenn du keine Lust hast, die
-  Zeichen zu zählen.
+  Daten. Du kannst auch gerne `len(doc1)` usw. verwenden, wenn du keine Lust
+  hast, die Zeichen zu zählen.
 
 <codeblock id="04_12_01">
 
-- Behalte im Hinterkopf, dass der End-Token einer Span exkludiert wird. Eine Entität,
-  die beim zweiten Token startet und beim dritten aufhört, wird einen Anfang bei `2` 
-  und ein Ende bei `4` haben.
+- Behalte im Hinterkopf, dass der End-Token einer Span exkludiert wird. Eine
+  Entität, die beim zweiten Token startet und beim dritten aufhört, wird einen
+  Anfang bei `2` und ein Ende bei `4` haben.
 
 </codeblock>
 
@@ -416,9 +426,9 @@ haben können, sind sie hier wahrscheinlich nicht das Problem.
 
 - Um zusätzliche Entitäten zu annotieren, füge eine weitere `Span` zu `doc.ents`
   hinzu.
-- Behalte im Hinterkopf, dass der End-Token einer Span exkludiert wird. Eine Entität,
-  die beim zweiten Token startet und beim dritten aufhört, wird einen Anfang bei `2` 
-  und ein Ende bei `4` haben.
+- Behalte im Hinterkopf, dass der End-Token einer Span exkludiert wird. Eine
+  Entität, die beim zweiten Token startet und beim dritten aufhört, wird einen
+  Anfang bei `2` und ein Ende bei `4` haben.
 
 </codeblock>
 
