@@ -190,7 +190,7 @@ und um sie zu anzuschauen.
 
 </exercise>
 
-<exercise id="8" title="Nutzen der Trainings-CLI">
+<exercise id="8" title="Nutzen des Trainings-CLI">
 
 Lass uns nun einen Entity Recognizer trainieren, indem wir die eben generierte
 Config-Datei sowie den erstellten Trainingskorpus nutzen!
