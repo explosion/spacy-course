@@ -168,13 +168,17 @@ Präfix weglassen.
 
 ### Part 1
 
-- Nutze den `init config`-Befehl von spaCy um eine config automatisch zu
-  generieren.
+- Nutze den `init config`-Befehl von spaCy um eine Config für eine deutsche
+  Pipeline automatisch zu generieren.
 - Speichere die config als Datei `config.cfg`.
 - Nutze das `--pipeline`-Argument um eine Pipeline-Komponente zu spezifizieren:
   `ner`.
 
-<codeblock id="04_07_01"></codeblock>
+<codeblock id="04_07_01">
+
+- Das Argument `--lang` definiert die Sprachklasse, z.B. `de` für Deutsch.
+
+</codeblock>
 
 ### Part 2
 

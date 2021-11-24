@@ -47,7 +47,7 @@ den gleichen Einstellungen trainieren können.
 
 ```ini
 [nlp]
-lang = "en"
+lang = "de"
 pipeline = ["tok2vec", "ner"]
 batch_size = 1000
 
@@ -84,8 +84,6 @@ the box nutzen.
 
 # Generieren einer config
 
-<!-- TODO: screenshot of quickstart widget? -->
-
 - spaCy kann eine default Config-Datei für dich automatisch generieren
 - interaktives "[quickstart Widget](https://spacy.io/usage/training#quickstart)"
   in der Dokumentation
@@ -93,11 +91,12 @@ the box nutzen.
   Kommandozeile
 
 ```bash
-$ python -m spacy init config ./config.cfg --pipeline ner
+$ python -m spacy init config ./config.cfg --lang de --pipeline ner
 ```
 
 - `init config`: zu startender Befehl
 - `config.cfg`: Pfad, wo die generierte Config-Datei gespeichert wird
+- `--lang`: Sprachklasse der Pipeline, z.B. `de` für Deutsch
 - `--pipeline`: Kommaseparierte Namen der eingesetzten Komponenten
 
 Notes: Natürlich musst du die Config-Datei nicht per Hand schreiben und in
@@ -111,10 +110,12 @@ kannst.
 
 Alternativ kannst du auch spaCys `init config`-Befehl nutzen. Dieser nimmt den
 Namen der Ausgabedatei als erstes Argument. Wir nennen diese Datei normalerweise
-`config.cfg`. Das `--pipeline`-Argument lässt dich eine oder mehrere
-Pipeline-Komponenten spezifizieren, die eingefügt werden sollen. In unserem
-Beispiel hier nutzen wir eine config mit einer Pipeline-Komponente: dem Entity
-Recognizer.
+`config.cfg`. Das Argument `--lang` definiert die Sprachklasse, die für die
+Pipeline verwendet werden soll, z.B. `de` für Deutsch.
+
+Das `--pipeline`-Argument lässt dich eine oder mehrere Pipeline-Komponenten
+spezifizieren, die eingefügt werden sollen. In unserem Beispiel hier nutzen wir
+eine config mit einer Pipeline-Komponente: dem Entity Recognizer.
 
 ---
 
