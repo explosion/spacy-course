@@ -62,7 +62,7 @@ factory = "ner"
 [components.ner.model]
 @architectures = "spacy.TransitionBasedParser.v2"
 hidden_width = 64
-# And so on...
+# Und so weiter...
 ```
 
 Notes: Hier siehst du einen Ausschnitt einer Config-Datei, die genutzt wird um
