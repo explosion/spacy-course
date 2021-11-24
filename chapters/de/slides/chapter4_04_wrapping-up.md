@@ -11,7 +11,7 @@ Notes: Glückwunsch – du hast das Ende des Kurses erreicht!
 # Deine neuen spaCy-Skills
 
 - Extrahiere **linguistische Eigenschaften**: Wortarten, Relationen, Entitäten
-- Arbeite mit vortrainierten **statistischen Modellen**
+- Arbeite mit trainierten **Pipelines**
 - Finde Wörter und Ausdrücke mit `Matcher`- und `PhraseMatcher`-**Regeln**
 - Best Practices im Umgang mit den **Datenstrukturen** `Doc`, `Token` `Span`,
   `Vocab`, `Lexeme`
@@ -25,8 +25,8 @@ Notes: Glückwunsch – du hast das Ende des Kurses erreicht!
 Notes: Hier ist eine Übersicht über alles, was du bisher gelernt hast:
 
 Im ersten Kapitel hast du gelernt, linguistische Eigenschaften wie Wortarten,
-Dependenzrelationen und Entitäten zu extrahieren, und mit vortrainierten
-statistischen Modellen umzugehen.
+Dependenzrelationen und Entitäten zu extrahieren, und mit trainierten
+Pipelines umzugehen.
 
 Du hast außerdem gelernt, leistungsstarke Patterns für spaCys `Matcher` und
 `PhraseMatcher` zu erstellen, um damit Wörter und Ausdrücke zu finden.
@@ -83,7 +83,7 @@ hinzufügen und mit deinen eigenen Daten trainieren.
 - [Tokenisierung anpassen](https://spacy.io/usage/linguistic-features#tokenization)
   - Regeln und Ausnahmen hinzufügen, um Text anders aufzuteilen
 - [Unterstützung für weitere Sprachen hinzufügen oder verbessern](https://spacy.io/usage/adding-languages)
-  - Derzeit 55+ Sprachen
+  - Derzeit 60+ Sprachen
   - Viel Potenzial für Verbesserungen und neue Sprachen
   - Ermöglicht das Trainieren von Modellen für weitere Sprachen
 
