@@ -66,7 +66,7 @@ matcher.add("KATZEN", [pattern])
 pattern = [{"TEXT": "sehr", "OP": "+"}, {"TEXT": "glücklich"}]
 matcher.add("SEHR_GLUECKLICH", [pattern])
 
-# Anwendung des Matchers auf ein Doc gibt Liste von (match_id, start, end) Tuples zurück
+# Anwendung des Matchers auf ein Doc gibt Liste von (match_id, start, end)-Tupel zurück
 doc = nlp("Ich mag Katzen und bin sehr sehr glücklich")
 matches = matcher(doc)
 ```

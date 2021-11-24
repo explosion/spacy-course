@@ -57,12 +57,11 @@ id: 2
 Warum führt dieser Code zu einer Fehlermeldung?
 
 ```python
-from spacy.lang.en import English
-from spacy.lang.de import German
+import spacy
 
 # Erstelle ein englisches und deutsches nlp-Objekt
-nlp = English()
-nlp_de = German()
+nlp = spacy.blank("en")
+nlp_de = spacy.blank("de")
 
 # Schlage die ID für den String "Bowie" nach
 bowie_id = nlp.vocab.strings["Bowie"]
@@ -271,19 +270,19 @@ korrekte Tag für Eigennamen.
 
 <exercise id="9" title="Wortvektoren inspizieren">
 
-In dieser Übung wirst du ein größeres
-[englisches Modell](https://spacy.io/models/en) verwenden, das ca. 20.000
-Wortvektoren enthält. Das Modell ist bereits vorinstalliert.
+In dieser Übung wirst du eine größere
+[englische Pipeline](https://spacy.io/models/en) verwenden, die ca. 20.000
+Wortvektoren enthält. Das Pipeline-Package ist bereits vorinstalliert.
 
-- Lade das mittelgroße Modell `"en_core_web_md"` mit Wortvektoren.
+- Lade die mittelgroße Pipeline `"en_core_web_md"` mit Wortvektoren.
 - Drucke den Vektor für `"bananas"` mithilfe des Attributs `token.vector`.
 
 <codeblock id="02_09">
 
-- Um ein statistisches Modell zu laden, rufe `spacy.load` mit dem String-Namen
-  des Modells auf.
-- Um auf einen Token in einem Doc zuzugreifen, kannst du seinen Index verwenden.
-  Zum Beispiel, `doc[4]`.
+- Um eine Pipeline zu laden, rufe `spacy.load` mit dem String-Namen
+  der Pipeline auf.
+- Um auf einen Token in einem Doc zuzugreifen, kannst du seinen Index verwenden,
+  zum Beispiel `doc[4]`.
 
 </codeblock>
 

@@ -19,9 +19,9 @@ in deiner NLP-Anwendung nutzen kannst.
 - Akzeptieren ein weiteres Objekt und geben einen Ähnlichkeitswert zurück (`0` bis
   `1`)
 - **Wichtig:** Benötigt eine Pipeline, die Wortvektoren enthält, zum Beispiel:
-  - ✅ `en_core_web_md` (mittelgroßes Modell)
-  - ✅ `en_core_web_lg` (großes Modell)
-  - 🚫 **NICHT** `en_core_web_sm` oder `de_core_news_sm` (kleine Pipeline)
+  - ✅ `en_core_web_md` (mittelgroß)
+  - ✅ `en_core_web_lg` (groß)
+  - 🚫 **NICHT** `en_core_web_sm` oder `de_core_news_sm` (klein)
 
 Notes: spaCy kann zwei Objekte vergleichen und vorhersagen, wie ähnlich sie sich
 sind – zum Beispiel, Dokumente, Spans oder einzelne Tokens.
@@ -43,7 +43,7 @@ auf "md" oder "lg" endet. Du findest mehr Details hierzu in der
 # Beispiele (1)
 
 ```python
-# Lade ein größeres Modell mit Wortvektoren
+# Lade eine größere Pipeline mit Wortvektoren
 nlp = spacy.load("en_core_web_md")
 
 # Vergleiche zwei Dokumente
@@ -146,7 +146,7 @@ multi-dimensionale Repräsentationen der Wortbedeutungen.
 Vielleicht hast du schon einmal von Word2Vec gehört, einem Algorithmus, der oft
 verwendet wird, um Wortvektoren anhand von rohem Text zu trainieren.
 
-Vektoren können zu spaCy's statistischen Modellen hinzugefügt werden.
+Vektoren können zu spaCys Pipelines hinzugefügt werden.
 
 Die Ähnlichkeit, die spaCy zurückgibt ist standardmäßig die Kosinus-Ähnlichkeit;
 dies kann jedoch angepasst werden, falls nötig.
@@ -163,7 +163,7 @@ Wörter enthalten.
 # Wortvektoren in spaCy
 
 ```python
-# Lade ein größeres Modell mit Vektoren
+# Lade eine größere Pipeline mit Vektoren
 nlp = spacy.load("en_core_web_md")
 
 doc = nlp("I have a banana")
@@ -218,7 +218,7 @@ print(doc1.similarity(doc2))
 Notes: Das Vorhersagen von Ähnlichkeiten ist nützlich für viele Arten von
 Anwendungen. Zum Beispiel, um einem Nutzer basierend auf Texten, die er bereits
 gelesen hat, ähnliche Texte vorzuschlagen. Es kann außerdem dabei
-helfen, Duplikate in Inhalten zu finden, wie beispielsweise Beiträge auf einer
+helfen, Duplikate in Inhalten zu finden wie beispielsweise Beiträge auf einer
 Onlineplattform.
 
 Es ist allerdings sehr wichtig zu beachten, dass keine objektive Definition davon
