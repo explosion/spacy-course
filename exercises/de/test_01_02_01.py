@@ -1,10 +1,10 @@
 def test():
     import spacy.tokens
-    import spacy.lang.en
+    import spacy.lang.de
 
     assert isinstance(
-        nlp, spacy.lang.en.English
-    ), "Das nlp-Objekt sollte eine Instanz der Klasse English sein."
+        nlp, spacy.lang.de.German
+    ), "Das nlp-Objekt sollte eine Instanz der Klasse German sein."
     assert isinstance(
         doc, spacy.tokens.Doc
     ), "Hast du den Text mit dem nlp-Objekt verarbeitet und ein Doc erstellt?"

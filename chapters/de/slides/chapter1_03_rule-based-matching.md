@@ -61,7 +61,7 @@ Wir können außerdem andere Token-Attribute verwenden. Hier suchen wir zwei
 Tokens, deren kleingeschriebene Formen mit "iphone" und "x" übereinstimmen.
 
 Wir können sogar Patterns schreiben, die Attribute verwenden, die von einem
-Modell vorhergesagt wurden. Hier suchen wir einen Token mit dem Lemma "mögen",
+Modell vorhergesagt wurden. Hier suchen wir einen Token mit dem Lemma "mögen"
 plus ein Nomen. Das Lemma ist die Grundform, das heißt dieses Pattern würde
 Ausdrücke wie "mag Katzen" oder "mochtest Sonne" finden.
 

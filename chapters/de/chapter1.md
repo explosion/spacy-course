@@ -2,7 +2,7 @@
 title: 'Kapitel 1: Wörter, Ausdrücke, Entitäten und Konzepte finden'
 description:
   'Dieses Kapitel zeigt dir die Grundlagen der Textverabeitung mit spaCy. Du
-  lernst die Datenstrukturen kennen, wie du mit statistischen Modellen arbeitest
+  lernst die Datenstrukturen kennen, wie du mit trainierten Pipelines arbeitest
   und wie du sie verwenden kannst, um linguistische Eigenschaften deines Texts
   vorherzusagen.'
 prev: null
@@ -23,23 +23,24 @@ id: 1
 Lass uns loslegen mit spaCy! In dieser Übung kannst du ein paar der 60+
 [verfügbaren Sprachen](https://spacy.io/usage/models#languages) ausprobieren.
 
-### Teil 1: Englisch
+### Teil 1: Deutsch
 
-- Nutze 'spacy.blank', um ein leeres englisches (`"en"`) `nlp`-Objekt zu erstellen.
-- Erstelle ein `doc` und drucke seinen Text.
-
-<codeblock id="01_02_02"></codeblock>
-
-### Teil 2: Deutsch
-
-- Nutze 'spacy.blank', um ein leeres deutsches (`"de"`) `nlp`-Objekt zu erstellen.
+- Nutze `spacy.blank`, um ein leeres deutsches (`"de"`) `nlp`-Objekt zu erstellen.
 - Erstelle ein `doc` und drucke seinen Text.
 
 <codeblock id="01_02_01"></codeblock>
 
+### Teil 2: Englisch
+
+- Nutze `spacy.blank`, um ein leeres englisches (`"en"`) `nlp`-Objekt zu erstellen.
+- Erstelle ein `doc` und drucke seinen Text.
+
+<codeblock id="01_02_02"></codeblock>
+
+
 ### Teil 3: Spanisch
 
-- Nutze 'spacy.blank', um ein leeres spanisches (`"es"`) `nlp`-Objekt zu erstellen.
+- Nutze `spacy.blank`, um ein leeres spanisches (`"es"`) `nlp`-Objekt zu erstellen.
 - Erstelle ein `doc` und drucke seinen Text.
 
 <codeblock id="01_02_03"></codeblock>
@@ -50,7 +51,7 @@ Lass uns loslegen mit spaCy! In dieser Übung kannst du ein paar der 60+
 
 Wenn du das `nlp`-Objekt mit einem String ausführst, tokenisiert spaCy zuerst
 den Text und erstellt ein `Doc`-Objekt. In dieser Übung lernst du mehr über das
-`Doc`, sowie seine Ansichten `Token` und `Span`.
+`Doc` sowie über seine Ansichten `Token` und `Span`.
 
 ### Schritt 1
 
@@ -109,7 +110,7 @@ von `doc` zugreifen. `doc[5]` ist zum Beispiel der Token mit dem Index 5.
 
 </exercise>
 
-<exercise id="5" title="Statistische Modelle" type="slides">
+<exercise id="5" title="Trainierte Pipelines" type="slides">
 
 <slides source="chapter1_02_statistical-models"  start="3:14" end="7:37">
 </slides>
@@ -134,12 +135,12 @@ Um linguistische Attribute wie Wortarten, Dependenzrelationen oder Entitäten
 vorherzusagen, enthalten Pipeline-Pakete binäre Gewichte.
 
 </opt>
-<opt correct="true" text="Die annotierten Daten, mit denen das Modell trainiert wurde.">
+<opt correct="true" text="Die annotierten Daten mit denen das Modell trainiert wurde.">
 
-Statistische Modelle ermöglichen es, basierend auf einer Auswahl an
+Trainierte Pipelines ermöglichen es, basierend auf einer Auswahl an
 Trainingsbeispielen zu generalisieren. Sobald sie einmal trainiert sind, verwenden
 sie binäre Gewichte, um Vorhersagen zu treffen. Daher ist es nicht erforderlich,
-die Trainingsdaten zusammen mit dem Modell zu speichern.
+die Trainingsdaten zusammen mit der Pipeline zu speichern.
 
 </opt>
 <opt text="Strings des Vokabulars der Pipeline und ihre Hashes.">
@@ -157,7 +158,7 @@ nachzuschlagen, wenn er gebraucht wird.
 <exercise id="7" title="Pipelines laden">
 
 Die Pipelines, die wir in diesem Kurs verwenden, sind bereits vorinstalliert. Um
-mehr Details über die vortrainierten Pipelines von spaCy und ihren Installationsprozess zu
+mehr Details über die trainierten Pipelines von spaCy und ihren Installationsprozess zu
 erfahren, schau dir die [Dokumentation](https://spacy.io/usage/models) an.
 
 - Benutze `spacy.load`, um das kleine deutsche Modell `"de_core_news_sm"` zu
@@ -177,10 +178,10 @@ den korrekten Namen verwendest.
 
 <exercise id="8" title="Linguistische Attribute vorhersagen">
 
-Du darfst nun eines der von spaCys vortrainierten Pipeline-Paketen ausprobieren und
+Du darfst nun eines der von spaCys trainierten Pipeline-Paketen ausprobieren und
 seine Vorhersagen in Aktion sehen. Probiere das auch gern mit deinem eigenen Text
 aus! Um mehr über die Bedeutung eines Tags oder Labels zu erfahren, kannst du
-`spacy.explain` in der Schleife aufrufen. Zum Beispiel: `spacy.explain("PROPN")`
+`spacy.explain` in der Schleife aufrufen, zum Beispiel `spacy.explain("PROPN")`
 oder `spacy.explain("ORG")`.
 
 ### Teil 1

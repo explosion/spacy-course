@@ -157,7 +157,7 @@ Notes: Hier siehst du einige der verfügbaren Token-Attribute:
 
 `is_alpha`, `is_punct` und `like_num` geben boolesche Werte zurück, die angeben,
 ob der Token aus alphabetischen Zeichen besteht, ob er ein Satzzeichen ist oder
-ob er einer Zahl _ähnelt_. Zum Beispiel, ein Token "10" – Eins, Null – oder das
+ob er einer Zahl _ähnelt_, zum Beispiel ein Token "10" – Eins, Null – oder das
 Wort "zehn" – Z, E, H, N.
 
 Diese Attribute werden auch lexikalische Attribute genannt: Sie beziehen sich

@@ -20,7 +20,7 @@ In dieser Lektion lernst du mehr über spaCys trainierte Pipelines.
 - Können mit mehr Beispielen aktualisiert und verbessert werden
 
 Notes: Einige der interessantesten Dinge, die man analysieren kann, sind
-kontextabhängig. So zum Beispiel, ob ein Wort ein Verb ist, oder ob ein
+kontextabhängig. Wie zum Beispiel, ob ein Wort ein Verb ist, oder ob ein
 Textabschnitt ein Name einer Person ist.
 
 Komponenten einer trainierten Pipeline enthalten statistische Modelle, die es
@@ -52,10 +52,10 @@ nlp = spacy.load("de_core_news_sm")
 
 - Binäre Gewichte
 - Vokabular
-- Meta-Information (Sprache, Pipeline)
+- Meta-Informationen
 - Konfigurationsdatei
 
-Notes: spaCy stellt eine Vielzahl von vortrainierten Pipeline-Paketen zur
+Notes: spaCy stellt eine Vielzahl von trainierten Pipeline-Paketen zur
 Verfügung, die du mithilfe des Befehls `spacy download` herunterladen kannst.
 Das "de_core_news_sm"-Paket zum Beispiel ist eine kleine deutsche Pipeline, die
 alle Kernfähigkeiten unterstützt und anhand von Nachrichtentexten trainiert
@@ -64,7 +64,7 @@ wurde.
 Die Methode `spacy.load` lädt ein Pipeline-Paket eines bestimmten Namens und gibt
 ein `nlp`-Objekt zurück.
 
-Das Paket enthält die binären Gewichte, die spaCy ermöglichen, Vorhersagen zu
+Das Paket enthält die binären Gewichte, die es spaCy ermöglichen, Vorhersagen zu
 treffen.
 
 Es beinhaltet außerdem das Vokabular, Meta-Informationen über die Pipeline und die
@@ -78,7 +78,7 @@ Sprachklasse zu nutzen ist und wie die Verarbeitungs-Pipeline konfiguriert werde
 ```python
 import spacy
 
-# Lade das kleine deutsche Modell
+# Lade die kleine deutsche Pipeline
 nlp = spacy.load("de_core_news_sm")
 
 # Verarbeite einen Text
@@ -86,7 +86,7 @@ doc = nlp("Sie aß die Pizza")
 
 # Iteriere über die Tokens
 for token in doc:
-    # Drucke den text und die vorhergesagte Wortart
+    # Drucke den Text und die vorhergesagte Wortart
     print(token.text, token.pos_)
 ```
 
@@ -133,7 +133,7 @@ Pizza NOUN oa aß
 ```
 
 Notes: Zusätzlich zu den Wortarten können wir außerdem vorhersagen, in welcher
-Beziehung die Wörter zueinander stehen. Zum Beispiel, ob ein Wort das Subjekt
+Beziehung die Wörter zueinander stehen. Wie zum Beispiel, ob ein Wort das Subjekt
 des Satzes ist, oder ein Objekt.
 
 Das Attribut `.dep_` gibt das vorhergesagte Label der Dependenzrelation zurück.
@@ -190,8 +190,8 @@ Notes: Entitäten, auch "Named Entities", sind Objekte der realen Welt, denen ei
 Name zugeordnet wird – zum Beispiel eine Person, eine Organisation oder ein
 Land.
 
-Über die Property `doc.ents` kannst du auf die vom Modell vorhergesagten
-Entitäten zugreifen.
+Über die Property `doc.ents` kannst du auf die vom Entity-Recognition-Modell
+vorhergesagten Entitäten zugreifen.
 
 Sie gibt einen Iterator von `Span`-Objekten zurück und wir können dadurch den Text
 der Entität, sowie das Label, verfügbar über das Attribut `.label_` drucken.
@@ -247,4 +247,4 @@ Gleiches funktioniert für Wortarten und Entitäten.
 # Los geht's!
 
 Notes: Jetzt bist du dran. Lass uns einen genaueren Blick auf spaCys
-trainierte Pipelines und ihre Vorhersagen werfen.
+trainierte Pipelines und die Vorhersagen ihrer Modelle werfen.

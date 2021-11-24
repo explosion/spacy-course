@@ -1,11 +1,11 @@
 # Importiere spaCy
 import spacy
 
-# Erstelle ein deutsches nlp-Objekt
-nlp = spacy.blank("de")
+# Erstelle ein englisches nlp-Objekt
+nlp = spacy.blank("en")
 
 # Verarbeite einen Text
-doc = nlp("Liebe Grüße!")
+doc = nlp("This is a sentence.")
 
 # Drucke den Text des Dokuments
 print(doc.text)
