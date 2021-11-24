@@ -35,9 +35,9 @@ def test_01_09_predictions(nlp):
 
 def test_slides_01_03(nlp):
     doc = nlp("Ich mochte Hunde, aber ich mag Katzen jetzt lieber.")
-    pattern = [{"LEMMA": "mögen", "POS": "VERB"}, {"POS": "NOUN"}]
+    pattern = [{"LEMMA": "mögen"}, {"POS": "NOUN"}]
     matcher = Matcher(nlp.vocab)
-    matcher.add("TEST", None, pattern)
+    matcher.add("TEST", [pattern])
     matches = [doc[start:end].text for _, start, end in matcher(doc)]
     assert matches == ["mochte Hunde", "mag Katzen"]
 

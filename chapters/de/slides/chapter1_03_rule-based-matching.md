@@ -19,8 +19,8 @@ erstellen kannst, um Wörter und Ausdrücke im Text zu finden.
 Notes: Im Vergleich zu regulären Ausdrücken verwendet der Matcher `Doc`- und
 `Token`-Objekte, anstatt nur Strings.
 
-Er ist außerdem flexibler: Es ist möglich nach Texten zu suchen, aber auch nach anderen
-lexikalischen Attributen.
+Er ist außerdem flexibler: Es ist möglich nach Texten zu suchen, aber auch nach
+anderen lexikalischen Attributen.
 
 Man kann sogar Regeln schreiben, die Vorhersagen eines Modells verwenden.
 
@@ -100,9 +100,9 @@ Wir laden außerdem eine Pipeline und erstellen das `nlp`-Objekt.
 Der Matcher wird mit dem gemeinsamen Vokabular initialisiert, `nlp.vocab`. Du
 lernst später noch mehr darüber – denke erstmal nur daran, es immer einzufügen.
 
-Die Methode `matcher.add` kann verwendet werden, um ein Pattern hinzuzufügen. Das
-erste Argument ist eine eindeutige ID, um das Pattern zu identifizieren, wenn es
-gefunden wird. Das zweite Argument ist eine Liste von Patterns.
+Die Methode `matcher.add` kann verwendet werden, um ein Pattern hinzuzufügen.
+Das erste Argument ist eine eindeutige ID, um das Pattern zu identifizieren,
+wenn es gefunden wird. Das zweite Argument ist eine Liste von Patterns.
 
 Um das Pattern in einem Text zu finden, können wir den Matcher mit einem Doc
 aufrufen.
@@ -185,7 +185,7 @@ Dieses Pattern findet die Tokens "2018 FIFA World Cup:".
 
 ```python
 pattern = [
-    {"LEMMA": "mögen", "POS": "VERB"},
+    {"LEMMA": "mögen"},
     {"POS": "NOUN"}
 ]
 ```
@@ -201,7 +201,7 @@ mag Katzen
 
 Notes: In diesem Beispiel suchen wir zwei Tokens:
 
-Ein Verb mit dem Lemma "mögen", gefolgt von einem Nomen.
+Ein Token mit dem Lemma "mögen", gefolgt von einem Nomen.
 
 Dieses Pattern findet "mochte Hunde" und "mag Katzen".
 
