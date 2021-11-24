@@ -227,8 +227,8 @@ If running with docker just run `make build` and then `make pytest`
 The [`requirements.txt`](binder/requirements.txt) in the repository defines the
 packages that are installed when building it with Binder. For this course, I'm
 using the source repo as the Binder repo, as it allows to keep everything in
-once place. It also lets the exercises reference and load other files (e.g.
-JSON), which will be copied over into the Pyt hon environment. I build the
+one place. It also lets the exercises reference and load other files (e.g.
+JSON), which will be copied over into the Python environment. I build the
 binder from a branch `binder`, though, which I only update if Binder-relevant
 files change. Otherwise, every update to `master` would trigger an image
 rebuild.
