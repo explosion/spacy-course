@@ -60,10 +60,10 @@ factory = "ner"
 [components.ner.model]
 @architectures = "spacy.TransitionBasedParser.v2"
 hidden_width = 64
-# And so on...
+# Und so weiter...
 ```
 
-Notes: Hier siehst du einen Ausschnitt einer config-Datei, die genutzt wird um
+Notes: Hier siehst du einen Ausschnitt einer Config-Datei, die genutzt wird um
 eine Pipeline mit einem Entity Recognizer zu trainieren. Die config ist in mehrere
 Abschnitte unterteilt und Unterabschnitte sind mithilfe eines Punktes definiert.
 `[components.ner.model]` definiert zum Beispiel die Einstellungen einer 

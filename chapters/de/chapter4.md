@@ -100,7 +100,7 @@ zur Verfügung gestellt.
 
 </exercise>
 
-<exercise id="5" title="Die Trainingsschleife" type="slides">
+<exercise id="5" title="Konfigurieren und Ausführen des Trainings" type="slides">
 
 <slides source="chapter4_02_running-training" start="42:29" end="46:29">
 </slides>
