@@ -1,10 +1,10 @@
 import json
-from spacy.lang.es import Spanish
+import spacy
 
 with open("exercises/es/countries.json", encoding="utf8") as f:
     COUNTRIES = json.loads(f.read())
 
-nlp = Spanish()
+nlp = spacy.blank("es")
 doc = nlp(
     "La Unión Europea fue fundada por seis países de Europa occidental "
     "(Francia, Alemania, Italia, Bélgica, Países Bajos, y Luxemburgo) y "
