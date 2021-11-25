@@ -13,7 +13,7 @@ matcher = ____(____.____)
 pattern = [____]
 
 # Füge das Pattern zum Matcher hinzu
-____.____("IPHONE_X_PATTERN", None, ____)
+____.____("IPHONE_X_PATTERN", ____)
 
 # Wende den Matcher auf das Doc an
 matches = ____

@@ -15,7 +15,7 @@ doc = nlp(
 pattern = [{"LEMMA": ____}, {"POS": ____}]
 
 # Füge das Pattern zum Matcher hinzu und wende den Matcher auf das Doc an
-matcher.add("DOWNLOAD_THINGS_PATTERN", None, pattern)
+matcher.add("DOWNLOAD_THINGS_PATTERN", [pattern])
 matches = matcher(doc)
 print("Anzahl an Resultaten:", len(matches))
 

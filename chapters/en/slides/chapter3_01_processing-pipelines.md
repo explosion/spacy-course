@@ -66,7 +66,7 @@ your own system.
 
 # Under the hood
 
-<img src="/package_meta.png" alt="Illustration of a package labelled en_core_web_sm, folders and file and the config.cfg />
+<img src="/package_meta.png" alt="Illustration of a package labelled en_core_web_sm, folders and file and the config.cfg" />
 
 - Pipeline defined in model's `config.cfg` in order
 - Built-in components need binary data to make predictions
@@ -102,7 +102,7 @@ print(nlp.pipeline)
 ```
 
 ```out
-[('tagger', <spacy.pipeline.Tok2Vec>),
+[('tok2vec', <spacy.pipeline.Tok2Vec>),
  ('tagger', <spacy.pipeline.Tagger>),
  ('parser', <spacy.pipeline.DependencyParser>),
  ('ner', <spacy.pipeline.EntityRecognizer>),

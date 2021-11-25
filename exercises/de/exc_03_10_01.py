@@ -1,7 +1,7 @@
-from spacy.lang.de import German
+import spacy
 from spacy.tokens import Doc
 
-nlp = German()
+nlp = spacy.blank("de")
 
 # Definiere die Getter-Funktion
 def get_has_number(doc):
@@ -9,7 +9,7 @@ def get_has_number(doc):
     return any(____ for token in doc)
 
 
-# Registriere die Doc-Erweiterung "has_number" mit Getter-Funktion get_has_number
+# Registriere die Doc-Erweiterung "has_number" mit der Getter-Funktion get_has_number
 ____.____(____, ____=____)
 
 # Verarbeite den Text und drucke den Wert des Attributs has_number

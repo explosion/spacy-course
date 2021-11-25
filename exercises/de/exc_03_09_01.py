@@ -1,7 +1,7 @@
-from spacy.lang.de import German
+import spacy
 from spacy.tokens import Token
 
-nlp = German()
+nlp = spacy.blank("de")
 
 # Registriere die Token-Erweiterung "is_country" mit default-Wert False
 ____.____(____, ____=____)

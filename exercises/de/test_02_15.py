@@ -9,7 +9,7 @@ def test():
         "print(span_root_head.text" in __solution__
     ), "Druckst du den Text des Kopf-Tokens?"
     ents = [ent for ent in doc.ents if ent.label_ == "LOC"]
-    assert len(ents) == 9, "Leider die falsche Anzahl an Entitäten – erwartet sind 9."
+    assert len(ents) == 9, "Das ist leider die falsche Anzahl an Entitäten – erwartet werden 9."
     __msg__.good(
         "Gut gemacht! Jetzt wo du das Kombinieren von Vorhersagen und "
         "regelbasierter Informationsextraktion geübt hast, bist du bereit für "

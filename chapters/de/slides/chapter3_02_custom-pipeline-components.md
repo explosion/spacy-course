@@ -41,45 +41,54 @@ Beispiel die Entitäten-Spans.
 # Anatomie einer Komponente (1)
 
 - Funktion, die ein `doc` erhält, es modifiziert und zurückgibt
+- Wird mithilfe des `Language.component`-Decorators registriert
 - Kann über die Methode `nlp.add_pipe` hinzugefügt werden
 
 ```python
-def custom_component(doc):
-    # Mache etwas mit dem Doc hier
+from spacy.language import Language
+
+@Language.component("custom_component")
+def custom_component_function(doc):
+    # Mache hier etwas mit dem Doc
     return doc
 
-nlp.add_pipe(custom_component)
+nlp.add_pipe("custom_component")
 ```
 
 Notes: Grundsätzlich ist eine Pipeline-Komponente eine Funktion, die ein
 `Doc`-Objekt erhält, es modifiziert und wieder zurückgibt, damit es von der
 nächsten Komponente in der Pipeline verarbeitet werden kann.
 
-Komponenten können über die Methode `nlp.add_pipe` zur Pipeline hinzugefügt
-werden. Die Methode benötigt mindestens ein Argument: die Funktion der
-Komponente.
+Um spaCy mitzuteilen, wo deine benutzerdefinierte Komponente gefunden werden kann und
+wie sie aufgerufen werden soll, kannst du sie mithilfe des `@Language.component`-Decorators
+kennzeichnen. Füge diese Zeile dazu einfach direkt über dem Funktionskopf ein. 
+
+Sobald eine Komponente registriert ist, kann sie über die Methode `nlp.add_pipe`
+zur Pipeline hinzugefügt werden. Die Methode benötigt mindestens ein Argument: 
+den Namen der Funktion der Komponente als String.
 
 ---
 
 # Anatomie einer Komponente (2)
 
 ```python
-def custom_component(doc):
-    # Mache etwas mit dem Doc hier
+@Language.component("custom_component")
+def custom_component_function(doc):
+    # Mache hier etwas mit dem Doc
     return doc
 
-nlp.add_pipe(custom_component)
+nlp.add_pipe("custom_component")
 ```
 
 | Argument | Beschreibung                      | Beispiel                                  |
 | -------- | --------------------------------- | ----------------------------------------- |
-| `last`   | Wenn `True`, füge ans Ende hinzu  | `nlp.add_pipe(component, last=True)`      |
-| `first`  | Wenn `True`, füge am Anfang hinzu | `nlp.add_pipe(component, first=True)`     |
-| `before` | Füge vor Komponente hinzu         | `nlp.add_pipe(component, before="ner")`   |
-| `after`  | Füge nach Komponente hinzu        | `nlp.add_pipe(component, after="tagger")` |
+| `last`   | Wenn `True`, füge ans Ende hinzu  | `nlp.add_pipe("component", last=True)`      |
+| `first`  | Wenn `True`, füge am Anfang hinzu | `nlp.add_pipe("component", first=True)`     |
+| `before` | Füge vor Komponente hinzu         | `nlp.add_pipe("component", before="ner")`   |
+| `after`  | Füge nach Komponente hinzu        | `nlp.add_pipe("component", after="tagger")` |
 
 Notes: Um anzugeben, _wo_ die Komponente in der Pipeline eingefügt werden soll,
-kannst du die folgenden Keywort-Argumente verwenden:
+kannst du die folgenden Argumente verwenden:
 
 Wenn `last` auf `True` gesetzt wird, wird die Komponente ans Ende der Pipeline
 als letztes Element hinzugefügt. Dies ist das Standard-Verhalten.
@@ -87,8 +96,8 @@ als letztes Element hinzugefügt. Dies ist das Standard-Verhalten.
 Wenn `first` auf `True` gesetzt wird, wird die Komponente am Anfang der Pipeline
 als erstes Element hinzugefügt, direkt nach dem Tokenizer.
 
-Die `before` und `after` Argumente ermöglichen es, den Namen einer vorhandenen
-Komponente anzugeben, vor oder nach welcher die neue Komponente eingefügt werden
+Die Argumente `before` und `after` ermöglichen es, den Namen einer vorhandenen
+Komponente anzugeben, vor oder nach der die neue Komponente eingefügt werden
 soll. Wird `before` beispielsweise auf `"ner"` gesetzt, wird die Komponente vor
 dem Named Entity Recognizer eingefügt.
 
@@ -104,26 +113,27 @@ soll, muss allerdings existieren. Ansonsten gibt spaCy eine Fehlermeldung aus.
 nlp = spacy.load("de_core_news_sm")
 
 # Definiere eine benutzerdefinierte Komponente
-def custom_component(doc):
+@Language.component("custom_component")
+def custom_component_function(doc):
     # Drucke die Länge des Docs
     print("Doc-Länge:", len(doc))
     # Gebe das Doc-Objekt zurück
     return doc
 
 # Füge die Komponente am Anfang der Pipeline hinzu
-nlp.add_pipe(custom_component, first=True)
+nlp.add_pipe("custom_component", first=True)
 
 # Drucke die Namen der Pipeline-Komponenten
 print("Pipeline:", nlp.pipe_names)
 ```
 
 ```out
-Pipeline: ['custom_component', 'tagger', 'parser', 'ner']
+Pipeline: ['custom_component', 'tok2vec', 'tagger', 'morphologizer', 'parser', 'attribute_ruler', 'lemmatizer', 'ner']
 ```
 
 Notes: Hier siehst du ein Beispiel einer einfachen Komponente.
 
-Wir beginnen mit dem kleinen deutschen Modell.
+Wir beginnen mit der kleinen deutschen Pipeline.
 
 Wir definieren dann die Komponente – eine Funktion, die ein `Doc`-Objekt erhält
 und es wieder zurückgibt.
@@ -133,8 +143,11 @@ das die Pipeline durchläuft.
 
 Vergiss nicht, das Doc wieder zurückzugeben, damit es von der nächsten
 Komponente in der Pipeline weiterverarbeitet werden kann! Das Doc, das vom
-Tokenizer erstellt wird, durchläuft alle Komponentent der Pipeline. Daher ist es
+Tokenizer erstellt wird, durchläuft alle Komponenten der Pipeline. Daher ist es
 wichtig, dass alle das modifizierte Doc zurückgeben.
+
+Um spaCy über die neue Komponente Bescheid zu geben, registrieren wir sie mit dem
+`@Language.component`-Decorator und nennen sie "custom_component".
 
 Wir können nun die Komponente zur Pipeline hinzufügen. Lass sie uns einfach ganz
 am Anfang hinzufügen, direkt hinter dem Tokenizer, indem wir `first` auf `True`
@@ -153,14 +166,15 @@ zuerst ausgeführt wird, wenn ein Doc verarbeitet wird.
 nlp = spacy.load("de_core_news_sm")
 
 # Definiere eine benutzerdefinierte Komponente
-def custom_component(doc):
+@Language.component("custom_component")
+def custom_component_function(doc):
     # Drucke die Länge des Docs
     print("Doc-Länge:", len(doc))
     # Gebe das Doc-Objekt zurück
     return doc
 
 # Füge die Komponente am Anfang der Pipeline hinzu
-nlp.add_pipe(custom_component, first=True)
+nlp.add_pipe("custom_component", first=True)
 
 # Verarbeite einen Text
 doc = nlp("Hallo Welt!")
