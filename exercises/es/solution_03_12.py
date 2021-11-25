@@ -1,5 +1,6 @@
 import json
-from spacy.lang.es import Spanish
+import spacy
+from spacy.language import Language
 from spacy.tokens import Span
 from spacy.matcher import PhraseMatcher
 
@@ -9,11 +10,11 @@ with open("exercises/es/countries.json", encoding="utf8") as f:
 with open("exercises/es/capitals.json", encoding="utf8") as f:
     CAPITALS = json.loads(f.read())
 
-nlp = Spanish()
+nlp = spacy.blank("es")
 matcher = PhraseMatcher(nlp.vocab)
-matcher.add("COUNTRY", None, *list(nlp.pipe(COUNTRIES)))
+matcher.add("COUNTRY", list(nlp.pipe(COUNTRIES)))
 
-
+@Language.component("countries_component")
 def countries_component(doc):
     # Crea un Span de entidades con el label "LOC" para todos los resultados
     matches = matcher(doc)
@@ -22,7 +23,7 @@ def countries_component(doc):
 
 
 # Añade el componente al pipeline
-nlp.add_pipe(countries_component)
+nlp.add_pipe("countries_component")
 print(nlp.pipe_names)
 
 # El getter que busca el texto del span en un diccionario de ciudades
