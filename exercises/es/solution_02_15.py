@@ -19,7 +19,7 @@ doc.ents = []
 
 # Itera sobre los resultados
 for match_id, start, end in matcher(doc):
-    # Crea un Span con el label para "LOC"
+    # Crea un Span con la etiqueta para "LOC"
     span = Span(doc, start, end, label="LOC")
 
     # Sobrescribe el doc.ents y añade el span
