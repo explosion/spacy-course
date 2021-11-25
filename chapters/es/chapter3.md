@@ -31,7 +31,7 @@ doc = nlp("Esto es una frase.")
 
 <opt text="Corre el tagger, el parser y el entity recognizer y después el tokenizer.">
 
-El tokenizer siempre se corre _antes_ que todos los demás componentes del
+El tokenizer siempre corre _antes_ que todos los demás componentes del
 pipeline, porque transforma el string de texto en un objeto `Doc`. El pipeline
 tampoco tiene que estar compuesto por el tagger, el parser y el entity
 recognizer.
@@ -164,7 +164,7 @@ documento. ¿Puedes completarlo?
 
 <codeblock id="03_06">
 
-- Para obtener la longitud del objeto `Doc`, puedes llamar la función integrada
+- Para obtener la longitud del objeto `Doc`, puedes invocar la función integrada
   de Python, `len()`, sobre él.
 - Usa el método `nlp.add_pipe` para añadir el componente al pipeline. Recuerda
   poner `True` en el argumento keyword `first`, para asegurarte de que se añada
@@ -252,10 +252,10 @@ de métodos.
 
 <codeblock id="03_10_01">
 
-- Recuerda que los atributos que fueron extendidos están disponibles a través de
-  la propiedad `._`. Por ejemplo, `doc._.has_color`.
-- La función `get_has_number` debería devolver si cualquiera de los tokens en el
-  `doc` devuelve `True` para `token.like_num` (si un token parece un número).
+- Recuerda que los atributos que fueron extendidos están disponibles a través
+  de la propiedad `._`. Por ejemplo, `doc._.has_color`.
+- La función `get_has_number` debería devolver si cualquiera de los tokens en
+  el `doc` devuelve `True` para `token.like_num` (si un token parece un número).
 
 </codeblock>
 
@@ -267,7 +267,7 @@ de métodos.
 <codeblock id="03_10_02">
 
 - Las extensiones de método pueden tomar uno o más argumentos. Por ejemplo,
-  `doc._.some_method("argument")`.
+  `doc._.algun_metodo("argumento")`.
 - El primer argumento que se le pasa al método siempre es el objeto `Doc`,
   `Token` o `Span` sobre el cual se llama al método.
 
@@ -323,7 +323,7 @@ disponible como la variable `CAPITALS`.
 
 - La clase `Span` toma cuatro argumentos: el `doc`, los índices del span de
   `start` y `end` y el `label`.
-- Llamar al `PhraseMatcher` sobre un `doc` devuelve una lista de tuples con
+- Invocar el `PhraseMatcher` sobre un `doc` devuelve una lista de tuples con
   `(match_id, start, end)`.
 - Para registrar una nueva extensión de atributo usa el método `set_extension`
   en la clase global, por ejemplo, `Doc`, `Token` o `Span`. Para definir un
@@ -366,14 +366,14 @@ cadena americana de cómida rápida popular están disponibles en la variable
 
 ### Parte 2
 
-- Reescribe el ejemplo usando `nlp.pipe`. No olvides llamar a `list()` alrededor
+- Reescribe el ejemplo usando `nlp.pipe`. No olvides invocar `list()` alrededor
   del resultado para convertirlo en una lista.
 
 <codeblock id="03_14_02"></codeblock>
 
 ### Parte 3
 
-- Reescribe el ejemplo usando `nlp.pipe`. No olvides llamar a `list()` alrededor
+- Reescribe el ejemplo usando `nlp.pipe`. No olvides invocar `list()` alrededor
   del resultado para convertirlo en una lista.
 
 <codeblock id="03_14_03"></codeblock>
@@ -428,7 +428,7 @@ igual que el objeto `nlp`.
 
 ### Parte 2
 
-- Deshabilita el tagger y el parser usando el método `nlp.disable_pipes`.
+- Deshabilita el parser usando el método `nlp.disable_pipes`.
 - Procesa el texto e imprime en pantalla todas las entidades en el `doc`.
 
 <codeblock id="03_16_02">
