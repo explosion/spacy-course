@@ -20,9 +20,9 @@ vectors</abbr> y cómo aprovecharlos en tu aplicación de NLP.
 - Toma otro objeto y devuelve un puntaje de similitud (del `0` al `1`)
 - **Importante:** necesita el modelo que tiene los word vectors incluidos, por
   ejemplo:
-  - ✅ `en_core_web_md` (modelo mediano)
-  - ✅ `es_core_news_md` (modelo mediano español)
-  - ✅ `en_core_web_lg` (modelo grande)
+  - ✅ `en_core_web_md` (modelo mediano en inglés)
+  - ✅ `es_core_news_md` (modelo mediano en español)
+  - ✅ `en_core_web_lg` (modelo grande en inglés)
   - 🚫 **NO** `en_core_web_sm` o `es_core_news_sm`(modelos pequeños)
 
 Notes: spaCy puede comparar dos objetos y predecir qué tan similares son - por
@@ -55,7 +55,7 @@ print(doc1.similarity(doc2))
 ```
 
 ```out
-0.9771402664001864
+0.9513663710080219
 ```
 
 ```python
@@ -67,7 +67,7 @@ print(token1.similarity(token2))
 ```
 
 ```out
-0.7795312
+0.57588387
 ```
 
 Notes: Aquí tenemos un ejemplo. Digamos que queremos determinar si dos
@@ -78,12 +78,12 @@ Primero, cargamos el modelo de español mediano "es_core_news_md".
 Después podemos crear dos objetos doc y usar el método `similarity` del primer
 doc para compararlo con el segundo.
 
-Aquí tenemos un puntaje de similitud alto de 0.97 para "Me gusta la comida rápida" y "Me gusta la pizza".
+Aquí tenemos un puntaje de similitud alto de 0.95 para "Me gusta la comida rápida" y "Me gusta la pizza".
 
 Lo mismo funciona para los tokens.
 
 De acuerdo con los word vectors, los tokens "pizza" y "pasta" son medianamente
-parecidos y reciben un puntaje de 0.78.
+parecidos y reciben un puntaje de 0.57.
 
 ---
 
@@ -98,7 +98,7 @@ print(doc.similarity(token))
 ```
 
 ```out
-0.4755507088511145
+0.13637736545255463
 ```
 
 ```python
@@ -110,7 +110,7 @@ print(span.similarity(doc))
 ```
 
 ```out
-0.6243837841459509
+0.06863640629790713
 ```
 
 Notes: También puedes usar los métodos `similarity` para comparar diferentes
@@ -124,8 +124,8 @@ bastante diferentes.
 Aquí tenemos otro ejemplo que compara un span - "la pizza y la pasta" – a un
 documento sobre McDonalds.
 
-El puntaje que obtuvimos aquí es de 0.62, así que determinamos que son
-medianamente similares.
+El puntaje que obtuvimos aquí es de 0.06, así que determinamos que no son
+ similares según el modelo.
 
 ---
 
@@ -134,15 +134,16 @@ medianamente similares.
 - La similitud se determina usando **word vectors**
 - Representaciones multidimensionales de significados de palabras
 - Generado usando un algoritmo como
-  [Word2Vec](https://en.wikipedia.org/wiki/Word2vec) y mucho texto
+  [Word2Vec](https://en.wikipedia.org/wiki/Word2vec) y muchos textos
 - Puede añadirse a los modelos estadísticos de spaCy
-- Por defecto: similitud coseno, pero puede cambiarse por otra medida de semejanza
+- Por defecto: similitud coseno, pero puede cambiarse por otra medida de
+  semejanza
 - Los vectores de los `Doc` y `Span` tienen por defecto el valor del promedio
   de los vectores de los tokens
 - Las frases cortas son mejores que los documentos largos con muchas palabras
   irrelevantes
 
-Notes: ¿Pero cómo hace esto spaCy detrás de cámaras?
+Notes: ¿Pero cómo hace esto spaCy detrás de las cámaras?
 
 La similitud se determina usando word vectors, que son representaciones
 multidimensionales de los significados de las palabras.
@@ -158,7 +159,8 @@ vectores, pero esto puede cambiarse si es necesario.
 Los vectores para objetos que consisten de varios tokens, como el Doc y el Span
 tienen por defecto el valor promedio de los vectores de sus tokens.
 
-Es por esto que normalmente puedes obtener más valor con las frases más cortas, ya que contienen menos palabras irrelevantes.
+Es por esto que normalmente puedes obtener más valor con las frases más cortas,
+ya que contienen menos palabras irrelevantes.
 
 ---
 
