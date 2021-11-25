@@ -66,7 +66,7 @@ your own system.
 
 # Under the hood
 
-<img src="/package_meta.png" alt="Illustration of a package labelled en_core_web_sm, folders and file and the meta.json" />
+<img src="/package_meta.png" alt="Illustration of a package labelled en_core_web_sm, folders and file and the config.cfg />
 
 - Pipeline defined in model's `config.cfg` in order
 - Built-in components need binary data to make predictions
