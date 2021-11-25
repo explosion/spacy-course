@@ -1,8 +1,8 @@
-# Importa la clase de lenguaje "Spanish"
-from spacy.lang.es import Spanish
+# Importa spaCy
+import spacy
 
-# Crea el objeto nlp
-nlp = Spanish()
+# Crea el objeto nlp para procesar español
+nlp = spacy.blank("es")
 
 # Procesa un texto
 doc = nlp("¿Cómo estás?")
