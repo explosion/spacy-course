@@ -15,7 +15,7 @@ En esta lección veremos cómo hacerlo con spaCy.
 
 |                              | **Modelos estadísticos**                                               | **Sistemas basados en reglas** |
 | ---------------------------- | ---------------------------------------------------------------------- | ------------------------------ |
-| **Casos**                    | la aplicación necesita _generalizar_ basándose en ejemplos                |                                |
+| **Casos**                    | la aplicación necesita _generalizar_ basándose en ejemplos             |                                |
 | **Ejemplos de la vida real** | nombres de productos, nombres de personas, relaciones de sujeto/objeto |                                |
 | **Características de spaCy** | entity recognizer, dependency parser, part-of-speech tagger            |                                |
 
@@ -37,9 +37,9 @@ part-of-speech tagger de spaCy.
 
 |                              | **Modelos estadísticos**                                               | **Sistemas basados en reglas**                                 |
 | ---------------------------- | ---------------------------------------------------------------------- | -------------------------------------------------------------- |
-| **Casos**                    | la aplicación necesita _generalizar_ basándose en ejemplos                | diccionario con número finito de casos                       |
+| **Casos**                    | la aplicación necesita _generalizar_ basándose en ejemplos             | diccionario con número finito de casos                         |
 | **Ejemplos de la vida real** | nombres de productos, nombres de personas, relaciones de sujeto/objeto | países del mundo, ciudades, nombres de drogas, razas de perros |
-| **Características de spaCy** | entity recognizer, dependency parser, part-of-speech tagger            | tokenizer, `Matcher`, `PhraseMatcher`                           |
+| **Características de spaCy** | entity recognizer, dependency parser, part-of-speech tagger            | tokenizer, `Matcher`, `PhraseMatcher`                          |
 
 Notes: Los enfoques basados en reglas son muy útiles si hay un número más o
 menos finito de casos que quieres encontrar. Por ejemplo, todos los países o
@@ -61,12 +61,12 @@ matcher = Matcher(nlp.vocab)
 
 # Los patrones son listas de diccionarios que describen los tokens
 pattern = [{"LEMMA": "comer", "POS": "VERB"}, {"LOWER": "pizza"}]
-matcher.add("PIZZA", None, pattern)
+matcher.add("PIZZA", [pattern])
 
 # Los operadores pueden especificar qué tan seguido puede
 # ser buscado un token
 pattern = [{"TEXT": "muy", "OP": "+"}, {"TEXT": "feliz"}]
-matcher.add("MUY_FELIZ", None, pattern)
+matcher.add("MUY_FELIZ", [pattern])
 
 # Llamar al matcher sobre un doc devuelve una lista de
 # tuples con (match_id, inicio, final)
@@ -96,7 +96,7 @@ token en el documento.
 
 ```python
 matcher = Matcher(nlp.vocab)
-matcher.add("PERRO", None, [{"LOWER": "labrador"}, {"LOWER": "dorado"}])
+matcher.add("PERRO", [[{"LOWER": "labrador"}, {"LOWER": "dorado"}]])
 doc = nlp("Tengo un labrador dorado")
 
 for match_id, start, end in matcher(doc):
@@ -128,16 +128,16 @@ por el modelo.
 Por ejemplo, podemos obtener el token raíz del span. Si el span contiene más de
 un token, este token será el que determina la categoría de la frase. Por
 ejemplo, la raíz de "labrador dorado" es "labrador". También podemos encontrar
-el <abbr title="En inglés se conoce como head. En este caso, root head token.">token
-raíz cabeza</abbr>. Esto es el "padre" sintáctico que gobierna la frase - en
-este caso, el verbo "tener".
+el <abbr title="En inglés se conoce como head. En este caso, root head token.">
+token raíz cabeza</abbr>. Esto es el "padre" sintáctico que gobierna la frase -
+en este caso, el verbo "tener".
 
 Finalmente, podemos obtener el token anterior y sus atributos. En este caso, es
 el determinante, el artículo "un".
 
 ---
 
-# Encontrando frases eficientemente, "phrase matching" (1)
+# Buscando frases eficientemente, "phrase matching" (1)
 
 - `PhraseMatcher` como las expresiones regulares o una búsqueda de palabras
   claves - ¡Pero con acceso a los tokens!
@@ -161,7 +161,7 @@ palabras en grandes volúmenes de texto.
 
 ---
 
-# Encontrando frases eficientemente, "phrase matching" (2)
+# Buscando frases eficientemente, "phrase matching" (2)
 
 ```python
 from spacy.matcher import PhraseMatcher
@@ -169,7 +169,7 @@ from spacy.matcher import PhraseMatcher
 matcher = PhraseMatcher(nlp.vocab)
 
 pattern = nlp("labrador dorado")
-matcher.add("PERRO", None, pattern)
+matcher.add("PERRO", [pattern])
 doc = nlp("Tengo un labrador dorado")
 
 # Itera sobre los resultados
