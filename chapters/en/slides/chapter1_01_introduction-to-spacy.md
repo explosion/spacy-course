@@ -28,7 +28,7 @@ nlp = spacy.blank("en")
 Notes: At the center of spaCy is the object containing the processing pipeline.
 We usually call this variable "nlp".
 
-For example, to create an English `nlp` object, you can import the `spacy` and
+For example, to create an English `nlp` object, you can import `spacy` and
 use the `spacy.blank` method to create a blank English pipeline. You can use the
 `nlp` object like a function to analyze text.
 
