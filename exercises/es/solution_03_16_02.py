@@ -7,8 +7,8 @@ text = (
     "especializada en sándwiches de pollo."
 )
 
-# Deshabilita el tagger y el parser
-with nlp.disable_pipes("tagger", "parser"):
+# Deshabilita el parser
+with nlp.select_pipes(disable=["parser"]):
     # Procesa el texto
     doc = nlp(text)
     # Imprime las entidades del doc en pantalla

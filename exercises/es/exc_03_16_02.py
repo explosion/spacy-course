@@ -7,7 +7,7 @@ text = (
     "especializada en sándwiches de pollo."
 )
 
-# Deshabilita el tagger y el parser
+# Deshabilita el parser
 with ____.____(____):
     # Procesa el texto
     doc = ____
