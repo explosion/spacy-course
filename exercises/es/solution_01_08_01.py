@@ -16,4 +16,4 @@ for token in doc:
     token_pos = token.pos_
     token_dep = token.dep_
     # Esto es solo por formato
-    print("{:<12}{:<10}{:<10}".format(token_text, token_pos, token_dep))
+    print(f"{token_text:<12}{token_pos:<10}{token_dep:<10}")

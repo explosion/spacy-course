@@ -12,5 +12,5 @@ doc = ____
 
 # Itera sobre las entidades predichas
 for ent in ____.____:
-    # Imprime en pantalla el texto de la entidad y su label
+    # Imprime en pantalla el texto de la entidad y su etiqueta
     print(ent.____, ____.____)

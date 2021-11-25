@@ -15,7 +15,7 @@ doc = nlp(
 pattern = [{"LEMMA": ____}, {"POS": ____}]
 
 # Añade el patrón al matcher y usa el matcher sobre el documento
-matcher.add("DOWNLOAD_THINGS_PATTERN", None, pattern)
+matcher.add("DOWNLOAD_THINGS_PATTERN", [pattern])
 matches = matcher(doc)
 print("Total de resultados encontrados:", len(matches))
 
