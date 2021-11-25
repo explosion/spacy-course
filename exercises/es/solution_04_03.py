@@ -1,11 +1,12 @@
 import json
+import spacy
 from spacy.matcher import Matcher
-from spacy.lang.es import Spanish
+from spacy.tokens import Span
 
 with open("exercises/es/adidas.json", encoding="utf8") as f:
     TEXTS = json.loads(f.read())
 
-nlp = Spanish()
+nlp = spacy.blank("es")
 matcher = Matcher(nlp.vocab)
 
 # Dos tokens que en minúsculas encuentran "adidas" y "zx"
@@ -15,6 +16,11 @@ pattern1 = [{"LOWER": "adidas"}, {"LOWER": "zx"}]
 pattern2 = [{"LOWER": "adidas"}, {"IS_DIGIT": True}]
 
 # Añade los patrones al matcher y revisa el resultado
-matcher.add("ROPA", None, pattern1, pattern2)
+matcher.add("ROPA", [pattern1, pattern2])
+docs = []
 for doc in nlp.pipe(TEXTS):
-    print([doc[start:end] for match_id, start, end in matcher(doc)])
+    matches = matcher(doc)
+    spans = [Span(doc, start, end, label=match_id) for match_id, start, end in matches]
+    print(spans)
+    doc.ents = spans
+    docs.append(doc)
