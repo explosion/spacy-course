@@ -20,9 +20,9 @@ vectors</abbr> y cómo aprovecharlos en tu aplicación de NLP.
 - Toma otro objeto y devuelve un puntaje de similitud (del `0` al `1`)
 - **Importante:** necesita el modelo que tiene los word vectors incluidos, por
   ejemplo:
-  - ✅ `en_core_web_md` (modelo mediano)
-  - ✅ `es_core_news_md` (modelo mediano español)
-  - ✅ `en_core_web_lg` (modelo grande)
+  - ✅ `en_core_web_md` (modelo mediano en inglés)
+  - ✅ `es_core_news_md` (modelo mediano en español)
+  - ✅ `es_core_news_lg` (modelo grande en español)
   - 🚫 **NO** `en_core_web_sm` o `es_core_news_sm`(modelos pequeños)
 
 Notes: spaCy puede comparar dos objetos y predecir qué tan similares son - por
@@ -55,19 +55,19 @@ print(doc1.similarity(doc2))
 ```
 
 ```out
-0.9771402664001864
+0.9513663710080219
 ```
 
 ```python
 # Compara dos tokens
-doc = nlp("Me gusta la pizza y la pasta")
+doc = nlp("Me gustan la pizza y las hamburguesas")
 token1 = doc[3]
 token2 = doc[6]
 print(token1.similarity(token2))
 ```
 
 ```out
-0.7795312
+0.6704209
 ```
 
 Notes: Aquí tenemos un ejemplo. Digamos que queremos determinar si dos
@@ -78,12 +78,13 @@ Primero, cargamos el modelo de español mediano "es_core_news_md".
 Después podemos crear dos objetos doc y usar el método `similarity` del primer
 doc para compararlo con el segundo.
 
-Aquí tenemos un puntaje de similitud alto de 0.97 para "Me gusta la comida rápida" y "Me gusta la pizza".
+Aquí tenemos un puntaje de similitud alto de 0.95 para "Me gusta la comida
+rápida" y "Me gusta la pizza".
 
 Lo mismo funciona para los tokens.
 
-De acuerdo con los word vectors, los tokens "pizza" y "pasta" son medianamente
-parecidos y reciben un puntaje de 0.78.
+De acuerdo con los word vectors, los tokens "pizza" y "hamburguesa" son
+medianamente parecidos y reciben un puntaje de 0.67.
 
 ---
 
@@ -98,19 +99,19 @@ print(doc.similarity(token))
 ```
 
 ```out
-0.4755507088511145
+0.13637736545255463
 ```
 
 ```python
 # Compara un span con un documento
-span = nlp("Me gusta la pizza y la pasta")[2:7]
+span = nlp("Me gustan los perros calientes")[3:5]
 doc = nlp("McDonalds vende hamburguesas")
 
 print(span.similarity(doc))
 ```
 
 ```out
-0.6243837841459509
+0.44930617034116915
 ```
 
 Notes: También puedes usar los métodos `similarity` para comparar diferentes
@@ -121,11 +122,11 @@ Por ejemplo, un documento y un token.
 Aquí el puntaje de similitud es bastante bajo y los dos objetos se consideran
 bastante diferentes.
 
-Aquí tenemos otro ejemplo que compara un span - "la pizza y la pasta" – a un
+Aquí tenemos otro ejemplo que compara un span - "perros calientes" – a un
 documento sobre McDonalds.
 
-El puntaje que obtuvimos aquí es de 0.62, así que determinamos que son
-medianamente similares.
+El puntaje que obtuvimos aquí es de 0.44, así que determinamos que son
+medianamente similares según el modelo.
 
 ---
 
@@ -134,15 +135,16 @@ medianamente similares.
 - La similitud se determina usando **word vectors**
 - Representaciones multidimensionales de significados de palabras
 - Generado usando un algoritmo como
-  [Word2Vec](https://en.wikipedia.org/wiki/Word2vec) y mucho texto
+  [Word2Vec](https://en.wikipedia.org/wiki/Word2vec) y muchos textos
 - Puede añadirse a los modelos estadísticos de spaCy
-- Por defecto: similitud coseno, pero puede cambiarse por otra medida de semejanza
+- Por defecto: similitud coseno, pero puede cambiarse por otra medida de
+  semejanza
 - Los vectores de los `Doc` y `Span` tienen por defecto el valor del promedio
   de los vectores de los tokens
 - Las frases cortas son mejores que los documentos largos con muchas palabras
   irrelevantes
 
-Notes: ¿Pero cómo hace esto spaCy detrás de cámaras?
+Notes: ¿Pero cómo hace esto spaCy detrás de las cámaras?
 
 La similitud se determina usando word vectors, que son representaciones
 multidimensionales de los significados de las palabras.
@@ -158,7 +160,8 @@ vectores, pero esto puede cambiarse si es necesario.
 Los vectores para objetos que consisten de varios tokens, como el Doc y el Span
 tienen por defecto el valor promedio de los vectores de sus tokens.
 
-Es por esto que normalmente puedes obtener más valor con las frases más cortas, ya que contienen menos palabras irrelevantes.
+Es por esto que normalmente puedes obtener más valor con las frases más cortas,
+ya que contienen menos palabras irrelevantes.
 
 ---
 
@@ -174,16 +177,16 @@ print(doc[2].vector)
 ```
 
 ```out
-[-0.162944,   0.042666,   0.405069,
- -0.884944,   0.13951 ,   1.37826 ,
- -0.807906,  -0.432592,  -0.747897,  
-  0.953742,   0.90389 ,  -0.514217,
-  0.360039,  -0.409261,   1.11574 ,
- -0.407411,   0.118361,  -0.426352,
- -0.315689,   0.027726,   0.79418 ,
- -0.99135 ,   0.147428,   0.36956 ,
-  0.547555,  -0.023946,  -2.024585,
- -0.122916,   0.406145,   0.911639,
+[-0.5813     0.03749    0.6693    2.796    -0.02335   0.39145
+  0.5510     0.259      2.625     3.193    -0.4927    0.084971
+  0.08304   -1.178     -0.1118    0.05210  -0.56      0.2155
+ -1.524     -1.976     -1.669    -0.8539    0.8901   -0.99332
+  1.713     -1.749     -1.553     0.4498    0.7688    1.298 
+  0.09468   -0.0784     1.184    -1.530    -0.4466    1.3727
+  1.223     -1.496      0.7591    0.7092    1.496     0.56073
+ -1.601     -0.9133    -2.058     1.120    -0.8625    0.76231
+  0.6092    -1.093     -2.022    -1.232     0.2491    0.95122
+ -1.097     -0.8304    -1.491    -0.7970   -0.2383    0.10205
  ...
 ```
 
@@ -207,29 +210,29 @@ El resultado es un vector con 300 dimensiones de la palabra "manzana".
 
 ```python
 doc1 = nlp("Me gustan los gatos")
-doc2 = nlp("Odio a los gatos")
+doc2 = nlp("Me desagradan los gatos")
 
 print(doc1.similarity(doc2))
 ```
 
 ```out
-0.9073441516522552
+0.9709654355279296
 ```
 
 Notes: Predecir similitud puede ser muy útil para muchos tipos de aplicaciones.
-Por ejemplo, para recomendarle al usuario textos parecidos basados en los que ya
-ha leído. También puede ser útil para reportar contenido duplicado, como posts
-en una plataforma en línea.
+Por ejemplo, para recomendarle al usuario textos parecidos basados en los que
+ya ha leído. También puede ser útil para reportar contenido duplicado, como
+posts en una plataforma en línea.
 
 Sin embargo, es importante tener presente que no hay una definición objetiva de
 lo que es similar y lo que no. Siempre depende del contexto y de lo que tu
 aplicación tiene que hacer.
 
 Aquí tenemos un ejemplo: los word vectors por defecto de spaCy le asignan un
-puntaje de similitud muy alto a "Me gustan los gatos" y "Odio a los gatos". Esto tiene
-sentido porque ambas frases expresan un sentimiento sobre los gatos. Pero en
-otro contexto de aplicación estas frases pueden ser consideradas muy
-_diferentes_, porque hablan sobre el sentimiento opuesto.
+puntaje de similitud muy alto a "Me gustan los gatos" y "Me desagradan los
+gatos". Esto tiene sentido porque ambas frases expresan un sentimiento sobre
+los gatos. Pero en otro contexto de aplicación estas frases pueden ser
+consideradas muy _diferentes_, porque hablan sobre el sentimiento opuesto.
 
 ---
 

@@ -12,7 +12,7 @@ doc = ____
 
 # Itera sobre las entidades
 for ____ in ____.____:
-    # Imprime en pantalla el texto de la entidad y su label
+    # Imprime en pantalla el texto de la entidad y su etiqueta
     print(____.____, ____.____)
 
 # Obtén el span para "adidas zx"

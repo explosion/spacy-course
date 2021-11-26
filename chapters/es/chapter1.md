@@ -1,10 +1,10 @@
 ---
 title: 'Capítulo 1: Encontrando palabras, frases, nombres y conceptos'
 description:
-  'Este capítulo te introducirá en lo básico del procesamiento de texto con
-  spaCy. Aprenderás sobre las estructuras de datos, cómo trabajar con modelos
-  estadísticos y cómo usarlos para predecir características lingüísticas en tu
-  texto.'
+  "Este capítulo te mostrará las bases del procesamiento de texto con spaCy.
+  Aprenderás acerca de las estructuras de datos, cómo trabajar con pipelines
+  entrenados y cómo usar eastas estructuras y pipelines para predecir
+  características lingüísticas en tu texto."
 
 prev: null
 next: /chapter2
@@ -19,29 +19,29 @@ id: 1
 
 </exercise>
 
-<exercise id="2" title="Empezando">
+<exercise id="2" title="Para empezar">
 
-¡Empecemos y probemos spaCy! En este ejercicio vas a poder probar algunos de los
-55+ [lenguajes disponibles](https://spacy.io/usage/models#languages).
+¡Para empezar, probemos spaCy! En este ejercicio vas a poder probar algunos de los
+60+ [lenguajes disponibles](https://spacy.io/usage/models#languages).
 
 ### Parte 1: Español
 
-- Importa la clase `Spanish` de `spacy.lang.es` y crea el objeto `nlp`.
-- Crea un `doc` e imprime en pantalla su texto.
+- Usa `spacy.blank` para crear un objeto `nlp` vacío para procesar español (`"es"`).
+- Crea un `doc` e imprime su texto en la pantalla.
 
 <codeblock id="01_02_03"></codeblock>
 
 ### Parte 2: Inglés
 
-- Importa la clase `English` de `spacy.lang.en` y crea el objeto `nlp`.
-- Crea un `doc` e imprime en pantalla su texto.
+- Usa `spacy.blank` para crear un objeto `nlp` vacío para procesar inglés (`"en"`).
+- Crea un `doc` e imprime su texto en la pantalla.
 
 <codeblock id="01_02_01"></codeblock>
 
 ### Parte 3: Alemán
 
-- Importa la clase `German` de `spacy.lang.de` y crea el objeto `nlp`.
-- Crea un `doc` e imprime en pantalla su texto.
+- Usa `spacy.blank` para crear un objeto `nlp` vacío para procesar alemán (`"de"`).
+- Crea un `doc` e imprime su texto en la pantalla.
 
 <codeblock id="01_02_02"></codeblock>
 
@@ -50,18 +50,16 @@ id: 1
 <exercise id="3" title="Documentos, spans y tokens">
 
 Cuando llamas `nlp` sobre un string, spaCy primero genera tokens del texto y
-crea un objeto de documento. En este ejercicio aprenderás más sobre el `Doc`,
-así como de sus
-<abbr title="En español: representaciones o vistas.">views</abbr> `Token` y
-`Span`.
+crea un objeto del tipo documento (`Doc`). En este ejercicio aprenderás más
+sobre el `Doc`, así como de sus <abbr title="En español: representaciones o vistas.">views</abbr> `Token` y `Span`.
 
 ### Paso 1
 
-- Importa la clase de lenguaje `Spanish` y crea el objeto `nlp`.
+- Utiliza `spacy.blank` para crear el objeto `nlp` para procesar español.
 - Procesa el texto y genera un
   <abbr title="En español: ejemplar, a veces referido incorrectamente como instancia.">instance</abbr>
   de un objeto `Doc` en la variable `doc`.
-- Selecciona el primer token de `Doc` e imprime en pantalla su `text`.
+- Selecciona el primer token del `Doc` e imprime su texto (`text`) en pantalla.
 
 <codeblock id="01_03_01">
 
@@ -74,7 +72,7 @@ no 1.
 
 ### Paso 2
 
-- Importa la clase de lenguaje `Spanish` y crea el objeto `nlp`.
+- Utiliza `spacy.blank` para crear el objeto `nlp` para procesar español.
 - Procesa el texto y genera un
   <abbr title="En español: ejemplar, a veces referido incorrectamente como instancia.">instance</abbr>
   de un objeto `Doc` en la variable `doc`.
@@ -114,7 +112,7 @@ ejemplo, `doc[5]` es el token en el índice 5.
 
 </exercise>
 
-<exercise id="5" title="Modelos estadísticos" type="slides">
+<exercise id="5" title="Pipelines entrenados" type="slides">
 
 <slides source="chapter1_02_statistical-models" start="4:03" end="8:35">
 </slides>
@@ -136,22 +134,22 @@ datos, autor y cifras sobre la precisión del modelo (si están disponibles).
 </opt>
 <opt text="Parámetros binarios para hacer predicciones estadísticas.">
 
-Los modelos incluyen parámetros binarios para poder predecir las anotaciones
+Los pipelines incluyen parámetros binarios para poder predecir las anotaciones
 lingüísticas como part-of-speech tags, dependency labels o entidades nombradas.
 
 </opt>
 <opt correct="true" text="Los datos anotados con los que el modelo fue entrenado.">
 
-Los modelos estadísticos te permiten generalizar basándote en un set de ejemplos
-de entrenamiento. Una vez están entrenados, usan los parámetros binarios para
-hacer predicciones. Es por esto que no es necesario incluir los datos de
-entrenamiento.
+Los pipelines entrenados te permiten generalizar basándote en un conjunto de
+ejemplos de entrenamiento. Una vez que están entrenados, usan los parámetros
+binarios para hacer predicciones. Es por esto que no es necesario incluir los
+datos de entrenamiento.
 
 </opt>
-<opt text="Strings del vocabulario del modelo y sus hashes.">
+<opt text="Strings del vocabulario del pipeline y sus hashes.">
 
-Los paquetes de modelo incluye un `strings.json` que guarda las entradas en el
-vocabulario del modelo y el mapping a los hashes. Esto le permite a spaCy
+Los paquetes de pipelines incluye un `strings.json` que guarda las entradas en
+el vocabulario del pipeline y el mapeo a los hashes. Esto le permite a spaCy
 comunicarse únicamente en hashes y buscar el string correspondiente si es
 necesario.
 
@@ -162,8 +160,8 @@ necesario.
 
 <exercise id="7" title="Cargando modelos">
 
-Los modelos que estamos usando en este curso ya están pre-instalados. Para
-obtener más detalles sobre los modelos estadísticos de spaCy y cómo instalarlos
+Los pipelines que estamos usando en este curso ya están pre-instalados. Para
+obtener más detalles sobre los pipelines entrenados de spaCy y cómo instalarlos
 en tu máquina revisa [la documentación](https://spacy.io/usage/models).
 
 - Usa `spacy.load` para cargar el modelo pequeño de español `"es_core_news_sm"`.
@@ -171,8 +169,8 @@ en tu máquina revisa [la documentación](https://spacy.io/usage/models).
 
 <codeblock id="01_07">
 
-Para cargar el modelo, llama a `spacy.load` usando su nombre en string. Los
-nombres de los modelos se diferencian dependiendo del lenguaje y los datos con
+Para cargar el pipeline, llama a `spacy.load` usando su nombre en string. Los
+nombres de los pipelines se diferencian dependiendo del lenguaje y los datos con
 los que fueron entrenados. Así que asegúrate de que estés usando el nombre
 correcto.
 
@@ -182,18 +180,18 @@ correcto.
 
 <exercise id="8" title="Prediciendo anotaciones lingüísticas">
 
-Ahora puedes probar uno de los paquetes de modelos pre-entrenados de spaCy y ver
-sus predicciones en acción. ¡También puedes intentarlo con tu propio texto! Para
-averiguar lo que cada tag o label significa puedes llamar a `spacy.explain` en
-el
+Ahora puedes probar uno de los paquetes de pipelines pre-entrenados de spaCy y
+ver sus predicciones en acción. ¡También puedes intentarlo con tu propio texto!
+Para averiguar lo que cada tag o label significa puedes llamar a `spacy.explain`
+en el
 <abbr title="En español: bucle, un bloque de código que se repite.">loop</abbr>.
 Por ejemplo, `spacy.explain("PROPN")` o `spacy.explain("GPE")`.
 
 ### Parte 1
 
 - Procesa el texto del objeto `nlp` y crea un `doc`.
-- Para cada token imprime en pantalla su texto, su `.pos_` (part-of-speech tag)
-  y su `.dep_` (dependency label).
+- Por cada token, imprime en pantalla su texto, su `.pos_` (etiqueta gramatical)
+  y su `.dep_` (etiqueta de dependencia sintáctica).
 
 <codeblock id="01_08_01">
 
@@ -221,13 +219,13 @@ necesitas usar los nombres de los atributos de los tokens con un guion bajo
 
 <exercise id="9" title="Prediciendo entidades nombradas en contexto">
 
-Los modelos son estadísticos y no son _siempre_ correctos. La corrección de sus
+Los modelos son estadísticos y no _siempre_ son correctos. La corrección de sus
 predicciones depende de los datos de entrenamiento y del texto que estás
 procesando. Veamos un ejemplo.
 
 - Procesa el texto con el objeto `doc`.
-- Itera sobre las entidades e imprime en pantalla el texto de la entidad y el
-  label.
+- Itera sobre las entidades e imprime en pantalla el texto de la entidad y la
+  etiqueta.
 - Parece ser que el modelo no predijo "adidas zx". Crea un span para esos tokens
   manualmente.
 
@@ -268,7 +266,7 @@ el texto.
 <codeblock id="01_11">
 
 - El vocabulario compartido está disponible como el atributo `nlp.vocab`.
-- El patrón es una lista de diccionarios que utiliza los nombres de los
+- Un patrón es una lista de diccionarios que utiliza los nombres de los
   atributos como keys. Por ejemplo, `[{"TEXT": "Hola"}]` encontrará un token
   cuyo texto exacto sea "Hola".
 - Los valores `start` y `end` de cada resultado describen el índice de inicio y
@@ -287,7 +285,7 @@ atributos de los tokens y operadores.
 ### Parte 1
 
 - Escribe **un** patrón que únicamente encuentre menciones de las versiones
-  _enteras_ de iOS: "iOS 7", "iOS 11" and "iOS 10".
+  _completas_ de iOS: "iOS 7", "iOS 11" and "iOS 10".
 
 <codeblock id="01_12_01">
 
@@ -295,14 +293,14 @@ atributos de los tokens y operadores.
   Por ejemplo, `{"TEXT": "Apple"}` encontrará tokens que tengan el texto exacto
   "Apple".
 - Para encontrar un token de número puedes usar el atributo `"IS_DIGIT"` que
-  únicamente devolverá `True` para los tokens que solo tienen dígitos.
+  devolverá `True` para los tokens que únicamente contienen dígitos.
 
 </codeblock>
 
 ### Parte 2
 
 - Escribe **un** patrón que únicamente encuentre formas de "descargar" (tokens
-  con el lemma "descargar") seguido por un token que tenga el part-of-speech tag
+  con el lemma "descargar") seguido por un token que tenga la etiqueta gramatical
   `"PROPN"` (<abbr title="En español: nombre propio.">proper noun</abbr>).
 
 <codeblock id="01_12_02">

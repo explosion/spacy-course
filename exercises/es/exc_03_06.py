@@ -1,7 +1,9 @@
 import spacy
+from spacy.language import Language
 
 # Define el componente personalizado
-def length_component(doc):
+@Language.component("length_component")
+def length_component_function(doc):
     # Obtén la longitud del doc
     doc_length = ____
     print(f"Este documento tiene {doc_length} tokens.")

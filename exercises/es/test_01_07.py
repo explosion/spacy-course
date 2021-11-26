@@ -8,5 +8,5 @@ def test():
     ), "¿Estás imprimiendo en pantalla el texto del Doc?"
 
     __msg__.good(
-        "¡Bien hecho! Ahora que practicaste cargando modelos miremos algunas de sus predicciones."
+        "¡Bien hecho! Ahora que practicaste cargando modelos, miremos algunas de sus predicciones."
     )

@@ -28,19 +28,20 @@ def test_01_09_predictions(nlp):
     text = "Los Olímpicos de Tokio 2020 son la inspiración para la nueva colección de zapatillas adidas zx."
     doc = nlp(text)
     ents = [(ent.text, ent.label_) for ent in doc.ents]
-    assert len(ents) == 1
-    assert ents[0] == ("Olímpicos de Tokio 2020", "LOC")
+    assert len(ents) == 2
+    assert ents[0] == ('Olímpicos', 'LOC')
+    assert ents[1] == ('Tokio', 'LOC')
     assert doc[14].ent_type == 0
     assert doc[15].ent_type == 0
 
 
 def test_slides_01_03(nlp):
-    doc = nlp("Camila prefería comer tacos. Pero ahora está comiendo pasta.")
+    doc = nlp("Camila prefería comer sushi. Pero ahora está comiendo pasta.")
     pattern = [{"LEMMA": "comer", "POS": "VERB"}, {"POS": "NOUN"}]
     matcher = Matcher(nlp.vocab)
-    matcher.add("TEST", None, pattern)
+    matcher.add("TEST", [pattern])
     matches = [doc[start:end].text for _, start, end in matcher(doc)]
-    assert matches == ["comer tacos", "comiendo pasta"]
+    assert matches == ["comer sushi", "comiendo pasta"]
 
 
 def test_03_16_02_predictions(nlp):
