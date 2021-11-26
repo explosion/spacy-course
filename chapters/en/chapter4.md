@@ -157,11 +157,16 @@ terminal, you can leave this out.
 
 ### Part 1
 
-- Use spaCy's `init config` command to auto-generate a config.
+- Use spaCy's `init config` command to auto-generate a config for an English
+  pipeline.
 - Save the config to a file `config.cfg`.
 - Use the `--pipeline` argument to specify one pipeline component, `ner`.
 
-<codeblock id="04_07_01"></codeblock>
+<codeblock id="04_07_01">
+
+- The argument `--lang` defines the language class, e.g. `en` for English.
+
+</codeblock>
 
 ### Part 2
 
@@ -316,8 +321,8 @@ of the big advantages of statistical named entity recognition.
 
 ### Part 2
 
-- Rewrite the `doc.ents` to only use spans of the label `"GPE"` (cities,
-  states, countries) instead of `"TOURIST_DESTINATION"`.
+- Rewrite the `doc.ents` to only use spans of the label `"GPE"` (cities, states,
+  countries) instead of `"TOURIST_DESTINATION"`.
 - Don't forget to add spans for the `"GPE"` entities that weren't labeled in the
   old data.
 

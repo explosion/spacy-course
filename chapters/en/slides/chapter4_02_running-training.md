@@ -77,19 +77,18 @@ simply use the defaults spaCy provides out-of-the-box!
 
 # Generating a config
 
-<!-- TODO: screenshot of quickstart widget? -->
-
 - spaCy can auto-generate a default config file for you
 - interactive [quickstart widget](https://spacy.io/usage/training#quickstart) in
   the docs
 - [`init config`](https://spacy.io/api/cli#init-config) command on the CLI
 
 ```bash
-$ python -m spacy init config ./config.cfg --pipeline ner
+$ python -m spacy init config ./config.cfg --lang en --pipeline ner
 ```
 
 - `init config`: the command to run
 - `config.cfg`: output path for the generated config
+- `--lang`: language class of the pipeline, e.g. `en` for English
 - `--pipeline`: comma-separated names of components to include
 
 Notes: Of course, you don't have to write the config files by hand, and in a lot
@@ -102,9 +101,11 @@ well as optional hardware and optimization settings.
 
 Alternatively, you can also use spaCy's built-in `init config` command. It takes
 the output file as the first argument. We usually call this file `config.cfg`.
-The `--pipeline` argument lets you specify one or more comma-separated pipeline
-components to include. In this example, we're creating a config with one
-pipeline component, the named entity recognizer.
+The argument `--lang` defines the language class that should be used for the
+pipeline, for example, `en` for English. The `--pipeline` argument lets you
+specify one or more comma-separated pipeline components to include. In this
+example, we're creating a config with one pipeline component, the named entity
+recognizer.
 
 ---
 
