@@ -4,7 +4,7 @@ def test():
 
     assert isinstance(
         nlp, spacy.lang.en.English
-    ), "El objeto nlp debería ser un instance de la clase `English`."
+    ), "El objeto nlp debería ser un instance de la clase de inglés."
     assert isinstance(
         doc, spacy.tokens.Doc
     ), "¿Procesaste el texto con el objeto nlp para crear un doc?"
