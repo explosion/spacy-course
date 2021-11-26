@@ -190,7 +190,7 @@ pattern = [
 ```
 
 ```python
-doc = nlp("Camila prefería comer tacos. Pero ahora está comiendo pasta.")
+doc = nlp("Camila prefería comer sushi. Pero ahora está comiendo pasta.")
 ```
 
 ```out
