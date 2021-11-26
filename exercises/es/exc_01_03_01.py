@@ -4,7 +4,7 @@ import ____
 nlp = ____
 
 # Procesa el texto
-doc = nlp("Me gustan las panteras negras y los leones.")
+doc = ____("Me gustan las panteras negras y los leones.")
 
 # Selecciona el primer token
 first_token = doc[____]
