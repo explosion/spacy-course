@@ -22,7 +22,7 @@ vectors</abbr> y cómo aprovecharlos en tu aplicación de NLP.
   ejemplo:
   - ✅ `en_core_web_md` (modelo mediano en inglés)
   - ✅ `es_core_news_md` (modelo mediano en español)
-  - ✅ `en_core_web_lg` (modelo grande en inglés)
+  - ✅ `es_core_news_lg` (modelo grande en español)
   - 🚫 **NO** `en_core_web_sm` o `es_core_news_sm`(modelos pequeños)
 
 Notes: spaCy puede comparar dos objetos y predecir qué tan similares son - por
