@@ -4,8 +4,8 @@ description:
   'En este capítulo aprenderás a actualizar los modelos estadísticos de spaCy
   para personalizarlos para tu caso - por ejemplo, para predecir un nuevo tipo
   de entidad en comentarios en internet. Entrenarás propio modelo desde cero y
-  entenderás lo esencial de cómo funciona el entrenamiento, junto con consejos
-  y trucos para hacer que tus proyectos de NLP sean más exitosos.'
+  entenderás lo esencial de cómo funciona el entrenamiento, junto con consejos y
+  trucos para hacer que tus proyectos de NLP sean más exitosos.'
 prev: /chapter3
 next: null
 type: chapter
@@ -81,19 +81,19 @@ enseñarle al modelo a reconocerlas como `"ROPA"`.
 
 <exercise id="4" title="Creando datos de entrenamiento (2)">
 
-Después de crear los datos para nuestro corpus, necesitamos guardar el 
-resultado a un archivo `.spacy`. El código del ejemplo anterior está disponible.
+Después de crear los datos para nuestro corpus, necesitamos guardar el resultado
+a un archivo `.spacy`. El código del ejemplo anterior está disponible.
 
 - Crea un objeto `DocBin` con la lista de `docs`.
 - Guarda el `DocBin` a un archivo llamado `train.spacy`.
 
 <codeblock id="04_04">
 
-- Puedes inicializar el `DocBin` con una lista de docs al pasarlos como
-  keyword arguments `docs`.
-- El método `to_disk` de `DocBin` toma un solo argumento: la ruta del archivo
-  en el que se van a guardar los datos binarios. Asegúrate de usar la extensión
-  de archivo `.spacy`.
+- Puedes inicializar el `DocBin` con una lista de docs al pasarlos como keyword
+  arguments `docs`.
+- El método `to_disk` de `DocBin` toma un solo argumento: la ruta del archivo en
+  el que se van a guardar los datos binarios. Asegúrate de usar la extensión de
+  archivo `.spacy`.
 
 </codeblock>
 
@@ -131,36 +131,37 @@ ajustes.
 
 <opt text="Creates un paquete de Python instalable con tu pipeline." correct="true">
 
-El archivo config incluye todos los ajustes relacionados con el entrenamiento
-y con la configuración del pipeline, pero no lo guarda en un paquete. Para
-crear un paquete instalable de Python, puedes usar el comando `spacy package`.
+El archivo config incluye todos los ajustes relacionados con el entrenamiento y
+con la configuración del pipeline, pero no lo guarda en un paquete. Para crear
+un paquete instalable de Python, puedes usar el comando `spacy package`.
 
 </opt>
 
 <opt text="Define los componentes del pipeline y sus ajustes.">
 
-El bloque de `[components]` del archivo config incluye todos los componentes
-del pipeline y sus ajustes, incluyendo el las implementaciones del modelo
-utilizado.
+El bloque de `[components]` del archivo config incluye todos los componentes del
+pipeline y sus ajustes, incluyendo el las implementaciones del modelo utilizado.
 
 </opt>
 
 </choice>
 
+</exercise>
+
 <exercise id="7" title="Generando un archivo config">
 
-El comando [`init config`](https://spacy.io/api/cli#init-config) auto-genera
-un archivo config para entrenamiento con los ajustes por defecto. Nosotros
-queremos entrenar un named entity recognizer, así que vamos a genera un archivo
-config para un componente de pipeline de tipo `ner`. Debidlo a que estamos
-ejecutando el comando desde un entorno de Jupyter en este curso, vamos a 
-utilizar el prefijo `!`. Si ejecutas el comando en tu terminal local, puedes
-omitir el prefijo.
+El comando [`init config`](https://spacy.io/api/cli#init-config) auto-genera un
+archivo config para entrenamiento con los ajustes por defecto. Nosotros queremos
+entrenar un named entity recognizer, así que vamos a genera un archivo config
+para un componente de pipeline de tipo `ner`. Debidlo a que estamos ejecutando
+el comando desde un entorno de Jupyter en este curso, vamos a utilizar el
+prefijo `!`. Si ejecutas el comando en tu terminal local, puedes omitir el
+prefijo.
 
 ### Parte 1
 
-- Usa el comando `init config` de spaCy para auto-generar la configuración de
-  un pipeline en español.
+- Usa el comando `init config` de spaCy para auto-generar la configuración de un
+  pipeline en español.
 - Guarda la configuración a un archivo `config.cfg`.
 - Usa el argumento `--pipeline` para especificar un componente de pipeline tipo
   `ner`.
@@ -173,8 +174,8 @@ omitir el prefijo.
 
 ### Parte 2
 
-¡Echemos un vistazo a la configuración que spaCy acaba de generar! Puedes
-correr el comando siguiente para imprimir el archivo config a la terminal e
+¡Echemos un vistazo a la configuración que spaCy acaba de generar! Puedes correr
+el comando siguiente para imprimir el archivo config a la terminal e
 inspeccionarlo.
 
 <codeblock id="04_07_02"></codeblock>
@@ -187,13 +188,12 @@ inspeccionarlo.
 como el corpus que creamos para entrenar un named entity recognizer!
 
 El comando [`train`](https://spacy.io/api/cli#train) te permite entrenar un
-modelo utilizando un archivo config file. Un archivo `config_gadget.cfg` ya
-está listo en el directorio `exercises/en`, así como el archivo
-`train_gadget.spacy` que contiene ejemplos de entrenamiento y un archivo
-llamado `dev_gadget.spacy` que contiene los datos de evaluación. Debido a que
-estamos ejecutando el comando en un entorno de Jupyterm en este curso, usaremos
-el prefijo `!`. Si planeas correr el comando en tu terminal local, puedes
-omitir este prefijo.
+modelo utilizando un archivo config file. Un archivo `config_gadget.cfg` ya está
+listo en el directorio `exercises/en`, así como el archivo `train_gadget.spacy`
+que contiene ejemplos de entrenamiento y un archivo llamado `dev_gadget.spacy`
+que contiene los datos de evaluación. Debido a que estamos ejecutando el comando
+en un entorno de Jupyterm en este curso, usaremos el prefijo `!`. Si planeas
+correr el comando en tu terminal local, puedes omitir este prefijo.
 
 - Invoca el comando `train` con el archivo `exercises/en/config_gadget.cfg`.
 - Guarda el pipeline entrenado en el directorio de nombre `output`.
@@ -203,7 +203,7 @@ omitir este prefijo.
 <codeblock id="04_08">
 
 - El primer argumento del comando `spacy train` command es la ruta del archivo
-config.
+  config.
 
 </codeblock>
 
@@ -317,8 +317,8 @@ base</abbr> o buscarlas en un wiki de viajes.
 
 La ciudad de Madrid en Colombia podrí también ser una atracción turística. Esto
 solo resalta lo subjetivo que es el esquema de etiquetado y lo difícil que será
-decidir si el label aplica o no. Como resultado esta distinción también será
-muy difícil de aprender para el entity recognizer.
+decidir si el label aplica o no. Como resultado esta distinción también será muy
+difícil de aprender para el entity recognizer.
 
 </opt>
 
@@ -400,8 +400,8 @@ reconocer personas, pero también organizaciones o lugares.
 
 Si las entidades `"PER"` ocurren en los datos de entrenamiento, pero no están
 marcadas con etiquetas, el modelo aprenderá que éstas no deben ser predichas.
-Del mismo modo, si un tipo de entidad existente no está presente en los datos
-de entrenamiento el modelo puede "olvidar" y dejar de predecirlo.
+Del mismo modo, si un tipo de entidad existente no está presente en los datos de
+entrenamiento el modelo puede "olvidar" y dejar de predecirlo.
 
 </opt>
 
@@ -424,7 +424,7 @@ es probable que este no sea el problema aquí.
 - To add more entities, add another `Span` to the `doc.ents`.
 - Keep in mind that the end token of a span is exclusive. So an entity that
   starts at token 2 and ends at token 3 will have a start of `2` and an end of
-    `3`.
+  `3`.
 
 </codeblock>
 
