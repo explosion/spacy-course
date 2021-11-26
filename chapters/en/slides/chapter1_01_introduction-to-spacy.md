@@ -67,7 +67,7 @@ over its tokens, or get a token by its index. But more on that later!
 
 # The Token object
 
-<img src="/doc.png" alt="Illustration of a Doc object containing four tokens" width="50%" />
+<img src="/doc.png" alt="Illustration of a Doc object containing three tokens" width="50%" />
 
 ```python
 doc = nlp("Hello world!")
@@ -96,7 +96,7 @@ verbatim token text.
 
 # The Span object
 
-<img src="/doc_span.png" width="50%" alt="Illustration of a Doc object containing four tokens and three of them wrapped in a Span" />
+<img src="/doc_span.png" width="50%" alt="Illustration of a Doc object containing three tokens and two of them wrapped in a Span" />
 
 ```python
 doc = nlp("Hello world!")

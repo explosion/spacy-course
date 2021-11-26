@@ -12,15 +12,15 @@ erstellen kannst, um Wörter und Ausdrücke im Text zu finden.
 # Warum nicht einfach reguläre Ausdrücke?
 
 - Durchsuche `Doc`-Objekte und nicht nur Strings
-- Verwende Tokens und Token-Attribute
+- Nutze Tokens und Token-Attribute
 - Verwende die Vorhersagen des Modells
 - Beispiel: "essen" (Verb) vs. "Essen" (Nomen)
 
 Notes: Im Vergleich zu regulären Ausdrücken verwendet der Matcher `Doc`- und
 `Token`-Objekte, anstatt nur Strings.
 
-Er ist außerdem flexibler: man kann nach Texten suchen, aber auch nach anderen
-lexikalischen Attributen.
+Er ist außerdem flexibler: Es ist möglich nach Texten zu suchen, aber auch nach
+anderen lexikalischen Attributen.
 
 Man kann sogar Regeln schreiben, die Vorhersagen eines Modells verwenden.
 
@@ -31,7 +31,7 @@ Nomen verwendet wird.
 
 # Matcher-Patterns
 
-- Listen von Dictionaries, eins per Token
+- Listen von Dictionaries, eins pro Token
 
 - Finde exakten Text des Tokens
 
@@ -61,7 +61,7 @@ Wir können außerdem andere Token-Attribute verwenden. Hier suchen wir zwei
 Tokens, deren kleingeschriebene Formen mit "iphone" und "x" übereinstimmen.
 
 Wir können sogar Patterns schreiben, die Attribute verwenden, die von einem
-Modell vorhergesagt wurden. Hier suchen wir einen Token mit dem Lemma "mögen",
+Modell vorhergesagt wurden. Hier suchen wir einen Token mit dem Lemma "mögen"
 plus ein Nomen. Das Lemma ist die Grundform, das heißt dieses Pattern würde
 Ausdrücke wie "mag Katzen" oder "mochtest Sonne" finden.
 
@@ -83,7 +83,7 @@ matcher = Matcher(nlp.vocab)
 
 # Füge das Pattern zum Matcher hinzu
 pattern = [{"TEXT": "iPhone"}, {"TEXT": "X"}]
-matcher.add("IPHONE_PATTERN", None, pattern)
+matcher.add("IPHONE_PATTERN", [pattern])
 
 # Verarbeite einen Text
 doc = nlp("Das neue iPhone X erscheint demnächst in Deutschland")
@@ -95,16 +95,14 @@ matches = matcher(doc)
 Notes: Um ein Pattern zu verwenden, müssen wir zuerst den `Matcher` von
 `spacy.matcher` importieren.
 
-Wir laden außerdem ein Modell und erstellen das `nlp`-Objekt.
+Wir laden außerdem eine Pipeline und erstellen das `nlp`-Objekt.
 
 Der Matcher wird mit dem gemeinsamen Vokabular initialisiert, `nlp.vocab`. Du
 lernst später noch mehr darüber – denke erstmal nur daran, es immer einzufügen.
 
-Die Methode matcher.add kann verwendet werden, um ein Pattern hinzuzufügen. Das
-erste Argument ist eine eindeutige ID, um das Pattern zu identifizieren, wenn es
-gefunden wird. Das zweite Argument ist eine optionale Callback-Funktion. Wir
-brauchen hier keine, deswegen setzen wir es auf `None`. Das dritte Argument ist
-das Pattern.
+Die Methode `matcher.add` kann verwendet werden, um ein Pattern hinzuzufügen.
+Das erste Argument ist eine eindeutige ID, um das Pattern zu identifizieren,
+wenn es gefunden wird. Das zweite Argument ist eine Liste von Patterns.
 
 Um das Pattern in einem Text zu finden, können wir den Matcher mit einem Doc
 aufrufen.
@@ -187,7 +185,7 @@ Dieses Pattern findet die Tokens "2018 FIFA World Cup:".
 
 ```python
 pattern = [
-    {"LEMMA": "mögen", "POS": "VERB"},
+    {"LEMMA": "mögen"},
     {"POS": "NOUN"}
 ]
 ```
@@ -203,7 +201,7 @@ mag Katzen
 
 Notes: In diesem Beispiel suchen wir zwei Tokens:
 
-Ein Verb mit dem Lemma "mögen", gefolgt von einem Nomen.
+Ein Token mit dem Lemma "mögen", gefolgt von einem Nomen.
 
 Dieses Pattern findet "mochte Hunde" und "mag Katzen".
 

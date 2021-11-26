@@ -24,7 +24,7 @@ def test_01_08_02_predictions(nlp):
 
 
 def test_01_09_predictions(nlp):
-    text = "Apple: Modell IPhone SE kommt im Sommer"
+    text = "Apple: neues Modell X Pro kommt im Sommer"
     doc = nlp(text)
     ents = [(ent.text, ent.label_) for ent in doc.ents]
     assert len(ents) == 1
@@ -35,9 +35,9 @@ def test_01_09_predictions(nlp):
 
 def test_slides_01_03(nlp):
     doc = nlp("Ich mochte Hunde, aber ich mag Katzen jetzt lieber.")
-    pattern = [{"LEMMA": "mögen", "POS": "VERB"}, {"POS": "NOUN"}]
+    pattern = [{"LEMMA": "mögen"}, {"POS": "NOUN"}]
     matcher = Matcher(nlp.vocab)
-    matcher.add("TEST", None, pattern)
+    matcher.add("TEST", [pattern])
     matches = [doc[start:end].text for _, start, end in matcher(doc)]
     assert matches == ["mochte Hunde", "mag Katzen"]
 

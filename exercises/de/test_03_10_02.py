@@ -15,6 +15,6 @@ def test():
     ), "Es scheint, als ob deine Methode den falschen Wert zurückgibt."
 
     __msg__.good(
-        "Perfekt! In der nächsten Übung kannst nun du benutzerdefinierte Attribute "
+        "Perfekt! In der nächsten Übung kannst du nun benutzerdefinierte Attribute "
         "mit benutzerdefinierten Pipeline-Komponenten kombinieren."
     )

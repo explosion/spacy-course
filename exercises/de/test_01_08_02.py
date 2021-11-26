@@ -6,6 +6,6 @@ def test():
 
     __msg__.good(
         "Gute Arbeit! Bisher lag das Modell jedes Mal richtig. In der nächsten "
-        "Übung siehst du, das passiert, wenn das Modell einmal daneben liegt, "
-        "und wie du es anpassen kannst."
+        "Übung siehst du was passiert, wenn das Modell einmal daneben liegt, "
+        "und wie du das anpassen kannst."
     )

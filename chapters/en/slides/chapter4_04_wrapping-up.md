@@ -12,21 +12,21 @@ Notes: Congratulations – you've made it to the end of the course!
 
 - Extract **linguistic features**: part-of-speech tags, dependencies, named
   entities
-- Work with pre-trained **statistical models**
+- Work with trained **pipelines**
 - Find words and phrases using `Matcher` and `PhraseMatcher` **match rules**
 - Best practices for working with **data structures** `Doc`, `Token` `Span`,
   `Vocab`, `Lexeme`
 - Find **semantic similarities** using **word vectors**
 - Write custom **pipeline components** with **extension attributes**
 - **Scale up** your spaCy pipelines and make them fast
-- Create **training data** for spaCy' statistical models
+- Create **training data** for spaCy's statistical models
 - **Train and update** spaCy's neural network models with new data
 
 Notes: Here's an overview of all the new skills you learned so far:
 
 In the first chapter, you learned how to extract linguistic features like
 part-of-speech tags, syntactic dependencies and named entities, and how to work
-with pre-trained statistical models.
+with trained pipelines.
 
 You also learned to write powerful match patterns to extract words and phrases
 using spaCy's matcher and phrase matcher.

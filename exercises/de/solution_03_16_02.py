@@ -6,8 +6,8 @@ text = (
     "weltweit vertretenen Schnellrestaurants."
 )
 
-# Deaktiviere den Tagger und den Parser
-with nlp.disable_pipes("tagger", "parser"):
+# Deaktiviere den Tagger und den Lemmatizer
+with nlp.select_pipes(disable=["tagger", "lemmatizer"]):
     # Verarbeite den Text
     doc = nlp(text)
     # Drucke die Entitäten im Doc

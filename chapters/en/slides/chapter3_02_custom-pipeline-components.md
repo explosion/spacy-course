@@ -80,10 +80,10 @@ nlp.add_pipe("custom_component")
 
 | Argument | Description          | Example                                   |
 | -------- | -------------------- | ----------------------------------------- |
-| `last`   | If `True`, add last  | `nlp.add_pipe(component, last=True)`      |
-| `first`  | If `True`, add first | `nlp.add_pipe(component, first=True)`     |
-| `before` | Add before component | `nlp.add_pipe(component, before="ner")`   |
-| `after`  | Add after component  | `nlp.add_pipe(component, after="tagger")` |
+| `last`   | If `True`, add last  | `nlp.add_pipe("component", last=True)`      |
+| `first`  | If `True`, add first | `nlp.add_pipe("component", first=True)`     |
+| `before` | Add before component | `nlp.add_pipe("component", before="ner")`   |
+| `after`  | Add after component  | `nlp.add_pipe("component", after="tagger")` |
 
 Notes: To specify _where_ to add the component in the pipeline, you can use the
 following keyword arguments:
