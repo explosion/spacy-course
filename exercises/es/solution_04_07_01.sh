@@ -1,1 +1,1 @@
-python -m spacy init config ./config.cfg --pipeline ner
+python -m spacy init config ./config.cfg --lang es --pipeline ner

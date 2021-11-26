@@ -159,12 +159,17 @@ omitir el prefijo.
 
 ### Parte 1
 
-- Usa el comando `init config` de spaCy para auto-generar la configuración.
+- Usa el comando `init config` de spaCy para auto-generar la configuración de
+  un pipeline en español.
 - Guarda la configuración a un archivo `config.cfg`.
 - Usa el argumento `--pipeline` para especificar un componente de pipeline tipo
   `ner`.
 
-<codeblock id="04_07_01"></codeblock>
+<codeblock id="04_07_01">
+
+- El argumento `--lang` define la clase del lenguahe, p. ej. `es` para español.
+
+</codeblock>
 
 ### Parte 2
 

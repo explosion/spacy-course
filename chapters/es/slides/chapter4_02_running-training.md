@@ -87,11 +87,12 @@ utilizará los innovadores defaults que spaCy provee.
 - [`init config`](https://spacy.io/api/cli#init-config) comando en CLI
 
 ```bash
-$ python -m spacy init config ./config.cfg --pipeline ner
+$ python -m spacy init config ./config.cfg --lang es --pipeline ner
 ```
 
 - `init config`: el comando a correr
 - `config.cfg`: ruta de salida de la configuración generada
+- `--lang`: la clase del idioma del pipeline, p. ej. `es` para español
 - `--pipeline`: nombres, separados con comas, de los componentes a incluir
 
 Notes: Claramente no tienes que escribir todos los archivos de configuración a
@@ -103,11 +104,13 @@ forma interactiva al seleccionar el lenguaje y los componentes del pipeline que
 necesites, y además hardware opcional y ajustes de optimización.
 
 Como alternativa, puedes usar el comando `init config` ya instalado en spaCy.
-Toma el archivo de salida como el primer argumento. Generalmente llamamos a este
-archivo `config.cfg`. El argumento `--pipeline` te permite especificar uno o más
-componentes pipeline separados por una coma para incluir. En este ejemplo,
-estamos creando una configuración con un componente pipeline, el reconocedor de
-entidades nombradas.
+Toma el archivo de salida como el primer argumento. Generalmente llamamos a
+este archivo `config.cfg`. El argumento `--lang` define la clase del lenguaje
+que será utilizado en el pipeline, por ejemplo `es` para español. El argumento
+`--pipeline` te permite especificar uno o más componentes del pipeline
+separados por una coma para incluir. En este ejemplo, estamos creando una
+configuración con un componente pipeline, el reconocedor de entidades
+nombradas.
 
 ---
 
