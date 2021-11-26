@@ -5,10 +5,10 @@ type: slides
 # Configurar y correr el entrenamiento
 
 Notes: Ahora que ya has aprendido a crear un conjunto de datos (training data),
-veamos cómo entrenar tu pipeline y configurar el entrenamiento. En esta
-lección, aprenderás acerca del sistema de configuración de entrenamiento de
-spaCy, cómo generar tu propia configuración de entrenamiento, cómo usar el CLI
-para entrenar un modelo y cómo explorar luego el pipeline entrenado.
+veamos cómo entrenar tu pipeline y configurar el entrenamiento. En esta lección,
+aprenderás acerca del sistema de configuración de entrenamiento de spaCy, cómo
+generar tu propia configuración de entrenamiento, cómo usar el CLI para entrenar
+un modelo y cómo explorar luego el pipeline entrenado.
 
 ---
 
@@ -27,17 +27,17 @@ Notes: spaCy utiliza un archivo de configuración, habitualmente llamado
 de configuración define cómo iniciar el objeto `nlp`, qué componentes del
 pipeline agregar y cómo deberían configurarse las implementaciones del modelo
 interno. También incluye todos los ajustes para el proceso de entrenamiento y
-cómo cargar los datos, incluidos los hiperparámetros. 
+cómo cargar los datos, incluidos los hiperparámetros.
 
 En vez de brindar varios argumentos en la línea de comando o recordar definir
 cada setting en código, solo tienes que pasar tu archivo de configuración al
 comando de entrenamiento de spaCy.
 
 Los archivos de configuración habitualmente ayudan con la reproducibilidad:
-tendrás todos los ajustes en un solo lugar y siempre sabrás cómo se entrenó
-tu pipeline. También podrás chequear tu archivo de configuración en un
-repositorio Git para versionarlo y compartirlo con otros para que puedan
-entrenar el mismo pipeline con los mismos ajustes.
+tendrás todos los ajustes en un solo lugar y siempre sabrás cómo se entrenó tu
+pipeline. También podrás chequear tu archivo de configuración en un repositorio
+Git para versionarlo y compartirlo con otros para que puedan entrenar el mismo
+pipeline con los mismos ajustes.
 
 ---
 
@@ -64,28 +64,26 @@ hidden_width = 64
 ```
 
 Notes: Este es un extracto de un archivo de configuración utilizado para
-entrenar un pipeline con un reconocedor de entidades nombradas. La
-configuración se agrupa en secciones, y las secciones anidadas se definen con
-un punto. Por ejemplo, `[components.ner.model]` define los ajustes del modelo
-de implementación del reconocedor de entidades nombradas.
+entrenar un pipeline con un reconocedor de entidades nombradas. La configuración
+se agrupa en secciones, y las secciones anidadas se definen con un punto. Por
+ejemplo, `[components.ner.model]` define los ajustes del modelo de
+implementación del reconocedor de entidades nombradas.
 
 Los archivos de configuración pueden referenciar a funciones de Python
 utilizando la anotación `@`. Por ejemplo, el analizador léxico define una
 función de análisis léxico registrada. Puedes usarla para personalizar
 diferentes partes del objeto `nlp` y del entrenamiento – desde ingresar tu
 propio analizador léxico, hasta implementar tus propios modelos de arquitectura.
-No nos preocupemos por eso ahora– lo que aprenderás en este capítulo
-simplemente utilizará los innovadores defaults que spaCy provee.
+No nos preocupemos por eso ahora– lo que aprenderás en este capítulo simplemente
+utilizará los innovadores defaults que spaCy provee.
 
 ---
 
 # Generar una configuración
 
-<!-- tarea pendiente: captura de pantalla del widget de inicio? -->
-
 - spaCy puede auto-generar un archivo de configuración default por ti
-- interactivo [wodget de inicio](https://spacy.io/usage/training#quickstart)
-  en los archivos
+- interactivo [wodget de inicio](https://spacy.io/usage/training#quickstart) en
+  los archivos
 - [`init config`](https://spacy.io/api/cli#init-config) comando en CLI
 
 ```bash
@@ -105,11 +103,11 @@ forma interactiva al seleccionar el lenguaje y los componentes del pipeline que
 necesites, y además hardware opcional y ajustes de optimización.
 
 Como alternativa, puedes usar el comando `init config` ya instalado en spaCy.
-Toma el archivo de salida como el primer argumento. Generalmente llamamos a
-este archivo `config.cfg`. El argumento `--pipeline` te permite especificar uno
-o más componentes pipeline separados por una coma para incluir. En este
-ejemplo, estamos creando una configuración con un componente pipeline, el
-reconocedor de entidades nombradas.
+Toma el archivo de salida como el primer argumento. Generalmente llamamos a este
+archivo `config.cfg`. El argumento `--pipeline` te permite especificar uno o más
+componentes pipeline separados por una coma para incluir. En este ejemplo,
+estamos creando una configuración con un componente pipeline, el reconocedor de
+entidades nombradas.
 
 ---
 
@@ -133,12 +131,12 @@ Notes: Para entrenar un pipeline, todo lo que necesita es un archivo de
 configuración y el entrenamiento y los datos de desarrollo. Estos son los
 archivos `.spacy` con los que trabajaste en los ejercicios anteriores.
 
-El primer argumento de `spacy train` es la ruta al archivo de configuración.
-El argumento `--output` te permite especificar un directorio para guardar el
+El primer argumento de `spacy train` es la ruta al archivo de configuración. El
+argumento `--output` te permite especificar un directorio para guardar el
 pipeline final entrenado.
 
-Puedes modificar diferentes ajustes de configuración en la línea de comando.
-En este caso, podemos modificar `paths.train` utilizando la ruta al archivo
+Puedes modificar diferentes ajustes de configuración en la línea de comando. En
+este caso, podemos modificar `paths.train` utilizando la ruta al archivo
 `train.spacy` y `paths.dev` utilizando el archivo `dev.spacy`.
 
 ---
@@ -168,15 +166,15 @@ E    #       LOSS TOK2VEC  LOSS NER  ENTS_F  ENTS_P  ENTS_R  SCORE
 ```
 
 Notes: Aquí está un ejemplo del output que verás durante y después del
-entrenamiento. Podrás recordar por las secciones anteriores de este capítulo 
-que generalmente quieres hacer varias pasadas a los datos durante el
-entrenamiento. Cada pasada sobre los datos lleva el nombre de "epoch".
-Estas se muestran en la primera columna de la tabla.
+entrenamiento. Podrás recordar por las secciones anteriores de este capítulo que
+generalmente quieres hacer varias pasadas a los datos durante el entrenamiento.
+Cada pasada sobre los datos lleva el nombre de "epoch". Estas se muestran en la
+primera columna de la tabla.
 
 Dentro de cada epoch, spaCy muestra las puntuaciones después de cada 200
 ejemplos. Estos se muestran en pasos dentro de la segunda columna. Puedes
-cambiar la frecuencia en la configuración. Cada línea muestra la pérdida y
-la precisión calculada en este punto durante el entrenamiento.
+cambiar la frecuencia en la configuración. Cada línea muestra la pérdida y la
+precisión calculada en este punto durante el entrenamiento.
 
 El puntaje mpas interesante que hay que observar es el combinado en la última
 columna. Este puntaje refleja qué tan preciso es tu modelo con respecto a las
@@ -203,8 +201,8 @@ print(doc.ents)
 ```
 
 Notes: El pipeline guardado después del entrenamiento es un pipeline cargable
-normal de spaCy – funciona exactamente como los pipelines entrenados normales
-de spaCy, for example `en_core_web_sm`. Al final, el pipeline más recientemente
+normal de spaCy – funciona exactamente como los pipelines entrenados normales de
+spaCy, for example `en_core_web_sm`. Al final, el pipeline más recientemente
 entrenado y el pipeline con mejores resultados son guardados en el directorio de
 salida de datos.
 
@@ -217,8 +215,8 @@ Después de esto puedes usarlo para analizar textos.
 
 <!-- TODO: illustration of pipeline packages, similar to earlier chapters? -->
 
-- [`spacy package`](https://spacy.io/api/cli#package): crea un paquete de
-  Python instalable que contiene tu pipeline
+- [`spacy package`](https://spacy.io/api/cli#package): crea un paquete de Python
+  instalable que contiene tu pipeline
 - es fácil de versionar y de implementar
 
 ```bash
@@ -248,7 +246,7 @@ Esto te permite administrar varias versiones diferentes de un pipeline, por
 ejemplo, si decides personalizar tus pipelines después o entrenarlo con más
 datos.
 
-El paquete se comporta como cualquier otro paquete de Python. Después de 
+El paquete se comporta como cualquier otro paquete de Python. Después de
 instalarlo, puedes cargar tu pipeline usando su nombre. Nota que spaCy agregará
 el código del lenguaje al nombre de manera automática. Así que tu pipeline
 `mi_pipeline` se convertirá en `es_mi_pipeline`.
