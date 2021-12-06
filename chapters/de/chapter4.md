@@ -120,7 +120,7 @@ Trainieren einer Pipeline in spaCy geht. Welche der folgenden Aussagen ist
 
 <choice>
 
-<opt text="Es erlaubt die den Trainingsprozess und die Hyperparameter zu konfigurieren.">
+<opt text="Es erlaubt die Konfiguration des Trainingsprozesses und der Hyperparameter.">
 
 Die Config-Datei enthält alle Einstellungen für den Trainingsprozess,
 einschließlich der Hyperparameter.
@@ -130,7 +130,7 @@ einschließlich der Hyperparameter.
 <opt text="Es hilft dabei, das Training reproduzierbar zu machen.">
 
 Da die Config-Datei _alle_ Einstellungen und keine versteckten default-Werte
-enthält, kann es dabei helfen deine Trainingsexperimente reproduzierbarer zu
+enthält, kann es dabei helfen, deine Trainingsexperimente reproduzierbarer zu
 machen. Anderen Nutzern ist es dadurch möglich, deine Experimente mit den genau
 gleichen Einstellungen zu wiederholen.
 
@@ -168,10 +168,10 @@ Präfix weglassen.
 
 ### Part 1
 
-- Nutze den `init config`-Befehl von spaCy um eine Config für eine deutsche
+- Nutze den `init config`-Befehl von spaCy, um eine Config für eine deutsche
   Pipeline automatisch zu generieren.
 - Speichere die config als Datei `config.cfg`.
-- Nutze das `--pipeline`-Argument um eine Pipeline-Komponente zu spezifizieren:
+- Nutze das `--pipeline`-Argument, um eine Pipeline-Komponente zu spezifizieren:
   `ner`.
 
 <codeblock id="04_07_01">
@@ -184,7 +184,7 @@ Präfix weglassen.
 
 Lass uns nun die config anschauen, die spaCy gerade generiert hat. Du kannst den
 unten stehenden Befehl ausführen, um die config im Terminal ausgeben zu lassen
-und um sie zu anzuschauen.
+und sie zu anzuschauen.
 
 <codeblock id="04_07_02"></codeblock>
 
@@ -195,7 +195,7 @@ und um sie zu anzuschauen.
 Lass uns nun einen Entity Recognizer trainieren, indem wir die eben generierte
 Config-Datei sowie den erstellten Trainingskorpus nutzen!
 
-Der Befehl [`train`](https://spacy.io/api/cli#train) lässt dich ein Modell
+Der Befehl [`train`](https://spacy.io/api/cli#train) ermöglicht es dir, ein Modell
 mithilfe einer Config-Datei trainieren. Eine Datei namens `config_gadget.cfg`
 ist bereits verfügbar im Ordner `exercises/de`, ebenso wie eine Datei
 `train_gadget.spacy`, die Trainingsbeispiele enthält, und eine Datei
