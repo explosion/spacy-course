@@ -16,7 +16,7 @@ spaCy mit Strings umgeht.
 # Gemeinsames Vokabular und String-Speicher (1)
 
 - `Vocab`: Speichert gemeinsame Daten mehrerer Dokumente
-- Um Arbeitsspeicher zu sparen, verschlüsselt spaCy alle Strings zu **Hashwerten**
+- Um Arbeitsspeicher zu sparen, enkodiert spaCy alle Strings zu **Hashwerten**
 - Strings werden nur einmal in der `StringStore` via `nlp.vocab.strings`
   gespeichert
 - String-Speicher: **Zuordnungstabelle** in beide Richtungen

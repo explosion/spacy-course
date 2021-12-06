@@ -68,7 +68,7 @@ fahren mit dem nächsten Batch an Beispielen fort.
 
 spaCy ruft dann immer weiter `nlp.update` für jeden Batch an Beispielen in den
 Daten auf. Während des Trainings willst du normalerweise mehrere Durchgänge über die
-Daten machen und das Modell trainieren bis es sich nicht mehr verbessert.
+Daten machen und das Modell trainieren, bis es sich nicht mehr verbessert.
 
 ---
 
@@ -141,7 +141,7 @@ Entitäten sind.
 
 In diesem Fall ist die Liste der Span-Annotationen leer.
 
-Unser Ziel ist es dem Modell beizubringen, neue Entitäten in ähnlichem Kontext zu
+Unser Ziel ist es, dem Modell beizubringen, neue Entitäten in ähnlichem Kontext zu
 erkennen, auch wenn diese nicht in den Trainingsdaten vorhanden waren.
 
 ---
@@ -183,7 +183,7 @@ von spaCys `Matcher`.
 - **Trainingsdaten:** Zum Updaten des Modells genutzt
 - **Evaluierungsdaten:**
   - Daten, die das Modell während des Trainings nicht gesehen hat
-  - Genutzt um die Genauigkeit des Modells zu berechnen
+  - Genutzt, um die Genauigkeit des Modells zu berechnen
   - Sollten Daten repräsentieren, die das Modell zur Laufzeit sieht
 
 Notes: Es ist wichtig zu wissen, wie gut dein Modell während des Trainings lernt 
@@ -215,7 +215,7 @@ doc1.ents = [Span(doc1, 0, 2, label="GADGET")]
 # Erstelle ein anderes Doc ohne Enitäten-Span
 doc2 = nlp("Ich brauche ein neues Smartphone. Hat jemand Tipps?")
 
-docs = [doc1, doc2]  # and so on...
+docs = [doc1, doc2]  # und so weiter...
 ```
 
 Notes: spaCy kann von Daten aktualisiert werden, die dasselbe Format haben,
@@ -249,7 +249,7 @@ dev_docs = docs[len(docs) // 2):]
 Notes: Wie ich vorhin bereits erwähnt habe, brauchen wir nicht nur Daten, um das 
 Modell zu trainieren. Wir möchten nämlich außerdem noch die Genauigkeit des Modells 
 bestimmen und das auf Daten, die es bis dahin noch nicht während des Trainings
-gesehen hat. Dies wird normalerweise durch mischen und aufteilen deines Datensatzes
+gesehen hat. Dies wird normalerweise durch das Mischen und Aufteilen deines Datensatzes
 in zwei Teile erreicht. Ein Teil wird zum Trainieren und der anderen zum Evaluieren 
 genutzt. In diesem Beispiel hier nutzen wir eine einfache 50/50-Aufteilung.
 
@@ -259,7 +259,7 @@ genutzt. In diesem Beispiel hier nutzen wir eine einfache 50/50-Aufteilung.
 
 - `DocBin`: Container zum effizienten speichern und sichern von `Doc`-Objekten
 - kann in einer binären Datei gespeichert werden
-- binären Dateien werden für das Training genutzt
+- binäre Dateien werden für das Training genutzt
 
 ```python
 # Erstelle und speicher eine Sammlung von Trainings-Docs

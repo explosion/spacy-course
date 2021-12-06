@@ -142,7 +142,7 @@ dieser Stelle `True` sein. Wenn nicht, sollte er `False` sein.
 ### Teil 3
 
 - Importiere das `Doc` von `spacy.tokens`.
-- Ergänze die `words` und `spaces`, um den gewünschten Text zu erzielen und
+- Ergänze die `words` und `spaces`, um den gewünschten Text zu erzielen, und
   erstelle ein `doc`.
 
 <codeblock id="02_05_03">
@@ -261,7 +261,7 @@ korrekte Tag für Eigennamen.
 
 </exercise>
 
-<exercise id="8" title="Wortvektoren und sematische Ähnlichkeit" type="slides">
+<exercise id="8" title="Wortvektoren und semantische Ähnlichkeit" type="slides">
 
 <slides source="chapter2_03_word-vectors-similarity" start="16:535" end="21:04">
 </slides>

@@ -148,7 +148,7 @@ verwendet wird, um Wortvektoren anhand von rohem Text zu trainieren.
 
 Vektoren können zu spaCys Pipelines hinzugefügt werden.
 
-Die Ähnlichkeit, die spaCy zurückgibt ist standardmäßig die Kosinus-Ähnlichkeit;
+Die Ähnlichkeit, die spaCy zurückgibt, ist standardmäßig die Kosinus-Ähnlichkeit;
 dies kann jedoch angepasst werden, falls nötig.
 
 Vektoren für Objekte, die aus mehreren Tokens bestehen, wie z.B. `Doc` und
@@ -218,7 +218,7 @@ print(doc1.similarity(doc2))
 Notes: Das Vorhersagen von Ähnlichkeiten ist nützlich für viele Arten von
 Anwendungen. Zum Beispiel, um einem Nutzer basierend auf Texten, die er bereits
 gelesen hat, ähnliche Texte vorzuschlagen. Es kann außerdem dabei
-helfen, Duplikate in Inhalten zu finden wie beispielsweise Beiträge auf einer
+helfen, Duplikate in Inhalten zu finden, wie beispielsweise Beiträge auf einer
 Onlineplattform.
 
 Es ist allerdings sehr wichtig zu beachten, dass keine objektive Definition davon
