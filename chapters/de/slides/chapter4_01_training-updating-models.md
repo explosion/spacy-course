@@ -249,7 +249,7 @@ dev_docs = docs[len(docs) // 2):]
 Notes: Wie ich vorhin bereits erwähnt habe, brauchen wir nicht nur Daten, um das 
 Modell zu trainieren. Wir möchten nämlich außerdem noch die Genauigkeit des Modells 
 bestimmen und das auf Daten, die es bis dahin noch nicht während des Trainings
-gesehen hat. Dies wird normalerweise durch mischen und aufteilen deines Datensatzes
+gesehen hat. Dies wird normalerweise durch das Mischen und Aufteilen deines Datensatzes
 in zwei Teile erreicht. Ein Teil wird zum Trainieren und der anderen zum Evaluieren 
 genutzt. In diesem Beispiel hier nutzen wir eine einfache 50/50-Aufteilung.
 
@@ -259,7 +259,7 @@ genutzt. In diesem Beispiel hier nutzen wir eine einfache 50/50-Aufteilung.
 
 - `DocBin`: Container zum effizienten speichern und sichern von `Doc`-Objekten
 - kann in einer binären Datei gespeichert werden
-- binären Dateien werden für das Training genutzt
+- binäre Dateien werden für das Training genutzt
 
 ```python
 # Erstelle und speicher eine Sammlung von Trainings-Docs

@@ -103,7 +103,7 @@ Notes: Natürlich musst du die Config-Datei nicht per Hand schreiben und in
 vielen Fällen musst du sie nicht mal anpassen. spaCy kann eine Config-Datei für
 dich automatisch generieren.
 
-Das "quickstart Widget" in der Dokumentation lässt dich eine Config-Datei
+Das Quickstart-Widget in der Dokumentation lässt dich eine Config-Datei
 interaktiv erstellen, indem du die Sprache und Pipeline-Komponenten, die du
 benötigst, sowie optionale Hardware- oder Optimierungseinstellungen auswählen
 kannst.
@@ -137,7 +137,7 @@ $ python -m spacy train ./config.cfg --output ./output --paths.train train.spacy
 
 Notes: Alles, was du zum Trainieren einer Pipeline brauchst, ist die
 Config-Datei sowie Trainings- und Evaluierungsdaten. Diese sind die
-`.spacy`-Dateien mit denen du bereits in der vorherigen Übung gearbeitet hast.
+`.spacy`-Dateien, mit denen du bereits in der vorherigen Übung gearbeitet hast.
 
 Das erste Argument von `spacy train` ist der Pfad zur Config-Datei. Das
 `--output`-Argument lässt dich den Ordner spezifizieren, in dem deine finale
@@ -145,7 +145,7 @@ trainierte Pipeline gespeichert wird.
 
 Du kannst außerdem verschiedene config-Einstellungen in der Kommandozeile
 überschreiben. In unserem Beispiel überschreiben wir `paths.train` mit dem Pfad
-zur `train.spacy`-Datei und `paths.dev` mit der `dev.spacy`-Datei.
+zur `train.spacy`-Datei, sowie `paths.dev` mit der `dev.spacy`-Datei.
 
 ---
 
@@ -179,16 +179,16 @@ Kapitel gesagt habe, dass du normalerweise mehrere Durchläufe über die Daten
 während des Trainings machen willst. Jeder Durchgang über die Daten wird dabei
 auch "Epoche" genannt. Diese wird in der ersten Spalte gezeigt.
 
-Innerhalb einer jeden Epoche gibt spaCy alle 200 Beispiele den Genauigkeitswert
+Innerhalb einer jeden Epoche gibt spaCy für sämtliche 200 Beispiele den Genauigkeitswert
 aus. Diese Schritte sind in der zweiten Spalte zu sehen und du kannst die
 Schrittweite in der config ändern. Jede Zeile zeigt den "Loss" und die
-berechnete Genauigkeit während dieses Zeitpunkts im Training.
+berechnete Genauigkeit zu diesem Zeitpunkt im Training.
 
 Die interessanteste Metrik, auf die du ein Auge haben solltest, ist der
-kombinierte Score in der letzten Spalte. Er reflektiert, wie genau dein Modell
+kombinierte Score in der letzten Spalte. Er gibt wieder, wie genau dein Modell
 die richtigen Antworten der Evaluierungsdaten vorhersagt.
 
-Das Training läuft solange bis das Modell aufhört, sich zu verbessern, und
+Das Training läuft solange, bis das Modell aufhört, sich zu verbessern, und
 stoppt daraufhin automatisch.
 
 ---
@@ -209,7 +209,7 @@ print(doc.ents)
 ```
 
 Notes: Die Pipeline, die nach dem Training gespeichert wird, ist eine normal
-ladbare Pipeline – genau wir eine trainierte Pipeline, die von spaCy zur
+ladbare Pipeline – genau wie eine trainierte Pipeline, die von spaCy zur
 Verfügung gestellt wird, wie `de_core_news_sm`. Die zuletzt trainierte Pipeline
 und die Pipeline mit dem besten Score werden am Ende im Ausgabeordner
 gespeichert.
@@ -236,14 +236,14 @@ $ cd ./packages/de_meine_pipeline-1.0.0
 $ pip install dist/de_meine_pipeline-1.0.0.tar.gz
 ```
 
-Laden und nutzen der Pipeline nach Installation:
+Laden und Nutzen der Pipeline nach Installation:
 
 ```python
 nlp = spacy.load("de_meine_pipeline")
 ```
 
 Notes: Um den Einsatz deiner Pipeline zu vereinfachen, stellt spaCy einen
-nützlichen Befehl zur Verfügung um sie in ein Python-Package zu verwandeln. Der
+nützlichen Befehl zur Verfügung, um sie in ein Python-Package zu verwandeln. Der
 Befehl `spacy package` nimmt den Pfad deiner exportierten Pipeline und einen
 Ausgabeordner. Daraufhin generiert er ein Python-Package, das deine Pipeline
 enthält. Das Package ist eine `.tar.gz`-Datei und kann in deiner Umgebung
@@ -251,8 +251,8 @@ installiert werden.
 
 Du kannst dem Befehl außerdem einen optionalen Namen und eine Version zur
 Verfügung stellen. Das lässt dich viele verschiedene Versionen einer Pipeline
-managen, zum Beispiel wenn du dich entschließt deine Pipeline später anzupassen
-oder mit mehr Daten zu Trainieren.
+managen, zum Beispiel wenn du dich entschließt, deine Pipeline später anzupassen
+oder mit mehr Daten zu trainieren.
 
 Das Package verhält sich genauso wie jedes andere Python-Package. Nach der
 Installation kannst du es mithilfe seines Namens laden. Beachte hierbei, dass
