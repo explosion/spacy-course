@@ -68,7 +68,7 @@ fahren mit dem nächsten Batch an Beispielen fort.
 
 spaCy ruft dann immer weiter `nlp.update` für jeden Batch an Beispielen in den
 Daten auf. Während des Trainings willst du normalerweise mehrere Durchgänge über die
-Daten machen und das Modell trainieren bis es sich nicht mehr verbessert.
+Daten machen und das Modell trainieren, bis es sich nicht mehr verbessert.
 
 ---
 
@@ -141,7 +141,7 @@ Entitäten sind.
 
 In diesem Fall ist die Liste der Span-Annotationen leer.
 
-Unser Ziel ist es dem Modell beizubringen, neue Entitäten in ähnlichem Kontext zu
+Unser Ziel ist es, dem Modell beizubringen, neue Entitäten in ähnlichem Kontext zu
 erkennen, auch wenn diese nicht in den Trainingsdaten vorhanden waren.
 
 ---
@@ -183,7 +183,7 @@ von spaCys `Matcher`.
 - **Trainingsdaten:** Zum Updaten des Modells genutzt
 - **Evaluierungsdaten:**
   - Daten, die das Modell während des Trainings nicht gesehen hat
-  - Genutzt um die Genauigkeit des Modells zu berechnen
+  - Genutzt, um die Genauigkeit des Modells zu berechnen
   - Sollten Daten repräsentieren, die das Modell zur Laufzeit sieht
 
 Notes: Es ist wichtig zu wissen, wie gut dein Modell während des Trainings lernt 
@@ -215,7 +215,7 @@ doc1.ents = [Span(doc1, 0, 2, label="GADGET")]
 # Erstelle ein anderes Doc ohne Enitäten-Span
 doc2 = nlp("Ich brauche ein neues Smartphone. Hat jemand Tipps?")
 
-docs = [doc1, doc2]  # and so on...
+docs = [doc1, doc2]  # und so weiter...
 ```
 
 Notes: spaCy kann von Daten aktualisiert werden, die dasselbe Format haben,

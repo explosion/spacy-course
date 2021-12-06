@@ -164,7 +164,7 @@ with nlp.select_pipes(disable=["tagger", "parser"]):
 Notes: spaCy ermöglicht es ebenfalls, Pipeline-Komponenten mithilfe des
 Context-Managers `nlp.select_pipes` vorübergehend zu deaktivieren.
 
-Es akzeptiert die Argumente `enable` oder `disable`, die eine Liste von
+Es akzeptiert die Argumente `enable` oder `disable`, die jeweils eine Liste von
 Stringnamen akzeptieren, die beschreiben welche Pipeline-Komponenten deaktiviert
 werden sollen. Wenn du beispielsweise nur den Entity Recognizer verwenden willst, 
 um das Dokument zu verarbeiten, kannst du vorübergehend den Tagger und Parser deaktivieren.

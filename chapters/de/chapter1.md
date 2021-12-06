@@ -57,7 +57,7 @@ den Text und erstellt ein `Doc`-Objekt. In dieser Übung lernst du mehr über da
 
 ### Schritt 1
 
-- Nutze `spacy.blank` um ein deutsches `nlp`-Objekt zu erstellen.
+- Nutze `spacy.blank`, um ein deutsches `nlp`-Objekt zu erstellen.
 - Verarbeite den Text und erstelle ein `Doc`-Objekt, das in der Variable `doc`
   gespeichert wird.
 - Wähle den ersten Token des `Doc`-Objekts aus und drucke seinen `text`.
@@ -73,7 +73,7 @@ fünften Token im Text. Vergiss nicht, dass der erste Index in Python 0 und nich
 
 ### Schritt 2
 
-- Nutze `spacy.blank` um ein deutsches `nlp`-Objekt zu erstellen.
+- Nutze `spacy.blank`, um ein deutsches `nlp`-Objekt zu erstellen.
 - Verarbeite den Text und erstelle ein `Doc`-Objekt, das in der Variable `doc`
   gespeichert wird.
 - Erstelle einen Abschnitt des `Doc`-Objekts für die Tokens "niedliche Katzen"
@@ -124,7 +124,7 @@ von `doc` zugreifen. `doc[5]` ist zum Beispiel der Token mit dem Index 5.
 Was ist **nicht** in Pipeline-Paketen enthalten, die du mit spaCy laden kannst?
 
 <choice>
-<opt text="Eine Config-Datei, die beschreibt wie die Pipeline erstellt werden kann.">
+<opt text="Eine Config-Datei, die beschreibt, wie die Pipeline erstellt werden kann.">
 
 Alle gespeicherten Pipelines enthalten eine `config.cfg`, die die zu
 initialisierende Sprache und die Namen der zu ladenden Pipeline-Komponenten
@@ -138,7 +138,7 @@ Um linguistische Attribute wie Wortarten, Dependenzrelationen oder Entitäten
 vorherzusagen, enthalten Pipeline-Pakete binäre Gewichte.
 
 </opt>
-<opt correct="true" text="Die annotierten Daten mit denen das Modell trainiert wurde.">
+<opt correct="true" text="Die annotierten Daten, mit denen das Modell trainiert wurde.">
 
 Trainierte Pipelines ermöglichen es, basierend auf einer Auswahl an
 Trainingsbeispielen zu generalisieren. Sobald sie einmal trainiert sind,

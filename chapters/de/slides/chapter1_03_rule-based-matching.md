@@ -19,7 +19,7 @@ erstellen kannst, um Wörter und Ausdrücke im Text zu finden.
 Notes: Im Vergleich zu regulären Ausdrücken verwendet der Matcher `Doc`- und
 `Token`-Objekte, anstatt nur Strings.
 
-Er ist außerdem flexibler: Es ist möglich nach Texten zu suchen, aber auch nach
+Er ist außerdem flexibler: Es ist möglich, nach Texten zu suchen, aber auch nach
 anderen lexikalischen Attributen.
 
 Man kann sogar Regeln schreiben, die Vorhersagen eines Modells verwenden.

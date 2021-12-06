@@ -99,7 +99,7 @@ den wortwörtlichen Text des Tokens zurück.
 
 # Das Span-Objekt
 
-<img src="/doc_span.png" width="50%" alt="Illustration eines Doc-Objekts mit drei Tokens, wobei zwei davon innerhalb einer Span sind" />
+<img src="/doc_span.png" width="50%" alt="Illustration eines Doc-Objekts mit drei Tokens, wovon zwei innerhalb einer Span sind" />
 
 ```python
 doc = nlp("Hallo Welt!")
