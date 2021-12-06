@@ -352,8 +352,7 @@ to automate this and use an annotation tool – for example,
 
 ### Part 1
 
-- Complete the entity offsets for the `"WEBSITE"` entities in the data. Feel
-  free to use `len(doc1)` etc. if you don't want to count the tokens.
+- Complete the token offsets for the `"WEBSITE"` entities in the data.
 
 <codeblock id="04_12_01">
 

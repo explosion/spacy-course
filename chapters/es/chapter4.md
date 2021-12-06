@@ -366,9 +366,8 @@ anotación que se integra con spaCy.
 
 ### Parte 1
 
-- Completa las posiciones de los caracteres para las entidades `"WEBSITE"` en
-  los datos. Tienes la libertad de usar `len(doc1)` si no quieres contar los
-  caracteres.
+- Completa las posiciones de los tokens para las entidades `"WEBSITE"` en los
+  datos.
 
 <codeblock id="04_12_01">
 

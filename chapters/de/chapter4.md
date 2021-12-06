@@ -97,7 +97,7 @@ Verfügung gestellt.
 
 - Du kannst das `DocBin` mit einer Liste von docs instanziieren, indem du diese
   Liste im Argument `docs` übergibst.
-- Die Methode `to_disk` von `DocBin` benötigt ein Argument: den Pfad der Datei
+- Die Methode `to_disk` von `DocBin` benötigt ein Argument: den Pfad der Datei,
   in der die binären Daten gespeichert werden. Überprüfe hierbei, dass die Datei
   die Endung`.spacy` nutzt.
 
@@ -316,8 +316,8 @@ beispielsweise in einer Wissensdatenbank oder einem Reise-Wiki nachschlagen.
 
 <opt text="Paris sollte der Einheitlichkeit halber ebenfalls als Touristenziele annotiert werden. Ansonsten wird das Modell verwirrt sein.">
 
-Da es durchaus möglich ist, dass Paris, AR ebenfalls ein beliebtes Reiseziel für
-Touristen ist, macht dies deutlich, wie subjektiv das Labelsystem ist und wie
+Es ist durchaus möglich, dass Paris, AR, ebenfalls ein beliebtes Reiseziel für
+Touristen ist. Dies macht deutlich, wie subjektiv das Labelsystem ist und wie
 schwierig es sein wird, zu entscheiden, ob das Label zutrifft oder nicht.
 Aufgrund dessen wird es ebenfalls schwierig für den Entitiy Recognizer sein,
 diese Unterscheidung zu lernen.
@@ -373,9 +373,7 @@ mit spaCy verwendet werden kann.
 
 ### Teil 1
 
-- Vervollständige die Zeichen-Offsets für die `"WEBSITE"`-Entitäten in den
-  Daten. Du kannst auch gerne `len(doc1)` usw. verwenden, wenn du keine Lust
-  hast, die Zeichen zu zählen.
+- Vervollständige die Token-Offsets für die `"WEBSITE"`-Entitäten in den Daten.
 
 <codeblock id="04_12_01">
 
