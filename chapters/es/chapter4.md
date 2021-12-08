@@ -366,7 +366,7 @@ anotación que se integra con spaCy.
 
 ### Parte 1
 
-- Completa las posiciones de los tokens para las entidades `"WEBSITE"` en los
+- Completa los índices de los tokens para las entidades `"WEBSITE"` en los
   datos.
 
 <codeblock id="04_12_01">
