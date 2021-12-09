@@ -22,6 +22,7 @@ maneja los strings.
 - String store: un **lookup table** en ambas direcciones
 
 ```python
+nlp.vocab.strings.add("café")
 cafe_hash = nlp.vocab.strings["café"]
 cafe_string = nlp.vocab.strings[cafe_hash]
 ```

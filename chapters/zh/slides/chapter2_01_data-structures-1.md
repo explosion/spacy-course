@@ -19,6 +19,7 @@ Notes: 欢迎回来！现在你已经有一些spaCy实例的实战经验了，
 - 字符串库：双向的**查询表**
 
 ```python
+nlp.vocab.strings.add("咖啡")
 coffee_hash = nlp.vocab.strings["咖啡"]
 coffee_string = nlp.vocab.strings[coffee_hash]
 ```

@@ -20,8 +20,7 @@ export default ({ lang = 'en' }) => {
                         description: node.frontmatter.description,
                     }))
                 return (
-                    <Layout isHome lang={lang}>
-                        <Logo lang={lang} className={classes.logo} />
+                    <Layout isHome lang={lang} logo={<Logo lang={lang} className={classes.logo} />}>
                         {chapters.map(({ slug, title, description }) => (
                             <section key={slug} className={classes.chapter}>
                                 <h2 className={classes.chapterTitle}>

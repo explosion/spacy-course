@@ -21,6 +21,7 @@ with strings.
 - String store: **lookup table** in both directions
 
 ```python
+nlp.vocab.strings.add("coffee")
 coffee_hash = nlp.vocab.strings["coffee"]
 coffee_string = nlp.vocab.strings[coffee_hash]
 ```
