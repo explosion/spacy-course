@@ -237,16 +237,16 @@ spaCyで学習データを使うためには `.spacy` ファイルを作成す�
 
 ```python
 doc1 = nlp("去年アスムテルダムに行った。運河がきれいだった。")
-doc1.ents = [doc1.char_span(2, 9, label="TOURIST_DESTINATION")]
+doc1.ents = [Span(doc1, 1, 2, label="TOURIST_DESTINATION")]
 
 doc2 = nlp("人生で一度はパリに行くべきだけど、エッフェル塔はちょっとつまらないな。")
-doc2.ents = [doc2.char_span(6, 8, label="TOURIST_DESTINATION")]
+doc2.ents = [Span(doc2, 4, 5, label="TOURIST_DESTINATION")]
 
 doc3 = nlp("アーカンソーにもパリはあるｗ")
 doc3.ents = []
 
 doc4 = nlp("ベルリンは夏が最高！公園がたくさんあって、夜遊びが充実していて、ビールが安い！")
-doc4.ents = [doc4.char_span(0, 4, label="TOURIST_DESTINATION")]
+doc4.ents = [Span(doc4, 0, 1, label="TOURIST_DESTINATION")]
 ```
 
 ### パート1
@@ -286,7 +286,8 @@ doc4.ents = [doc4.char_span(0, 4, label="TOURIST_DESTINATION")]
 <codeblock id="04_11">
 
 - 既にラベル付けされているスパンについては、ラベル名を `"TOURIST_DESTINATION"` から `"GPE"` に変更するだけです。
-- 1つのテキストには、まだラベル付けされていない都市と州が含まれています。固有表現スパンを追加するには、文字数を数えて、スパンがどこから始まり、どこで終わるかを調べます。そして、`doc.char_span(start, end, label)`でスパンを作り、固有表現のリストに追加します。
+- 1つのテキストには、まだラベル付けされていない都市と州が含まれています。固有表現スパンを追加するには、トークン数を数えて、スパンがどこから始まり、どこで終わるかを調べます。そして、`Span(doc, start, end, label)`でスパンを作り、固有表現のリストに追加します。
+- トークンの境目が分からない場合、`list(doc)`で確認できます
 
 </codeblock>
 
