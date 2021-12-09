@@ -134,6 +134,7 @@
         }
     },
     "fr": {
+        "v2": true,
         "langName": "Français",
         "title": "NLP avancé avec spaCy",
         "slogan": "Un cours en ligne gratuit",
@@ -181,6 +182,7 @@
         }
     },
     "pt": {
+        "v2": true,
         "langName": "Português",
         "title": "PLN avançado com spaCy",
         "slogan": "Curso online e gratuito",
@@ -272,6 +274,7 @@
         }
     },
     "zh": {
+        "v2": true,
         "langName": "中文",
         "title": "使用spaCy做进阶自然语言处理",
         "slogan": "免费在线课程",

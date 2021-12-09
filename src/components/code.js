@@ -114,7 +114,7 @@ class CodeBlock extends React.Component {
                             const isCommand = files[sourceId] && files[sourceId].isCommand
                             return (
                                 <LocaleContext.Consumer>
-                                    {({ uiText }) => (
+                                    {({ uiText, v2 }) => (
                                         <div className={classes.root} key={this.state.key}>
                                             {Juniper && (
                                                 <Juniper
@@ -133,7 +133,7 @@ class CodeBlock extends React.Component {
                                                     }}
                                                     lineWrapping={isCommand}
                                                     repo={repo}
-                                                    branch={branch}
+                                                    branch={v2 ? 'binder-v2' : branch}
                                                     kernelType={kernelType}
                                                     debug={debug}
                                                     actions={({ runCode }) => (
