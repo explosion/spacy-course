@@ -44,12 +44,7 @@
             "nextChapter": "Next Chapter",
             "start": "Start",
             "video": "Video",
-            "slides": "Slides",
-            "alert": {
-                "title": "This course uses spaCy v2.",
-                "text": "An updated version for the new spaCy v3 is coming soon. Luckily, the usage and API hasn't changed much, so everything you'll learn in this course is still relevant.",
-                "button": "See what's new in v3"
-            }
+            "slides": "Slides"
         }
     },
     "de": {
@@ -97,12 +92,7 @@
             "nextChapter": "Nächstes Kapitel",
             "start": "Start",
             "video": "Video",
-            "slides": "Präsentation",
-            "alert": {
-                "title": "Dieser Kurs verwendet spaCy v2.",
-                "text": "Eine aktualisierte Version für das neue spaCy v3 kommt bald. Glücklicherweise hat sich die Nutzung und API nicht sehr verändert, das heißt, alles, was du in diesem Kurs lernst, ist nach wie vor relevant.",
-                "button": "Neu in v3"
-            }
+            "slides": "Präsentation"
         }
     },
     "es": {
@@ -140,12 +130,7 @@
             "nextChapter": "Siguiente capítulo",
             "start": "Inicio",
             "video": "Vídeo",
-            "slides": "Diapositivas",
-            "alert": {
-                "title": "This course uses spaCy v2.",
-                "text": "An updated version for the new spaCy v3 is coming soon. Luckily, the usage and API hasn't changed much, so everything you'll learn in this course is still relevant.",
-                "button": "See what's new in v3"
-            }
+            "slides": "Diapositivas"
         }
     },
     "fr": {
@@ -196,8 +181,9 @@
             "slides": "Diapositives",
             "alert": {
                 "title": "This course uses spaCy v2.",
-                "text": "An updated version for the new spaCy v3 is coming soon. Luckily, the usage and API hasn't changed much, so everything you'll learn in this course is still relevant.",
-                "button": "See what's new in v3"
+                "text": "An updated version of this translation for the new spaCy v3 is coming soon. Luckily, the usage and API hasn't changed much, so everything you'll learn in this course is still relevant.",
+                "button": "View English course for v3",
+                "link": "/en"
             }
         }
     },
@@ -249,8 +235,9 @@
             "slides": "Slides",
             "alert": {
                 "title": "This course uses spaCy v2.",
-                "text": "An updated version for the new spaCy v3 is coming soon. Luckily, the usage and API hasn't changed much, so everything you'll learn in this course is still relevant.",
-                "button": "See what's new in v3"
+                "text": "An updated version of this translation for the new spaCy v3 is coming soon. Luckily, the usage and API hasn't changed much, so everything you'll learn in this course is still relevant.",
+                "button": "View English course for v3",
+                "link": "/en"
             }
         }
     },
@@ -296,12 +283,7 @@
             "launchingDocker": "Dockerコンテナを起動する",
             "reconnectingDocker": "Dockerコンテナに再接続する",
             "prevChapter": "前章",
-            "nextChapter": "次章",
-            "alert": {
-                "title": "This course uses spaCy v2.",
-                "text": "An updated version for the new spaCy v3 is coming soon. Luckily, the usage and API hasn't changed much, so everything you'll learn in this course is still relevant.",
-                "button": "See what's new in v3"
-            }
+            "nextChapter": "次章"
         }
     },
     "zh": {
@@ -348,9 +330,10 @@
             "prevChapter": "前一章节",
             "nextChapter": "后一章节",
             "alert": {
-                "title": "本课程使用 spaCy v2.",
-                "text": "spaCy v3 更新即将到来。我们并没有对使用方法和API进行大规模改动，所以当前课程依然可以为您的学习计划提供帮助。",
-                "button": "查看 v3 变化"
+                "title": "This course uses spaCy v2.",
+                "text": "An updated version of this translation for the new spaCy v3 is coming soon. Luckily, the usage and API hasn't changed much, so everything you'll learn in this course is still relevant.",
+                "button": "View English course for v3",
+                "link": "/en"
             }
         }
     }

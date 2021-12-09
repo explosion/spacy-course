@@ -61,13 +61,11 @@ const Layout = ({ isHome, title, description, lang, pageName, logo, children }) 
                         )}
                         {logo}
                         {alert && (
-                                <aside className={classes.alert}>
-                                    <strong>{alert.title}</strong> {alert.text}{' '}
-                                    <Link to="https://spacy.io/usage/v3">
-                                        {alert.button} &rarr;
-                                    </Link>
-                                </aside>
-                            )}
+                            <aside className={classes.alert}>
+                                <strong>{alert.title}</strong> {alert.text}{' '}
+                                <Link to={alert.link}>{alert.button} &rarr;</Link>
+                            </aside>
+                        )}
                         {children}
                     </div>
 
