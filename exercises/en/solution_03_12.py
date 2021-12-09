@@ -1,20 +1,22 @@
 import json
-from spacy.lang.en import English
+import spacy
+from spacy.language import Language
 from spacy.tokens import Span
 from spacy.matcher import PhraseMatcher
 
-with open("exercises/en/countries.json") as f:
+with open("exercises/en/countries.json", encoding="utf8") as f:
     COUNTRIES = json.loads(f.read())
 
-with open("exercises/en/capitals.json") as f:
+with open("exercises/en/capitals.json", encoding="utf8") as f:
     CAPITALS = json.loads(f.read())
 
-nlp = English()
+nlp = spacy.blank("en")
 matcher = PhraseMatcher(nlp.vocab)
-matcher.add("COUNTRY", None, *list(nlp.pipe(COUNTRIES)))
+matcher.add("COUNTRY", list(nlp.pipe(COUNTRIES)))
 
 
-def countries_component(doc):
+@Language.component("countries_component")
+def countries_component_function(doc):
     # Create an entity Span with the label "GPE" for all matches
     matches = matcher(doc)
     doc.ents = [Span(doc, start, end, label="GPE") for match_id, start, end in matches]
@@ -22,7 +24,7 @@ def countries_component(doc):
 
 
 # Add the component to the pipeline
-nlp.add_pipe(countries_component)
+nlp.add_pipe("countries_component")
 print(nlp.pipe_names)
 
 # Getter that looks up the span text in the dictionary of country capitals

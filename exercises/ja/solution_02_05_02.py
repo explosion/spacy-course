@@ -1,6 +1,6 @@
-from spacy.lang.ja import Japanese
+import spacy
 
-nlp = Japanese()
+nlp = spacy.blank("ja")
 
 # Docクラスをインポート
 from spacy.tokens import Doc

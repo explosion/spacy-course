@@ -5,7 +5,6 @@
         "slogan": "A free online course",
         "description": "spaCy is a modern Python library for industrial-strength Natural Language Processing. In this free and interactive online course, you'll learn how to use spaCy to build advanced natural language understanding systems, using both rule-based and machine learning approaches.",
         "bio": "I'm Ines, one of the core developers of spaCy and the co-founder of Explosion. I specialize in modern developer tools for AI, Machine Learning and NLP. I also really love building stuff for the web.",
-        "video": "THduWAnG97k",
         "footerLinks": [
             {
                 "text": "spaCy Website",
@@ -33,6 +32,7 @@
             "showSolution": "Show solution",
             "reset": "Reset",
             "runCode": "Run code",
+            "runCommand": "Run command",
             "next": "Next",
             "showHints": "Show hints",
             "hideHints": "Hide hints",
@@ -53,7 +53,6 @@
         "slogan": "Ein Gratis-Onlinekurs",
         "description": "spaCy ist eine moderne Python-Bibliothek für industriestarkes Natural Language Processing. In diesem kostenlosen und interaktiven Onlinekurs lernst du, mithilfe von spaCy fortgeschrittene Systeme für die Analyse natürlicher Sprache zu entwickeln und dabei sowohl regelbasierte Verfahren, als auch moderne Machine-Learning-Technologie einzusetzen.",
         "bio": "Ich bin Ines, eine Hauptentwicklerin von spaCy und Gründerin von Explosion. Mein Spezialgebiet sind moderne Entwicklertools für KI, Machine Learning und NLP. Ich baue außerdem supergern Dinge fürs Web.",
-        "video": "K1elwpgDdls",
         "footerLinks": [
             {
                 "text": "spaCy Website",
@@ -81,6 +80,7 @@
             "showSolution": "Lösung zeigen",
             "reset": "Zurücksetzen",
             "runCode": "Code testen",
+            "runCommand": "Befehl testen",
             "next": "Weiter",
             "showHints": "Tipps zeigen",
             "hideHints": "Tipps verstecken",
@@ -101,7 +101,6 @@
         "slogan": "Un curso en línea gratis",
         "description": "spaCy es un paquete moderno de Python para hacer Procesamiento de Lenguaje Natural de potencia industrial. En este curso en línea, interactivo y gratuito, aprenderás a usar spaCy para construir sistemas avanzados de comprensión de lenguaje natural usando enfoques basados en reglas y en machine learning.",
         "bio": "Soy Ines, una de las programadoras principales de spaCy y cofundadora de Explosion. Me especializo en herramientas modernas de desarrollo para AI, Machine Learning y NLP. También amo construir cosas para la web.",
-        "video": "RNiLVCE5d4k",
         "footerLinks": [
             { "text": "Website de spaCy", "url": "https://spacy.io" },
             { "text": "Código fuente", "url": "https://github.com/ines/spacy-course" },
@@ -135,6 +134,7 @@
         }
     },
     "fr": {
+        "v2": true,
         "langName": "Français",
         "title": "NLP avancé avec spaCy",
         "slogan": "Un cours en ligne gratuit",
@@ -178,7 +178,67 @@
             "nextChapter": "Chapitre suivant",
             "start": "Début",
             "video": "Vidéo",
-            "slides": "Diapositives"
+            "slides": "Diapositives",
+            "alert": {
+                "title": "This course uses spaCy v2.",
+                "text": "An updated version of this translation for the new spaCy v3 is coming soon. Luckily, the usage and API hasn't changed much, so everything you'll learn in this course is still relevant.",
+                "button": "View English course for v3",
+                "link": "/en"
+            }
+        }
+    },
+    "pt": {
+        "v2": true,
+        "langName": "Português",
+        "title": "PLN avançado com spaCy",
+        "slogan": "Curso online e gratuito",
+        "description": "spaCy é uma biblioteca moderna em Python para Processamento de Linguagem Natural (PLN) em escala profissional. Neste curso online, gratuito e interativo, você aprenderá a utilizar a biblioteca spaCy para construir sistemas avançados de entendimento de linguagem natural, usando tanto estratégias baseadas em regras como aprendizado de máquina.",
+        "bio": "Sou Ines, uma desenvolvedora principal da spaCy e co-fundadora da Explosion. Sou especialista em ferramentas modernas de Inteligência Artificial, Aprendizado de Máquina e Processamento de Linguagem Natural (PLN). E também amo construir coisas para a Internet.",
+        "footerLinks": [
+            {
+                "text": "Website do spaCy",
+                "url": "https://spacy.io"
+            },
+            {
+                "text": "Código fonte",
+                "url": "https://github.com/ines/spacy-course"
+            },
+            {
+                "text": "Siga-me no Twitter",
+                "url": "https://twitter.com/_inesmontani"
+            }
+        ],
+        "socialImage": "social_pt.jpg",
+        "uiText": {
+            "aboutMe": "Sobre mim",
+            "aboutCourse": "Sobre o curso",
+            "markAsCompleted": "Marcar como finalizado",
+            "removeFromCompleted": "Desmarcar como finalizado",
+            "completed": "Finalizado",
+            "submit": "Enviar",
+            "correct": "Correto!",
+            "incorrect": "Incorreto.",
+            "showSolution": "Mostrar a solução",
+            "reset": "Reiniciar",
+            "runCode": "Executar o código",
+            "next": "Próximo",
+            "showHints": "Mostrar dicas",
+            "hideHints": "Esconder dicas",
+            "loading": "Carregando...",
+            "connectingFailed": "Falha na conexão. Recarregue e tente novamente.",
+            "launchingDocker": "Iniciando o contêiner Docker",
+            "reconnectingDocker": "Reconectando ao contêiner Docker",
+            "prevChapter": "Capítulo Anterior",
+            "nextChapter": "Próximo Capítulo",
+            "start": "Iniciar",
+            "video": "Video",
+            "slides": "Slides",
+            "alert": {
+                "title": "This course uses spaCy v2.",
+                "text": "An updated version of this translation for the new spaCy v3 is coming soon. Luckily, the usage and API hasn't changed much, so everything you'll learn in this course is still relevant.",
+                "button": "View English course for v3",
+                "link": "/en"
+            }
         }
     },
     "ja": {
@@ -209,6 +269,7 @@
             "removeFromCompleted": "未完了にする",
             "completed": "完了",
             "submit": "提出",
+            "runCommand": "コマンド実行",
             "correct": "正解です！",
             "incorrect": "不正解です。",
             "showSolution": "解答を見る",
@@ -226,6 +287,7 @@
         }
     },
     "zh": {
+        "v2": true,
         "langName": "中文",
         "title": "使用spaCy做进阶自然语言处理",
         "slogan": "免费在线课程",
@@ -266,7 +328,13 @@
             "launchingDocker": "正在启动Docker容器",
             "reconnectingDocker": "正在重连Docker容器",
             "prevChapter": "前一章节",
-            "nextChapter": "后一章节"
+            "nextChapter": "后一章节",
+            "alert": {
+                "title": "This course uses spaCy v2.",
+                "text": "An updated version of this translation for the new spaCy v3 is coming soon. Luckily, the usage and API hasn't changed much, so everything you'll learn in this course is still relevant.",
+                "button": "View English course for v3",
+                "link": "/en"
+            }
         }
     }
 }

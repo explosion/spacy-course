@@ -14,8 +14,8 @@ seine Ansichten `Token` und `Span`.
 
 ```python
 # Erstelle ein nlp-Objekt
-from spacy.lang.de import German
-nlp = German()
+import spacy
+nlp = spacy.blank("de")
 
 # Importiere die Klasse Doc
 from spacy.tokens import Doc
@@ -51,7 +51,7 @@ und die Leerzeichen.
 Notes: Ein `Span`-Objekt ist ein Abschnitt eines Docs, bestehend aus einem oder
 mehreren Tokens. Die Span benötigt mindestens drei Argumente: das Doc, auf das
 sie sich bezieht, und den Start- und End-Index der Span. Denke daran, dass der
-End-Index ausschließend ist!
+End-Index nicht inkludiert wird!
 
 ---
 
@@ -92,7 +92,7 @@ wir sie manuell mit einer Liste von Spans überschreiben.
 - `Doc` und `Span` sind sehr leistungsstark und enthalten alle Referenzen und
   Beziehungen der Wörter und Sätze
   - **Wandle Resultate so spät wie möglich in Strings um**
-  - **Verwende Token-Attribute wenn möglich** – zum Beispiel, `token.i` für den
+  - **Verwende wenn möglich Token-Attribute** – zum Beispiel, `token.i` für den
     Index des Tokens
 - Vergiss nicht, das gemeinsame `vocab` weiterzureichen
 
@@ -107,7 +107,7 @@ möglich umwandeln. Wenn du es zu früh in Strings umwandelst, verlierst du alle
 Beziehungen zwischen den Tokens.
 
 Um Dinge einheitlich zu halten, versuche die eingebauten Token-Attribute zu
-verwenden wo immer es möglich ist. Zum Beispiel, `token.i` für den Token-Index.
+verwenden, wo immer es möglich ist, zum Beispiel `token.i` für den Token-Index.
 
 Und vergiss nicht, immer das gemeinsame Vokabular weiterzureichen!
 

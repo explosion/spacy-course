@@ -9,16 +9,11 @@ doc = nlp(
     "松島は宮城県、天橋立は京都府、宮島は広島県にそれぞれあります。"
 )
 
-# v2.3現在、日本語モデルではdoc.is_taggedが正しく設定されないので、
-# 明示的に設定
-# 参考: https://github.com/explosion/spaCy/issues/5802
-doc.is_tagged = True
-
 # 「固有名詞 + 県」からなるパターンを書きます
 pattern = [{"POS": ____}, {"LEMMA": ____}]
 
 # パターンをmatcherに追加し、docに対してmatcherを適用します
-matcher.add("PREFECTURE_PATTERN", None, pattern)
+matcher.add("PREFECTURE_PATTERN", [pattern])
 matches = matcher(doc)
 print("Total matches found:", len(matches))
 

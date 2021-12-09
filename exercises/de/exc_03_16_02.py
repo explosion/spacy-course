@@ -6,7 +6,7 @@ text = (
     "weltweit vertretenen Schnellrestaurants."
 )
 
-# Deaktiviere den Tagger und den Parser
+# Deaktiviere den Tagger und den Lemmatizer
 with ____.____(____):
     # Verarbeite den Text
     doc = ____

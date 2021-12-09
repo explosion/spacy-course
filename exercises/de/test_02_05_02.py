@@ -7,7 +7,7 @@ def test():
     ), "Es sieht so aus, als ob die Anzahl an Leerzeichen nicht zu der Anzahl an Wörtern passt."
     assert all(
         isinstance(s, bool) for s in spaces
-    ), "Die Leerzeichen-Angaben müssen boolesche Werte sein."
+    ), "Die Leerzeichen-Liste muss boolesche Werte enthalten."
     assert [int(s) for s in spaces] == [0, 1, 1, 0, 0], "Sind die Leerzeichen korrekt?"
     assert (
         doc.text == "Na, alles klar?"

@@ -3,15 +3,15 @@ from spacy.matcher import PhraseMatcher
 from spacy.tokens import Span
 import json
 
-with open("exercises/en/countries.json") as f:
+with open("exercises/en/countries.json", encoding="utf8") as f:
     COUNTRIES = json.loads(f.read())
-with open("exercises/en/country_text.txt") as f:
+with open("exercises/en/country_text.txt", encoding="utf8") as f:
     TEXT = f.read()
 
 nlp = spacy.load("en_core_web_sm")
 matcher = PhraseMatcher(nlp.vocab)
 patterns = list(nlp.pipe(COUNTRIES))
-matcher.add("COUNTRY", None, *patterns)
+matcher.add("COUNTRY", patterns)
 
 # Create a doc and reset existing entities
 doc = nlp(TEXT)

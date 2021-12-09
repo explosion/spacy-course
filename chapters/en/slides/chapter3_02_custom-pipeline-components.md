@@ -39,41 +39,51 @@ spans.
 # Anatomy of a component (1)
 
 - Function that takes a `doc`, modifies it and returns it
+- Registered using the `Language.component` decorator
 - Can be added using the `nlp.add_pipe` method
 
 ```python
-def custom_component(doc):
+from spacy.language import Language
+
+@Language.component("custom_component")
+def custom_component_function(doc):
     # Do something to the doc here
     return doc
 
-nlp.add_pipe(custom_component)
+nlp.add_pipe("custom_component")
 ```
 
 Notes: Fundamentally, a pipeline component is a function or callable that takes
 a doc, modifies it and returns it, so it can be processed by the next component
 in the pipeline.
 
-Components can be added to the pipeline using the `nlp.add_pipe` method. The
-method takes at least one argument: the component function.
+To tell spaCy where to find your custom component and how it should be called,
+you can decorate it using the `@Language.component` decorator. Just add it to
+the line right above the function definition.
+
+Once a component is registered, it can be added to the pipeline using the
+`nlp.add_pipe` method. The method takes at least one argument: the string name
+of the component.
 
 ---
 
 # Anatomy of a component (2)
 
 ```python
-def custom_component(doc):
+@Language.component("custom_component")
+def custom_component_function(doc):
     # Do something to the doc here
     return doc
 
-nlp.add_pipe(custom_component)
+nlp.add_pipe("custom_component")
 ```
 
 | Argument | Description          | Example                                   |
 | -------- | -------------------- | ----------------------------------------- |
-| `last`   | If `True`, add last  | `nlp.add_pipe(component, last=True)`      |
-| `first`  | If `True`, add first | `nlp.add_pipe(component, first=True)`     |
-| `before` | Add before component | `nlp.add_pipe(component, before="ner")`   |
-| `after`  | Add after component  | `nlp.add_pipe(component, after="tagger")` |
+| `last`   | If `True`, add last  | `nlp.add_pipe("component", last=True)`      |
+| `first`  | If `True`, add first | `nlp.add_pipe("component", first=True)`     |
+| `before` | Add before component | `nlp.add_pipe("component", before="ner")`   |
+| `after`  | Add after component  | `nlp.add_pipe("component", after="tagger")` |
 
 Notes: To specify _where_ to add the component in the pipeline, you can use the
 following keyword arguments:
@@ -100,26 +110,27 @@ though – otherwise, spaCy will raise an error.
 nlp = spacy.load("en_core_web_sm")
 
 # Define a custom component
-def custom_component(doc):
+@Language.component("custom_component")
+def custom_component_function(doc):
     # Print the doc's length
     print("Doc length:", len(doc))
     # Return the doc object
     return doc
 
 # Add the component first in the pipeline
-nlp.add_pipe(custom_component, first=True)
+nlp.add_pipe("custom_component", first=True)
 
 # Print the pipeline component names
 print("Pipeline:", nlp.pipe_names)
 ```
 
 ```out
-Pipeline: ['custom_component', 'tagger', 'parser', 'ner']
+Pipeline: ['custom_component', 'tok2vec', 'tagger', 'parser', 'ner', 'attribute_ruler', 'lemmatizer']
 ```
 
 Notes: Here's an example of a simple pipeline component.
 
-We start off with the small English model.
+We start off with the small English pipeline.
 
 We then define the component – a function that takes a `Doc` object and returns
 it.
@@ -130,6 +141,9 @@ the pipeline.
 Don't forget to return the doc so it can be processed by the next component in
 the pipeline! The doc created by the tokenizer is passed through all components,
 so it's important that they all return the modified doc.
+
+To tell spaCy about the new component, we register it using the
+`@Language.component` decorator and call it "custom_component".
 
 We can now add the component to the pipeline. Let's add it to the very beginning
 right after the tokenizer by setting `first=True`.
@@ -146,16 +160,15 @@ the start. This means it will be applied first when we process a doc.
 nlp = spacy.load("en_core_web_sm")
 
 # Define a custom component
-def custom_component(doc):
-
+@Language.component("custom_component")
+def custom_component_function(doc):
     # Print the doc's length
     print("Doc length:", len(doc))
-
     # Return the doc object
     return doc
 
 # Add the component first in the pipeline
-nlp.add_pipe(custom_component, first=True)
+nlp.add_pipe("custom_component", first=True)
 
 # Process a text
 doc = nlp("Hello world!")

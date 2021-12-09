@@ -13,7 +13,7 @@ def test():
     ), "Hast du den default-Wert der Erweiterung 'buch' angegeben?"
     assert (
         "nlp.pipe(DATA, as_tuples=True)" in __solution__
-    ), "Verwendest du nlp.pip mit as_tuples=True?"
+    ), "Verwendest du nlp.pipe mit as_tuples=True?"
     assert (
         'doc._.buch = context["buch"]' in __solution__
     ), "Hast du das Attribut doc._.buch mit dem Kontext-Wert von 'buch' überschrieben?"

@@ -40,7 +40,7 @@ dynamisch berechnet werden.
 
 Benutzerdefinierte Attribute sind über die Property `._` (Punkt Unterstrich)
 abrufbar. Dies macht deutlich, dass die Attribute vom Nutzer hinzugefügt wurden
-und nicht in spaCy eingebaut sind, wie zum Beispiel Token.text.
+und nicht in spaCy eingebaut sind, wie zum Beispiel `token.text`.
 
 Attribute müssen über die globalen Klassen `Doc`, `Token` und `Span`, die du von
 `spacy.tokens` importieren kannst, registriert werden. Mit ihnen hast du bereits
@@ -60,7 +60,7 @@ es einen Standard-Wert, der überschrieben werden kann.
 2. Property-Erweiterungen
 3. Methoden-Erweiterungen
 
-Notes: Es gibt drei Arten von Erweiterungen: Attribute, Properties und Methoden.
+Notes: Es gibt drei Arten von Erweiterungen: Attribute, Property und Methoden.
 
 ---
 
@@ -115,7 +115,7 @@ print(doc[3]._.is_color, "-", doc[3].text)
 True - blau
 ```
 
-Notes: Property-Erweiterungen funktionieren wie Properties in Python: sie können
+Notes: Property-Erweiterungen funktionieren wie Properties in Python: Sie können
 eine Getter-Funktion und eine optionale Setter-Funktion festlegen.
 
 Die Getter-Funktion wird erst dann aufgerufen, wenn du den Wert des Attributs
@@ -123,7 +123,7 @@ abfragst. Dies ermöglicht es, den Wert dynamisch zu berechnen und sogar die
 Werte anderer Attribute miteinzubeziehen.
 
 Getter-Funktionen erwarten ein Argument: das Objekt, in diesem Fall der Token.
-In diesem Beispiel her gibt die Funktion zurück, ob der Text des Tokens Teil
+In diesem Beispiel gibt die Funktion zurück, ob der Text des Tokens Teil
 unserer Liste von Farben ist.
 
 Wir können anschließend die Funktion über das Keyword-Argument getter zur
@@ -135,7 +135,7 @@ Der Token "blau" gibt nun für `._.is_color` den Wert `True` zurück.
 
 # Property-Erweiterungen (2)
 
-- `Span`-Erweiterungen sollten so gut wie immer eine Getter-Function verwenden
+- `Span`-Erweiterungen sollten so gut wie immer eine Getter-Funktion verwenden
 
 ```python
 from spacy.tokens import Span
@@ -202,14 +202,14 @@ Notes: Bei Methoden-Erweiterungen wird das Attribut zu einer aufrufbaren
 Methode.
 
 Du kannst dann Argumente definieren und beliebige Werte berechnen – zum
-Beispiel, basierend auf einem bestimmten Argument oder einer bestimmten
+Beispiel basierend auf einem bestimmten Argument oder einer bestimmten
 Einstellung.
 
 In diesem Beispiel überprüft die Funktion, ob das Doc einen Token mit einem
 bestimmten Text enthält. Das erste Argument der Methode ist immer das Objekt
-selbst – in diesem Fall, das Doc. Es wird automatisch eingefügt, wenn die
+selbst – in diesem Fall das Doc. Es wird automatisch eingefügt, wenn die
 Methode aufgerufen wird. Alle anderen Argumente der Funktion werden zu
-Argumenten der Methoden-Erweiterung. In diesem Fall, das Argument `token_text`.
+Argumenten der Methoden-Erweiterung – in diesem Fall das Argument `token_text`.
 
 Die benutzerdefinierte Methode `._.has_token` gibt hier `True` für das Wort
 "blau" und `False` für das Wort "Wolke" zurück.

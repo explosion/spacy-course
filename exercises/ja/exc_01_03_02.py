@@ -1,5 +1,5 @@
-# 日本語クラスをインポートし、nlpオブジェクトを作成
-from ____ import ____
+# spacyをインポートして、日本語のnlpオブジェクトを作成
+import spacy
 
 nlp = ____
 
@@ -10,6 +10,6 @@ doc = ____("私はツリーカンガルーとイルカが好きです。")
 tree_kangaroos = ____
 print(tree_kangaroos.text)
 
-# 「ツリーカンガルーとイルカ」のスライスを選択
-tree_kangaroos_and_dolphins = ____
-print(tree_kangaroos_and_dolphins.text)
+# 「ツリーカンガルーとイッカク」のスライスを選択
+tree_kangaroos_and_narwhals = ____
+print(tree_kangaroos_and_narwhals.text)

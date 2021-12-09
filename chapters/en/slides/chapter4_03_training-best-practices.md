@@ -24,14 +24,14 @@ Let's take a look at some of the problems you may come across.
     `"PERSON"` is
 - Also known as "catastrophic forgetting" problem
 
-Notes: Statistical models can learn lots of things – but it doesn't mean that
-they won't unlearn them.
+Notes: Statistical models can learn lots of things – but they can also unlearn
+them.
 
 If you're updating an existing model with new data, especially new labels, it
 can overfit and adjust _too much_ to the new examples.
 
-For instance, if you're only updating it with examples of "website", it may
-"forget" other labels it previously predicted correctly – like "person".
+For instance, if you're only updating it with examples of `"WEBSITE"`, it may
+"forget" other labels it previously predicted correctly – like `"PERSON"`.
 
 This is also known as the catastrophic forgetting problem.
 
@@ -42,23 +42,6 @@ This is also known as the catastrophic forgetting problem.
 - For example, if you're training `"WEBSITE"`, also include examples of
   `"PERSON"`
 - Run existing spaCy model over data and extract all other relevant entities
-
-**BAD:**
-
-```python
-TRAINING_DATA = [
-    ("Reddit is a website", {"entities": [(0, 6, "WEBSITE")]})
-]
-```
-
-**GOOD:**
-
-```python
-TRAINING_DATA = [
-    ("Reddit is a website", {"entities": [(0, 6, "WEBSITE")]}),
-    ("Obama is a person", {"entities": [(0, 5, "PERSON")]})
-]
-```
 
 Note: To prevent this, make sure to always mix in examples of what the model
 previously got correct.

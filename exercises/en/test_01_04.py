@@ -8,6 +8,9 @@ def test():
     assert (
         next_token.text == "%"
     ), "Are you checking whether the next token's text is a percent sign?"
+    assert (
+        "token.i + 1" in __solution__ or "1 + token.i" in __solution__
+    ), "Are you using the token's index attribute?"
 
     __msg__.good(
         "Well done! As you can see, you can do a lot of very powerful "

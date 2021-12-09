@@ -7,7 +7,7 @@ def test():
         "token.pos_ ==" in __solution__
     ), "Überprüfst du, ob die Wortart des Tokens ein Eigenname (proper noun) ist?"
     assert (
-        "token.i + 1" in __solution__
+        "token.i + 1" in __solution__ or "1 + token.i" in __solution__
     ), "Benutzt du das Token-Attribut index, um den nächsten Token auszuwählen?"
     __msg__.good(
         "Gute Arbeit! Auch wenn die Lösung für dieses Beispiel problemos funktioniert, "

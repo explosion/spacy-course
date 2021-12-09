@@ -8,4 +8,5 @@ def test():
     assert (
         niedliche_katzen_und_faultiere == doc[2:6]
     ), "Bist du dir sicher, dass du die korrekte Span für niedliche_katzen_und_faultiere ausgewählt hast?"
+    assert 'spacy.blank("de")' in __solution__, 'Nutzt du auch spacy.blank("de")?'
     __msg__.good("Gut gemacht!")

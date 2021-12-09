@@ -2,7 +2,7 @@
 title: '第2章: spaCyによる大量データの解析'
 description:
   "この章では、大量のテキストから特定の情報を抽出する方法をみていきます。
-  spaCyのデータ構造の作成方法と、テキスト解析のために機械学習モデルとルールベースモデルを効率的に組み合わせる方法を学びます。"
+  spaCyのデータ構造の作成方法と、テキスト解析のために機械学習パイプラインとルールベースパイプラインを効率的に組み合わせる方法を学びます。"
 prev: /chapter1
 next: /chapter3
 type: chapter
@@ -51,12 +51,11 @@ id: 2
 さて、なぜこのコードはエラーとなるでしょうか？
 
 ```python
-from spacy.lang.ja import Japanese
-from spacy.lang.de import German
+import spacy
 
 # 日本語とドイツ語のnlpオブジェクトを作る
-nlp = Japanese()
-nlp_de = German()
+nlp = spacy.blank("ja")
+nlp_de = spacy.blank("de")
 
 # 「ボウイ」のIDを取得
 bowie_id = nlp.vocab.strings["ボウイ"]
@@ -239,15 +238,15 @@ for index, pos in enumerate(pos_tags):
 
 <exercise id="9" title="単語ベクトルの検査">
 
-この演習では、35,000個の単語ベクトルが含まれている中サイズの[日本語モデル](https://spacy.io/models/ja)を使います。
-このモデルは既にインストールされています。
+この演習では、35,000個の単語ベクトルが含まれている中サイズの[日本語パイプライン](https://spacy.io/models/ja)を使います。
+このパイプラインは既にインストールされています。
 
-- 単語ベクトルの入っている中サイズモデル`"ja_core_news_md"`をロードしてください。
+- 単語ベクトルの入っている中サイズパイプライン`"ja_core_news_md"`をロードしてください。
 - `token.vector`属性を使って、`"バナナ"`の単語ベクトルをプリントしてください。
 
 <codeblock id="02_09">
 
-- `spacy.load`関数を呼びだし、機械学習モデルをロードしてください。
+- `spacy.load`関数を呼びだし、機械学習パイプラインをロードしてください。
 - docに含まれるトークンを取得するには、インデックスを使ってください。例えば`doc[4]`とします。
 
 </codeblock>
@@ -287,7 +286,7 @@ for index, pos in enumerate(pos_tags):
 
 </exercise>
 
-<exercise id="11" title="モデルとルールの組み合わせ" type="slides">
+<exercise id="11" title="予測とルールの組み合わせ" type="slides">
 
 <slides source="chapter2_04_models-rules">
 </slides>

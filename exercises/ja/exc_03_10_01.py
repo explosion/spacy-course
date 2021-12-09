@@ -1,7 +1,7 @@
-from spacy.lang.ja import Japanese
+import spacy
 from spacy.tokens import Doc
 
-nlp = Japanese()
+nlp = spacy.blank("ja")
 
 # ゲッターを定義
 def get_has_number(doc):

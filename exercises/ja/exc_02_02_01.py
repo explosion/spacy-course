@@ -1,6 +1,6 @@
-from spacy.lang.ja import Japanese
+import spacy
 
-nlp = Japanese()
+nlp = spacy.blank("ja")
 doc = nlp("私はネコを飼っています")
 
 # 単語「ネコ」のハッシュを引く

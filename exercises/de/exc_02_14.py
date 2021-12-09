@@ -1,10 +1,10 @@
 import json
-from spacy.lang.de import German
+import spacy
 
 with open("exercises/de/countries.json", encoding="utf8") as f:
     COUNTRIES = json.loads(f.read())
 
-nlp = German()
+nlp = spacy.blank("de")
 doc = nlp("Tschechien könnte der Slowakei dabei helfen, ihren Luftraum zu schützen")
 
 # Importiere den PhraseMatcher und initialisiere ihn
@@ -15,7 +15,7 @@ matcher = ____(____)
 # Erstelle Pattern-Doc-Objekte und füge sie zum Matcher hinzu
 # Dies ist die schnellere Version von: [nlp(country) for country in COUNTRIES]
 patterns = list(nlp.pipe(COUNTRIES))
-matcher.add("COUNTRY", None, *patterns)
+matcher.add("COUNTRY", patterns)
 
 # Wende den Matcher auf das Test-Dokument an und drucke das Resultat
 matches = ____(____)

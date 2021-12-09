@@ -1,7 +1,7 @@
-from spacy.lang.es import Spanish
+import spacy
 from spacy.tokens import Token
 
-nlp = Spanish()
+nlp = spacy.blank("es")
 
 # Define la función getter que toma un token y devuelve su texto al revés
 def get_reversed(token):

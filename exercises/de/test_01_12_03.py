@@ -25,10 +25,10 @@ def test():
     assert (
         pattern[1].get("OP") == "?"
     ), "Verwendest du den korrekten Operator für den zweiten Token?"
-
     assert any(
         pattern[2].get(key) == "NOUN" for key in ["pos", "POS"]
     ), "Suchst du nach der Wortart des dritten Tokens und benutzt du das korrekte Label?"
+
     __msg__.good(
         "Gut gemacht – da waren echt ein paar komplexe Patterns dabei! Lass uns "
         "mit dem nächsten Kapitel weitermachen und anschauen, wie wir spaCy für "

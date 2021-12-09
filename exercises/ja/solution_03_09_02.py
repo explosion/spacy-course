@@ -1,7 +1,7 @@
-from spacy.lang.ja import Japanese
+import spacy
 from spacy.tokens import Token
 
-nlp = Japanese()
+nlp = spacy.blank("ja")
 
 # トークンを受け取り、文字列を反転させたものを返すゲッターを定義
 def get_reversed(token):

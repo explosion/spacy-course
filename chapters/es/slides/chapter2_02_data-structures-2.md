@@ -14,8 +14,8 @@ estudiar las estructuras de datos más importantes: el `Doc` y sus views el
 
 ```python
 # Crea un objeto nlp
-from spacy.lang.es import Spanish
-nlp = Spanish()
+import spacy
+nlp = spacy.blank("es")
 
 # Importa la clase Doc
 from spacy.tokens import Doc
@@ -37,16 +37,16 @@ Después de crear el objeto `nlp` podemos importar la clase `Doc` desde
 
 Aquí estamos creando un doc a partir de tres palabras. Los espacios son una
 lista de valores booleanos que indican si una palabra está seguida por un
-espacio. Cada token incluye esa información - inclusive el último!
+espacio. Cada token incluye esa información - ¡Inclusive el último!
 
-La clase `Doc` recibe tres argumentos: el vocabulario compartido, las palabras y
-los espacios.
+La clase `Doc` recibe tres argumentos: el vocabulario compartido, las palabras
+y los espacios.
 
 ---
 
 # El objeto Span (1)
 
-<img src="/span_indices.png" width="65%" alt="Illustration of a Span object within a Doc with token indices" />
+<img src="/span_indices.png" width="65%" alt="Ilustración de un objeto Span dentro de un Doc con índices de tokens" />
 
 Notes: Un `Span` es un slice de un Doc que está formado por uno o más tokens. El
 `Span` recibe al menos tres argumentos: el doc al que se refiere, el índice de
@@ -72,7 +72,7 @@ doc = Doc(nlp.vocab, words=words, spaces=spaces)
 span = Span(doc, 1, 3)
 
 # Crea un span con un label
-span_with_label = Span(doc, 1, 3, label="GREETING")
+span_with_label = Span(doc, 1, 3, label="SALUDO")
 
 # Añade el span a los doc.ents
 doc.ents = [span_with_label]
@@ -109,7 +109,7 @@ Para mantener la consistencia intenta usar los atributos incluidos de los
 tokens, siempre que sea posible. Por ejemplo, `token.i` para el índice del
 token.
 
-¡Tampoco te olvides de pasar el vocabulario compartido siempre!
+¡Tampoco te olvides de siempre pasar el vocabulario compartido!
 
 ---
 

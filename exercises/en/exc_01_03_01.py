@@ -1,5 +1,5 @@
-# Import the English language class and create the nlp object
-from ____ import ____
+# Import spaCy and create the English nlp object
+import ____
 
 nlp = ____
 

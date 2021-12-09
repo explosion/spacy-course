@@ -11,16 +11,16 @@ reglas para encontrar palabras y frases en el texto.
 
 # ¿Por qué no simplemente expresiones regulares?
 
-- Matching en objetos `Doc`, no solamente en strings
-- Matching en tokens y atributos de tokens
+- Buscar patrones en objetos `Doc`, no solamente en strings
+- Buscar patrones en tokens y atributos de tokens
 - Usa las predicciones del modelo
 - Ejemplo: "araña" (verbo) vs. "araña" (sustantivo)
 
 Notes: Comparándolo con las expresiones regulares, el matcher funciona con
 objetos `Doc` y `Token`, en vez de únicamente strings.
 
-También es más flexible: puedes buscar textos, pero también otros atributos
-léxicos.
+También es más flexible: puedes buscar patrones en textos, pero también en otros
+atributos léxicos.
 
 Inclusive puedes escribir reglas que usen las predicciones del modelo.
 
@@ -29,31 +29,31 @@ sustantivo.
 
 ---
 
-# Match patterns
+# Buscar patrones
 
 - Listas de diccionarios, uno por token
 
-- Encuentra por textos exactos de tokens
+- Busca por textos exactos de tokens
 
 ```python
 [{"TEXT": "iPhone"}, {"TEXT": "X"}]
 ```
 
-- Encuentra por atributos léxicos
+- Busca por atributos léxicos
 
 ```python
 [{"LOWER": "iphone"}, {"LOWER": "x"}]
 ```
 
-- Encuentra por cualquier atributo del token
+- Busca por cualquier atributo del token
 
 ```python
 [{"LEMMA": "comprar"}, {"POS": "NOUN"}]
 ```
 
-Notes: Los match patterns son listas de diccionarios. Cada diccionario describe
-un token. Los keys son los nombres de los atributos del token, mapeados a sus
-valores esperados.
+Notes: Los patrones del matcher son listas de diccionarios. Cada diccionario
+describe un token. Los keys son los nombres de los atributos del token, mapeados
+a sus valores esperados.
 
 En este ejemplo, estamos buscando dos tokens con el texto "iPhone" y "X".
 
@@ -62,9 +62,9 @@ buscamos. Aquí estamos buscando dos tokens que en minúsculas son iguales a
 "iphone" y "x".
 
 También podemos escribir patrones que usen los atributos predichos por el
-modelo. Aquí estamos buscando un token con el lemma "comprar", más un sustantivo. El
-lemma es la forma básica, así que este patrón encontraría frases como "comprando
-leche" o "compré flores".
+modelo. Aquí estamos buscando un token con el lemma "comprar", más un
+sustantivo. El lemma es la forma básica, así que este patrón encontraría frases
+como "comprando leche" o "compré flores".
 
 ---
 
@@ -84,7 +84,7 @@ matcher = Matcher(nlp.vocab)
 
 # Añade el patrón al matcher
 pattern = [{"TEXT": "adidas"}, {"TEXT": "zx"}]
-matcher.add("ADIDAS_PATTERN", None, pattern)
+matcher.add("ADIDAS_PATTERN", [pattern])
 
 # Procesa un texto
 doc = nlp("Nuevos diseños de zapatillas en la colección adidas zx")
@@ -101,11 +101,10 @@ El matcher es inicializado con el vocabulario compartido, `nlp.vocab`.
 Aprenderás más sobre esto más adelante - por ahora solo recuerda pasarlo.
 
 El método `matcher.add` te permite añadir un patrón. El primer argumento es un
-ID único para identificar el patrón que fue buscado. El segundo argumento es un
-callback opcional, no necesitamos uno aquí, así que lo ponemos como `None`. El
-tercer argumento es el patrón.
+ID único para identificar el patrón que fue buscado. El segundo argumento es
+una lista de patrones.
 
-Para encontrar el patrón en un texto, podemos llamar el matcher sobre cualquier
+Para buscar el patrón en un texto, podemos llamar el matcher sobre cualquier
 doc.
 
 Esto devolverá los resultados.
@@ -130,11 +129,12 @@ for match_id, start, end in matches:
 adidas zx
 ```
 
-- `match_id`: valor hash del nombre del patrón
+- `match_id`: valor del hash del nombre del patrón
 - `start`: índice de inicio del span resultante
 - `end`: índice del final del span resultante
 
-Notes: Cuando llamas el matcher sobre un doc, este devuelve una lista de <abbr title="En español: tuplas, un tuple es un tipo de dato que contiene una secuencia fija de ítems, como una lista, pero que no se puede modificar.">tuples</abbr>.
+Notes: Cuando llamas el matcher sobre un doc, este devuelve una lista de
+<abbr title="En español: tuplas, un tuple es un tipo de dato que contiene una secuencia fija de ítems, como una lista, pero que no se puede modificar.">tuples</abbr>.
 
 Cada tuple consiste de tres valores: el ID del resultado, el índice de inicio y
 el índice del final del span resultante.
@@ -190,7 +190,7 @@ pattern = [
 ```
 
 ```python
-doc = nlp("Camila prefería comer tacos. Pero ahora está comiendo pasta.")
+doc = nlp("Camila prefería comer sushi. Pero ahora está comiendo pasta.")
 ```
 
 ```out
@@ -211,7 +211,7 @@ Este patrón encontrará "comer tacos" y "comiendo pasta".
 ```python
 pattern = [
     {"LEMMA": "comprar"},
-    {"POS": "DET", "OP": "?"},  # opcional: encuentra 0 o 1 veces
+    {"POS": "DET", "OP": "?"},  # opcional: encuentra 0 o 1 ocurrencias
     {"POS": "NOUN"}
 ]
 ```
@@ -225,32 +225,33 @@ compré un smartphone
 comprando aplicaciones
 ```
 
-Notes: Operadores y cuantificadores te permiten definir con qué frecuencia un
-token debe ser encontrado. Pueden ser añadidos con el key "OP".
+Notes: Los operadores y cuantificadores te permiten definir con qué frecuencia
+un token debe ser encontrado. Pueden ser añadidos con el key "OP".
 
 Aquí, el operador "?" hace que el token determinante sea opcional, así que
-encontrará un token con el lemma "comprar", un artículo opcional y un sustantivo.
+encontrará un token con el lemma "comprar", un artículo opcional y un
+sustantivo.
 
 ---
 
 # Usando operadores y cuantificadores (2)
 
-| Ejemplo       | Descripción                     |
-| ------------- | ------------------------------- |
-| `{"OP": "!"}` | Negación: encuentra 0 veces     |
-| `{"OP": "?"}` | Opcional: encuentra 0 o 1 veces |
-| `{"OP": "+"}` | Encuentra 1 o más veces         |
-| `{"OP": "*"}` | Encuentra 0 o más veces         |
+| Ejemplo       | Descripción                 |
+| ------------- | ----------------------------|
+| `{"OP": "!"}` | Negación: busca 0 veces     |
+| `{"OP": "?"}` | Opcional: busca 0 o 1 veces |
+| `{"OP": "+"}` | Busca 1 o más veces         |
+| `{"OP": "*"}` | Busca 0 o más veces         |
 
 Notes: "OP" puede tener uno de cuatro valores:
 
-Un "!" niega el token, así que es encontrado 0 veces.
+Un "!" niega el token, así que es buscado 0 veces.
 
-Un "?" hace que el token sea opcional y es encontrado 0 o 1 veces.
+Un "?" hace que el token sea opcional y es buscado 0 o 1 veces.
 
-Un "+" encuentra el token 1 o más veces.
+Un "+" busca el token 1 o más veces.
 
-Finalmente, un "\*" encuentra 0 o más veces.
+Finalmente, un "\*" busca 0 o más veces.
 
 Los operadores pueden hacer que tus patrones sean mucho más poderosos, pero
 también pueden añadir más complejidad, así que úsalos sabiamente.
@@ -259,6 +260,6 @@ también pueden añadir más complejidad, así que úsalos sabiamente.
 
 # ¡Practiquemos!
 
-Notes: Encontrar usando patrones basados en tokens abre muchas posibilidades
+Notes: Buscar usando patrones basados en tokens abre muchas posibilidades
 nuevas para extraer información. ¡Así que probémoslo y escribamos algunos
 patrones!

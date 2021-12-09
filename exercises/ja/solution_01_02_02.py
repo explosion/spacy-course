@@ -1,8 +1,8 @@
-# ドイツの言語クラスをインポート
-from spacy.lang.de import German
+# spaCyをインポート
+import spacy
 
-# nlpオブジェクトを作成
-nlp = German()
+# ドイツ語のnlpオブジェクトを作成
+nlp = spacy.blank("de")
 
 # テキストを処理（ドイツ語で「よろしく！」の意味）
 doc = nlp("Liebe Grüße!")

@@ -7,7 +7,7 @@ text = (
 )
 
 # parserを無効化
-with nlp.disable_pipes("parser"):
+with nlp.select_pipes(disable=["parser"]):
     # テキストを処理する
     doc = nlp(text)
     # docの固有表現を表示

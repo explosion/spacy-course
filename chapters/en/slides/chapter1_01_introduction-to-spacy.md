@@ -15,11 +15,11 @@ how to get started.
 # The nlp object
 
 ```python
-# Import the English language class
-from spacy.lang.en import English
+# Import spaCy
+import spacy
 
-# Create the nlp object
-nlp = English()
+# Create a blank English nlp object
+nlp = spacy.blank("en")
 ```
 
 - contains the processing pipeline
@@ -28,15 +28,14 @@ nlp = English()
 Notes: At the center of spaCy is the object containing the processing pipeline.
 We usually call this variable "nlp".
 
-For example, to create an English `nlp` object, you can import the `English`
-language class from `spacy.lang.en` and instantiate it. You can use the nlp
-object like a function to analyze text.
+For example, to create an English `nlp` object, you can import `spacy` and
+use the `spacy.blank` method to create a blank English pipeline. You can use the
+`nlp` object like a function to analyze text.
 
 It contains all the different components in the pipeline.
 
 It also includes language-specific rules used for tokenizing the text into words
-and punctuation. spaCy supports a variety of languages that are available in
-`spacy.lang`.
+and punctuation. spaCy supports a variety of languages.
 
 ---
 
@@ -68,7 +67,7 @@ over its tokens, or get a token by its index. But more on that later!
 
 # The Token object
 
-<img src="/doc.png" alt="Illustration of a Doc object containing four tokens" width="50%" />
+<img src="/doc.png" alt="Illustration of a Doc object containing three tokens" width="50%" />
 
 ```python
 doc = nlp("Hello world!")
@@ -97,7 +96,7 @@ verbatim token text.
 
 # The Span object
 
-<img src="/doc_span.png" width="50%" alt="Illustration of a Doc object containing four tokens and three of them wrapped in a Span" />
+<img src="/doc_span.png" width="50%" alt="Illustration of a Doc object containing three tokens and two of them wrapped in a Span" />
 
 ```python
 doc = nlp("Hello world!")

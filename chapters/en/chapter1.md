@@ -2,7 +2,7 @@
 title: 'Chapter 1: Finding words, phrases, names and concepts'
 description:
   "This chapter will introduce you to the basics of text processing with spaCy.
-  You'll learn about the data structures, how to work with statistical models,
+  You'll learn about the data structures, how to work with trained pipelines,
   and how to use them to predict linguistic features in your text."
 prev: null
 next: /chapter2
@@ -10,7 +10,7 @@ type: chapter
 id: 1
 ---
 
-<exercise id="1" title="Introduction to spaCy" type="slides,video">
+<exercise id="1" title="Introduction to spaCy" type="slides">
 
 <slides source="chapter1_01_introduction-to-spacy" start="0:165" end="3:01">
 </slides>
@@ -20,25 +20,25 @@ id: 1
 <exercise id="2" title="Getting Started">
 
 Let's get started and try out spaCy! In this exercise, you'll be able to try out
-some of the 55+ [available languages](https://spacy.io/usage/models#languages).
+some of the 60+ [available languages](https://spacy.io/usage/models#languages).
 
 ### Part 1: English
 
-- Import the `English` class from `spacy.lang.en` and create the `nlp` object.
+- Use `spacy.blank` to create a blank English (`"en"`) `nlp` object.
 - Create a `doc` and print its text.
 
 <codeblock id="01_02_01"></codeblock>
 
 ### Part 2: German
 
-- Import the `German` class from `spacy.lang.de` and create the `nlp` object.
+- Use `spacy.blank` to create a blank German (`"de"`) `nlp` object.
 - Create a `doc` and print its text.
 
 <codeblock id="01_02_02"></codeblock>
 
 ### Part 3: Spanish
 
-- Import the `Spanish` class from `spacy.lang.es` and create the `nlp` object.
+- Use `spacy.blank` to create a blank Spanish (`"es"`) `nlp` object.
 - Create a `doc` and print its text.
 
 <codeblock id="01_02_03"></codeblock>
@@ -53,7 +53,7 @@ its views `Token` and `Span`.
 
 ### Step 1
 
-- Import the `English` language class and create the `nlp` object.
+- Use `spacy.blank` to create the English `nlp` object.
 - Process the text and instantiate a `Doc` object in the variable `doc`.
 - Select the first token of the `Doc` and print its `text`.
 
@@ -67,7 +67,7 @@ in the text. Remember that in Python the first index is 0, not 1.
 
 ### Step 2
 
-- Import the `English` language class and create the `nlp` object.
+- Use `spacy.blank` to create the English `nlp` object.
 - Process the text and instantiate a `Doc` object in the variable `doc`.
 - Create a slice of the `Doc` for the tokens "tree kangaroos" and "tree
   kangaroos and narwhals".
@@ -104,62 +104,61 @@ To get the token at a certain index, you can index into the `doc`. For example,
 
 </exercise>
 
-<exercise id="5" title="Statistical models" type="slides,video">
+<exercise id="5" title="Trained pipelines" type="slides">
 
 <slides source="chapter1_02_statistical-models" start="3:12" end="7:01">
 </slides>
 
 </exercise>
 
-<exercise id="6" title="Model packages" type="choice">
+<exercise id="6" title="Pipeline packages" type="choice">
 
-What's **not** included in a model package that you can load into spaCy?
+What's **not** included in a pipeline package that you can load into spaCy?
 
 <choice>
-<opt text="A meta file including the language, pipeline and license.">
+<opt text="A config file describing how to create the pipeline.">
 
-All models include a `meta.json` that defines the language to initialize, the
-pipeline component names to load as well as general meta information like the
-model name, version, license, data sources, author and accuracy figures (if
-available).
+All saved pipelines include a `config.cfg` that defines the language to
+initialize, the pipeline components to load as well as details on how the
+pipeline was trained and which settings were used.
 
 </opt>
 <opt text="Binary weights to make statistical predictions.">
 
 To predict linguistic annotations like part-of-speech tags, dependency labels or
-named entities, models include binary weights.
+named entities, pipeline packages include binary weights.
 
 </opt>
-<opt correct="true" text="The labelled data that the model was trained on.">
+<opt correct="true" text="The labelled data that the pipeline was trained on.">
 
-Statistical models allow you to generalize based on a set of training examples.
+Trained pipelines allow you to generalize based on a set of training examples.
 Once they're trained, they use binary weights to make predictions. That's why
 it's not necessary to ship them with their training data.
 
 </opt>
-<opt text="Strings of the model's vocabulary and their hashes.">
+<opt text="Strings of the pipeline's vocabulary and their hashes.">
 
-Model packages include a `strings.json` that stores the entries in the model's
-vocabulary and the mapping to hashes. This allows spaCy to only communicate in
-hashes and look up the corresponding string if needed.
+Pipeline packages include a `strings.json` that stores the entries in the
+pipeline's vocabulary and the mapping to hashes. This allows spaCy to only
+communicate in hashes and look up the corresponding string if needed.
 
 </opt>
 </choice>
 
 </exercise>
 
-<exercise id="7" title="Loading models">
+<exercise id="7" title="Loading pipelines">
 
-The models we're using in this course are already pre-installed. For more
-details on spaCy's statistical models and how to install them on your machine,
+The pipelines we're using in this course are already pre-installed. For more
+details on spaCy's trained pipelines and how to install them on your machine,
 see [the documentation](https://spacy.io/usage/models).
 
-- Use `spacy.load` to load the small English model `"en_core_web_sm"`.
+- Use `spacy.load` to load the small English pipeline `"en_core_web_sm"`.
 - Process the text and print the document text.
 
 <codeblock id="01_07">
 
-To load a model, call `spacy.load` on its string name. Model names differ
+To load a pipeline, call `spacy.load` on its string name. Pipeline names differ
 depending on the language and the data they were trained on – so make sure to
 use the correct name.
 
@@ -169,7 +168,7 @@ use the correct name.
 
 <exercise id="8" title="Predicting linguistic annotations">
 
-You'll now get to try one of spaCy's pre-trained model packages and see its
+You'll now get to try one of spaCy's trained pipeline packages and see its
 predictions in action. Feel free to try it out on your own text! To find out
 what a tag or label means, you can call `spacy.explain` in the loop. For
 example: `spacy.explain("PROPN")` or `spacy.explain("GPE")`.
@@ -226,7 +225,7 @@ a look at an example.
 
 </exercise>
 
-<exercise id="10" title="Rule-based matching" type="slides,video">
+<exercise id="10" title="Rule-based matching" type="slides">
 
 <slides source="chapter1_03_rule-based-matching" start="7:118" end="10:55">
 </slides>

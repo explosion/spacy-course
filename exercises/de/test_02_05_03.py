@@ -4,10 +4,10 @@ def test():
     ), "Importierst du die Klasse Doc?"
     assert (
         len(words) == 5
-    ), "Es sieht so aus, als ob du eine falsche Anzahl an Wörtern erstellt hast."
+    ), "Es sieht so aus, als ob du eine falsche Anzahl an Wörtern hast."
     assert (
         len(spaces) == 5
-    ), "Es sieht so aus, als ob du eine falsche Anzahl an Leerzeichen erstellt hast."
+    ), "Es sieht so aus, als ob du eine falsche Anzahl an Leerzeichen hast."
     assert words == ["Was", ",", "echt", "?", "!"], "Schau dir nochmal die Wörter an!"
     assert all(
         isinstance(s, bool) for s in spaces

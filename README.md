@@ -19,16 +19,15 @@ solutions are all in this repo, there's no penalty for clicking "Show hints" or
 
 ## 💬 Languages and Translations
 
-| Language                                   | Text Examples<sup>1</sup> | Source                                                       |                      Video                       | Authors                                            |
-| ------------------------------------------ | ------------------------- | ------------------------------------------------------------ | :----------------------------------------------: | -------------------------------------------------- |
-| **[English](https://course.spacy.io/en)**  | English                   | [`chapters/en`](chapters/en), [`exercises/en`](exercises/en) | [✓](https://www.youtube.com/watch?v=THduWAnG97k) | [@ines](https://github.com/ines)                   |
-| **[German](https://course.spacy.io/de)**   | German                    | [`chapters/de`](chapters/de), [`exercises/de`](exercises/de) | [✓](https://www.youtube.com/watch?v=K1elwpgDdls) | [@ines](https://github.com/ines)                   |
-| **[Spanish](https://course.spacy.io/es)**  | Spanish                   | [`chapters/es`](chapters/es), [`exercises/es`](exercises/es) | [✓](https://www.youtube.com/watch?v=RNiLVCE5d4k) | [@mariacamilagl](https://github.com/mariacamilagl) |
-| **[French](https://course.spacy.io/fr)**   | French                    | [`chapters/fr`](chapters/fr), [`exercises/fr`](exercises/fr) |                        ✕                         | [@datakime](https://github.com/datakime)           |
-| **[Japanese](https://course.spacy.io/ja)** | English<sup>2</sup>       | [`chapters/ja`](chapters/ja), [`exercises/ja`](exercises/ja) |                        ✕                         | [@tamuhey](https://github.com/tamuhey)             |
-| **[Chinese](https://course.spacy.io/zh)**  | Chinese                   | [`chapters/zh`](chapters/zh), [`exercises/zh`](exercises/zh) |                        ✕                         | [@crownpku](https://github.com/crownpku)           |
-| Russian                                    | English                   | _in progress_                                                |                                                  |                                                    |
-| Portuguese                                 | English                   | _in progress_                                                |                                                  |                                                    |
+| Language                                     | Text Examples<sup>1</sup> | Source                                                       | Authors                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| -------------------------------------------- | ------------------------- | ------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **[English](https://course.spacy.io/en)**    | English                   | [`chapters/en`](chapters/en), [`exercises/en`](exercises/en) | [@ines](https://github.com/ines)                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| **[German](https://course.spacy.io/de)**     | German                    | [`chapters/de`](chapters/de), [`exercises/de`](exercises/de) | [@ines](https://github.com/ines), [@Jette16](https://github.com/Jette16)                                                                                                                                                                                                                                                                                                                                                                             |
+| **[Spanish](https://course.spacy.io/es)**    | Spanish                   | [`chapters/es`](chapters/es), [`exercises/es`](exercises/es) | [@mariacamilagl](https://github.com/mariacamilagl), [@damian-romero](https://github.com/damian-romero)                                                                                                                                                                                                                                                                                                                                               |
+| **[French](https://course.spacy.io/fr)**     | French                    | [`chapters/fr`](chapters/fr), [`exercises/fr`](exercises/fr) | [@datakime](https://github.com/datakime)                                                                                                                                                                                                                                                                                                                                                                                                             |
+| **[Japanese](https://course.spacy.io/ja)**   | Japanese                  | [`chapters/ja`](chapters/ja), [`exercises/ja`](exercises/ja) | [@tamuhey](https://github.com/tamuhey), [@hiroshi-matsuda-rit](https://github.com/hiroshi-matsuda-rit), [@icoxfog417](https://github.com/icoxfog417), [@akirakubo](https://github.com/akirakubo), [@forest1988](https://github.com/forest1988), [@ao9mame](https://github.com/ao9mame), [@matsurih](https://github.com/matsurih), [@HiromuHota](https://github.com/HiromuHota), [@mei28](https://github.com/mei28), [@polm](https://github.com/polm) |
+| **[Chinese](https://course.spacy.io/zh)**    | Chinese                   | [`chapters/zh`](chapters/zh), [`exercises/zh`](exercises/zh) | [@crownpku](https://github.com/crownpku)                                                                                                                                                                                                                                                                                                                                                                                                             |
+| **[Portuguese](https://course.spacy.io/pt)** | English                   | [`chapters/pt`](chapters/pt), [`exercises/pt`](exercises/pt) | [@Cristianasp](https://github.com/Cristianasp)                                                                                                                                                                                                                                                                                                                                                                                                       |
 
 If you spot a mistake, I always appreciate
 [pull requests](https://github.com/ines/spacy-course/pulls)!
@@ -37,8 +36,6 @@ If you spot a mistake, I always appreciate
 exercises. For example, the German version of the course also uses German text
 examples and models. It's not always possible to translate all code examples, so
 some translations may still use and analyze English text as part of the course.
-
-**2.** Full translation of text examples is currently in progress.
 
 ### Related resources
 
@@ -84,11 +81,12 @@ there are two different ways to get involved:
 
 1. Start a community translation project. This is the easiest,
    no-strings-attached way. You can fork the repo, copy-paste the English
-   version, change the language code, start translating and invite others to
-   contribute (if you like). If you're looking for contributors, feel free to
-   open an issue here or tag [@spacy_io](https://twitter.com/spacy_io) on
-   Twitter so we can help get the word out. We're also happy to answer your
-   questions on the issue tracker.
+   version, change the
+   [language code](https://www.loc.gov/standards/iso639-2/php/code_list.php),
+   start translating and invite others to contribute (if you like). If you're
+   looking for contributors, feel free to open an issue here or tag
+   [@spacy_io](https://twitter.com/spacy_io) on Twitter so we can help get the
+   word out. We're also happy to answer your questions on the issue tracker.
 
 2. Make us an offer. We're open to commissioning translations for different
    languages, so if you're interested, email us at
@@ -228,12 +226,11 @@ If running with docker just run `make build` and then `make pytest`
 
 The [`requirements.txt`](binder/requirements.txt) in the repository defines the
 packages that are installed when building it with Binder. For this course, I'm
-using the source repo as the Binder repo, as it allows to keep everything in
-once place. It also lets the exercises reference and load other files (e.g.
-JSON), which will be copied over into the Pyt hon environment. I build the
-binder from a branch `binder`, though, which I only update if Binder-relevant
-files change. Otherwise, every update to `master` would trigger an image
-rebuild.
+using the source repo as the Binder repo, as it allows to keep everything in one
+place. It also lets the exercises reference and load other files (e.g. JSON),
+which will be copied over into the Python environment. I build the binder from a
+branch `binder`, though, which I only update if Binder-relevant files change.
+Otherwise, every update to `master` would trigger an image rebuild.
 
 You can specify the binder settings like repo, branch and kernel type in the
 `"juniper"` section of the `meta.json`. I'd recommend running the very first

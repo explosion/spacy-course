@@ -141,11 +141,11 @@ into a doc before the pipeline components are called.
 
 # Disabling pipeline components
 
-- Use `nlp.disable_pipes` to temporarily disable one or more pipes
+- Use `nlp.select_pipes` to temporarily disable one or more pipes
 
 ```python
 # Disable tagger and parser
-with nlp.disable_pipes("tagger", "parser"):
+with nlp.select_pipes(disable=["tagger", "parser"]):
     # Process the text and print the entities
     doc = nlp(text)
     print(doc.ents)
@@ -155,12 +155,12 @@ with nlp.disable_pipes("tagger", "parser"):
 - Only runs the remaining components
 
 Notes: spaCy also allows you to temporarily disable pipeline components using
-the `nlp.disable_pipes` context manager.
+the `nlp.select_pipes` context manager.
 
-It takes a variable number of arguments, the string names of the pipeline
-components to disable. For example, if you only want to use the entity
-recognizer to process a document, you can temporarily disable the tagger and
-parser.
+It accepts the keyword arguments `enable` or `disable` that can define a list of
+string names of the pipeline components to disable. For example, if you only
+want to use the entity recognizer to process a document, you can temporarily
+disable the tagger and parser.
 
 After the `with` block, the disabled pipeline components are automatically
 restored.

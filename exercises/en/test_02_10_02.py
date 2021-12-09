@@ -1,6 +1,6 @@
 def test():
     assert (
-        "token1.similarity(token2)" or "token2.similarity(token1)" in __solution__
+        "token1.similarity(token2)" in __solution__ or "token2.similarity(token1)" in __solution__
     ), "Are you comparing the similarity of the two tokens?"
     assert (
         0 <= float(similarity) <= 1
