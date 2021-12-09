@@ -71,7 +71,7 @@ import spacy
 # Matcherをインポート
 from spacy.matcher import Matcher
 
-# モデルをロードし、nlpオブジェクトを作成
+# パイプラインをロードし、nlpオブジェクトを作成
 nlp = spacy.load("ja_core_news_sm")
 
 # matcherを共有語彙データを用いて初期化
@@ -90,7 +90,7 @@ matches = matcher(doc)
 
 Notes: パターンを使うには、まず最初に`spacy.matcher`からMatcherをインポートします。
 
-そしてモデルをロードし、`nlp`オブジェクトを作成します。
+そしてパイプラインをロードし、`nlp`オブジェクトを作成します。
 
 Matcherは共有語彙データ`nlp.vocab`を用いて初期化します。
 これについては後ほど詳しくみていきます。とりあえず、このようにして初期化する必要があると覚えておいてください。
@@ -179,7 +179,6 @@ pattern = [
 
 ```python
 doc = nlp("犬を飼っていたけど、今はたくさん猫を飼うようになった。")
-doc.is_tagged = True
 ```
 
 ```out
@@ -194,8 +193,6 @@ Note: この例では、次の3つのトークンからなる列を探索して�
 - 「飼う」という動詞
 
 このパターンは「犬を飼っ」と「猫を飼う」にマッチします。
-
-(※ spaCy 2.3.2では、日本語モデルで品詞タグ付けが実行されていると認識されないバグがあります。そのため、`doc.is_tagged = True`でタグ付け済みであると明示的に指定しています。詳細は[spaCyのIssue](https://github.com/explosion/spaCy/pull/5803)を参照してください)
 
 ---
 
