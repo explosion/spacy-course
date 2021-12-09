@@ -18,7 +18,7 @@ doc.is_tagged = True
 pattern = [{"POS": "PROPN"}, {"LEMMA": "県"}]
 
 # パターンをmatcherに追加し、docに対してmatcherを適用します
-matcher.add("PREFECTURE_PATTERN", None, pattern)
+matcher.add("PREFECTURE_PATTERN", [pattern])
 matches = matcher(doc)
 print("Total matches found:", len(matches))
 

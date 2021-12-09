@@ -1,7 +1,7 @@
-# 日本語クラスをインポートし、nlpオブジェクトを作成
-from spacy.lang.ja import Japanese
+# spaCyをインポートし、日本語のnlpオブジェクトを作成
+import spacy
 
-nlp = Japanese()
+nlp = spacy.blank("ja")
 
 # テキストを処理
 doc = nlp("私はツリーカンガルーとイルカが好きです。")

@@ -1,7 +1,7 @@
-from spacy.lang.ja import Japanese
+import spacy
 from spacy.tokens import Token
 
-nlp = Japanese()
+nlp = spacy.blank("ja")
 
 # デフォルト値がFalseである拡張属性「is_country」をトークンに追加
 Token.set_extension("is_country", default=False)

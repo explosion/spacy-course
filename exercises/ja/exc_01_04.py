@@ -1,6 +1,6 @@
-from spacy.lang.ja import Japanese
+import spacy
 
-nlp = Japanese()
+nlp = spacy.blank("ja")
 
 # テキストを処理
 doc = nlp(

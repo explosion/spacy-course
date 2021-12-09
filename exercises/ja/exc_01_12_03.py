@@ -17,7 +17,7 @@ doc.is_tagged = True
 pattern = [{"POS": ____}, {"POS": ____}, {"POS": ____, "OP": ____}]
 
 # パターンをmatcherに追加し、docにmatcherを適用してください
-matcher.add("ADJ_NOUN_PATTERN", None, pattern)
+matcher.add("ADJ_NOUN_PATTERN", [pattern])
 matches = matcher(doc)
 print("Total matches found:", len(matches))
 

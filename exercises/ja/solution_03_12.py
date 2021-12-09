@@ -1,5 +1,5 @@
 import json
-from spacy.lang.ja import Japanese
+import spacy
 from spacy.tokens import Span
 from spacy.matcher import PhraseMatcher
 
@@ -9,7 +9,7 @@ with open("exercises/ja/countries.json", encoding="utf8") as f:
 with open("exercises/ja/capitals.json", encoding="utf8") as f:
     CAPITALS = json.loads(f.read())
 
-nlp = Japanese()
+nlp = spacy.blank("ja")
 matcher = PhraseMatcher(nlp.vocab)
 matcher.add("COUNTRY", None, *list(nlp.pipe(COUNTRIES)))
 

@@ -1,11 +1,11 @@
 import json
 from spacy.matcher import Matcher
-from spacy.lang.ja import Japanese
+import spacy
 
 with open("exercises/ja/iphone.json", encoding="utf8") as f:
     TEXTS = json.loads(f.read())
 
-nlp = Japanese()
+nlp = spacy.blank("ja")
 matcher = Matcher(nlp.vocab)
 pattern1 = [{"LOWER": "iphone"}, {"LOWER": "x"}]
 pattern2 = [{"LOWER": "iphone"}, {"IS_DIGIT": True}]

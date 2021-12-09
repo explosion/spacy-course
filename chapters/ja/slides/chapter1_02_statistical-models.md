@@ -52,7 +52,7 @@ nlp = spacy.load("ja_core_news_sm")
 - メタデータ（言語、パイプライン）
 
 Notes: spaCyには、`spacy download`コマンドを使ってダウンロードできる学習済みモデルがたくさんあります。
-例えば、「ja_core_news_sm」パッケージは、spaCyの中心的な機能が全て詰まった、Web文章で訓練された小サイズの日本語用モデルです。
+例えば、「ja_core_news_sm」パッケージは、spaCyの中心的な機能が全て詰まった、Web文章で訓練された小サイズの日本語用パイプラインです。
 
 `spacy.load`は、モデルパッケージをロードし、`nlp`オブジェクトを返す関数です。
 
