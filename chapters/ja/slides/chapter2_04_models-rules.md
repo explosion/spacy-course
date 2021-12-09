@@ -50,21 +50,19 @@ matcher = Matcher(nlp.vocab)
 
 # パターンはトークンを表す辞書のリストからなります
 pattern = [{"TEXT": "ネコ"}, {"OP": "*"},{"LEMMA": "大好き", "POS": "ADJ"}]
-matcher.add("ネコ_大好き", None, pattern)
+matcher.add("ネコ_大好き", [pattern])
 
 # 演算子は何回トークンがマッチするかを表します
 pattern = [{"TEXT": "とても", "OP": "+"}, {"TEXT": "幸せ"}]
-matcher.add("とても_幸せ", None, pattern)
+matcher.add("とても_幸せ", [pattern])
 
 # matcherをdocに対して呼び出し、(match_id, start, end)のリストを取得
 doc = nlp("私はネコが大好きで、私はとてもとても幸せです")
-doc.is_tagged = True
 matches = matcher(doc)
 ```
 
 Notes: 前章で、spaCyのルールベースのmatcherを使って複雑なパターンを文章中から見つける方法を学びました。
 ここでは、その簡単な要約を掲載しています。
-（ただしv2.3現在、日本語モデルでは[#5802](https://github.com/explosion/spaCy/issues/5802)で指摘されているバグのため、タグの参照時にエラーとなることがあることに注意してください。ここでは `doc.is_tagged = True` としてdocにタグの情報があることを明示的に設定し、エラーを回避しています。）
 
 matcherは共有語彙データ（通常は`nlp.vocab`）によって初期化されます。
 
@@ -83,7 +81,7 @@ matcherをdocオブジェクトに対して呼び出すと、マッチ結果の�
 
 ```python
 matcher = Matcher(nlp.vocab)
-matcher.add("イヌ", None, [{"LOWER": "ゴールデン"}, {"LOWER": "レトリバー"}])
+matcher.add("イヌ", [[{"LOWER": "ゴールデン"}, {"LOWER": "レトリバー"}]])
 doc = nlp("私はゴールデンレトリバーを飼っています")
 
 for match_id, start, end in matcher(doc):
@@ -143,7 +141,7 @@ from spacy.matcher import PhraseMatcher
 matcher = PhraseMatcher(nlp.vocab)
 
 pattern = nlp("ゴールデンレトリバー")
-matcher.add("イヌ", None, pattern)
+matcher.add("イヌ", [pattern])
 doc = nlp("私はゴールデンレトリバーを飼っています")
 
 # マッチの結果をイテレート
