@@ -13,7 +13,7 @@ doc = nlp(
 )
 
 # パターンを作る
-pattern1 = [{"LOWER": "amazon"}, {"LOWER": "prime"}]
+pattern1 = [{"LOWER": "amazon"}, {"IS_TITLE": True, "POS": "NOUN"}]
 pattern2 = [{"LOWER": "ad"}, {"TEXT": "-"}, {"LOWER": "free"}, {"POS": "NOUN"}]
 
 # matcherを初期化し、パターンを追加する
