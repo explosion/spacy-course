@@ -2,6 +2,9 @@ __tests__
 .vscode
 __pycache__
 tmp
+train.spacy
+dev.spacy
+config.cfg
 
 # Logs
 logs

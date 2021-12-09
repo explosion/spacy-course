@@ -1,6 +1,6 @@
 def test():
     assert (
-        "span1.similarity(span2)" or "span2.similarity(span1)" in __solution__
+        "span1.similarity(span2)" in __solution__ or "span2.similarity(span1)" in __solution__
     ), "Are you comparing the similarity of the two spans?"
     assert span1.text == "great restaurant", "Did you generate span1 correctly?"
     assert span2.text == "really nice bar", "Did you generate span2 correctly?"

@@ -2,17 +2,17 @@
 type: slides
 ---
 
-# Statistical models
+# Trained pipelines
 
 Notes: Let's add some more power to the `nlp` object!
 
-In this lesson, you'll learn about spaCy's statistical models.
+In this lesson, you'll learn about spaCy's trained pipelines.
 
 ---
 
-# What are statistical models?
+# What are trained pipelines?
 
-- Enable spaCy to predict linguistic attributes _in context_
+- Models that enable spaCy to predict linguistic attributes _in context_
   - Part-of-speech tags
   - Syntactic dependencies
   - Named entities
@@ -23,17 +23,18 @@ Notes: Some of the most interesting things you can analyze are context-specific:
 for example, whether a word is a verb or whether a span of text is a person
 name.
 
-Statistical models enable spaCy to make predictions in context. This usually
-includes part-of speech tags, syntactic dependencies and named entities.
+Trained pipeline components have statistical models that enable spaCy to make
+predictions in context. This usually includes part-of speech tags, syntactic
+dependencies and named entities.
 
-Models are trained on large datasets of labeled example texts.
+Pipelines are trained on large datasets of labeled example texts.
 
 They can be updated with more examples to fine-tune their predictions – for
 example, to perform better on your specific data.
 
 ---
 
-# Model Packages
+# Pipeline Packages
 
 <img src="/package.png" alt="A package with the label en_core_web_sm" width="30%" align="right" />
 
@@ -49,20 +50,22 @@ nlp = spacy.load("en_core_web_sm")
 
 - Binary weights
 - Vocabulary
-- Meta information (language, pipeline)
+- Meta information
+- Configuration file
 
-Notes: spaCy provides a number of pre-trained model packages you can download
+Notes: spaCy provides a number of trained pipeline packages you can download
 using the `spacy download` command. For example, the "en_core_web_sm" package is
-a small English model that supports all core capabilities and is trained on web
-text.
+a small English pipeline that supports all core capabilities and is trained on
+web text.
 
-The `spacy.load` method loads a model package by name and returns an `nlp`
+The `spacy.load` method loads a pipeline package by name and returns an `nlp`
 object.
 
 The package provides the binary weights that enable spaCy to make predictions.
 
-It also includes the vocabulary, and meta information to tell spaCy which
-language class to use and how to configure the processing pipeline.
+It also includes the vocabulary, meta information about the pipeline and the
+configuration file used to train it. It tells spaCy which language class to use
+and how to configure the processing pipeline.
 
 ---
 
@@ -71,7 +74,7 @@ language class to use and how to configure the processing pipeline.
 ```python
 import spacy
 
-# Load the small English model
+# Load the small English pipeline
 nlp = spacy.load("en_core_web_sm")
 
 # Process a text
@@ -93,7 +96,7 @@ pizza NOUN
 Notes: Let's take a look at the model's predictions. In this example, we're
 using spaCy to predict part-of-speech tags, the word types in context.
 
-First, we load the small English model and receive an `nlp` object.
+First, we load the small English pipeline and receive an `nlp` object.
 
 Next, we're processing the text "She ate the pizza".
 
@@ -179,7 +182,7 @@ Notes: Named entities are "real world objects" that are assigned a name – for
 example, a person, an organization or a country.
 
 The `doc.ents` property lets you access the named entities predicted by the
-model.
+named entity recognition model.
 
 It returns an iterator of `Span` objects, so we can print the entity text and
 the entity label using the `.label_` attribute.
@@ -229,5 +232,5 @@ The same works for part-of-speech tags and dependency labels.
 
 # Let's practice!
 
-Notes: Now it's your turn. Let's take a look at spaCy's statistical models and
-their predictions.
+Notes: Now it's your turn. Let's take a look at spaCy's trained pipelines and
+their models' predictions.

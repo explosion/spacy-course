@@ -15,8 +15,8 @@ spaCy mit Strings umgeht.
 
 # Gemeinsames Vokabular und String-Speicher (1)
 
-- `Vocab`: speichert gemeinsame Daten mehrerer Dokumente
-- Um Arbeitsspeicher zu sparen enkodiert spaCy alle Strings zu **Hashwerte**
+- `Vocab`: Speichert gemeinsame Daten mehrerer Dokumente
+- Um Arbeitsspeicher zu sparen, enkodiert spaCy alle Strings zu **Hashwerten**
 - Strings werden nur einmal in der `StringStore` via `nlp.vocab.strings`
   gespeichert
 - String-Speicher: **Zuordnungstabelle** in beide Richtungen
@@ -39,19 +39,19 @@ Notes: spaCy speichert alle gemeinsamen Daten in einem Vokabular, dem Vocab.
 
 Dies beinhaltet Wörter, aber auch die Labels für Tags und Entitäten.
 
-Um Arbeitsspeicher zu sparen, werden alle Strings in Hash-IDs enkodiert. Wenn
+Um Arbeitsspeicher zu sparen, werden alle Strings zu Hash-IDs kodiert. Wenn
 ein Wort mehr als einmal vorkommt, müssen wir es nicht jedes Mal speichern.
 
 Stattdessen benutzt spaCy eine Hashfunktion, um eine ID zu generieren und
 speichert den String nur einmal im String-Speicher, der `StringStore`. Der
-Stringspeicher ist über `nlp.vocab.strings` erreichbar.
+String-Speicher ist über `nlp.vocab.strings` erreichbar.
 
 Er ist eine Zuordnungstabelle, die in beide Richtungen funktioniert. Man kann
 einen String nachschlagen und erhält den zugehörigen Hash, oder man kann einen
 Hash nachschlagen, um den String zu erhalten. Intern kommuniziert spaCy nur in
 Hash-IDs.
 
-Hash IDs können allerdings nicht umgekehrt werden. Wenn ein Wort nicht im
+Hash-IDs können allerdings nicht umgekehrt werden. Wenn ein Wort nicht im
 Vokabular ist, ist es nicht möglich, seinen String zu erhalten. Daher müssen wir
 immer das gemeinsame Vokabular weitergeben.
 
@@ -136,7 +136,7 @@ abhängig vom Kontext.
 
 Notes: Hier ist ein Beispiel.
 
-Das Doc enthält Wörter im Kontext – in diesem Fall, die Tokens "Ich", "liebe"
+Das `Doc` enthält Wörter im Kontext – in diesem Fall, die Tokens "Ich", "liebe"
 und "Kaffee" mit ihren Wortarten und Beziehungen.
 
 Jeder einzelne Token ist einem Lexem zugeordnet, das die Hash-ID des Wortes
@@ -147,5 +147,5 @@ Hash im String-Speicher nach.
 
 # Los geht's!
 
-Notes: Das klang alles ein bisschen abstrakt – lass uns daher einmal das
-Vokabular und den String-Speicher in der Praxis anschauen.
+Notes: Das klang alles ein bisschen abstrakt – schauen wir uns das
+Vokabular und den String-Speicher daher einmal in der Praxis an.

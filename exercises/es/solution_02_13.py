@@ -20,8 +20,8 @@ pattern2 = [{"LOWER": "pac-man"}, {"IS_TITLE": True}]
 
 # Inicializa el Matcher y añade los patrones
 matcher = Matcher(nlp.vocab)
-matcher.add("PATTERN1", None, pattern1)
-matcher.add("PATTERN2", None, pattern2)
+matcher.add("PATTERN1", [pattern1])
+matcher.add("PATTERN2", [pattern2])
 
 # Itera sobre los resultados
 for match_id, start, end in matcher(doc):

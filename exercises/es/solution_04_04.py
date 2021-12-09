@@ -1,27 +1,23 @@
 import json
+import spacy
 from spacy.matcher import Matcher
-from spacy.lang.es import Spanish
+from spacy.tokens import Span, DocBin
 
 with open("exercises/es/adidas.json", encoding="utf8") as f:
     TEXTS = json.loads(f.read())
 
-nlp = Spanish()
+nlp = spacy.blank("es")
 matcher = Matcher(nlp.vocab)
+# Agrega patrones al matcher
 pattern1 = [{"LOWER": "adidas"}, {"LOWER": "zx"}]
 pattern2 = [{"LOWER": "adidas"}, {"IS_DIGIT": True}]
-matcher.add("ROPA", None, pattern1, pattern2)
-
-TRAINING_DATA = []
-
-# Crea un objeto Doc para cada texto en TEXTS
+matcher.add("ROPA", [pattern1, pattern2])
+docs = []
 for doc in nlp.pipe(TEXTS):
-    # Encuentra en el doc y crea una lista de los spans resultantes
-    spans = [doc[start:end] for match_id, start, end in matcher(doc)]
-    # Obtén los tuples (carácter de inicio, carácter del final, label) resultantes
-    entities = [(span.start_char, span.end_char, "ROPA") for span in spans]
-    # Da formato a los resultados como tuples con (doc.text, entidades)
-    training_example = (doc.text, {"entities": entities})
-    # Añade el ejemplo a los datos de entrenamiento
-    TRAINING_DATA.append(training_example)
+    matches = matcher(doc)
+    spans = [Span(doc, start, end, label=match_id) for match_id, start, end in matches]
+    doc.ents = spans
+    docs.append(doc)
 
-print(*TRAINING_DATA, sep="\n")
+doc_bin = DocBin(docs=docs)
+doc_bin.to_disk("./train.spacy")

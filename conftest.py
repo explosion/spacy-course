@@ -1,3 +1,4 @@
+from typing import List, Tuple, Optional, Iterator
 import pytest
 import shutil
 from pathlib import Path
@@ -24,22 +25,21 @@ def clean_underscore():
     Underscore.token_extensions = {}
 
 
-
-def format_test(name, template, test, solution):
+def format_test(name: str, template: str, test: str, solution: str) -> str:
     full_code = template.replace("${solution}", solution).replace("${test}", test)
     # Need to indent the lines to fit it into test function – can probably be less hacky
     indented = "\n".join(["    " + line for line in full_code.split("\n")])
     return f"def test_{name}():\n{indented}"
 
 
-def get_source_files(lang):
+def get_source_files(langs: List[str]) -> Iterator[Tuple[str, Path, Optional[Path]]]:
     exercises_path = Path(EXERCISES_DIR)
     if not exercises_path.exists():
         msg.fail(f"Can't find exercises directory: {EXERCISES_DIR}", exits=1)
     for lang_path in exercises_path.iterdir():
         if lang_path.is_dir():
             lang_name = lang_path.stem
-            if lang and lang_name != lang:
+            if langs and lang_name not in langs:
                 continue
             for py_file in lang_path.iterdir():
                 if py_file.name.startswith("test_"):
@@ -49,7 +49,9 @@ def get_source_files(lang):
                         if py_file.name == GENERAL_TEST:
                             yield (lang_name, py_file, None)
                         else:
-                            msg.warn(f"Didn't find solution for test: {py_file.stem} ({lang_path})")
+                            msg.warn(
+                                f"Didn't find solution for test: {py_file.stem} ({lang_path})"
+                            )
                     else:
                         yield (lang_name, py_file, solution_file)
 
@@ -61,7 +63,8 @@ def pytest_addoption(parser):
 def pytest_sessionstart(session):
     lang = session.config.getoption(LANG_CLI_ARG)
     if lang:
-        msg.info(f"Running only tests for '{lang}'")
+        lang = [lang_code.strip() for lang_code in lang.split(",")]
+        msg.info(f"Running only tests for {lang}")
     test_dir = Path(TESTS_DIR)
     if test_dir.exists():
         shutil.rmtree(str(test_dir))

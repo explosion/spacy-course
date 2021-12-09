@@ -13,7 +13,7 @@ doc = nlp(text)
 
 # Itera sobre las entidades
 for ent in doc.ents:
-    # Imprime en pantalla el texto de la entidad y su label
+    # Imprime en pantalla el texto de la entidad y su etiqueta
     print(ent.text, ent.label_)
 
 # Obtén el span para "adidas zx"

@@ -1,7 +1,7 @@
-from spacy.lang.ja import Japanese
+import spacy
 from spacy.tokens import Span
 
-nlp = Japanese()
+nlp = spacy.blank("ja")
 
 # メソッドを定義
 def to_html(span, tag):

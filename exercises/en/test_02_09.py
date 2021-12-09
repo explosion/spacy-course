@@ -1,7 +1,7 @@
 def test():
     assert (
         'spacy.load("en_core_web_md")' in __solution__
-    ), "Are you loading the medium model correctly?"
+    ), "Are you loading the medium pipeline correctly?"
     assert "doc[1].vector" in __solution__, "Are you getting the correct vector?"
     __msg__.good(
         "Well done! In the next exercise, you'll be using spaCy to predict "

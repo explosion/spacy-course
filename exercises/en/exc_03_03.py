@@ -1,6 +1,6 @@
 import spacy
 
-# Load the en_core_web_sm model
+# Load the en_core_web_sm pipeline
 nlp = ____
 
 # Print the names of the pipeline components

@@ -1,6 +1,6 @@
-from spacy.lang.de import German
+import spacy
 
-nlp = German()
+nlp = spacy.blank("de")
 doc = nlp("Ich habe eine Katze")
 
 # Schlage den Hash für das Wort "Katze" nach

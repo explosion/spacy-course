@@ -1,6 +1,6 @@
-from spacy.lang.en import English
+import spacy
 
-nlp = English()
+nlp = spacy.blank("en")
 
 # Process the text
 doc = nlp(

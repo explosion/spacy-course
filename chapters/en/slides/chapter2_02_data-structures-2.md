@@ -14,8 +14,8 @@ and `Span`.
 
 ```python
 # Create an nlp object
-from spacy.lang.en import English
-nlp = English()
+import spacy
+nlp = spacy.blank("en")
 
 # Import the Doc class
 from spacy.tokens import Doc

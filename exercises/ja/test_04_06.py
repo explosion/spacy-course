@@ -1,5 +1,5 @@
 def test():
-    assert 'spacy.blank("ja")' in __solution__, "空の日本語モデルを作成しましたか？"
+    assert 'spacy.blank("ja")' in __solution__, "空の日本語パイプラインを作成しましたか？"
     assert (
         len(nlp.pipe_names) == 1 and nlp.pipe_names[0] == "ner"
     ), "固有表現抽出器をパイプラインに追加しましたか？"

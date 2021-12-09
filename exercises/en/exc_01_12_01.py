@@ -15,7 +15,7 @@ doc = nlp(
 pattern = [{"TEXT": ____}, {"IS_DIGIT": ____}]
 
 # Add the pattern to the matcher and apply the matcher to the doc
-matcher.add("IOS_VERSION_PATTERN", None, pattern)
+matcher.add("IOS_VERSION_PATTERN", [pattern])
 matches = matcher(doc)
 print("Total matches found:", len(matches))
 

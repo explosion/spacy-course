@@ -1,6 +1,6 @@
 import spacy
 
-# Lade das Modell "de_core_news_sm"
+# Lade die Pipeline "de_core_news_sm"
 nlp = ____
 
 # Drucke die Namen der Pipeline-Komponenten

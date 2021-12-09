@@ -31,38 +31,47 @@ Notes: テキストがトークン化されて `Doc` オブジェクトが作成
 # コンポーネントを解剖する(1)
 
 - `Doc` を受け取り、それを更新して返す関数
+- `Language.component` デコレータで登録
 - `nlp.add_pipe` メソッドを使って追加することができます
 
 ```python
-def custom_component(doc):
+from spacy.language import Language
+
+@Language.component("custom_component")
+def custom_component_function(doc):
     # ここでdocに対して何か処理をする
     return doc
 
-nlp.add_pipe(custom_component)
+nlp.add_pipe("custom_component")
 ```
 
 Notes: 基本的にパイプラインコンポーネントとは、 `Doc` を受け取り、それを更新して返し、パイプライン内の次のコンポーネントで処理できるようにする関数または呼び出し可能なオブジェクトです。
 
-コンポーネントは`nlp.add_pipe`を用いてパイプラインに追加することができます。このメソッドは少なくとも1つの引数である、コンポーネント関数を取ります。
+  spaCy に自作のコンポーネントを使うため、`@Language.component`デコレータでコンポーネントを登録します。デコレータを関数の前の行に書き足します。
+
+登録済みのコンポーネントは`nlp.add_pipe`を使ってパイプラインに追加します。このメソッドを呼び出すとき、少なくともコンポーネントの名前を指定する必要があります。
 
 ---
 
 # コンポーネントを解剖する(2)
 
 ```python
-def custom_component(doc):
+from spacy.language import Language
+
+@Language.component("custom_component")
+def custom_component_function(doc):
     # ここでdocに対して何か処理をする
     return doc
 
-nlp.add_pipe(custom_component)
+nlp.add_pipe("custom_component")
 ```
 
 | 引数 | 説明 | 例 |
 | -------- | -------------------- | ----------------------------------------- |
-| `last`   | `True`の場合、最後に追加  | `nlp.add_pipe(component, last=True)`      |
-| `first`  | `True`の場合、最初に追加 | `nlp.add_pipe(component, first=True)`     |
-| `before` | 特定のコンポーネントの前に追加 | `nlp.add_pipe(component, before="ner")`   |
-| `after`  | 特定のコンポーネントのあとに追加 | `nlp.add_pipe(component, after="tagger")` |
+| `last`   | `True`の場合、最後に追加  | `nlp.add_pipe("component", last=True)`      |
+| `first`  | `True`の場合、最初に追加 | `nlp.add_pipe("component", first=True)`     |
+| `before` | 特定のコンポーネントの前に追加 | `nlp.add_pipe("component", before="ner")`   |
+| `after`  | 特定のコンポーネントのあとに追加 | `nlp.add_pipe("component", after="tagger")` |
 
 Notes: コンポーネントをパイプラインに追加する**場所**を指定するには、以下のキーワード引数を使用します。
 
@@ -84,26 +93,27 @@ Notes: コンポーネントをパイプラインに追加する**場所**を指
 nlp = spacy.load("ja_core_news_sm")
 
 # カスタムコンポーネントを定義
-def custom_component(doc):
+@Language.component("custom_component")
+def custom_component_function(doc):
     # docの長さをプリント
     print("docの長さ:", len(doc))
     # docオブジェクトを返す
     return doc
 
 # パイプラインの最初にコンポーネントを追加
-nlp.add_pipe(custom_component, first=True)
+nlp.add_pipe("custom_component", first=True)
 
 # パイプラインのコンポーネント名をプリント
 print("Pipeline:", nlp.pipe_names)
 ```
 
 ```out
-Pipeline: ['custom_component', 'tagger', 'parser', 'ner']
+Pipeline: ['custom_component', 'tok2vec', 'morphologizer', 'parser', 'attribute_ruler', 'ner']
 ```
 
 Notes: 簡単なコンポーネントの例をみていきます。
 
-まずは小サイズの日本語モデルから始めます。
+まずは小サイズの日本語パイプラインから始めます。
 
 次にコンポーネントを定義します。 `Doc` オブジェクトを受け取り、それを返す関数を書きます。
 
@@ -112,11 +122,11 @@ Notes: 簡単なコンポーネントの例をみていきます。
 パイプラインの次のコンポーネントで処理する必要があるので、docを返すことを忘れないでください。
 トークン化によって作成された `doc` はすべてのコンポーネントに渡されるので、すべてのコンポーネントが更新されたdocを返すことが重要です。
 
+spaCy に新しいコンポーネントを登録するために、`@Language.component`デコレータを使って、関数を`custom_component`として登録します。
+
 これで、パイプラインにコンポーネントを追加することができるようになりました。 `first=True` を設定して、トークナイザの直後に追加してみましょう。
 
 パイプラインのコンポーネント名を表示すると、カスタムコンポーネントが最初に表示されます。これは、 `doc` を処理するときに最初に適用されることを意味します。
-
-（v2.3現在、日本語モデルは `tagger` コンポーネントが含まれにていないため、出力は上記と異なる場合があります）
 
 ---
 
@@ -127,7 +137,8 @@ Notes: 簡単なコンポーネントの例をみていきます。
 nlp = spacy.load("ja_core_news_sm")
 
 # カスタムコンポーネントを定義
-def custom_component(doc):
+@Language.component("custom_component")
+def custom_component_function(doc):
 
     # docの長さをプリント
     print("docの長さ:", len(doc))
@@ -136,7 +147,7 @@ def custom_component(doc):
     return doc
 
 # コンポーネントをパイプラインの先頭に追加
-nlp.add_pipe(custom_component, first=True)
+nlp.add_pipe("custom_component", first=True)
 
 # テキストを処理
 doc = nlp("よろしくお願いします！")

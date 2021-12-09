@@ -16,7 +16,7 @@ matcher = Matcher(nlp.vocab)
 pattern = [{"TEXT": "adidas"}, {"TEXT": "zx"}]
 
 # Añade el patrón al matcher
-matcher.add("ADIDAS_ZX_PATTERN", None, pattern)
+matcher.add("ADIDAS_ZX_PATTERN", [pattern])
 
 # Usa al matcher sobre el doc
 matches = matcher(doc)

@@ -1,6 +1,6 @@
-from spacy.lang.en import English
+import spacy
 
-nlp = English()
+nlp = spacy.blank("en")
 doc = nlp("David Bowie is a PERSON")
 
 # Look up the hash for the string label "PERSON"

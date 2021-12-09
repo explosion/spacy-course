@@ -21,6 +21,7 @@ class Juniper extends React.Component {
         kernelType: 'python3',
         lang: 'python',
         theme: 'default',
+        lineWrapping: false,
         isolateCells: true,
         useBinder: true,
         storageKey: 'juniper',
@@ -49,6 +50,7 @@ class Juniper extends React.Component {
         kernelType: PropTypes.string,
         lang: PropTypes.string,
         theme: PropTypes.string,
+        lineWrapping: PropTypes.bool,
         isolateCells: PropTypes.bool,
         useBinder: PropTypes.bool,
         useStorage: PropTypes.bool,
@@ -80,6 +82,7 @@ class Juniper extends React.Component {
             value: this.props.children.trim(),
             mode: this.props.lang,
             theme: this.props.theme,
+            lineWrapping: this.props.lineWrapping,
         })
         this.setState({ cm })
 

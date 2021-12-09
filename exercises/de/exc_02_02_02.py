@@ -1,6 +1,6 @@
-from spacy.lang.de import German
+import spacy
 
-nlp = German()
+nlp = spacy.blank("de")
 doc = nlp("David Bowie hat das Label PER")
 
 # Schlage den Hash für das String-Label "PER" nach

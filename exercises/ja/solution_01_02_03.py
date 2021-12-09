@@ -1,8 +1,8 @@
-# スペイン語の言語クラスをインポート
-from spacy.lang.es import Spanish
+# spacyをインポート
+import spacy
 
-# nlpオブジェクトを作成
-nlp = Spanish()
+# スペイン語のnlpオブジェクトを作成
+nlp = spacy.blank("es")
 
 # テキストを処理（スペイン語で「おげんきですか？」の意味）
 doc = nlp("¿Cómo estás?")

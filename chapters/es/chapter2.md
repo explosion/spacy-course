@@ -11,7 +11,7 @@ type: chapter
 id: 2
 ---
 
-<exercise id="1" title="Estructuras de datos (1)" type="slides,video">
+<exercise id="1" title="Estructuras de datos (1)" type="slides">
 
 <slides source="chapter2_01_data-structures-1" start="13:48" end="15:55">
 </slides>
@@ -27,15 +27,16 @@ id: 2
 
 <codeblock id="02_02_01">
 
-- Puedes usar el string store en `nlp.vocab.strings` como un diccionario de
-  Python normal. Por ejemplo, `nlp.vocab.strings["unicornio"]` devolverá el hash
+- Puedes usar el string store en `nlp.vocab.strings` como un diccionario normal
+  de Python. Por ejemplo, `nlp.vocab.strings["unicornio"]` devolverá el hash
   y buscar el hash devolverá el string `"unicornio"`.
 
 </codeblock>
 
 ### Parte 2
 
-- Busca el label del string "PER" en `nlp.vocab.strings` para obtener el hash.
+- Busca la etiqueta del string "PER" en `nlp.vocab.strings` para obtener el
+  hash. 
 - Busca el hash para obtener el string.
 
 <codeblock id="02_02_02">
@@ -53,12 +54,11 @@ id: 2
 ¿Porqué devuelve un error este código?
 
 ```python
-from spacy.lang.es import Spanish
-from spacy.lang.de import German
+import spacy
 
 # Crea un objeto nlp de español y uno de alemán
-nlp = Spanish()
-nlp_de = German()
+nlp = spacy.blank("es")
+nlp_de = spacy.blank("de")
 
 # Obtén el ID para el string "Bowie"
 bowie_id = nlp.vocab.strings["Bowie"]
@@ -96,7 +96,7 @@ existente, incluyendo el vocabulario.
 
 </exercise>
 
-<exercise id="4" title="Estructuras de datos (2)" type="slides,video">
+<exercise id="4" title="Estructuras de datos (2)" type="slides">
 
 <slides source="chapter2_02_data-structures-2" start="16:06" end="17:56">
 </slides>
@@ -116,7 +116,7 @@ existente, incluyendo el vocabulario.
 <codeblock id="02_05_01">
 
 La clase `Doc` recibe 3 argumentos: el vocabulario compartido (generalmente
-`nlp.vocab`), una lista de `words` y una lista de `spaces`, ( valores booleanos
+`nlp.vocab`), una lista de `words` y una lista de `spaces`, (valores booleanos
 que indican si una palabra está seguida de un espacio o no).
 
 </codeblock>
@@ -222,10 +222,10 @@ los atributos nativos de los tokens para mantener la consistencia.
 
 </opt>
 
-<opt text='<code>pos_</code> es el atributo equivocado para extraer nombres propios. Debería usar <code>tag_</code> y los labels <code>"NNP"</code> y <code>"NNS"</code> en su lugar.'>
+<opt text='<code>pos_</code> es el atributo equivocado para extraer nombres propios. Debería usar <code>tag_</code> y las etiquetas <code>"NNP"</code> y <code>"NNS"</code> en su lugar.'>
 
-El atributo `.pos_` devuelve el part-of-speech tag grueso y `PROPN` es el tag
-correcto para revisar los nombres propios.
+El atributo `.pos_` devuelve el part-of-speech tag grueso y `PROPN` es la
+etiqueta correcta para revisar los nombres propios.
 
 </opt>
 
@@ -233,8 +233,8 @@ correcto para revisar los nombres propios.
 
 ### Parte 2
 
-- Reescribe el código y usa los atributos nativos de los tokens en vez de listas
-  de `token_texts` y `pos_tags`.
+- Reescribe el código y usa los atributos nativos de los tokens en vez de
+  listas de `token_texts` y `pos_tags`.
 - Has un loop sobre cada `token` en el `doc` y revisa el atributo `token.pos_`.
 - Usa `doc[token.i + 1]` para revisar el token siguiente y su atributo `.pos_`.
 - Si encuentras un nombre propio antes de un verbo imprime en pantalla su
@@ -246,14 +246,14 @@ correcto para revisar los nombres propios.
   strings por adelantado!
 - En vez de iterar sobre los `pos_tags`, has un loop sobre cada `token` en el
   `doc` y revisa el atributo `token.pos_`.
-- Para chequear si el próximo token es un verbo, mira el
+- Para comprobar si el próximo token es un verbo, mira el
   `doc[token.i + 1].pos_`.
 
 </codeblock>
 
 </exercise>
 
-<exercise id="8" title="Word vectors y similitud semántica" type="slides,video">
+<exercise id="8" title="Word vectors y similitud semántica" type="slides">
 
 <slides source="chapter2_03_word-vectors-similarity" start="18:075" end="21:508">
 </slides>
@@ -286,8 +286,8 @@ En este ejercicio usarás el método `similarity` de spaCy para comparar objetos
 
 ### Parte 1
 
-- Usa el método `doc.similarity` para comparar el `doc1` con el `doc2` e imprime
-  el resultado en pantalla.
+- Usa el método `doc.similarity` para comparar el `doc1` con el `doc2` e
+  imprime el resultado en pantalla.
 
 <codeblock id="02_10_01">
 
@@ -317,7 +317,7 @@ En este ejercicio usarás el método `similarity` de spaCy para comparar objetos
 
 </exercise>
 
-<exercise id="11" title="Combinando modelos y reglas" type="slides,video">
+<exercise id="11" title="Combinando modelos y reglas" type="slides">
 
 <slides source="chapter2_04_models-rules" start="22:015" end="25:308">
 </slides>

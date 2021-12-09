@@ -1,7 +1,7 @@
-from spacy.lang.en import English
+import spacy
 from spacy.tokens import Span
 
-nlp = English()
+nlp = spacy.blank("en")
 
 # Define the method
 def to_html(span, tag):

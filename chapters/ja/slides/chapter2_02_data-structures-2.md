@@ -13,8 +13,8 @@ Notes: さて、語彙データと文字列ストアについて紹介したの�
 
 ```python
 # nlpオブジェクトを作成
-from spacy.lang.ja import Japanese
-nlp = Japanese()
+import spacy
+nlp = spacy.blank("ja")
 
 # Docクラスをインポート
 from spacy.tokens import Doc

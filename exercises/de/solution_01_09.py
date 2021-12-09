@@ -2,7 +2,7 @@ import spacy
 
 nlp = spacy.load("de_core_news_sm")
 
-text = "Apple: Modell IPhone SE kommt im Sommer"
+text = "Apple: neues Modell X Pro kommt im Sommer"
 
 # Verarbeite den Text
 doc = nlp(text)
@@ -12,8 +12,8 @@ for ent in doc.ents:
     # Drucke Text und Label der Entität
     print(ent.text, ent.label_)
 
-# Erstelle eine Span für "iPhone SE"
-iphone_se = doc[3:5]
+# Erstelle eine Span für "X Pro"
+x_pro = doc[4:6]
 
 # Drucke den Text der Span
-print("Fehlende Entität:", iphone_se.text)
+print("Fehlende Entität:", x_pro.text)

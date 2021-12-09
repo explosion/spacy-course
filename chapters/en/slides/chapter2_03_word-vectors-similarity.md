@@ -7,8 +7,8 @@ type: slides
 Notes: In this lesson, you'll learn how to use spaCy to predict how similar
 documents, spans or tokens are to each other.
 
-You'll also learn how to use word vectors and how to take advantage of
-them in your NLP application.
+You'll also learn how to use word vectors and how to take advantage of them in
+your NLP application.
 
 ---
 
@@ -17,10 +17,10 @@ them in your NLP application.
 - `spaCy` can compare two objects and predict similarity
 - `Doc.similarity()`, `Span.similarity()` and `Token.similarity()`
 - Take another object and return a similarity score (`0` to `1`)
-- **Important:** needs a model that has word vectors included, for example:
-  - ✅ `en_core_web_md` (medium model)
-  - ✅ `en_core_web_lg` (large model)
-  - 🚫 **NOT** `en_core_web_sm` (small model)
+- **Important:** needs a pipeline that has word vectors included, for example:
+  - ✅ `en_core_web_md` (medium)
+  - ✅ `en_core_web_lg` (large)
+  - 🚫 **NOT** `en_core_web_sm` (small)
 
 Notes: spaCy can compare two objects and predict how similar they are – for
 example, documents, spans or single tokens.
@@ -30,19 +30,19 @@ another object and returns a floating point number between 0 and 1, indicating
 how similar they are.
 
 One thing that's very important: In order to use similarity, you need a larger
-spaCy model that has word vectors included.
+spaCy pipeline that has word vectors included.
 
-For example, the medium or large English model – but _not_ the small one. So if
-you want to use vectors, always go with a model that ends in "md" or "lg". You
-can find more details on this in the
-[models documentation](https://spacy.io/models).
+For example, the medium or large English pipeline – but _not_ the small one. So
+if you want to use vectors, always go with a pipeline that ends in "md" or "lg".
+You can find more details on this in the
+[documentation](https://spacy.io/models).
 
 ---
 
 # Similarity examples (1)
 
 ```python
-# Load a larger model with vectors
+# Load a larger pipeline with vectors
 nlp = spacy.load("en_core_web_md")
 
 # Compare two documents
@@ -70,7 +70,7 @@ print(token1.similarity(token2))
 Notes: Here's an example. Let's say we want to find out whether two documents
 are similar.
 
-First, we load the medium English model, "en_core_web_md".
+First, we load the medium English pipeline, "en_core_web_md".
 
 We can then create two doc objects and use the first doc's `similarity` method
 to compare it to the second.
@@ -132,7 +132,7 @@ The score returned here is 0.61, so it's determined to be kind of similar.
 - Multi-dimensional meaning representations of words
 - Generated using an algorithm like
   [Word2Vec](https://en.wikipedia.org/wiki/Word2vec) and lots of text
-- Can be added to spaCy's statistical models
+- Can be added to spaCy's pipelines
 - Default: cosine similarity, but can be adjusted
 - `Doc` and `Span` vectors default to average of token vectors
 - Short phrases are better than long documents with many irrelevant words
@@ -145,7 +145,7 @@ of meanings of words.
 You might have heard of Word2Vec, which is an algorithm that's often used to
 train word vectors from raw text.
 
-Vectors can be added to spaCy's statistical models.
+Vectors can be added to spaCy's pipelines.
 
 By default, the similarity returned by spaCy is the cosine similarity between
 two vectors – but this can be adjusted if necessary.
@@ -161,7 +161,7 @@ irrelevant words.
 # Word vectors in spaCy
 
 ```python
-# Load a larger model with vectors
+# Load a larger pipeline with vectors
 nlp = spacy.load("en_core_web_md")
 
 doc = nlp("I have a banana")
@@ -186,7 +186,7 @@ print(doc[3].vector)
 
 Notes: To give you an idea of what those vectors look like, here's an example.
 
-First, we load the medium model again, which ships with word vectors.
+First, we load the medium pipeline again, which ships with word vectors.
 
 Next, we can process a text and look up a token's vector using the `.vector`
 attribute.

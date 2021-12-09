@@ -19,8 +19,8 @@ pattern2 = [{"LOWER": "ad"}, {"TEXT": "-"}, {"LOWER": "free"}, {"POS": "NOUN"}]
 
 # Initialize the Matcher and add the patterns
 matcher = Matcher(nlp.vocab)
-matcher.add("PATTERN1", None, pattern1)
-matcher.add("PATTERN2", None, pattern2)
+matcher.add("PATTERN1", [pattern1])
+matcher.add("PATTERN2", [pattern2])
 
 # Iterate over the matches
 for match_id, start, end in matcher(doc):
