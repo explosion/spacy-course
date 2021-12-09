@@ -140,7 +140,8 @@ class CodeBlock extends React.Component {
                                                         <>
                                                             <Button onClick={() => runCode()}>
                                                                 {isCommand
-                                                                    ? uiText.runCommand
+                                                                    ? uiText.runCommand ||
+                                                                      uiText.runCode
                                                                     : uiText.runCode}
                                                             </Button>
                                                             {testFile && (
