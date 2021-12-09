@@ -71,7 +71,7 @@ import spacy
 # Matcherをインポート
 from spacy.matcher import Matcher
 
-# モデルをロードし、nlpオブジェクトを作成
+# パイプラインをロードし、nlpオブジェクトを作成
 nlp = spacy.load("ja_core_news_sm")
 
 # matcherを共有語彙データを用いて初期化
@@ -90,7 +90,7 @@ matches = matcher(doc)
 
 Notes: パターンを使うには、まず最初に`spacy.matcher`からMatcherをインポートします。
 
-そしてモデルをロードし、`nlp`オブジェクトを作成します。
+そしてパイプラインをロードし、`nlp`オブジェクトを作成します。
 
 Matcherは共有語彙データ`nlp.vocab`を用いて初期化します。
 これについては後ほど詳しくみていきます。とりあえず、このようにして初期化する必要があると覚えておいてください。
