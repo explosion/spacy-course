@@ -129,11 +129,11 @@ Notes:
 
 # パイプラインコンポーネントを無効化する
 
-- パイプを一時的に無効にするには `nlp.disable_pipes` を使います。
+- パイプを一時的に無効にするには `nlp.select_pipes` を使います。
 
 ```python
 # パーサを無効化
-with nlp.disable_pipes("parser"):
+with nlp.select_pipes(disable=["parser"]):
     # テキストを処理し、固有表現をプリントする
     doc = nlp(text)
     print(doc.ents)
@@ -142,9 +142,9 @@ with nlp.disable_pipes("parser"):
 - `with`ブロックのあとに復元されます
 - 残りのコンポーネントのみ実行します
 
-Notes: spaCy では、`nlp.disable_pipes` コンテキストマネージャを使用してパイプラインコンポーネントを一時的に無効にすることもできます。
+Notes: spaCy では、`nlp.select_pipes` コンテキストマネージャを使用してパイプラインコンポーネントを一時的に無効にすることもできます。
 
-無効にするパイプラインコンポーネントの文字列名を1つ以上指定します。
+キーワード引数`disable`で無効にするコンポーネント、`enable`で有効にするコンポーネントを指定できます。
 例えば、固有表現抽出機能だけを使って `Doc` を処理したい場合は、一時的にタガーとパーサを無効にします。
 
 `with` ブロックの後、無効化されたパイプラインコンポーネントは自動的に復元されます。

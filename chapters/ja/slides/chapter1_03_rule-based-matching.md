@@ -79,7 +79,7 @@ matcher = Matcher(nlp.vocab)
 
 # パターンをmatcherに追加
 pattern = [{"TEXT": "iPhone"}, {"TEXT": "X"}]
-matcher.add("IPHONE_PATTERN", None, pattern)
+matcher.add("IPHONE_PATTERN", [pattern])
 
 # テキストを処理
 doc = nlp("これから発売されるiPhone Xの発売日がリークした")
@@ -97,8 +97,7 @@ Matcherは共有語彙データ`nlp.vocab`を用いて初期化します。
 
 パターンは、`matcher.add`メソッドを用いて登録します。
 第一引数は、それぞれのパターンを識別するためのユニークIDです。
-第二引数は、任意のコールバック関数です。今は必要ないので、`None`を与えておきます。
-第三引数はパターンです。
+第ニ引数はパターンのリストです。
 
 パターンをマッチさせるには、docオブジェクトに対してmatcherを呼び出します。
 

@@ -1,11 +1,11 @@
 import json
-from spacy.lang.ja import Japanese
+import spacy
 from spacy.tokens import Doc
 
 with open("exercises/ja/bookquotes.json", encoding="utf8") as f:
     DATA = json.loads(f.read())
 
-nlp = Japanese()
+nlp = spacy.blank("ja")
 
 # デフォルト値がNoneのDoc拡張属性「author」を登録
 Doc.set_extension("author", default=None)
