@@ -1,6 +1,6 @@
 def test():
     assert (
-        'spacy.blank("en")' in __solution__
+        'spacy.blank("ja")' in __solution__
     ), "日本語のパイプラインを作成しましたか？"
     assert (
         "DocBin(docs=docs)" in __solution__

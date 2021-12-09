@@ -4,7 +4,7 @@ import spacy
 nlp = spacy.blank("ja")
 
 # テキストを処理
-doc = nlp("私はツリーカンガルーとイルカが好きです。")
+doc = nlp("私はツリーカンガルーとイッカクが好きです。")
 
 # 最初のトークンを選択
 first_token = doc[0]

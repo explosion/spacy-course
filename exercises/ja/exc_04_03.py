@@ -16,5 +16,10 @@ pattern2 = [{____: ____}, {____: ____}]
 
 # パターンをmatcherに追加して、結果をチェックする
 matcher.add("GADGET", None, pattern1, pattern2)
+docs = []
 for doc in nlp.pipe(TEXTS):
-    print([doc[start:end] for match_id, start, end in matcher(doc)])
+    matches = matcher(doc)
+    spans = [Span(doc, start, end, label=match_id) for match_id, start, end in matches]
+    print(spans)
+    doc.ents = spans
+    docs.append(doc)

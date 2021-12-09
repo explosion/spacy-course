@@ -8,11 +8,6 @@ doc = nlp(
     "私には年の離れた小さい弟がいます。彼は、甘い卵焼きが好きです"
 )
 
-# v2.3現在、日本語モデルではdoc.is_taggedが正しく設定されないので、
-# 明示的に設定
-# 参考: https://github.com/explosion/spaCy/issues/5802
-doc.is_tagged = True
-
 # 形容詞と1つまたは2つの名詞からなるパターンを書きます
 pattern = [{"POS": ____}, {"POS": ____}, {"POS": ____, "OP": ____}]
 

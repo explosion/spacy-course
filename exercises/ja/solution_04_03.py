@@ -1,6 +1,7 @@
 import json
-from spacy.matcher import Matcher
 import spacy
+from spacy.matcher import Matcher
+from spacy.tokens import Span
 
 with open("exercises/ja/iphone.json", encoding="utf8") as f:
     TEXTS = json.loads(f.read())
@@ -15,6 +16,12 @@ pattern1 = [{"LOWER": "iphone"}, {"LOWER": "x"}]
 pattern2 = [{"LOWER": "iphone"}, {"IS_DIGIT": True}]
 
 # パターンをmatcherに追加して、結果をチェックする
-matcher.add("GADGET", None, pattern1, pattern2)
+matcher.add("GADGET", [pattern1, pattern2])
+docs = []
 for doc in nlp.pipe(TEXTS):
-    print([doc[start:end] for match_id, start, end in matcher(doc)])
+    matches = matcher(doc)
+    spans = [Span(doc, start, end, label=match_id) for match_id, start, end in matches]
+    print(spans)
+    doc.ents = spans
+    docs.append(doc)
+

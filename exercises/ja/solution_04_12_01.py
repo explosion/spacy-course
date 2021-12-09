@@ -5,8 +5,8 @@ nlp = spacy.blank("ja")
 
 doc1 = nlp("クリエーターのコミュニティづくりを支援するため、RedditはPatreonと提携している")
 doc1.ents = [
-    Span(doc1, 10, 11, label="WEBSITE"),
-    Span(doc1, 12, 13, label="WEBSITE"),
+    Span(doc1, 9, 10, label="WEBSITE"),
+    Span(doc1, 11, 12, label="WEBSITE"),
 ]
 
 doc2 = nlp("ピューディパイはYouTubeの記録を打ち破った")

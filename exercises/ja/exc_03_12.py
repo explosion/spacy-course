@@ -1,5 +1,6 @@
 import json
 import spacy
+from spacy.language import Language
 from spacy.tokens import Span
 from spacy.matcher import PhraseMatcher
 
@@ -11,10 +12,11 @@ with open("exercises/ja/capitals.json", encoding="utf8") as f:
 
 nlp = spacy.blank("ja")
 matcher = PhraseMatcher(nlp.vocab)
-matcher.add("COUNTRY", None, *list(nlp.pipe(COUNTRIES)))
+matcher.add("COUNTRY", list(nlp.pipe(COUNTRIES)))
 
 
-def countries_component(doc):
+@Language.component("countries_component")
+def countries_component_function(doc):
     # すべてのマッチ結果に対して、「GPE」ラベルが付いたスパンを作成しましょう
     matches = matcher(doc)
     doc.ents = [____(____, ____, ____, label=____) for match_id, start, end in matches]
