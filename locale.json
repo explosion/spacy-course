@@ -257,6 +257,7 @@
             "removeFromCompleted": "未完了にする",
             "completed": "完了",
             "submit": "提出",
+            "runCommand": "コマンド実行",
             "correct": "正解です！",
             "incorrect": "不正解です。",
             "showSolution": "解答を見る",
