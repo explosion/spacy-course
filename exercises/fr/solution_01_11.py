@@ -13,7 +13,7 @@ matcher = Matcher(nlp.vocab)
 pattern = [{"TEXT": "e-Méhari"}, {"TEXT": "Courrèges"}]
 
 # Ajoute le motif au matcher
-matcher.add("MEHARI_PATTERN", None, pattern)
+matcher.add("MEHARI_PATTERN", [pattern])
 
 # Utilise le matcher sur le doc
 matches = matcher(doc)

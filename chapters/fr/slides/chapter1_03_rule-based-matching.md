@@ -13,9 +13,9 @@ dans un texte.
 # Pourquoi pas simplement des expressions régulières ?
 
 - Recherche de correspondances sur les objets `Doc`, pas seulement sur les
-  chaines de caractères
+  chaînes de caractères
 - Recherche de correspondances sur les tokens et les attributs des tokens
-- Utilisation des prédictions du modèle
+- Utilisation des prédictions d'un modèle
 - Exemple : "capture" (verbe) vs. "capture" (nom)
 
 Notes: par rapport aux expressions régulières, le matcher fonctionne avec des
@@ -24,7 +24,7 @@ objets `Doc` et `Token` et pas simplement avec des chaines de caractères.
 Il est également plus flexible : tu peux rechercher des textes mais aussi
 d'autres attributs lexicaux.
 
-Tu peux même écrire des règles qui utilisent les prédictions du modèle.
+Tu peux même écrire des règles qui utilisent les prédictions d'un modèle.
 
 Par exemple, trouve le mot "capture" seulement si c'est un verbe, pas un nom.
 
@@ -61,7 +61,7 @@ Dans cet exemple, nous recherchons deux tokens avec les textes "iPhone" et "X".
 Nous pouvons aussi rechercher sur d'autres attributs des tokens. Ici, nous
 recherchons deux tokens dont les formes minuscules sont "iphone" et "x".
 
-Nous pouvons même écrire des motifs utilisant des attributs prédits par le
+Nous pouvons même écrire des motifs utilisant des attributs prédits par un
 modèle. Ici, nous recherchons un token avec le lemme "acheter", plus un nom. Le
 lemme est la forme de base, donc ce motif trouvera des phrases comme "achetant
 du lait" ou "acheta des fleurs".
@@ -76,7 +76,7 @@ import spacy
 # Importe le Matcher
 from spacy.matcher import Matcher
 
-# Charge le modèle et crée l'objet nlp
+# Charge un pipeline et crée l'objet nlp
 nlp = spacy.load("fr_core_news_sm")
 
 # Initialise le matcher avec le vocabulaire partagé
@@ -84,7 +84,7 @@ matcher = Matcher(nlp.vocab)
 
 # Ajoute le motif au matcher
 pattern = [{"TEXT": "iPhone"}, {"TEXT": "12"}]
-matcher.add("IPHONE_PATTERN", None, pattern)
+matcher.add("IPHONE_PATTERN", [pattern])
 
 # Traite un texte
 doc = nlp("La date de sortie du futur iPhone 12 a fuité")
@@ -96,16 +96,15 @@ matches = matcher(doc)
 Notes: Pour utiliser un motif, nous devons d'abord importer le matcher à partir
 de `spacy.matcher`.
 
-Nous chargeons également un modèle et créons l'objet `nlp`.
+Nous chargeons également un pipeline et créons l'objet `nlp`.
 
 Le matcher est initialisé avec le vocabulaire partagé, `nlp.vocab`. Tu en sauras
 plus là dessus par la suite – pour le moment, rappelle-toi seulement de toujours
 le passer en argument.
 
 La méthode `matcher.add` te permet d'ajouter un motif. Le premier argument est
-un ID unique pour identifier quel motif a été trouvé. Le deuxième argument est
-une fonction de rappel optionnelle. Nous n'en avons pas besoin ici, alors nous
-indiquons `None`. Le troisième argument est le motif.
+un ID unique pour identifier quel motif a été trouvé. Le second argument est
+une liste de motifs.
 
 Pour trouver le motif sur un texte, nous pouvons appeler le matcher sur
 n'importe quel doc.

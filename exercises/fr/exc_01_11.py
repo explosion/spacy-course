@@ -13,7 +13,7 @@ matcher = ____(____.____)
 pattern = [____]
 
 # Ajoute le motif au matcher
-____.____("MEHARI_PATTERN", None, ____)
+____.____("MEHARI_PATTERN", ____)
 
 # Utilise le matcher sur le doc
 matches = ____

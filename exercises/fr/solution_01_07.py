@@ -1,6 +1,6 @@
 import spacy
 
-# Charge le modèle "fr_core_news_sm"
+# Charge le pipeline "fr_core_news_sm"
 nlp = spacy.load("fr_core_news_sm")
 
 text = "Apple a été créée en 1976 par Steve Wozniak, Steve Jobs et Ron Wayne."

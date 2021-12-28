@@ -2,8 +2,8 @@
 title: 'Chapitre 1 : Recherche de mots, phrases, noms et concepts'
 description:
   'Ce chapitre te présente les bases du traitement de texte avec spaCy. Tu vas
-  découvrir les structures de données, comment utiliser les modèles
-  statistiques, et comment les employer pour prédire des caractéristiques
+  découvrir les structures de données, comment utiliser les pipelines
+  pré-entraînés, et comment les employer pour prédire des caractéristiques
   linguistiques dans ton texte.'
 prev: null
 next: /chapter2
@@ -21,25 +21,25 @@ id: 1
 <exercise id="2" title="Prise en main">
 
 Commençons à utiliser spaCy ! Dans cet exercice, tu vas pouvoir essayer quelques
-uns des 55+ [langages disponibles](https://spacy.io/usage/models#languages).
+uns des 60+ [langages disponibles](https://spacy.io/usage/models#languages).
 
 ### Partie 1 : Français
 
-- Importe la classe `French` depuis `spacy.lang.fr` et crée l'objet `nlp`.
+- Utilise `spacy.blank` pour créer un objet `nlp` français (`fr`) vierge.
 - Crée un `doc` et affiche son texte.
 
 <codeblock id="01_02_01"></codeblock>
 
 ### Partie 2 : Anglais
 
-- Importe la classe `English` depuis `spacy.lang.en` et crée l'objet `nlp`.
+- Utilise `spacy.blank` pour créer un objet `nlp` français (`en`) vierge.
 - Crée un `doc` et affiche son texte.
 
 <codeblock id="01_02_02"></codeblock>
 
 ### Partie 3 : Espagnol
 
-- Importe la classe `Spanish` depuis `spacy.lang.es` et crée l'objet `nlp`.
+- Utilise `spacy.blank` pour créer un objet `nlp` français (`es`) vierge.
 - Crée un `doc` et affiche son texte.
 
 <codeblock id="01_02_03"></codeblock>
@@ -54,7 +54,7 @@ en apprendre davantage sur le `Doc`, ainsi que sur ses vues `Token` et `Span`.
 
 ### Étape 1
 
-- Importe la classe de langue `French` et crée l'objet `nlp`.
+- Utilise `spacy.blank` pour créer l'objet `nlp` français.
 - Traite le texte et crée un objet `Doc` affecté à une variable `doc`.
 - Sélectionne le premier token du `Doc` et affiche son attribut `text`.
 
@@ -68,7 +68,7 @@ le texte. N'oublie pas qu'en Python le premier indice est 0, et pas 1.
 
 ### Étape 2
 
-- Importe la classe de langue `French` et crée l'objet `nlp`.
+- Utilise `spacy.blank` pour créer l'objet `nlp` français.
 - Traite le texte et crée un objet `Doc` affecté à une variable `doc`.
 - Crée les portions du `Doc` pour les tokens "loups gris" et "loups gris et
   renards roux".
@@ -105,58 +105,57 @@ sur le `doc`. Par exemple, `doc[5]` est le token situé à l'indice 5.
 
 </exercise>
 
-<exercise id="5" title="Modèles statistiques" type="slides">
+<exercise id="5" title="Pipelines entraînés" type="slides">
 
 <slides source="chapter1_02_statistical-models" start="3:12" end="7:01">
 </slides>
 
 </exercise>
 
-<exercise id="6" title="Paquets de modèles" type="choice">
+<exercise id="6" title="Paquets de pipelines" type="choice">
 
-Qu'est-ce qui **n'est pas** inclus dans un paquet de modèle et que tu peux
+Qu'est-ce qui **n'est pas** inclus dans un paquet de pipeline et que tu peux
 charger dans spaCy ?
 
 <choice>
-<opt text="Un fichier de métadonnées contenant le langage, le pipeline et la licence.">
+<opt text="Un fichier de configuration décrivant comment créer le pipeline.">
 
-Tous les modèles comportent un `meta.json` qui définit la langue à initialiser,
-les noms des composants de pipeline à charger ainsi que des méta-informations
-générales comme le nom du modèle, sa version, la licence, les sources de
-données, l'auteur et la justesse des données (si disponibles).
+Tous les pipelines sauvegardés comportent un `config.cfg` qui définit la langue
+à initialiser, les composants de pipeline à charger ainsi que des détails sur la
+manière dont le pipeline a été entraîné et quels paramétrages ont été utilisés.
 
 </opt>
 <opt text="Des poids binaires pour effectuer des prédictions statistiques.">
 
-Les modèles incluent des poids binaires pour prédire les annotations
-linguistiques comme l'étiquetage de partie du discours, les relations de
-dépendance ou les entités nommées.
+Les packages de pipelines incluent des poids binaires pour prédire les
+annotations linguistiques comme l'étiquetage de partie du discours, les
+relations de dépendance ou les entités nommées.
 
 </opt>
-<opt correct="true" text="Les données annotées sur lesquelles le modèle a été entrainé.">
+<opt correct="true" text="Les données annotées sur lesquelles le pipeline a été entrainé.">
 
-Les modèles statistiques permettent de généraliser à partir d'un jeu de données
-d'apprentissage. Une fois entrainés, ils utilisent les poids binaires pour
+Les pipelines entraînés permettent de généraliser à partir d'un jeu de données
+d'apprentissage. Une fois entraînés, ils utilisent les poids binaires pour
 effectuer des prédictions. Il n'est donc pas nécessaire de les fournir avec
 leurs données d'apprentissage.
 
 </opt>
-<opt text="Les Strings du vocabulaire du modèle et leurs hashs.">
+<opt text="Les Strings du vocabulaire du pipeline et leurs hashs.">
 
-Les paquets de modèles contiennent un `strings.json` qui stocke les entrées de
-vocabulaire du modèle et la correspondance avec leurs hashs. Cela permet à spaCy
-de communiquer uniquement en hashes et de chercher la chaine correspondante si
-nécessaire.
+Les packages de pipelines contiennent un `strings.json` qui stocke les entrées
+dans le vocabulaire du pipeline et la correspondance avec leurs hashs. Cela 
+permet à spaCy de communiquer uniquement en hashs et de chercher la chaîne
+correspondante si nécessaire.
 
 </opt>
 </choice>
 
 </exercise>
 
-<exercise id="7" title="Chargement de modèles">
+<exercise id="7" title="Chargement de pipelines">
 
-Les modèles que nous utilisons dans ce cours sont déjà pré-installés. Pour plus
-d'informations sur les modèles statistiques de spaCy et la manière de les
+Les pipelines que nous utilisons dans ce cours sont déjà pré-installés. Pour plus
+d'informations sur les pipelines entraînés de spaCy et la manière de les
 installer sur ta machine, consulte
 [la documentation](https://spacy.io/usage/models).
 
@@ -165,8 +164,8 @@ installer sur ta machine, consulte
 
 <codeblock id="01_07">
 
-Pour charger un modèle, appelle `spacy.load` avec la chaine de caractères qui le
-désigne. Les noms des modèles diffèrent selon les langues et les données sur
+Pour charger un pipeline, appelle `spacy.load` avec la chaîne de caractères qui
+le désigne. Les noms des pipelines diffèrent selon les langues et les données sur
 lesquelles ils ont été entrainés - donc fais attention à utiliser le bon nom.
 
 </codeblock>
@@ -175,7 +174,7 @@ lesquelles ils ont été entrainés - donc fais attention à utiliser le bon nom
 
 <exercise id="8" title="Prédiction d'attributs linguistiques">
 
-Tu vas maintenant pouvoir essayer un des paquets de modèles pré-entrainés de
+Tu vas maintenant pouvoir essayer un des paquets de pipelines pré-entraînés de
 spaCy et le voir effectuer des prédictions. N'hésite pas à le tester avec ton
 propre texte ! Pour savoir ce que signifie une étiquette ou un label, tu peux
 appeler `spacy.explain` dans la boucle. Par exemple : `spacy.explain("PROPN")`
@@ -189,7 +188,7 @@ ou `spacy.explain("GPE")`.
 
 <codeblock id="01_08_01">
 
-Pour créer un `doc`, appelle l'objet `nlp` avec une chaine de caractères en
+Pour créer un `doc`, appelle l'objet `nlp` avec une chaîne de caractères en
 argument. Rappelle-toi que tu dois utiliser les noms d'attributs avec un tiret
 bas pour obtenir les valeurs de la chaine.
 
@@ -203,9 +202,9 @@ bas pour obtenir les valeurs de la chaine.
 
 <codeblock id="01_08_02">
 
-Pour créer un `doc`, appelle l'objet `nlp` avec une chaine de caractères en
+Pour créer un `doc`, appelle l'objet `nlp` avec une chaîne de caractères en
 argument. Rappelle-toi que tu dois utiliser les noms d'attributs avec un tiret
-bas pour obtenir les valeurs de la chaine.
+bas pour obtenir les valeurs de la chaîne.
 
 </codeblock>
 
@@ -213,7 +212,7 @@ bas pour obtenir les valeurs de la chaine.
 
 <exercise id="9" title="Prédiction d'entités nommées dans le contexte">
 
-Les modèles statistiques ne sont pas _toujours_ exacts. La justesse de leurs
+Les modèles sont statistiques et pas _toujours_ exacts. La justesse de leurs
 prédictions dépend du jeu de données d'apprentissage et du texte que tu traites.
 Voyons cela avec un exemple.
 
@@ -226,7 +225,7 @@ Voyons cela avec un exemple.
 
 - Pour créer un `doc`, appelle l'objet `nlp` sur le texte. Les entités nommées
   sont accessibles avec l'attribut `doc.ents`.
-- La manière la plus facile de créer un objet `Span` object est d'utiliser la
+- La manière la plus facile de créer un objet `Span` est d'utiliser la
   notation par portion – par exemple `doc[5:10]` pour le token depuis la
   position 5 _jusqu'à_ la position 10. N'oublie pas que la dernière position
   d'indice du token n'est pas incluse.
