@@ -1,7 +1,7 @@
-from spacy.lang.zh import Chinese
+import spacy
 from spacy.tokens import Span
 
-nlp = Chinese()
+nlp = spacy.blank("zh")
 
 # 定义这个方法
 def to_html(span, tag):

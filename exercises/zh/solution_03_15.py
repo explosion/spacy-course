@@ -1,11 +1,11 @@
 import json
-from spacy.lang.en import English
+import spacy
 from spacy.tokens import Doc
 
 with open("exercises/en/bookquotes.json", encoding="utf8") as f:
     DATA = json.loads(f.read())
 
-nlp = English()
+nlp = spacy.blank("en")
 
 # 注册Doc的扩展"author"（默认值为None）
 Doc.set_extension("author", default=None)

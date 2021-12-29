@@ -1,6 +1,6 @@
 ---
 title: '第四章：训练神经网络模型'
-description: '本章中，我们要学习更新spaCy的统计模型使其能够为特定的使用场景做出定制化。一个例子是我们想要在网络上的评论中抽取一种新的实体。我们将会学到如何从头编码自己的模型训练流程，了解模型训练的基本工作原理，以及一些技巧使得我们自己的定制化自然语言处理项目能够更加成功。'
+description: '本章中，我们要学习更新spaCy的统计模型使其能够为特定的使用场景做出定制化。一个例子是我们想要在网络上的评论中抽取一种新的实体。我们将会学到如何从头训练自己的模型，了解模型训练的基本工作原理，以及一些技巧使得我们自己的定制化自然语言处理项目能够更加成功。'
 prev: /chapter3
 next: null
 type: chapter
@@ -14,31 +14,30 @@ id: 4
 
 </exercise>
 
-<exercise id="2" title="模型训练的目的">
+<exercise id="2" title="训练和评估数据">
 
-spaCy已经预装了一系列预训练好的模型来抽取各种语言学标签，然后我们几乎 _总是_
-想要用更多的新例子来优化模型。我们可以用更多的标注数据来训练模型达到这个目的。
-
-模型训练不能达到哪个目标？
+要训练一个模型，我们通常需要训练数据 _和_ 用来评估模型的开发数据。这个评估数据是用来做什么的？
 
 <choice>
 
-<opt text="改进特定数据上面的准确度。">
+<opt text="如果训练数据不够的时候用来提供更多的训练例子。">
 
-如果预训练模型在特定数据上面效果不好，用特定的例子再去训练模型会是个好方法。
-
-</opt>
-
-<opt text="学习新的分类目标。">
-
-我们可以通过训练来教会模型新的标签、实体类别或是其它分类目标。
+训练过程中，模型只能由训练数据来进行更新。开发数据只是用来将模型在未见过的数据上预测的结果与真实标注做对比，
+来评估模型表现的。准确度分数由此计算而来。
 
 </opt>
 
-<opt text="在未标注数据中做模式发现。" correct="true">
+<opt text="在未见过的数据上做预测并计算准确度分数。" correct="true">
 
-spaCy的组件都是用来做文本标注的监督学习模型，这意味着这些模型只能学习标注过的例子，
-而不能从原始文本中估计出新的标签。
+开发数据只是用来将模型在未见过的数据上预测的结果与真实标注做对比，
+来评估模型表现的。准确度分数由此计算而来。
+
+</opt>
+
+<opt text="没有标注数据时来定义训练的例子。">
+
+开发数据只是用来将模型在未见过的数据上预测的结果与真实标注做对比，
+来评估模型表现的。准确度分数由此计算而来。
 
 </opt>
 
@@ -67,81 +66,118 @@ spaCy的基于规则的`Matcher`可以很好地被用来快速创建一些命名
 
 <exercise id="4" title="创建训练数据(2)">
 
-我们现在用上一个练习中创建的匹配模板来引出一系列的训练例子。`TEXTS`变量中存有句子的
-列表。
+在为我们的语料创建数据之后，我们需要将其存放在一个后缀为`.spacy`的文件中。可以参见上一个例子中的代码。
 
-- 使用`nlp.pipe`对每一个文本创建一个doc。
-- 在`doc`上做匹配创建出一个匹配结果的span列表。
-- 获取匹配结果span的`(start character, end character, label)`元组。
-- 把每个例子的格式写为一个文本和一个词典的元组，把`"entities"`映射到实体元组上。
-- 把例子附加到`TRAINING_DATA`中，检查打印的数据。
+- 使用`docs`的列表初始化`DocBin`。
+- 将`DocBin`存储到一个名为`train.spacy`的文件中。
 
 <codeblock id="04_04">
 
-- 要得到匹配结果，在`doc`上面调用`matcher`。
-- 返回的匹配结果在`(match_id, start, end)`元组里。
-- 我们可以用`TRAINING_DATA.append()`把一个例子添加到训练示例列表中。
+- 我们可以把一个含有多个文档的列表传入关键字参数`docs`中来初始化`DocBin`。
+- `DocBin`的`to_disk`方法需要一个参数：二进制文件存储的路径。
+  要确保文件的后缀名是`.spacy`.
 
 </codeblock>
 
 </exercise>
 
-<exercise id="5" title="模型训练过程" type="slides">
+<exercise id="5" title="配置和进行训练" type="slides">
 
-<slides source="chapter4_02_training-loop">
+<slides source="chapter4_02_running-training">
 </slides>
 
 </exercise>
 
-<exercise id="6" title="设置流程">
+<exercise id="6" title="训练配置">
 
-这个练习中，我们来搭建一个spaCy的流程，训练实体识别器识别文本中的`"GADGET"`实体，
-比如"iPhone X"。
+`config.cfg`文件是使用spaCy训练流程的“唯一真理来源”。下列关于配置的说法哪个是 **错误** 的？
 
-- 创建一个空的`"en"`模型，我们可以用`spacy.blank`方法。
-- 用`nlp.create_pipe`创建一个新的实体识别器，加入到流程中。
-- 我们可以在流程组件上调用`add_label`方法， 把新的标签`"GADGET"`加入到实体识别器中。
+<choice>
 
-<codeblock id="04_06">
+<opt text="使我们可以配置训练流程和超参数。">
 
-- 要创建一个空的实体识别器，我们可以调用`nlp.create_pipe`，返回给名字是`"ner"`的变量。
-- 要把组件加入到流程中，我们可以用`nlp.add_pipe`方法。
-- `add_label`方法是实体识别器流程组件的一个方法，这个组件我们已经存储在了变量`ner`里面。
-  要给它增加一个标签，我们可以调用`ner.add_label`加上标签的字符串名，
-  比如`ner.add_label("SOME_LABEL")`。
+配置文件含有训练流程的所有设定，包括超参数。
+
+</opt>
+
+<opt text="帮助实现训练流程的可复现。">
+
+配置文件含有 _所有_ 设定，也没有隐藏的默认值，所以可以帮助我们的训练实验更加容易复现。
+其他人可以轻松通过相同设定重新跑通我们的实验。
+
+</opt>
+
+<opt text="会为我们的流程创建一个可安装的Python包。" correct="true">
+
+配置文件含有和训练与流程相关的所有设定，但并不能为流程打包。
+要创建可安装的Python包，我们可以使用`spacy package`命令。
+
+</opt>
+
+<opt text="定义了流程的组件和各自的设定。">
+
+配置文件中的'[components]'包含了所有流程组件和各自的设定，包括所使用的模型实现。
+
+</opt>
+
+</choice>
+
+</exercise>
+
+<exercise id="7" title="生成一个配置文件">
+
+[`init config`命令](https://spacy.io/api/cli#init-config) 自动生成一个使用默认设定的训练配置文件。
+我们想要训练一个命名实体识别器，所以我们要生成一个含有一个流程组件`ner`的配置文件。
+因为我们在本课程中是在Jupyter环境中运行命令，所以加上前缀`!`。
+如果是在本地终端中运行则不需要加这个前缀。
+
+### 第一部分
+
+- 使用spaCy的`init config`命令来自动生成一个中文流程的配置。
+- 将配置保存到文件`config.cfg`中。
+- 使用`--pipeline`参数指明一个流程组件`ner`。
+
+<codeblock id="04_07_01">
+
+- `--lang`参数定义了语言类，比如`zh`指中文。
+
+</codeblock>
+
+### 第二部分
+
+我们来看看spaCy刚刚生成的配置文件！
+我们可以运行下面的命令将配置打印到屏幕上。
+
+<codeblock id="04_07_02"></codeblock>
+
+</exercise>
+
+<exercise id="8" title="使用训练客户端">
+
+让我们用前面练习中生成的配置文件和训练语料来训练一个命名实体识别器!
+
+使用[`train`](https://spacy.io/api/cli#train) 命令来调取训练配置文件来训练一个模型。
+一个名为`config_gadget.cfg`的文件已经在`exercise/zh`中了，
+同时还有一个名为`train_gadget.spacy`的文件包含了一些训练数据，`dec_gadget.spacy`文件包含了测试数据。
+因为我们在本课程中是在Jupyter环境中运行命令，所以加上前缀`!`。
+如果是在本地终端中运行则不需要加这个前缀。
+
+- 在文件`exercises/zh/config_gadget.cfg`上面运行`train`命令。
+- 将训练好的流程保存在`output`文件夹中。
+- 传入路径`exercises/zh/train_gadget.spacy` 和 `exercises/zh/dev_gadget.spacy`
+
+<codeblock id="04_08">
+
+- 命令`spacy train`的第一个参数是配置文件的路径。
 
 </codeblock>
 
 </exercise>
 
-<exercise id="7" title="搭建训练过程">
-
-我们现在来从头写一个简单的训练过程。
-
-我们在上一个练习中创建的流程存储在`nlp`实例中，里面已经含有了实体识别器和我们
-新增的标签`"GADGET"`。
-
-我们之前创建的一小组标注例子存储在`TRAINING_DATA`中。想要看这些例子的话我们可以在
-代码中把它们打印出来。
-
-- 调用`nlp.begin_training`，创建一个有10个循环的训练过程并把训练数据的顺序随机化。
-- 使用`spacy.util.minibatch`创建几批训练数据，然后在每一批数据上作遍历。
-- 把每一批数据里的`(text, annotations)`元组转变为`texts`和`annotations`的列表。
-- 对每一批数据，调用`nlp.update`方法用这些文本text和标注annotation去更新模型。
-
-<codeblock id="04_07">
-
-- 调用`nlp.begin_training()`方法来重置模型参数并开始训练。
-- 在训练例子的列表上调用`spacy.util.minibatch`函数来将训练数据分为一系列批次。
-
-</codeblock>
-
-</exercise>
-
-<exercise id="8" title="检测模型">
+<exercise id="9" title="检测模型">
 
 让我们来看看模型在未出现过的新数据上表现如何！为了节省时间，我们已经在一些文本上面
-训练好了一个带有标签`"GADGET"`的模型。这里是一些结果：
+训练好了一个带有标签`"GADGET"`的流程。这里是一些结果：
 
 
 | 文本                                                                                                              | 实体              |
@@ -188,37 +224,30 @@ spaCy的基于规则的`Matcher`可以很好地被用来快速创建一些命名
 
 </exercise>
 
-<exercise id="9" title="模型训练最佳实践" type="slides">
+<exercise id="10" title="模型训练最佳实践" type="slides">
 
 <slides source="chapter4_03_training-best-practices">
 </slides>
 
 </exercise>
 
-<exercise id="10" title="好数据vs烂数据">
+<exercise id="11" title="好数据vs烂数据">
 
 这是一段摘抄，来自于一个训练集试图在旅行者的评论中标注实体类型
 `TOURIST_DESTINATION`（游客目的地）。
 
 ```python
-TRAINING_DATA = [
-    (
-        "我去年去了西安，那里的城墙很壮观！",
-        {"entities": [(4, 5, "TOURIST_DESTINATION")]},
-    ),
-    (
-        "人一辈子一定要去一趟爸黎，但那里的埃菲尔铁塔有点无趣。",
-        {"entities": [(5, 6, "TOURIST_DESTINATION")]},
-    ),
-    (
-        "深圳也有个巴黎的埃菲尔铁塔，哈哈哈",
-        {"entities": []}
-    ),
-    (
-        "北京很适合暑假去：长城、故宫，还有各种好吃的小吃！",
-        {"entities": [(0, 1, "TOURIST_DESTINATION")]},
-    ),
-]
+doc1 = nlp("我去年去了西安，那里的城墙很壮观！")
+doc1.ents = [Span(doc1, 4, 5, label="TOURIST_DESTINATION")]
+
+doc2 = nlp("人一辈子一定要去一趟爸黎，但那里的埃菲尔铁塔有点无聊。")
+doc2.ents = [Span(doc2, 5, 6, label="TOURIST_DESTINATION")]
+
+doc3 = nlp("深圳也有个巴黎的埃菲尔铁塔，哈哈哈")
+doc3.ents = []
+
+doc4 = nlp("北京很适合暑假去：长城、故宫，还有各种好吃的小吃！")
+doc4.ents = [Span(doc4, 0, 1, label="TOURIST_DESTINATION")]
 ```
 
 ### 第一部分
@@ -253,20 +282,22 @@ TRAINING_DATA = [
 
 ### 第二部分
 
-- 重写`TRAINING_DATA`使其标签为`"GPE"`（城市、州省、国家）而非`"TOURIST_DESTINATION"`。
-- 别忘了添加那些数据中本来未被标注为`"GPE"`的实体的元组。
+- 重写`doc.ents`使其跨度span的标签为`"GPE"`（城市、州省、国家）而非`"TOURIST_DESTINATION"`。
+- 别忘了添加那些数据中本来未被标注为`"GPE"`的实体的跨度span。
 
-<codeblock id="04_10">
+<codeblock id="04_11">
 
 - 对于那些已经标注过的span，我们只需要将其标签名从`"TOURIST_DESTINATION"`换为`"GPE"`。
-- 有一段文本包含了城市和州省实体但还没有被标注。要加入实体的跨度span，我们需要数一数字符
-  来找出实体的span是从哪里开始和从哪里结束。然后把`(start, end, label)`元组加到实体中。
+- 有一段文本包含了城市和州省实体但还没有被标注。要加入实体的跨度span，我们需要数一数词符token
+  来找出实体的span是从哪里开始和从哪里结束。注意最后一个词符的索引是 _不包含的_！
+  然后把新的`Span`加入到`doc.ents`中。
+- 注意分词！如果不确定可以把`Doc`中的词符打印出来。
 
 </codeblock>
 
 </exercise>
 
-<exercise id="11" title="训练多个标签">
+<exercise id="12" title="训练多个标签">
 
 这里是某个数据集的一个样品，我们创建它来训练一个新的实体种类`"WEBSITE"`。
 原始的数据集包含了几千个句子。这个练习中我们要手动做标注。实际工作中我们
@@ -276,14 +307,12 @@ TRAINING_DATA = [
 
 ### 第一部分
 
-- 完成数据中所有`"WEBSITE"`实体的位置参数。如果不想手动数字符数目的话我们可以随时调
-用`len()`。
+- 完成数据中所有`"WEBSITE"`实体的位置参数。
 
-<codeblock id="04_11_01">
+<codeblock id="04_12_01">
 
-- 实体span的起始和终止位置就是其对应字符在文本中的位置。比如一个从位置5开始的实体，
-  其起始位置就是`5`。记住终止位置是 _不包含_ 实体的，所以`10`意味着一直到字符10
-  _之前_。
+- 要注意终止词符的span是不包含的。
+  所以如果一个实体从位置2开始而从位置3结束，那么start就是`2`，而end是`4`.
 
 </codeblock>
 
@@ -320,15 +349,17 @@ TRAINING_DATA = [
 
 - 更新训练数据，加入对`"PERSON"`实体"李子柒"和"马云"的标注。
 
-<codeblock id="04_11_02">
+<codeblock id="04_12_02">
 
-- 要添加更多的实体，给列表后面加入另一个`(start, end, label)`元组就行。
+- 要添加更多的实体，给`doc.ents`增加一个`Span`就行。
+- 要注意终止词符的span是不包含的。
+  所以如果一个实体从位置2开始而从位置3结束，那么start就是`2`，而end是`4`.
 
 </codeblock>
 
 </exercise>
 
-<exercise id="12" title="总结" type="slides">
+<exercise id="13" title="总结" type="slides">
 
 <slides source="chapter4_04_wrapping-up">
 </slides>

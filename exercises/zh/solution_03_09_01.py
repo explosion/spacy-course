@@ -1,7 +1,7 @@
-from spacy.lang.zh import Chinese
+import spacy
 from spacy.tokens import Token
 
-nlp = Chinese()
+nlp = spacy.blank("zh")
 
 # 注册词符的扩展属性"is_country"，其默认值是False
 Token.set_extension("is_country", default=False)
