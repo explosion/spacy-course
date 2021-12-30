@@ -1,8 +1,8 @@
-# 导入英文类
-from spacy.lang.en import English
+# 导入spaCy
+import spacy
 
-# 创建nlp对象
-nlp = English()
+# 创建英文nlp对象
+nlp = spacy.blank("en")
 
 # 处理文本
 doc = nlp("This is a sentence.")

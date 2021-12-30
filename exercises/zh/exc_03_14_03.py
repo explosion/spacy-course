@@ -1,6 +1,6 @@
-from spacy.lang.zh import Chinese
+import spacy
 
-nlp = Chinese()
+nlp = spacy.blank("zh")
 
 people = ["周杰伦", "庞麦郎", "诸葛亮"]
 

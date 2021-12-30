@@ -7,7 +7,7 @@ text = (
 )
 
 # 关闭tagger和parser
-with nlp.disable_pipes("tagger", "parser"):
+with nlp.select_pipes(disable=["tagger", "parser"]):
     # 处理文本
     doc = nlp(text)
     # 打印doc中的实体

@@ -1,7 +1,7 @@
-# 导入中文语言类并创建nlp对象
-from spacy.lang.zh import Chinese
+# 导入spacy并创建中文nlp对象
+import spacy
 
-nlp = Chinese()
+nlp = spacy.blank("zh")
 
 # 处理文本
 doc = nlp("我喜欢老虎和狮子。")

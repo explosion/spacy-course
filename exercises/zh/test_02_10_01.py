@@ -1,6 +1,6 @@
 def test():
     assert (
-        "doc1.similarity(doc2)" or "doc2.similarity(doc1)" in __solution__
+        "doc1.similarity(doc2)" in __solution__ or "doc2.similarity(doc1)" in __solution__
     ), "你有计算两个doc之间的相似度吗？"
     assert (
         0 <= float(similarity) <= 1

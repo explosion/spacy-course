@@ -1,4 +1,5 @@
 import spacy
+from spacy.language import Language
 from spacy.matcher import PhraseMatcher
 from spacy.tokens import Span
 
@@ -7,10 +8,11 @@ animals = ["金毛犬", "猫", "乌龟", "老鼠"]
 animal_patterns = list(nlp.pipe(animals))
 print("animal_patterns:", animal_patterns)
 matcher = PhraseMatcher(nlp.vocab)
-matcher.add("ANIMAL", None, *animal_patterns)
+matcher.add("ANIMAL", animal_patterns)
 
 # 定义定制化组件
-def animal_component(doc):
+@Language.component("animal_component")
+def animal_component_function(doc):
     # 把matcher应用到doc上
     matches = ____
     # 为每一个匹配结果生成一个Span并赋予标签"ANIMAL"
