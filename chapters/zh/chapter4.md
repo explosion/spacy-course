@@ -238,16 +238,16 @@ spaCy的基于规则的`Matcher`可以很好地被用来快速创建一些命名
 
 ```python
 doc1 = nlp("我去年去了西安，那里的城墙很壮观！")
-doc1.ents = [Span(doc1, 4, 5, label="TOURIST_DESTINATION")]
+doc1.ents = [Span(doc1, 5, 7, label="TOURIST_DESTINATION")]
 
-doc2 = nlp("人一辈子一定要去一趟爸黎，但那里的埃菲尔铁塔有点无聊。")
-doc2.ents = [Span(doc2, 5, 6, label="TOURIST_DESTINATION")]
+doc2 = nlp("人一辈子一定要去一趟巴黎，但那里的埃菲尔铁塔有点无聊。")
+doc2.ents = [Span(doc2, 10, 12, label="TOURIST_DESTINATION")]
 
 doc3 = nlp("深圳也有个巴黎的埃菲尔铁塔，哈哈哈")
 doc3.ents = []
 
 doc4 = nlp("北京很适合暑假去：长城、故宫，还有各种好吃的小吃！")
-doc4.ents = [Span(doc4, 0, 1, label="TOURIST_DESTINATION")]
+doc4.ents = [Span(doc4, 0, 2, label="TOURIST_DESTINATION")]
 ```
 
 ### 第一部分
