@@ -1,6 +1,6 @@
-from spacy.lang.fr import French
+import spacy
 
-nlp = French()
+nlp = spacy.blank("fr")
 
 # Importe les classes Doc et Span
 from spacy.____ import ____, ____

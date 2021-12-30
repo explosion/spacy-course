@@ -5,7 +5,7 @@ def test():
         "token.pos_ ==" in __solution__
     ), "Vérifies-tu si l'étiquette de partie de discours du token est un nom propre ?"
     assert (
-        "token.i + 1" in __solution__ or "token.i+1" in __solution__
+        "token.i + 1" in __solution__ or "1 + token.i" in __solution__
     ), "Utilises-tu l'attribut index du token pour vérifier le token suivant ?"
     __msg__.good(
         "Excellent travail ! Si la solution fonctionne bien ici pour l'exemple "
