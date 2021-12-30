@@ -13,7 +13,7 @@ matcher = ____(____.____)
 pattern = [____]
 
 # 把模板加入到matcher中
-____.____("IPHONE_X_PATTERN", None, ____)
+____.____("IPHONE_X_PATTERN", ____)
 
 # 在doc中使用matcher
 matches = ____

@@ -1,27 +1,23 @@
 import json
+import spacy
 from spacy.matcher import Matcher
-from spacy.lang.zh import Chinese
+from spacy.tokens import Span, DocBin
 
 with open("exercises/zh/iphone.json", encoding="utf8") as f:
     TEXTS = json.loads(f.read())
 
-nlp = Chinese()
+nlp = spacy.blank("zh")
 matcher = Matcher(nlp.vocab)
+# 将pattern加入mattcher中
 pattern1 = [{"LOWER": "iphone"}, {"LOWER": "x"}]
 pattern2 = [{"LOWER": "iphone"}, {"IS_DIGIT": True}]
-matcher.add("GADGET", None, pattern1, pattern2)
+matcher.add("GADGET", [pattern1, pattern2])
+docs = []
+for doc in nlp.pipe(TEXTS):
+    matches = matcher(doc)
+    spans = [Span(doc, start, end, label=match_id) for match_id, start, end in matches]
+    doc.ents = spans
+    docs.append(doc)
 
-TRAINING_DATA = []
-
-# 为TEXT中的每一段文本创建一个Doc实例
-for ____ in ____:
-    # 在doc上做匹配，创建一个匹配结果span的列表
-    spans = [____[____:____] for match_id, start, end in matcher(doc)]
-    # 获取(start character, end character, label)这样的匹配结果元组
-    entities = [(span.start_char, span.end_char, "GADGET") for span in spans]
-    # 将匹配结果的格式变为(doc.text, entities)元组
-    training_example = (____, {"entities": ____})
-    # 把这些例子加入到训练数据中
-    ____.____(____)
-
-print(*TRAINING_DATA, sep="\n")
+doc_bin = ____(____=____)
+doc_bin.____(____)

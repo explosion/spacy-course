@@ -1,7 +1,7 @@
-# 导入德语类
-from spacy.lang.____ import ____
+# 导入spaCy
+import ____
 
-# 创建nlp对象
+# 创建德语nlp对象
 nlp = ____
 
 # 处理文本 (这是德语"Kind regards!"的意思)

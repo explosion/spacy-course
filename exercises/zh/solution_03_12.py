@@ -1,5 +1,6 @@
 import json
-from spacy.lang.zh import Chinese
+import spacy
+from spacy.language import Language
 from spacy.tokens import Span
 from spacy.matcher import PhraseMatcher
 
@@ -9,12 +10,13 @@ with open("exercises/zh/countries.json", encoding="utf8") as f:
 with open("exercises/zh/capitals.json", encoding="utf8") as f:
     CAPITALS = json.loads(f.read())
 
-nlp = Chinese()
+nlp = spacy.blank("zh")
 matcher = PhraseMatcher(nlp.vocab)
-matcher.add("COUNTRY", None, *list(nlp.pipe(COUNTRIES)))
+matcher.add("COUNTRY", list(nlp.pipe(COUNTRIES)))
 
 
-def countries_component(doc):
+@Language.component("countries_component")
+def countries_component_function(doc):
     # 对所有匹配结果创建一个标签为"GPE"的实体Span
     matches = matcher(doc)
     doc.ents = [Span(doc, start, end, label="GPE") for match_id, start, end in matches]
@@ -22,7 +24,7 @@ def countries_component(doc):
 
 
 # 把这个组件加入到流程中
-nlp.add_pipe(countries_component)
+nlp.add_pipe("countries_component")
 print(nlp.pipe_names)
 
 # 取值器，在国家首都的字典中寻找span的文本
