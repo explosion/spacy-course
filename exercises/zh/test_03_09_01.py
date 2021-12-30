@@ -4,7 +4,7 @@ def test():
     ), "你有在词符上注册这个扩展吗？"
     ext = Token.get_extension("is_country")
     assert ext[0] == False, "你有正确设置默认值吗？"
-    country_values = [False, False, False, True, False]
+    country_values = [False, False, True, False]
     assert [
         t._.is_country for t in doc
     ] == country_values, "你改变了值的词符是正确的吗？"

@@ -6,8 +6,8 @@ text = (
     "树立“修合无人见，存心有天知”的自律意识，造就了制药过程中兢兢小心、精益求精的严细精神。"
 )
 
-# 关闭tagger和lemmatizer
-with nlp.select_pipes(disable=["tagger", "lemmatizer"]):
+# 关闭tagger和parser
+with nlp.select_pipes(disable=["tagger", "parser"]):
     # 处理文本
     doc = nlp(text)
     # 打印doc中的实体

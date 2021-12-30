@@ -14,5 +14,5 @@ Span.set_extension("to_html", method=to_html)
 
 # 处理文本，在span上调用to_html方法及其标签名"strong"
 doc = nlp("大家好，这是一个句子。")
-span = doc[0:2]
+span = doc[0:3]
 print(span._.to_html("strong"))

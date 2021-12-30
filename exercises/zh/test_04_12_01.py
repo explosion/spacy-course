@@ -8,7 +8,7 @@ def test():
     ), "请检查第一个例子中的第二个实体"
     assert len(doc2.ents) == 1, "第二个例子中应该有一个实体"
     assert (
-        doc2.ents[0].label_ == "WEBSITE" and doc2.ents[0].text == "YouTube"
+        doc2.ents[0].label_ == "WEBSITE" and doc2.ents[0].text == "Youtube"
     ), "请检查第二个例子中的实体"
     assert len(doc3.ents) == 1, "第三个例子中应该有一个实体"
     assert (
