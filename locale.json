@@ -287,7 +287,6 @@
         }
     },
     "zh": {
-        "v2": true,
         "langName": "中文",
         "title": "使用spaCy做进阶自然语言处理",
         "slogan": "免费在线课程",
@@ -328,13 +327,7 @@
             "launchingDocker": "正在启动Docker容器",
             "reconnectingDocker": "正在重连Docker容器",
             "prevChapter": "前一章节",
-            "nextChapter": "后一章节",
-            "alert": {
-                "title": "This course uses spaCy v2.",
-                "text": "An updated version of this translation for the new spaCy v3 is coming soon. Luckily, the usage and API hasn't changed much, so everything you'll learn in this course is still relevant.",
-                "button": "View English course for v3",
-                "link": "/en"
-            }
+            "nextChapter": "后一章节"
         }
     }
 }
