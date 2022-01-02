@@ -21,7 +21,7 @@ id: 3
 
 <exercise id="2" title="Que se passe-t-il quand tu appelles nlp ?">
 
-Que fait spaCy quand tu appelles `nlp` sur une chaine de caractères ?
+Que fait spaCy quand tu appelles `nlp` sur une chaîne de caractères ?
 
 ```python
 doc = nlp("Ceci est une phrase.")
@@ -32,7 +32,7 @@ doc = nlp("Ceci est une phrase.")
 <opt text="Lance le tagger, le parser l’entity recognizer et enfin le tokenizer.">
 
 Le tokenizer est toujours exécuté _avant_ tous les autres composants du
-pipeline, parce qu'il transforme une chaine de caractères en objet `Doc`. De
+pipeline, parce qu'il transforme une chaîne de caractères en objet `Doc`. De
 plus, le pipeline ne doit pas nécessairement inclure le tagger, le parser et
 l'entity recognizer.
 
@@ -40,7 +40,7 @@ l'entity recognizer.
 
 <opt text="Convertit le texte en tokens et applique chaque composant du pipeline dans l’ordre." correct="true">
 
-Le tokenizer transforme une chaine de caractères en un objet `Doc`. spaCy
+Le tokenizer transforme une chaîne de caractères en un objet `Doc`. spaCy
 applique ensuite chaque composant du pipeline, dans l'ordre.
 
 </opt>
@@ -54,9 +54,9 @@ quelconque serveur.
 
 <opt text="Initialise la langue, ajoute le pipeline et charge le modèle binaire de poids.">
 
-Quand tu appelles `spacy.load()` pour charger un modèle, spaCy va initialiser la
+Quand tu appelles `spacy.load()` pour charger un pipeline, spaCy va initialiser la
 langue, ajouter le pipeline et charger le modèle binaire de poids. Quand tu
-_appelles_ l'objet `nlp` sur un texte, le modèle est déjà chargé.
+_appelles_ l'objet `nlp` sur un texte, le pipeline est déjà chargé.
 
 </opt>
 
@@ -64,9 +64,9 @@ _appelles_ l'objet `nlp` sur un texte, le modèle est déjà chargé.
 
 <exercise id="3" title="Inspection du pipeline">
 
-Inspectons le pipeline du petit modèle français !
+Inspectons le petit pipeline français !
 
-- Charge le modèle `fr_core_news_sm` et crée l'objet `nlp`.
+- Charge le pipeline `fr_core_news_sm` et crée l'objet `nlp`.
 - Affiche les noms des composants du pipeline avec `nlp.pipe_names`.
 - Affiche le pipeline complet de tuples `(name, component)` avec `nlp.pipeline`.
 
@@ -92,7 +92,7 @@ Le pipeline complet composé de tuples `(name, component)` est accessible avec
 Lequel de ces problèmes peut être résolu avec des composants de pipeline
 personnalisés. Choisis toutes les réponses pertinentes !
 
-1. Actualisation des modèles pré-entrainés pour améliorer leurs prédictions
+1. Actualisation des pipelines pré-entrainés pour améliorer leurs prédictions
 2. Calcul de nos propres valeurs basées sur les tokens et leurs attributs
 3. Ajout d'entités nommées, par exemple basées sur un dictionnaire
 4. Implémentation du support de langues supplémentaires
@@ -159,7 +159,7 @@ L'exemple montre un composant personnalisé qui affiche la longueur des tokens
 d'un document. Peux-tu le compléter ?
 
 - Complète la fonction du composant avec la longueur du `doc`.
-- Ajoute `length_component` au pipeline existant en tant que **premier**
+- Ajoute `"length_component"` au pipeline existant en tant que **premier**
   composant.
 - Essaie le nouveau pipeline en traitant un texte quelconque avec l'objet `nlp`–
   par exemple "Ceci est une phrase.".
@@ -169,8 +169,9 @@ d'un document. Peux-tu le compléter ?
 - Pour obtenir la longueur d'un objet `Doc`, tu peux appeler la fonction native
   `len()` de Python avec le `Doc` en argument.
 - Utilise la méthode `nlp.add_pipe` pour ajouter le composant au pipeline.
-  N'oublie pas de mettre l'argument nommé `first` à `True` pour t'assurer qu'il
-  sera ajouté avant tous les autres composants.
+  N'oublie pas d'utiliser le nom du composant sous forme de chaîne et de mettre
+  l'argument nommé `first` à `True` pour t'assurer qu'il sera ajouté avant tous
+  les autres composants.
 - Pour traiter un texte, appelle l'objet `nlp` avec le texte en argument.
 
 </codeblock>
@@ -198,7 +199,8 @@ animaux a déjà été créé sous le nom de variable `matcher`.
 - La classe `Span` prend 4 arguments : le `doc` parent, l'indice de début,
   l'indice de fin et le label.
 - Pour ajouter un composant après un autre, utilise l'argument nommé `after`
-  dans `nlp.add_pipe`.
+  dans `nlp.add_pipe`. N'oublie pas d'utiliser le nom du composant sous forme
+  de chaîne pour l'ajouter.
 
 </codeblock>
 
@@ -283,8 +285,9 @@ des extensions de méthodes.
 <exercise id="11" title="Entités et extensions">
 
 Dans cet exercice, tu vas combiner l'extension d'attributs personnalisés avec
-les prédictions du modèle et créer un accesseur d'attribut qui retourne une URL
-de recherche Wikipédia si le span est une personne, une organisation ou un lieu.
+les prédictions statistiques et créer un accesseur d'attribut qui retourne une
+URL de recherche Wikipédia si le span est une personne, une organisation ou un
+lieu.
 
 - Complète le getter `get_wikipedia_url` pour qu'il retourne une URL uniquement
   si le label du span est dans la liste des labels.
@@ -308,14 +311,14 @@ de recherche Wikipédia si le span est une personne, une organisation ou un lieu
 Les extensions d'attributs sont particulièrement puissantes quand elles sont
 combinées avec des composants de pipeline personnalisés. Dans cet exercice, tu
 vas écrire un composant de pipeline qui trouve des noms de pays et une extension
-personnalisée qui retourne le nom de la capitale du pays s'il est disponible.
+personnalisée qui retourne le nom de la capitale du pays, s'il est disponible.
 
 Un matcher de phrases avec tous les pays est proposé via la variable `matcher`.
 Un dictionnaire des pays avec leurs capitales en correspondance est proposé via
 la variable `CAPITALS`.
 
-- Complète le composant `countries_component` et crée un `Span` avec le label
-  `"GPE"` (entité géopolitique) pour toutes les correspondances.
+- Complète le composant `countries_component_function` et crée un `Span` avec
+  le label `"GPE"` (entité géopolitique) pour toutes les correspondances.
 - Ajoute le composant au pipeline.
 - Déclare l'extension d'attribut Span nommée `"capital"` avec le getter
   `get_capital`.
@@ -349,7 +352,7 @@ la variable `CAPITALS`.
 
 Dans cet exercice, tu vas utiliser `nlp.pipe` pour un traitement plus efficace
 du texte. L'objet `nlp` a déjà été créé pour toi. Une liste de tweets à propos
-d'une chaine américaine connue de fast-food est disponible via la variable
+d'une chaîne américaine connue de fast-food est disponible via la variable
 nommée `TEXTS`.
 
 ### Partie 1
@@ -384,7 +387,7 @@ nommée `TEXTS`.
 
 <exercise id="15" title="Traitement de données avec contexte">
 
-Dans cet exercice, tu vas utiliser les attributs personnalisés pour ajouter aux
+Dans cet exercice, tu vas utiliser des attributs personnalisés pour ajouter aux
 citations des métadonnées sur l'auteur et le livre correspondants.
 
 Une liste d'exemples sous la forme `[text, context]` est disponible via la
@@ -401,7 +404,7 @@ contextes sont des dictionnaires avec pour clés `"author"` et `"book"`.
 <codeblock id="03_15">
 
 - La méthode `Doc.set_extension` prend deux arguments : le nom de l'attribut
-  sous forme de chaine, et un argument nommé indiquant la valeur par défaut, le
+  sous forme de chaîne, et un argument nommé indiquant la valeur par défaut, le
   getter, le setter, ou la méthode. Par exemple, `default=True`.
 - Quand `as_tuples` est mis à `True`, la méthode `nlp.pipe` prend en argument
   une liste de tuples `(text, context)` et génère des tuples `(doc, context)`.
@@ -413,7 +416,7 @@ contextes sont des dictionnaires avec pour clés `"author"` et `"book"`.
 <exercise id="16" title="Traitement sélectif">
 
 Dans cet exercice, tu vas utiliser les méthodes `nlp.make_doc` et
-`nlp.disable_pipes` pour appliquer uniquement les composants sélectionnés lors
+`nlp.select_pipes` pour appliquer uniquement les composants sélectionnés lors
 du traitement d'un texte.
 
 ### Partie 1
@@ -430,14 +433,16 @@ exactement comme l'objet `nlp`.
 
 ### Partie 2
 
-- Désactive le tagger et le parser en utilisant la méthode `nlp.disable_pipes`.
+- Désactive le tagger et le lemmatizer en utilisant la méthode
+`nlp.select_pipes`.
 - Traite le texte et affiche toutes les entités contenues dans le `doc`.
 
 <codeblock id="03_16_02">
 
-La méthode `nlp.disable_pipes` prend un nombre variable d'arguments : le nom
-sous forme de chaine de caractères des composants du pipeline à désactiver. Par
-exemple, `nlp.disable_pipes("ner")` désactivera le named entity recognizer.
+La méthode `nlp.select_pipes` accepte les arguments nommés `enable` et
+`disable` qui prennent une liste de noms de composants à activer ou à
+désactiver. Par exemple, `nlp.select_pipes(disable="ner")` désactivera le named
+entity recognizer.
 
 </codeblock>
 

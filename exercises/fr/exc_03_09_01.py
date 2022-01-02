@@ -1,7 +1,7 @@
-from spacy.lang.fr import French
+import spacy
 from spacy.tokens import Token
 
-nlp = French()
+nlp = spacy.blank("fr")
 
 # Déclare l'extension d'attribut de Token "is_country"
 # avec la valeur par défaut False

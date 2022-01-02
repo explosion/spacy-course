@@ -7,8 +7,8 @@ text = (
     "groupe est situé en France à Toulouse dans la région Occitanie."
 )
 
-# Désactive le tagger et le parser
-with nlp.disable_pipes("tagger", "parser"):
+# Désactive le tagger et le lemmatizer
+with nlp.select_pipes(disable=["tagger", "lemmatizer"]):
     # Traite le texte
     doc = nlp(text)
     # Affiche les entités du doc

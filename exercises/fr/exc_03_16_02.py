@@ -7,7 +7,7 @@ text = (
     "groupe est situé en France à Toulouse dans la région Occitanie."
 )
 
-# Désactive le tagger et le parser
+# Désactive le tagger et le lemmatizer
 with ____.____(____):
     # Traite le texte
     doc = ____

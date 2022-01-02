@@ -99,7 +99,7 @@ le cas présent, True pour le token "bleu".
 ```python
 from spacy.tokens import Token
 
-# Définit la fonction getter
+# Définis la fonction getter
 def get_is_color(token):
     colors = ["rouge", "jaune", "bleu"]
     return token.text in colors
