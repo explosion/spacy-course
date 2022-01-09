@@ -29,7 +29,8 @@ spaCy d'effectuer des prédictions en contexte. Cela inclut généralement les
 étiquettes de partie de discours, les dépendances syntaxiques et les entités
 nommées.
 
-Les pipelines sont entraînés sur de grands jeux de données de textes labellisés.
+Les pipelines sont entraînés sur de grands jeux de données d'exemples de textes
+labellisés.
 
 Ils peuvent être actualisés avec davantage d'exemples pour améliorer leurs
 prédictions - par exemple, pour obtenir de meilleurs résultats sur tes propres
@@ -56,7 +57,7 @@ nlp = spacy.load("fr_core_news_sm")
 - Méta-information
 - Fichier de configuration
 
-Notes: spaCy propose un certain nombre de packages de pipelines entraînés que
+Notes: spaCy propose un certain nombre de paquets de pipelines entraînés que
 tu peux télécharger avec la commande `spacy download`. Par exemple, le paquet
 "fr_core_news_sm" est un petit pipeline pour la langue française qui propose
 toutes les fonctionnalités de base et qui a été entraîné sur des textes
@@ -80,7 +81,7 @@ traitements.
 ```python
 import spacy
 
-# Charge le petit modèle en langue française
+# Charge le petit pipeline français
 nlp = spacy.load("fr_core_news_sm")
 
 # Traite le texte
@@ -100,11 +101,10 @@ pizza NOUN
 ```
 
 Notes: Jetons un oeil aux prédictions du modèle. Dans cet exemple, nous
-utilisons spaCy pour prédire des étiquettes de partie de discours, les types des
-mots dans leur contexte.
+utilisons spaCy pour prédire des étiquettes de partie de discours, les types
+des mots dans leur contexte.
 
-D'abord, nous chargeons le petit modèle en langue française et obtenons un objet
-`nlp`.
+D'abord, nous chargeons le petit pipeline français et obtenons un objet `nlp`.
 
 Ensuite, nous traitons le texte "Elle mangea la pizza".
 
@@ -191,7 +191,7 @@ Notes: Les entités nommées sont des "objets du monde réel" auxquels on assign
 un nom - par exemple, une personne, une organisation ou un pays.
 
 La propriété `doc.ents` te permet d'accéder aux entités nommées prédites par le
-modèle.
+modèle de reconnaissance d'entités nommées.
 
 Elle retourne un itérateur d'objets `Span`, donc nous pouvons imprimer le texte
 de l'entité et son label en utilisant l'attribut `.label_`.

@@ -113,8 +113,8 @@ Notes: Un autre scénario courant : Parfois tu as déjà un modèle chargé pour
 effectuer d'autres traitements, mais tu as seulement besoin du tokenizer pour un
 texte particulier.
 
-Lancer tout le pipeline est inutilement lent, parce que tu vas obtenir tout un
-tas de prédictions par le modèle dont tu n'as pas besoin.
+Lancer tout le pipeline est inutilement lent, parce que le modèle va te fournir
+tout un tas de prédictions dont tu n'as pas besoin.
 
 ---
 

@@ -32,14 +32,14 @@ uns des 60+ [langages disponibles](https://spacy.io/usage/models#languages).
 
 ### Partie 2 : Anglais
 
-- Utilise `spacy.blank` pour créer un objet `nlp` français (`en`) vierge.
+- Utilise `spacy.blank` pour créer un objet `nlp` anglais (`en`) vierge.
 - Crée un `doc` et affiche son texte.
 
 <codeblock id="01_02_02"></codeblock>
 
 ### Partie 3 : Espagnol
 
-- Utilise `spacy.blank` pour créer un objet `nlp` français (`es`) vierge.
+- Utilise `spacy.blank` pour créer un objet `nlp` espagnol (`es`) vierge.
 - Crée un `doc` et affiche son texte.
 
 <codeblock id="01_02_03"></codeblock>
@@ -132,15 +132,15 @@ annotations linguistiques comme l'étiquetage de partie du discours, les
 relations de dépendance ou les entités nommées.
 
 </opt>
-<opt correct="true" text="Les données annotées sur lesquelles le pipeline a été entrainé.">
+<opt correct="true" text="Les données annotées sur lesquelles le pipeline a été entraîné.">
 
-Les pipelines entraînés permettent de généraliser à partir d'un jeu de données
-d'apprentissage. Une fois entraînés, ils utilisent les poids binaires pour
-effectuer des prédictions. Il n'est donc pas nécessaire de les fournir avec
-leurs données d'apprentissage.
+Les pipelines entraînés te permettent de généraliser à partir d'un jeu de
+données d'apprentissage. Une fois entraînés, ils utilisent les poids binaires
+pour effectuer des prédictions. Il n'est donc pas nécessaire de les fournir
+avec leurs données d'apprentissage.
 
 </opt>
-<opt text="Les Strings du vocabulaire du pipeline et leurs hashs.">
+<opt text="Les chaînes de caractères du vocabulaire du pipeline et leurs hashs.">
 
 Les packages de pipelines contiennent un `strings.json` qui stocke les entrées
 dans le vocabulaire du pipeline et la correspondance avec leurs hashs. Cela 

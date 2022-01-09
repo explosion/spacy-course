@@ -25,7 +25,7 @@ Jetons un oeil à certains des problèmes que tu pourrais rencontrer.
     qu'est une personne avec le label `"PER"`
 - On appelle ça le problème de "l'oubli catastrophique"
 
-Notes: Les modèles statistiques peuvent apprendre beaucoup de choses - mais ils
+Notes: Les modèles statistiques peuvent apprendre beaucoup de choses – mais ils
 peuvent aussi les désapprendre.
 
 Si tu actualises un modèle existant avec de nouvelles données, en particulier de
@@ -33,7 +33,7 @@ nouveaux labels, il peut sur-optimiser et s'ajuster _exagérément_ aux nouveaux
 exemples.
 
 Par exemple, si tu l'actualises uniquement avec des exemples de `"SITE_WEB"`,
-il peut "oublier" d'autres labels qu'il prédisait correctement jusqu'alors -
+il peut "oublier" d'autres labels qu'il prédisait correctement jusqu'alors –
 comme `"PER"` pour "personne".
 
 C'est également connu sous le nom de problème de l'oubli catastrophique.
@@ -44,8 +44,8 @@ C'est également connu sous le nom de problème de l'oubli catastrophique.
 
 - Par exemple, si tu l'entraînes sur `"SITE_WEB"`, inclus aussi des exemples de
   `"PER"`
-- Fais tourner un modèle existant de spaCy sur les données et extrais les autres
-  entités pertinentes
+- Fais tourner un modèle existant de spaCy sur les données et extrais toutes
+  les autres entités pertinentes
 
 Notes: Pour éviter cela, assure-toi de toujours incorporer des exemples de ce
 que le modèle prédisait correctement jusqu'à présent.
@@ -84,10 +84,10 @@ pourra avoir des difficultés à l'apprendre.
 
 Le schéma de labellisation doit également être cohérent et pas trop spécifique.
 
-Par exemple, il pourrait être très difficile d'apprendre à un modèle à prédire
-si quelque chose est un vêtement pour adulte ou un vêtement pour enfant en se
-basant sur le contexte. En revanche, prédire simplement le label `"VETEMENTS"`
-pourrait mieux fonctionner.
+Par exemple, il pourrait s'avérer très difficile d'apprendre à un modèle à
+prédire si quelque chose est un vêtement pour adulte ou un vêtement pour enfant
+en se basant sur le contexte. En revanche, prédire simplement le label
+`"VETEMENTS"` pourrait mieux fonctionner.
 
 ---
 

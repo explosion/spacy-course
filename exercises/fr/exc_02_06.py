@@ -13,7 +13,7 @@ doc = ____(____, ____, ____)
 print(doc.text)
 
 # Crée un span pour "David Bowie" à partir du doc
-# et assigne-lui le label "PERSON"
+# et assigne-lui le label "PER"
 span = ____(____, ____, ____, label=____)
 print(span.text, span.label_)
 

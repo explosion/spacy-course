@@ -39,7 +39,7 @@ d'entités nommées.
 
 # Anatomie d'un composant (1)
 
-- Fonction qui crée un `doc`, le modifie et le retourne
+- Fonction qui prend un `doc`, le modifie et le retourne
 - Enregistré avec le décorateur `Language.component`
 - Peut être ajouté avec la méthode `nlp.add_pipe`
 
@@ -110,11 +110,11 @@ exister, toutefois – sinon, spaCy génèrera une erreur.
 # Crée l'objet nlp
 nlp = spacy.load("fr_core_news_sm")
 
-# Définis un composant personnalisé
+# Définit un composant personnalisé
 @Language.component("custom_component")
 def custom_component_function(doc):
     # Affiche la longueur du doc
-    print("Longueur du Doc :", len(doc))
+    print("Longueur du doc :", len(doc))
     # Retourne l'objet doc
     return doc
 
@@ -161,12 +161,12 @@ nous traiterons un doc.
 # Crée l'objet nlp
 nlp = spacy.load("fr_core_news_sm")
 
-# Définis un composant personnalisé
+# Définit un composant personnalisé
 @Language.component("custom_component")
 def custom_component_function(doc):
 
     # Affiche la longueur du doc
-    print("Longueur du Doc :", len(doc))
+    print("Longueur du doc :", len(doc))
 
     # Retourne l'objet doc
     return doc
@@ -179,7 +179,7 @@ doc = nlp("Bonjour monde !")
 ```
 
 ```out
-Longueur du Doc : 3
+Longueur du doc : 3
 ```
 
 Notes: Maintenant quand nous traitons un texte en utilisant l'objet `nlp`, le

@@ -19,7 +19,7 @@ Notes: Félicitations – tu as atteint la fin du cours !
   `Token` `Span`, `Vocab`, `Lexeme`
 - Recherche de **similarités sémantiques** avec les **vecteurs de mots**
 - Écriture de **composants de pipeline** avec des **extensions d'attributs**
-- **Accroissement d'échelle** des pipelines spaCy pour les rendre rapides
+- **Changement d'échelle** des pipelines spaCy pour les rendre rapides
 - Création de **données d'entraînement** pour les modèles statistiques de spaCy
 - **Entraînement et actualisation** des modèles de réseaux de neurones de spaCy
   avec de nouvelles données
@@ -55,8 +55,8 @@ Enfin, dans le chapitre 4, tu as appris à entraîner et à actualiser les modè
 statistiques de spaCy, spécifiquement l'entity recognizer.
 
 Tu as appris quelques trucs utiles sur la manière de créer des données
-d'entraînement, et comment concevoir ton schéma de labellisation pour obtenir
-les meilleurs résultats.
+d'entraînement, et sur la manière de concevoir ton schéma de labellisation pour
+obtenir les meilleurs résultats.
 
 ---
 
@@ -68,8 +68,8 @@ les meilleurs résultats.
   - Analyseur de dépendances
   - Classificateur de texte
 
-Notes: Bien sûr, il y a beaucoup plus de choses que spaCy peut faire et que nous
-n'avons pas couvertes dans ce cours.
+Notes: Bien sûr, il y a beaucoup d'autres choses que spaCy peut faire et que
+nous n'avons pas couvertes dans ce cours.
 
 Si nous nous sommes surtout concentrés sur l'entraînement du reconnaisseur
 d'entités, tu peux aussi entraîner et actualiser les autres composants
@@ -100,8 +100,8 @@ comment scinder le texte.
 
 Tu peux aussi ajouter et améliorer le support pour d'autres langues.
 
-Si spaCy permet déjà la tokenisation pour beaucoup de langues différentes, il y
-a toujours des possibilités d'améliorations.
+Si spaCy permet déjà la tokenisation pour de nombreuses langues, il y a
+toujours des possibilités d'améliorations.
 
 La gestion de la tokenisation pour une nouvelle langue est la première étape
 afin de pouvoir entraîner un modèle statistique.

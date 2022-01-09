@@ -1,7 +1,7 @@
 def test():
     assert (
-        'with nlp.select_pipes(disable=["tagger", "lemmatizer"])' in __solution__
-        or 'with nlp.select_pipes(disable=["lemmatizer", "tagger"])' in __solution__
+        'with nlp.select_pipes(disable=["parser", "lemmatizer"])' in __solution__
+        or 'with nlp.select_pipes(disable=["lemmatizer", "parser"])' in __solution__
     ), "Utilises-tu nlp.select_pipes avec les bons composants ?"
 
     __msg__.good(

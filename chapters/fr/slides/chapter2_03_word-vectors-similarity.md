@@ -34,7 +34,7 @@ indiquant dans quelle mesure ils sont similaires.
 Un point très important : Pour pouvoir utiliser la similarité, tu dois utiliser
 un pipeline spaCy plus grand qui inclut les vecteurs de mots.
 
-Par exemple, le pipeline anglais moyen ou grand – mais _pas_ le petit. Donc si
+Par exemple, le pipeline français moyen ou grand – mais _pas_ le petit. Donc si
 tu veux utiliser les vecteurs, choisis toujours un pipeline qui se termine par 
 "md" ou par "lg". Tu trouveras de plus amples informations dans la
 [documentation](https://spacy.io/models).

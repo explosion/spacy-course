@@ -20,7 +20,7 @@ entraîner un modèle et comment explorer tes pipelines entraînés ensuite.
 - définit comment initialiser l'objet `nlp`
 - comprend tous les paramètres des composants du pipeline et leurs
   implémentations de modèles
-- configure the processus d'entraînement et les hyperparamètres
+- configure le processus d'entraînement et les hyperparamètres
 - rend ton entraînement reproductible
 
 Notes: spaCy utilise un fichier de configuration, généralement nommé
@@ -38,7 +38,7 @@ ton fichier de configuration à la commande d'entraînement de spaCy.
 Les fichiers de configuration contribuent également à la reproductibilité : tu
 auras tous tes paramètres à un seul endroit et tu sauras toujours comment ton
 pipeline a été entraîné. Tu pourras même charger ton fichier de configuration
-dans un répertoire Git pour le versionner et le partager avec d'autres afin
+dans un dépôt Git pour le versionner et le partager avec d'autres afin
 qu'ils puissent entraîner le même pipeline avec les mêmes paramètres.
 
 ---
@@ -68,15 +68,15 @@ hidden_width = 64
 Notes: Voici un extrait d'un fichier de configuration utilisé pour entraîner un
 pipeline avec un reconnaisseur d'entités nommées. La configuration est groupée
 en sections, et les sections imbriquées sont définies avec un point. Par 
-exemple, `[components.ner.model]` definit les paramètres d'une implémentation
-de modèle pour une reconnaissance d'entité nommée.
+exemple, `[components.ner.model]` definit les paramètres d'implémentation de
+modèle pour le reconnaisseur d'entités nommées.
 
 Les fichiers de configuration peuvent aussi référencer des fonctions Python
 avec la notation `@`. Par exemple, le tokenizer définit une fonction déclarée de
 tokenizer. Tu peux utiliser cela pour personnaliser différentes parties de
-l'objet `nlp` et de l'entraînement - depuis l'intégration de ton propre
+l'objet `nlp` et de l'entraînement – depuis l'intégration de ton propre
 tokenizer, jusqu'à l'implémentation de tes propres architectures de modèles.
-Mais ne nous préoccupons pas de cela pour l'instant - tout ce que tu vas
+Mais ne nous préoccupons pas de cela pour l'instant – tout ce que tu vas
 apprendre dans ce chapitre utilisera simplement les valeurs par défaut prêtes à
 l'emploi fournies par spaCy !
 
@@ -85,8 +85,8 @@ l'emploi fournies par spaCy !
 # Génération d'une configuration
 
 - spaCy peut auto-générer un fichier de configuration par défaut pour toi
-- interactif [widget de démarrage](https://spacy.io/usage/training#quickstart)
-  dans la doc
+- [widget de démarrage rapide](https://spacy.io/usage/training#quickstart)
+  interactif dans la doc
 - commande [`init config`](https://spacy.io/api/cli#init-config) en ligne de
   commande
 
@@ -94,18 +94,18 @@ l'emploi fournies par spaCy !
 $ python -m spacy init config ./config.cfg --lang fr --pipeline ner
 ```
 
-- `init config`: la commande à exécuter
-- `config.cfg`: le chemin vers lequel sauver la configuration générée
-- `--lang`: la classe de langue du pipeline, par ex. `fr` pour le français
-- `--pipeline`: les noms des composants à inclure, séparés par des virgules
+- `init config` : la commande à exécuter
+- `config.cfg` : le chemin vers lequel sauver la configuration générée
+- `--lang` : la classe de langue du pipeline, par ex. `fr` pour le français
+- `--pipeline` : les noms des composants à inclure, séparés par des virgules
 
 Notes: Bien sûr, tu n'as pas à écrire les fichiers de configuration à la main,
 et dans bien des cas, tu n'as même pas besoin de les personnaliser du tout.
 spaCy peut auto-générer un fichier de configuration pour toi.
 
 Le widget de démarrage rapide de la documentation te permet de générer une
-configuration de manière interactive en sélectionnant la langue et les
-composants de pipeline dont tu as besoin, ainsi que des paramètres matériels et
+configuration interactivement en sélectionnant la langue et les composants de
+pipeline dont tu as besoin, ainsi que des paramètres matériels et
 d'optimisation optionnels.
 
 Sinon, tu peux aussi utiliser la commande native de spaCy `init config`. Elle
@@ -129,12 +129,12 @@ nommées.
 $ python -m spacy train ./config.cfg --output ./output --paths.train train.spacy --paths.dev dev.spacy
 ```
 
-- `train`: la commande à exécuter
-- `config.cfg`: le chemin vers le fichier de configuration
-- `--output`: le chemin vers le répertoire de sortie où sauver le pipeline
+- `train` : la commande à exécuter
+- `config.cfg` : le chemin vers le fichier de configuration
+- `--output` : le chemin vers le répertoire de sortie où sauver le pipeline
   entraîné
-- `--paths.train`: modifie le chemin vers les données d'entraînement
-- `--paths.dev`: modifie le chemin vers les données d'évaluation
+- `--paths.train` : modifie le chemin vers les données d'entraînement
+- `--paths.dev` : modifie le chemin vers les données d'évaluation
 
 Notes: Pour entraîner un pipeline, tout ce dont tu as besoin est le fichier de
 configuration ainsi que les données d'entraînement et de développement. Ce sont
@@ -178,18 +178,18 @@ Notes: Voici un exemple d'affichage de ce que tu verras pendant et après un
 entraînement. Tu te souviens peut-être du début de ce chapitre où on voulait
 généralement effectuer plusieurs passes sur les données au cours de
 l'entraînement. Chaque passe sur les données est appelée une "epoch". C'est ce
-qui apparait dans la première colonne du tableau.
+qui apparaît dans la première colonne du tableau.
 
 Pour chaque epoch, spaCy affiche les scores de précision tous les 200
-exemples. Ceux-ci sont les étapes montrées dans la deuxième colonne. Tu peux
-changer la fréquence dans la configuration. Chaque ligne montre la perte et le
-score de précision calculé à cette étape de l'entraînement.
+exemples. Ce sont les étapes montrées dans la deuxième colonne. Tu peux changer
+la fréquence dans la configuration. Chaque ligne montre la perte et le score de
+précision calculé à cette étape de l'entraînement.
 
 Le score le plus intéressant à surveiller est le score combiné dans la dernière
 colonne. Il reflète à quel point ton modèle prédit précisément les bonnes
 réponses pour les données d'évaluation.
 
-L'entraînement se poursuit jusqu'à ce que le modèle arrête de s'améliorer et
+L'entraînement se poursuit jusqu'à ce que le modèle cesse de s'améliorer et
 s'arrête automatiquement.
 
 ---
@@ -197,8 +197,8 @@ s'arrête automatiquement.
 # Chargement d'un pipeline entraîné
 
 - le résultat après entraînement est un pipeline spaCy chargeable normal
-  - `model-last`: le dernier pipeline entraîné
-  - `model-best`: le meilleur pipeline entraîné
+  - `model-last` : le dernier pipeline entraîné
+  - `model-best` : le meilleur pipeline entraîné
 - chargement avec `spacy.load`
 
 ```python

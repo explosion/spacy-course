@@ -55,7 +55,7 @@ quelconque serveur.
 <opt text="Initialise la langue, ajoute le pipeline et charge le modèle binaire de poids.">
 
 Quand tu appelles `spacy.load()` pour charger un pipeline, spaCy va initialiser la
-langue, ajouter le pipeline et charger le modèle binaire de poids. Quand tu
+langue, ajouter le pipeline et charger le modèle de poids binaires. Quand tu
 _appelles_ l'objet `nlp` sur un texte, le pipeline est déjà chargé.
 
 </opt>
@@ -89,13 +89,13 @@ Le pipeline complet composé de tuples `(name, component)` est accessible avec
 
 <exercise id="5" title="Cas d'usages pour des composants personnalisés">
 
-Lequel de ces problèmes peut être résolu avec des composants de pipeline
-personnalisés. Choisis toutes les réponses pertinentes !
+Lesquels de ces problèmes peuvent être résolus avec des composants de pipeline
+personnalisés. Choisis les combinaisons de réponses pertinentes !
 
 1. Actualisation des pipelines pré-entrainés pour améliorer leurs prédictions
 2. Calcul de nos propres valeurs basées sur les tokens et leurs attributs
 3. Ajout d'entités nommées, par exemple basées sur un dictionnaire
-4. Implémentation du support de langues supplémentaires
+4. Implémentation du support d'une langue supplémentaire
 
 <choice>
 
@@ -119,9 +119,9 @@ composants.
 
 Les composants personnalisés peuvent seulement modifier le `Doc` et ne peuvent
 pas être utilisés pour actualiser directement les poids binaires ou d'autres
-composants. De plus quand ils sont ajoutés au pipeline, la classe de langue a
-déjà été initialisée, donc ils ne peuvent pas servir à ajouter des langues
-supplémentaires.
+composants. De plus ils sont ajoutés au pipeline après l'initialisation de la
+classe de langue et la tokenisation, donc ils ne peuvent pas servir à ajouter
+des langues supplémentaires.
 
 </opt>
 
@@ -161,13 +161,13 @@ d'un document. Peux-tu le compléter ?
 - Complète la fonction du composant avec la longueur du `doc`.
 - Ajoute `"length_component"` au pipeline existant en tant que **premier**
   composant.
-- Essaie le nouveau pipeline en traitant un texte quelconque avec l'objet `nlp`–
-  par exemple "Ceci est une phrase.".
+- Essaie le nouveau pipeline en traitant un texte quelconque avec l'objet `nlp`
+  – par exemple "Ceci est une phrase.".
 
 <codeblock id="03_06">
 
 - Pour obtenir la longueur d'un objet `Doc`, tu peux appeler la fonction native
-  `len()` de Python avec le `Doc` en argument.
+  `len()` dessus.
 - Utilise la méthode `nlp.add_pipe` pour ajouter le composant au pipeline.
   N'oublie pas d'utiliser le nom du composant sous forme de chaîne et de mettre
   l'argument nommé `first` à `True` pour t'assurer qu'il sera ajouté avant tous
@@ -398,7 +398,7 @@ contextes sont des dictionnaires avec pour clés `"author"` et `"book"`.
   `"author"` et `"book"` sur le `Doc`, avec `None` comme valeur par défaut.
 - Traite les paires `[text, context]` contenues dans `DATA` en utilisant
   `nlp.pipe` avec `as_tuples=True`.
-- Réécris `doc._.book` et `doc._.author` avec les valeurs respectives
+- Actualise `doc._.book` et `doc._.author` avec les valeurs respectives
   d'informations obtenues avec le contexte.
 
 <codeblock id="03_15">
@@ -433,8 +433,8 @@ exactement comme l'objet `nlp`.
 
 ### Partie 2
 
-- Désactive le tagger et le lemmatizer en utilisant la méthode
-`nlp.select_pipes`.
+- Désactive le parser et le lemmatizer en utilisant la méthode
+  `nlp.select_pipes`.
 - Traite le texte et affiche toutes les entités contenues dans le `doc`.
 
 <codeblock id="03_16_02">

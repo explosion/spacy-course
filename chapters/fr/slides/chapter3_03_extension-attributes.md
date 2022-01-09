@@ -21,14 +21,14 @@ token._.is_color = True
 span._.has_color = False
 ```
 
-- Déclaré sur le `Doc`, `Token` ou `Span` global en utilisant la méthode
-  `set_extension`
+- Déclaré sur les classes globales `Doc`, `Token` ou `Span` en utilisant la
+méthode `set_extension`
 
 ```python
 # Importe les classes globales
 from spacy.tokens import Doc, Token, Span
 
-# Définis des extensions sur Doc, Token et Span
+# Définit des extensions sur Doc, Token et Span
 Doc.set_extension("title", default=None)
 Token.set_extension("is_color", default=False)
 Span.set_extension("has_color", default=False)
@@ -71,7 +71,7 @@ propriétés et extensions de méthodes.
 ```python
 from spacy.tokens import Token
 
-# Définis l'extension sur le Token avec une valeur par défaut
+# Définit l'extension sur le Token avec une valeur par défaut
 Token.set_extension("is_color", default=False)
 
 doc = nlp("Le ciel est bleu.")
@@ -83,7 +83,7 @@ doc[3]._.is_color = True
 Notes: Les attributs étendus définissent une valeur par défaut qui peut être
 modifiée.
 
-Par exemple, un attribut personnalisé `is_color` sur le token qui possède une
+Par exemple, un attribut personnalisé `is_color` sur le token possédant une
 valeur par défaut définie à `False`.
 
 Sur des tokens individuels, sa valeur peut être modifiée en la remplaçant – dans
@@ -99,12 +99,12 @@ le cas présent, True pour le token "bleu".
 ```python
 from spacy.tokens import Token
 
-# Définis la fonction getter
+# Définit la fonction getter
 def get_is_color(token):
     colors = ["rouge", "jaune", "bleu"]
     return token.text in colors
 
-# Définis l'extension de Token avec le getter
+# Définit l'extension de Token avec le getter
 Token.set_extension("is_color", getter=get_is_color)
 
 doc = nlp("Le ciel est bleu.")
@@ -140,12 +140,12 @@ Le token "blue" retourne maintenant `True` pour `._.is_color`.
 ```python
 from spacy.tokens import Span
 
-# Définis la fonction getter
+# Définit la fonction getter
 def get_has_color(span):
     colors = ["rouge", "jaune", "bleu"]
     return any(token.text in colors for token in span)
 
-# Définis l'extension de Span avec le getter
+# Définit l'extension de Span avec le getter
 Span.set_extension("has_color", getter=get_has_color)
 
 doc = nlp("Le ciel est bleu.")
@@ -181,12 +181,12 @@ ou pas une couleur.
 ```python
 from spacy.tokens import Doc
 
-# Définis la méthode avec des arguments
+# Définit la méthode avec des arguments
 def has_token(doc, token_text):
     in_doc = token_text in [token.text for token in doc]
     return in_doc
 
-# Définis l'extension du Doc avec la méthode
+# Définit l'extension du Doc avec la méthode
 Doc.set_extension("has_token", method=has_token)
 
 doc = nlp("Le ciel est bleu.")
@@ -207,7 +207,7 @@ des valeurs d'attributs - par exemple, basées sur une configuration ou un
 argument particuliers.
 
 Dans cet exemple, la méthode vérifie si le doc contient un token avec un texte
-donné. Le premier argument de la méthode est toujours l'objet lui-même - dans le
+donné. Le premier argument de la méthode est toujours l'objet lui-même – dans le
 cas présent, le doc. Il est passé automatiquement quand la méthode est appelée.
 Tous les autres arguments de la fonction seront des arguments de la méthode
 étendue. Dans le cas présent, `token_text`.

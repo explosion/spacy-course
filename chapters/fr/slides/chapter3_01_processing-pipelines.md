@@ -4,9 +4,10 @@ type: slides
 
 # Traitements de textes en pipelines
 
-Notes: Bienvenue à nouveau ! Ce chapitre est consacré aux pipelines : une série
-de fonctions appliquée à un doc pour ajouter des attributs comme les étiquettes
-de partie de discours, les relations de dépendances ou les entités nommées.
+Notes: Bienvenue à nouveau ! Ce chapitre est consacré aux pipelines de
+traitements : une série de fonctions appliquée à un doc pour ajouter des
+attributs comme les étiquettes de partie de discours, les relations de
+dépendances ou les entités nommées.
 
 Dans cette leçon, tu vas découvrir les composants de pipeline fournis par spaCy,
 et ce qui se passe en coulisses quand tu appelles nlp sur un texte sous forme de
@@ -16,7 +17,7 @@ chaîne de caractères.
 
 # Que se passe-t-il quand tu appelles nlp ?
 
-<img src="/pipeline.png" alt="Illustration du pipeline de spaCy pipeline transformant un texte en Doc traité" width="90%" />
+<img src="/pipeline.png" alt="Illustration du pipeline de spaCy transformant un texte en Doc traité" width="90%" />
 
 ```python
 doc = nlp("Ceci est une phrase.")
@@ -28,9 +29,9 @@ caractères à l'objet `nlp`, et recevoir un objet `Doc`.
 Mais que fait _vraiment_ l'objet `nlp` ?
 
 D'abord, le tokenizer est appliqué pour transformer la chaîne en un objet `Doc`.
-Ensuite, un ensemble de composants du pipeline est appliqué dans l'ordre au doc.
+Ensuite, un ensemble de composants de pipeline est appliqué dans l'ordre au doc.
 Dans le cas présent, le tagger, ensuite le parser, puis l'entity recognizer.
-Finalement, le document traité est retourné pour que tu puisses travailler avec.
+Enfin, le document traité est retourné pour que tu puisses travailler avec.
 
 ---
 
@@ -44,6 +45,7 @@ Finalement, le document traité est retourné pour que tu puisses travailler ave
 | **textcat** | Text classifier         | `Doc.cats`                                                |
 
 Notes: spaCy est fourni avec un éventail de composants de pipelines intégrés.
+Voici quelques-uns des plus courants que tu voudras utiliser dans tes projets.
 
 Le part-of-speech tagger définit les attributs `token.tag` et `token.pos`.
 
@@ -59,14 +61,14 @@ Enfin, le text classifier définit les labels de catégories qui s'appliquent à
 l'ensemble du texte, et les ajoute à la propriété `doc.cats`.
 
 Comme les catégories de textes sont toujours très spécifiques, le text
-classifier n'est pas inclus par défaut dans les pipelines pré-entraînés. Mais
+classifier n'est inclus par défaut dans aucun des pipelines pré-entraînés. Mais
 tu peux l'utiliser pour entraîner ton propre système.
 
 ---
 
 # Sous le capot
 
-<img src="/package_meta_fr.png" alt="Illustration d'un package nommé fr_core_news_sm, de dossiers, fichiers et du config.cf" />
+<img src="/package_meta_fr.png" alt="Illustration d'un package nommé fr_core_news_sm, de dossiers, fichiers et du config.cfg" />
 
 - Le pipeline est défini dans l'ordre dans le `config.cfg` du modèle
 - Les composants intégrés ont besoin de données binaires pour effectuer des
@@ -96,7 +98,7 @@ print(nlp.pipe_names)
 ['tok2vec', 'tagger', 'parser', 'ner', 'attribute_ruler', 'lemmatizer']
 ```
 
-- `nlp.pipeline`: liste de tuples `(name, component)`
+- `nlp.pipeline` : liste de tuples `(name, component)`
 
 ```python
 print(nlp.pipeline)
@@ -118,7 +120,7 @@ Pour la liste des tuples de noms et fonctions des composants, tu peux utiliser
 l'attribut `nlp.pipeline`.
 
 Les fonctions des composants sont les fonctions appliquées au doc pour le
-traiter et définir les attributs - par exemple étiquetage de partie de discours
+traiter et définir les attributs – par exemple étiquetage de partie de discours
 ou entités nommées.
 
 ---

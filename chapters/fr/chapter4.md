@@ -4,9 +4,9 @@ description:
   "Dans ce chapitre, tu vas apprendre comment actualiser les modèles
   statistiques de spaCy afin de les personnaliser pour tes cas d'utilisation -
   par exemple, pour prédire un nouveau type d'entité pour des commentaires en
-  ligne. Tu vas écrire ton propre modèle en partant de zéro, et comprendre les
-  bases de l'apprentissage, ainsi que des trucs et astuces pour mieux réussir
-  tes projets de NLP sur mesure."
+  ligne. Tu vas entraîner ton propre modèle en partant de zéro, et comprendre
+  les bases de l'apprentissage, ainsi que des trucs et astuces pour mieux
+  réussir tes projets de NLP sur mesure."
 prev: /chapter3
 next: null
 type: chapter
@@ -38,7 +38,7 @@ avec les bonnes annotations. C'est ce que reflète le score de précision.
 
 <opt text="À vérifier les prédictions sur des exemples inédits et à calculer le score de précision." correct="true">
 
-Les données d'entraînement sont utilisées pour évaluer le modèle en comparant
+Les données de développement sont utilisées pour évaluer le modèle en comparant
 ses prédictions sur des exemples qu'il n'a pas rencontrés avec les bonnes
 annotations. C'est ce que reflète le score de précision.
 
@@ -46,7 +46,7 @@ annotations. C'est ce que reflète le score de précision.
 
 <opt text="À définir des exemples d'entraînement sans annotations.">
 
-Les données d'entraînement sont utilisées pour évaluer le modèle en comparant
+Les données de développement sont utilisées pour évaluer le modèle en comparant
 ses prédictions sur des exemples qu'il n'a pas rencontrés avec les bonnes
 annotations. C'est ce que reflète le score de précision.
 
@@ -180,7 +180,7 @@ tu n'as pas besoin d'inclure ce préfixe.
 
 ## Partie 2
 
-Jetons un oeil à la configuration spaCy générée à l'instant. Tu peux lancer la
+Jetons un oeil à la configuration spaCy générée à l'instant ! Tu peux lancer la
 commande ci-dessous pour faire afficher la configuration dans le terminal et
 l'inspecter.
 
@@ -194,7 +194,7 @@ Utilisons le fichier de configuration généré dans l'exercice précédent et l
 corpus d'entraînement que nous avons créé pour entraîner un reconnaisseur
 d'entités nommées !
 
-La commande [`train`])(https://spacy.io/api/cli#train) te permet d'entraîner un
+La commande [`train`](https://spacy.io/api/cli#train) te permet d'entraîner un
 modèle à partir d'un fichier de configuration. Un fichier `config_gadget.cfg`
 est déjà présent dans le répertoire `exercises/fr`, ainsi qu'un fichier
 `train_gadget.spacy` contenant les exemples d'entraînement et un fichier
@@ -291,7 +291,7 @@ doc1.ents = [Span(doc1, 4, 5, label="DESTINATION_TOURISTIQUE")]
 
 doc2 = nlp("Tu devrais visiter Paris au moins une fois dans ta vie, "
     "mais la Tour Eiffel ce n'est pas terrible")
-doc2.ents = [Span(doc2, 4, 5, label="DESTINATION_TOURISTIQUE")]
+doc2.ents = [Span(doc2, 3, 4, label="DESTINATION_TOURISTIQUE")]
 
 doc3 = nlp("Il y a aussi un Paris dans l'Arkansas, lol")
 doc3.ents = []
@@ -353,7 +353,7 @@ avantages des reconnaissances statistiques d'entités nommées.
   ajouter les spans des entités, compte les tokens pour trouver où commence
   et où finit le span. N'oublie pas que le dernier token est _exclu_. Ensuite
   ajoute un nouveau `Span` à `doc.ents`.
-- Garde un oeil sur la tokénisation ! Affiche les tokens du `Doc` si tu n'es pas
+- Garde un oeil sur la tokenisation ! Affiche les tokens du `Doc` si tu n'es pas
   sûr.
   
 
@@ -373,13 +373,14 @@ d'annotations qui s'intègre avec spaCy.
 
 ### Partie 1
 
-- Complète les positions des tokens `"SITE_WEB"` dans les données.
+- Complète les positions des tokens pour les entités `"SITE_WEB"` dans les
+  données.
 
 <codeblock id="04_12_01">
 
-- Rappelle-toi que la position du token de fin est exclue. Donc une entité qui
-  commence au token 2 et qui s'arrête au token 3 aura un début à `2` et une fin
-  à `4`.
+- Rappelle-toi que la position du token de fin d'un span est exclue. Donc une
+  entité qui commence au token 2 et qui s'arrête au token 3 aura un début à `2`
+  et une fin à `4`.
 
 </codeblock>
 
@@ -412,8 +413,8 @@ prédire.
 
 <opt text="Les hyperparamètres doivent être réglés à nouveau pour que les deux types d’entités puissent être reconnus.">
 
-Si les hyperparamètres peuvent influer sur la justesse d'un modèle, ils ne sont
-probablement pas le problème ici.
+Si les hyperparamètres peuvent influer sur la précision d'un modèle, ils ne
+sont probablement pas le problème ici.
 
 </opt>
 

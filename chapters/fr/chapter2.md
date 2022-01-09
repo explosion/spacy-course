@@ -163,7 +163,7 @@ objet `nlp` partagé a déjà été créé.
 - Utilise la classe `Doc` directement pour créer un `doc` à partir des mots et
   des espaces.
 - Crée un `Span` pour "David Bowie" à partir du `doc` et assigne-lui le label
-  `"PERSON"`.
+  `"PER"` ("personne").
 - Remplace `doc.ents` par une liste d'une seule entité, le `span` "David Bowie".
 
 <codeblock id="02_06">

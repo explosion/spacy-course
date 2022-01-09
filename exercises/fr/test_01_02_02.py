@@ -10,4 +10,4 @@ def test():
     ), "As-tu traité le texte avec l'objet nlp pour créer un doc ?"
     assert "print(doc.text)" in __solution__, "As-tu affiché doc.text ?"
 
-    __msg__.good("Bien joué !")
+    __msg__.good("Well done!")

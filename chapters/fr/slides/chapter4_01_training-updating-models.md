@@ -9,8 +9,8 @@ formidables du NLP moderne : l'entraînement de tes propres modèles !
 
 Dans cette leçon, tu vas apprendre à entraîner et à mettre à jour les composants
 de pipelines de spaCy et leurs modèles de réseaux de neurones, et les données
-dont tu as besoin pour le faire - en te concentrant spécifiquement sur le named
-entity recognizer.
+dont tu as besoin pour le faire - en te concentrant spécifiquement sur le
+reconnaisseur d'entités nommées.
 
 ---
 
@@ -63,12 +63,12 @@ Le modèle compare ensuite les prédictions avec les bonnes réponses, et décid
 comment changer les poids pour effectuer de meilleures prédictions les fois
 suivantes.
 
-Finalement, nous effectuons une petite correction aux poids courants et passons
-au lot suivant d'exemples.
+Enfin nous effectuons une petite correction aux poids courants et passons au
+lot d'exemples suivant.
 
-spaCy continue ensuite d'appeler `nlp.update` sur chaque lot d'exemples dans
-les données. Pendant l'entraînement, on effectue généralement plusieurs passes
-sur les données pour entraîner jusqu'à ce que le modèle arrête de s'améliorer.
+spaCy continue ensuite d'appeler `nlp.update` sur chaque lot d'exemples des
+données. Pendant l'entraînement, on effectue généralement plusieurs passes sur
+les données pour entraîner jusqu'à ce que le modèle cesse de s'améliorer.
 
 ---
 
@@ -77,8 +77,8 @@ sur les données pour entraîner jusqu'à ce que le modèle arrête de s'amélio
 <img src="/training_fr.png" alt="Diagramme du processus d'entraînement" />
 
 - **Jeu d'apprentissage :** Exemples et leurs annotations.
-- **Texte :** Le texte d'entrée pour lequel le modèle devrait prédire un label.
-- **Label :** Le label que le modèle devrait prédire.
+- **Texte :** Le texte d'entrée pour lequel le modèle doit prédire un label.
+- **Label :** Le label que le modèle doit prédire.
 - **Gradient :** Comment changer les poids.
 
 Notes: Voici une illustration montrant le processus.
@@ -171,8 +171,8 @@ Pour entraîner une nouvelle catégorie, cela peut en nécessiter jusqu'à un
 million.
 
 Les pipelines anglais pré-entraînés de spaCy ont par exemple été entraînés sur
-2 millions de mots labellisés avec les étiquettes de partie de discours, les
-relations de dépendance et les entités nommées.
+2 millions de mots labellisés avec des étiquettes de partie de discours, des
+relations de dépendance et des entités nommées.
 
 Les données d'entraînement sont généralement créées par des humains qui
 affectent des labels à des textes.
@@ -306,7 +306,7 @@ Notes: Dans certains cas, il se peut que tu disposes de données d'entraînement
 et de développement dans un format courant – par exemple, CoNLL ou IOB. La
 commande `convert` de spaCy convertit automatiquement ces fichiers dans le
 format binaire de spaCy. Elle peut aussi convertir les fichiers qui sont au
-format JSON de spaCy v2.
+format JSON utilisé par spaCy v2.
 
 ---
 
