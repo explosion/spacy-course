@@ -1,6 +1,6 @@
-from spacy.lang.zh import Chinese
+import spacy
 
-nlp = Chinese()
+nlp = spacy.blank("zh")
 
 # 导入Doc和Span类
 from spacy.____ import ____, ____

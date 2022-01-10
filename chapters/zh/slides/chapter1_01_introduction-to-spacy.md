@@ -14,11 +14,11 @@ spaCy是一个先进且广受欢迎的自然语言处理Python库。
 # nlp对象
 
 ```python
-# 导入中文的语言类
-from spacy.lang.zh import Chinese
+# 导入spaCy
+import spacy
 
-# 创建nlp对象
-nlp = Chinese()
+# 创建一个空白的中文nlp对象
+nlp = spacy.blank("zh")
 ```
 
 - 包含了自然语言处理的流程
@@ -26,13 +26,13 @@ nlp = Chinese()
 
 Notes: spaCy的核心就是包含了自然语言处理流程的对象。我们通常把这个变量叫做`nlp`。 
 
-举个例子，要创造一个中文的`nlp`的对象，我们要从`spacy.lang.zh`中导入`Chinese`这个语言类
-并创建一个实例。我们可以像一个函数一样使用nlp对象来分析文本。
+举个例子，要创造一个中文的`nlp`的对象，我们要导入`spacy`然后使用`spacy.blank`方法来创建一个空的中文流程。
+我们可以像一个函数一样使用`nlp`对象来分析文本。
 
 这个nlp对象包含了流程中的所有不同组件。
 
 它还包含了一些特定语言相关的规则，用来将文本分词成为单个的词汇和标点符号。
-spaCy支持多种不同语言，包含在`spacy.lang`中。
+spaCy支持多种不同语言。
 
 ---
 
@@ -64,7 +64,7 @@ Doc用起来就像一个正常的Python序列，我们可以遍历它的词符�
 
 # Token对象
 
-<img src="/doc.png" alt="一个含有四个词符的Doc实例" width="50%" />
+<img src="/doc.png" alt="一个含有三个词符的Doc实例" width="50%" />
 
 ```python
 doc = nlp("这是一个句子。")
@@ -92,7 +92,7 @@ Notes: `Token`实例代表了一个文本中的词符，比如一个词或者一
 
 # Span对象
 
-<img src="/doc_span.png" width="50%" alt="一个含有四个词符且其中三个被包装成一个跨度的Doc实例" />
+<img src="/doc_span.png" width="50%" alt="一个含有三个词符且其中两个被包装成一个跨度的Doc实例" />
 
 ```python
 doc = nlp("这是一个句子。")

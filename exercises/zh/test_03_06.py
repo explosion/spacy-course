@@ -5,11 +5,5 @@ def test():
     assert (
         "first=True" in __solution__
     ), "你有把组件加到流程的最前面吗？"
-    assert nlp.pipe_names == [
-        "length_component",
-        "tagger",
-        "parser",
-        "ner",
-    ], "组件名字好像不太对？"
-
+    assert nlp.pipe_names[0] == "length_component", "组件名字好像不太对？"
     __msg__.good("完美！现在我们来看看再复杂一点的组件！")

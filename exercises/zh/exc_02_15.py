@@ -11,7 +11,7 @@ with open("exercises/zh/country_text.txt", encoding="utf8") as f:
 nlp = spacy.load("zh_core_web_sm")
 matcher = PhraseMatcher(nlp.vocab)
 patterns = list(nlp.pipe(COUNTRIES))
-matcher.add("COUNTRY", None, *patterns)
+matcher.add("COUNTRY", patterns)
 
 # 创建一个doc并重置其已有的实体
 doc = nlp(TEXT)

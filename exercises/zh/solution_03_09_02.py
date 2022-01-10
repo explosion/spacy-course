@@ -1,7 +1,7 @@
-from spacy.lang.zh import Chinese
+import spacy
 from spacy.tokens import Token
 
-nlp = Chinese()
+nlp = spacy.blank("zh")
 
 # 定义取值器函数，读入一个词符并返回其逆序的文本
 def get_reversed(token):

@@ -14,7 +14,7 @@ doc = nlp(
 pattern = [{"TEXT": "下载"}, {"POS": "PROPN"}]
 
 # 把模板加入到matcher中，然后把matcher应用到doc上面
-matcher.add("DOWNLOAD_THINGS_PATTERN", None, pattern)
+matcher.add("DOWNLOAD_THINGS_PATTERN", [pattern])
 matches = matcher(doc)
 print("Total matches found:", len(matches))
 
