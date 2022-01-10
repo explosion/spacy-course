@@ -1,6 +1,6 @@
 import spacy
 
-# 读取zh_core_web_md模型
+# 读取zh_core_web_md流程
 nlp = ____
 
 # 处理文本

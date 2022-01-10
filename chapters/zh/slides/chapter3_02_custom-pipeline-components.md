@@ -34,39 +34,48 @@ spaCy支持一系列的原生组件，但也允许我们定义自己的组件。
 # 解构组件(1)
 
 - 函数用来读取一个`doc`，修改和返回它。
+- 用`Language.component`装饰器来注册。
 - 我们可以用`nlp.add_pipe`来添加组件。
 
 ```python
-def custom_component(doc):
+from spacy.language import Language
+
+@Language.component("custom_component")
+def custom_component_function(doc):
     # 对doc做一些处理
     return doc
 
-nlp.add_pipe(custom_component)
+nlp.add_pipe("custom_component")
 ```
 
 Notes: 根本上来讲，一个流程组件就是一个函数或者callable，它读取一个doc，修改
 和返回这个doc，作为下一个流程组件的输入。
 
-我们可以用`nlp.add_pipe`方法来为流程添加组件。这个方法需要至少一个参数：组件函数。
+要让spaCy找到我们的定制组件并调用，我们需要用`@Language.component`装饰器来装饰这个组件。
+只需要将其放在函数定义的前一行即可。
+
+一旦组件被注册后，我们就可以用`nlp.add_pipe`来将其加入到流程中。
+这个方法需要至少一个参数:组件的字符串名。
 
 ---
 
 # 解构组件(2)
 
 ```python
-def custom_component(doc):
+@Language.component("custom_component")
+def custom_component_function(doc):
     # 对doc做一些处理
     return doc
 
-nlp.add_pipe(custom_component)
+nlp.add_pipe("custom_component")
 ```
 
 | 参数 | 说明          | 例子                                   |
 | -------- | -------------------- | ----------------------------------------- |
-| `last`   | 如果为`True`则加在最后面  | `nlp.add_pipe(component, last=True)`      |
-| `first`  | 如果为`True`则加在最前面 | `nlp.add_pipe(component, first=True)`     |
-| `before` | 加在指定组件之前 | `nlp.add_pipe(component, before="ner")`   |
-| `after`  | 加在指定组件之后  | `nlp.add_pipe(component, after="tagger")` |
+| `last`   | 如果为`True`则加在最后面  | `nlp.add_pipe("component", last=True)`      |
+| `first`  | 如果为`True`则加在最前面 | `nlp.add_pipe("component", first=True)`     |
+| `before` | 加在指定组件之前 | `nlp.add_pipe("component", before="ner")`   |
+| `after`  | 加在指定组件之后  | `nlp.add_pipe("component", after="tagger")` |
 
 Notes: 我们可以用下面这些关键字参数来指定在流程的 _什么位置_ 添加组件： 
 
@@ -88,26 +97,27 @@ Notes: 我们可以用下面这些关键字参数来指定在流程的 _什么�
 nlp = spacy.load("zh_core_web_sm")
 
 # 定义一个定制化组件
-def custom_component(doc):
+@Language.component("custom_component")
+def custom_component_function(doc):
     # 打印doc的长度
     print("Doc length:", len(doc))
     # 返回doc
     return doc
 
 # 把组件添加到流程的最前面
-nlp.add_pipe(custom_component, first=True)
+nlp.add_pipe("custom_component", first=True)
 
 # 打印流程的组件名
 print("Pipeline:", nlp.pipe_names)
 ```
 
 ```out
-Pipeline: ['custom_component', 'tagger', 'parser', 'ner']
+Pipeline: ['custom_component', 'tok2vec', 'tagger', 'parser', 'ner', 'attribute_ruler', 'lemmatizer']
 ```
 
 Notes: 我们来看看一个简单的流程组件的例子。
 
-我们从一个小的中文模型开始。
+我们从一个小的中文流程开始。
 
 然后定义组件，也就是一个函数，读取`Doc`实例然后再把它返回出来。
 
@@ -115,6 +125,8 @@ Notes: 我们来看看一个简单的流程组件的例子。
 
 别忘了把这个doc返回出来，因为它还要被流程后面的组件处理！
 分词器创建的doc会走完全部的流程组件，所以每个组件都一定要返回其处理过的doc，这点很重要。
+
+要让spaCy知道新的组件，我们用`@Language.component`装饰器将其注册，起名为"custom_component".
 
 我们现在可以把组件加入到流程中了。我们设置`first=True`把它加到流程的最前面，紧跟着分词器。
 
@@ -130,16 +142,15 @@ Notes: 我们来看看一个简单的流程组件的例子。
 nlp = spacy.load("zh_core_web_sm")
 
 # 定义一个定制化组件
-def custom_component(doc):
-
+@Language.component("custom_component")
+def custom_component_function(doc):
     # 打印doc的长度
     print("Doc length:", len(doc))
-
     # 返回doc
     return doc
 
 # 把组件添加到流程的最前面
-nlp.add_pipe(custom_component, first=True)
+nlp.add_pipe("custom_component", first=True)
 
 # 处理一段文本
 doc = nlp("这是一个句子。")

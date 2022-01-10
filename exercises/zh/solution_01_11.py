@@ -13,7 +13,7 @@ matcher = Matcher(nlp.vocab)
 pattern = [{"TEXT": "iPhone"}, {"TEXT": "X"}]
 
 # 把模板加入到matcher中
-matcher.add("IPHONE_X_PATTERN", None, pattern)
+matcher.add("IPHONE_X_PATTERN", [pattern])
 
 # 在doc中使用matcher
 matches = matcher(doc)

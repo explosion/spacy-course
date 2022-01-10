@@ -68,7 +68,7 @@ import spacy
 # 导入Matcher
 from spacy.matcher import Matcher
 
-# 读取一个模型，创建nlp实例
+# 读取一个流程，创建nlp实例
 nlp = spacy.load("zh_core_web_sm")
 
 # 用模型分享出的vocab初始化matcher
@@ -76,7 +76,7 @@ matcher = Matcher(nlp.vocab)
 
 # 给matcher加入模板
 pattern = [{"TEXT": "iPhone"}, {"TEXT": "X"}]
-matcher.add("IPHONE_PATTERN", None, pattern)
+matcher.add("IPHONE_PATTERN", [pattern])
 
 # 处理文本
 doc = nlp("即将上市的iPhone X发布日期被泄露了")
@@ -87,14 +87,13 @@ matches = matcher(doc)
 
 Notes: 要使用模板我们首先从`spacy.matcher`中导入matcher。
 
-我们还要读取一个模型创界`nlp`实例。
+我们还要读取一个流程创建`nlp`实例。
 
 用模型分享出来的词汇表`nlp.vocab`来初始化matcher。
 我们后面会详细介绍这一块，现在只要记得一定要传入这个词汇表就好了。
 
 `matcher.add`方法可以用来添加一个模板。第一个参数是唯一的ID用来识别匹配的是哪一个模板。
-第二个参数是一个可选的回调参数，这里我们不需要所以设置其为`None`。
-第三个参数是模板本身。
+第二个参数是一个模板的列表。
 
 要在文本中匹配模板，我们可以在任何doc中调用matcher。
 

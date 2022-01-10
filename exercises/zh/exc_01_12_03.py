@@ -12,7 +12,7 @@ doc = nlp(
 pattern = [{"POS": ____}, {"POS": ____}, {"POS": ____, "OP": ____}]
 
 # 把模板加入到matcher中然后把matcher应用到doc上面
-matcher.add("ADJ_NOUN_PATTERN", None, pattern)
+matcher.add("ADJ_NOUN_PATTERN", [pattern])
 matches = matcher(doc)
 print("Total matches found:", len(matches))
 

@@ -51,12 +51,11 @@ id: 2
 为什么这段代码抛出了错误信息？
 
 ```python
-from spacy.lang.en import English
-from spacy.lang.de import German
+import spacy
 
 # 创建一个英文和德文的nlp实例
-nlp = English()
-nlp_de = German()
+nlp = spacy.blank("en")
+nlp_de = spacy.blank("de")
 
 # 获取字符串'Bowie'的ID
 bowie_id = nlp.vocab.strings["Bowie"]
@@ -244,15 +243,15 @@ for index, pos in enumerate(pos_tags):
 
 <exercise id="9" title="检查词向量">
 
-在这个练习中我们要用到一个更大的[中文模型](https://spacy.io/models/zh)，
+在这个练习中我们要用到一个更大的[中文流程](https://spacy.io/models/zh)，
 该模型有大概两万个词向量。这里模型已经提前安装好了。
 
-- 读取中等大小的`"zh_core_web_md"`模型，该模型含有词向量
+- 读取中等大小的`"zh_core_web_md"`流程，该流程含有词向量
 - 用`token.vector`属性来打印`"老虎"`的向量。
 
 <codeblock id="02_09">
 
-- 用`spacy.load`调用模型名字来读取统计模型。
+- 用`spacy.load`调用流程名字来读取训练好的流程。
 - 可以直接用索引来读取doc中的一个词符token，比如`doc[4]`。
 
 </codeblock>
@@ -293,7 +292,7 @@ for index, pos in enumerate(pos_tags):
 
 </exercise>
 
-<exercise id="11" title="结合模型与规则" type="slides">
+<exercise id="11" title="结合流程与规则" type="slides">
 
 <slides source="chapter2_04_models-rules">
 </slides>

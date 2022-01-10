@@ -1,5 +1,6 @@
 def test():
-    assert nlp.meta["name"] == "core_web_sm", "你有读取正确的模型吗？"
+    assert nlp.meta["name"] == "core_web_sm", "你有读取正确的流程吗？"
+    assert nlp.meta["lang"] == "zh", "你有读取正确的流程吗？"
     assert "print(nlp.pipe_names)" in __solution__, "你有打印组件名字了吗？"
     assert "print(nlp.pipeline)" in __solution__, "你有打印流程了吗？"
 

@@ -134,11 +134,11 @@ Notes: 如果我们只是需要一个分词过的`Doc`实例，我们可以用`n
 
 # 关闭流程组件
 
-- 使用`nlp.disable_pipes`来暂时关闭一个或多个流程组件。
+- 使用`nlp.select_pipes`来暂时关闭一个或多个流程组件。
 
 ```python
 # 关闭词性标注器tagger和依存关系标注器parser
-with nlp.disable_pipes("tagger", "parser"):
+with nlp.select_pipes(disable=["tagger", "parser"]):
     # 处理文本并打印实体结果
     doc = nlp(text)
     print(doc.ents)
@@ -147,10 +147,10 @@ with nlp.disable_pipes("tagger", "parser"):
 - `with`代码块之后这些组件会重新启用
 - 这些组件关闭后spaCy流程只会跑剩余的未被关闭的组件
 
-Notes: spaCy允许我们暂时关闭一些流程组件，方法是用`nlp.disable_pipes`
+Notes: spaCy允许我们暂时关闭一些流程组件，方法是用`nlp.select_pipes`
 这个管理器。
 
-这个方法需要一个可变长的参数，包含了需要关闭的一个或多个流程组件的名字。
+这个方法需要一个关键词参数`enable`或者`disable`，可以定义一个包含了需要关闭的一个或多个流程组件的名字的列表。
 比如我们只想要用实体识别器来处理文档，我们就可以暂时关闭词性标注器tagger
 和依存关系标注器parser。
 
