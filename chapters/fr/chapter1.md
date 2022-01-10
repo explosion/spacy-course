@@ -218,7 +218,7 @@ Voyons cela avec un exemple.
 
 - Traite le texte avec l'objet `nlp`.
 - Itère sur les entités et affiche le texte et le label de chaque entité.
-- Il semble que le modèle n'a pas prédit correctement "e-Méhari Courrèges".
+- Il semble que le modèle n'a pas prédit correctement "X Pro".
   Crée un span manuellement pour ces tokens.
 
 <codeblock id="01_09">
@@ -243,14 +243,14 @@ Voyons cela avec un exemple.
 
 <exercise id="11" title="Utilisation du Matcher">
 
-Essayons le `Matcher` de spaCy basé sur des règles. Tu vas utiliser l'exemple de
-l'exercice précédent et écrire un motif pour trouver l'expression "e-Méhari
-Courrèges" dans le texte.
+Essayons le `Matcher` de spaCy basé sur des règles. Tu vas utiliser l'exemple
+de l'exercice précédent et écrire un motif pour trouver l'expression "X Pro"
+dans le texte.
 
 - Importe le `Matcher` depuis `spacy.matcher`.
 - Initialise-le avec le `vocab` partagé de l'objet `nlp`.
 - Crée un motif qui corresponde avec les valeurs de `"TEXT"` de deux tokens :
-  `"e-Méhari"` et `"Courrèges"`.
+  `"X"` et `"Pro"`.
 - Utilise la méthode `matcher.add` pour ajouter le motif au matcher.
 - Appelle le matcher sur le `doc` et affecte le résultat à la variable
   `matches`.

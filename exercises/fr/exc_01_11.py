@@ -4,16 +4,16 @@ import spacy
 from spacy.____ import ____
 
 nlp = spacy.load("fr_core_news_sm")
-doc = nlp("Le constructeur Citröen présente la e-Méhari Courrèges au public.")
+doc = nlp("Apple : le nouveau modèle X Pro attendu pour l'été.")
 
 # Initialise le matcher avec le vocabulaire partagé
 matcher = ____(____.____)
 
-# Crée un motif qui recherche les deux tokens : "e-Méhari" et "Courrèges"
+# Crée un motif qui recherche les deux tokens : "X" et "Pro"
 pattern = [____]
 
 # Ajoute le motif au matcher
-____.____("MEHARI_PATTERN", ____)
+____.____("IPHONE_X_PATTERN", ____)
 
 # Utilise le matcher sur le doc
 matches = ____
