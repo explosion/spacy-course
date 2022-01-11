@@ -14,7 +14,7 @@ doc = nlp(
 pattern = [{"POS": ____}, {"POS": ____}, {"POS": ____, "OP": ____}]
 
 # Ajoute le motif au matcher et applique le matcher au doc
-matcher.add("ADJ_NOUN_PATTERN", None, pattern)
+matcher.add("ADJ_NOUN_PATTERN", [pattern])
 matches = matcher(doc)
 print("Nombre de correspondances trouvées :", len(matches))
 

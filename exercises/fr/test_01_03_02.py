@@ -8,4 +8,5 @@ def test():
     assert (
         loups_gris_et_renards_roux == doc[5:10]
     ), "Es-tu certain d'avoir sélectionné la bonne portion pour loups gris et renards roux ?"
+    assert 'spacy.blank("fr")' in __solution__, 'Utilises-tu spacy.blank("fr") ?'
     __msg__.good("Bon travail !")

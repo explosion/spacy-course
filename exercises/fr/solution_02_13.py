@@ -18,8 +18,8 @@ pattern2 = [{"POS": "NOUN"}, {"LOWER": "tout-compris"}]
 
 # Initialise le Matcher et ajoute les motifs
 matcher = Matcher(nlp.vocab)
-matcher.add("PATTERN1", None, pattern1)
-matcher.add("PATTERN2", None, pattern2)
+matcher.add("PATTERN1", [pattern1])
+matcher.add("PATTERN2", [pattern2])
 
 # Itère sur les correspondances
 for match_id, start, end in matcher(doc):

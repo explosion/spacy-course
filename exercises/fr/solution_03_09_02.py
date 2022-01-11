@@ -1,7 +1,7 @@
-from spacy.lang.fr import French
+import spacy
 from spacy.tokens import Token
 
-nlp = French()
+nlp = spacy.blank("fr")
 
 # Définis la fonction getter qui prend en argument un token
 # et retourne son texte inversé

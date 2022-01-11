@@ -1,6 +1,6 @@
 import spacy
 
-# Charge le modèle fr_core_news_md
+# Charge le pipeline fr_core_news_md
 nlp = ____
 
 # Traite le texte

@@ -1,7 +1,7 @@
 import spacy
 
 nlp = spacy.load("fr_core_news_sm")
-doc = nlp("Berlin est une jolie ville")
+doc = nlp("Berlin semble être une jolie ville")
 
 # Obtiens tous les tokens et les étiquettes de partie de discours
 token_texts = [token.text for token in doc]

@@ -113,8 +113,8 @@ Notes: Un autre scénario courant : Parfois tu as déjà un modèle chargé pour
 effectuer d'autres traitements, mais tu as seulement besoin du tokenizer pour un
 texte particulier.
 
-Lancer tout le pipeline est inutilement lent, parce que tu vas obtenir tout un
-tas de prédictions par le modèle dont tu n'as pas besoin.
+Lancer tout le pipeline est inutilement lent, parce que le modèle va te fournir
+tout un tas de prédictions dont tu n'as pas besoin.
 
 ---
 
@@ -146,12 +146,12 @@ appelés.
 
 # Désactivation de composants du pipeline
 
-- Utilise `nlp.disable_pipes` pour désactiver temporairement un ou plusieurs
+- Utilise `nlp.select_pipes` pour désactiver temporairement un ou plusieurs
   composants
 
 ```python
 # Désactive le tagger et le parser
-with nlp.disable_pipes("tagger", "parser"):
+with nlp.select_pipes(disable=["tagger", "parser"]):
     # Traite le texte et affiche les entités
     doc = nlp(text)
     print(doc.ents)
@@ -161,12 +161,13 @@ with nlp.disable_pipes("tagger", "parser"):
 - N'exécute que les composants restants
 
 Notes: spaCy te permet aussi de désactiver temporairement des composants du
-pipeline en utilisant le gestionnaire de contexte `nlp.disable_pipes`.
+pipeline en utilisant le gestionnaire de contexte `nlp.select_pipes`.
 
-Il prend un nombre variable d'arguments, les chaines de caractères des
-composants du pipeline à désactiver. Par exemple, si tu veux seulement utiliser
-l'entity recognizer pour traiter un document, tu peux désactiver temporairement
-le tagger et le parser.
+Il accepte les arguments nommés `enable` et `disable` qui peuvent définir une
+liste de chaînes de caractères indiquant les composants du pipeline à
+désactiver. Par exemple, si tu veux seulement utiliser l'entity recognizer
+pour traiter un document, tu peux désactiver temporairement le tagger et le
+parser.
 
 Après le bloc `with`, les composants de pipeline désactivés sont automatiquement
 réactivés.

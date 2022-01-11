@@ -1,6 +1,6 @@
-from spacy.lang.fr import French
+import spacy
 
-nlp = French()
+nlp = spacy.blank("fr")
 
 # Traite le texte
 doc = nlp(
