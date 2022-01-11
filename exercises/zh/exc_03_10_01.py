@@ -1,7 +1,7 @@
-from spacy.lang.zh import Chinese
+import spacy
 from spacy.tokens import Doc
 
-nlp = Chinese()
+nlp = spacy.blank("zh")
 
 # 定义取值器函数
 def get_has_number(doc):

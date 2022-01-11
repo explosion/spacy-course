@@ -1,7 +1,7 @@
-# 导入英文类
-from spacy.lang.____ import ____
+# 导入spaCy
+import ____
 
-# 创建nlp对象
+# 创建英文nlp对象
 nlp = ____
 
 # 处理文本

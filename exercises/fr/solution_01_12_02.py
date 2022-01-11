@@ -16,7 +16,7 @@ doc = nlp(
 pattern = [{"LEMMA": "télécharger"}, {"POS": "PROPN"}]
 
 # Ajoute le motif au matcher et applique le matcher au doc
-matcher.add("DOWNLOAD_THINGS_PATTERN", None, pattern)
+matcher.add("DOWNLOAD_THINGS_PATTERN", [pattern])
 matches = matcher(doc)
 print("Nombre de correspondances trouvées :", len(matches))
 

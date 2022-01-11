@@ -1,8 +1,8 @@
 # 导入西班牙语类
-from spacy.lang.es import Spanish
+import spacy
 
-# 创建nlp对象
-nlp = Spanish()
+# 创建西班牙语nlp对象
+nlp = spacy.blank("es")
 
 # 处理文本 (这是西班牙语"How are you?"的意思)
 doc = nlp("¿Cómo estás?")

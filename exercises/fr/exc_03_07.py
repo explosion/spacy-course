@@ -1,4 +1,5 @@
 import spacy
+from spacy.language import Language
 from spacy.matcher import PhraseMatcher
 from spacy.tokens import Span
 
@@ -7,10 +8,11 @@ animals = ["Golden Retriever", "chat", "tortue", "Rattus norvegicus"]
 animal_patterns = list(nlp.pipe(animals))
 print("animal_patterns :", animal_patterns)
 matcher = PhraseMatcher(nlp.vocab)
-matcher.add("ANIMAL", None, *animal_patterns)
+matcher.add("ANIMAL", animal_patterns)
 
 # Définis le composant personnalisé
-def animal_component(doc):
+@Language.component("animal_component")
+def animal_component_function(doc):
     # Applique le matcher au doc
     matches = ____
     # Crée un Span pour chaque correpondance et assigne-lui le label "ANIMAL"

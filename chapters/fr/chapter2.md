@@ -19,33 +19,33 @@ id: 2
 
 </exercise>
 
-<exercise id="2" title="Des chaines de caractères aux hashs">
+<exercise id="2" title="Des chaînes de caractères aux hashs">
 
 ### Partie 1
 
-- Recherche la chaine de caractères "chat" dans `nlp.vocab.strings` pour obtenir
+- Recherche la chaîne de caractères "chat" dans `nlp.vocab.strings` pour obtenir
   le hash.
-- Recherche le hash pour revenir à la chaine de caractères.
+- Recherche le hash pour revenir à la chaîne de caractères.
 
 <codeblock id="02_02_01">
 
-- Tu peux utiliser le magasin de chaines de caractères `nlp.vocab.strings` comme
+- Tu peux utiliser le magasin de chaînes de caractères `nlp.vocab.strings` comme
   un dictionnaire Python normal. Par exemple `nlp.vocab.strings["licorne"]` va
-  retourner le hash, et la recherche du hash va retourner la chaine `"licorne"`.
+  retourner le hash, et la recherche du hash va retourner la chaîne `"licorne"`.
 
 </codeblock>
 
 ### Partie 2
 
-- Recherche l'étiquette de la chaine "PER" dans `nlp.vocab.strings` pour obtenir
+- Recherche l'étiquette de la chaîne "PER" dans `nlp.vocab.strings` pour obtenir
   le hash.
-- Recherche le hash pour revenir à la chaine de caractères.
+- Recherche le hash pour revenir à la chaîne de caractères.
 
 <codeblock id="02_02_02">
 
-- Tu peux utiliser le magasin de chaines de caractères `nlp.vocab.strings` comme
+- Tu peux utiliser le magasin de chaînes de caractères `nlp.vocab.strings` comme
   un dictionnaire Python normal. Par exemple `nlp.vocab.strings["licorne"]` va
-  retourner le hash, et la recherche du hash va retourner la chaine `"licorne"`.
+  retourner le hash, et la recherche du hash va retourner la chaîne `"licorne"`.
 
 </codeblock>
 
@@ -56,14 +56,13 @@ id: 2
 Pourquoi ce code génère-t-il une erreur ?
 
 ```python
-from spacy.lang.fr import French
-from spacy.lang.de import German
+import spacy
 
 # Crée un objet nlp pour le français et un pour l'allemand
-nlp = French()
-nlp_de = German()
+nlp = spacy.blank("fr")
+nlp_de = spacy.blank("de")
 
-# Obtiens l'ID pour la chaine 'Bowie'
+# Obtiens l'ID pour la chaîne 'Bowie'
 bowie_id = nlp.vocab.strings["Bowie"]
 print(bowie_id)
 
@@ -73,17 +72,17 @@ print(nlp_de.vocab.strings[bowie_id])
 
 <choice>
 
-<opt correct="true" text='La chaine <code>"Bowie"</code> n’est pas présente dans le vocabulaire allemand, donc le hash ne peut pas être trouvé dans le magasin de chaines de caractères.'>
+<opt correct="true" text='La chaîne <code>"Bowie"</code> n’est pas présente dans le vocabulaire allemand, donc le hash ne peut pas être trouvé dans le magasin de chaînes de caractères.'>
 
 Les hashes ne peuvent pas être inversés. Pour éviter ce problème, ajoute le mot
-au nouveau vocabulaire en traitant un texte ou en cherchant la chaine, ou
-utilise le même vocabulaire pour résoudre le hash vers une chaine.
+au nouveau vocabulaire en traitant un texte ou en cherchant la chaîne, ou
+utilise le même vocabulaire pour résoudre le hash vers une chaîne.
 
 </opt>
 
 <opt text='<code>"Bowie"</code> n’est pas un mot normal du dictionnaire en français ou en allemand, donc il ne peut pas être hashé.'>
 
-N'importe quelle chaine de caractères peut être convertie en hash.
+N'importe quelle chaîne de caractères peut être convertie en hash.
 
 </opt>
 
@@ -147,7 +146,7 @@ elles doivent être `False`.
 <codeblock id="02_05_03">
 
 Fais attention aux tokens individuels. Pour voir comment spaCy effectue
-normalement cette chaine, tu peux essayer d'afficher les tokens pour
+normalement cette chaîne, tu peux essayer d'afficher les tokens pour
 `nlp("Oh, vraiment ?!")`.
 
 </codeblock>
@@ -164,7 +163,7 @@ objet `nlp` partagé a déjà été créé.
 - Utilise la classe `Doc` directement pour créer un `doc` à partir des mots et
   des espaces.
 - Crée un `Span` pour "David Bowie" à partir du `doc` et assigne-lui le label
-  `"PERSON"`.
+  `"PER"` ("personne").
 - Remplace `doc.ents` par une liste d'une seule entité, le `span` "David Bowie".
 
 <codeblock id="02_06">
@@ -190,7 +189,7 @@ propres qui sont suivis par un verbe.
 import spacy
 
 nlp = spacy.load("fr_core_news_sm")
-doc = nlp("Berlin est une jolie ville")
+doc = nlp("Berlin semble être une jolie ville")
 
 # Obtiens tous les tokens et les étiquettes de partie de discours
 token_texts = [token.text for token in doc]
@@ -213,15 +212,15 @@ Pourquoi le code est-il mauvais ?
 
 <opt text="Le token <code>result</code> devrait être reconverti en un objet <code>Token</code>. Cela te permettrait de les réutiliser dans spaCy.">
 
-Il ne sera pas nécessaire de reconvertir les chaines en objets `Token`. Evite
-plutôt de convertir les tokens en chaines de caractères si tu as encore besoin
+Il ne sera pas nécessaire de reconvertir les chaînes en objets `Token`. Evite
+plutôt de convertir les tokens en chaînes de caractères si tu as encore besoin
 d'accéder à leurs attributs et leurs relations.
 
 </opt>
 
-<opt correct="true" text="Il utilise uniquement des listes de chaines de caractères au lieu des attributs natifs des tokens. C’est souvent moins efficace, et cela ne permet pas d’exprimer des relations complexes.">
+<opt correct="true" text="Il utilise uniquement des listes de chaînes de caractères au lieu des attributs natifs des tokens. C’est souvent moins efficace, et cela ne permet pas d’exprimer des relations complexes.">
 
-Convertis toujours les résultats en chaines le plus tard possible, et essaie
+Convertis toujours les résultats en chaînes le plus tard possible, et essaie
 d'utiliser les attributs natifs des tokens pour garder un code cohérent.
 
 </opt>
@@ -247,7 +246,7 @@ L'attribut `.pos_` retourne l'étiquetage grossier de partie de discours et
 <codeblock id="02_07">
 
 - Supprime les `token_texts` et `pos_tags` – on n'a pas besoin de compiler
-  d'avance des listes de chaines de caractères !
+  d'avance des listes de chaînes de caractères !
 - Au lieu d'itérer sur les `pos_tags`, boucle sur chaque `token` dans le `doc`
   et vérifie l'attribut `token.pos_`.
 - Pour savoir si le token suivant est un verbe, jette un oeil à
@@ -267,16 +266,16 @@ L'attribut `.pos_` retourne l'étiquetage grossier de partie de discours et
 <exercise id="9" title="Inspecter des vecteurs de mots">
 
 Dans cet exercice, nous utiliserons un
-[modèle français](https://spacy.io/models/fr) plus étendu, qui comporte environ
-20.000 vecteurs de mots. Le modèle est déjà pré-installé.
+[pipeline français](https://spacy.io/models/fr) plus étendu, qui comporte
+environ 20.000 vecteurs de mots. Le package de pipeline est déjà pré-installé.
 
-- Charge le modèle moyen avec vecteurs de mots `"fr_core_news_md"`.
+- Charge le pipeline moyen avec vecteurs de mots `"fr_core_news_md"`.
 - Affiche le vecteur pour `"bananes"` en utilisant l'attribut `token.vector`.
 
 <codeblock id="02_09">
 
-- Pour charger un modèle statistique, appelle `spacy.load` avec son nom sous
-  forme de chaine de caractères.
+- Pour charger un pipeline entraîné, appelle `spacy.load` avec son nom sous
+  forme de chaîne de caractères.
 - Pour accéder à un token dans un doc, tu peux utiliser son indice. Par exemple,
   `doc[4]`.
 
@@ -386,7 +385,7 @@ les motifs pour que chaque dictionnaire représente un token.
 
 <codeblock id="02_13">
 
-- Essaie de traiter les chaines qui devraient être trouvées par l'objet `nlp` –
+- Essaie de traiter les chaînes qui devraient être trouvées par l'objet `nlp` –
   par exemple `[token.text for token in nlp("abonnement tout-compris")]`.
 - Inspecte les tokens et vérifie que chaque dictionnaire du motif décrit
   correctement un seul token.
@@ -397,11 +396,11 @@ les motifs pour que chaque dictionnaire représente un token.
 
 <exercise id="14" title="Recherche efficace de correspondance de phrase">
 
-Parfois il est plus efficace de rechercher des chaines de caractères exactes au
+Parfois il est plus efficace de rechercher des chaînes de caractères exactes au
 lieu d'écrire des motifs décrivant individuellement les tokens. C'est
 particulièrement vrai pour les catégories finies - comme l'ensemble des pays du
 monde. Nous disposons déjà d'une liste de pays, alors utilisons-là comme base
-pour notre script d'extraction d'informations. Une liste de chaines est
+pour notre script d'extraction d'informations. Une liste de chaînes est
 caractères est accessible via la variable `COUNTRIES`.
 
 - Importe le `PhraseMatcher` et initialise-le avec le `vocab` partagé dans la

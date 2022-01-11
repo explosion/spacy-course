@@ -5,7 +5,7 @@ def test():
         "token.pos_ ==" in __solution__
     ), "你有检查词符的词性标注结果是专有名词吗？"
     assert (
-        "token.i + 1" in __solution__ or "token.i+1" in __solution__
+        "token.i + 1" in __solution__ or "1 + token.i" in __solution__
     ), "你有用词符的索引属性检查下一个词符吗？"
     __msg__.good(
         "好极了！虽然我们的代码在这个例子中表现不错，但还是有很多改进空间。"

@@ -1,8 +1,8 @@
-# 导入德语类
-from spacy.lang.de import German
+# 导入spaCy
+import spacy
 
-# 创建nlp对象
-nlp = German()
+# 创建德语nlp对象
+nlp = spacy.blank("de")
 
 # 处理文本 (这是德语"Kind regards!"的意思)
 doc = nlp("Liebe Grüße!")

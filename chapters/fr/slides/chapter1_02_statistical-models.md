@@ -2,17 +2,18 @@
 type: slides
 ---
 
-# Modèles statistiques
+# Pipelines entraînés
 
 Notes: Ajoutons du pouvoir à notre objet `nlp` !
 
-Dans cette leçon, tu vas en apprendre plus les modèles statistiques de spaCy.
+Dans cette leçon, tu vas en apprendre plus les pipelines entraînés de spaCy.
 
 ---
 
-# Que sont les modèles statistiques ?
+# Que sont les pipelines entraînés ?
 
-- Ils permettent à spaCy de prédire les attributs linguistiques _en contexte_
+- Des modèles qui permettent à spaCy de prédire les attributs linguistiques
+_en contexte_
   - Étiquetage de partie du discours
   - Dépendances syntaxiques
   - Entités nommées
@@ -23,11 +24,13 @@ Notes: Certaines des choses les plus intéressantes à analyser dépendent du
 contexte : par exemple, si un mot est un verbe or si une portion de texte est le
 nom d'une personne.
 
-Les modèles statistiques permettent à spaCy d'effectuer des prédictions en
-contexte. Cela inclut généralement les étiquettes de partie de discours, les
-dépendances syntaxiques et les entités nommées.
+Les pipelines entraînés intègrent des modèles statistiques qui permettent à
+spaCy d'effectuer des prédictions en contexte. Cela inclut généralement les
+étiquettes de partie de discours, les dépendances syntaxiques et les entités
+nommées.
 
-Les modèles sont entrainés sur de larges jeux de données de textes labellisés.
+Les pipelines sont entraînés sur de grands jeux de données d'exemples de textes
+labellisés.
 
 Ils peuvent être actualisés avec davantage d'exemples pour améliorer leurs
 prédictions - par exemple, pour obtenir de meilleurs résultats sur tes propres
@@ -35,9 +38,9 @@ données.
 
 ---
 
-# Paquets de modèles
+# Paquets de pipelines
 
-<img src="/package_fr.png" alt="Un paquet de modèles avec le label fr_core_news_sm" width="30%" align="right" />
+<img src="/package_fr.png" alt="Un paquet avec le label fr_core_news_sm" width="30%" align="right" />
 
 ```bash
 $ python -m spacy download fr_core_news_sm
@@ -51,19 +54,23 @@ nlp = spacy.load("fr_core_news_sm")
 
 - Poids binaires
 - Vocabulaire
-- Méta-information (langage, pipeline)
+- Méta-information
+- Fichier de configuration
 
-Notes: spaCy propose un certain nombre de modèles pré-entrainés que tu peux
-télécharger avec la commande `spacy download`. Par exemple, le paquet
-"en_core_web_sm" est un petit modèle pour la langue française qui propose toutes
-les fonctionnalités de base et qui a été entrainé sur des textes d'actualité.
+Notes: spaCy propose un certain nombre de paquets de pipelines entraînés que
+tu peux télécharger avec la commande `spacy download`. Par exemple, le paquet
+"fr_core_news_sm" est un petit pipeline pour la langue française qui propose
+toutes les fonctionnalités de base et qui a été entraîné sur des textes
+d'actualité.
 
-La méthode `spacy.load` charge un paquet de modèle et retourne un objet `nlp`.
+La méthode `spacy.load` charge un paquet de pipeline à partir de son nom et
+retourne un objet `nlp`.
 
 Le paquet contient les poids binaires qui permettent à spaCy d'effectuer des
 prédictions.
 
-Il inclut aussi le vocabulaire, et des méta-informations pour indiquer à spaCy
+Il inclut aussi le vocabulaire, des méta-informations à propos du pipeline et
+le fichier de configuration utilisé pour l'entraîner. Cela indique à spaCy
 quelle classe de langue utiliser et comment configurer le pipeline de
 traitements.
 
@@ -74,7 +81,7 @@ traitements.
 ```python
 import spacy
 
-# Charge le petit modèle en langue française
+# Charge le petit pipeline français
 nlp = spacy.load("fr_core_news_sm")
 
 # Traite le texte
@@ -94,11 +101,10 @@ pizza NOUN
 ```
 
 Notes: Jetons un oeil aux prédictions du modèle. Dans cet exemple, nous
-utilisons spaCy pour prédire des étiquettes de partie de discours, les types des
-mots dans leur contexte.
+utilisons spaCy pour prédire des étiquettes de partie de discours, les types
+des mots dans leur contexte.
 
-D'abord, nous chargeons le petit modèle en langue française et obtenons un objet
-`nlp`.
+D'abord, nous chargeons le petit pipeline français et obtenons un objet `nlp`.
 
 Ensuite, nous traitons le texte "Elle mangea la pizza".
 
@@ -161,7 +167,7 @@ Le déterminant "la", également appelé article, est rattaché au nom "pizza".
 
 ---
 
-# Prédiction d'Entités Nommées
+# Prédiction d'entités nommées
 
 <img src="/ner_example_fr.png" alt="Visualisation des entités nommées dans 'Apple conçoit le nouvel iPhone à Cupertino'" width="80%" />
 
@@ -185,7 +191,7 @@ Notes: Les entités nommées sont des "objets du monde réel" auxquels on assign
 un nom - par exemple, une personne, une organisation ou un pays.
 
 La propriété `doc.ents` te permet d'accéder aux entités nommées prédites par le
-modèle.
+modèle de reconnaissance d'entités nommées.
 
 Elle retourne un itérateur d'objets `Span`, donc nous pouvons imprimer le texte
 de l'entité et son label en utilisant l'attribut `.label_`.
@@ -238,5 +244,5 @@ syntaxiques.
 
 # Passons à la pratique !
 
-Notes: Maintenant c'est à toi de jouer. Jetons un oeil aux modèles statistiques
+Notes: Maintenant c'est à toi de jouer. Jetons un oeil aux pipelines entraînés
 de spaCy et à leurs prédictions.

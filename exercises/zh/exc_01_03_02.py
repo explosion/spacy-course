@@ -1,5 +1,5 @@
-# 导入中文语言类并创建nlp对象
-from ____ import ____
+# 导入spaCy并创建中文nlp对象
+import ____
 
 nlp = ____
 
