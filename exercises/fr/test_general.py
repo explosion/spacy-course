@@ -34,12 +34,18 @@ def test_01_09_predictions(nlp):
 
 
 def test_slides_01_03(nlp):
-    doc = nlp("Avant elle mangeait des pâtes. Désormais elle mange des légumes.")
-    pattern = [{"LEMMA": "manger", "POS": "VERB"}, {"POS": "DET"}, {"POS": "NOUN"}]
+    doc = nlp(
+        "Avant elle photographiait les fleurs. Désormais elle photographiera les oiseaux."
+    )
+    pattern = [
+        {"LEMMA": "photographier", "POS": "VERB"},
+        {"POS": "DET"},
+        {"POS": "NOUN"},
+    ]
     matcher = Matcher(nlp.vocab)
     matcher.add("TEST", [pattern])
     matches = [doc[start:end].text for _, start, end in matcher(doc)]
-    assert matches == ["mangeait des pâtes", "mange des légumes"]
+    assert matches == ["photographiait les fleurs", "photographiera les oiseaux"]
 
 
 def test_03_16_02_predictions(nlp):
