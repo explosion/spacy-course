@@ -11,7 +11,7 @@ with open("exercises/fr/country_text.txt", encoding="utf8") as f:
 nlp = spacy.load("fr_core_news_sm")
 matcher = PhraseMatcher(nlp.vocab)
 patterns = list(nlp.pipe(COUNTRIES))
-matcher.add("COUNTRY", None, *patterns)
+matcher.add("COUNTRY", patterns)
 
 # Crée un doc et réinitialise les entités existantess
 doc = nlp(TEXT)

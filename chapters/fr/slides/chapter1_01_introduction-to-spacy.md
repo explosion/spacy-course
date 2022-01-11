@@ -16,28 +16,28 @@ nos premiers pas.
 # L'objet nlp
 
 ```python
-# Importe la classe de langue "French"
-from spacy.lang.fr import French
+# Importe spaCy
+import spacy
 
-# Crée l'objet nlp
-nlp = French()
+# Crée un objet nlp français vide
+nlp = spacy.blank("fr")
 ```
 
 - contient le pipeline de traitement
-- inclut des règles spécifiques à la langue pour la tokenisation.
+- inclut des règles spécifiques à la langue pour la tokenisation etc.
 
 Notes: Au coeur de spaCy se trouve l'objet contenant le pipeline de traitement.
 Nous nommons généralement cette variable "nlp".
 
-Par exemple, pour créer un objet `nlp` en langue française, tu peux importer la
-classe de langue `French` depuis `spacy.lang.fr` et l'instancier. Tu peux
-utiliser l'objet nlp comme une fonction pour analyser le texte.
+Par exemple, pour créer un objet `nlp` en langue française, tu peux importer
+`spacy` et utiliser la méthode `spacy.blank` pour créer un pipeline français
+vierge. Tu peux utiliser l'objet nlp comme une fonction pour analyser le texte.
 
 Il contient l'ensemble des différents composants du pipeline.
 
 Il inclut aussi des règles spécifiques à la langue utilisées pour la
-tokenisation du texte en mots et ponctuations. spaCy supporte un grand nombre de
-langues qui sont accessibles à partir de `spacy.lang`.
+tokenisation du texte en mots et ponctuations. spaCy supporte un grand nombre
+de langues.
 
 ---
 

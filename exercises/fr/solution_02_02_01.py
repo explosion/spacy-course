@@ -1,6 +1,6 @@
-from spacy.lang.fr import French
+import spacy
 
-nlp = French()
+nlp = spacy.blank("fr")
 doc = nlp("J'ai un chat")
 
 # Recherche le hash pour le mot "chat"

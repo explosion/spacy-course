@@ -18,11 +18,11 @@ ton application de NLP.
 - `spaCy` peut comparer deux objets et prédire leur similarité
 - `Doc.similarity()`, `Span.similarity()` et `Token.similarity()`
 - Accepte un autre objet et retourne un score de similarité (de `0` à `1`)
-- **Important :** nécessite un modèle qui inclut les vecteurs de mots, par
+- **Important :** nécessite un pipeline qui inclut les vecteurs de mots, par
   exemple:
-  - ✅ `fr_core_news_md` (modèle moyen)
-  - ✅ `fr_core_news_lg` (grand modèle)
-  - 🚫 **PAS** `fr_core_news_sm` (petit modèle)
+  - ✅ `fr_core_news_md` (moyen)
+  - ✅ `fr_core_news_lg` (grand)
+  - 🚫 **PAS** `fr_core_news_sm` (petit)
 
 Notes: spaCy peut comparer deux objets et prédire à quel point ils sont
 similaires – par exemple, documents, spans ou simples tokens.
@@ -32,19 +32,19 @@ prend en argument un autre objet et retourne un nombre décimal entre 0 et 1,
 indiquant dans quelle mesure ils sont similaires.
 
 Un point très important : Pour pouvoir utiliser la similarité, tu dois utiliser
-un modèle spaCy plus grand qui inclut les vecteurs de mots.
+un pipeline spaCy plus grand qui inclut les vecteurs de mots.
 
-Par exemple, le modèle anglais moyen ou grand – mais _pas_ le petit. Donc si tu
-veux utiliser les vecteurs, choisis toujours un modèle qui se termine par "md"
-ou par "lg". Tu trouveras de plus amples informations dans la
-[documentation des modèles](https://spacy.io/models).
+Par exemple, le pipeline français moyen ou grand – mais _pas_ le petit. Donc si
+tu veux utiliser les vecteurs, choisis toujours un pipeline qui se termine par 
+"md" ou par "lg". Tu trouveras de plus amples informations dans la
+[documentation](https://spacy.io/models).
 
 ---
 
 # Exemples de similarité (1)
 
 ```python
-# Charge un plus grand modèle avec les vecteurs
+# Charge un plus grand pipeline avec les vecteurs
 nlp = spacy.load("fr_core_news_md")
 
 # Compare deux documents
@@ -72,7 +72,8 @@ print(token1.similarity(token2))
 Notes: Voici un exemple. Disons que nous voulons savoir si deux documents sont
 similaires.
 
-D'abord, nous chargeons le modèle français de taille moyenne, "fr_core_news_md".
+D'abord, nous chargeons le pipeline français de taille moyenne,
+"fr_core_news_md".
 
 Nous pouvons ensuite créer deux objets doc et utiliser la méthode `similarity`
 du premier doc pour le comparer au second.
@@ -134,7 +135,7 @@ Le score retourné ici est 0,62, donc il y a une forme de similarité.
 - Des représentations multi-dimensionnelles de la signification des mots
 - Générées avec un algorithme comme
   [Word2Vec](https://en.wikipedia.org/wiki/Word2vec) et beaucoup de textes
-- Peuvent être ajoutés aux modèles statistiques de spaCy
+- Peuvent être ajoutés aux pipelines de spaCy
 - Par défaut : similarité cosinus, mais peut être modifiée
 - Les vecteurs des `Doc` et `Span` sont par défaut la moyenne des vecteurs des
   tokens
@@ -149,7 +150,7 @@ représentations multi-dimensionnelles de la signification des mots.
 Tu as peut-être entendu parler de Word2Vec, c'est un algorithme qui est souvent
 utilisé pour entrainer des vecteurs de mots à partir de textes bruts.
 
-Les vecteurs peuvent être ajoutés aux modèles statistiques de spaCy.
+Les vecteurs peuvent être ajoutés aux pipelines de spaCy.
 
 Par défaut, la similarité retournée par spaCy est la similarité cosinus entre
 deux vecteurs - mais cela peut être modifié si nécessaire.
@@ -165,7 +166,7 @@ des phrases courtes qui comportent moins de mots non pertinents.
 # Les vecteurs de mots dans spaCy
 
 ```python
-# Charge un plus grand modèle avec des vecteurs
+# Charge un plus grand pipeline avec des vecteurs
 nlp = spacy.load("fr_core_news_md")
 
 doc = nlp("J'ai une banane")
@@ -191,8 +192,8 @@ print(doc[3].vector)
 Notes: Pour te donner une idée, voici un exemple montrant à quoi ressemblent ces
 vecteurs.
 
-D'abord, nous chargeons à nouveau le modèle moyen, qui comporte des vecteurs de
-mots.
+D'abord, nous chargeons à nouveau le pipeline moyen, qui comporte des vecteurs
+de mots.
 
 Ensuite, nous pouvons traiter un texte et chercher le vecteur d'un token en
 utilisant l'attribut `.vector`.

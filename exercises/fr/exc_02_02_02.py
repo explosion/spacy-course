@@ -1,6 +1,6 @@
-from spacy.lang.fr import French
+import spacy
 
-nlp = French()
+nlp = spacy.blank("fr")
 doc = nlp("David Bowie a le label PER")
 
 # Cherche le hash pour le label de chaine "PER"

@@ -1,11 +1,11 @@
 import json
-from spacy.lang.fr import French
+import spacy
 from spacy.tokens import Doc
 
 with open("exercises/fr/bookquotes.json", encoding="utf8") as f:
     DATA = json.loads(f.read())
 
-nlp = French()
+nlp = spacy.blank("fr")
 
 # Déclare l'extension de Doc "author" (défaut None)
 ____
