@@ -185,26 +185,26 @@ Le motif trouve les "Coupe du Monde FIFA 2018 :".
 
 ```python
 pattern = [
-    {"LEMMA": "manger", "POS": "VERB"},
+    {"LEMMA": "photographier", "POS": "VERB"},
     {"POS": "DET"},
     {"POS": "NOUN"}
 ]
 ```
 
 ```python
-doc = nlp("Avant elle mangeait des pâtes. Désormais elle mange des légumes.")
+doc = nlp("Avant elle photographiait les fleurs. Désormais elle photographiera les oiseaux.")
 ```
 
 ```out
-mangeait des pâtes
-mange des légumes
+photographiait les fleurs
+photographiera les oiseaux
 ```
 
-Note : Dans cet exemple, nous recherchons deux tokens :
+Note : Dans cet exemple, nous recherchons trois tokens :
 
-Un verbe avec le lemme "manger", suivi par un nom.
+Un verbe avec le lemme "photographier", suivi par un déterminant et par un nom.
 
-Ce motif trouvera "mangeait des pâtes" et "mange des légumes".
+Ce motif trouvera "photographiait les fleurs" et "photographiera les oiseaux".
 
 ---
 
