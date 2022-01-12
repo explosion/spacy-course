@@ -49,7 +49,7 @@ Par exemple, trouve le mot "capture" seulement si c'est un verbe, pas un nom.
 - Recherche de n'importe quel attribut des tokens
 
 ```python
-[{"LEMMA": "acheter"}, {"POS": "NOUN"}]
+[{"LEMMA": "acheter"}, {"POS": "DET"}, {"POS": "NOUN"}]
 ```
 
 Notes: Les motifs de correspondance sont des listes de dictionnaires. Chaque
@@ -62,9 +62,9 @@ Nous pouvons aussi rechercher sur d'autres attributs des tokens. Ici, nous
 recherchons deux tokens dont les formes minuscules sont "iphone" et "x".
 
 Nous pouvons même écrire des motifs utilisant des attributs prédits par un
-modèle. Ici, nous recherchons un token avec le lemme "acheter", plus un nom. Le
-lemme est la forme de base, donc ce motif trouvera des phrases comme "achetant
-du lait" ou "acheta des fleurs".
+modèle. Ici, nous recherchons un token avec le lemme "acheter" suivi par un
+déterminant et un nom. Le lemme est la forme de base, donc ce motif trouvera
+des phrases comme "achetant le pain" ou "acheta le journal".
 
 ---
 
@@ -200,7 +200,7 @@ photographiait les fleurs
 photographiera les oiseaux
 ```
 
-Note : Dans cet exemple, nous recherchons trois tokens :
+Notes: Dans cet exemple, nous recherchons trois tokens :
 
 Un verbe avec le lemme "photographier", suivi par un déterminant et par un nom.
 
