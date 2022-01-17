@@ -48,7 +48,7 @@ uns des 60+ [langages disponibles](https://spacy.io/usage/models#languages).
 
 <exercise id="3" title="Documents, spans et tokens">
 
-Quand tu passes une chaine de caractères à un objet `nlp`, spaCy commence par
+Quand tu passes une chaîne de caractères à un objet `nlp`, spaCy commence par
 découper le texte en tokens et crée un objet document. Dans cet exercice, tu vas
 en apprendre davantage sur le `Doc`, ainsi que sur ses vues `Token` et `Span`.
 
@@ -166,7 +166,7 @@ installer sur ta machine, consulte
 
 Pour charger un pipeline, appelle `spacy.load` avec la chaîne de caractères qui
 le désigne. Les noms des pipelines diffèrent selon les langues et les données sur
-lesquelles ils ont été entrainés - donc fais attention à utiliser le bon nom.
+lesquelles ils ont été entraînés - donc fais attention à utiliser le bon nom.
 
 </codeblock>
 
@@ -190,7 +190,7 @@ ou `spacy.explain("GPE")`.
 
 Pour créer un `doc`, appelle l'objet `nlp` avec une chaîne de caractères en
 argument. Rappelle-toi que tu dois utiliser les noms d'attributs avec un tiret
-bas pour obtenir les valeurs de la chaine.
+bas pour obtenir les valeurs de la chaîne.
 
 </codeblock>
 
@@ -273,7 +273,7 @@ dans le texte.
 
 <exercise id="12" title="Ecriture de motifs">
 
-Dans cet exercice, tu vas t'entrainer à écrire des motifs de correspondance plus
+Dans cet exercice, tu vas t'entraîner à écrire des motifs de correspondance plus
 complexes qui utilisent différents attributs des tokens et des opérateurs.
 
 ### Partie 1
