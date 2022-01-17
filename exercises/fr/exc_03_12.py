@@ -1,5 +1,6 @@
 import json
-from spacy.lang.fr import French
+import spacy
+from spacy.language import Language
 from spacy.tokens import Span
 from spacy.matcher import PhraseMatcher
 
@@ -9,12 +10,13 @@ with open("exercises/fr/countries.json", encoding="utf8") as f:
 with open("exercises/fr/capitals.json", encoding="utf8") as f:
     CAPITALS = json.loads(f.read())
 
-nlp = French()
+nlp = spacy.blank("fr")
 matcher = PhraseMatcher(nlp.vocab)
-matcher.add("COUNTRY", None, *list(nlp.pipe(COUNTRIES)))
+matcher.add("COUNTRY", list(nlp.pipe(COUNTRIES)))
 
 
-def countries_component(doc):
+@Language.component("countries_component")
+def countries_component_function(doc):
     # Crée une entité Span avec le label "GPE" pour toutes les correspondances
     matches = matcher(doc)
     doc.ents = [____(____, ____, ____, label=____) for match_id, start, end in matches]

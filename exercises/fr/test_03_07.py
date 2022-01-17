@@ -3,7 +3,7 @@ def test():
         'after="ner"' in __solution__
     ), "Ajoutes-tu le composant explicitement après l'entity recognizer ?"
     assert (
-        nlp.pipe_names[-1] == "animal_component"
+        nlp.pipe_names[6] == "animal_component"
     ), "As-tu ajouté le composant après l'entity recognizer ?"
     assert len(doc.ents) == 2, "As-tu correctement ajouté les entités ?"
     assert all(

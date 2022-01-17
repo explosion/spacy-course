@@ -1,10 +1,10 @@
 def test():
     assert (
-        "import Doc, Span" or "import Span, Doc" in __solution__
+        "import Doc, Span" in __solution__ or "import Span, Doc" in __solution__
     ), "As-tu correctement importé Doc et Span ?"
     assert doc.text == "Elle aime David Bowie", "As-tu correctement créé le Doc ?"
     assert span.text == "David Bowie", "As-tu correctement créé le span ?"
-    assert span.label_ == "PERSON", "As-tu ajouté le label PERSON au span?"
+    assert span.label_ == "PER", "As-tu ajouté le label PER au span?"
     assert "doc.ents =" in __solution__, "As-tu réécrit doc.ents ?"
     assert len(doc.ents) == 1, "As-tu ajouté le span à doc.ents ?"
     assert (

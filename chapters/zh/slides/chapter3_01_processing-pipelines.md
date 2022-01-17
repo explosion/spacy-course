@@ -41,7 +41,7 @@ Notes: 我们到现在已经写过很多遍了：给`nlp`实例传入一个文�
 | **ner**     | 命名实体识别器 | `Doc.ents`, `Token.ent_iob`, `Token.ent_type`             |
 | **textcat** | 文本分类器         | `Doc.cats`                                                |
 
-Notes: spaCy原生提供了下面的流程组件：
+Notes: spaCy原生提供了很多不同的流程组件。下面是一般项目中最常用的一些组件：
 
 词性标注器设定了`token.tag`和`token.pos`这两个属性。
 
@@ -53,23 +53,23 @@ Notes: spaCy原生提供了下面的流程组件：
 
 最后，文本分类器设定适用于整个文本的类别，将其加入`doc.cats`属性中。
 
-因为文本的类别往往是特定的，所以默认文本分类器不包含在任何一个预训练好的模型里面。
+因为文本的类别往往是特定的，所以默认文本分类器不包含在任何一个训练好的流程里面。
 但我们可以用它来训练自己的系统。
 
 ---
 
 # 解构后台
 
-<img src="/package_meta_zh.png" alt="标注为zh_core_web_sm的包、文件夹、文件及meta.json的图示" />
+<img src="/package_meta_zh.png" alt="标注为zh_core_web_sm的包、文件夹、文件及config.cfg的图示" />
 
-- 流程是依次定义在模型的`meta.json`文件里。
+- 流程是依次定义在模型的`config.cfg`文件里。
 - 原生组件需要二进制数据来做预测。
 
-Notes: 所有我们能读进spaCy的模型都包含了一些文件和一个`meta.json`。
+Notes: 所有我们能读进spaCy的流程包都包含了一些文件和一个`config.cfg`。
 
-这个元数据定义了语种和流程等等，告诉spaCy应该去初始化那些组件。
+这个配置文件定义了语种和流程等等，告诉spaCy应该去初始化和配置那些组件。
 
-原生的组件如果要做预测也要需要二进制数据。这些数据都保存在模型包中，当我们读取模型
+原生的组件如果要做预测也要需要二进制数据。这些数据都保存在流程包中，当我们读取流程
 的时候这些数据就被读取到组件中。
 
 ---
@@ -83,7 +83,7 @@ print(nlp.pipe_names)
 ```
 
 ```out
-['tagger', 'parser', 'ner']
+['tok2vec', 'tagger', 'parser', 'ner', 'attribute_ruler', 'lemmatizer']
 ```
 
 - `nlp.pipeline`: `(name, component)`元组的列表
@@ -93,9 +93,12 @@ print(nlp.pipeline)
 ```
 
 ```out
-[('tagger', <spacy.pipeline.Tagger>),
+[('tok2vec', <spacy.pipeline.Tok2Vec>),
+ ('tagger', <spacy.pipeline.Tagger>),
  ('parser', <spacy.pipeline.DependencyParser>),
- ('ner', <spacy.pipeline.EntityRecognizer>)]
+ ('ner', <spacy.pipeline.EntityRecognizer>),
+ ('attribute_ruler', <spacy.pipeline.AttributeRuler>),
+ ('lemmatizer', <spacy.pipeline.Lemmatizer>)]
 ```
 
 Notes: 我们可以使用`nlp.pipe_names`属性来读取当前nlp实例中流程组件的名字。

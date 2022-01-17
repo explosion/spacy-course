@@ -2,17 +2,17 @@
 type: slides
 ---
 
-# Combinaison de modèles et de règles
+# Combinaison de prédictions et de règles
 
-Notes: La combinaison de modèles statistiques avec des systèmes basés sur des
-règles est l'un des trucs les plus importants à avoir dans ta boite à outils de
-NLP.
+Notes: Combiner des prédictions issues de modèles statistiques avec des
+systèmes basés sur des règles est l'un des trucs les plus importants à avoir
+dans ta boite à outils de NLP.
 
 Dans cette leçon, tu vas apprendre comment le faire avec spaCy.
 
 ---
 
-# Modèles statistiques vs. règles
+# Prédictions statistiques vs. règles
 
 |                              | **Modèles statistiques**                                                           | **Systèmes basés sur des règles** |
 | ---------------------------- | ---------------------------------------------------------------------------------- | --------------------------------- |
@@ -23,7 +23,7 @@ Dans cette leçon, tu vas apprendre comment le faire avec spaCy.
 Notes: Les modèles statistiques sont utiles si ton application a besoin d'être
 capable de généraliser à partir de quelques exemples.
 
-Par exemple, un modèle statistique est avantageux pour détecter des noms de
+Par exemple, un modèle entraîné est avantageux pour détecter des noms de
 personnes ou de produits. Au lieu de fournir une liste avec tous les noms de
 personnes possibles, ton application sera capable de prédire si un span de
 tokens est un nom de personne. De la même manière, tu peux prédire les
@@ -61,11 +61,11 @@ matcher = Matcher(nlp.vocab)
 
 # Les motifs sont des listes de dictionnaires décrivant les tokens
 pattern = [{"LEMMA": "chérir", "POS": "VERB"}, {"LOWER": "les"}, {"LOWER": "chats"}]
-matcher.add("AIME_CHATS", None, pattern)
+matcher.add("AIME_CHATS", [pattern])
 
 # Les opérateurs peuvent spécifier combien de fois un token doit être trouvé
 pattern = [{"TEXT": "très", "OP": "+"}, {"TEXT": "heureux"}]
-matcher.add("TRES_HEUREUX", None, pattern)
+matcher.add("TRES_HEUREUX", [pattern])
 
 # L'appel du matcher sur le doc retourne une liste de tuples
 # composés avec (match_id, début, fin)
@@ -97,7 +97,7 @@ début et de fin dans le document.
 
 ```python
 matcher = Matcher(nlp.vocab)
-matcher.add("CHIEN", None, [{"LOWER": "bouvier"}, {"LOWER": "bernois"}])
+matcher.add("CHIEN", [[{"LOWER": "bouvier"}, {"LOWER": "bernois"}]])
 doc = nlp("J'ai un Bouvier bernois")
 
 for match_id, start, end in matcher(doc):
@@ -123,7 +123,7 @@ Si nous itérons sur les correspondances retournées par le matcher, nous pouvon
 obtenir l'identifiant de la correspondance, ainsi que les indices de début et de
 fin du span en correspondance. Nous pouvons ensuite obtenir plus d'informations
 sur lui. Les objets `Span` nous donnent accès au document original et à tous les
-autres attributs des tokens et fonctionnalités linguistiques prédites par le
+autres attributs des tokens et fonctionnalités linguistiques prédites par un
 modèle.
 
 Par exemple, nous pouvons obtenir le token racine du span. Si le span est
@@ -169,7 +169,7 @@ from spacy.matcher import PhraseMatcher
 matcher = PhraseMatcher(nlp.vocab)
 
 pattern = nlp("Bouvier bernois")
-matcher.add("CHIEN", None, pattern)
+matcher.add("CHIEN", [pattern])
 doc = nlp("J'ai un Bouvier bernois")
 
 # Itère sur les correspondances
@@ -200,4 +200,4 @@ bernois" afin de les analyser dans leur contexte.
 # Pratiquons !
 
 Notes: Essayons quelques-unes des nouvelles techniques pour combiner les règles
-avec les modèles statistiques.
+avec les prédictions.

@@ -4,7 +4,7 @@ type: slides
 
 # Structures de données (2) : Doc, Span et Token
 
-Notes: Maintenant que tu sais tout sur le vocabulaire et le magasin de chaines,
+Notes: Maintenant que tu sais tout sur le vocabulaire et le magasin de chaînes,
 nous pouvons examiner de plus près les structures de données les plus
 importantes : le `Doc`, ainsi que ses vues `Token` et `Span`.
 
@@ -14,8 +14,8 @@ importantes : le `Doc`, ainsi que ses vues `Token` et `Span`.
 
 ```python
 # Crée un objet nlp
-from spacy.lang.fr import French
-nlp = French()
+import spacy
+nlp = spacy.blank("fr")
 
 # Importe la classe Doc
 from spacy.tokens import Doc
@@ -91,7 +91,7 @@ entités en les remplaçant par une liste de spans.
 
 - `Doc` et `Span` sont très puissants et contiennent les références et les
   relations entre les mots et les phrases
-  - **Convertis les résultats en chaines le plus tard possible**
+  - **Convertis les résultats en chaînes le plus tard possible**
   - **Utilise les attributs des tokens quand ils existent** – par exemple,
     `token.i` pour l'indice du token
 - N'oublie pas de passer en argument le `vocab` partagé
@@ -102,7 +102,7 @@ Les `Doc` et `Span` sont très puissants et sont optimisés pour la performance.
 Ils te donnent accès à toutes les références et les relations entre les mots et
 les phrases.
 
-Si ton application a besoin de produire des chaines de caractères, fais en sorte
+Si ton application a besoin de produire des chaînes de caractères, fais en sorte
 de convertir le doc le plus tard possible. Si tu le fais trop tôt, tu perdras
 toutes les relations entre les tokens.
 

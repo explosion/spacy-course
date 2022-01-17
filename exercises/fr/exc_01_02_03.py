@@ -1,7 +1,7 @@
-# Importe la classe de langue "Spanish"
-from spacy.lang.____ import ____
+# Importe spaCy
+import ____
 
-# Crée l'objet nlp
+# Crée l'objet nlp espagnol
 nlp = ____
 
 # Traite un texte (il signifie "Comment vas-tu ?" en espagnol)

@@ -1,6 +1,6 @@
-from spacy.lang.fr import French
+import spacy
 
-nlp = French()
+nlp = spacy.blank("fr")
 
 # Importe les classes Doc et Span
 from spacy.tokens import Doc, Span
@@ -13,8 +13,8 @@ doc = Doc(nlp.vocab, words=words, spaces=spaces)
 print(doc.text)
 
 # Crée un span pour "David Bowie" à partir du doc
-# et assigne-lui le label "PERSON"
-span = Span(doc, 2, 4, label="PERSON")
+# et assigne-lui le label "PER"
+span = Span(doc, 2, 4, label="PER")
 print(span.text, span.label_)
 
 # Ajoute le span aux entités du doc

@@ -15,7 +15,7 @@ doc = nlp(
 pattern = [{"TEXT": "iOS"}, {"IS_DIGIT": True}]
 
 # Ajoute le motif au matcher et applique le matcher au doc
-matcher.add("IOS_VERSION_PATTERN", None, pattern)
+matcher.add("IOS_VERSION_PATTERN", [pattern])
 matches = matcher(doc)
 print("Nombre de correspondances trouvées :", len(matches))
 

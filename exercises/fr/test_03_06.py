@@ -5,11 +5,6 @@ def test():
     assert (
         "first=True" in __solution__
     ), "As-tu ajouté le composant en premier dans le pipeline ?"
-    assert nlp.pipe_names == [
-        "length_component",
-        "tagger",
-        "parser",
-        "ner",
-    ], "Les noms des composants n'ont pas l'air corrects !"
+    assert nlp.pipe_names[0] == "length_component", "Les noms des composants n'ont pas l'air corrects !"
 
     __msg__.good("Parfait ! Maintenant voyons un composant un peu plus complexe !")

@@ -13,8 +13,8 @@ Notes: 我们已经学习了词汇表和字符串库，现在我们可以看下�
 
 ```python
 # 创建一个nlp实例
-from spacy.lang.en import English
-nlp = English()
+import spacy
+nlp = spacy.blank("en")
 
 # 导入Doc类
 from spacy.tokens import Doc

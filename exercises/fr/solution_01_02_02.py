@@ -1,10 +1,10 @@
-# Importe la classe de langue "English"
-from spacy.lang.en import English
+# Importe spaCy
+import spacy
 
-# Crée l'objet nlp
-nlp = English()
+# Crée l'objet nlp anglais
+nlp = spacy.blank("en")
 
-# Traite un texte
+# Traite un texte (il signifie "Ceci est une phrase" en anglais)
 doc = nlp("This is a sentence.")
 
 # Affiche le texte du document
