@@ -53,8 +53,7 @@ id: 2
 Por que o código abaixo dá erro?
 
 ```python
-from spacy.lang.en import English
-from spacy.lang.de import German
+import spacy
 
 # Criar um objeto do idioma inglês e um objeto do idioma alemão
 nlp = English()
@@ -263,15 +262,15 @@ de verificar se trata-se de um substantivo próprio.
 
 <exercise id="9" title="Inspeção dos vetores das palavras">
 
-Neste exercício vamos usar um [modelo do Inglês maior](https://spacy.io/models/en) que inclui
-cerca de 20.000 vetores das palavras. Esse modelo já está instalado.
+Neste exercício vamos usar um [fluxo de processamento do Inglês maior](https://spacy.io/models/en) que inclui
+cerca de 20.000 vetores das palavras. Esse pacote do fluxo (pipeline) de processamento já está instalado.
 
-- Carregue o modelo médio `"en_core_web_md"`com seus vetores das palavras.
+- Carregue o fluxo (pipeline) de processamento médio `"en_core_web_md"`com seus vetores das palavras.
 - Imprima o vetor para `"bananas"` usando o atributo `token.vector`.
 
 <codeblock id="02_09">
 
-- Para carregar um modelo estatístico, use `spacy.load` passando uma string
+- Para carregar um fluxo (pipeline) de processamento, use `spacy.load` passando uma string
 com o nome do modelo.
 - Para acessar um token no doc, você pode indexá-lo. Por exemplo: `doc[4]`.
 
@@ -317,7 +316,7 @@ ao objeto atual.
 
 </exercise>
 
-<exercise id="11" title="Combinando modelos e regras" type="slides">
+<exercise id="11" title="Combinando predições e regras" type="slides">
 
 <slides source="chapter2_04_models-rules">
 </slides>

@@ -1,7 +1,7 @@
-# Importe a classe do idioma inglês
-from spacy.lang.____ import ____
+# Importar a biblioteca spaCy
+import ____
 
-# Crie um objeto nlp
+# Crie um objeto nlp do Inglês
 nlp = ____
 
 # Processe o texto

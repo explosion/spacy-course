@@ -8,4 +8,5 @@ def test():
     assert (
         tree_kangaroos_and_narwhals == doc[2:6]
     ), "Tem certeza que você selecionou partição correta para tree_kangaroos_and_narwhals?"
-    __msg__.good("Bom tranalho!")
+    assert 'spacy.blank("en")' in __solution__, 'Você está usando spacy.blank("en")?'
+    __msg__.good("Bom trabalho!")

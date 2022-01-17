@@ -1,7 +1,7 @@
-from spacy.lang.en import English
+import spacy
 from spacy.tokens import Doc
 
-nlp = English()
+nlp = spacy.blank("en")
 
 # Definir a função para o atributo getter
 def get_has_number(doc):

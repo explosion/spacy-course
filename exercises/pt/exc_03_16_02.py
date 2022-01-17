@@ -6,7 +6,7 @@ text = (
     "the city of College Park, Georgia, specializing in chicken sandwiches."
 )
 
-# Desabilitar o tagger e parser
+# Desabilitar o tagger e lematizador
 with ____.____(____):
     # Processar o texto
     doc = ____

@@ -1,6 +1,6 @@
 import spacy
 
-# Carregue o modelo en_core_web_sm
+# Carregue o fluxo de procesamento en_core_web_sm
 nlp = spacy.load("en_core_web_sm")
 
 # Imprima o nome dos componentes do fluxo

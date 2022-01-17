@@ -12,14 +12,14 @@ Notes: Nesta lição, vamos dar uma olhada no Comparador (Matcher) da biblioteca
 
 - Compara com objetos `Doc` e não apenas texto (strings)
 - Compara com os tokens e seus atributos
-- Utiliza a previsão do modelo
+- Utiliza a previsão de um modelo
 - Exemplo: "duck" (verbo) vs. "duck" (substantivo)
 
 Notes: Além de comparar com texto (strings), que é o caso das expressões regulares, o Comparador (Matcher) também analisa os objetos `Doc` e `Token`.
 
 Ele é bem mais flexível: você pode fazer a comparaão no texto mas também nos seus atributos léxicos.
 
-Vocẽ pode até criar regras que usam previsões dos modelos.
+Vocẽ pode até criar regras que usam previsões de um modelo.
 
 Por exemplo, você pode procurar a palavra "duck" (em inglês) somente se for um verbo e não um substantivo.
 
@@ -50,7 +50,7 @@ Neste exemplo, estamos procurando por dois tokens com o texto: "iPhone" e "X".
 
 Podemos fazer a correspondência de acordo com outros atributos dos tokens. Neste exemplo estamos procurando dois tokens cuja forma em letras minúsculas corresponda a "iphone" e "x".
 
-Podemos até escrever expressões usando atributos previstos pelo modelo. Neste exemplo estamos procurando um token cujo lema seja "buy" seguido de um substantivo. O lema é o formato base da palavra, então esta expressão terá correspondência com frases como "buying milk" ou "bought flowers".
+Podemos até escrever expressões usando atributos previstos por um modelo. Neste exemplo estamos procurando um token cujo lema seja "buy" seguido de um substantivo. O lema é o formato base da palavra, então esta expressão terá correspondência com frases como "buying milk" ou "bought flowers".
 
 ---
 
@@ -62,7 +62,7 @@ import spacy
 # Importar o Comparador (Matcher)
 from spacy.matcher import Matcher
 
-# Carregar o modelo e criar um objeto nlp
+# Carregar o fluxo (pipeline) de processamento e criar um objeto nlp
 nlp = spacy.load("en_core_web_sm")
 
 # Inicializar o comparador com o vocabulário 
@@ -70,7 +70,7 @@ matcher = Matcher(nlp.vocab)
 
 # Adicionar a expressão ao comparador
 pattern = [{"TEXT": "iPhone"}, {"TEXT": "X"}]
-matcher.add("IPHONE_PATTERN", None, pattern)
+matcher.add("IPHONE_PATTERN", [pattern])
 
 # Processar um texto
 doc = nlp("Upcoming iPhone X release date leaked")
@@ -81,11 +81,11 @@ matches = matcher(doc)
 
 Notes: Para usar uma expressão, devemos importar o comparador `spacy.matcher`.
 
-É necessário carregar um modelo e criar um objeto `nlp`.
+É necessário carregar um fluxo (pipeline) de processamento e criar um objeto `nlp`.
 
 O comparador será inicializado com o vocabulário `nlp.vocab`. Você irá aprender sobre isso em breve. Por enquanto, lembre-se que esta etapa é necessária.
 
-O método `matcher.add` permite adicionar uma expressão ao comparador. O primeiro argumento é o identificador único da expresssão que terá correspondência no texto. O segundo argumento é uma chamada de retorno (callback) opcional. Neste exemplo isso não será necessário, então definimos este valor como `None`. O terceiro argumento é a expressão de correspondência.
+O método `matcher.add` permite adicionar uma expressão ao comparador. O primeiro argumento é o identificador único da expresssão que terá correspondência no texto. O segundo argumento é uma lista de expressões de correspondência.
 
 Para fazer a correspondência de uma expressão em um texto, chame o comparador (matcher) e passe o texto como parâmetro.
 

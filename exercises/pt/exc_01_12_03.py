@@ -13,7 +13,7 @@ doc = nlp(
 pattern = [{"POS": ____}, {"POS": ____}, {"POS": ____, "OP": ____}]
 
 # Adicione uma expressão ao comparador matcher e aplique o matcher ao doc
-matcher.add("ADJ_NOUN_PATTERN", None, pattern)
+matcher.add("ADJ_NOUN_PATTERN", [pattern])
 matches = matcher(doc)
 print("Total matches found:", len(matches))
 
