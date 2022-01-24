@@ -12,6 +12,6 @@ def test():
         "token.i + 1" in __solution__ or "1 + token.i" in __solution__
     ), "Você está utilizando o índice do token como atributo?"
     __msg__.good(
-        "Muito bom! Como você pode percener, é possível fazer diversas análises "
+        "Muito bom! Como você pode perceber, é possível fazer diversas análises "
         "utilizando os tokens e seus atributos."
     )

@@ -1,14 +1,14 @@
-# Importar spaCy e o objeto nlp do Inglês
+# Importar spaCy e o objeto nlp do Português
 import ____
 nlp = ____
 
 # Processar o texto
-doc = ____("I like tree kangaroos and narwhals.")
+doc = ____("Eu tenho três cachorros e dois gatos.")
 
-# Uma partição do Doc para "tree kangaroos"
-tree_kangaroos = ____
-print(tree_kangaroos.text)
+# Uma partição do Doc para "três cachorros"
+tres_cachorros = ____
+print(tres_cachorros.text)
 
-# Uma partição do Doc para "tree kangaroos and narwhals" (sem incluir o ".")
-tree_kangaroos_and_narwhals = ____
-print(tree_kangaroos_and_narwhals.text)
+# Uma partição do Doc para "três cachorros e dois gatos" (sem incluir o ".")
+tres_cachorros_dois_gatos = ____
+print(tres_cachorros_dois_gatos.text)
