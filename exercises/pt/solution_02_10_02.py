@@ -1,8 +1,8 @@
 import spacy
 
-nlp = spacy.load("en_core_web_md")
+nlp = spacy.load("pt_core_news_md")
 
-doc = nlp("TV and books")
+doc = nlp("Televisão e livro")
 token1, token2 = doc[0], doc[2]
 
 # Obtenha a similaridade dos tokens "TV" e "books"

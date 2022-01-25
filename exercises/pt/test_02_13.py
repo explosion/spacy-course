@@ -24,13 +24,13 @@ def test():
 
     # Pattern 2 validation
     assert any(
-        pattern2[0].get(attr) == "ad" for attr in ("lower", "LOWER")
+        pattern2[0].get(attr) == "sem" for attr in ("lower", "LOWER")
     ), "Verifique o atributo e o valor do primeiro token da expressão pattern2."
     assert any(
-        pattern2[2].get(attr) == "free" for attr in ("lower", "LOWER")
+        pattern2[2].get(attr) == "anúncios" for attr in ("lower", "LOWER")
     ), "Verifique o atributo e o valor do terceiro token da expressão pattern2."
     assert any(
-        pattern2[3].get(attr) == "NOUN" for attr in ("pos", "POS")
+        pattern2[3].get(attr) == "ADJ" for attr in ("pos", "POS")
     ), "Verifique o atributo e o valor do quarto token da expressão pattern2."
     assert len(matcher(doc)) == 6, "Número incorreto de correspondências - esperado: 6."
 
