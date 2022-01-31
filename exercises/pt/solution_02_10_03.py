@@ -2,7 +2,7 @@ import spacy
 
 nlp = spacy.load("pt_core_news_md")
 
-doc = nlp("Este é um excelente restaurante. Em seguida formos a um ótimo bar.")
+doc = nlp("Este é um excelente restaurante. Em seguida fomos a um ótimo bar.")
 
 # Crie partições para "excelente restaurante" e "ótimo bar"
 span1 = doc[3:5]

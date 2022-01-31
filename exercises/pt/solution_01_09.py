@@ -4,7 +4,7 @@ import spacy
 # Faça antes o download do fluxo com o comando: python -m spacy download pt_core_news_sm
 nlp = spacy.load("pt_core_news_sm")
 
-text = "Vazou a data de lançamento do novo IPhone 20 após a Apple revelar a existência de compras antecipadas."
+text = "Vazou a data de lançamento do novo IPhone X após a Apple revelar a existência de compras antecipadas."
 
 # Processar o texto
 doc = nlp(text)
@@ -15,7 +15,7 @@ for ent in doc.ents:
     print(ent.text, ent.label_)
 
 # Selecionar a partição para "iPhone X"
-iphone_x = doc[5:7]
+iphone_x = doc[7:9]
 
 # Imprimir o texto da partição
 print("Missing entity:", iphone_x.text)
