@@ -64,9 +64,9 @@ Quando você _usar_ o objeto `nlp` em um texto, o fluxo (pipeline) de processame
 
 <exercise id="3" title="Examinando o fluxo (pipeline) de processamento">
 
-Vamos examinar o fluxo (pipeline) de processamento pequeno do idioma inglês!
+Vamos examinar o fluxo (pipeline) de processamento pequeno do idioma português!
 
-- Carregue o fluxo (pipeline) de processamento  `en_core_web_sm` e crie um objeto `nlp`.
+- Carregue o fluxo (pipeline) de processamento  `pt_core_news_sm` e crie um objeto `nlp`.
 - Imprima o nome dos componentes do fluxo utilizando `nlp.pipe_names`.
 - Imprima as informações das tuplas `(name, component)` usando `nlp.pipeline`.
 
@@ -156,7 +156,7 @@ em um documento. Você consegue completar o código?
 - Adicione o `"length_component"` ao fluxo de processamento como o **primeiro**
   componente.
 - Experimente o novo fluxo e processe qualquer texto com o objeto `nlp`. Por
-  exemplo: "This is a sentence.".
+  exemplo: "Esta é uma frase.".
 
 <codeblock id="03_06">
 
@@ -416,7 +416,7 @@ de maneira similar à função `nlp`.
 
 ### Parte 2
 
-- Desabilite o tagueador (tagger) e o lematizador (lemmatizer) através do método
+- Desabilite o lematizador (lemmatizer) através do método
   `nlp.select_pipes`.
 - Processe o texto e imprima todas as entidades do `doc`.
 
