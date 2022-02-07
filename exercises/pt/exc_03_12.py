@@ -10,7 +10,7 @@ with open("exercises/en/countries.json", encoding="utf8") as f:
 with open("exercises/en/capitals.json", encoding="utf8") as f:
     CAPITALS = json.loads(f.read())
 
-nlp = spacy.blank("en")
+nlp = spacy.blank("pt")
 matcher = PhraseMatcher(nlp.vocab)
 matcher.add("COUNTRY", list(nlp.pipe(COUNTRIES)))
 
@@ -34,5 +34,5 @@ get_capital = lambda span: CAPITALS.get(span.text)
 ____.____(____, ____)
 
 # Processar o texto e imprimir o texto da entidade, rótulo (label) e a propriedade extendida capital
-doc = nlp("Czech Republic may help Slovakia protect its airspace")
+doc = nlp("A República Tcheca pode ajudar a Eslováquia a proteger seu espaço aéreo.")
 print([(____, ____, ____) for ent in doc.ents])

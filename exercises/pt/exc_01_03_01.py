@@ -1,9 +1,9 @@
-# Importar spacy e criar o objeto nlp do Inglês
+# Importar spacy e criar o objeto nlp do Português
 import ____
 nlp = ____
 
 # Processar o texto
-doc = ____("I like tree kangaroos and narwhals.")
+doc = ____("Eu gosto de gatos e cachorros.")
 
 # Selecionar o primeiro token
 first_token = doc[____]

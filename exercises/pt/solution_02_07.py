@@ -1,7 +1,7 @@
 import spacy
 
-nlp = spacy.load("en_core_web_sm")
-doc = nlp("Berlin is a nice city")
+nlp = spacy.load("pt_core_news_sm")
+doc = nlp("Berlin parece ser uma cidade bonita.")
 
 # Iterar nos tokens
 for token in doc:

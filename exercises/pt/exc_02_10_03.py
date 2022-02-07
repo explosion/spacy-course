@@ -1,12 +1,14 @@
 import spacy
 
-nlp = spacy.load("en_core_web_md")
+nlp = spacy.load("pt_core_news_md")
 
-doc = nlp("This was a great restaurant. Afterwards, we went to a really nice bar.")
+doc = nlp("Este é um excelente restaurante. Em seguida fomos a um ótimo bar.")
 
-# Crie partições para "great restaurant" e "really nice bar"
+# Crie partições para "excelente restaurante" e "ótimo bar"
 span1 = ____
 span2 = ____
+print(span1)
+print(span2)
 
 # Obtenha a similaridade das partições
 similarity = ____.____(____)

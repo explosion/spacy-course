@@ -13,6 +13,6 @@ def to_html(span, tag):
 Span.set_extension("to_html", method=to_html)
 
 # Processar o texto e chamar o método to_html para a partição span passando o argumento "strong" 
-doc = nlp("Hello world, this is a sentence.")
+doc = nlp("Olá mundo, essa é uma frase.")
 span = doc[0:2]
 print(span._.to_html("strong"))

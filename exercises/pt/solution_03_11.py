@@ -1,7 +1,7 @@
 import spacy
 from spacy.tokens import Span
 
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("pt_core_news_sm")
 
 
 def get_wikipedia_url(span):
@@ -15,8 +15,8 @@ def get_wikipedia_url(span):
 Span.set_extension("wikipedia_url", getter=get_wikipedia_url)
 
 doc = nlp(
-    "In over fifty years from his very first recordings right through to his "
-    "last album, David Bowie was at the vanguard of contemporary culture."
+    "Ao longo de cinquenta anos, desde o lançamento de suas primeira músicas até o último album, "
+    " David Bowie sempre esteve na vanguarda da cultura contemporânea."
 )
 for ent in doc.ents:
     # Imprimir a entidade e URL da Wikipedia URL para a entidade

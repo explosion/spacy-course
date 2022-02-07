@@ -6,7 +6,7 @@ from spacy.language import Language
 def length_component_function(doc):
     # Calcule o tamanho do doc
     doc_length = ____
-    print(f"This document is {doc_length} tokens long.")
+    print(f"Este documento tem {doc_length} tokens.")
     # Retorne o doc
     ____
 

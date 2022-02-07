@@ -54,7 +54,7 @@ partição `Span`.
 
 ### Passo 1
 
-- Utilize `spacy.blank` para criar um objeto `nlp` vazio do idioma inglês ("en").
+- Utilize `spacy.blank` para criar um objeto `nlp` vazio do idioma português ("pt").
 - Processe o texto e instancie um objeto `Doc` na variável `doc`.
 - Selecione o primeiro token do objeto `Doc` e imprima seu texto `text`.
 
@@ -68,10 +68,10 @@ Lembre-se que em Python o primeiro índice é 0 e não 1.
 
 ### Passo 2
 
-- Faça a importação da classe `English` e crie um objeto `nlp`.
+- Crie um objeto `nlp` vazio do idioma `Português`.
 - Processe o texto e instancie um objeto `Doc` na variável `doc`.
-- Crie uma partição do `Doc` para os tokens "tree kangaroos" e
-"tree kangaroos and narwhals".
+- Crie uma partição do `Doc` para os tokens "três cachorros" e
+"três cachorros e dois gatos".
 
 <codeblock id="01_03_02">
 
@@ -155,7 +155,7 @@ Os fluxos (pipelines) de processamento que estamos usando neste treinamento já 
 saber mais informações sobre os fluxos (pipelines) de processamento treinados e como instalá-los em seu
 computador, consulte [essa documentação](https://spacy.io/usage/models).
 
-- Utilize `spacy.load` para carregar o fluxo (pipeline) de processamento pequeno do idioma inglês `"en_core_web_sm"`.
+- Utilize `spacy.load` para carregar o fluxo (pipeline) de processamento pequeno do idioma português `"pt_core_news_sm"`.
 - Processe o texto e imprima o texto do documento.
 
 <codeblock id="01_07">
@@ -286,14 +286,14 @@ texto "Apple".
 
 ### Parte 2
 
-- Escreva **uma** expressão que corresponda às variações de "download" (tokens
-que tenham "download" como lema), seguido de um token da classe gramatical
+- Escreva **uma** expressão que corresponda às variações de "baixar" (tokens
+que tenham "baixar" como lema), seguido de um token da classe gramatical
 substativo próprio `"PROPN"`.
 
 <codeblock id="01_12_02">
 
 - Para indicar um lema, use o atributo `"LEMMA"` como expressão para o token.
-  Por exemplo, `{"LEMMA": "be"}` fará a correspondência para "is", "was" ou "being".
+  Por exemplo, `{"LEMMA": "ser"}` fará a correspondência para "sou", "fui" ou "serei".
 - Para encontrar substativos próprios, você deve fazer a correspondência dos
   tokens cujo atributo `"POS"` seja `"PROPN"`.
 
