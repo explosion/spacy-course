@@ -30,7 +30,7 @@ def test():
         pattern2[2].get(attr) == "anúncios" for attr in ("lower", "LOWER")
     ), "Verifique o atributo e o valor do terceiro token da expressão pattern2."
     assert any(
-        pattern2[3].get(attr) == "ADJ" for attr in ("pos", "POS")
+        pattern2[3].get(attr) == "ADP" for attr in ("pos", "POS")
     ), "Verifique o atributo e o valor do quarto token da expressão pattern2."
     assert len(matcher(doc)) == 6, "Número incorreto de correspondências - esperado: 6."
 

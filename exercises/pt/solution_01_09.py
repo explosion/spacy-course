@@ -4,7 +4,7 @@ import spacy
 # Faça antes o download do fluxo com o comando: python -m spacy download pt_core_news_sm
 nlp = spacy.load("pt_core_news_sm")
 
-text = "Vazou a data de lançamento do novo IPhone X após a Apple revelar a existência de compras antecipadas."
+text = "Vazou a data de lançamento do novo iPhone X após a Apple revelar a existência de compras antecipadas."
 
 # Processar o texto
 doc = nlp(text)

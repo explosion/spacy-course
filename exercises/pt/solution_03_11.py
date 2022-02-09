@@ -5,8 +5,8 @@ nlp = spacy.load("pt_core_news_sm")
 
 
 def get_wikipedia_url(span):
-    # Gerar uma URL da Wikipedia se o texto tiver algum dos rótulos PERSON, ORG, GPE, LOCATION
-    if span.label_ in ("PERSON", "ORG", "GPE", "LOCATION"):
+    # Gerar uma URL da Wikipedia se o texto tiver algum dos rótulos PERSON, ORG, GPE, LOCATION, PER
+    if span.label_ in ("PERSON", "ORG", "GPE", "LOCATION", "PER"):
         entity_text = span.text.replace(" ", "_")
         return "https://en.wikipedia.org/w/index.php?search=" + entity_text
 
