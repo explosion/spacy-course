@@ -5,11 +5,11 @@ nlp = spacy.load("pt_core_news_md")
 doc = nlp(
     " Twitch Prime, um programa de regalias para os membros da Amazon Prime que "
     " oferece saques gratuitos, jogos e outros benefícios, está abandonando uma "
-    " de suas melhores funcionalidades: visualização sem-anúncios. De acordo com "
+    " de suas melhores funcionalidades: visualização sem anúncios . De acordo com "
     " um email enviado hoje aos membros da Amazon Prime, a partir de 14 de Setembro, "
-    " a visualização sem-anúncios não estará mais inclusa no Twitch Prime para novos "
+    " a visualização sem anúncios não estará mais inclusa no Twitch Prime para novos "
     " membros. No entanto, membros com assinaturas anuais poderão desfrutar da "
-    " visualização sem-anúncios até o momento da renovação da assinatura. Aqueles com "
+    " visualização sem anúncios até o momento da renovação da assinatura. Aqueles com "
     " assinaturas mensais terão acesso à visualização sem anúncios até 15 de Outubro."
 )
 
