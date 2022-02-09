@@ -11,6 +11,6 @@ def test():
 
     __msg__.good(
         "Bom trabalho! Após incluir ambos os exemplos nas novas entidades de WEBSITE"
-        "além de manter as entidades já identificadas como por exemplo PERSON,""
+        "além de manter as entidades já identificadas como por exemplo PERSON,"
         "o modelo está apresentando resultados muito melhores."
     )
