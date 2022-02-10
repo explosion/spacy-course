@@ -25,14 +25,13 @@ Vamos dar uma olhada nos possíveis problemas que você provavelmente irá se de
     ele pode "desaprender" o que é um `"PERSON"`
 - Também conhecido como o problema do "esquecimento catastrófico".
 
-Notes: Modelos estatísticos podem aprender muitas coisas, mas isso não quer
-dizer que eles também podem "desaprender" essas coisas.
+Notes: Modelos estatísticos podem aprender muitas coisas, mas eles também podem "desaprender" essas coisas.
 
 Se você estiver atualizando um modelo existente com novos dados, principalmente
 se forem novos rótulos, o modelo pode se _superajustar_ (overfit) aos novos exemplos.
 
-Como exemplo, se você estiver atualizando seu modelos com exemplos de "website",
-o modelo pode esquecer dos outros rótulos aprendidos anteriormente, como "person".
+Como exemplo, se você estiver atualizando seu modelos com exemplos de "WEBSITE",
+o modelo pode esquecer dos outros rótulos aprendidos anteriormente, como "PERSON".
 
 Isso é conhecido como o problema do esquecimento catastrófico.
 
@@ -43,23 +42,6 @@ Isso é conhecido como o problema do esquecimento catastrófico.
 - Por exemplo, se você estiver treinando com dados de `"WEBSITE"`, também inclua
   exemplos de `"PERSON"`
 - Rode o modelo existente da biblioteca spaCy e extraia todas as outras entidades relevantes.
-
-**RUIM:**
-
-```python
-TRAINING_DATA = [
-    ("Reddit is a website", {"entities": [(0, 6, "WEBSITE")]})
-]
-```
-
-**BOM:**
-
-```python
-TRAINING_DATA = [
-    ("Reddit is a website", {"entities": [(0, 6, "WEBSITE")]}),
-    ("Obama is a person", {"entities": [(0, 5, "PERSON")]})
-]
-```
 
 Note: Para prevenir esse problema, garanta que seus exemplos incluam também os
 exemplos daquilo que o modelo previu corretamente anteriormente.

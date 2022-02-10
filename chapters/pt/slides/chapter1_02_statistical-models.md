@@ -2,17 +2,17 @@
 type: slides
 ---
 
-# Modelos estatísticos
+# Fluxos (pipelines) de processamento  treinados
 
 Notes: Agora vamos adicionar alguns poderes especiais ao objeto `nlp`!
 
-Nesta lição você irá aprender mais sobre os modelos estatísticos da spaCy.
+Nesta lição você irá aprender mais sobre os fluxos (pipelines) de processamento treinados da spaCy.
 
 ---
 
-# O que são modelos estatísticos?
+# O que são fluxos (pipelines) de processamento treinados ?
 
-- Permitem que a spaCy faça previsões de atributos linguísticos _em contextos_:
+- Modelos que permitem que a spaCy faça previsões de atributos linguísticos _em contexto_:
   - Marcadores de classes gramaticais
   - Dependências sintáticas
   - Entidades nomeadas
@@ -21,15 +21,15 @@ Nesta lição você irá aprender mais sobre os modelos estatísticos da spaCy.
 
 Notes: Algumas das análises mais interessantes são aquelas específicas a um contexto. Por exemplo: se uma palavra é um verbo ou se uma palavra é o nome de uma pessoa.
 
-Os modelos estatísticos permitem que a spaCy faça previsões dentro de um contexto. Isso normalmente inclui marcadores de classes gramaticais, dependências sintáticas e entidades nomeadas.
+Os fluxos (pipelines) de processamento possuem modelos estatísticos que permitem que a spaCy faça previsões dentro de um contexto. Isso normalmente inclui marcadores de classes gramaticais, dependências sintáticas e entidades nomeadas.
 
-Os modelos são treinados em grandes conjuntos de dados com textos de exemplos já rotulados.
+Os fluxos (pipelines) de processamento são treinados em grandes conjuntos de dados com textos de exemplos já rotulados.
 
 Os modelos podem ser atualizados com mais exemplos para fazer um ajuste fino nas previsões, como por exemplo, melhorar os resultados em um conjunto de dados específico.
 
 ---
 
-# Pacotes dos modelos
+# Pacotes dos fluxos (pipelines) de processamento
 
 <img src="/package.png" alt="Um pacote com o marcador en_core_web_sm" width="30%" align="right" />
 
@@ -45,15 +45,17 @@ nlp = spacy.load("en_core_web_sm")
 
 - Pesos binários
 - Vocabulário
-- Metadados (idioma, fluxo de processamento)
+- Metadados
+- Arquivo de configuração
 
-Notes: A biblioteca spaCy oferece vários pacotes de modelos que você pode baixar usando o comando `spacy download`. Por exemplo, o pacote "en_core_web_sm" é um modelo pequeno em inglês que foi treinado com texto da internet e possui diversos recursos. 
+Notes: A biblioteca spaCy oferece vários pacotes de fluxos (pipelines) de processamento que você pode baixar usando o comando `spacy download`. Por exemplo, o pacote "en_core_web_sm" é um fluxo de processamento pequeno em inglês que foi treinado com texto da internet e possui diversos recursos. 
 
-O método `spacy.load` carrega o pacote de um modelo a partir do seu nome e retorna um objeto `nlp`.
+O método `spacy.load` carrega o pacote de um fluxo (pipeline) de processamento a partir do seu nome e retorna um objeto `nlp`.
 
 O pacote contém os pesos binários que permitem que a spaCy faça as previsões.
 
-Também inclui o vocabulário e metadados com informações sobre o idioma e como configurar o fluxo de processamento (pipeline).
+Também inclui o vocabulário, metadados com informações sobre o fluxo (pipeline) de 
+processamento e um arquivo de configuração utilizado para treiná-lo. Ele informa qual o idioma a ser utilizado e como configurar o fluxo de processamento (pipeline).
 
 ---
 
@@ -62,7 +64,7 @@ Também inclui o vocabulário e metadados com informações sobre o idioma e com
 ```python
 import spacy
 
-# Carregar o modelo pequeno do Inglês
+# Carregar o fluxo (pipeline) de processamento pequeno do Inglês
 nlp = spacy.load("en_core_web_sm")
 
 # Processar um texto
@@ -83,7 +85,7 @@ pizza NOUN
 
 Notes: Vamos dar uma olhada nas previsões do modelo. Neste exemplo, estamos usando a spaCy para prever as classes gramaticais, que são os tipos de palavras em seu contexto.
 
-Primeiramente, carregamos o modelo pequeno do Inglês no objeto `nlp`.
+Primeiramente, carregamos o fluxo(pipeline) de processamento pequeno do Inglês no objeto `nlp`.
 
 Em seguida, processamos o texto: "She ate the pizza".
 
@@ -159,7 +161,7 @@ $1 billion MONEY
 
 Notes: Entidades nomeadas são "objetos do mundo real" que possuem um nome. Por exemplo: uma pessoa, uma organização ou um país.
 
-A propriedade `doc.ents` permite o acesso às entidades nomedas identificadas (previstas) pelo modelo.
+A propriedade `doc.ents` permite o acesso às entidades nomedas identificadas (previstas) pelo modelo de reconhecimento de entidades nomeadas
 
 Ela retorna um iterável de objetos do tipo `Span`, possibilitando o acesso ao texto e ao marcador através do atributo `.label_`.
 
@@ -205,4 +207,4 @@ O mesmo vale para marcadores de classes gramaticais e termos sintáticos.
 
 # Vamos praticar!
 
-Notes: Agora é a sua vez. Vamos dar uma olhada nos modelos estatísticos da spaCy e suas predições.
+Notes: Agora é a sua vez. Vamos dar uma olhada nos fluxos (pipelines) de processamento da spaCy e suas predições.

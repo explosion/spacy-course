@@ -1,8 +1,8 @@
 ---
-title: 'Chapter 3: Fluxos de processamento (pipelines)'
+title: 'Chapter 3: Fluxos (pipelines) de processamento'
 description:
-  "Neste capítulo você conhecerá melhor os fluxos de processamento
-  (pipelines) da spaCy. Você entenderá o que acontece nos bastidores
+  "Neste capítulo você conhecerá melhor os fluxos (pipelines) de processamento 
+  da spaCy. Você entenderá o que acontece nos bastidores
   quando você processa um texto. Vai aprender a escrever seus próprios
   componentes e adicioná-los ao fluxo de processamento, e também a usar atributos 
   personalizados para adicionar metadados aos seus documentos, partições e tokens."
@@ -12,7 +12,7 @@ type: chapter
 id: 3
 ---
 
-<exercise id="1" title="Fluxos de processamento (pipelines)" type="slides">
+<exercise id="1" title="Fluxos (pipelines) de processamento " type="slides">
 
 <slides source="chapter3_01_processing-pipelines">
 </slides>
@@ -41,7 +41,7 @@ um analisador (parser) e um identificador de entidades.
 <opt text="Toqueniza o texto e aplica os componentes do fluxo (pipeline) sequencialmente." correct="true">
 
 O toquenizador transforma uma string de texto em um objeto `Doc`. a spaCy
-então aplica cada componente do fluxo de processamento (pipeline) ao documento,
+então aplica cada componente do fluxo (pipeline) de processamento ao documento,
 sequencialmente.
 
 </opt>
@@ -52,21 +52,21 @@ a spaCy processa tudo localmente e não se conecta a nenhum servidor externo.
 
 </opt>
 
-<opt text="Inicializa o idioma, adiciona o fluxo de processamento (pipeline) e carrega os pesos binários dos modelos.">
+<opt text="Inicializa o idioma, adiciona o fluxo (pipeline) de processamento e carrega os pesos binários dos modelos.">
 
-Quando você usa `spacy.load()` para carregar um modelo, a spaCy irá inicializar o
-idioma, adicionar o fluxo de processamento (pipeline) e carregar os pesos binários do modelo.
-Quando você _usar_ o objeto `nlp` em um texto, o modelo já estará carregado.
+Quando você usa `spacy.load()` para carregar um fluxo (pipeline) de processamento, a spaCy irá inicializar o
+idioma, adicionar o fluxo (pipeline) de processamento e carregar os pesos binários.
+Quando você _usar_ o objeto `nlp` em um texto, o fluxo (pipeline) de processamento já estará carregado.
 
 </opt>
 
 </exercise>
 
-<exercise id="3" title="Examinando o fluxo de processamento (pipeline)">
+<exercise id="3" title="Examinando o fluxo (pipeline) de processamento">
 
-Vamos examinar o fluxo de processamento do modelo pequeno do idioma inglês!
+Vamos examinar o fluxo (pipeline) de processamento pequeno do idioma português!
 
-- Carregue o modelo `en_core_web_sm` e crie um objeto `nlp`.
+- Carregue o fluxo (pipeline) de processamento  `pt_core_news_sm` e crie um objeto `nlp`.
 - Imprima o nome dos componentes do fluxo utilizando `nlp.pipe_names`.
 - Imprima as informações das tuplas `(name, component)` usando `nlp.pipeline`.
 
@@ -91,7 +91,7 @@ disponível em `nlp.pipeline`.
 
 Quais desses problemas pode ser solucionado utilizando um componente personalizado?
 
-1. Atualizar um modelo pré-treinado e melhorar suas predições.
+1. Atualizar o fluxo (pipeline) de processamento treinado e melhorar suas predições.
 2. Calcular alguns valores utilizando os tokens e seus atributos.
 3. Adicionar entidades nomeadas baseado em um dicionário, por exemplo.
 4. Implementar suporte a um idioma adicional.
@@ -153,16 +153,16 @@ Este exemplo mostra um componente personalizado que imprime o número de tokens
 em um documento. Você consegue completar o código?
 
 - Complete a função para calcular o tamanho do objeto `doc`.
-- Adicione o `length_component` ao fluxo de processamento como o **primeiro**
+- Adicione o `"length_component"` ao fluxo de processamento como o **primeiro**
   componente.
 - Experimente o novo fluxo e processe qualquer texto com o objeto `nlp`. Por
-  exemplo: "This is a sentence.".
+  exemplo: "Esta é uma frase.".
 
 <codeblock id="03_06">
 
 - Para obter o tamanho de um objeto `Doc`, você pode usar a função `len()` do Python.
 - Use o método `nlp.add_pipe` para adicionar um componente ao fluxo. Lembre-se de
-  definir o argumento `first` como `True` para garantir que ele seja adicionado
+  utilizar o nome do componente e definir o argumento `first` como `True` para garantir que ele seja adicionado
   antes do processamento dos outros componentes.
 - Para processar um texto, chame `nlp` e passe o texto como argumento.
 
@@ -189,7 +189,7 @@ reconhecidas ao `doc.ents`. O `PhraseMatcher` será criado como a variável `mat
 - A classe `Span` tem 4 argumentos: o `doc` pai, o índice inicial, o índice final e
   o marcador.
 - Para adicionar um componente após o outro, use o argumento `after` em
-  `nlp.add_pipe`.
+  `nlp.add_pipe`. Lembre-se de utilizar o nome do componente para adicioná-lo.
 
 </codeblock>
 
@@ -272,7 +272,7 @@ e a extensão de métodos.
 <exercise id="11" title="Entidades e extensões">
 
 Neste exercício você combinará propriedades extendidas personalizadas com as
-previsões do modelo e criará um método extendido que retornará o endereço (URL)
+predições estatísticas e criará um método extendido que retornará o endereço (URL)
 de busca na Wikipedia se a partição for uma pessoa, organização ou localidade.
 
 - Defina a função `get_wikipedia_url` que só retornará uma URL da Wikipedia
@@ -296,7 +296,7 @@ de busca na Wikipedia se a partição for uma pessoa, organização ou localidad
 <exercise id="12" title="Componentes com extensões">
 
 Propriedades extendidas podem ser poderosas quando combinadas com componentes
-personalizados do fluxo de processamento. Neste exercício, você escreverá um
+personalizados do fluxo (pipeline) de processamento. Neste exercício, você escreverá um
 componente do fluxo de processamento para identificar nomes de países e
 definirá uma propriedade que retornará a capital do país, se houver.
 
@@ -304,9 +304,9 @@ Um Comparador com todos os países deverá ser disponibilizado na variável
 `matcher`. Um dicionário que mapeie os países e suas capitais deverá ser
 disponibilizado na variável `CAPITALS`.
 
-- Complete a função `countries_component` que defina um marcador `"GPE"`
+- Complete a função `countries_component_function` que defina um marcador `"GPE"`
   (geopolitical entity) para todas as correspondências.
-- Adicione o componente ao fluxo de processamento (pipeline).
+- Adicione o componente ao fluxo (pipeline) de processamento .
 - Defina uma propriedade extendida `"capital"` para a partição Span com o
   argumento getter como `get_capital`.
 - Processe o texto e imprima o texto da entidade, o marcador (label) e a
@@ -335,7 +335,7 @@ disponibilizado na variável `CAPITALS`.
 
 </exercise>
 
-<exercise id="14" title="Fluxos de processamento">
+<exercise id="14" title="Fluxos (pipelines) de processamento">
 
 Neste exercício, você usará `nlp.pipe` para processar texto de maneira mais
 eficiente. O objeto `nlp` já terá sido criado. Uma lista de tweets sobre uma rede
@@ -400,7 +400,7 @@ textos são citações de livros famosos, e o contexto são dicionários com as 
 
 <exercise id="16" title="Processamento seletivo (condicional)">
 
-Neste exercício você usará os métodos `nlp.make_doc` e `nlp.disable_pipes` para
+Neste exercício você usará os métodos `nlp.make_doc` e `nlp.select_pipes` para
 executar componentes específicos durante o processamento do texto.
 
 ### Parte 1
@@ -416,15 +416,15 @@ de maneira similar à função `nlp`.
 
 ### Parte 2
 
-- Desabilite o tagueador (tagger) e o interpretador (parser) através do método
-  `nlp.disable_pipes`.
+- Desabilite o lematizador (lemmatizer) através do método
+  `nlp.select_pipes`.
 - Processe o texto e imprima todas as entidades do `doc`.
 
 <codeblock id="03_16_02">
 
-O método `nlp.disable_pipes` pode receber diversos parâmetros: os nomes dos componentes
-do fluxo de processamento que devem ser desabilitados.
-Por exemplo: `nlp.disable_pipes("ner")` irá desabilitar o identificador de entidades nomeadas.
+O método `nlp.select_pipes` aceita os parâmetros `enable` ou `disable` que recebem uma lista
+com os nomes de componentes que devem ser habilitados ou desabilitados, respectivamente.
+Por exemplo: `nlp.select_pipes(disable="ner")` irá desabilitar o identificador de entidades nomeadas.
 
 </codeblock>
 

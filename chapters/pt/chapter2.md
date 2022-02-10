@@ -53,8 +53,7 @@ id: 2
 Por que o código abaixo dá erro?
 
 ```python
-from spacy.lang.en import English
-from spacy.lang.de import German
+import spacy
 
 # Criar um objeto do idioma inglês e um objeto do idioma alemão
 nlp = English()
@@ -263,15 +262,15 @@ de verificar se trata-se de um substantivo próprio.
 
 <exercise id="9" title="Inspeção dos vetores das palavras">
 
-Neste exercício vamos usar um [modelo do Inglês maior](https://spacy.io/models/en) que inclui
-cerca de 20.000 vetores das palavras. Esse modelo já está instalado.
+Neste exercício vamos usar um [fluxo de processamento do Português médio](https://spacy.io/models/pt) que inclui
+cerca de 20.000 vetores das palavras. Esse pacote do fluxo (pipeline) de processamento já está instalado.
 
-- Carregue o modelo médio `"en_core_web_md"`com seus vetores das palavras.
+- Carregue o fluxo (pipeline) de processamento médio `"pt_core_news_md"`com seus vetores das palavras.
 - Imprima o vetor para `"bananas"` usando o atributo `token.vector`.
 
 <codeblock id="02_09">
 
-- Para carregar um modelo estatístico, use `spacy.load` passando uma string
+- Para carregar um fluxo (pipeline) de processamento, use `spacy.load` passando uma string
 com o nome do modelo.
 - Para acessar um token no doc, você pode indexá-lo. Por exemplo: `doc[4]`.
 
@@ -310,14 +309,14 @@ ao objeto atual.
 
 ### Parte 3
 
-- Crie partições para "great restaurant" e "really nice bar".
+- Crie partições para "excelente restaurante" e "ótimo bar".
 - Use `span.similarity` para comparar e imprima o resultado.
 
 <codeblock id="02_10_03"></codeblock>
 
 </exercise>
 
-<exercise id="11" title="Combinando modelos e regras" type="slides">
+<exercise id="11" title="Combinando predições e regras" type="slides">
 
 <slides source="chapter2_04_models-rules">
 </slides>
@@ -378,12 +377,12 @@ dicionário represente um token.
   iniciado com letra maiúscula.
 
 - Edite `pattern2` de forma que ele faça a correspondência de todas as combinações
-  maiúsculas e minúsculas de `"ad-free"`, seguido de um substantivo.
+  maiúsculas e minúsculas de `"sem-anúncios"`, seguido de um substantivo.
 
 <codeblock id="02_13">
 
 - Tente processar os textos que devem fazer a correspondência utilizando o objeto
-  `nlp` da seguinte forma: `[token.text for token in nlp("ad-free viewing")]`.
+  `nlp` da seguinte forma: `[token.text for token in nlp("visualização sem anúncios")]`.
 - Inspecione os tokens e certique-se que cada dicionário na expressão descreva
   corretamtente o token desejado.
 

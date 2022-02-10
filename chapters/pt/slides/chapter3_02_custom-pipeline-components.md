@@ -41,42 +41,49 @@ as partições com entidades nomeadas.
 # Anatomia de um componente (1)
 
 - Função que recebe um `doc`, o modifica, e em seguida o retorna
+- Registrado através do decorador `Language.component`
 - Pode ser adicionado ao fluxo de processamento através do método `nlp.add_pipe`
 
 ```python
+from spacy.language import Language
+
+@Language.component("custom_component")
 def custom_component(doc):
     # Faz alguma coisa com o documento
     return doc
 
-nlp.add_pipe(custom_component)
+nlp.add_pipe("custom_component")
 ```
 
 Notes: Fundamentalmente, o componente de um fluxo de processamento é uma função
 ou um objeto que recebe um documento, o modifica e em seguida retorna este objeto,
 que pode ser processado em seguida pelo próximo componente do fluxo de processamento.
 
-Componentes podem ser adicionados ao fluxo de processamento (pipeline) através do método `nlp.add_pipe`. 
-O método recebe pelo menos um parâmetro: a função do componente.
+Para informar à biblioteca spaCy a localização do seu componente customizado e como ele deve
+ser utilizado, você pode adicionar o decorador `@Language.component`. Adicione o decorador
+na linha anterior à definição da função.
 
+Uma vez que o componente estiver registrado, ele pode ser adicionado ao fluxo de processamento através do método `nlp.add_pipe`. O método recebe pelo menos um parâmetro: a string com o nome do componente.
 
 ---
 
 # Anatomia de um componente (2)
 
 ```python
+@Language.component("custom_component")
 def custom_component(doc):
     # Faz alguma coisa com o documento
     return doc
 
-nlp.add_pipe(custom_component)
+nlp.add_pipe("custom_component")
 ```
 
 |Parâmetro | Descrição                      | Exemplo                                   |
 | -------- | ------------------------------ | ----------------------------------------- |
-| `last`   | Se `True`, adicionar no final  | `nlp.add_pipe(component, last=True)`      |
-| `first`  | Se `True`, adicionar no início | `nlp.add_pipe(component, first=True)`     |
-| `before` | Adicionar antes do componente  | `nlp.add_pipe(component, before="ner")`   |
-| `after`  | Adicionar depois do componente | `nlp.add_pipe(component, after="tagger")` |
+| `last`   | Se `True`, adicionar no final  | `nlp.add_pipe("component", last=True)`      |
+| `first`  | Se `True`, adicionar no início | `nlp.add_pipe("component", first=True)`     |
+| `before` | Adicionar antes do componente  | `nlp.add_pipe("component", before="ner")`   |
+| `after`  | Adicionar depois do componente | `nlp.add_pipe("component", after="tagger")` |
 
 Notes: Para definir _onde_ o componente será adicionado ao fluxo de processamento,
 você pode usar os seguintes argumentos:
@@ -104,6 +111,7 @@ existir, senão a spaCy gerará um erro.
 nlp = spacy.load("en_core_web_sm")
 
 # Definir um componente personalizado
+@Language.component("custom_component")
 def custom_component(doc):
     # Imprimir o tamanho do documento
     print("Doc length:", len(doc))
@@ -111,19 +119,19 @@ def custom_component(doc):
     return doc
 
 # Adicionar o componente como primeiro no fluxo de processamento
-nlp.add_pipe(custom_component, first=True)
+nlp.add_pipe("custom_component", first=True)
 
 # Imprimir o nome dos componentes do fluxo de processamento
 print("Pipeline:", nlp.pipe_names)
 ```
 
 ```out
-Pipeline: ['custom_component', 'tagger', 'parser', 'ner']
+Pipeline: ['custom_component', 'tok2vec','tagger', 'parser', 'ner', 'attribute_ruler', 'lemmatizer']
 ```
 
 Notes: Aqui está mais um exemplo de um componente simples do fluxo de processamento
 
-Começamos com o modelo pequeno da língua inglesa.
+Começamos com o fluxo de processamento pequeno da língua inglesa.
 
 Em seguida definimos o componente: uma função que recebe um objeto `Doc` e o 
 retorna.
@@ -134,6 +142,10 @@ Não se esqueça de retornar o documento para que ele seja processado pelo
 próximo componente no fluxo de processamento! O documento criado pelo
 toquenizador é passado para todos os componentes, portanto é essencial
 retornar o documento modificado.
+
+Para poder utilizar o novo componente, nós o registramos utilizando o
+decorador `Language.component` e em seduida podemos chamá-lo com
+"custom_component".
 
 Agora podemos adicionar o componente ao fluxo de processamento. Vamos
 adicioná-lo logo no início, após o toquenizador, definindo o atributo 
@@ -153,6 +165,7 @@ será aplicado logo no início do processamento do documento.
 nlp = spacy.load("en_core_web_sm")
 
 # Definir um componente customizado
+@Language.component("custom_component")
 def custom_component(doc):
 
     # Imprimir o tamanho do documento
@@ -162,7 +175,7 @@ def custom_component(doc):
     return doc
 
 # Adicionar o componente no inicio do fluxo de processamento
-nlp.add_pipe(custom_component, first=True)
+nlp.add_pipe("custom_component", first=True)
 
 # Processar o texto
 doc = nlp("Hello world!")
