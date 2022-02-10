@@ -1,22 +1,22 @@
 import spacy
 from spacy.matcher import Matcher
 
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("pt_core_news_sm")
 matcher = Matcher(nlp.vocab)
 
 doc = nlp(
-    "Features of the app include a beautiful design, smart search, automatic "
-    "labels and optional voice responses."
+    "Os recursos do aplicativo incluem um design bonito, busca inteligente, "
+    " rótulos automáticos e resposta de voz opcional."
 )
 
 # Escreva uma expressão que corresponda a um adjetivo seguido de um ou dois substantivos
 pattern = [{"POS": ____}, {"POS": ____}, {"POS": ____, "OP": ____}]
 
 # Adicione uma expressão ao comparador matcher e aplique o matcher ao doc
-matcher.add("ADJ_NOUN_PATTERN", None, pattern)
+matcher.add("ADJ_NOUN_PATTERN", [pattern])
 matches = matcher(doc)
-print("Total matches found:", len(matches))
+print("Total de correspondências encontradas:", len(matches))
 
 # Faça a iteração sobre as correspondencias e imprima a partição do texto
 for match_id, start, end in matches:
-    print("Match found:", doc[start:end].text)
+    print("Correspondências encontradas:", doc[start:end].text)

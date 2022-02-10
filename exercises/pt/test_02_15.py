@@ -9,7 +9,7 @@ def test():
         "print(span_root_head.text" in __solution__
     ), "Você está imprimindo o texto do inicio 'head' da partição?"
     ents = [ent for ent in doc.ents if ent.label_ == "GPE"]
-    assert len(ents) == 16, "Quantidade incorreta de entidades. Esperado: 16."
+    assert len(ents) == 5, "Quantidade incorreta de entidades. Esperado: 5."
     __msg__.good(
         "Parabéns! Agora que você já exercitou a combinação de previsões com "
         "regras para extração das informações, você está pronto para o capítulo 3, "

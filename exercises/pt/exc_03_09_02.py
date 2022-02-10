@@ -1,7 +1,7 @@
-from spacy.lang.en import English
+import spacy
 from spacy.tokens import Token
 
-nlp = English()
+nlp = spacy.blank("pt")
 
 # Definir a função que recebe um token e retorna seu conteúdo invertido
 def get_reversed(token):
@@ -12,6 +12,6 @@ def get_reversed(token):
 ____.____(____, ____=____)
 
 # Processar o texto e imprimir o atributo "reversed" para cada token
-doc = nlp("All generalizations are false, including this one.")
+doc = nlp("Todas generalizações são falsas, incluindo esta.")
 for ____ in ____:
     print("reversed:", ____)

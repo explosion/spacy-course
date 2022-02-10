@@ -14,8 +14,8 @@ as visões `Token` e partição `Span`.
 
 ```python
 # Criar um objeto nlp
-from spacy.lang.en import English
-nlp = English()
+import spacy
+nlp = spacy.blank("en")
 
 # Importar a classe Doc 
 from spacy.tokens import Doc

@@ -1,7 +1,7 @@
-# Importe a classe do idioma alemão (German)
-from spacy.lang.____ import ____
+# Importe a biblioteca spaCy
+import ____
 
-# Crie um objeto nlp
+# Crie um objeto nlp do Alemão
 nlp = ____
 
 # Processe o texto (equivalente ao português: "Atenciosamente")

@@ -6,7 +6,7 @@ matcher = Matcher(nlp.vocab)
 
 doc = nlp(
     "j'ai téléchargé Fortnite sur mon ordinateur portable et je ne peux pas "
-    "du tout lancer le jeu. Quelqu'un pour m'aider ?"
+    "du tout lancer le jeu. Quelqu'un pour m'aider ? "
     "donc quand je téléchargeais Minecraft j'ai eu la version de Windows dans "
     "le dossier .zip et j'ai utilisé le programme par défaut pour le "
     "décompresser... est-ce qu'il faut aussi que je télécharge Winzip ?"
@@ -22,4 +22,4 @@ print("Nombre de correspondances trouvées :", len(matches))
 
 # Itère sur les correspondances et affiche la portion de texte
 for match_id, start, end in matches:
-    print("Correspondance trouvée:", doc[start:end].text)
+    print("Correspondance trouvée :", doc[start:end].text)

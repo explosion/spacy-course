@@ -1,8 +1,10 @@
 import spacy
 
-nlp = spacy.load("en_core_web_sm")
+# Carregue o fluxo de processamento pequeno do idioma portugues "pt_core_web_sm"
+# Faça antes o download do fluxo com o comando: python -m spacy download pt_core_news_sm
+nlp = spacy.load("pt_core_news_sm")
 
-text = "Upcoming iPhone X release date leaked as Apple reveals pre-orders"
+text = "Vazou a data de lançamento do novo iPhone X após a Apple revelar a existência de compras antecipadas."
 
 # Processar o texto
 doc = ____

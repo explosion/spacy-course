@@ -1,20 +1,22 @@
 import json
-from spacy.lang.en import English
+import spacy
+from spacy.language import Language
 from spacy.tokens import Span
 from spacy.matcher import PhraseMatcher
 
-with open("exercises/en/countries.json", encoding="utf8") as f:
+with open("exercises/pt/countries.json", encoding="utf8") as f:
     COUNTRIES = json.loads(f.read())
 
-with open("exercises/en/capitals.json", encoding="utf8") as f:
+with open("exercises/pt/capitals.json", encoding="utf8") as f:
     CAPITALS = json.loads(f.read())
 
-nlp = English()
+nlp = spacy.blank("pt")
 matcher = PhraseMatcher(nlp.vocab)
-matcher.add("COUNTRY", None, *list(nlp.pipe(COUNTRIES)))
+matcher.add("COUNTRY", list(nlp.pipe(COUNTRIES)))
 
 
-def countries_component(doc):
+@Language.component("countries_component")
+def countries_component_function(doc):
     # Criar uma partição com o rótulo "GPE" para todas as correspondências
     matches = matcher(doc)
     doc.ents = [____(____, ____, ____, label=____) for match_id, start, end in matches]
@@ -32,5 +34,5 @@ get_capital = lambda span: CAPITALS.get(span.text)
 ____.____(____, ____)
 
 # Processar o texto e imprimir o texto da entidade, rótulo (label) e a propriedade extendida capital
-doc = nlp("Czech Republic may help Slovakia protect its airspace")
+doc = nlp("A República Tcheca pode ajudar a Eslováquia a proteger seu espaço aéreo.")
 print([(____, ____, ____) for ent in doc.ents])

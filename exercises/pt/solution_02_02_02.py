@@ -1,10 +1,10 @@
 import spacy
 
-nlp = spacy.load("en_core_web_sm")
-doc = nlp("David Bowie is a PERSON")
+nlp = spacy.blank("pt")
+doc = nlp("David Bowie é uma PESSOA")
 
-# Consulte o código hash para a string "PERSON"
-person_hash = nlp.vocab.strings["PERSON"]
+# Consulte o código hash para a string "PESSOA"
+person_hash = nlp.vocab.strings["PESSOA"]
 print(person_hash)
 
 # Consulte o person_hash para obter o texto novamente

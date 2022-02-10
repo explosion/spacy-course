@@ -218,7 +218,7 @@ nlp = spacy.blank("fr")
 
 # Crée un Doc avec des spans d'entités
 doc1 = nlp("L'iPhone 12 arrive bientôt")
-doc1.ents = [Span(doc, 1, 3, label="GADGET")]
+doc1.ents = [Span(doc1, 1, 3, label="GADGET")]
 # Crée un autre Doc sans spans d'entités
 doc2 = nlp("Il me faut un nouveau téléphone ! Des suggestions à me faire ?")
 

@@ -3,7 +3,7 @@ def test():
         len(pattern1) == 2
     ), "O número de tokens na expressão pattern1 não corresponde ao número real de tokens na string."
     assert (
-        len(pattern2) == 4
+        len(pattern2) == 3
     ), "O número de tokens na expressão pattern2 não corresponde ao número real de tokens na string."
     # Pattern 1 validation
     assert (
@@ -24,14 +24,14 @@ def test():
 
     # Pattern 2 validation
     assert any(
-        pattern2[0].get(attr) == "ad" for attr in ("lower", "LOWER")
-    ), "Verifique o atributo e o valor do primeiro token da expressão pattern2."
+        pattern2[1].get(attr) == "sem" for attr in ("lower", "LOWER")
+    ), "Verifique o atributo e o valor do segundo token da expressão pattern2."
     assert any(
-        pattern2[2].get(attr) == "free" for attr in ("lower", "LOWER")
+        pattern2[2].get(attr) == "anúncios" for attr in ("lower", "LOWER")
     ), "Verifique o atributo e o valor do terceiro token da expressão pattern2."
     assert any(
-        pattern2[3].get(attr) == "NOUN" for attr in ("pos", "POS")
-    ), "Verifique o atributo e o valor do quarto token da expressão pattern2."
+        pattern2[0].get(attr) == "NOUN" for attr in ("pos", "POS")
+    ), "Verifique o atributo e o valor do primeiro token da expressão pattern2."
     assert len(matcher(doc)) == 6, "Número incorreto de correspondências - esperado: 6."
 
     __msg__.good(

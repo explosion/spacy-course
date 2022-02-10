@@ -17,11 +17,11 @@ de seu uso em aplicações de PLN.
 - A biblioteca `spaCy` pode comparar dois objetos e prever a sua similaridade.
 - `Doc.similarity()`, `Span.similarity()` e `Token.similarity()`
 - Recebem outro objeto e retornam um score de similaridade ( entre `0` e `1` )
-- **Importante:** é necessário incluir um modelo que tenha vetores de palavras incluso,
+- **Importante:** é necessário incluir um fluxo (pipeline) de processamento que tenha vetores de palavras incluso,
 como por exemplo:
-  - ✅ `en_core_web_md` ( modelo de tamanho médio )
-  - ✅ `en_core_web_lg` ( modelo de tamanho grande )
-  - 🚫 **NÃO USE** `en_core_web_sm` ( modelo de tamanho pequeno )
+  - ✅ `en_core_web_md` ( tamanho médio )
+  - ✅ `en_core_web_lg` ( tamanho grande )
+  - 🚫 **NÃO USE** `en_core_web_sm` ( tamanho pequeno )
 
 Notes: A spaCy consegue comparar dois objetos e prever o quão similares eles são
 entre si. Por exemplo: documentos, partições e tokens.
@@ -31,10 +31,10 @@ outro objeto e retorna um número de ponto flutuante entre 0 e 1 indicando o
 quão similares estes objetos são.
 
 Um detalhe importante: para poder usar a similaridade, você necessita usar um
-modelo maior que inclua a representação das palavras em vetores (word vectors).
+fluxo (pipeline) de processamento maior que inclua a representação das palavras em vetores (word vectors).
 
-Por exemplo, o modelo médio ou grande da língua inglesa, mas _não_ o modelo pequeno.
-Se você desejar usar os vetores, sempre use um modelo que termine com os caracteres
+Por exemplo, o fluxo (pipeline) de processamento médio ou grande da língua inglesa, mas _não_ o modelo pequeno.
+Se você desejar usar os vetores, sempre use um fluxo (pipeline) de processamento que termine com os caracteres
 "md" ou "lg". Para mais detalhes, visite a [documentação dos modelos](https://spacy.io/models).
 
 ---
@@ -42,7 +42,7 @@ Se você desejar usar os vetores, sempre use um modelo que termine com os caract
 # Exemplos de similaridades (1)
 
 ```python
-# Carregar o modelo marior com os vetores
+# Carregar o fluxo (pipeline) de processamento maior com os vetores
 nlp = spacy.load("en_core_web_md")
 
 # Comparar dois documentos
@@ -132,7 +132,7 @@ O score foi 0.61, que significa que são um pouco similares.
 - Representações multi dimensionais das palavras
 - São gerados utilizando algoritmos similares a 
   [Word2Vec](https://en.wikipedia.org/wiki/Word2vec) e uma enorme quantidade de textos.
-- Podem ser adicionados aos modelos estatísticos da spaCy.
+- Podem ser adicionados aos fluxos (pipelines) de processamento da spaCy.
 - Algoritmo padrão: similaridade por cosseno, mas pode ser alterado
 - Os vetores de `Doc` e `Span` são a média dos vetores de seus tokens.
 - Frases curtas são melhores que grandes documentos com palavras irrelevantes.
@@ -161,7 +161,7 @@ palavras irrelevantes.
 # Vetores de palavras na spaCy
 
 ```python
-# Carregar um modelo maior com vetores
+# Carregar um fluxo (pipeline) de processamento maior com vetores
 nlp = spacy.load("en_core_web_md")
 
 doc = nlp("I have a banana")
@@ -186,7 +186,7 @@ print(doc[3].vector)
 
 Notes: Para termos uma idéia de o quão esses vetores são parecidos, aqui está um exemplo.
 
-Primeiro, carregamos o modelo médio novamente, que inclui os vetores das palavras.
+Primeiro, carregamos o fluxo (pipeline) de processamento médio novamente, que inclui os vetores das palavras.
 
 Em seguida, processamos o texto e consultamos o vetor de um token através do atributo
 `.vector`.

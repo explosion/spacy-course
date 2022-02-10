@@ -126,7 +126,7 @@ print("Pipeline :", nlp.pipe_names)
 ```
 
 ```out
-Pipeline : ['custom_component', 'tok2vec', 'tagger', 'parser', 'ner', 'attribute_ruler', 'lemmatizer']
+Pipeline : ['custom_component', 'tok2vec', 'morphologizer', 'parser', 'attribute_ruler', 'lemmatizer', 'ner']
 ```
 
 Notes: Voici un exemple de composant simple de pipeline.

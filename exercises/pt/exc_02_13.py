@@ -1,26 +1,26 @@
 import spacy
 from spacy.matcher import Matcher
 
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("pt_core_news_md")
 doc = nlp(
-    "Twitch Prime, the perks program for Amazon Prime members offering free "
-    "loot, games and other benefits, is ditching one of its best features: "
-    "ad-free viewing. According to an email sent out to Amazon Prime members "
-    "today, ad-free viewing will no longer be included as a part of Twitch "
-    "Prime for new members, beginning on September 14. However, members with "
-    "existing annual subscriptions will be able to continue to enjoy ad-free "
-    "viewing until their subscription comes up for renewal. Those with "
-    "monthly subscriptions will have access to ad-free viewing until October 15."
+    " Twitch Prime, um programa de regalias para os membros da Amazon Prime que "
+    " oferece saques gratuitos, jogos e outros benefícios, está abandonando uma "
+    " de suas melhores funcionalidades: visualização sem anúncios . De acordo com "
+    " um email enviado hoje aos membros da Amazon Prime, a partir de 14 de Setembro, "
+    " a visualização sem anúncios não estará mais inclusa no Twitch Prime para novos "
+    " membros. No entanto, membros com assinaturas anuais poderão desfrutar da "
+    " visualização sem anúncios até o momento da renovação da assinatura. Aqueles com "
+    " assinaturas mensais terão acesso à visualização sem anúncios até 15 de Outubro."
 )
 
 # Criar as expressões para correspondência
 pattern1 = [{"LOWER": "Amazon"}, {"IS_TITLE": True, "POS": "PROPN"}]
-pattern2 = [{"LOWER": "ad-free"}, {"POS": "NOUN"}]
+pattern2 = [{"LOWER": "sem-anúncios"}, {"POS": "ADP"}]
 
 # Inicializar o Matcher e adicionar as expressões
 matcher = Matcher(nlp.vocab)
-matcher.add("PATTERN1", None, pattern1)
-matcher.add("PATTERN2", None, pattern2)
+matcher.add("PATTERN1", [pattern1])
+matcher.add("PATTERN2", [pattern2])
 
 # Iterar nos resultados
 for match_id, start, end in matcher(doc):
