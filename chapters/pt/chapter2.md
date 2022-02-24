@@ -22,7 +22,7 @@ id: 2
 
 ### Parte 1
 
-- Consulte a string "cat" em `nlp.vocab.strings` para obter seu código indexador (hash).
+- Consulte a string "gato" em `nlp.vocab.strings` para obter seu código indexador (hash).
 - Consulte o código indexador (hash) para obter a string novamente.
 
 <codeblock id="02_02_01">
@@ -187,14 +187,14 @@ serão selecionados.
 import spacy
 
 nlp = spacy.load("en_core_web_sm")
-doc = nlp("Berlin is a nice city")
+doc = nlp("Berlin looks like a nice city")
 
-# Seleciona os textos dos tokens e os marcadores com as classes gramaticais
+# Iterar nos tokens
 token_texts = [token.text for token in doc]
 pos_tags = [token.pos_ for token in doc]
 
 for index, pos in enumerate(pos_tags):
-    # Verifica se o token atual é um substantivo próprio
+    # Verifica se o token atual é um substantivo próprio.
     if pos == "PROPN":
         # Verifica se o próximo token é um verbo
         if pos_tags[index + 1] == "VERB":
@@ -377,7 +377,7 @@ dicionário represente um token.
   iniciado com letra maiúscula.
 
 - Edite `pattern2` de forma que ele faça a correspondência de todas as combinações
-  maiúsculas e minúsculas de `"sem-anúncios"`, seguido de um substantivo.
+  maiúsculas e minúsculas de `"sem anúncios"`, precedido de um substantivo.
 
 <codeblock id="02_13">
 

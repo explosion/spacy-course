@@ -11,7 +11,7 @@ doc = ____
 
 # Iterar nas entidades previstas
 for ____ in ____.____:
-    # Print the entity text and label
+    # Imprimir o texto e etiqueta (label) da entidade
     print(____.____, ____.____)
 
 # Selecionar a partição para "iPhone X"

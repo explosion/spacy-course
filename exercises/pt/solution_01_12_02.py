@@ -11,7 +11,7 @@ doc = nlp(
     "eu preciso baixar o Winzip também? "
 )
 
-# Escreva uma expressão que corresponda às variações de "download" seguido de um
+# Escreva uma expressão que corresponda às variações de "baixar" seguido de um
 # artigo e um substatantivo próprio
 pattern = [{"LEMMA": "baixar"},{"POS": "DET"}, {"POS": "PROPN"}]
 

@@ -10,7 +10,7 @@ text = "É oficial: a Apple é a primeira empresa dos Estados Unidos a ter o val
 doc = nlp(text)
 
 for token in doc:
-    # Selecionar o texto, s classe gramatical e o termo sintático de um token
+    # Selecionar o texto, a classe gramatical e o termo sintático de um token
     token_text = token.text
     token_pos = token.pos_
     token_dep = token.dep_

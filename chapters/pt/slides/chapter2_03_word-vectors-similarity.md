@@ -4,10 +4,10 @@ type: slides
 
 # Vetores de palavras e similaridades semânticas
 
-Notes: Nesta lição você irá aprender a usar a biblioteca spaCy para prever o quão dois
+Notes: Nesta lição você aprenderá a usar a biblioteca spaCy para prever o quão dois
 documentos, partições ou tokens são similares entre si.
 
-Você também irá aprender a usar vetores de palavras e como tirar vantagem
+Você também aprenderá a usar vetores de palavras e como tirar vantagem
 de seu uso em aplicações de PLN.
 
 ---
@@ -19,21 +19,21 @@ de seu uso em aplicações de PLN.
 - Recebem outro objeto e retornam um score de similaridade ( entre `0` e `1` )
 - **Importante:** é necessário incluir um fluxo (pipeline) de processamento que tenha vetores de palavras incluso,
 como por exemplo:
-  - ✅ `en_core_web_md` ( tamanho médio )
-  - ✅ `en_core_web_lg` ( tamanho grande )
-  - 🚫 **NÃO USE** `en_core_web_sm` ( tamanho pequeno )
+  - ✅ `en_core_web_md` ou `pt_core_news_md` ( tamanho médio )
+  - ✅ `en_core_web_lg` ou `pt_core_news_lg` ( tamanho grande )
+  - 🚫 **NÃO USE** `en_core_web_sm` ou `pt_core_news_sm` ( tamanho pequeno )
 
 Notes: A spaCy consegue comparar dois objetos e prever o quão similares eles são
-entre si. Por exemplo: documentos, partições e tokens.
+entre si. Os objetos podem ser documentos, partições ou tokens.
 
 Os objetos `Doc`, `Token` e `Span` possuem o método `.similarity` que recebe
 outro objeto e retorna um número de ponto flutuante entre 0 e 1 indicando o
-quão similares estes objetos são.
+quão similares estes objetos são entre si.
 
 Um detalhe importante: para poder usar a similaridade, você necessita usar um
 fluxo (pipeline) de processamento maior que inclua a representação das palavras em vetores (word vectors).
 
-Por exemplo, o fluxo (pipeline) de processamento médio ou grande da língua inglesa, mas _não_ o modelo pequeno.
+Você pode usar o fluxo (pipeline) de processamento médio ou grande da língua inglesa, mas _não_ o modelo pequeno.
 Se você desejar usar os vetores, sempre use um fluxo (pipeline) de processamento que termine com os caracteres
 "md" ou "lg". Para mais detalhes, visite a [documentação dos modelos](https://spacy.io/models).
 
@@ -129,7 +129,7 @@ O score foi 0.61, que significa que são um pouco similares.
 # Como a spaCy prevê similaridades?
 
 - A similaridade é determinada usando os **vetores de palavras**
-- Representações multi dimensionais das palavras
+- Vetores são representações multi dimensionais das palavras
 - São gerados utilizando algoritmos similares a 
   [Word2Vec](https://en.wikipedia.org/wiki/Word2vec) e uma enorme quantidade de textos.
 - Podem ser adicionados aos fluxos (pipelines) de processamento da spaCy.
@@ -184,7 +184,7 @@ print(doc[3].vector)
   ...
 ```
 
-Notes: Para termos uma idéia de o quão esses vetores são parecidos, aqui está um exemplo.
+Notes: Para termos uma idéia de como são esses vetores, vamos ver este exemplo.
 
 Primeiro, carregamos o fluxo (pipeline) de processamento médio novamente, que inclui os vetores das palavras.
 
@@ -222,7 +222,7 @@ Contudo é importante ter em mente que não existe uma definição objetiva daqu
 que é similar ou não. Isso sempre vai depender do contexto e do objetivo da
 sua aplicação.
 
-Aqui está um exemplo: os vetores padrão das palavras da biblioteca spaCy atribuem um score
+Analise este exemplo: os vetores padrão das palavras da biblioteca spaCy atribuem um score
 de alta similaridade entre "I like cats" e "I hate cats". Isso faz sentido,
 pois os dois textos expressam sentimentos relacionados a gatos. Mas no contexto
 de uma aplicação, você pode considerar que as duas frases são _pouco similares_, 
