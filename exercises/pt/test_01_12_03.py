@@ -12,7 +12,7 @@ def test():
         len(pattern[0]) == 1 and len(pattern[3]) == 1
     ), "Cada item da primeira e da última expressão deve ter apenas uma chave"
     assert (
-        len(pattern[1]) == 1 and len(pattern[2]) == 2
+        len(pattern[1]) == 2 and len(pattern[2]) == 2
     ), "A segunda e a terceira expressão devem ter duas chaves."    
     assert any(
         pattern[0].get(key) == "NOUN" for key in ["pos", "POS"]
