@@ -150,7 +150,7 @@ en un doc antes de invocar los componentes del pipeline.
 
 ```python
 # Desactiva el tagger y el parser
-with nlp.disable_pipes("tagger", "parser"):
+with nlp.select_pipes(disable=["tagger", "parser"])
     # Procesa el texto e imprime las entidades en pantalla
     doc = nlp(text)
     print(doc.ents)
@@ -162,10 +162,10 @@ with nlp.disable_pipes("tagger", "parser"):
 Notes: spaCy también te permite deshabilitar temporalmente componentes del
 pipeline usando el <abbr title='Que puede ser usado dentro de un bloque de código "with".'>context manager</abbr> `nlp.disable_pipes`.
 
-Toma un número de argumentos variable, los nombres en string de los componentes
-a ser deshabilitados. Por ejemplo, si solo quieres usar el entity recognizer
-para procesar un documento, puedes deshabilitar temporalmente el tagger y el
-parser.
+Toma los argumentos variables `enable` o `disable` que pueden definir una 
+lista de componentes para desabilitarlos. Por ejemplo, si solo quieres usar el 
+entity recognizer para procesar un documento, puedes deshabilitar temporalmente 
+el tagger y el parser.
 
 Después del bloque `with`, los componentes del pipeline deshabilitados se
 restauran automáticamente.

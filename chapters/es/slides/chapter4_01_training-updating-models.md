@@ -131,7 +131,7 @@ Debido a que el entity recognizer predice entidades _en contexto_ también
 necesita ser entrenado en las entidades _y_ su contexto.
 
 La forma más fácil de hacer esto es mostrarle al modelo un texto y una lista de
-posiciones de caracteres. Por ejemplo, "adidas ZX" es ropa, comienza en el token
+_spans de entidades_. Por ejemplo, "adidas ZX" es ropa, comienza en el token
 2 y termina en el token 4.
 
 También es muy importante que el modelo aprenda palabras que _no son_ entidades.

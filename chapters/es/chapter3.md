@@ -411,7 +411,7 @@ keys `"author"` y `"book"`.
 
 <exercise id="16" title="Procesamiento selectivo">
 
-En este ejercicio usarás los métodos `nlp.make_doc` y `nlp.disable_pipes` para
+En este ejercicio usarás los métodos `nlp.make_doc` y `nlp.select_pipes` para
 correr unicamente los componentes seleccionados cuando se procesa un texto.
 
 ### Parte 1
@@ -428,14 +428,15 @@ igual que el objeto `nlp`.
 
 ### Parte 2
 
-- Deshabilita el parser usando el método `nlp.disable_pipes`.
+- Deshabilita el parser usando el método `nlp.select_pipes`.
 - Procesa el texto e imprime en pantalla todas las entidades en el `doc`.
 
 <codeblock id="03_16_02">
 
-El método `nlp.disable_pipes` recibe un número variable de argumentos: los
+El método `nlp.select_pipes` recibe un número variable de argumentos: los
 nombres en string de los componentes del pipeline que serán deshabilitados. Por
-ejemplo, `nlp.disable_pipes("ner")` deshabilitará el named entity recognizer.
+ejemplo, `nlp.select_pipes(disable="ner")` deshabilitará el named entity 
+recognizer.
 
 </codeblock>
 
