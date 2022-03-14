@@ -5,7 +5,7 @@ type: slides
 # O laço (loop) de treinamento
 
 Notes: Enquanto outras bibiotecas entregam um método responsável pelo
-treinamento completo de um modelo, a biblioteca spaCy te entrega controle total de todas 
+treinamento completo de um modelo, a biblioteca spaCy possibilita o controle total de todas 
 as etapas envolvidas no treinamento de um modelo.
 
 ---

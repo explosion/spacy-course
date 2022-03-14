@@ -6,6 +6,6 @@ def test():
     assert "print(doc.text)" in __solution__, "Você está imprimindo o texto do documento Doc?"
 
     __msg__.good(
-        "Muito bem! Agora que você já exercitou como carregar modelos, vamos dar"
+        "Muito bem! Agora que você já exercitou como carregar modelos, vamos dar "
         "uma olhada nas previsões."
     )

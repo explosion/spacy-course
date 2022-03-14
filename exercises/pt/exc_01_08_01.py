@@ -10,7 +10,7 @@ text = "É oficial: a Apple é a primeira empresa dos Estados Unidos a ter o val
 doc = ____
 
 for token in doc:
-    # Selecionar o texto, s classe gramatical e o termo sintático de um token
+    # Selecionar o texto, a classe gramatical e o termo sintático de um token
     token_text = ____.____
     token_pos = ____.____
     token_dep = ____.____

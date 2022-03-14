@@ -15,7 +15,7 @@ doc = nlp(
 
 # Criar as expressões para correspondência
 pattern1 = [{"LOWER": "Amazon"}, {"IS_TITLE": True, "POS": "PROPN"}]
-pattern2 = [{"LOWER": "sem-anúncios"}, {"POS": "ADP"}]
+pattern2 = [{"LOWER": "sem"}, {"LOWER": "anúncios"}]
 
 # Inicializar o Matcher e adicionar as expressões
 matcher = Matcher(nlp.vocab)

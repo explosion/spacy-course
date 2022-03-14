@@ -10,16 +10,16 @@ Notes: Nesta lição, vamos dar uma olhada no Comparador (Matcher) da biblioteca
  
 # Por que usar o Comparador e não somente expressões regulares?
 
-- Compara com objetos `Doc` e não apenas texto (strings)
-- Compara com os tokens e seus atributos
+- Permite a comparação com objetos `Doc` e não apenas texto (strings)
+- Permite a comparação com os tokens e seus atributos
 - Utiliza a previsão de um modelo
 - Exemplo: "duck" (verbo) vs. "duck" (substantivo)
 
 Notes: Além de comparar com texto (strings), que é o caso das expressões regulares, o Comparador (Matcher) também analisa os objetos `Doc` e `Token`.
 
-Ele é bem mais flexível: você pode fazer a comparaão no texto mas também nos seus atributos léxicos.
+Ele é bem mais flexível: você pode fazer a comparação no texto mas também nos seus atributos léxicos.
 
-Vocẽ pode até criar regras que usam previsões de um modelo.
+Você pode até criar regras que usam previsões de um modelo.
 
 Por exemplo, você pode procurar a palavra "duck" (em inglês) somente se for um verbo e não um substantivo.
 
@@ -202,9 +202,9 @@ bought a smartphone
 buying apps
 ```
 
-Notes: Operadore e quantificadores permitem definir quantas vezes deverá haver correspondência com a expressão. Eles podem ser usador utilizando a chave "OP".
+Notes: Operadores e quantificadores permitem definir quantas vezes deverá haver correspondência com a expressão. Eles podem ser usados com a chave "OP".
 
-Neste exemplo, o operador "?" faz com que a expressão seja opcional, então a expressão corresponderá a um token com o lema "buy", um artigo (opcional) e um substantivo.
+Neste exemplo, o operador "?" faz com que a ocorrência seja opcional, então a expressão corresponderá a um token com o lema "buy", um artigo (opcional) e um substantivo.
 
 ---
 

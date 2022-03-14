@@ -225,8 +225,8 @@ usually want at least a few hundred to a few thousand representative examples.
 
 ```python
 random.shuffle(docs)
-train_docs = docs[:len(docs) // 2)]
-dev_docs = docs[len(docs) // 2):]
+train_docs = docs[:len(docs) // 2]
+dev_docs = docs[len(docs) // 2:]
 ```
 
 Notes: As I mentioned earlier, we don't just need data to train the model. We

@@ -2,9 +2,9 @@
 type: slides
 ---
 
-# Combinando predições e regras
+# Combinando previsões e regras
 
-Notes: Combinar predições de modelos estatísticos com sistemas baseados em regras é um dos recursos mais poderosos que você pode encontrar em uma ferramenta de PLN.
+Notes: Combinar previsões de modelos estatísticos com sistemas baseados em regras é um dos recursos mais poderosos que você pode encontrar em uma ferramenta de PLN.
 
 Nesta lição, vamos dar uma olhada em como fazer isso na biblioteca spaCy.
 
@@ -189,4 +189,4 @@ em um contexto.
 
 # Vamos praticar!
 
-Notes: Vamos testar algumas dessas novas técnicas de combinar regras com predições.
+Notes: Vamos testar algumas dessas novas técnicas de combinar regras com previsões.

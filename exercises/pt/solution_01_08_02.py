@@ -6,7 +6,7 @@ nlp = spacy.load("pt_core_news_sm")
 
 text = "É oficial: a Apple é a primeira empresa dos Estados Unidos a ter o valor de mercado acima de 1 trilhão."
 
-# Processar o texto the text
+# Processar o texto
 doc = nlp(text)
 
 # Iterar nas entidades previstas

@@ -37,7 +37,7 @@ no score de acurácia do modelo.
 
 </opt>
 
-<opt text="Para avaliar a predição em novos exemplos e calcular a acurácia do modelo."  correct="true">
+<opt text="Para avaliar a previsão em novos exemplos e calcular a acurácia do modelo."  correct="true">
 
 Os dados de avaliação são utilizados para avaliar o modelo, comparando a predição feita nesses dados
 (novos dados) com o resultado esperado. Isso então refletirá no score de acurácia do modelo.
@@ -56,7 +56,7 @@ Os dados de avaliação são utilizados para avaliar o modelo, comparando a pred
 
 <exercise id="3" title="Criando dados para treinamento (1)">
 
-Através do `Matcher` da spaCy, um algoritmo baseado em regras, é possível criar
+Através do `Matcher` da spaCy, que é um algoritmo baseado em regras, é possível criar
 rapidamente dados de treinamento para modelos de entidades. Uma lista de frases
 fica disponível através da variável `TEXTS`. Você pode imprimi-la para inspecionar
 o conteúdo. Queremos encontrar todas as menções aos diferentes modelos de iPhone,
@@ -163,7 +163,7 @@ prefixo `!` não é necessária.
 
 - Use o comando da spaCy `init config` para gerar automaticamente um arquivo de 
 configuração para o idioma Inglês.
-- Salve a configuração em um arvuiso `config.cfg`
+- Salve a configuração em um arquivo `config.cfg`
 - Use o parâmetro `--pipeline` para especificar o único componente do pipeline: `ner`.
 
 <codeblock id="04_07_01">
@@ -234,6 +234,7 @@ pelo número total de entidades.
 
 Conte o número de entidades corretamente identificadas e as divida pelo número
 total de entidades que o modelo _deveria_ ter identificado.
+
 </opt>
 
 <opt text="60%">
