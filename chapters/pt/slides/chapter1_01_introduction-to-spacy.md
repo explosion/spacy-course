@@ -104,7 +104,7 @@ world!
 
 Notes: Um objeto partição `Span` é uma partição do documento consistindo de um ou mais tokens. É apenas um apontamento para o `Doc` e não contém dados em si mesmo.
 
-Para criar uma partição, você pode usar a notação de partição do Pyhton. Por exemplo, `1:3` criará uma partição do token na posição 1 até o token na partição 3, mas não incluindo este último.
+Para criar uma partição, você pode usar a notação de partição do Python. Por exemplo, `1:3` criará uma partição do token na posição 1 até o token na partição 3, mas não incluindo este último.
 
 ---
 

@@ -129,7 +129,7 @@ print("Pipeline:", nlp.pipe_names)
 Pipeline: ['custom_component', 'tok2vec','tagger', 'parser', 'ner', 'attribute_ruler', 'lemmatizer']
 ```
 
-Notes: Aqui está mais um exemplo de um componente simples do fluxo de processamento
+Notes: Eis um exemplo de um componente simples do fluxo de processamento:
 
 Começamos com o fluxo de processamento pequeno da língua inglesa.
 
@@ -148,7 +148,7 @@ decorador `Language.component` e em seduida podemos chamá-lo com
 "custom_component".
 
 Agora podemos adicionar o componente ao fluxo de processamento. Vamos
-adicioná-lo logo no início, após o toquenizador, definindo o atributo 
+adicioná-lo logo no início, antes do toquenizador, definindo o atributo 
 `first=True`.
 
 Quando imprimimos os nomes dos componentes do fluxo de processamento, o

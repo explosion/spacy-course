@@ -4,12 +4,14 @@ type: slides
 
 # Fluxos de processamento (pipelines)
 
-Notes: Bem-vindo de volta ! Este capítulo é dedicado aos fluxos de processamento:
+Notes: Bem-vindo de volta ! 
+
+Este capítulo é dedicado aos fluxos de processamento:
 uma série de funções que são aplicadas sequencialmente no documento para
 adicionar atributos como classes gramaticais,  termos sintáticos e
 entidades nomeadas.
 
-Nesta lição, você conhecerá os componentes do fluxo de processamento da spaCy
+Neste momento, você conhecerá os componentes do fluxo de processamento da spaCy
 e o que acontece nos bastidores quando você chama nlp em um texto.
 
 ---
@@ -60,7 +62,7 @@ E por último, o classificador de textos define os marcadores de categoria que
 se aplicam ao texto como um todo, adicionando essa informação ao atributo `doc.cats`.
 
 Uma vez que as categorias de texto são bastante específicas, o 
-classificador de texto não está incluso em nenhum dos fluxos (pipelines) de processamento
+classificador de texto não está incluso em nenhum dos fluxos de processamento (pipelines) 
 treinados. Mas você pode utilizá-lo em seu projeto.
 
 ---
@@ -73,9 +75,9 @@ treinados. Mas você pode utilizá-lo em seu projeto.
 arquivo `config.cfg`
 - Os componentes padrão usam dados binários para fazer as previsões
 
-Notes: Todos os pacotes de fluxo de processamento que você pode importar na biblioteca spaCy incluem vários arquivos, dentre eles um `config.cfg`.
+Notes: Todos os pacotes de fluxo de processamento que você pode importar na biblioteca spaCy incluem vários arquivos, dentre eles o `config.cfg`.
 
-O arquivo `config` define define o idioma e o fluxo de processamento. Ele indica quais componentes precisam ser instanciados pela spaCy e como eles devem ser configurados.
+O arquivo `config` define o idioma e o fluxo de processamento. Ele indica quais componentes precisam ser instanciados pela spaCy e como eles devem ser configurados.
 
 Os componentes internos que fazem as previsões necessitam de dados binários. Esses
 dados estão inclusos no pacote do fluxo de procesamento e são carregados nos componentes quando você carrega o fluxo (pipeline).

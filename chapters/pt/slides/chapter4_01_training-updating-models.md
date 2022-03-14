@@ -52,10 +52,11 @@ gramaticas e análise sintática.
 5. **Atualiza** ligeiramente os pesos do modelo
 6. Volta para 2.
 
-Notes: A biblioteca spaCy oferece suporte para atualizar os modelos existentes
-com mais exemplos, e treinar novos modelos. Se não estivermos iniciando com um
-fluxo de processamento (pipeline) treinado, nós inicialmente inicializamos os
+Notes: A biblioteca spaCy oferece suporte para atualizar os modelos existentes 
+com mais exemplos, e treinar novos modelos. Se não começarmos com um 
+fluxo de processamento (pipeline) treinado, nós inicialmente inicializamos os 
 pesos com valores aleatórios.
+
 
 Em seguida, a spaCy chama `nlp.update`, que fará a previsão de um lote de
 exemplos utilizando os pesos atuais.
@@ -82,7 +83,7 @@ até que o modelo deixe de ter resultados melhores.
 - **Label:** Rótulo ou marcador: o resultado da previsão do modelo.
 - **Gradient:** Gradiente: define como o modelo deve alterar seus pesos.
 
-Notes: Aqui está uma ilustração do processo:
+Notes: Esta é uma ilustração do processo:
 
 Os dados de treinamento são os exemplos que desejamos utilizar para atualizar o
 modelo.
@@ -139,7 +140,7 @@ de entidades. A spaCy pode ser atualizada a partir de objetos `Doc` com
 entidades anotadas como em `doc.ents`. Por exemplo: "iPhone X" é um "gadget" que
 começa no token 0 e termina no token 1.
 
-É também muito importante que o modelo aprende palavras que _não são_ entidades.
+É também muito importante que o modelo aprenda palavras que _não são_ entidades.
 
 Neste caso, os marcadores do intervalo de caracter devem ser vazios.
 
@@ -150,13 +151,14 @@ similares, mesmo que elas não estejam nos dados de treinamento.
 
 # Os dados de treinamento
 
-- Examplos daquilo que queremos que o modelo faça a previsão, em um dado
-  contexto
-- Para atualizar um **modelo existente**: poucas centenas ou poucos milhares de
-  exemplos
-- Para treinar uma **nova categoria**: alguns poucos milahres até milhões de
-  exemplos
-  - o modelo da biblioteca spaCy para o Inglês tem 2 milhões de palavaras
+- Exemplos daquilo que queremos que o modelo faça a previsão, em um dado 
+contexto
+- Para atualizar um **modelo existente**: poucas centenas ou poucos milhares de 
+exemplos
+- Para treinar uma **nova categoria**: alguns poucos milhares até milhões de 
+exemplos
+  - o modelo da biblioteca spaCy para o Inglês tem 2 milhões de palavras
+
 - Normalmente é criado manualmente por anotadores humanos
 - Pode ser semi-automatizada usando, por exemplo, o Comparador `Matcher`!
 
@@ -179,6 +181,8 @@ marcadores aos textos.
 Isso representa muito trabalho, mas pode ter algumas etapas automatizadas, como
 por exemplo, utilizando o Comparador `Matcher` da biblioteca spaCy.
 
+---
+
 # Treinando e validando dados
 
 **Dados de treinamento** são usados para atualizar o modelo **Dados de
@@ -189,11 +193,11 @@ validação**
 - devem representar os dados que o modelo encontrará quando for utilizado para
   novas predições
 
-Notes: Ao treinar seu modelo é muito importante poder validar a evolução do
-treinamento e se o modelo está aprendendo corretamente. Isso é feito através da
-comparação de predições do modelo em dados que _não foram utilizados_ durante o
-treinamento. Portanto além dos dados de treinamento, você também precisa de
-dados de validação, também conhecidos como dados de desenvolvimento.
+Notes: Ao treinar seu modelo é muito importante poder validar a evolução do treinamento
+e se o modelo está aprendendo corretamente. Isso é feito através da avaliação
+das previsões do modelo em dados que _não foram utilizados_ durante o treinamento.
+Portanto além dos dados de treinamento, você também precisa de dados de validação, 
+também conhecidos como dados de desenvolvimento.
 
 Os dados de validação são utilizados para calcular a acurácia do modelo. Por
 exemplo, uma acurácia de 90% significa que o modelo previu corretamente 90% dos
@@ -227,7 +231,7 @@ contém entidades e outro que não contém nenhuma entidade. Para definir as
 entidades no `Doc`, podemos adicionar um `Span` ao `doc.ents`.
 
 É claro que são necessários muitos exemplos para treinar o modelo de maneira
-eficiente, permitindo que ele faça predições de entidades similares no mesmo
+eficiente, permitindo que ele faça previsões de entidades similares no mesmo
 contexto. Normalmente são utilizadas centenas ou até milhares de exemplos
 representativos.
 
@@ -236,7 +240,7 @@ representativos.
 # Gerando um _corpus_ de treinamento (2)
 
 - Divida os dados em duas porções:
-  - **dados de treinamento:** utilizados para atualiazar o modelo
+  - **dados de treinamento:** utilizados para atualizar o modelo
   - **dados de validação:** utilizados para validar o modelo
 
 ```python
@@ -245,10 +249,10 @@ train_docs = docs[:len(docs) // 2]
 dev_docs = docs[len(docs) // 2:]
 ```
 
-Notes: Conforme mencionado anteriormente, não precisamos de dados apenas para
-treinar o modelo. Precisamos também de dados adicionais para avaliar a acurácia
-do modelo. Geralmente os dados são embaralhados e dividios em dois conjuntos:
-uma porção para o treinamento e outra para a validação. Neste exemplo estamos
+Notes: Conforme mencionado anteriormente, não precisamos de dados apenas para 
+treinar o modelo. Precisamos também de dados adicionais para avaliar a acurácia 
+do modelo. Geralmente os dados são embaralhados e divididos em dois conjuntos: 
+uma porção para o treinamento e outra para a validação. Neste exemplo estamos 
 divindo os dados na proporção 50/50.
 
 ---

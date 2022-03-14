@@ -1,7 +1,7 @@
 ---
 title: 'Chapter 3: Fluxos (pipelines) de processamento'
 description:
-  "Neste capítulo você conhecerá melhor os fluxos (pipelines) de processamento 
+  "Neste capítulo apresentaremos os fluxos (pipelines) de processamento 
   da spaCy. Você entenderá o que acontece nos bastidores
   quando você processa um texto. Vai aprender a escrever seus próprios
   componentes e adicioná-los ao fluxo de processamento, e também a usar atributos 
@@ -12,7 +12,7 @@ type: chapter
 id: 3
 ---
 
-<exercise id="1" title="Fluxos (pipelines) de processamento " type="slides">
+<exercise id="1" title="Fluxos de processamento (pipelines)" type="slides">
 
 <slides source="chapter3_01_processing-pipelines">
 </slides>
@@ -156,7 +156,7 @@ em um documento. Você consegue completar o código?
 - Adicione o `"length_component"` ao fluxo de processamento como o **primeiro**
   componente.
 - Experimente o novo fluxo e processe qualquer texto com o objeto `nlp`. Por
-  exemplo: "Esta é uma frase.".
+  exemplo: "Esta é uma frase."
 
 <codeblock id="03_06">
 
@@ -271,8 +271,8 @@ e a extensão de métodos.
 
 <exercise id="11" title="Entidades e extensões">
 
-Neste exercício você combinará propriedades extendidas personalizadas com as
-predições estatísticas e criará um método extendido que retornará o endereço (URL)
+Neste exercício você combinará propriedades personalizadas com as
+previsões estatísticas e criará um método extendido que retornará o endereço (URL)
 de busca na Wikipedia se a partição for uma pessoa, organização ou localidade.
 
 - Defina a função `get_wikipedia_url` que só retornará uma URL da Wikipedia
@@ -339,7 +339,7 @@ disponibilizado na variável `CAPITALS`.
 
 Neste exercício, você usará `nlp.pipe` para processar texto de maneira mais
 eficiente. O objeto `nlp` já terá sido criado. Uma lista de tweets sobre uma rede
-popular de lanchonetes americana está disponível na variável TEXTS`.
+popular de lanchonetes americana está disponível na variável `TEXTS`.
 
 ### Parte 1
 
@@ -363,7 +363,7 @@ apenas 1 linha.
 
 ### Parte 3
 
-- Reescreva o exemplo e use `nlp.pipe`. Não se esqueça de usar `list()` no resultado
+- Reescreva o exemplo abaixo usando `nlp.pipe`. Não se esqueça de usar `list()` no resultado
   para transformá-lo em uma lista.
 
 <codeblock id="03_14_03"></codeblock>
@@ -405,7 +405,7 @@ executar componentes específicos durante o processamento do texto.
 
 ### Parte 1
 
-- Reescreva o código para apenas toquenizar o texto usando `nlp.make_doc`.
+- Reescreva o código abaixo para apenas toquenizar o texto usando `nlp.make_doc`.
 
 <codeblock id="03_16_01">
 

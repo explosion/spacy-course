@@ -92,7 +92,7 @@ Neste caso será "True" para o token "blue".
 # Extensões de propriedades (1)
 
 - Definem funções opcionais "getter" e "setter"
-- A função "getter" só pode ser usada quando você _recuperar_ o valor do atributo
+- A função "getter" só pode ser usada quando você for _recuperar_ o valor do atributo
 
 ```python
 from spacy.tokens import Token
@@ -176,7 +176,7 @@ partição contém um token das cores selecionadas ou não.
 
 ```python
 from spacy.tokens import Doc
-s
+
 # Definir método com seus parâmetros
 def has_token(doc, token_text):
     in_doc = token_text in [token.text for token in doc]
@@ -196,7 +196,7 @@ False - cloud
 ```
 
 Notes: Extensões de métodos permitem que um atributo se torne um método que pode
-ser chamado.
+ser invocado.
 
 Você pode passar um ou mais parâmetros para o método extendido, e calcular valores
 de atributos dinamicamente. Por exemplo, baseado em algum argumento ou configuração.
