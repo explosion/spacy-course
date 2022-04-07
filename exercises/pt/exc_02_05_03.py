@@ -1,11 +1,11 @@
-from spacy.lang.en import English
+import spacy
 
-nlp = English()
+nlp = spacy.blank("pt")
 
 # Importe a classe Doc
 from ____ import ____
 
-# Texto desejado: "Oh, really?!"
+# Texto desejado: "Oh, realmente?!"
 words = [____, ____, ____, ____, ____]
 spaces = [____, ____, ____, ____, ____]
 

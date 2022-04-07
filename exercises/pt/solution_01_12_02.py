@@ -1,25 +1,25 @@
 import spacy
 from spacy.matcher import Matcher
 
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("pt_core_news_sm")
 matcher = Matcher(nlp.vocab)
 
 doc = nlp(
-    "i downloaded Fortnite on my laptop and can't open the game at all. Help? "
-    "so when I was downloading Minecraft, I got the Windows version where it "
-    "is the '.zip' folder and I used the default program to unpack it... do "
-    "I also need to download Winzip?"
+    "Eu baixei o Fortnite em meu computador e não consigo abrir o jogo de jeito algum. Me ajudem? "
+    "Mas quando eu estava baixando o Minecraft, eu tinha a versão do Windows que é "
+    "uma pasta .zip e eu usei o aplicativo padrão para descompactá-lo. Será que "
+    "eu preciso baixar o Winzip também? "
 )
 
-# Escreva uma expressão que corresponda às variações de "download" seguido de um
-# substatantivo próprio
-pattern = [{"LEMMA": "download"}, {"POS": "PROPN"}]
+# Escreva uma expressão que corresponda às variações de "baixar" seguido de um
+# artigo e um substatantivo próprio
+pattern = [{"LEMMA": "baixar"},{"POS": "DET"}, {"POS": "PROPN"}]
 
 # Adicione a expressão ao comparador matcher e aplique o matcher ao doc
-matcher.add("DOWNLOAD_THINGS_PATTERN", None, pattern)
+matcher.add("DOWNLOAD_THINGS_PATTERN", [pattern])
 matches = matcher(doc)
-print("Total matches found:", len(matches))
+print("Total de correspondências encontradas:", len(matches))
 
 # Faça a iteração nas correspondências e imprima a partição do texto
 for match_id, start, end in matches:
-    print("Match found:", doc[start:end].text)
+    print("Correspondência encontrada:", doc[start:end].text)

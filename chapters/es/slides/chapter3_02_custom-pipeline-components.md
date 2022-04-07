@@ -59,8 +59,13 @@ Notes: Fundamentalmente, un componente del pipeline es una función o un
 que toma a un doc, lo modifica y lo devuelve para que pueda ser procesado por
 el próximo componente en el pipeline.
 
-Los componentes pueden ser añadidos al pipeline usando el método `nlp.add_pipe`.
-Éste toma al menos un argumento: la función del componente.
+Para decirle a spaCy en dónde encontrar tu componente personalizado y cómo debe
+ser llamado, lo puedes decorar utilizando `@Language.component`. Solamente
+añádelo a la línea inmediatamente anterior a la definición de la función.
+
+Una vez que un componente está registrado, puede ser añadido al pipeline con el
+método `nlp.add_pipe`. Este método toma al menos un argumento: el nombre del 
+componente.
 
 ---
 
@@ -128,7 +133,7 @@ Pipeline: ['custom_component', 'tok2vec', 'morphologizer', 'parser', 'attribute_
 
 Notes: Aquí tenemos un ejemplo de un componente simple del pipeline.
 
-Comenzamos con el modelo pequeño de español.
+Comenzamos con el pipeline más pequeño para español.
 
 Luego definimos el componente - una función que toma un objeto `Doc` y luego lo
 devuelve.
@@ -140,8 +145,11 @@ por el pipeline.
 componente en el pipeline! El doc creado por el tokenizer pasa por todos los
 componentes, así que es importante que todos devuelvan el doc modificado.
 
-Ahora podemos añadir el componente al pipeline. Vamos a añadirlo en el primer
-lugar, justo después del tokenizer. Lo hacemos definiendo `first=True`.
+Para informarle a spaCy acerca del nuevo componente, lo registramos utilizando
+el decorador `@Language.component` y lo llamamos "custom_component".
+
+Ahora podemos añadir el componente al pipeline. Vamos a añadirlo al inicio, 
+justo después del tokenizer. Lo hacemos definiendo `first=True`.
 
 Cuando imprimimos en pantalla los nombres de los componentes el nuevo aparece
 al principio. Esto significa que será aplicado cuando procesemos un doc.

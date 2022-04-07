@@ -108,8 +108,9 @@ a un archivo `.spacy`. El código del ejemplo anterior está disponible.
 
 <exercise id="6" title="El config de entrenamiento">
 
-The `config.cfg` file is the "single source of truth" for training a pipeline
-with spaCy. Which of the following is **not true** about the config?
+El archivo `config.cfg` es la única "fuente de verdad" para entrenar un
+pipeline con spaCy. ¿Cuál de las siguientes respuestas acerca del archivo
+config es **incorrecta**?
 
 <choice>
 
@@ -188,17 +189,17 @@ inspeccionarlo.
 como el corpus que creamos para entrenar un named entity recognizer!
 
 El comando [`train`](https://spacy.io/api/cli#train) te permite entrenar un
-modelo utilizando un archivo config file. Un archivo `config_gadget.cfg` ya está
-listo en el directorio `exercises/en`, así como el archivo `train_gadget.spacy`
+modelo utilizando un archivo "config". Un archivo `config_gadget.cfg` ya está
+listo en el directorio `exercises/es`, así como el archivo `train_gadget.spacy`
 que contiene ejemplos de entrenamiento y un archivo llamado `dev_gadget.spacy`
 que contiene los datos de evaluación. Debido a que estamos ejecutando el comando
-en un entorno de Jupyterm en este curso, usaremos el prefijo `!`. Si planeas
+en un entorno de Jupyter en este curso, usaremos el prefijo `!`. Si planeas
 correr el comando en tu terminal local, puedes omitir este prefijo.
 
-- Invoca el comando `train` con el archivo `exercises/en/config_gadget.cfg`.
+- Invoca el comando `train` con el archivo `exercises/es/config_gadget.cfg`.
 - Guarda el pipeline entrenado en el directorio de nombre `output`.
-- Pasa también las rutas de archivo `exercises/en/train_gadget.spacy` y
-  `exercises/en/dev_gadget.spacy`.
+- Pasa también las rutas de archivo `exercises/es/train_gadget.spacy` y
+  `exercises/es/dev_gadget.spacy`.
 
 <codeblock id="04_08">
 

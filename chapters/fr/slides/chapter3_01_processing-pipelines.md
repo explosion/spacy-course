@@ -95,7 +95,7 @@ print(nlp.pipe_names)
 ```
 
 ```out
-['tok2vec', 'tagger', 'parser', 'ner', 'attribute_ruler', 'lemmatizer']
+['tok2vec', 'morphologizer', 'parser', 'attribute_ruler', 'lemmatizer', 'ner']
 ```
 
 - `nlp.pipeline` : liste de tuples `(name, component)`
@@ -105,12 +105,12 @@ print(nlp.pipeline)
 ```
 
 ```out
-[('tok2vec', <spacy.pipeline.Tok2Vec>),
- ('tagger', <spacy.pipeline.Tagger>),
- ('parser', <spacy.pipeline.DependencyParser>),
- ('ner', <spacy.pipeline.EntityRecognizer>),
- ('attribute_ruler', <spacy.pipeline.AttributeRuler>),
- ('lemmatizer', <spacy.pipeline.Lemmatizer>)]
+[('tok2vec', <spacy.pipeline.tok2vec.Tok2Vec>), 
+('morphologizer', <spacy.pipeline.morphologizer.Morphologizer>),
+('parser', <spacy.pipeline.dep_parser.DependencyParser>),
+('attribute_ruler', <spacy.pipeline.attributeruler.AttributeRuler>),
+('lemmatizer', <spacy.lang.fr.lemmatizer.FrenchLemmatizer>),
+('ner', <spacy.pipeline.ner.EntityRecognizer>)]
 ```
 
 Notes: Pour voir les noms des composants de pipeline présents dans l'objet nlp

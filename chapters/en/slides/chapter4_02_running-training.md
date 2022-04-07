@@ -248,5 +248,5 @@ the language code to the name. So your pipeline `my_pipeline` will become
 # Let's practice!
 
 Notes: Let's get to work and train your first pipeline! You'll practice
-generating a config for a named entity reocogizer and training a pipeline using
+generating a config for a named entity recognizer and training a pipeline using
 the data you worked on in the previous exercises.

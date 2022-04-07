@@ -22,8 +22,8 @@ específicamente en el named entity recognizer.
 - Menos importante para el etiquetado gramatical y el analizador de dependencias
 
 Notes: Antes de comenzar a explicar _cómo_, vale la pena que tomemos un momento
-para preguntarnos: ¿Por qué querríamos actualizar el modelo con nuestros
-propios ejemplos? ¿Por qué no podemos simplemente depender de los modelos
+para preguntarnos: ¿Por qué querríamos actualizar el modelo con nuestros propios
+ejemplos? ¿Por qué no podemos simplemente depender de los modelos
 pre-entrenados?
 
 Los modelos estadísticos hacen predicciones basadas en los ejemplos con los que
@@ -35,9 +35,9 @@ tu área.
 A menudo también quieres predecir categorías específicas a tu problema, así que
 el modelo necesita aprender sobre ellas.
 
-Esto es esencial para la clasificación de texto, muy útil para el
-reconocimiento de entidades y un poco menos importante para el etiquetado
-gramatical y el análisis de dependencias.
+Esto es esencial para la clasificación de texto, muy útil para el reconocimiento
+de entidades y un poco menos importante para el etiquetado gramatical y el
+análisis de dependencias.
 
 ---
 
@@ -58,8 +58,8 @@ Después spaCy invoca `nlp.update`, que predice un lote de ejemplos con los
 parámetros actuales.
 
 El modelo luego revisa las predicciones comparándolas con las respuestas
-correctas y decide cómo cambiar los parámetros para obtener mejores
-predicciones la próxima vez.
+correctas y decide cómo cambiar los parámetros para obtener mejores predicciones
+la próxima vez.
 
 Finalmente, hacemos una pequeña corrección a los parámetros actuales y seguimos
 adelante con el siguiente lote de ejemplos.
@@ -83,17 +83,18 @@ Notes: Aquí tenemos una ilustración mostrando el proceso.
 Los datos de entrenamiento son los ejemplos con los que queremos actualizar el
 modelo.
 
-El texto debe ser una oración, un párrafo o un documento más largo. Para
-mejores resultados, debería ser similar a lo que el modelo verá cuando se esté
+El texto debe ser una oración, un párrafo o un documento más largo. Para mejores
+resultados, debería ser similar a lo que el modelo verá cuando se esté
 ejecutando.
 
-La etiqueta (label) es lo que queremos que el modelo prediga. Esto puede ser
-una categoría de texto, o un span de entidad y su tipo.
+La etiqueta (label) es lo que queremos que el modelo prediga. Esto puede ser una
+categoría de texto, o un span de entidad y su tipo.
 
 El gradiente es cómo deberíamos cambiar el modelo para reducir el error actual.
 Es calculado cuando comparamos la etiqueta predicha con la etiqueta verdadera.
 
-Después de entrenar podemos guardar un modelo actualizado y usarlo en nuestra aplicación.
+Después de entrenar podemos guardar un modelo actualizado y usarlo en nuestra
+aplicación.
 
 ---
 
@@ -123,15 +124,15 @@ El entity recognizer toma un documento y predice frases y sus etiquetas. Esto
 significa que los datos de entrenamiento tienen que incluir textos, las
 entidades que contienen y las etiquetas de entidades.
 
-Las entidades no pueden superponerse, así que cada token solo puede ser parte
-de una entidad.
+Las entidades no pueden superponerse, así que cada token solo puede ser parte de
+una entidad.
 
 Debido a que el entity recognizer predice entidades _en contexto_ también
 necesita ser entrenado en las entidades _y_ su contexto.
 
 La forma más fácil de hacer esto es mostrarle al modelo un texto y una lista de
-posiciones de caracteres. Por ejemplo, "adidas ZX" es ropa, comienza en el
-token 2 y termina en el token 4.
+_spans de entidades_. Por ejemplo, "adidas ZX" es ropa, comienza en el token
+2 y termina en el token 4.
 
 También es muy importante que el modelo aprenda palabras que _no son_ entidades.
 
@@ -154,23 +155,23 @@ contextos similares, aunque no estuviesen en nuestros datos de entrenamiento.
 - Puede ser semi-automatizado - ¡por ejemplo, usando el `Matcher` de spaCy!
 
 Notes: Los datos de entrenamiento le dicen al modelo lo que queremos que
-prediga. Esto podrían ser textos y entidades nombradas que queremos reconocer,
-o tokens y sus etiquetas gramaticales correctas.
+prediga. Esto podrían ser textos y entidades nombradas que queremos reconocer, o
+tokens y sus etiquetas gramaticales correctas.
 
 Para actualizar el modelo existente podemos comenzar con unos cientos a unos
 miles de ejemplos.
 
 Para entrenar una nueva categoría podemos necesitar hasta un millón.
 
-Los pipelines de inglés pre-entrenados de spaCy fueron entrenados con
-2 millones de palabras anotadas con etiquetado gramatical, dependencias y
-entidades nombradas.
+Los pipelines de inglés pre-entrenados de spaCy fueron entrenados con 2 millones
+de palabras anotadas con etiquetado gramatical, dependencias y entidades
+nombradas.
 
 Los datos de entrenamiento son creados normalmente por humanos que le asignan
 etiquetas a los textos.
 
-Esto es mucho trabajo, pero puede ser semi-automatizado - por ejemplo, usando
-el `Matcher` de spaCy.
+Esto es mucho trabajo, pero puede ser semi-automatizado - por ejemplo, usando el
+`Matcher` de spaCy.
 
 ---
 
@@ -183,16 +184,16 @@ el `Matcher` de spaCy.
   - los datos deben ser representativos de lo que el modelo verá cuando sea
     ejecutado
 
-Notes: Cuando entrenes tu modelo, es importante saber cómo está progresando y
-si es que está aprendiendo las cosas correctas. Esto se sabe al comparar las
+Notes: Cuando entrenes tu modelo, es importante saber cómo está progresando y si
+es que está aprendiendo las cosas correctas. Esto se sabe al comparar las
 predicciones de las respuestas que ya conocemos contra datos que _no_ han sido
 vistos durante el entrenamiento. Así que, a demás de los datos para el
 entrenamiento, también requieres datos para evaluación, también conocidos como
 datos para desarrollo.
 
-Los datos para evaluación se usan para calcular qué tan preciso es tu modelo. 
-Por ejemplo, un puntaje de 90% significa que el modelo predijo 90% de los 
-datos de evaluación correctamente.
+Los datos para evaluación se usan para calcular qué tan preciso es tu modelo.
+Por ejemplo, un puntaje de 90% significa que el modelo predijo 90% de los datos
+de evaluación correctamente.
 
 Esto también significa que la evaluación debe ser representativa de los datos
 que tu modelo verá durante su ejecución. De otro modo, el puntaje de precisión
@@ -224,8 +225,8 @@ En este ejemplo, estamos creando dos objetos `Doc` para nuestro corpus: uno que
 contiene una entidad y otro sin ninguna entidad. Para agregar entidades a un
 `Doc`, podemos agregar un`Span` a `doc.ents`.
 
-Por supuesto que necesitarás muchos más ejemplos para entrenar efectivamente
-tu modelo para que pueda generalizar y predecir entidades similares en contexto.
+Por supuesto que necesitarás muchos más ejemplos para entrenar efectivamente tu
+modelo para que pueda generalizar y predecir entidades similares en contexto.
 Dependiendo de la tarea, generalmente quieres al menos unos cuantos cientos o
 miles de ejemplos representativos.
 
@@ -239,16 +240,15 @@ miles de ejemplos representativos.
 
 ```python
 random.shuffle(docs)
-train_docs = docs[:len(docs) // 2)]
-dev_docs = docs[len(docs) // 2):]
+train_docs = docs[:len(docs) // 2]
+dev_docs = docs[len(docs) // 2:]
 ```
 
 Notes: Como mencioné anteriormente, no solo necesitamos datos para entrenar el
-modelo. También necesitamos evaluar la precisión del modelo utilizando datos
-que no hayan sido vistos durante el entrenamiento. Esto se hace generalmente
-aleatorizando y dividiendo tus datos en dos partes: una parte para
-entrenamiento y otra para evaluación. Aquí utilizamos una división simple de
-50/50.
+modelo. También necesitamos evaluar la precisión del modelo utilizando datos que
+no hayan sido vistos durante el entrenamiento. Esto se hace generalmente
+aleatorizando y dividiendo tus datos en dos partes: una parte para entrenamiento
+y otra para evaluación. Aquí utilizamos una división simple de 50/50.
 
 ---
 
@@ -271,34 +271,37 @@ Notes: Normalmente querrás guardar tus datos de entrenamiento y desarrollo como
 archivos en disco para que puedas cargarlos durante el proceso de entrenamiento
 de spaCy.
 
-El `DocBin` es un contenedor para guardar y serializar objetos `Doc` 
+El `DocBin` es un contenedor para guardar y serializar objetos `Doc`
 eficientemente. También puedes instanciarlo con yna lista de objetos `Doc` e
 invocar su método `to_disk` para guardarlo en un archivo binario. Normalmente
 usamos la extension `.spacy` para este tipo de archivos.
 
 Comparado con otros protocolos de serialización como `pickle`, el `DocBin` es
-más rápido y produce archivos de menor tamaño debido a que guarda el 
-vocabulario compartido una sola vez. Puedes leer más acerca de su
-funcionamiento en la [documentación](https://spacy.io/api/docbin).
+más rápido y produce archivos de menor tamaño debido a que guarda el vocabulario
+compartido una sola vez. Puedes leer más acerca de su funcionamiento en la
+[documentación](https://spacy.io/api/docbin).
 
 ---
 
 # Tip: Conversión de tus datos
 
 - `spacy convert` te permite convertir corpora en formatos comunes
-- ofrece soporte para `.conll`, `.conllu`, `.iob` y para el formato anterior
-  de archivos JSON de spaCy
+- ofrece soporte para `.conll`, `.conllu`, `.iob` y para el formato anterior de
+  archivos JSON de spaCy
 
 ```bash
 $ python -m spacy convert ./train.gold.conll ./corpus
 ```
 
 Notes: En algunos casos, es posible que ya tengas listos datos de entrenamiento
-y desarrollo en un formato común – por ejemplo, CoNLL o IOB. El comando de
-spaCy `convert` automáticamente convierte estos archivos en formato binario
-de spaCy. También convierte archivos JSON con el formato anterior spaCy (v2).
+y desarrollo en un formato común – por ejemplo, CoNLL o IOB. El comando de spaCy
+`convert` automáticamente convierte estos archivos en formato binario de spaCy.
+También convierte archivos JSON con el formato anterior spaCy (v2).
+
 ---
 
 # ¡Practiquemos!
 
-Notes: Ahora es el momento de comenzar y preparar datos de entrenamiento. Miremos algunos ejemplos y creemos un conjunto de datos pequeño para un nuevo tipo de entidad.
+Notes: Ahora es el momento de comenzar y preparar datos de entrenamiento.
+Miremos algunos ejemplos y creemos un conjunto de datos pequeño para un nuevo
+tipo de entidad.

@@ -2,10 +2,9 @@
 type: slides
 ---
 
-# Combinando modelos e regras
+# Combinando previsões e regras
 
-Notes: Combinar modelos estatísticos com sistemas baseados em regras é um dos recursos
-mais poderosos que você pode encontrar em uma ferramenta de PLN.
+Notes: Combinar previsões de modelos estatísticos com sistemas baseados em regras é um dos recursos mais poderosos que você pode encontrar em uma ferramenta de PLN.
 
 Nesta lição, vamos dar uma olhada em como fazer isso na biblioteca spaCy.
 
@@ -21,10 +20,8 @@ Nesta lição, vamos dar uma olhada em como fazer isso na biblioteca spaCy.
 
 Notes: Modelos estatísticos são úteis se sua aplicação necessita generalizar a partir de alguns exemplos.
 
-Por exemplo, a tarefa de identificar produtos ou nomes de pessoas pode se beneficiar de um modelo
-estatístico. Ao invés de prover uma lista de todos os possíveis nomes de pessoas,
-sua aplicação poderá prever se uma partição de tokens é um nome próprio. De maneira similar, 
-é possível prever termos sintáticos e identificar relações entre sujeito e objeto.
+Por exemplo, a tarefa de identificar produtos ou nomes de pessoas pode se beneficiar de um modelo treinado. Ao invés de prover uma lista de todos os possíveis nomes de pessoas,
+sua aplicação poderá prever se uma partição de tokens é um nome próprio. De maneira similar, é possível prever termos sintáticos e identificar relações entre sujeito e objeto.
 
 Para alcançar esse objetivo você pode usar alguns recursos da biblioteca spaCy: reconhecimento de entidades,
 analisador sintático e o tagueador de classes gramaticais.
@@ -59,11 +56,11 @@ matcher = Matcher(nlp.vocab)
 
 # Expressões são listas de dicionários descrevendo os tokens
 pattern = [{"LEMMA": "love", "POS": "VERB"}, {"LOWER": "cats"}]
-matcher.add("LOVE_CATS", None, pattern)
+matcher.add("LOVE_CATS",[pattern])
 
 # Operadores podem determinar a frequência de correspondência de um token
 pattern = [{"TEXT": "very", "OP": "+"}, {"TEXT": "happy"}]
-matcher.add("VERY_HAPPY", None, pattern)
+matcher.add("VERY_HAPPY", [pattern])
 
 # Chamar o comparador no documento doc retorna uma lista com tuplas (match_id, start, end) 
 doc = nlp("I love cats and I'm very very happy")
@@ -93,7 +90,7 @@ Cada correspondência é uma tupla consistindo de um identificador ID, e o
 
 ```python
 matcher = Matcher(nlp.vocab)
-matcher.add("DOG", None, [{"LOWER": "golden"}, {"LOWER": "retriever"}])
+matcher.add("DOG", [[{"LOWER": "golden"}, {"LOWER": "retriever"}]])
 doc = nlp("I have a Golden Retriever")
 
 for match_id, start, end in matcher(doc):
@@ -119,7 +116,7 @@ Se iterarmos nas correspondências retornadas pelo Comparador, podemos obter
 o identificador da correspondência e o índice do início e do final da partição
 correspondente. Podemos então analisar melhor o resultado. Objetos `Span` nos
 dão acesso ao documento original e a todos os outros atributos e anotações
-linguísticas previstas pelo modelo.
+linguísticas previstas por um modelo.
 
 Por exemplo, podemos obter o token raiz de uma partição. Se a partição consiste
 de um ou mais tokens, este é o token que define a categoria da frase. Por exemplo,
@@ -163,7 +160,7 @@ from spacy.matcher import PhraseMatcher
 matcher = PhraseMatcher(nlp.vocab)
 
 pattern = nlp("Golden Retriever")
-matcher.add("DOG", None, pattern)
+matcher.add("DOG", [pattern])
 doc = nlp("I have a Golden Retriever")
 
 # Iterar nas correspondências
@@ -192,4 +189,4 @@ em um contexto.
 
 # Vamos praticar!
 
-Notes: Vamos testar algumas dessas novas técnicas de combinar regras com modelos estatísticos.
+Notes: Vamos testar algumas dessas novas técnicas de combinar regras com previsões.

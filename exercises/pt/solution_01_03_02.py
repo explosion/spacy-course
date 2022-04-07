@@ -1,15 +1,14 @@
-# Importar a classe da língua inglesa (English) e criar um objeto nlp
-from spacy.lang.en import English
-
-nlp = English()
+# Importar spaCy e o objeto nlp do Português
+import spacy
+nlp = spacy.blank("pt")
 
 # Processar o texto
-doc = nlp("I like tree kangaroos and narwhals.")
+doc = nlp("Eu tenho três cachorros e dois gatos.")
 
-# Uma partição do Doc para "tree kangaroos"
-tree_kangaroos = doc[2:4]
-print(tree_kangaroos.text)
+# Uma partição do Doc para "três cachorros"
+tres_cachorros = doc[2:4]
+print(tres_cachorros.text)
 
-# Uma partição do Doc para "tree kangaroos and narwhals" (sem incluir o ".")
-tree_kangaroos_and_narwhals = doc[2:6]
-print(tree_kangaroos_and_narwhals.text)
+# Uma partição do Doc para "três cachorros e dois gatos" (sem incluir o ".")
+tres_cachorros_dois_gatos = doc[2:7]
+print(tres_cachorros_dois_gatos.text)

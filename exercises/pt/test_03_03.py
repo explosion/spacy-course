@@ -1,5 +1,6 @@
 def test():
-    assert nlp.meta["name"] == "core_web_sm", "Você está carregando o modelo correto?"
+    assert nlp.meta["name"] == "core_news_sm", "Você está carregando o fluxo de processamento correto?"
+    assert nlp.meta["lang"] == "pt", "Você está carregando o fluxo de processamento correto?"
     assert "print(nlp.pipe_names)" in __solution__, "Você está imprimindo o nome dos componentes?"
     assert "print(nlp.pipeline)" in __solution__, "Você está imprimindo o pipeline?"
 

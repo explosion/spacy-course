@@ -12,4 +12,4 @@ def test():
         "print([(token.text, token._.is_country)" in __solution__
     ), "Você está imprimindo os atributos do token correto?"
 
-    __msg__.good("Well done!")
+    __msg__.good("Muito bom!")

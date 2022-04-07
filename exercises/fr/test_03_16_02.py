@@ -6,6 +6,6 @@ def test():
 
     __msg__.good(
         "Parfait ! Maintenant que tu as pratiqué les trucs et astuces de "
-        "performance, tu es prêt pour le chapitre suivant et entrainer les "
+        "performance, tu es prêt pour le chapitre suivant et entraîner les "
         "modèles de réseaux de neurones de spaCy."
     )

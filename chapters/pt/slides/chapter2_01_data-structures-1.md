@@ -101,7 +101,7 @@ print(lexeme.text, lexeme.orth, lexeme.is_alpha)
 coffee 3197928453018144401 True
 ```
 
-- Contém as informações **independentes de contexto** de cada palavra:
+- Contém as informações de cada palavra **independente de contexto** :
   - Texto da palavra: `lexeme.text` e `lexeme.orth` (o código hash)
   - Atributos léxicos, como por exemplo `lexeme.is_alpha`
   - **Não incluem** marcadores que dependem do contexto, como classe gramatical, termo sintático ou entidade.
@@ -115,7 +115,7 @@ Lexemas possuem atributos, assim como os tokens.
 Eles armazenam informações de uma palavra que são independentes de contexto: texto,
 se a palavra é composta por apenas caracteres alfabéticos, etc.
 
-Lexemas não armazenam marcadores de classe gramatical, termo sintático ou entidade. Eles dependem
+Lexemas não armazenam marcadores de classe gramatical, termo sintático ou entidade. Estes dependem
 do contexto no qual a palavra está inserida.
 
 ---
@@ -124,7 +124,7 @@ do contexto no qual a palavra está inserida.
 
 <img src="/vocab_stringstore.png" width="70%" alt="Ilustracao das palavras 'I', 'love' e 'coffee' no Doc, Vocab e StringStore" />
 
-Notes: Aqui está um exemplo:
+Notes: Neste exemplo:
 
 O `Doc` contém palavras em seu contexto - neste caso, os tokens "I", "love" e
 "coffee"- com seus marcadores de classe gramatical e dependência sintática.

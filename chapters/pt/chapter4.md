@@ -3,10 +3,11 @@ title: 'Chapter 4: Treinando um modelo de rede neural'
 description:
   "Neste capítulo, você aprenderá a atualizar os modelos estatísticos da
   spaCy de maneira a adequá-los aos seus casos de uso, como por exemplo,
-  prever um novo tipo de entidade em textos de comentários. Você escreverá
-  sua rotina de treinamento a partir do zero, e entenderá o ciclo de
+  prever um novo tipo de entidade em textos de comentários. Você treinará
+  seu próprio modelo a partir do zero, e entenderá o ciclo de
   treinamento, bem como aprenderá algumas dicas sobre como ter sucesso
-  em seus projetos de processamento de linguagem natural (PLN)."
+  em seus projetos de processamento de linguagem natural (PLN).
+  "
 prev: /chapter3
 next: null
 type: chapter
@@ -20,36 +21,33 @@ id: 4
 
 </exercise>
 
-<exercise id="2" title="O propósito do treinamento">
+<exercise id="2" title="Treinando e avaliando os dados">
 
-Embora a spaCy já venha com modelos pré-treinados para prever anotações linguísticas,
-na _maioria das vezes_ você desejará fazer um ajuste fino no modelo, adicionando
-alguns exemplos específicos. Você conseguirá essa calibragem final após
-adicionar mais dados rotulados e treinar o modelo.
-
-O que o treinamento **não** faz?
+Para treinar um modelo, tipicamente é necessário dados de treinamento e dados para
+avaliação. Para que são utilizados os dados de avaliação ?
 
 <choice>
 
-<opt text="Aumenta a acurácia do modelo em relação aos seus dados.">
+<opt text="Para fornecer exemplos de treinamento de reserva caso os dados de treinamento não forem suficientes.">
 
-Se um modelo pré-treinado não tiver uma boa performance em seus dados,
-treiná-lo com mais exemplos é sempre uma boa solução.
-
-</opt>
-
-<opt text="Aprende novos esquemas de classificação.">
-
-Através do treinamento é possível ensinar o modelo sobre novos marcadores,
-entidades ou categorias de classificação.
+Durante o treinamento, o modelo só será atualizado com os dados de treinamento.
+Os dados de avaliação são utilizados apenas para avaliar a qualidade do modelo, através
+da comparação das predições feitas nesses dados (novos dados) com o resultado esperado. Isso então refletirá
+no score de acurácia do modelo.
 
 </opt>
 
-<opt text="Descobre padrões de dados não rotulados." correct="true">
+<opt text="Para avaliar a previsão em novos exemplos e calcular a acurácia do modelo."  correct="true">
 
-Os componentes da spaCy são modelos _supervisionados_ baseados em anotações de
-texto, o que quer dizer que eles aprendem a reproduzir exemplos já aprendidos
-e não adivinhar novos marcadores a partir de dados sem tratamento.
+Os dados de avaliação são utilizados para avaliar o modelo, comparando a predição feita nesses dados
+(novos dados) com o resultado esperado. Isso então refletirá no score de acurácia do modelo.
+
+</opt>
+
+<opt text="Para definir exemplos de treinamento sem anotações.">
+
+Os dados de avaliação são utilizados para avaliar o modelo, comparando a predição feita nesses dados
+(novos dados) com o resultado esperado. Isso então refletirá no score de acurácia do modelo.
 </opt>
 
 </choice>
@@ -58,7 +56,7 @@ e não adivinhar novos marcadores a partir de dados sem tratamento.
 
 <exercise id="3" title="Criando dados para treinamento (1)">
 
-Através do `Matcher` da spaCy, um algoritmo baseado em regras, é possível criar
+Através do `Matcher` da spaCy, que é um algoritmo baseado em regras, é possível criar
 rapidamente dados de treinamento para modelos de entidades. Uma lista de frases
 fica disponível através da variável `TEXTS`. Você pode imprimi-la para inspecionar
 o conteúdo. Queremos encontrar todas as menções aos diferentes modelos de iPhone,
@@ -85,97 +83,133 @@ então vamos criar dados de treinamento para o modelo reconhecer esses exemplos 
 
 <exercise id="4" title="Criando dados para treinamento (2)">
 
-Vamos usar as expressões criadas no exercício anterior para gerar um conjunto
-de dados de treinamento. Uma lista de frases está disponível na variável `TEXTS`.
+Após criar dados para o nosso `corpus`, precisamos salvá-los em um arquivo `.spacy`.
+O código do exemplo anterior já está disponível.
 
-- Crie um objeto doc para cada frase usando `nlp.pipe`.
-- Faça a correspondência ao doc usando o matcher e crie uma lista das partições
-  com correspondência.
-- Obtenha as tuplas `(caracter inicial, caracter final, marcador)` das partições.
-- Formate cada exemplo como uma tupla com o texto e um dicionário, mapeando `"entities"`.
-- Adicione o exemplo a `TRAINING_DATA` e imprima em seguida.
+- Instancie o `DocBin`com a lista de `docs`
+- Salve o `DocBin` em um arquivo chamado `train.spacy`.
 
 <codeblock id="04_04">
 
-- Para encontrar correspondência, use o `matcher` com parâmetro `doc`.
-- As correspondências encontradas são retornadas como tuplas `(match_id, start, end)`.
-- Para adicionar um exemplo a lista de dados de treinamento, você pode usar:
-  `TRAINING_DATA.append()`.
+- Você pode inicializar o `DocBin` através do parâmetro `docs`, que pode receber uma lista de docs.
+- O método `to_disk` do `DocBin` recebe um parâmetro: o caminho do arquivo para salvar os dados binários.
+Certifique-se que o arquivo possua a extensão `.spacy`.
 
 </codeblock>
 
 </exercise>
 
-<exercise id="5" title="O ciclo de treinamento" type="slides">
+<exercise id="5" title="Configurando e executando o treinamento" type="slides">
 
 <slides source="chapter4_02_training-loop">
 </slides>
 
+
 </exercise>
 
-<exercise id="6" title="Definindo o fluxo de processamento (pipeline)">
+<exercise id="6" title="As configurações de treinamento">
 
-Neste exercício, você criará um fluxo de processamento para treinar o identificador
-de entidades para reconhecer as entidades `"GADGET"` de uma frase, como por
-exemplo: "iPhone X".
+O arquivo `config.cfg` é a única fonte segura de informações para treinar um
+fluxo (pipeline) de processamento com a biblioteca spaCy. Qual das alternativas
+abaixo **não está correta** em relação ao arquivo de configuração?
 
-- Crie um modelo vazio do idioma `"en"`, usando o método `spacy.blank`.
-- Crie um novo identificador de entidades usando `nlp.create_pipe` e o adicione
-ao fluxo de processamento.
-- Adicione o marcador `"GADGET"` ao identificador de entidades, usando o método
-`add_label` do componente do fluxo.
+<choice>
 
-<codeblock id="04_06">
+<opt text="Ele permite que você configure o processo de treinamento e o hyper-parâmetros.">
 
-- Para criar um identificador de entidades vazio, você pode usar `nlp.create_pipe`
-  com o parâmetro "ner"`.
-- Para adicionar um componente ao fluxo, use o método `nlp.add_pipe`.
-- O método `add_label` é um método do componente identificador de entidades do
-  fluxo de processamento que você armazenou na variável `ner`. Para adicionar
-  um marcador a ele, use `ner.add_label` com o nome do marcador. Por exemplo:
-  `ner.add_label("UM_NOME_DO_ROTULO")`.
+O arquivo de configuração inclui todas as configurações para o processo de treinamento, 
+inclusive os hyper-parâmetros.
+
+</opt>
+
+<opt text="Ele facilita a reprodutibilidade do processo de treinamento.">
+
+Uma vez que o arquivo de configuração inclui _todas_ as configurações e no processo não há 
+nenhuma configuração padrão, o processo de treinamento poderá ser reproduzido baseando-se neste
+arquivo, o que permite que outros possam roda os mesmos experimentos com exatamente as mesmas
+configurações.
+
+</opt>
+
+<opt text="Ele cria um pacote python instalável contendo o seu fluxo de processamento." correct="true">
+
+O arquivo de configuração inclui todas as configurações relacionadas ao treinamento e instruções de
+como criar seu fluxo (pipeline) de processamento. Para criar um pacote python instalável, você pode
+utilizar o comando `spacy package`.
+
+</opt>
+
+<opt text="Ele define os componentes do fluxo (pipeline) de processamento e suas configurações.">
+
+O bloco `[components]` do arquivo de configuração inclui todos os componentes do fluxo (pipeline) de processamento e suas configurações, incluindo as implementações do modelo utilizado.
+
+</opt>
+
+</choice>
+
+</exercise>
+
+<exercise id="7" title="Gerando um arquivo de configuração">
+
+O comando [`init config`](https://spacy.io/api/cli#init-config) gera automaticamente
+um arquivo de configuração para o treinamento com as configurações padrão. Queremos 
+treinar um identificador de entidades, portanto vamos gerar um arquivo de configuração
+para apenas um componente do fluxo (pipeline) de processamento : `ner`. Uma vez que neste
+curso estamos executando o comando em um ambiente Jupyter, vamos utilizar o prefixo `!`.
+Se você estiver executando os comandos diretamente no seu terminal, a utilização do 
+prefixo `!` não é necessária.
+
+### Parte 1
+
+- Use o comando da spaCy `init config` para gerar automaticamente um arquivo de 
+configuração para o idioma Inglês.
+- Salve a configuração em um arquivo `config.cfg`
+- Use o parâmetro `--pipeline` para especificar o único componente do pipeline: `ner`.
+
+<codeblock id="04_07_01">
+
+- O parâmetro `--lang` define a classe do idioma, neste caso `en` para o Inglês.
+
+</codeblock>
+
+### Parte 2
+
+Vamos dar uma olhada no arquivo de configuração que foi gerado. Você pode executar
+o comando abaixo para imprimir a configuração no terminal e analisá-la.
+
+<codeblock id="04_07_02"></codeblock>
+
+</exercise>
+
+<exercise id="8" title="Usando o comando de treinamento CLI">
+
+Vamos usar o arquivo de configuração que geramos no exercício anterior e o 
+corpus de treinamento que criamos para treinar um identificador de entidades!
+
+O comando [`train`](https://spacy.io/api/cli#train) permite treinar um modelo a 
+partir de um arquivo de configuração. O arquivo `config_gadget.cfg` está disponível
+no diretório `exercises/pt`, bem como o arquivo `train_gadget.spacy` contendo os 
+exemplos de treinamento, e o arquivo `dev_gadget.spacy` contendo os exemplos de
+validação. Uma vez que neste curso estamos executando o comando em um ambiente Jupyter, 
+vamos utilizar o prefixo `!`. Se você estiver executando os comandos diretamente no seu terminal, 
+a utilização do prefixo `!` não é necessária.
+
+Use o comando `train` com o arquivo `exercises/pt/config_gadget.cfg`. Salve o fluxo de 
+processamento (pipeline) no diretório `output`. Passe os caminhos `exercises/pt/train_gadget.spacy`
+e `exercises/pt/dev_gadget.spacy` como parâmetros.
+
+<codeblock id="04_08">
+
+O primeiro parâmetro de `spacy train` é o caminho pra o arquivo de configuração.
 
 </codeblock>
 
 </exercise>
 
-<exercise id="7" title="Construindo um ciclo de treinamento">
-
-Vamos agora criar um ciclo de treinamento simples, a partir do zero!
-
-O fluxo de processamento que você criou no exercício anterior está disponível
-como um objeto `nlp`. Ele já contem um identificador de entidades com o marcador
-adicionado: `"GADGET"`.
-
-O pequeno conjunto de exemplos com rótulos (marcadores) que você também criou está disponível
-como `TRAINING_DATA`. Para ver alguns exemplos você pode imprimi-los em seu
-código.
-
-- Use `nlp.begin_training` para criar um ciclo de treinamento com 10 iterações
-  e embaralhe os dados de treinamento.
-- Crie lotes (batches) de dados de treinamento usando `spacy.util.minibatch` e
-  faça a iteração nos lotes.
-- Converta as tuplas `(text, annotations)` do lote para listas de `texts` e
-  `annotations`.
-- Para cada lote (batch), use `nlp.update` para atualizar o modelo com os `texts`
-  e `annotations`.
-
-
-<codeblock id="04_07">
-
-- Para iniciar o treinamento e reiniciar os pesos do modelo, use o método
-  `nlp.begin_training()`
-- Para dividir os dados de treinamento em lotes, use a função `spacy.util.minibatch`
-  com parâmetro a lista de exemplos de treinamento.
-
-</codeblock>
-
-</exercise>
-
-<exercise id="8" title="Explorando o modelo">
+<exercise id="9" title="Explorando o modelo">
 
 Vamos agora avaliar como o modelo se comporta com novos dados. Para agilizar,
-já treinamos um modelo para o marcador `"GADGET"` com algumas frases. Aqui está
+já treinamos um fluxo (pipeline) de processamento para o marcador `"GADGET"` com algumas frases. Aqui está
 o resultado:
 
 | Text                                                                                                              | Entities               |
@@ -200,6 +234,7 @@ pelo número total de entidades.
 
 Conte o número de entidades corretamente identificadas e as divida pelo número
 total de entidades que o modelo _deveria_ ter identificado.
+
 </opt>
 
 <opt text="60%">
@@ -226,34 +261,27 @@ total de entidades que o modelo _deveria_ ter identificado.
 
 </exercise>
 
-<exercise id="9" title="Melhores práticas de treinamento" type="slides">
+<exercise id="10" title="Melhores práticas de treinamento" type="slides">
 
 <slides source="chapter4_03_training-best-practices">
 </slides>
 
 </exercise>
 
-<exercise id="10" title="Dados bons vs. dados ruins">
+<exercise id="11" title="Dados bons vs. dados ruins">
 
 Aqui está um trecho de um conjunto de dados de treinamento rotulados
 para a entidade `TOURIST_DESTINATION` em revisões de viajantes.
 
 ```python
-TRAINING_DATA = [
-    (
-        "i went to amsterdem last year and the canals were beautiful",
-        {"entities": [(10, 19, "TOURIST_DESTINATION")]},
-    ),
-    (
-        "You should visit Paris once in your life, but the Eiffel Tower is kinda boring",
-        {"entities": [(17, 22, "TOURIST_DESTINATION")]},
-    ),
-    ("There's also a Paris in Arkansas, lol", {"entities": []}),
-    (
-        "Berlin is perfect for summer holiday: lots of parks, great nightlife, cheap beer!",
-        {"entities": [(0, 6, "TOURIST_DESTINATION")]},
-    ),
-]
+doc1 = nlp("i went to amsterdem last year and the canals were beautiful")
+doc1.ents = [Span(doc1, 3, 4, label="TOURIST_DESTINATION")]
+doc2 = nlp("You should visit Paris once, but the Eiffel Tower is kinda boring")
+doc2.ents = [Span(doc2, 3, 4, label="TOURIST_DESTINATION")]
+doc3 = nlp("There's also a Paris in Arkansas, lol")
+doc3.ents = []
+doc4 = nlp("Berlin is perfect for summer holiday: great nightlife and cheap beer!")
+doc4.ents = [Span(doc4, 0, 1, label="TOURIST_DESTINATION")]
 ```
 
 ### Parte 1
@@ -294,24 +322,27 @@ contexto do texto é uma das grandes vantagens dos modelos estatísticos prediti
 
 ### Parte 2
 
-- Rescreva o `TRAINING_DATA` para usar apenas o marcador `"GPE"` (cidades, estados, países)
+- Rescreva o `doc.ents` para usar apenas as partições do marcador `"GPE"` (cidades, estados, países)
 ao invés de `"TOURIST_DESTINATION"`.
-- Não se esqueça de adicionar as tuplas à entidade `"GPE"` que não estavam identificadas
+- Não se esqueça de adicionar as partições à entidade `"GPE"` que não estavam identificadas
 nos dados antigos.
 
-<codeblock id="04_10">
+<codeblock id="04_11">
 
 - Para as partições que já estavam rotuladas, você só precisa alterar o marcador de
-  `"TOURIST_DESTINATION"` para `"GPE"`.
+  `"TOURIST_DESTINATION"` para `"GPE"`. 
 - Uma frase contém uma cidade e um estado que não tinha sido rotulado. Para
   adicionar a partição da entidade, identifique a posição do início e do final
-  da partição. Em seguida, adicione a tupla `(start, end, label)` à entidade.
+  da partição. Lembre-se que o índice do último token é _exclusivo_ ! Em seguida, 
+  adicione uma nova partição `Span` em `doc.ents`.
+  Fique de olho na tokenização! Veja os tokens que estão no `Doc` se você não estiver
+  seguro.
 
 </codeblock>
 
 </exercise>
 
-<exercise id="11" title="Treinando múltiplos marcadores">
+<exercise id="12" title="Treinando múltiplos marcadores">
 
 Aqui está um pequeno exemplo de um conjunto de dados criado para treinar a entidade
 `"WEBSITE"`. O conjunto de dados original contém algumas centenas de frases.
@@ -320,18 +351,15 @@ irá automatizar este processo e utilizará uma ferramenta de anotação, como p
 [Brat](http://brat.nlplab.org/), uma solução de código aberto, ou
 [Prodigy](https://prodi.gy), nossa ferramenta de anotação integrada à spaCy.
 
-
 ### Parte 1
 
-- Complete os espaços em branco para identificar a entidade `"WEBSITE"`. Você pode usar
-  `len()` para contar a quantidade de caracteres.
+- Complete os espaços em branco para identificar a entidade `"WEBSITE"` nos dados.
 
-<codeblock id="04_11_01">
+<codeblock id="04_12_01">
 
-- o início e fim de uma partição para uma entidade são ao localização no texto.
-  Por exemplo, se uma entidade se iniciar na posição 5, significa que o início
-  é `5`. Lembre-se que o fim é _exclusivo_, ou seja, `10` significa **até**
-  o caracter 10.
+- Lembre-se que a indexação é  _exclusiva_ . Portanto se uma entidade se iniciar
+na posição 2 e terminar na posição 3, ela terá o token inicial em `2` e o token
+final em `4`.
 
 </codeblock>
 
@@ -375,15 +403,18 @@ deste exemplo.
 - Atualize os dados de treinamento para incluir as anotações "PewDiePie" e
   "Alexis Ohanian" pra a entidade `"PERSON"`.
 
-<codeblock id="04_11_02">
+<codeblock id="04_12_02">
 
-- Para adicionar mais entidades, adicione outra tupla `(start, end, label)` à lista.
+- Para adicionar mais entidades, adicione outra partição `Span` a `doc.ents`.
+Lembre-se que o token final de uma partição é exclusivo. Portanto se uma entidade se iniciar
+na posição 2 e terminar na posição 3, ela terá o token inicial em `2` e o token
+final em `4`.
 
 </codeblock>
 
 </exercise>
 
-<exercise id="12" title="Finalizando..." type="slides">
+<exercise id="13" title="Finalizando..." type="slides">
 
 <slides source="chapter4_04_wrapping-up">
 </slides>

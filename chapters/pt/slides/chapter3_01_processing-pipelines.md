@@ -4,12 +4,14 @@ type: slides
 
 # Fluxos de processamento (pipelines)
 
-Notes: Bem-vindo de volta ! Este capítulo é dedicado aos fluxos de processamento:
+Notes: Bem-vindo de volta ! 
+
+Este capítulo é dedicado aos fluxos de processamento:
 uma série de funções que são aplicadas sequencialmente no documento para
 adicionar atributos como classes gramaticais,  termos sintáticos e
 entidades nomeadas.
 
-Nesta lição, você conhecerá os componentes do fluxo de processamento da spaCy
+Neste momento, você conhecerá os componentes do fluxo de processamento da spaCy
 e o que acontece nos bastidores quando você chama nlp em um texto.
 
 ---
@@ -44,7 +46,7 @@ ele.
 | **ner**     | Identificador de entidades (named entity recognizer)     | `Doc.ents`, `Token.ent_iob`, `Token.ent_type`             |
 | **textcat** | Classificador de texto (text classifier)                 | `Doc.cats`                                                |
 
-Notes: Como padrão, a spaCy tem os seguintes componentes no fluxo de processamento:
+Notes: A biblioteca spaCy possui uma variedade de componentes para o fluxo de processamento. Esses são os mais comuns que você provavelmente utilizará em seus projetos:
 
 O tagueador de classes gramaticais cria os atributos `token.tag` e `token.pos`.
 
@@ -59,28 +61,26 @@ um token é parte de uma entidade ou não.
 E por último, o classificador de textos define os marcadores de categoria que
 se aplicam ao texto como um todo, adicionando essa informação ao atributo `doc.cats`.
 
-Devido ao fato que as categorias de texto são bastante específicas, o 
-classificador de texto não está incluso como padrão em nenhum dos modelos 
-pré-treinados. Mas você pode utilizá-lo em seu projeto.
+Uma vez que as categorias de texto são bastante específicas, o 
+classificador de texto não está incluso em nenhum dos fluxos de processamento (pipelines) 
+treinados. Mas você pode utilizá-lo em seu projeto.
 
 ---
 
 # Nos bastidores
 
-<img src="/package_meta.png" alt="Ilustracao de um pacote com nome en_core_web_sm, arquivos e pastas e metadados meta.json" />
+<img src="/package_meta.png" alt="Ilustracao de um pacote com nome en_core_web_sm, arquivos e pastas e o config.cfg" />
 
-- O fluxo de processamento (pipeline) ocorre sequencialmente conforme definido no `meta.json` do modelo 
+- O fluxo de processamento (pipeline) ocorre sequencialmente conforme definido no 
+arquivo `config.cfg`
 - Os componentes padrão usam dados binários para fazer as previsões
 
-Notes: Todos os modelos que você pode importar na biblioteca spaCy incluem vários arquivos,
-dentre eles um `meta.json`.
+Notes: Todos os pacotes de fluxo de processamento que você pode importar na biblioteca spaCy incluem vários arquivos, dentre eles o `config.cfg`.
 
-O arquivo meta define o idioma e o fluxo de processamento. Ele indica quais componentes
-precisam ser instanciados pela spaCy.
+O arquivo `config` define o idioma e o fluxo de processamento. Ele indica quais componentes precisam ser instanciados pela spaCy e como eles devem ser configurados.
 
 Os componentes internos que fazem as previsões necessitam de dados binários. Esses
-dados estão inclusos no pacote do modelo e são carregados nos componentes quando
-você carrega o modelo.
+dados estão inclusos no pacote do fluxo de procesamento e são carregados nos componentes quando você carrega o fluxo (pipeline).
 
 ---
 
@@ -93,7 +93,7 @@ print(nlp.pipe_names)
 ```
 
 ```out
-['tagger', 'parser', 'ner']
+['tok2vec','tagger', 'parser', 'ner','attribute_ruler', 'lemmatizer']
 ```
 
 - `nlp.pipeline`: lista de tuplas `(name, component)`
@@ -103,9 +103,13 @@ print(nlp.pipeline)
 ```
 
 ```out
-[('tagger', <spacy.pipeline.Tagger>),
+[('tok2vec', <spacy.pipeline.Tok2Vec>),
+ ('tagger', <spacy.pipeline.Tagger>),
  ('parser', <spacy.pipeline.DependencyParser>),
- ('ner', <spacy.pipeline.EntityRecognizer>)]
+ ('ner', <spacy.pipeline.EntityRecognizer>)
+ ('attribute_ruler', <spacy.pipeline.AtributeRuler>),
+ ('lemmatizer', <spacy.pipeline.Lemmatizer>),
+ ]
 ```
 
 Notes: Para verificar os nomes dos componentes do fluxo de processamento

@@ -13,11 +13,11 @@ Nesta lição, vamos dar uma olhada nos principais conceitos da spaCy e percorre
 # O objeto nlp
 
 ```python
-# Importar a classe para a língua inglesa
-from spacy.lang.en import English
+# Importar a biblioteca spaCY
+import spacy
 
-# Criar o objeto nlp
-nlp = English()
+# Criar um objeto nlp vazio da lingua inglesa
+nlp = spacy.blank ("en")
 ```
 
 - contém o fluxo de processamento
@@ -25,11 +25,12 @@ nlp = English()
 
 Notes: No cerne da spaCy está o objeto nlp, que contém o fluxo de processamento. Por convenção, normalmente chamamos essa variável de "nlp".
 
-Como exemplo, para criar o objeto `nlp` em inglês, importamos a classe `English` de `spacy.lang.en` e criamos uma instância desta classe. Podemos utilizar o objeto nlp como se chamássemos uma função para analisar algum texto.
+Como exemplo, para criar o objeto `nlp` em inglês, importamos a biblioteca `spacy`  e usamos `spacy.blank` para criar um
+fluxo de processamento (pipeline) vazio. Podemos utilizar o objeto nlp como se chamássemos uma função para analisar  textos.
 
 O objeto contém os diferentes componentes do fluxo de processamento do texto.
 
-Ele também contém regras específicas de cada idioma para a toquenização do texto em palavras e pontuação. A spaCy oferece suporte para diversos idiomas, que estão disponíveis em `spacy.lang`.
+Ele também contém regras específicas de cada idioma para a toquenização do texto em palavras e pontuação. A spaCy oferece suporte para diversos idiomas.
 
 ---
 
@@ -59,7 +60,7 @@ O Doc se comporta de maneira semelhante a uma sequência do Python, permitindo a
 
 # O objeto Token
 
-<img src="/doc.png" alt="Ilustração de um objeto Doc contendo quatro tokens" width="50%" />
+<img src="/doc.png" alt="Ilustração de um objeto Doc contendo três tokens" width="50%" />
 
 ```python
 doc = nlp("Hello world!")
@@ -85,7 +86,7 @@ Os objetos `Token` também contêm vários atributos que permitem acessar mais i
 
 # O objeto Partição (Span)
 
-<img src="/doc_span.png" width="50%" alt="Ilustração de um objeto Doc com quatro tokens e três deles agrupados em uma Partição." />
+<img src="/doc_span.png" width="50%" alt="Ilustração de um objeto Doc com três tokens e dois deles agrupados em uma Partição." />
 
 ```python
 doc = nlp("Hello world!")
@@ -103,7 +104,7 @@ world!
 
 Notes: Um objeto partição `Span` é uma partição do documento consistindo de um ou mais tokens. É apenas um apontamento para o `Doc` e não contém dados em si mesmo.
 
-Para criar uma partição, você pode usar a notação de partição do Pyhton. Por exemplo, `1:3` criará uma partição do token na posição 1 até o token na partição 3, mas não incluindo este último.
+Para criar uma partição, você pode usar a notação de partição do Python. Por exemplo, `1:3` criará uma partição do token na posição 1 até o token na partição 3, mas não incluindo este último.
 
 ---
 

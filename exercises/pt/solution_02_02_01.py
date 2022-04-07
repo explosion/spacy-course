@@ -1,12 +1,12 @@
-from spacy.lang.en import English
+import spacy
 
-nlp = English()
-doc = nlp("I have a cat")
+nlp = spacy.blank("pt")
+doc = nlp("Eu tenho um gato amarelo.")
 
-# Consulte o código hash da palavra "cat"
-cat_hash = nlp.vocab.strings["cat"]
-print(cat_hash)
+# Consulte o código hash da palavra "gato"
+gato_hash = nlp.vocab.strings["gato"]
+print(gato_hash)
 
-# Agora consulte o cat_hash para obter a palavra novamente
-cat_string = nlp.vocab.strings[cat_hash]
-print(cat_string)
+# Agora consulte o gato_hash para obter a palavra novamente
+gato_string = nlp.vocab.strings[gato_hash]
+print(gato_string)

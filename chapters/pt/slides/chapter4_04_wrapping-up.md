@@ -12,7 +12,7 @@ Notes: Parabéns – você conseguiu e chegou ao final do curso!
 
 - Extrair **características linguísticas**: classes gramaticais, termos sintáticos,
   e entidades nomeadas.
-- Trabalhar com **modelos estatísticos** pré-treinados.
+- Trabalhar com **fluxos de processamento (pipelines)** treinados.
 - Encontrar palavras ou frases utilizando **expressões** e os comparadores `Matcher` e `PhraseMatcher` 
 - Melhores práticas para trabalhar com **estruturas de dados**: `Doc`, `Token` `Span`,
   `Vocab`, `Lexeme`
@@ -26,7 +26,7 @@ Notes: Aqui está um resumo de todas as novas habilidades que você aprendeu nes
 
 No primeiro capítulo, você aprendeu a extrair características linguísticas como
 classes gramaticais, termos sintáticos e entidades nomeadas, e como trabalhar com 
-modelos pré-treinados.
+fluxos de processamento treinados.
 
 Você também aprendeu a escrever expressões de comparação poderosas para extrair
 palavras e frases usando o comparador e o comparador de frases da spaCy.
@@ -81,7 +81,7 @@ modelo existente e treiná-lo com seus próprios dados.
 - [Personalizar o toquenizador](https://spacy.io/usage/linguistic-features#tokenization)
   - Adicionar regras e exceções para particionar as frases de maneira diferente.
 - [Adicionar ou melhorar o suporte para outros idiomas](https://spacy.io/usage/adding-languages)
-  - 55+ idiomas atualmente
+  - 60+ idiomas atualmente
   - Muito espaço para melhoria e muitos idiomas para serem adicionados.
   - Permite o treinamento de outros idiomas. 
 

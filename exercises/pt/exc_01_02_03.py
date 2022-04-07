@@ -1,7 +1,7 @@
-# Importar a classe da língua espanhola (Spanish) 
-from spacy.lang.____ import ____
+# Importe a biblioteca spaCy
+import ____
 
-# Crie um objeto nlp
+# Crie um objeto nlp do Espanhol
 nlp = ____
 
 # Processar o texto em espanhol (equivalente ao português: "Como vai?")

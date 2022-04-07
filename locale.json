@@ -177,17 +177,10 @@
             "nextChapter": "Chapitre suivant",
             "start": "Début",
             "video": "Vidéo",
-            "slides": "Diapositives",
-            "alert": {
-                "title": "This course uses spaCy v2.",
-                "text": "An updated version of this translation for the new spaCy v3 is coming soon. Luckily, the usage and API hasn't changed much, so everything you'll learn in this course is still relevant.",
-                "button": "View English course for v3",
-                "link": "/en"
-            }
+            "slides": "Diapositives"
         }
     },
     "pt": {
-        "v2": true,
         "langName": "Português",
         "title": "PLN avançado com spaCy",
         "slogan": "Curso online e gratuito",
@@ -231,13 +224,7 @@
             "nextChapter": "Próximo Capítulo",
             "start": "Iniciar",
             "video": "Video",
-            "slides": "Slides",
-            "alert": {
-                "title": "This course uses spaCy v2.",
-                "text": "An updated version of this translation for the new spaCy v3 is coming soon. Luckily, the usage and API hasn't changed much, so everything you'll learn in this course is still relevant.",
-                "button": "View English course for v3",
-                "link": "/en"
-            }
+            "slides": "Slides"
         }
     },
     "ja": {

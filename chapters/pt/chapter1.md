@@ -2,8 +2,8 @@
 title: 'Capítulo 1: Selecionando palavras, frases, nomes e alguns conceitos'
 description:
   "Neste capítulo vamos apresentar os conceitos básicos de processamento de texto utilizando a 
-  biblioteca spaCy. Você vai aprender sobre as estruturas de dados, como trabalhar com modelos 
-  estatísticos e como usá-los para prever anotações linguísticas do seu texto."
+  biblioteca spaCy. Você vai aprender sobre as estruturas de dados, como trabalhar fluxos de processamento
+  (pipelines) treinados e como usá-los para prever anotações linguísticas do seu texto."
 prev: null
 next: /chapter2
 type: chapter
@@ -20,25 +20,25 @@ id: 1
 <exercise id="2" title="Primeiros passos">
 
 Vamos começar colocando a mão na massa! Neste exercício você fará
-experimentos com alguns dos mais de 55 [idiomas disponíveis](https://spacy.io/usage/models#languages).
+experimentos com alguns dos mais de 60 [idiomas disponíveis](https://spacy.io/usage/models#languages).
 
 ### Parte 1: Inglês
 
-- Faça a importação da classe `English` da biblioteca `spacy.lang.en` e crie um objeto `nlp`.
+- Utilize `spacy.blank` para criar um objeto `nlp` vazio do idioma inglês ("en").
 - Crie uma variável `doc` e imprima o seu conteúdo.
 
 <codeblock id="01_02_01"></codeblock>
 
 ### Parte 2: Alemão
 
-- Faça a importação da classe `German` da biblioteca `spacy.lang.de` e crie um objeto `nlp`.
+- Utilize `spacy.blank` para criar um objeto `nlp` vazio do idioma alemão ("de").
 - Crie uma variável `doc` e imprima o seu conteúdo.
 
 <codeblock id="01_02_02"></codeblock>
 
 ### Parte 3: Espanhol
 
-- Faça a importação da classe `Spanish` da biblioteca `spacy.lang.es` e crie um objeto `nlp`.
+- Utilize `spacy.blank` para criar um objeto `nlp` vazio do idioma espanhol ("es").
 - Crie uma variável `doc` e imprima o seu conteúdo.
 
 <codeblock id="01_02_03"></codeblock>
@@ -54,7 +54,7 @@ partição `Span`.
 
 ### Passo 1
 
-- Faça a importação da classe `English` e crie um objeto `nlp`.
+- Utilize `spacy.blank` para criar um objeto `nlp` vazio do idioma português ("pt").
 - Processe o texto e instancie um objeto `Doc` na variável `doc`.
 - Selecione o primeiro token do objeto `Doc` e imprima seu texto `text`.
 
@@ -68,10 +68,10 @@ Lembre-se que em Python o primeiro índice é 0 e não 1.
 
 ### Passo 2
 
-- Faça a importação da classe `English` e crie um objeto `nlp`.
+- Crie um objeto `nlp` vazio do idioma `Português`.
 - Processe o texto e instancie um objeto `Doc` na variável `doc`.
-- Crie uma partição do `Doc` para os tokens "tree kangaroos" e
-"tree kangaroos and narwhals".
+- Crie uma partição do `Doc` para os tokens "três cachorros" e
+"três cachorros e dois gatos".
 
 <codeblock id="01_03_02">
 
@@ -104,7 +104,7 @@ a variável `doc`. Por exemplo, para obter o token na posição 5 escreva `doc[5
 
 </exercise>
 
-<exercise id="5" title="Modelos estatísticos" type="slides">
+<exercise id="5" title="Fluxos de processamento treinados" type="slides">
 
 <slides source="chapter1_02_statistical-models">
 </slides>
@@ -113,34 +113,34 @@ a variável `doc`. Por exemplo, para obter o token na posição 5 escreva `doc[5
 
 <exercise id="6" title="Biblioteca dos modelos" type="choice">
 
-O que **NÃO** está incluído nos modelos que você pode carregar na spaCy?
+O que **NÃO** está incluído nos fluxos de processamento (pipelines) que você pode carregar na spaCy?
 
 <choice>
-<opt text="Um arquivo com metadados do idioma, pipeline e licença.">
+<opt text="Um arquivo de configuração descrevendo como criar um fluxo (pipeline) de processamento.">
 
-Todos modelos incluem um arquivo `meta.json` que apresenta o idioma, os nomes dos
-componentes do pipeline de processamento que serão carregados e metadados
-do modelo, como nome, versão, licença, fontes de dados, autor e acurácia (se disponível).
+Todos os fluxos de processamento (pipelines) incluem um arquivo `config.cfg` que define o idioma de 
+inicialização, os componentes do fluxo (pipeline) de processamento que devem ser carregados, bem como as informações
+ sobre o treinamento do fluxo (pipeline) de processamento e as configurações que foram utilizadas neste treinamento.
 
 </opt>
 <opt text="Pesos binários para efetuar as previsões estatísticas.">
 
 Para fazer a previsão de anotações linguísticas como o tagueamento de classes
-gramaticais, termos sintáticos e reconhecimento de entidades, os modelos incluem
+gramaticais, termos sintáticos e reconhecimento de entidades, os pacotes de fluxos de processamento (pipelines) incluem
 os pesos binários.
 
 </opt>
 <opt correct="true" text="Os dados nos quais o modelo foi treinado.">
 
-Os modelos estatísticos permitem a generalização a partir de um conjunto de
+Os fluxos de processamento treinados permitem a generalização a partir de um conjunto de
 exemplos de treinamento. Uma vez treinados, os modelos usam os pesos binários
 para fazer as previsões. É por este motivo que não é necessário que os dados de
 treinamento sejam incluídos nos modelos.
 
 </opt>
-<opt text="O vocabulário do modelo e seus códigos indexadores (hashes).">
+<opt text="O vocabulário do fluxo (pipeline) de processamento e seus códigos indexadores (hashes).">
 
-As bibliotecas de modelos incluem um arquivo `strings.json` que armazena o mapeamento
+As bibliotecas de fluxos de processamento (pipelines) incluem um arquivo `strings.json` que armazena o mapeamento
 do vocabulário para códigos indexadores (hash). Isso permite que a spaCy utilize apenas os
 códigos hash e faça a consulta da palavra correspondente, se necessário.
 
@@ -149,19 +149,18 @@ códigos hash e faça a consulta da palavra correspondente, se necessário.
 
 </exercise>
 
-<exercise id="7" title="Carregando os modelos">
+<exercise id="7" title="Carregando os fluxos (pipelines) de processamento">
 
-Os modelos que estamos usando neste treinamento já vem pré-instalados. Para
-saber mais informações sobre os modelos estatísticos e como instalá-los em seu
+Os fluxos (pipelines) de processamento que estamos usando neste treinamento já vem pré-instalados. Para
+saber mais informações sobre os fluxos (pipelines) de processamento treinados e como instalá-los em seu
 computador, consulte [essa documentação](https://spacy.io/usage/models).
 
-- Utilize `spacy.load` para carregar o modelo pequeno da língua inglesa `"en_core_web_sm"`.
+- Utilize `spacy.load` para carregar o fluxo (pipeline) de processamento pequeno do idioma português `"pt_core_news_sm"`.
 - Processe o texto e imprima o texto do documento.
 
 <codeblock id="01_07">
 
-Para carregar um modelo, use `spacy.load` com o nome do modelo. Os nomes do
-modelo variam de acordo com o idioma e os dados nos quais o modelo foi treinado,
+Para carregar um fluxo (pipeline) de processamento , use `spacy.load` com o nome do modelo. Os nomes dos fluxos (pipelines) de processamento  variam de acordo com o idioma e os dados nos quais o modelo foi treinado,
 por isso verifique se você está usando o nome correto do modelo.
 
 </codeblock>
@@ -170,7 +169,7 @@ por isso verifique se você está usando o nome correto do modelo.
 
 <exercise id="8" title="Prevendo anotações linguísticas">
 
-Agora vamos experimentar um dos modelos pré-treinados da spaCy e
+Agora vamos experimentar um dos fluxos (pipelines) de processamento treinados da biblioteca spaCy e
 ver o resultado de sua previsão. Fique à vontade e experimente com seu
 próprio texto! Use `spacy.explain` para saber o significado de um determinado
 marcador. Por exemplo: `spacy.explain("PROPN")` ou `spacy.explain("GPE")`.
@@ -287,14 +286,14 @@ texto "Apple".
 
 ### Parte 2
 
-- Escreva **uma** expressão que corresponda às variações de "download" (tokens
-que tenham "download" como lema), seguido de um token da classe gramatical
+- Escreva **uma** expressão que corresponda às variações de "baixar" (tokens
+que tenham "baixar" como lema), seguido de um token da classe gramatical
 substativo próprio `"PROPN"`.
 
 <codeblock id="01_12_02">
 
 - Para indicar um lema, use o atributo `"LEMMA"` como expressão para o token.
-  Por exemplo, `{"LEMMA": "be"}` fará a correspondência para "is", "was" ou "being".
+  Por exemplo, `{"LEMMA": "ser"}` fará a correspondência para "sou", "fui" ou "serei".
 - Para encontrar substativos próprios, você deve fazer a correspondência dos
   tokens cujo atributo `"POS"` seja `"PROPN"`.
 
