@@ -13,7 +13,7 @@ doc = nlp(
 )
 
 # Crée les motifs de correspondance
-pattern1 = [{"LOWER": "Amazon"}, {"IS_TITLE": True, "POS": "PROPN"}]
+pattern1 = [{"LOWER": "Amazon"}, {"IS_TITLE": True}]
 pattern2 = [{"POS": "NOUN"}, {"LOWER": "tout"}, {"TEXT": "-"}, {"LOWER": "compris"}]
 
 # Initialise le Matcher et ajoute les motifs

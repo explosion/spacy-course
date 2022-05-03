@@ -378,8 +378,7 @@ d'afficher les tokens du `doc` pour voir comment le texte sera séparé et ajust
 les motifs pour que chaque dictionnaire représente un token.
 
 - Édite `pattern1` pour qu'il trouve correctement toutes les mentions quelle que
-  soit la casse pour `"Amazon"` suivi d'un nom propre commençant par une
-  majuscule.
+  soit la casse pour `"Amazon"` suivi d'un token commençant par une majuscule.
 - Édite `pattern2` pour qu'il trouve correctement toutes les mentions d'un nom
   suivi de `"tout-compris"` quelle que soit sa casse.
 
