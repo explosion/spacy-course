@@ -15,8 +15,8 @@ def test():
         "tagger",
         "morphologizer",
         "parser",
-        "attribute_ruler",
         "lemmatizer",
+        'attribute_ruler',
         "ner",
     ], "Irgendetwas stimmt mit nicht mit den Namen deiner Pipeline-Komponenten!"
 
