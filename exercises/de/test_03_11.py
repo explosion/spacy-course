@@ -11,7 +11,7 @@ def test():
         "(ent.text, ent._.wikipedia_url)" in __solution__
     ), "Greifst du auf das richtige Attribut zu?"
     assert (
-        doc.ents[-1]._.wikipedia_url
+        doc.ents[0]._.wikipedia_url
         == "https://de.wikipedia.org/w/index.php?search=David_Bowie"
     ), "Es scheint, als ob der Wert des Attributs nicht korrekt ist."
 
