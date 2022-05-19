@@ -15,7 +15,7 @@ solutions are all in this repo, there's no penalty for clicking "Show hints" or
 
 [![Azure Pipelines](https://img.shields.io/azure-devops/build/explosion-ai/public/10/master.svg?logo=azure-devops&style=flat-square)](https://dev.azure.com/explosion-ai/public/_build?definitionId=10)
 ![Netlify Status](https://api.netlify.com/api/v1/badges/2eae6a1a-d7a3-437e-a700-61e32d7d991b/deploy-status)
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ines/spacy-course/master)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/explosion/spacy-course/master)
 
 ## 💬 Languages and Translations
 
@@ -30,7 +30,7 @@ solutions are all in this repo, there's no penalty for clicking "Show hints" or
 | **[Portuguese](https://course.spacy.io/pt)** | English                   | [`chapters/pt`](chapters/pt), [`exercises/pt`](exercises/pt) | [@Cristianasp](https://github.com/Cristianasp)                                                                                                                                                                                                                                                                                                                                                                                                       |
 
 If you spot a mistake, I always appreciate
-[pull requests](https://github.com/ines/spacy-course/pulls)!
+[pull requests](https://github.com/explosion/spacy-course/pulls)!
 
 **1.** This is the language used for the text examples and resources used in the
 exercises. For example, the German version of the course also uses German text

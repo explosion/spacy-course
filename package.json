@@ -56,6 +56,6 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/ines/spacy-course"
+        "url": "https://github.com/explosion/spacy-course"
     }
 }
