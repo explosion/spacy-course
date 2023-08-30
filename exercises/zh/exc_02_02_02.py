@@ -1,4 +1,4 @@
-from spacy
+import spacy
 
 nlp = spacy.load("zh_core_web_sm")
 doc = nlp("周杰伦是一个人物。")
