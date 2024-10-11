@@ -96,7 +96,7 @@ logo após o toquenizador.
 
 Os argumentos `before` e `after` permitem definir o nome de um componente existente de tal
 forma que o novo componente seja adicionado antes ou depois dele. Por exemplo: `before="ner"`
-irá adicionar o novo componente antes do identificador de entidados nomeadas.
+irá adicionar o novo componente antes do identificador de entidades nomeadas.
 
 O componente existente ao qual o novo componente deve ser adicionado antes ou depois precisa
 existir, senão a spaCy gerará um erro.
@@ -144,7 +144,7 @@ toquenizador é passado para todos os componentes, portanto é essencial
 retornar o documento modificado.
 
 Para poder utilizar o novo componente, nós o registramos utilizando o
-decorador `Language.component` e em seduida podemos chamá-lo com
+decorador `Language.component` e em seguida podemos chamá-lo com
 "custom_component".
 
 Agora podemos adicionar o componente ao fluxo de processamento. Vamos
@@ -174,7 +174,7 @@ def custom_component(doc):
     # Retornar o objeto doc
     return doc
 
-# Adicionar o componente no inicio do fluxo de processamento
+# Adicionar o componente no início do fluxo de processamento
 nlp.add_pipe("custom_component", first=True)
 
 # Processar o texto

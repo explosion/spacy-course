@@ -4,7 +4,7 @@ type: slides
 
 # Introdução a biblioteca spaCy
 
-Notes: Olá, eu sou a Ines! Sou uma desenvolvedora pricipal da spaCy, uma biblioteca bastante popular para o Processamento de Linguagem Natural avançado em Python.
+Notes: Olá, eu sou a Ines! Sou uma desenvolvedora principal da spaCy, uma biblioteca bastante popular para o Processamento de Linguagem Natural avançado em Python.
 
 Nesta lição, vamos dar uma olhada nos principais conceitos da spaCy e percorrer nossos primeiros passos.
 

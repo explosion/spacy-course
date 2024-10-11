@@ -58,7 +58,7 @@ definir seu esquema de rótulação para obter melhores resultados.
 
 - [Treinar e atualizar](https://spacy.io/usage/training) outros componentes do fluxo 
   de processamento (pipeline)
-  - Tagueador de classes gramaticas
+  - Tagueador de classes gramaticais
   - Analizador sintático
   - Classificador de textos
 

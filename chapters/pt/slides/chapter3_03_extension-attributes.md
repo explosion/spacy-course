@@ -12,7 +12,7 @@ aos objetos `Doc`, `Token` e `Span` para armazenar informações adicionais.
 # Definindo atributos personalizados
 
 - Adicionam metadados personalizados a documentos, partições e tokens
-- Accessíveis através da propriedade `._`
+- Acessíveis através da propriedade `._`
 
 ```python
 doc._.title = "My document"
@@ -46,7 +46,7 @@ classes nos capítulos anteriores. Para registrar um atributo personalizado no
 `Doc`, `Token` e `Span` você deve usar o método `set_extension`.
 
 O primeiro parâmetro é o nome do atributo. Parâmetros nomeados permitem que
-você defina como o valores serão computados. Neste caso, ele tem um valor
+você defina como os valores serão computados. Neste caso, ele tem um valor
 padrão que pode ser posteriormente alterado.
 
 ---

@@ -21,7 +21,7 @@ nomeadas.
 - Aprende esquemas de classificação adequados ao seu problema
 - Essencial para classificação de textos
 - Muito útil para reconhecimento de entidades nomeadas
-- Menos crítico para tagueamento de classes gramaticas e análise sintática
+- Menos crítico para tagueamento de classes gramaticais e análise sintática
 
 Notes: Antes de entrarmos nos detalhes do _como_, vale a pena fazermos uma
 pergunta para nós mesmos: Para que queremos atualizar um modelo com nossos
@@ -142,7 +142,7 @@ começa no token 0 e termina no token 1.
 
 É também muito importante que o modelo aprenda palavras que _não são_ entidades.
 
-Neste caso, os marcadores do intervalo de caracter devem ser vazios.
+Neste caso, os marcadores do intervalo de caracteres devem ser vazios.
 
 Nosso objetivo é ensinar o modelo a reconhecer novas entidades em contextos
 similares, mesmo que elas não estejam nos dados de treinamento.
@@ -175,7 +175,7 @@ O fluxo de processamento da biblioteca spaCy para o Inglês, por exemplo, foi
 treinado com 2 milhões de palavras anotadas com classes gramaticais, termos
 sintáticos e entidades nomeadas.
 
-Os dados de treinamento normalmente são criados por humanos, que atribuiem
+Os dados de treinamento normalmente são criados por humanos, que atribuem
 marcadores aos textos.
 
 Isso representa muito trabalho, mas pode ter algumas etapas automatizadas, como
@@ -185,8 +185,11 @@ por exemplo, utilizando o Comparador `Matcher` da biblioteca spaCy.
 
 # Treinando e validando dados
 
-**Dados de treinamento** são usados para atualizar o modelo **Dados de
-validação**
+**Dados de treinamento** 
+
+- são usados para atualizar o modelo 
+
+**Dados de validação**
 
 - são dados que o modelo não utilizou no treinamento
 - utilizados para calcular a acurácia do modelo
