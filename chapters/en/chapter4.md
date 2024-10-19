@@ -387,7 +387,7 @@ predicting it.
 
 </opt>
 
-<opt text="The hyperparameters need to be retuned so that both entity types can be recognized.">
+<opt text="The hyperparameters need to be returned so that both entity types can be recognized.">
 
 While the hyperparameters can influence a model's accuracy, they're likely not
 the problem here.
