@@ -96,7 +96,7 @@ spaCy pode gerar este arquivo automaticamente para você.
 
 A ferramenta de inicialização rápida presente na documentação permite que você 
 gere seu arquivo de configuração de maneira interativa. É possível selecionar o idioma,
-os componentes do fluxo de procesamento necessários, o hardware opcional e
+os componentes do fluxo de processamento necessários, o hardware opcional e
 os objetivos da otimização.
 
 Alternativamente, você pode utilizar o comando da spaCy `init config`. Ele
@@ -166,7 +166,7 @@ Notes: Este é um exemplo das informações que serão apresentadas durante
 e depois do treinamento. Não se esqueça que é desejável fazer diversas passadas
 nos dados durante o treinamento, como já foi apresentado anteriormente. Cada
 passada nos dados é conhecida como `epoch`. Esta informação está na primeira
-colunda da tabela.
+coluna da tabela.
 
 A cada passo (`epoch`), a biblioteca spaCy mostra a pontuação de acurácia
 para os 200 exemplos do passo. A quantidade de exemplos já treinados é apresentada na

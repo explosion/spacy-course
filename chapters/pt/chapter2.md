@@ -1,5 +1,5 @@
 ---
-title: 'Chapter 2: Análise da dados em larga escala usando a biblioteca spaCy'
+title: 'Chapter 2: Análise de dados em larga escala usando a biblioteca spaCy'
 description:
   "Neste capítulo você desenvolverá novas habilidades ao extrair informações
   específicas de um grande volume de texto. Você vai aprender a otimizar o uso
@@ -71,7 +71,7 @@ print(nlp_de.vocab.strings[bowie_id])
 
 <opt correct="true" text='A string <code>"Bowie"</code> não pertence ao vocubulário alemão, por isso o código hash não pode ser mapeado para uma string.'>
 
-Códigos hash não pode ser revertidos. Para prevenir este problema, adicione a
+Códigos hash não podem ser revertidos. Para prevenir este problema, adicione a
 palavra ao vocabulário processando um texto ou consultando a palavra, ou use
 o mesmo vocabulário para mapear o código hash de volta para a palavra.
 

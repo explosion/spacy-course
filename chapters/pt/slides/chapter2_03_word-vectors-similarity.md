@@ -142,7 +142,7 @@ Notes: Mas como a spaCy faz esse cálculo de similaridade?
 A similaridade é determinada utilizando-se vetores de palavras, que são representações
 multi dimensionais do significado de cada palavra.
 
-Você deve ter ouvido falar do Word2Vec, um algoritmo que é usado com frequencia para
+Você deve ter ouvido falar do Word2Vec, um algoritmo que é usado com frequência para
 treinar vetores de palavras a partir de textos.
 
 Os vetores podem ser adicionados aos modelos estatísticos da spaCy.

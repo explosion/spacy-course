@@ -215,7 +215,7 @@ Neste exemplo, o operador "?" faz com que a ocorrência seja opcional, então a 
 | `{"OP": "!"}` | Negação: corresponde 1 vez       |
 | `{"OP": "?"}` | Opcional: corresponde 0 ou 1 vez |
 | `{"OP": "+"}` | Corresponde 1 ou mais vezes      |
-| `{"OP": "*"}` | Corresponde 1 ou mais vezes      |
+| `{"OP": "*"}` | Corresponde 0 ou mais vezes      |
 
 Notes: "OP" pode ter um dos quatro valores abaixo:
 

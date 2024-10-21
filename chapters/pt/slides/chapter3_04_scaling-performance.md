@@ -146,7 +146,7 @@ doc antes de chamar os componentes do fluxo de processamento.
 
 ```python
 # Desabilitar o tagueador tagger e o analisador parser
-with nlp.select_pipes(disale=["tagger", "parser"]):
+with nlp.select_pipes(disable=["tagger", "parser"]):
     # Processar o texto e imprimir as entidades
     doc = nlp(text)
     print(doc.ents)
@@ -159,10 +159,10 @@ Notes: A spaCy também permite que você desabilite temporariamente componentes
 do fluxo de processamento usando o comando gerenciador de contexto 
 `nlp.select_pipes`. 
 
-Ele aceita ps parâmetros `enable` ou `disable` que indicam uma lista dos nomes
+Ele aceita os parâmetros `enable` ou `disable` que indicam uma lista dos nomes
 dos componentes do pipeline para serem habilitados ou desabilitados. Por exemplo,
 se você apenas deseja utilizar o identificador de entidades para processar um 
-documento, você pode temporariamente desabilidar o tagueador e o analisador.
+documento, você pode temporariamente desabilitar o tagueador e o analisador.
 
 Após o bloco `with`, os componentes desabilitados são automaticamente 
 reabilitados.
