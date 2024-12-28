@@ -14,7 +14,7 @@ Notes: Congratulations – you've made it to the end of the course!
   entities
 - Work with trained **pipelines**
 - Find words and phrases using `Matcher` and `PhraseMatcher` **match rules**
-- Best practices for working with **data structures** `Doc`, `Token` `Span`,
+- Best practices for working with **data structures** `Doc`, `Token`, `Span`,
   `Vocab`, `Lexeme`
 - Find **semantic similarities** using **word vectors**
 - Write custom **pipeline components** with **extension attributes**
