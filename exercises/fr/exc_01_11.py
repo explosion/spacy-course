@@ -4,12 +4,12 @@ import spacy
 from spacy.____ import ____
 
 nlp = spacy.load("fr_core_news_sm")
-doc = nlp("Apple : le nouveau modèle X Pro attendu pour l'été.")
+doc = nlp("Apple : le nouveau modèle x pro attendu pour l'été.")
 
 # Initialise le matcher avec le vocabulaire partagé
 matcher = ____(____.____)
 
-# Crée un motif qui recherche les deux tokens : "X" et "Pro"
+# Crée un motif qui recherche les deux tokens : "x" et pro"
 pattern = [____]
 
 # Ajoute le motif au matcher

@@ -2,9 +2,9 @@
 # It can be used to ensure that results the course depend on are accurate, e.g.
 # when updating to a new version of spaCy. This especially includes predictions
 # that some examples assume or depend on.
+import pytest
 import spacy
 from spacy.matcher import Matcher
-import pytest
 
 
 @pytest.fixture
@@ -24,7 +24,7 @@ def test_01_08_02_predictions(nlp):
 
 
 def test_01_09_predictions(nlp):
-    text = "Apple bringt neues Modell X Pro im Sommer"
+    text = "Apple bringt neues Modell x pro im Sommer"
     doc = nlp(text)
     ents = [(ent.text, ent.label_) for ent in doc.ents]
     assert len(ents) == 1

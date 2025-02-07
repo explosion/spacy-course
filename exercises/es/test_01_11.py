@@ -20,10 +20,10 @@ def test():
         pattern[0].get(key) == "adidas" for key in ["text", "TEXT"]
     ), "¿Estás encontrando el texto del token?"
     assert any(
-        pattern[1].get(key) == "zx" for key in ["text", "TEXT"]
+        pattern[1].get(key) == "pro" for key in ["text", "TEXT"]
     ), "¿Estás encontrando el texto del token?"
     assert (
-        'matcher.add("ADIDAS_ZX_PATTERN"' in __solution__
+        'matcher.add("ADIDAS_PRO_PATTERN"' in __solution__
     ), "¿Estás añadiendo el patrón correctamente?"
     assert (
         "matches = matcher(doc)" in __solution__
@@ -31,5 +31,5 @@ def test():
 
     __msg__.good(
         "¡Bien hecho! Encontraste un resultado exitosamente: los tokens en doc[14:16] "
-        'que describen el span de "adidas ZX".'
+        'que describen el span de "adidas pro".'
     )

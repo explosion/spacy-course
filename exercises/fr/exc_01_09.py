@@ -2,7 +2,7 @@ import spacy
 
 nlp = spacy.load("fr_core_news_sm")
 
-text = "Apple : le nouveau modèle X Pro attendu pour l'été."
+text = "Apple : le nouveau modèle x pro attendu pour l'été."
 
 # Traite le texte
 doc = ____
@@ -12,7 +12,7 @@ for ____ in ____.____:
     # Affiche le texte de l'entité et son label
     print(____.____, ____.____)
 
-# Obtiens la portion pour "X Pro"
+# Obtiens la portion pour "x pro"
 x_pro = ____
 
 # Affiche la portion de texte
