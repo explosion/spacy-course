@@ -1,7 +1,7 @@
 def test():
     assert "in doc.ents" in __solution__, "Iterierst du über die Entitäten?"
     assert (
-        x_pro.text == "X Pro"
+        x_pro.text == "x pro"
     ), "Bist du dir sicher, dass x_pro die richtigen Tokens erfasst?"
 
     __msg__.good(
