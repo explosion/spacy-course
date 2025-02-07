@@ -4,7 +4,7 @@ type: slides
 
 # O laço (loop) de treinamento
 
-Notes: Enquanto outras bibiotecas entregam um método responsável pelo
+Notes: Enquanto outras bibliotecas entregam um método responsável pelo
 treinamento completo de um modelo, a biblioteca spaCy possibilita o controle total de todas 
 as etapas envolvidas no treinamento de um modelo.
 
@@ -13,10 +13,10 @@ as etapas envolvidas no treinamento de um modelo.
 # Os passos do laço (loop) de treinamento:
 
 1. **Repita** uma série de vezes.
-2. **Embaralhe** os dados de treinamento.
-3. **Divida** os dados em lotes.
-4. **Atualize** o modelo para cada lote.
-5. **Salve** o modelo atualizado.
+    1.1. **Embaralhe** os dados de treinamento.
+    1.2. **Divida** os dados em lotes.
+    1.3. **Atualize** o modelo para cada lote.
+    1.4. **Salve** o modelo atualizado.
 
 Notes: O loop de treinamento engloba uma série de passos que são executados
 para treinar ou atualizar um modelo.
@@ -26,8 +26,8 @@ de forma que o modelo aprenda eficientemente. Se desejarmos treinar o modelo
 por 10 iterações, precisamos executar o loop 10 vezes.
 
 Para prevenir que o modelo convirja para uma solução sub-ótima, nós embaralhamos
-os dados aleatoriamente a cada iteração. Essa é uma estratégia bastente comum
-quando se usa o algorimo de gradiente descendente estocástico.
+os dados aleatoriamente a cada iteração. Essa é uma estratégia bastante comum
+quando se usa o algoritmo de gradiente descendente estocástico.
 
 Em seguida, dividimos os dados de treinamento em lotes com alguns exemplos,
 também conhecido como "minibatching". Isso aumenta a confiança das estimativas
@@ -116,7 +116,7 @@ Por fim, usamos `nlp.to_disk` para salvar o modelo treinado em um diretório.
 # Atualizando um modelo existente
 
 - Melhora as previsões para novos dados
-- Muito útil para extender categorias existentes, como `"PERSON"`
+- Muito útil para estender categorias existentes, como `"PERSON"`
 - Também é possível adicionar novas categorias.
 - Atenção! Garanta que o modelo não irá "esquecer" a classificação já aprendida.
 

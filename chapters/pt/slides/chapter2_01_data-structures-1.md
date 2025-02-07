@@ -27,7 +27,7 @@ coffee_string = nlp.vocab.strings[coffee_hash]
 - Códigos hash não podem ser revertidos - por isso é preciso sempre prover o vocabulário compartilhado
 
 ```python
-# Gera um erro se a string não foi mapeada anteriomente
+# Gera um erro se a string não foi mapeada anteriormente
 string = nlp.vocab.strings[3197928453018144401]
 ```
 

@@ -16,11 +16,11 @@ def nlp():
 
 
 def test_01_08_02_predictions(nlp):
-    text = "De acuerdo con la revista Fortune, Apple fue la empresa más admirada en el mundo entre 2008 y 2012."
+    text = "De acuerdo con la revista global de negocios Fortune, Apple fue la empresa más admirada en el mundo entre 2008 y 2012."
     doc = nlp(text)
     ents = [(ent.text, ent.label_) for ent in doc.ents]
     assert len(ents) == 2
-    assert ents[0] == ("revista Fortune", "ORG")
+    assert ents[0] == ("Fortune", "ORG")
     assert ents[1] == ("Apple", "ORG")
 
 
@@ -36,12 +36,12 @@ def test_01_09_predictions(nlp):
 
 
 def test_slides_01_03(nlp):
-    doc = nlp("Camila prefería comer sushi. Pero ahora está comiendo pasta.")
+    doc = nlp("Camila prefería comer sushi. Pero ahora está comiendo espaguetis.")
     pattern = [{"LEMMA": "comer", "POS": "VERB"}, {"POS": "NOUN"}]
     matcher = Matcher(nlp.vocab)
     matcher.add("TEST", [pattern])
     matches = [doc[start:end].text for _, start, end in matcher(doc)]
-    assert matches == ["comer sushi", "comiendo pasta"]
+    assert matches == ["comer sushi", "comiendo espaguetis"]
 
 
 def test_03_16_02_predictions(nlp):

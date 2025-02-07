@@ -2,7 +2,7 @@ import spacy
 
 nlp = spacy.load("de_core_news_sm")
 
-text = "Apple: neues Modell X Pro kommt im Sommer"
+text = "Apple bringt neues Modell X Pro im Sommer"
 
 # Verarbeite den Text
 doc = ____

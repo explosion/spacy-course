@@ -13,13 +13,10 @@ def test():
         pattern1[0].get(attr) == "amazon" for attr in ("lower", "LOWER")
     ), "Vérifie l'attribut et la valeur du premier token de pattern1."
     assert (
-        len(pattern1[1]) == 2
-    ), "Le deuxième token de pattern1 devrait avoir deux attributs."
+        len(pattern1[1]) == 1
+    ), "Le deuxième token de pattern1 devrait avoir un attribut unique."
     assert any(
         pattern1[1].get(attr) == True for attr in ("is_title", "IS_TITLE")
-    ), "Vérifie les attributs et valeurs du deuxième token de pattern1."
-    assert any(
-        pattern1[1].get(attr) == "PROPN" for attr in ("pos", "POS")
     ), "Vérifie les attributs et valeurs du deuxième token de pattern1."
 
     # Validation de Pattern 2

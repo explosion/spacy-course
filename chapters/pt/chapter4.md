@@ -24,14 +24,14 @@ id: 4
 <exercise id="2" title="Treinando e avaliando os dados">
 
 Para treinar um modelo, tipicamente é necessário dados de treinamento e dados para
-avaliação. Para que são utilizados os dados de avaliação ?
+validação. Para que são utilizados os dados de validação?
 
 <choice>
 
 <opt text="Para fornecer exemplos de treinamento de reserva caso os dados de treinamento não forem suficientes.">
 
 Durante o treinamento, o modelo só será atualizado com os dados de treinamento.
-Os dados de avaliação são utilizados apenas para avaliar a qualidade do modelo, através
+Os dados de validação são utilizados apenas para avaliar a qualidade do modelo, através
 da comparação das predições feitas nesses dados (novos dados) com o resultado esperado. Isso então refletirá
 no score de acurácia do modelo.
 
@@ -39,14 +39,14 @@ no score de acurácia do modelo.
 
 <opt text="Para avaliar a previsão em novos exemplos e calcular a acurácia do modelo."  correct="true">
 
-Os dados de avaliação são utilizados para avaliar o modelo, comparando a predição feita nesses dados
+Os dados de validação são utilizados para avaliar o modelo, comparando a predição feita nesses dados
 (novos dados) com o resultado esperado. Isso então refletirá no score de acurácia do modelo.
 
 </opt>
 
 <opt text="Para definir exemplos de treinamento sem anotações.">
 
-Os dados de avaliação são utilizados para avaliar o modelo, comparando a predição feita nesses dados
+Os dados de validação são utilizados para avaliar o modelo, comparando a predição feita nesses dados
 (novos dados) com o resultado esperado. Isso então refletirá no score de acurácia do modelo.
 </opt>
 
@@ -66,7 +66,7 @@ então vamos criar dados de treinamento para o modelo reconhecer esses exemplos 
 
 - Escreva uma expressão para que dois tokens correspondam as palavras em minúsculas
   `"iphone"` e `"x"`.
-- Escreva uma expressão com dois tokens : um token cujo formato em minúscula corresponda a
+- Escreva uma expressão com dois tokens: um token cujo formato em minúscula corresponda a
   `"iphone"` e o outro corresponda a um dígito usando o operador `"?"`.
 
 <codeblock id="04_03">
@@ -200,7 +200,7 @@ e `exercises/pt/dev_gadget.spacy` como parâmetros.
 
 <codeblock id="04_08">
 
-O primeiro parâmetro de `spacy train` é o caminho pra o arquivo de configuração.
+O primeiro parâmetro de `spacy train` é o caminho para o arquivo de configuração.
 
 </codeblock>
 

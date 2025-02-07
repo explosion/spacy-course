@@ -40,7 +40,7 @@ um analisador (parser) e um identificador de entidades.
 
 <opt text="Toqueniza o texto e aplica os componentes do fluxo (pipeline) sequencialmente." correct="true">
 
-O toquenizador transforma uma string de texto em um objeto `Doc`. a spaCy
+O toquenizador transforma uma string de texto em um objeto `Doc`. A spaCy
 então aplica cada componente do fluxo (pipeline) de processamento ao documento,
 sequencialmente.
 
@@ -48,7 +48,7 @@ sequencialmente.
 
 <opt text="Conecta ao servidor da spaCy para processar o texto e retorna o resultados.">
 
-a spaCy processa tudo localmente e não se conecta a nenhum servidor externo.
+A spaCy processa tudo localmente e não se conecta a nenhum servidor externo.
 
 </opt>
 

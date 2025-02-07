@@ -6,6 +6,7 @@ def test():
         "getter=get_wikipedia_url" in __solution__
     ), "get_wikipedia_urlをゲッターとして登録しましたか？"
     assert "(ent.text, ent._.wikipedia_url)" in __solution__, "カスタム属性にアクセスしましたか？"
+    # XXX The index here is brittle with model updates
     assert (
         doc.ents[-1]._.wikipedia_url
         == "https://ja.wikipedia.org/wiki/デヴィッド・ボウイ"

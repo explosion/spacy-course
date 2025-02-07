@@ -190,12 +190,12 @@ pattern = [
 ```
 
 ```python
-doc = nlp("Camila prefería comer sushi. Pero ahora está comiendo pasta.")
+doc = nlp("Camila prefería comer sushi. Pero ahora está comiendo espaguetis.")
 ```
 
 ```out
-comer tacos
-comiendo pasta
+comer sushi
+comiendo espaguetis
 ```
 
 Notes: En este ejemplo estamos buscando dos tokens:

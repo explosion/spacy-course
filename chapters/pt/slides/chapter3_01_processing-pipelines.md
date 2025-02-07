@@ -4,7 +4,7 @@ type: slides
 
 # Fluxos de processamento (pipelines)
 
-Notes: Bem-vindo de volta ! 
+Notes: Bem-vindo de volta! 
 
 Este capítulo é dedicado aos fluxos de processamento:
 uma série de funções que são aplicadas sequencialmente no documento para
@@ -41,7 +41,7 @@ ele.
 
 | Name        | Description                                              | Creates                                                   |
 | ----------- | :------------------------------------------------------- | :-------------------------------------------------------- |
-| **tagger**  | Tagueador de classses gramaticais (part-of-speech tagger)| `Token.tag`, `Token.pos`                                  |
+| **tagger**  | Tagueador de classes gramaticais (part-of-speech tagger)| `Token.tag`, `Token.pos`                                  |
 | **parser**  | Analisador sintático (dependency parser)                 | `Token.dep`, `Token.head`, `Doc.sents`, `Doc.noun_chunks` |
 | **ner**     | Identificador de entidades (named entity recognizer)     | `Doc.ents`, `Token.ent_iob`, `Token.ent_type`             |
 | **textcat** | Classificador de texto (text classifier)                 | `Doc.cats`                                                |
@@ -80,7 +80,7 @@ Notes: Todos os pacotes de fluxo de processamento que você pode importar na bib
 O arquivo `config` define o idioma e o fluxo de processamento. Ele indica quais componentes precisam ser instanciados pela spaCy e como eles devem ser configurados.
 
 Os componentes internos que fazem as previsões necessitam de dados binários. Esses
-dados estão inclusos no pacote do fluxo de procesamento e são carregados nos componentes quando você carrega o fluxo (pipeline).
+dados estão inclusos no pacote do fluxo de processamento e são carregados nos componentes quando você carrega o fluxo (pipeline).
 
 ---
 
@@ -107,7 +107,7 @@ print(nlp.pipeline)
  ('tagger', <spacy.pipeline.Tagger>),
  ('parser', <spacy.pipeline.DependencyParser>),
  ('ner', <spacy.pipeline.EntityRecognizer>)
- ('attribute_ruler', <spacy.pipeline.AtributeRuler>),
+ ('attribute_ruler', <spacy.pipeline.AttributeRuler>),
  ('lemmatizer', <spacy.pipeline.Lemmatizer>),
  ]
 ```
