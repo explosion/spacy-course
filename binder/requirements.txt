@@ -1,5 +1,5 @@
-numpy==1.26.4
 spacy[lookups]>=3.3.0,<3.4.0
+numpy==1.26.4
 wasabi>=0.6.0,<1.1.0
 srsly>=2.4.0,<3.0.0
 pytest>=4.4.1,<4.5.0
